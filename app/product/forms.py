@@ -8,11 +8,11 @@ class ProductModifyForm(FlaskForm):
     """
         The form for staffs to modify product info
     """
-    name = StringField('Name', validators=[DataRequired(), Length(1, 128)])
-    serial_number = StringField('Serial Number', validators=[DataRequired(), Length(1, 128)])
+    name = StringField('Name', validators=[DataRequired(), Length(1, 128)], render_kw={"data-errors":'Please Enter Name.'})
+    serial_number = StringField('Serial Number', validators=[DataRequired(), Length(1, 128)], render_kw={"data-errors":'Please Enter Serial Number.'})
     # choices should be defined in views.py
-    brand_id = SelectField('Brand', validators=[DataRequired()], coerce=int)
-    submit = SubmitField('Submit')
+    brand_id = SelectField('Brand', validators=[DataRequired()], coerce=int, render_kw={"data-style":'py-0'})
+    submit = SubmitField('Add Product')
 
 
 class ModelUploadForm(FlaskForm):

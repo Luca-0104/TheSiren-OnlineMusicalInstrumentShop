@@ -6,12 +6,12 @@
         <title>Siren Management | Responsive Bootstrap 4 Admin Dashboard Template</title>
 
         <!-- Favicon -->
-        <link rel="shortcut icon" href="../static/css/assets/images/favicon.ico">
-        <link rel="stylesheet" href="../static/css/assets/css/backend-plugin.min.css">
-        <link rel="stylesheet" href="../static/css/assets/css/backend.css?v=1.0.0">
-        <link rel="stylesheet" href="../static/css/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
-        <link rel="stylesheet" href="../static/css/assets/vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css">
-        <link rel="stylesheet" href="../static/css/assets/vendor/remixicon/fonts/remixicon.css">
+        <link rel="shortcut icon" href="../../static/images/favicon.ico">
+        <link rel="stylesheet" href="../../static/css/backend-plugin.min.css">
+        <link rel="stylesheet" href="../../static/css/backend.css?v=1.0.0">
+        <link rel="stylesheet" href="../../static/css/all.min.css">
+        <link rel="stylesheet" href="../../static/css/line-awesome.min.css">
+        <link rel="stylesheet" href="../../static/css/remixicon.css">
     </head>
 
     <body class="  ">
@@ -864,13 +864,19 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <form action="page-list-product.html" data-toggle="validator">
+                                    <form action="" method="post" data-toggle="validator" novalidate>
+                                        {{ form.hidden_tag() }}
                                         <div class="row">
                                             <!-- Name section -->
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label>Product Name *</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Name" data-errors="Please Enter Name." required>
+                                                    <!--<label>Product Name *</label>
+                                                    <input type="text" class="form-control" placeholder="Enter Name" data-errors="Please Enter Name." required>-->
+                                                    {{ form.name.label }}
+                                                    {{ form.name(class="form-control", placeholder="Enter Name") }}
+                                                    {% for error in form.name.errors %}
+                                                        <span>{{ error }}</span>
+                                                    {% endfor %}
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -878,8 +884,13 @@
                                             <!-- Serial number section -->
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label>Serial Number *</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Serial Number" data-errors="Please Enter Serial Number." required>
+                                                    <!--<label>Serial Number *</label>
+                                                    <input type="text" class="form-control" placeholder="Enter Serial Number" data-errors="Please Enter Serial Number." required>-->
+                                                    {{ form.serial_number.label }}
+                                                    {{ form.serial_number(class="form-control", placeholder="Enter Serial Number") }}
+                                                    {% for error in form.serial_number.errors %}
+                                                        <span>{{ error }}</span>
+                                                    {% endfor %}
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -888,7 +899,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Classification *</label>
-                                                    <select name="type" class="selectpicker form-control" data-style="py-0">
+                                                    <select name="categories[]" class="selectpicker form-control" data-style="py-0">
                                                         <option>Strings</option>
                                                         <option>Woodwinds</option>
                                                         <option>Brass</option>
@@ -902,7 +913,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Type *</label>
-                                                    <select name="type" class="selectpicker form-control" data-style="py-0">
+                                                    <select name="categories[]" class="selectpicker form-control" data-style="py-0">
                                                         <optgroup label="String">
                                                             <option>Violin</option>
                                                             <option>Viola</option>
@@ -974,7 +985,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Extra Requirement *</label>
-                                                    <select name="type" class="selectpicker form-control" data-style="py-0">
+                                                    <select name="categories[]" class="selectpicker form-control" data-style="py-0">
                                                         <option>Acoustic Only</option>
                                                         <option>Electricity Required</option>
                                                         <option>Electricity Support</option>
@@ -987,7 +998,7 @@
                                             <!-- Brand section -->
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label>Brand *</label>
+                                                    <!--<label>Brand *</label>
                                                     <select name="type" class="selectpicker form-control" data-style="py-0">
                                                         <option>b1</option>
                                                         <option>b2</option>
@@ -996,11 +1007,17 @@
                                                         <option>b5</option>
                                                         <option>b6</option>
                                                         <option>b7</option>
-                                                    </select>
+                                                    </select>-->
+                                                    {{ form.brand_id.label }}
+                                                    {{ form.brand_id(class="selectpicker form-control") }}
+                                                    {% for error in form.brand_id.errors %}
+                                                        <span>{{ error }}</span>
+                                                    {% endfor %}
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary mr-2">Add Product</button>
+                                        <!--<button type="submit" class="btn btn-primary mr-2">Add Product</button>-->
+                                        {{ form.submit(class="btn btn-primary mr-2") }}
                                         <button type="reset" class="btn btn-danger">Reset</button>
                                     </form>
                                 </div>
@@ -1032,14 +1049,14 @@
         </div>
     </footer>
         <!-- Backend Bundle JavaScript -->
-        <script src="../static/css/assets/js/backend-bundle.min.js"></script>
+        <script src="../../static/js/backend-bundle.min.js"></script>
         <!-- Table Treeview JavaScript -->
-        <script src="../static/css/assets/js/table-treeview.js"></script>
+        <script src="../../static/js/table-treeview.js"></script>
         <!-- Chart Custom JavaScript -->
-        <script src="../static/css/assets/js/customizer.js"></script>
+        <script src="../../static/js/customizer.js"></script>
         <!-- Chart Custom JavaScript -->
-        <script async src="../static/css/assets/js/chart-custom.js"></script>
+        <script async src="../../static/js/chart-custom.js"></script>
         <!-- app JavaScript -->
-        <script src="../static/css/assets/js/app.js"></script>
+        <script src="../../static/js/app.js"></script>
     </body>
 </html>
