@@ -19,13 +19,13 @@ class ModelUploadForm(FlaskForm):
     """
         The form for staffs to upload a new model type of a specific product
     """
-    name = StringField('Name', validators=[DataRequired(), Length(1, 128)])
-    description = StringField('Description', validators=[DataRequired()])
-    price = FloatField('Price', validators=[DataRequired(), number_range(0, 999999999999)])
-    stock = IntegerField('Stock', validators=[DataRequired(), number_range(0, 9999999)])
-    serial_number = StringField('Serial Number', validators=[DataRequired(), Length(1, 128)])
-    pictures = MultipleFileField('Pictures for exhibition', validators=[DataRequired(), Length(1, 10, 'You must give 1-10 pictures of this commodity')])
-    intro_pictures = MultipleFileField('Introduction Pictures', validators=[DataRequired(), Length(1, 10, 'You must give 1-10 introduction pictures')])
+    name = StringField('Name', validators=[DataRequired(), Length(1, 128)], render_kw={"data-errors":'Please Enter Name.'})
+    description = StringField('Description', validators=[DataRequired()], render_kw={"row":4})
+    price = FloatField('Price', validators=[DataRequired(), number_range(0, 999999999999)], render_kw={"data-errors":'Please Enter Price.'})
+    stock = IntegerField('Stock', validators=[DataRequired(), number_range(0, 9999999)], render_kw={"data-errors":'Please Enter Stock.'})
+    serial_number = StringField('Serial Number', validators=[DataRequired(), Length(1, 128)], render_kw={"data-errors":'Please Enter Serial Number.'})
+    pictures = MultipleFileField('Pictures for exhibition', validators=[DataRequired(), Length(1, 10, 'You must give 1-10 pictures of this commodity')], render_kw={"accept":'image/*'})
+    intro_pictures = MultipleFileField('Introduction Pictures', validators=[DataRequired(), Length(1, 10, 'You must give 1-10 introduction pictures')], render_kw={"accept":'image/*'})
     submit = SubmitField('Submit')
 
     def validate_serial_number(self, field):
@@ -61,11 +61,11 @@ class ModelModifyForm(FlaskForm):
     """
         The form for staffs to modify the info of a model type
     """
-    name = StringField('Name', validators=[DataRequired(), Length(1, 128)])
-    description = StringField('Description', validators=[DataRequired()])
-    price = FloatField('Price', validators=[DataRequired(), number_range(0, 999999999999)])
-    stock = IntegerField('Stock', validators=[DataRequired(), number_range(0, 9999999)])
-    serial_number = StringField('Serial Number', validators=[DataRequired(), Length(1, 128)])
+    name = StringField('Name', validators=[DataRequired(), Length(1, 128)], render_kw={"data-errors":'Please Enter Name.'})
+    description = StringField('Description', validators=[DataRequired()], render_kw={"row":4})
+    price = FloatField('Price', validators=[DataRequired(), number_range(0, 999999999999)], render_kw={"data-errors":'Please Enter Price.'})
+    stock = IntegerField('Stock', validators=[DataRequired(), number_range(0, 9999999)], render_kw={"data-errors":'Please Enter Stock.'})
+    serial_number = StringField('Serial Number', validators=[DataRequired(), Length(1, 128)], render_kw={"data-errors":'Please Enter Serial Number.'})
     # pictures = MultipleFileField('Pictures for exhibition', validators=[DataRequired(), Length(1, 10, 'You must give 1-10 pictures of this commodity')])
     # intro_pictures = MultipleFileField('Introduction Pictures', validators=[DataRequired(), Length(1, 10, 'You must give 1-10 introduction pictures')])
     submit = SubmitField('Submit')

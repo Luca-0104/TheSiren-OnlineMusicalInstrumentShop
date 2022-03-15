@@ -863,13 +863,19 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <form action="page-list-product.html" data-toggle="validator">
+                                    <form action="" method="post" data-toggle="validator" novalidate>
+                                        {{ form.hidden_tag() }}
                                         <div class="row">
                                             <!-- Name section -->
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label>Model Name *</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Name" data-errors="Please Enter Name." required>
+                                                    <!--<label>Model Name *</label>
+                                                    <input type="text" class="form-control" placeholder="Enter Name" data-errors="Please Enter Name." required>-->
+                                                    {{ form.name.label }}
+                                                    {{ form.name(class="form-control", placeholder="Enter Name") }}
+                                                    {% for error in form.name.errors %}
+                                                        <span>{{ error }}</span>
+                                                    {% endfor %}
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -877,8 +883,13 @@
                                             <!-- Serial number section -->
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label>Serial Number *</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Serial Number" data-errors="Please Enter Serial Number." required>
+                                                    <!--<label>Serial Number *</label>
+                                                    <input type="text" class="form-control" placeholder="Enter Serial Number" data-errors="Please Enter Serial Number." required>-->
+                                                    {{ form.serial_number.label }}
+                                                    {{ form.serial_number(class="form-control", placeholder="Enter Serial Number") }}
+                                                    {% for error in form.serial_number.errors %}
+                                                        <span>{{ error }}</span>
+                                                    {% endfor %}
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -886,8 +897,13 @@
                                             <!-- Price section -->
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>Price *</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." required>
+                                                    <!--<label>Price *</label>
+                                                    <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." required>-->
+                                                    {{ form.price.label }}
+                                                    {{ form.price(class="form-control", placeholder="Enter Price") }}
+                                                    {% for error in form.price.errors %}
+                                                        <span>{{ error }}</span>
+                                                    {% endfor %}
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -895,8 +911,13 @@
                                             <!-- Stock section -->
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>Stock *</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Stock" data-errors="Please Enter Stock." required>
+                                                    <!--<label>Stock *</label>
+                                                    <input type="text" class="form-control" placeholder="Enter Stock" data-errors="Please Enter Stock." required>-->
+                                                    {{ form.stock.label }}
+                                                    {{ form.stock(class="form-control", placeholder="Enter Stock") }}
+                                                    {% for error in form.stock.errors %}
+                                                        <span>{{ error }}</span>
+                                                    {% endfor %}
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -906,6 +927,11 @@
                                                 <div class="form-group">
                                                     <label>Thumbnail *</label>
                                                     <input type="file" class="form-control image-file" name="pic" accept="image/*" multiple="multiple">
+{#                                                    {{ form.stock.label }}#}
+{#                                                    {{ form.stock(class="form-control", placeholder="Enter Stock") }}#}
+{#                                                    {% for error in form.stock.errors %}#}
+{#                                                        <span>{{ error }}</span>#}
+{#                                                    {% endfor %}#}
                                                 </div>
                                             </div>
 
@@ -920,12 +946,18 @@
                                             <!-- Description section -->
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label>Description / Product Details</label>
-                                                    <textarea class="form-control" rows="4"></textarea>
+                                                    <!--<label>Description / Product Details</label>
+                                                    <textarea class="form-control" rows="4"></textarea>-->
+                                                    {{ form.description.label }}
+                                                    {{ form.description(class="form-control", placeholder="Enter Stock") }}
+                                                    {% for error in form.description.errors %}
+                                                        <span>{{ error }}</span>
+                                                    {% endfor %}
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary mr-2">Add Product</button>
+                                        <!--<button type="submit" class="btn btn-primary mr-2">Add Product</button>-->
+                                        {{ form.submit(class="btn btn-primary mr-2") }}
                                         <button type="reset" class="btn btn-danger">Reset</button>
                                     </form>
                                 </div>

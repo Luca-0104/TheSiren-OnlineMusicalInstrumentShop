@@ -93,7 +93,7 @@ def remove_product():
 
 
 @product.route('/upload-model-type/<int:product_id>')
-@login_required
+#@login_required
 def upload_model_type(product_id):
     """
         (Backend forms needed)
@@ -258,7 +258,7 @@ def remove_model_type():
 
 
 @product.route('/modify-model-type/<int:model_id>')
-@login_required
+#@login_required
 def modify_model_type(model_id):
     """
         (Backend forms needed)
