@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test - Login</title>
+</head>
+<body>
+
+{% import "bootstrap/wtf.html" as wtf %}
+{{ wtf.quick_form(form) }}
+
+<a href="{{ url_for('auth.register') }}">Register</a>
+
+</body>
+</html>
