@@ -183,8 +183,8 @@ def upload_model_type(product_id):
 # ------------------------------------------------ CUD operations on 'model_type' ------------------------------------------------
 
 
-#@login_required
 @product.route('/modify-product/<int:product_id>', methods=['GET', 'POST'])
+#@login_required
 def modify_product(product_id):
     """
         (Backend forms needed, 'categories' are not in backend form)
@@ -210,7 +210,8 @@ def modify_product(product_id):
             p.categories.remove(cate)
         # step2: append the new categories
         for cate in cate_lst:
-            p.categories.append(cate)
+            c = Category.query.filter_by(name=cate.strip()).first()
+            p.categories.append(c)
 
         db.session.add(p)
         db.session.commit()
