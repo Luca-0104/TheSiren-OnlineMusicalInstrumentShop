@@ -735,7 +735,11 @@
 .ri-eye-close-fill:before { content: "\ecb2"; }
 .ri-eye-close-line:before { content: "\ecb3"; }
 .ri-eye-fill:before { content: "\ecb4"; }
-.ri-eye-line:before { content: "\ecb5"; }
+
+.ri-eye-line:before {
+  content: "\ecb5";
+}
+
 .ri-eye-off-fill:before { content: "\ecb6"; }
 .ri-eye-off-line:before { content: "\ecb7"; }
 .ri-facebook-box-fill:before { content: "\ecb8"; }

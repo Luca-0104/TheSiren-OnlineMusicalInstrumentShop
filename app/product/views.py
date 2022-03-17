@@ -22,7 +22,7 @@ def show_page_stock_management():
     # get all the products from the database
     product_list = Product.query.filter_by(is_deleted=False).all()
     # render this page
-    return render_template('', product_list=product_list)
+    return render_template('staff/page-list-product.html', product_list=product_list)
 
 
 # ------------------------------------------------ Search functions for staffs to manage the stock ------------------------------------------------
