@@ -14,6 +14,27 @@ class LoginForm(FlaskForm):
     remember_me = BooleanField('keep me login')
     submit = SubmitField('Login')
 
+    def validate_email(self, field):
+        """
+            Determine whether the serial_number already exists.
+            :param field: email
+        """
+        user_found = User.query.filter_by(email=field.data, is_deleted=False).first()
+        if user_found is None:
+            raise ValidationError('No such user!')
+
+    def validate_password(self, field):
+        """
+            Determine whether the password is correct or not
+            :param field: password
+        """
+        # find out the user by email
+        user_found = User.query.filter_by(email=self.email.data, is_deleted=False).first()
+        if user_found is not None:
+            # check the password of this user
+            if not user_found.verify_password(field.data):
+                raise ValidationError('Incorrect password!')
+
 
 class RegisterForm(FlaskForm):
     """
