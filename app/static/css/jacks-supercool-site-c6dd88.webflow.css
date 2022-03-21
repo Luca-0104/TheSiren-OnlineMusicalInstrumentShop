@@ -2772,7 +2772,7 @@ ul {
 
 label {
     display: block;
-    margin-bottom: 14px;
+    margin-top: 14px;
     font-size: 14px;
     line-height: 21px;
     font-weight: 500;
@@ -3590,14 +3590,27 @@ figcaption {
 }
 
 /* the remember me box */
-#remember-me-box {
-    margin-top: 3%;
+#remember-me-div {
+    display: inherit;
+    margin-bottom: 5px;
+}
+
+#remember-me-box{
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+/* the class for the label when there are errors in this input */
+.error-message{
+    color: red;
 }
 
 /* label for the remember me box */
 /*#remember-me-label{*/
 /*    color: #c2c2c5;*/
 /*}*/
+
+
 
 .footer-logo {
     min-height: 28px;
