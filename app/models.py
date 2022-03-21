@@ -224,8 +224,8 @@ class Product(db.Model):
     """
     __tablename__ = 'products'
     id = db.Column(db.Integer, primary_key=True)
-    serial_number = db.Column(db.String(64), nullable=False, unique=True)
-    name = db.Column(db.String(64), nullable=False)
+    serial_number = db.Column(db.String(128), nullable=False, unique=True)
+    name = db.Column(db.String(128), nullable=False)
     release_time = db.Column(db.DateTime(), index=True, default=datetime.utcnow)
     is_deleted = db.Column(db.Boolean, default=False)
     # 1 product --> n categories;  1 category --> n products

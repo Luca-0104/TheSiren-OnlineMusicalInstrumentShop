@@ -75,10 +75,10 @@ def upload_product():
     """
     # if the form is submitted
     if request.method == 'POST':
-        p_name = request.form.get('')
+        p_name = request.form.get('product_name')
         p_serial_number = request.form.get('')
         cate_lst = request.values.getlist('categories[]')
-        brand_name = request.form.get('')
+        brand_name = request.form.get('product_brand')
         # get the brand object by its name
         brand = Brand.query.filter_by(name=brand_name).first()
 
