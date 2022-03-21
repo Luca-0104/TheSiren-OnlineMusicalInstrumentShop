@@ -895,7 +895,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Product Name *</label>
-                                            <input type="text" class="form-control" placeholder="Enter Name" data-errors="Please Enter Name.">
+                                            <input name="product_name" type="text" class="form-control" placeholder="Enter Name" data-errors="Please Enter Name.">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
@@ -904,7 +904,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Classification *</label>
-                                            <select name="type" class="selectpicker form-control" data-style="py-0">
+                                            <select name="product_classification" class="selectpicker form-control" data-style="py-0">
                                                 <option>Strings</option>
                                                 <option>Woodwinds</option>
                                                 <option>Brass</option>
@@ -918,7 +918,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Type *</label>
-                                            <select name="type" class="selectpicker form-control" data-style="py-0">
+                                            <select name="product_type" class="selectpicker form-control" data-style="py-0">
                                                 <optgroup label="String">
                                                     <option>Violin</option>
                                                     <option>Viola</option>
@@ -992,7 +992,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Additional Specifications *</label>
-                                            <select name="type" class="selectpicker form-control" data-style="py-0">
+                                            <select name="product_additions" class="selectpicker form-control" data-style="py-0">
                                                 <option>Acoustic Only</option>
                                                 <option>Electricity Required</option>
                                                 <option>Electricity Support</option>
@@ -1005,7 +1005,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Brand *</label>
-                                                <select name="type" class="selectpicker form-control" data-style="py-0">
+                                                <select name="product_brand" class="selectpicker form-control" data-style="py-0">
                                                     <option>b1</option>
                                                     <option>b2</option>
                                                     <option>b3</option>
@@ -1031,7 +1031,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Model Name *</label>
-                                            <input name="0_model_name" type="text" class="form-control" placeholder="Enter Name" data-errors="Please Enter Name.">
+                                            <input name="1_model_name" type="text" class="form-control" placeholder="Enter Name" data-errors="Please Enter Name.">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
@@ -1040,7 +1040,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Serial Number *</label>
-                                            <input name="0_model_num" type="text" class="form-control" placeholder="Enter Serial Number" data-errors="Please Enter Serial Number.">
+                                            <input name="1_model_num" type="text" class="form-control" placeholder="Enter Serial Number" data-errors="Please Enter Serial Number.">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
@@ -1049,7 +1049,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Price *</label>
-                                            <input name="0_model_price" type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price.">
+                                            <input name="1_model_price" type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price.">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
@@ -1058,7 +1058,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Stock *</label>
-                                            <input name="0_model_stock" type="text" class="form-control" placeholder="Enter Stock" data-errors="Please Enter Stock.">
+                                            <input name="1_model_stock" type="text" class="form-control" placeholder="Enter Stock" data-errors="Please Enter Stock.">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
@@ -1067,7 +1067,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Thumbnail *</label>
-                                            <input name="0_model_intro_pic" type="file" class="form-control image-file" name="pic" accept="image/*" multiple="multiple">
+                                            <input name="1_model_intro_pic" type="file" class="form-control image-file" name="pic" accept="image/*" multiple="multiple">
                                         </div>
                                     </div>
 
@@ -1075,7 +1075,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Product Pictures *</label>
-                                            <input name="0_model_pic" type="file" class="form-control image-file" name="pic" accept="image/*" multiple="multiple">
+                                            <input name="1_model_pic" type="file" class="form-control image-file" name="pic" accept="image/*" multiple="multiple">
                                         </div>
                                     </div>
 
@@ -1083,7 +1083,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Description / Product Details</label>
-                                            <textarea name="0_model_description" class="form-control" rows="4"></textarea>
+                                            <textarea name="1_model_description" class="form-control" rows="4"></textarea>
                                         </div>
                                     </div>
                                 </div>
