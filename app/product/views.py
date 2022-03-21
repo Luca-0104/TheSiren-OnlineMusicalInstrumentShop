@@ -83,7 +83,7 @@ def upload_product():
         brand = Brand.query.filter_by(name=brand_name).first()
 
         # get the number count of init model types
-        mt_count = int(request.form.get(''))
+        mt_count = int(request.args.get('counter'))
 
         """ 
             store the Product obj into the db 
