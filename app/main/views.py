@@ -9,7 +9,7 @@ def index():
     """
         The function for rendering the main page
     """
-    return render_template('main/index.html')
+    return render_template('main/index_test.html')
 
 
 @main.route('/search/<keywords>')
