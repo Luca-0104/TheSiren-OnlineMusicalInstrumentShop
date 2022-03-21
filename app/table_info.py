@@ -23,7 +23,7 @@ product_list = [
     ['Product7', 'A007'],
     ['Product8', 'A008'],
     ['Product9', 'A009'],
-    ['Product10', 'A010'],
+    ['Product10', 'A010']
 ]
 
 # brands

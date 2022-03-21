@@ -22,7 +22,7 @@ def show_page_stock_management():
     # get all the products from the database
     product_list = Product.query.filter_by(is_deleted=False).all()
     # render this page
-    return render_template('', product_list=product_list)
+    return render_template('staff/page-list-product.html', product_list=product_list)
 
 
 # ------------------------------------------------ Search functions for staffs to manage the stock ------------------------------------------------
@@ -68,13 +68,13 @@ def search_stock(key_word, search_type):
 
 
 @product.route('/upload-product')
-@login_required
+# @login_required
 def upload_product():
     pass
 
 
 @product.route('/api/stock-management/remove-product', methods=['POST'])
-@login_required
+# @login_required
 def remove_product():
     """
     (Using Ajax)
@@ -92,8 +92,8 @@ def remove_product():
     return jsonify({'returnValue': 1})
 
 
-@product.route('/upload-model-type/<int:product_id>')
-#@login_required
+@product.route('/upload-model-type/<int:product_id>', methods=['GET', 'POST'])
+# @login_required
 def upload_model_type(product_id):
     """
         (Backend forms needed)
@@ -117,12 +117,14 @@ def upload_model_type(product_id):
                                        price=form.price.data,
                                        stock=form.stock.data,
                                        serial_number=form.serial_number.data,
-                                       )
+                                       product=p)
             db.session.add(new_model_type)
 
             # append the selected categories to this model type
             for cate_id in cate_lst:
                 new_model_type.categories.append(Category.query.get(cate_id))
+
+            db.session.commit()
 
             """
                 Dealing with the uploaded pictures (The model type pictures)
@@ -174,7 +176,8 @@ def upload_model_type(product_id):
             flash('Error! The product does not exist! Try it again!')
 
         # back to the stock management page
-        return redirect(url_for(''))
+        # return redirect(url_for('product.show_page_stock_management'))
+        return redirect(url_for('main.index'))
 
     # render the page of upload form
     return render_template('staff/page-upload-modeltype.html', form=form)
@@ -183,13 +186,13 @@ def upload_model_type(product_id):
 # ------------------------------------------------ CUD operations on 'model_type' ------------------------------------------------
 
 
-#@login_required
 @product.route('/modify-product/<int:product_id>', methods=['GET', 'POST'])
+# @login_required
 def modify_product(product_id):
     """
         (Backend forms needed, 'categories' are not in backend form)
     """
-    form = ProductModifyForm()
+    form = ProductModifyForm(product_id)
     form.brand_id.choices = [(b.id, b.name) for b in Brand.query.all()]  # initialize the choices of the SelectField
     # get the product object by id
     p = Product.query.get(product_id)
@@ -210,7 +213,8 @@ def modify_product(product_id):
             p.categories.remove(cate)
         # step2: append the new categories
         for cate in cate_lst:
-            p.categories.append(cate)
+            c = Category.query.filter_by(name=cate.strip()).first()
+            p.categories.append(c)
 
         db.session.add(p)
         db.session.commit()
@@ -218,7 +222,7 @@ def modify_product(product_id):
         flash('The product information updated!')
 
         # back to the stock management page
-        return redirect(url_for(''))
+        return redirect(url_for('product.show_page_stock_management'))
 
     # before submit, fill the table with former values
     form.name.data = p.name
@@ -229,7 +233,7 @@ def modify_product(product_id):
 
 
 @product.route('/api/stock-management/remove-model-type', methods=['POST'])
-@login_required
+# @login_required
 def remove_model_type():
     """
         (Using Ajax)
@@ -256,8 +260,8 @@ def remove_model_type():
     return jsonify({'returnValue': 1})
 
 
-@product.route('/modify-model-type/<int:model_id>')
-#@login_required
+@product.route('/modify-model-type/<int:model_id>', methods=['GET', 'POST'])
+# @login_required
 def modify_model_type(model_id):
     """
         (Backend forms needed)
@@ -266,27 +270,71 @@ def modify_model_type(model_id):
     """
     # get the instance of the model by id
     model = ModelType.query.get(model_id)
-    form = ModelModifyForm()
+    form = ModelModifyForm(model_id)
     if form.validate_on_submit():
-        # check if the serial_number already used! We could only do this here!
-        found_model = ModelType.query.filter_by(serial_number=form.serial_number.data, is_deleted=False).first()
-        if found_model is not None and found_model.id != model.id:
-            # the serial_number is used!
-            flash('The serial_number has been used!')
-            return redirect(url_for(''))
-        else:
-            # serial_number is okay
-            model.name = form.name.data
-            model.description = form.description.data
-            model.price = form.price.data
-            model.stock = form.stock.data
-            model.serial_number = form.serial_number.data
-            # commit to database
-            db.session.add(model)
-            db.session.commit()
-            flash('Model updated!')
-            # back to the stock management page
-            return redirect(url_for(''))
+        # serial_number is okay
+        model.name = form.name.data
+        model.description = form.description.data
+        model.price = form.price.data
+        model.stock = form.stock.data
+        model.serial_number = form.serial_number.data
+        # commit to database
+        db.session.add(model)
+
+        """
+            Dealing with the uploaded pictures (The model type pictures)
+        """
+        pic_list = form.pictures.data
+        if len(pic_list) != 0:
+            result = upload_picture(pic_list, model.id, Config.PIC_TYPE_MODEL)
+            # get the status code
+            status = result[0]
+            if status == 0:
+                # success
+                flash(result[1])
+            elif status == 1:
+                # failed
+                flash(result[1])
+                return redirect(url_for('product.modify_model_type'))
+            elif status == 2:
+                # partial success
+                failed_list = result[1]
+                flash_str = 'Picture '
+                for name in failed_list:
+                    flash_str += name
+                    flash_str += ', '
+                flash_str += ' are failed to be uploaded! Check the suffix'
+                flash(flash_str)
+
+        """
+            Dealing with the uploaded pictures (Introduction pictures)
+        """
+        intro_pic_list = form.intro_pictures.data
+        if len(intro_pic_list) != 0:
+            result = upload_picture(intro_pic_list, model.id, Config.PIC_TYPE_MODEL_INTRO)
+            # get the status code
+            status = result[0]
+            if status == 0:
+                # success
+                flash(result[1])
+            elif status == 1:
+                # failed
+                flash(result[1])
+                return redirect(url_for('product.modify_model_type'))
+            elif status == 2:
+                # partial success
+                failed_list = result[1]
+                flash_str = 'Picture '
+                for name in failed_list:
+                    flash_str += name
+                    flash_str += ', '
+                flash_str += ' are failed to be uploaded! Check the suffix.'
+                flash(flash_str)
+        # --------------------------------------------------
+        db.session.commit()
+        flash('Model updated!')
+        # back to the stock management page
+        return redirect(url_for('product.show_page_stock_management'))
 
     # before submit, fill the table with former values
     form.name.data = model.name
