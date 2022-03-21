@@ -47,7 +47,7 @@ def register():
         return redirect(url_for('auth.login'))
 
     # (GET method)
-    return render_template('auth/register.html', form=form)
+    return render_template('auth/register_new.html', form=form)
 
 
 @auth.route('/login', methods=['GET', 'POST'])
@@ -84,5 +84,5 @@ def login():
         flash("Login Failed! Check your username or password.")
 
     # (GET method)
-    return render_template('auth/login.html', form=form)
+    return render_template('auth/login_new.html', form=form)
 
