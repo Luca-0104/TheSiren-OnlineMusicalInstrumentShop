@@ -1,5 +1,5 @@
 let repeat_model_type = $("#one-model-type");
-
+let product_form = $("#product_form")
 let counter = 1;
 $(document).ready(function (){
     $("#add-model-type").click(function (){
@@ -65,20 +65,18 @@ $(document).ready(function (){
                 "                                            <h4 class=\"card-title\">" + counter + ".</h4>\n" +
                 "                                       </div>\n" +
                 "                                   </div>"
-                console.log(prepend_content);
-                console.log(counter);
                 repeat_model_type.before(repeat_model_name + repeat_model_number + repeat_model_price
                                    + repeat_model_stock + repeat_model_intro_pic + repeat_model_pic +
                                      repeat_model_description);
                 repeat_model_type.before(prepend_content);
-
+                product_form.attr("action","{{ url_for('product.upload_product', counter="+counter+") }}");
             }else{
+            counter += 1;
             repeat_model_type.before(repeat_model_name + repeat_model_number + repeat_model_price
                                    + repeat_model_stock + repeat_model_intro_pic + repeat_model_pic +
                                      repeat_model_description);
             repeat_model_type.before(prepend_content);
-
-            counter += 1;
+            product_form.attr("action","{{ url_for('product.upload_product', counter="+counter+") }}");
             }
     })
 });
