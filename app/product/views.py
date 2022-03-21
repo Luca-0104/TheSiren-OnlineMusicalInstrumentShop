@@ -70,7 +70,19 @@ def search_stock(key_word, search_type):
 @product.route('/upload-product')
 # @login_required
 def upload_product():
-    pass
+    """
+        This method uses the frontend form
+    """
+    # if the form is submitted
+    if request.method == 'POST':
+        p_name = request.form.get('')
+        p_serial_number = request.form.get('')
+        cate_lst = request.values.getlist('categories[]')
+        brand_name = request.form.get('')
+
+
+
+    return render_template('staff/page-add-product.html')
 
 
 @product.route('/api/stock-management/remove-product', methods=['POST'])
@@ -90,6 +102,55 @@ def remove_product():
             return jsonify({'returnValue': 0})
         return jsonify({'returnValue': 1})
     return jsonify({'returnValue': 1})
+
+
+@product.route('/modify-product/<int:product_id>', methods=['GET', 'POST'])
+# @login_required
+def modify_product(product_id):
+    """
+        (Backend forms needed, 'categories' are not in backend form)
+    """
+    form = ProductModifyForm(product_id)
+    form.brand_id.choices = [(b.id, b.name) for b in Brand.query.all()]  # initialize the choices of the SelectField
+    # get the product object by id
+    p = Product.query.get(product_id)
+    # get all the categories from database (give this to frontend)
+    all_cate_list = Category.query.all()
+    if form.validate_on_submit():
+        # get a list of categories of this product
+        cate_lst = request.values.getlist('categories[]')
+
+        # update values in this product (except the cate)
+        p.name = form.name.data
+        p.serial_number = form.serial_number.data
+        p.brand_id = form.brand_id.data
+
+        # update the categories of this product
+        # step1: clear the cate of this product
+        for cate in p.categories.all():
+            p.categories.remove(cate)
+        # step2: append the new categories
+        for cate in cate_lst:
+            c = Category.query.filter_by(name=cate.strip()).first()
+            p.categories.append(c)
+
+        db.session.add(p)
+        db.session.commit()
+
+        flash('The product information updated!')
+
+        # back to the stock management page
+        return redirect(url_for('product.show_page_stock_management'))
+
+    # before submit, fill the table with former values
+    form.name.data = p.name
+    form.serial_number.data = p.serial_number
+    form.brand_id.data = p.brand_id
+    # the product modify page
+    return render_template('staff/page-modify-product.html', form=form, all_cate_list=all_cate_list)
+
+
+# ------------------------------------------------ CUD operations on 'model_type' ------------------------------------------------
 
 
 @product.route('/upload-model-type/<int:product_id>', methods=['GET', 'POST'])
@@ -181,55 +242,6 @@ def upload_model_type(product_id):
 
     # render the page of upload form
     return render_template('staff/page-upload-modeltype.html', form=form)
-
-
-# ------------------------------------------------ CUD operations on 'model_type' ------------------------------------------------
-
-
-@product.route('/modify-product/<int:product_id>', methods=['GET', 'POST'])
-# @login_required
-def modify_product(product_id):
-    """
-        (Backend forms needed, 'categories' are not in backend form)
-    """
-    form = ProductModifyForm(product_id)
-    form.brand_id.choices = [(b.id, b.name) for b in Brand.query.all()]  # initialize the choices of the SelectField
-    # get the product object by id
-    p = Product.query.get(product_id)
-    # get all the categories from database (give this to frontend)
-    all_cate_list = Category.query.all()
-    if form.validate_on_submit():
-        # get a list of categories of this product
-        cate_lst = request.values.getlist('categories[]')
-
-        # update values in this product (except the cate)
-        p.name = form.name.data
-        p.serial_number = form.serial_number.data
-        p.brand_id = form.brand_id.data
-
-        # update the categories of this product
-        # step1: clear the cate of this product
-        for cate in p.categories.all():
-            p.categories.remove(cate)
-        # step2: append the new categories
-        for cate in cate_lst:
-            c = Category.query.filter_by(name=cate.strip()).first()
-            p.categories.append(c)
-
-        db.session.add(p)
-        db.session.commit()
-
-        flash('The product information updated!')
-
-        # back to the stock management page
-        return redirect(url_for('product.show_page_stock_management'))
-
-    # before submit, fill the table with former values
-    form.name.data = p.name
-    form.serial_number.data = p.serial_number
-    form.brand_id.data = p.brand_id
-    # the product modify page
-    return render_template('staff/page-modify-product.html', form=form, all_cate_list=all_cate_list)
 
 
 @product.route('/api/stock-management/remove-model-type', methods=['POST'])
