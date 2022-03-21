@@ -3549,8 +3549,9 @@ figcaption {
   -webkit-box-align: center;
   -webkit-align-items: center;
   -ms-flex-align: center;
-  align-items: center;
+  align-items: flex-start;
   border-bottom: 1px solid #e0e0e0;
+  flex-direction: column;
 }
 
 .subscribe-form-input {
@@ -3587,6 +3588,16 @@ figcaption {
   flex-direction: column;
   border-right: 1px solid #e0e0e0;
 }
+
+/* the remember me box */
+#remember-me-box {
+    margin-top: 3%;
+}
+
+/* label for the remember me box */
+/*#remember-me-label{*/
+/*    color: #c2c2c5;*/
+/*}*/
 
 .footer-logo {
   min-height: 28px;
