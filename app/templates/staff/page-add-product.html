@@ -1,17 +1,18 @@
+
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <title>POS Dash | Responsive Bootstrap 4 Admin Dashboard Template</title>
-      
+
       <!-- Favicon -->
-      <link rel="shortcut icon" href="../static/images/favicon.ico">
-      <link rel="stylesheet" href="../static/css/backend-plugin.min.css">
-      <link rel="stylesheet" href="../static/css/backend.css?v=1.0.0">
-      <link rel="stylesheet" href="../static/css/all.min.css">
-      <link rel="stylesheet" href="../static/css/line-awesome.min.css">
-      <link rel="stylesheet" href="../static/css/remixicon.css">  </head>
+      <link rel="shortcut icon" href="../../static/images/favicon.ico">
+      <link rel="stylesheet" href="../../static/css/backend-plugin.min.css">
+      <link rel="stylesheet" href="../../static/css/backend.css?v=1.0.0">
+      <link rel="stylesheet" href="../../static/css/all.min.css">
+      <link rel="stylesheet" href="../../static/css/line-awesome.min.css">
+      <link rel="stylesheet" href="../../static/css/remixicon.css">  </head>
   <body class="  ">
     <!-- loader Start -->
     <div id="loading">
@@ -21,7 +22,7 @@
     <!-- loader END -->
     <!-- Wrapper Start -->
     <div class="wrapper">
-      
+
       <div class="iq-sidebar  sidebar-default ">
           <div class="iq-sidebar-logo d-flex align-items-center justify-content-between">
               <a href="../backend/index.html" class="header-logo">
@@ -35,7 +36,7 @@
               <nav class="iq-sidebar-menu">
                   <ul id="iq-sidebar-toggle" class="iq-menu">
                       <li class="">
-                          <a href="../backend/index.html" class="svg-icon">                        
+                          <a href="../backend/index.html" class="svg-icon">
                               <svg  class="svg-icon" id="p-dash1" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                   <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line>
                               </svg>
@@ -54,12 +55,12 @@
                           </a>
                           <ul id="product" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                               <li class="">
-                                  <a href="../templates/page-list-product.html">
+                                  <a href="../backend/page-list-product.html">
                                       <i class="las la-minus"></i><span>List Product</span>
                                   </a>
                               </li>
                               <li class="active">
-                                  <a href="../templates/page-add-product.html">
+                                  <a href="../backend/page-add-product.html">
                                       <i class="las la-minus"></i><span>Add Product</span>
                                   </a>
                               </li>
@@ -591,7 +592,7 @@
                       <a href="../backend/index.html" class="header-logo">
                           <img src="../assets/images/logo.png" class="img-fluid rounded-normal" alt="logo">
                           <h5 class="logo-title ml-3">POSDash</h5>
-      
+
                       </a>
                   </div>
                   <div class="iq-search-bar device-search">
@@ -888,189 +889,211 @@
                     <div class="card-body">
                         <form action="page-list-product.html" data-toggle="validator">
                             <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Product Name *</label>
-                                        <input type="text" class="form-control" placeholder="Enter Name" data-errors="Please Enter Name." required>
-                                        <div class="help-block with-errors"></div>
-                                    </div> 
+                                <div class="card-group">
+
+                                <!-- Name Section -->
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Product Name *</label>
+                                            <input type="text" class="form-control" placeholder="Enter Name" data-errors="Please Enter Name." required>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+
+                                <!-- Category section --->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Classification *</label>
+                                            <select name="type" class="selectpicker form-control" data-style="py-0">
+                                                <option>Strings</option>
+                                                <option>Woodwinds</option>
+                                                <option>Brass</option>
+                                                <option>Percussion</option>
+                                                <option>Keyboard</option>
+                                                <option>Accessories</option>
+                                            </select>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Type *</label>
+                                            <select name="type" class="selectpicker form-control" data-style="py-0">
+                                                <optgroup label="String">
+                                                    <option>Violin</option>
+                                                    <option>Viola</option>
+                                                    <option>Cello</option>
+                                                    <option>Double Bass</option>
+                                                    <option>Guitar</option>
+                                                    <option>Bass</option>
+                                                    <option>Ukulele</option>
+                                                    <option>Harp</option>
+                                                    <option>Erhu</option>
+                                                    <option>Guzheng</option>
+                                                    <option>Guqin</option>
+                                                    <option>Pipa</option>
+                                                </optgroup>
+
+                                                <optgroup label="Woodwind">
+                                                    <option>Flute</option>
+                                                    <option>Clarinet</option>
+                                                    <option>Oboe</option>
+                                                    <option>Piccolo</option>
+                                                    <option>Saxophone</option>
+                                                    <option>English Horn</option>
+                                                    <option>Bassoon</option>
+                                                    <option>Recorder</option>
+                                                    <option>Bagpipes</option>
+                                                    <option>Suona Horn</option>
+                                                    <option>Sheng</option>
+                                                </optgroup>
+
+                                                <optgroup label="Brass">
+                                                    <option>Trumpet</option>
+                                                    <option>Trombone</option>
+                                                    <option>French Horn</option>
+                                                    <option>Tuba</option>
+                                                    <option>Euphonium</option>
+                                                    <option>Harmonica</option>
+                                                </optgroup>
+
+                                                <optgroup label="Percussion">
+                                                    <option>Timpani</option>
+                                                    <option>Bass Drum</option>
+                                                    <option>Snare</option>
+                                                    <option>Cajon</option>
+                                                    <option>Cymbals</option>
+                                                    <option>Tam-tam</option>
+                                                    <option>Tambourine</option>
+                                                    <option>Marimba & Xylophone</option>
+                                                    <option>Vibraphone</option>
+                                                    <option>Drum Kit</option>
+                                                    <option>Other Percussion</option>
+                                                </optgroup>
+
+                                                <optgroup label="Keyboard">
+                                                    <option>Piano</option>
+                                                    <option>Accordion</option>
+                                                    <option>Launchpad</option>
+                                                </optgroup>
+
+                                                <optgroup label="Accessories">
+                                                    <option>Effects</option>
+                                                    <option>Synthesizer</option>
+                                                    <option>Microphone</option>
+                                                    <option>Monitor Headphone</option>
+                                                </optgroup>
+                                            </select>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Additional Specifications *</label>
+                                            <select name="type" class="selectpicker form-control" data-style="py-0">
+                                                <option>Acoustic Only</option>
+                                                <option>Electricity Required</option>
+                                                <option>Electricity Support</option>
+                                                <option>Accessories</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                <!-- Brand section -->
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Brand *</label>
+                                                <select name="type" class="selectpicker form-control" data-style="py-0">
+                                                    <option>b1</option>
+                                                    <option>b2</option>
+                                                    <option>b3</option>
+                                                    <option>b4</option>
+                                                    <option>b5</option>
+                                                    <option>b6</option>
+                                                    <option>b7</option>
+                                                </select>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>Classification *</label>
-                                        <select name="type" class="selectpicker form-control" data-style="py-0">
-                                            <option>Strings</option>
-                                            <option>Woodwinds</option>
-                                            <option>Brass</option>
-                                            <option>Percussion</option>
-                                            <option>Keyboard</option>
-                                            <option>Accessories</option>
-                                        </select>
-                                        <div class="help-block with-errors"></div>
+
+                                <!-- Initial ModelType Section -->
+                                   <div class="card-header d-flex justify-content-between">
+                                       <div class="header-title">
+                                            <h4 class="card-title">Product Initial ModelType(s)</h4>
+                                       </div>
+                                   </div>
+
+                                <div id="one-model-type" class="card-group">
+                                    <!-- Name section -->
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Model Name *</label>
+                                            <input type="text" class="form-control" placeholder="Enter Name" data-errors="Please Enter Name." required>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
                                     </div>
-                                </div>    
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>Type *</label>
-                                        <select name="type" class="selectpicker form-control" data-style="py-0">
-                                            <optgroup label="String">
-                                                <option>Violin</option>
-                                                <option>Viola</option>
-                                                <option>Cello</option>
-                                                <option>Double Bass</option>
-                                                <option>Guitar</option>
-                                                <option>Bass</option>
-                                                <option>Ukulele</option>
-                                                <option>Harp</option>
-                                                <option>Erhu</option>
-                                                <option>Guzheng</option>
-                                                <option>Guqin</option>
-                                                <option>Pipa</option>
-                                            </optgroup>
 
-                                            <optgroup label="Woodwind">
-                                                <option>Flute</option>
-                                                <option>Clarinet</option>
-                                                <option>Oboe</option>
-                                                <option>Piccolo</option>
-                                                <option>Saxophone</option>
-                                                <option>English Horn</option>
-                                                <option>Bassoon</option>
-                                                <option>Recorder</option>
-                                                <option>Bagpipes</option>
-                                                <option>Suona Horn</option>
-                                                <option>Sheng</option>
-                                            </optgroup>
-
-                                            <optgroup label="Brass">
-                                                <option>Trumpet</option>
-                                                <option>Trombone</option>
-                                                <option>French Horn</option>
-                                                <option>Tuba</option>
-                                                <option>Euphonium</option>
-                                                <option>Harmonica</option>
-                                            </optgroup>
-
-                                            <optgroup label="Percussion">
-                                                <option>Timpani</option>
-                                                <option>Bass Drum</option>
-                                                <option>Snare</option>
-                                                <option>Cajon</option>
-                                                <option>Cymbals</option>
-                                                <option>Tam-tam</option>
-                                                <option>Tambourine</option>
-                                                <option>Marimba & Xylophone</option>
-                                                <option>Vibraphone</option>
-                                                <option>Drum Kit</option>
-                                                <option>Other Percussion</option>
-                                            </optgroup>
-
-                                            <optgroup label="Keyboard">
-                                                <option>Piano</option>
-                                                <option>Accordion</option>
-                                                <option>Launchpad</option>
-                                            </optgroup>
-
-                                            <optgroup label="Accessories">
-                                                <option>Effects</option>
-                                                <option>Synthesizer</option>
-                                                <option>Microphone</option>
-                                                <option>Monitor Headphone</option>
-                                            </optgroup>
-                                        </select>
-                                        <div class="help-block with-errors"></div>
+                                    <!-- Serial number section -->
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Serial Number *</label>
+                                            <input type="text" class="form-control" placeholder="Enter Serial Number" data-errors="Please Enter Serial Number." required>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
                                     </div>
+
+                                    <!-- Price section -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Price *</label>
+                                            <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." required>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Stock section -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Stock *</label>
+                                            <input type="text" class="form-control" placeholder="Enter Stock" data-errors="Please Enter Stock." required>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Intro pic section -->
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Thumbnail *</label>
+                                            <input type="file" class="form-control image-file" name="pic" accept="image/*" multiple="multiple">
+                                        </div>
+                                    </div>
+
+                                    <!-- Pics section -->
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Product Pictures *</label>
+                                            <input type="file" class="form-control image-file" name="pic" accept="image/*" multiple="multiple">
+                                        </div>
+                                    </div>
+
+                                    <!-- Description section -->
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Description / Product Details</label>
+                                            <textarea class="form-control" rows="4"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
                                 </div>
 
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>Code *</label>
-                                        <select name="type" class="selectpicker form-control" data-style="py-0">
-                                            <option>Strings</option>
-                                            <option>Woodwinds</option>
-                                            <option>Brass</option>
-                                            <option>Percussion</option>
-                                            <option>Keyboard</option>
-                                            <option>Accessories</option>
-                                        </select>
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                </div>
+                                <button type="submit" class="btn btn-primary mr-2">Add Product</button>
+                                <button type="reset" class="btn btn-danger">Reset</button>
+                                <a class="btn btn-warning mr-3 justify-content-between" id="add-model-type">+ Add Model Type</a>
 
-                                <div class="col-md-6"> 
-                                    <div class="form-group">
-                                        <label>Barcode Symbology *</label>
-                                        <select name="type" class="selectpicker form-control" data-style="py-0">
-                                            <option>CREM01</option>
-                                            <option>UM01</option>
-                                            <option>SEM01</option>
-                                            <option>COF01</option>
-                                            <option>FUN01</option>
-                                            <option>DIS01</option>
-                                            <option>NIS01</option>
-                                        </select>
-                                    </div>
-                                </div> 
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Category *</label>
-                                        <select name="type" class="selectpicker form-control" data-style="py-0">
-                                            <option>Beauty</option>
-                                            <option>Grocery</option>
-                                            <option>Food</option>
-                                            <option>Furniture</option>
-                                            <option>Shoes</option>
-                                            <option>Frames</option>
-                                            <option>Jewellery</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Cost *</label>
-                                        <input type="text" class="form-control" placeholder="Enter Cost" data-errors="Please Enter Cost." required>
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Price *</label>
-                                        <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." required>
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Tax Method *</label>
-                                        <select name="type" class="selectpicker form-control" data-style="py-0">
-                                            <option>Exclusive</option>
-                                            <option>Inclusive</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">                                    
-                                    <div class="form-group">
-                                        <label>Quantity *</label>
-                                        <input type="text" class="form-control" placeholder="Enter Quantity" required>
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Image</label>
-                                        <input type="file" class="form-control image-file" name="pic" accept="image/*">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Description / Product Details</label>
-                                        <textarea class="form-control" rows="4"></textarea>
-                                    </div>
-                                </div>
-                            </div>                            
-                            <button type="submit" class="btn btn-primary mr-2">Add Product</button>
-                            <button type="reset" class="btn btn-danger">Reset</button>
+
                         </form>
                     </div>
                 </div>
@@ -1101,18 +1124,21 @@
         </div>
     </footer>
     <!-- Backend Bundle JavaScript -->
-    <script src="../static/js/backend-bundle.min.js"></script>
+    <script src="../../static/js/backend-bundle.min.js"></script>
 
     <!-- Table Treeview JavaScript -->
-    <script src="../static/js/table-treeview.js"></script>
+    <script src="../../static/js/table-treeview.js"></script>
 
     <!-- Chart Custom JavaScript -->
-    <script src="../static/js/customizer.js"></script>
+    <script src="../../static/js/customizer.js"></script>
 
     <!-- Chart Custom JavaScript -->
-    <script async src="../static/js/chart-custom.js"></script>
+    <script async src="../../static/js/chart-custom.js"></script>
 
     <!-- app JavaScript -->
-    <script src="../static/js/app.js"></script>
+    <script src="../../static/js/app.js"></script>
+
+    <!-- page javascript -->
+    <script src="../../static/js/management-system.js"></script>
   </body>
 </html>
