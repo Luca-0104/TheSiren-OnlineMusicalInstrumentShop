@@ -35,7 +35,7 @@
         }
 
         select, input, textarea {
-            -webkit-appearance: none;
+            -webkit-appearance: checkbox;
         }
     </style>
 </head>
@@ -232,9 +232,9 @@
                         {{ form.email.label(class='hint-label hint-label-email') }}
                         {{ form.email(size=32, class='input-blank') }}
                         {#        adding validation messages #}
-                        {#                    {% for error in form.email.errors %}#}
-                        {#                        <div class="error-message error-message-email">[{{ error }}]</div>#}
-                        {#                    {% endfor %}#}
+                        {% for error in form.email.errors %}
+                            <div class="error-message error-message-email">[{{ error }}]</div>
+                        {% endfor %}
 
                         {#    password #}
 
@@ -242,9 +242,9 @@
                         {{ form.password(size=32, class='input-blank') }}
 
                         {#         adding validation messages#}
-                        {#                    {% for error in form.password.errors %}#}
-                        {#                        <div class="error-message error-message-password">[{{ error }}]</div>#}
-                        {#                    {% endfor %}#}
+                        {% for error in form.password.errors %}
+                            <div class="error-message error-message-password">[{{ error }}]</div>
+                        {% endfor %}
 
 
                         <div id="remember-me-box">{{ form.remember_me.label(id="remember-me-label") }} {{ form.remember_me() }} </div>
