@@ -135,7 +135,7 @@ def upload_product():
             m_description = request.form.get(key_description)
             m_price = request.form.get(key_price)
             m_stock = request.form.get(key_stock)
-            m_serial_number = request.form.get(key_serial_number)
+            m_seria_number = request.form.get(key_serial_number)
             m_pics_lst = request.files.getlist(key_pics)
             m_pics_intro_lst = request.files.getlist(key_pics_intro)
 
