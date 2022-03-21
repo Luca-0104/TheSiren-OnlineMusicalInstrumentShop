@@ -1122,33 +1122,35 @@
                                                 </tr>
                                                 <!-- Each Modeltype of current product -->
                                                 {% for model in product.model_types.all() %}
-                                                    <tr id="modeltype-section-{{ model.id }}">
-                                                        <td>
-                                                            <div>{{ model.name }}</div>
-                                                        </td>
-                                                        <td>
-                                                            <div>{{ model.serial_number }}</div>
-                                                        </td>
-                                                        <td>
-                                                            <div>${{ model.price }}</div>
-                                                        </td>
-                                                        <td>
-                                                            <div>{{ model.stock }}</div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="d-flex align-items-center list-action">
-                                                                <a class="badge badge-info mr-2" data-toggle="tooltip"
-                                                                   data-placement="top" title="" data-original-title="View"
-                                                                   href="#"><i class="ri-eye-line mr-0"></i></a>
-                                                                <a class="badge bg-success mr-2" data-toggle="tooltip"
-                                                                   data-placement="top" title="" data-original-title="Edit"
-                                                                   href="/modify-model-type/{{ model.id }}"><i class="ri-pencil-line mr-0"></i></a>
-                                                                <a class="badge bg-warning mr-2" data-toggle="tooltip"
-                                                                   data-placement="top" title="" data-original-title="Delete"
-                                                                   href="javascript:remove_model_type({{ model.id }});"><i class="ri-delete-bin-line mr-0"></i></a>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
+                                                    {% if not model.is_deleted %}
+                                                        <tr id="modeltype-section-{{ model.id }}">
+                                                            <td>
+                                                                <div>{{ model.name }}</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>{{ model.serial_number }}</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>${{ model.price }}</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>{{ model.stock }}</div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex align-items-center list-action">
+                                                                    <a class="badge badge-info mr-2" data-toggle="tooltip"
+                                                                       data-placement="top" title="" data-original-title="View"
+                                                                       href="#"><i class="ri-eye-line mr-0"></i></a>
+                                                                    <a class="badge bg-success mr-2" data-toggle="tooltip"
+                                                                       data-placement="top" title="" data-original-title="Edit"
+                                                                       href="/modify-model-type/{{ model.id }}"><i class="ri-pencil-line mr-0"></i></a>
+                                                                    <a class="badge bg-warning mr-2" data-toggle="tooltip"
+                                                                       data-placement="top" title="" data-original-title="Delete"
+                                                                       href="javascript:remove_model_type({{ model.id }});"><i class="ri-delete-bin-line mr-0"></i></a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    {% endif %}
                                                 {% endfor %}
                                             </table>
                                         </td>

@@ -79,7 +79,129 @@ def upload_product():
         p_serial_number = request.form.get('')
         cate_lst = request.values.getlist('categories[]')
         brand_name = request.form.get('')
+        # get the brand object by its name
+        brand = Brand.query.filter_by(name=brand_name).first()
 
+        # get the number count of init model types
+        mt_count = int(request.args.get('counter'))
+
+        """ 
+            store the Product obj into the db 
+        """
+        # validations
+        if p_serial_number is None:
+            flash('Product serial number should not be empty!')
+            return redirect(url_for('product.upload_product'))
+
+        p_found = Product.query.filter_by(serial_number=p_serial_number, is_deleted=False).first()
+        if not p_found \
+                and p_name is not None and p_name.strip() != '' \
+                and len(cate_lst) == 3 \
+                and brand is not None:
+
+            # create an object of this new product
+            new_product = Product(name=p_name, serial_number=p_serial_number, brand=brand)
+            db.session.add(new_product)
+
+            # add categories to this product
+            for cate_name in cate_lst:
+                # get the cate obj
+                c = Category.query.filter_by(name=cate_name).first()
+                # append it to the product
+                new_product.categories.append(c)
+
+            db.session.commit()
+
+        else:
+            flash('Errors in new product info')
+            return redirect(url_for('product.upload_product'))
+
+        """
+            store all the following model types of this product into db
+        """
+        # loop through all the init model types
+        for i in range(1, mt_count + 1):
+            # the 'name' attribute of <input/>s of this model
+            key_name = str(i) + '_'
+            key_description = str(i) + '_'
+            key_price = str(i) + '_'
+            key_stock = str(i) + '_'
+            key_serial_number = str(i) + '_'
+            key_pics = str(i) + '_'
+            key_pics_intro = str(i) + '_'
+
+            # get the information of this model from frontend form
+            m_name = request.form.get(key_name)
+            m_description = request.form.get(key_description)
+            m_price = request.form.get(key_price)
+            m_stock = request.form.get(key_stock)
+            m_serial_number = request.form.get(key_serial_number)
+            m_pics_lst = request.files.getlist(key_pics)
+            m_pics_intro_lst = request.files.getlist(key_pics_intro)
+
+            # validations
+            if m_name is not None and m_name.strip() != '' \
+                    and m_description is not None and m_description.strip() != '' \
+                    and m_price is not None \
+                    and m_stock is not None \
+                    and m_serial_number is not None \
+                    and m_pics_lst is not None and 0 < len(m_pics_lst) < 10 \
+                    and m_pics_intro_lst is not None and 0 < len(m_pics_intro_lst) < 10:
+
+                # check whether the serial number has been used
+                m_found = ModelType.query.filter_by(serial_number=m_serial_number, is_deleted=False).first()
+                if m_found is not None:
+                    flash('Serial number: "{}" has already been used!'.format(m_serial_number))
+                    return redirect(url_for('product.upload_product'))
+
+                # create an obj of this new model type
+                new_model_type = ModelType(name=m_name, description=m_description, price=m_price, stock=m_stock, serial_number=m_serial_number, product=new_product)
+                db.session.add(new_model_type)
+                db.session.commit()
+
+                """ add pictures """
+                result = upload_picture(m_pics_lst, new_model_type.id, Config.PIC_TYPE_MODEL)
+                # get the status code
+                status = result[0]
+                if status == 0:
+                    # success
+                    pass
+                elif status == 1:
+                    # failed
+                    flash(result[1])
+                elif status == 2:
+                    # partial success
+                    failed_list = result[1]
+                    flash_str = 'Picture '
+                    for name in failed_list:
+                        flash_str += name
+                        flash_str += ', '
+                    flash_str += ' are failed to be uploaded! Check the suffix'
+                    flash(flash_str)
+
+                """ add introduction pictures """
+                result_intro = upload_picture(m_pics_intro_lst, new_model_type.id, Config.PIC_TYPE_MODEL_INTRO)
+                # get the status code
+                status = result_intro[0]
+                if status == 0:
+                    # success
+                    pass
+                elif status == 1:
+                    # failed
+                    flash(result[1])
+                elif status == 2:
+                    # partial success
+                    failed_list = result[1]
+                    flash_str = 'Picture '
+                    for name in failed_list:
+                        flash_str += name
+                        flash_str += ', '
+                    flash_str += ' are failed to be uploaded! Check the suffix'
+                    flash(flash_str)
+
+            else:
+                flash('Errors in model type info!')
+                return redirect(url_for('product.upload_product'))
 
 
     return render_template('staff/page-add-product.html')
@@ -260,10 +382,11 @@ def remove_model_type():
         if mt is not None and not mt.is_deleted:
             # check if the model type is the last one in its product
             mt_list = mt.product.get_exist_model_types()
-            if len(mt_list) == 1 and mt_list.first().id == mt.id:
+            if len(mt_list) == 1 and mt_list[0].id == mt.id:
                 # remove the product and all its model types
                 mt.product.delete()
-                return jsonify({'returnValue': 0})
+                # returnValue=2 means the last product is removed
+                return jsonify({'returnValue': 2})
             # remove this model type
             mt.delete()
             return jsonify({'returnValue': 0})
