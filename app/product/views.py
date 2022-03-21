@@ -382,10 +382,11 @@ def remove_model_type():
         if mt is not None and not mt.is_deleted:
             # check if the model type is the last one in its product
             mt_list = mt.product.get_exist_model_types()
-            if len(mt_list) == 1 and mt_list.first().id == mt.id:
+            if len(mt_list) == 1 and mt_list[0].id == mt.id:
                 # remove the product and all its model types
                 mt.product.delete()
-                return jsonify({'returnValue': 0})
+                # returnValue=2 means the last product is removed
+                return jsonify({'returnValue': 2})
             # remove this model type
             mt.delete()
             return jsonify({'returnValue': 0})
