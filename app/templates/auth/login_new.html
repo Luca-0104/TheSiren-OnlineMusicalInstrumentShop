@@ -247,7 +247,7 @@
                         {% endfor %}
 
 
-                        <div id="remember-me-box">{{ form.remember_me.label(id="remember-me-label") }} {{ form.remember_me() }} </div>
+                        <div id="remember-me-div"> <span>{{ form.remember_me.label(id="remember-me-label") }}</span><span id="remember-me-box">{{ form.remember_me() }}</span> </div>
 
 
                         {{ form.submit(class="button w-button") }}
