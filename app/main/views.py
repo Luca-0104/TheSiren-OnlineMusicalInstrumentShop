@@ -12,6 +12,15 @@ def index():
     return render_template('main/index.html')
 
 
+@main.route('/search/<keywords>')
+def search(keywords):
+    """
+    Search the specific product model types according to the user input
+    :param keywords: The keywords that the users inputted for searching
+    """
+    pass
+
+
 @main.route('/user_profile/<username>')
 def user_profile(username):
     pass

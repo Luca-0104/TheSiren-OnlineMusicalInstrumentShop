@@ -36,6 +36,7 @@ class Tools:
         Product.insert_products()  # the constant products for show
         # ProductPic.insert_pictures()  # the pictures of the constant products
         # # products(100)  # 100 fake products
+        ModelType.insert_model_types()  # the constant model types for testing
 
 
 class Refund(db.Model):
@@ -346,6 +347,27 @@ class ModelType(db.Model):
         self.is_deleted = True
         db.session.add(self)
         db.session.commit()
+
+    @staticmethod
+    def insert_model_types():
+        """
+            For creating some model type information into db for showing and testing.
+            This method should be called after calling the insert_products methods.
+        """
+        for i in range(200):
+            # create some information for showing
+            name = 'Model' + str(i)
+            description = 'This is the test Model Type NO.' + str(i)
+            price = random.randint(2000, 999999)
+            stock = random.randint(100, 500)
+            serial_number = 'M' + str(i)
+            user_id = [3, 4][random.randint(0, 1)]
+            product_id = random.randint(1, 10)
+            # create the object of this model type
+            new_mt = ModelType(name=name, description=description, price=price, stock=stock, serial_number=serial_number, user_id=user_id, product_id=product_id)
+            db.session.add(new_mt)
+        db.session.commit()
+
 
 
 class Category(db.Model):
