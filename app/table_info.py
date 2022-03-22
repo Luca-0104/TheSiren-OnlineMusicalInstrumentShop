@@ -13,17 +13,17 @@ user_list = [
 
 # products
 product_list = [
-    # name, serial_number, brand_id, [cate list]
-    ['Product1', 'A001'],
-    ['Product2', 'A002'],
-    ['Product3', 'A003'],
-    ['Product4', 'A004'],
-    ['Product5', 'A005'],
-    ['Product6', 'A006'],
-    ['Product7', 'A007'],
-    ['Product8', 'A008'],
-    ['Product9', 'A009'],
-    ['Product10', 'A010']
+    # name, serial_number, serial_prefix, serial_rank
+    ['Product1', 'A001', 'b1-c1-t1-a1', 1],
+    ['Product2', 'A002', 'b1-c1-t1-a1', 2],
+    ['Product3', 'A003', 'b1-c1-t1-a1', 3],
+    ['Product4', 'A004', 'b1-c1-t1-a1', 4],
+    ['Product5', 'A005', 'b1-c1-t1-a1', 5],
+    ['Product6', 'A006', 'b1-c1-t1-a1', 6],
+    ['Product7', 'A007', 'b1-c1-t1-a1', 7],
+    ['Product8', 'A008', 'b1-c1-t1-a1', 8],
+    ['Product9', 'A009', 'b1-c1-t1-a1', 9],
+    ['Product10', 'A010', 'b1-c1-t1-a1', 10]
 ]
 
 # brands
