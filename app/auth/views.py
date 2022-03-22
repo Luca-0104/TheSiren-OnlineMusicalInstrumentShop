@@ -3,7 +3,7 @@ from flask import session, flash, current_app, redirect, url_for, render_templat
 from . import auth
 from .forms import LoginForm, RegisterForm
 from .. import db
-from ..models import User
+from ..models import User, ChatRoom
 
 
 @auth.route('/logout')
@@ -37,6 +37,17 @@ def register():
         # create a new user object
         user = User(email=form.email.data, username=form.username.data, password=form.password1.data,
                     role_id=1)
+
+        # find all staff
+        staffs = User.query.filter_by(role_id=2).all()
+        # pick up a staff randomly
+        staff_situation = random.randint(0, len(staffs) - 1)
+        # get the staff id
+        staff_id = staffs[staff_situation].id
+        # set up chat room
+        chat_room1 = ChatRoom(customer_id=session['uid'], staff_id=staff_id)
+        db.session.add(chat_room1)
+
         db.session.add(user)
         db.session.commit()
         flash("Register Successfully! You can go for login now!")
