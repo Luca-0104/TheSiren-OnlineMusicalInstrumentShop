@@ -1,0 +1,165 @@
+/* clear the default css in the browser */
+.picture-panel-box *{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+
+/*
+     The slideshow of the product pictures
+ */
+
+/*!* set the big pictures to each li in the ul *!*/
+/*.pic:nth-child(1){*/
+/*    background-image: url('../../images/index_slide/pic1.png');*/
+/*}*/
+/*.pic:nth-child(2){*/
+/*    background-image: url('../../images/index_slide/pic2.jpg');*/
+/*}*/
+/*.pic:nth-child(3){*/
+/*    background-image: url('../../images/index_slide/pic3.jpg');*/
+/*}*/
+/*.pic:nth-child(4){*/
+/*    background-image: url('../../images/index_slide/pic4.jpg');*/
+/*}*/
+/*.pic:nth-child(5){*/
+/*    background-image: url('../../images/index_slide/pic5.jpg');*/
+/*}*/
+
+/*!* a outer container for the picture list *!*/
+/*.picture-panel-box{*/
+/*    width: 100%;*/
+/*    height: 545px;*/
+/*    position: relative;*/
+/*}*/
+
+/*!* the picture list contains 5 pictures *!*/
+/*.pic-container{*/
+/*    width: 500%;*/
+/*    height:545px;*/
+/*    display: flex;*/
+/*    position: absolute;*/
+/*    z-index: 9;*/
+/*    left: 0;*/
+/*    transition: .2s;*/
+/*}*/
+
+/*!* the li in the picture list, each one has held a picture now *!*/
+/*.pic{*/
+/*    width: 100%;*/
+/*    background-size: cover;*/
+/*}*/
+
+/*!* the link on each picture *!*/
+/*.pic a{*/
+/*    !* make the link has the same size of the picture, so that we can click on the picture to active the link *!*/
+/*    display: inline-block;*/
+/*    height: 545px;*/
+/*    width: 100%;*/
+/*}*/
+
+/*!* this will be added to the pic (by js) when they are not in the slide window now *!*/
+/*.hidden-pic{*/
+/*    display: none;*/
+/*}*/
+
+/*
+    The dot buttons
+*/
+
+/* the list of dot buttons */
+.dot-group{
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    bottom: 10px;
+    width: 20%;
+    z-index: 10;
+    right: 40%;
+}
+/* each dot button */
+.dot{
+    width: 8px;
+    height: 8px;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* the dot of the current picture. We will assign this class by js */
+.current-dot{
+    background-color: #ffffff;
+    box-shadow: 0 0 16px 3px #ffffff;
+}
+
+
+/*
+   ---------- attempt from the 'product-detail' page of pr ----------
+*/
+
+/*
+    The pictures of the product
+    (basic idea of this picture slide is learned from Internet (bilibili.com))
+ */
+
+/* the container of the pictures slide panel */
+.picture-panel-box {
+    width: 576px;
+    height: 324px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #a3e5ff;
+    border-radius: 5px;
+    box-shadow: 20px 30px 70px rgba(0, 0, 255, .5);
+}
+
+/* The picture list */
+.pic-container {
+    width: 500%;
+    height: 100%;
+    display: flex;
+    position: absolute;
+    left: 0;
+    transition: .2s;
+}
+
+/* each single picture in the picture list */
+.pic-container .pic img {
+    /* size should be same as the picture-panel-box */
+    width: 576px;
+    height: 324px;
+    background-size: cover;
+}
+
+/*!* the outer box contains 'left' and 'right' button *!*/
+/*.btn {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    position: absolute;*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    !* the user cannot select the text in button by their cursor *!*/
+/*    user-select: none;*/
+/*}*/
+
+/*!* the buttons inside the box *!*/
+/*.btn-left, .btn-right {*/
+/*    font-size: 0;*/
+/*    padding: 0 20px;*/
+/*    !* the parent has the height of 500px, so that set line-height same as parent's height to locate at the center vertically  *!*/
+/*    line-height: 680px;*/
+/*    transition: .5s;*/
+/*}*/
+
+/*!* when hovering the picture, we will show the buttons *!*/
+/*.btn:hover .btn-left, .btn:hover .btn-right {*/
+/*    color: white;*/
+/*    background-color: rgba(0, 0, 0, 0.4);*/
+/*    font-size: 50px;*/
+/*    cursor: pointer;*/
+/*}*/
+
+

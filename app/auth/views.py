@@ -1,5 +1,5 @@
 from flask import session, flash, current_app, redirect, url_for, render_template, request
-from flask_login import login_user
+from flask_login import login_user, logout_user
 
 from . import auth
 from .forms import LoginForm, RegisterForm
@@ -21,7 +21,7 @@ def logout():
     session.pop("theme", None)
 
     # logout using the flask-login
-    login_user()
+    logout_user()
 
     flash('You have been logged out')
 

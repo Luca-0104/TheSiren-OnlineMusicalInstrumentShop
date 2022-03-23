@@ -28,6 +28,9 @@
     }(window, document);</script>
     <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <link href="images/webclip.png" rel="apple-touch-icon">
+    {# css for slide pictures #}
+    <link rel="stylesheet" href="../../static/css/main/index_slide.css">
+
     <style>
         body {
             -moz-osx-font-smoothing: grayscale;
@@ -219,14 +222,87 @@
     </div>
 </div>
 <div class="bg-primary">
-    <div class="grid-halves-section wf-section"><img src="images/square-01.jpg" loading="lazy" sizes="100vw"
-                                                     srcset="images/square-01-p-500.jpeg 500w, images/square-01-p-800.jpeg 800w, images/square-01-p-1080.jpeg 1080w, images/square-01.jpg 1200w"
-                                                     alt="" class="grid-halves-image">
+{#    slide pics in the index page #}
+    <div class="grid-halves-section wf-section">
+{#        <img src="images/square-01.jpg" loading="lazy" sizes="100vw" srcset="images/square-01-p-500.jpeg 500w, images/square-01-p-800.jpeg 800w, images/square-01-p-1080.jpeg 1080w, images/square-01.jpg 1200w" alt="" class="grid-halves-image">#}
+
+        <!--
+            the slideshow of the main categories of products
+        -->
+{#        <div class="picture-panel-box">#}
+            {#    The big pictures in the slideshow#}
+{#            <ul class="pic-container">#}
+                {#               clicking on each picture can goes into the page of products in corresponding category #}
+{#                <li class="pic"><a href="{{ url_for('main.products_in_category', category_name='digital') }}"></a></li>#}
+{#                <li class="pic"><a href="{{ url_for('main.products_in_category', category_name='instruments') }}"></a></li>#}
+{#                <li class="pic"><a href="{{ url_for('main.products_in_category', category_name='luxury') }}"></a></li>#}
+{#                <li class="pic"><a href="{{ url_for('main.products_in_category', category_name='sports') }}"></a></li>#}
+{#                <li class="pic"><a href="{{ url_for('main.products_in_category', category_name='digital') }}"></a></li>#}
+{#            </ul>#}
+{##}
+            {#        The mini dots in on the bottom of the slid window to show the current picture#}
+{#            <ul class="dot-group">#}
+{#                <li class="dot"></li>#}
+{#                <li class="dot"></li>#}
+{#                <li class="dot"></li>#}
+{#                <li class="dot"></li>#}
+{#                <li class="dot"></li>#}
+{#            </ul>#}
+{#        </div>#}
+
+        {#        product picture slide #}
+        {#            the outer box contains the picture list and picture selecting button #}
+        <div class="picture-panel-box">
+            <ul class="pic-container">
+                {# loop through all the pictures to make each of them in an list item #}
+                <li class="pic">
+                    <a href="#">
+                        <img src="{{ url_for('static', filename='images/index_slide/pic1.png') }}" alt="product-picture1">
+                    </a>
+                </li>
+                <li class="pic">
+                    <a href="#">
+                        <img src="{{ url_for('static', filename='images/index_slide/pic2.jpg') }}" alt="product-picture1">
+                    </a>
+                </li>
+                <li class="pic">
+                    <a href="#">
+                        <img src="{{ url_for('static', filename='images/index_slide/pic3.jpg') }}" alt="product-picture1">
+                    </a>
+                </li>
+                <li class="pic">
+                    <a href="#">
+                        <img src="{{ url_for('static', filename='images/index_slide/pic4.jpg') }}" alt="product-picture1">
+                    </a>
+                </li>
+                <li class="pic">
+                    <a href="#">
+                        <img src="{{ url_for('static', filename='images/index_slide/pic5.jpg') }}" alt="product-picture1">
+                    </a>
+                </li>
+            </ul>
+
+            {# The mini dots in on the bottom of the slid window to show the current picture#}
+            <ul class="dot-group">
+                <li class="dot"></li>
+                <li class="dot"></li>
+                <li class="dot"></li>
+                <li class="dot"></li>
+                <li class="dot"></li>
+            </ul>
+
+            {# the btn container, wich contains the btn for next and last picture #}
+{#            <div class="btn">#}
+{#                <div class="btn-left"><</div>#}
+{#                <div class="btn-right">></div>#}
+{#            </div>#}
+        </div>
+
         <div class="section">
             <div class="main-container">
                 <div class="container align-center">
                     <h1>The New Home Collection</h1>
-                    <div class="large-text">Introduce the new range with this text.</div>
+                    <div class="large-text" id="slide-text"></div>
                     <div class="button-row justify-content-center">
                         <a href="shop.html" class="button bg-white-faded w-inline-block">
                             <div>Start Browsing</div>
@@ -236,7 +312,11 @@
             </div>
         </div>
     </div>
+
+
+
 </div>
+
 <div class="marquee-section wf-section">
     <div class="marquee-contents">
         <div class="uppercase-text marquee-text">Free shipping on orders over $1,000</div>
@@ -503,4 +583,7 @@
 <!-- [if lte IE 9]>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
 </body>
+{# the js for slide pictures (this should be after </body> ) #}
+<script type="text/javascript" src="../../static/js/main/index_slide.js"></script>
+
 </html>
