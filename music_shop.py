@@ -2,7 +2,7 @@ import os
 
 from flask import session
 
-from app import create_app, db, socketio
+from app import create_app, db, socketio, moment
 from flask_script import Manager, Shell
 
 # create an object of our app
@@ -10,7 +10,6 @@ from app.models import Tools, Permission, User, Role, Brand, Category, ModelType
     Product, CommentPic, Comment, Cart, OrderModelType, Order
 
 app = create_app(os.getenv('FLASK_CONFIG') or 'default')
-manager = Manager(app=app)
 
 
 @app.shell_context_processor
@@ -35,6 +34,3 @@ def make_shell_context():
                 OrderModelType=OrderModelType,
                 Order=Order)
 
-
-manager.add_command("shell", Shell(make_context=make_shell_context))
-manager.add_command('run', socketio.run(app=app))

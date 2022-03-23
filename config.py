@@ -7,6 +7,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'no one will guess'  # a secret key for the wtf forms
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    LANGUAGES = ['en', 'zh']
 
     """ picture uploading """
     # The allowed suffixes type of the picture that is uploaded

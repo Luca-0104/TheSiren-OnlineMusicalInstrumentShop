@@ -16,7 +16,7 @@ from ..models import ChatRoom, Message, User
 def chat_room():
 
     if session.get('username') is not None:
-        if session["role_id"] is 1:
+        if session["role_id"] == 1:
             rooms = ChatRoom.query.filter_by(customer_id=session['uid']).all()
 
             # the staff in the chat room should be changed
@@ -45,7 +45,7 @@ def chat_room():
             return render_template('chat/chat_page.html', role_id=session['role_id'], rooms=rooms)
 
             # current user is staff
-        elif session["role_id"] is 2:
+        elif session["role_id"] == 2:
             rooms = ChatRoom.query.filter_by(staff_id=session['uid']).all()
             return render_template('chat/chat_page.html', role_id=session['role_id'], rooms=rooms)
 
@@ -54,7 +54,7 @@ def chat_room():
 
 # this route is used by staff account
 @chat.route('/chat/<chat_room_id>', methods=['GET', 'POST'])
-@login_required
+# @login_required
 def chat_for_staff(chat_room_id):
     # gain the chat data
     messages = Message.query.filter_by(id=chat_room_id).all()
@@ -69,7 +69,7 @@ def chat_for_staff(chat_room_id):
 
 # this route id used by user account
 @chat.route('/chat', methods=['GET', 'POST'])
-@login_required
+# @login_required
 def chat_for_customer():
     # gain the chat data
     messages = Message.query.filter_by(chat_room_id=session['uid']).all()
@@ -82,7 +82,7 @@ def message(data):
     send({'msg': data['msg'], 'username': data['username'], 'time_stamp': strftime('%Y-%m-%d %H:%M:%S', localtime())}
          , room=data['room'])
     # check the identity of the current user
-    if session["role_id"] is 1:
+    if session["role_id"] == 1:
         author = 'customer'
     else:
         author = 'staff'
