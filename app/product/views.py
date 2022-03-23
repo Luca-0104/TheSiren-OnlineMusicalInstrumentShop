@@ -119,7 +119,7 @@ def search_stock(key_word, search_type):
 
 
 @product.route('/upload-product')
-# @login_required
+@login_required
 def upload_product():
     """
         This method uses the frontend form
@@ -286,7 +286,7 @@ def validate_model_serial():
 
 
 @product.route('/api/stock-management/remove-product', methods=['POST'])
-# @login_required
+@login_required
 def remove_product():
     """
     (Using Ajax)
@@ -305,7 +305,7 @@ def remove_product():
 
 
 @product.route('/modify-product/<int:product_id>', methods=['GET', 'POST'])
-# @login_required
+@login_required
 def modify_product(product_id):
     """
         (Backend forms needed, 'categories' are not in backend form)
@@ -354,7 +354,7 @@ def modify_product(product_id):
 
 
 @product.route('/upload-model-type/<int:product_id>', methods=['GET', 'POST'])
-# @login_required
+@login_required
 def upload_model_type(product_id):
     """
         (Backend forms needed)
@@ -445,7 +445,7 @@ def upload_model_type(product_id):
 
 
 @product.route('/api/stock-management/remove-model-type', methods=['POST'])
-# @login_required
+@login_required
 def remove_model_type():
     """
         (Using Ajax)
@@ -474,7 +474,7 @@ def remove_model_type():
 
 
 @product.route('/modify-model-type/<int:model_id>', methods=['GET', 'POST'])
-# @login_required
+@login_required
 def modify_model_type(model_id):
     """
         (Backend forms needed)

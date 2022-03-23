@@ -1,0 +1,203 @@
+# Chinese translations for PROJECT.
+# Copyright (C) 2022 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2022-03-23 15:52+0800\n"
+"PO-Revision-Date: 2022-03-23 16:06+0800\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh\n"
+"Language-Team: zh <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: app/auth/forms.py:13 app/auth/forms.py:45
+msgid "Email"
+msgstr "邮件"
+
+#: app/auth/forms.py:14 app/auth/forms.py:46
+msgid "Password"
+msgstr "密码"
+
+#: app/auth/forms.py:15
+msgid "keep me login"
+msgstr "记住我"
+
+#: app/auth/forms.py:16
+msgid "Login"
+msgstr "登录"
+
+#: app/auth/forms.py:25
+msgid "No such user!"
+msgstr "没有对应用户！"
+
+#: app/auth/forms.py:37
+msgid "Incorrect password!"
+msgstr "密码错误！"
+
+#: app/auth/forms.py:44
+msgid "Username"
+msgstr "用户名"
+
+#: app/auth/forms.py:47
+msgid "Confirm your password"
+msgstr "确认密码"
+
+#: app/auth/forms.py:48 app/templates/auth/login_new.html:219
+msgid "Register"
+msgstr "注册"
+
+#: app/auth/forms.py:58
+msgid "Email already exists!"
+msgstr "邮箱已被注册！"
+
+#: app/auth/views.py:23
+msgid "You have been logged out"
+msgstr "您已退出登录"
+
+#: app/auth/views.py:56
+msgid "Register Successfully! You can go for login now!"
+msgstr "注册成功！您现在可以登录了！"
+
+#: app/auth/views.py:86 app/templates/auth/login_new.html:265
+msgid "Login success!"
+msgstr "登录成功！"
+
+#: app/auth/views.py:98
+msgid "Login Failed! Check your username or password."
+msgstr "登录失败！检查您的用户名或密码！"
+
+#: app/templates/auth/login_new.html:46
+msgid "Welcome to Verse – An E-Commerce template for brand curators."
+msgstr "欢迎光临Verse - 品牌展测人的电子商务模版。"
+
+#: app/templates/auth/login_new.html:47
+msgid "View all templates here"
+msgstr "浏览所有模版"
+
+#: app/templates/auth/login_new.html:60
+msgid "Buy Now"
+msgstr "现在购买"
+
+#: app/templates/auth/login_new.html:74
+msgid "Your Cart"
+msgstr "您的购物车"
+
+#: app/templates/auth/login_new.html:89
+msgid "Subtotal"
+msgstr "小计"
+
+#: app/templates/auth/login_new.html:146
+msgid "Pay with browser."
+msgstr "使用浏览器支付"
+
+#: app/templates/auth/login_new.html:152
+msgid "Continue to Checkout"
+msgstr "继续支付"
+
+#: app/templates/auth/login_new.html:157 app/templates/auth/login_new.html:200
+#: app/templates/auth/login_new.html:307
+msgid "No items found."
+msgstr "没有找到商品。"
+
+#: app/templates/auth/login_new.html:178
+msgid "Search here"
+msgstr "搜索"
+
+#: app/templates/auth/login_new.html:188
+msgid "Menu"
+msgstr "菜单"
+
+#: app/templates/auth/login_new.html:192 app/templates/auth/login_new.html:299
+msgid "All"
+msgstr "全部"
+
+#: app/templates/auth/login_new.html:204 app/templates/auth/login_new.html:315
+msgid "About"
+msgstr "关于"
+
+#: app/templates/auth/login_new.html:205 app/templates/auth/login_new.html:316
+msgid "Journal"
+msgstr "账目"
+
+#: app/templates/auth/login_new.html:206 app/templates/auth/login_new.html:317
+msgid "Contact"
+msgstr "联系客服"
+
+#: app/templates/auth/login_new.html:215
+msgid "Please login and explore more."
+msgstr "请登录以浏览更多。"
+
+#: app/templates/auth/login_new.html:217
+msgid "New here?"
+msgstr "第一次访问？"
+
+#: app/templates/auth/login_new.html:268
+msgid "Oops! Something went wrong while submitting the form."
+msgstr "哦不！在提交表单的时候发生了一些错误。"
+
+#: app/templates/auth/login_new.html:271
+msgid ""
+"We will never share your personal information with third\n"
+"                    parties."
+msgstr "我们将保证您的隐私安全并不会与任何第三方共享您的信息"
+
+#: app/templates/auth/login_new.html:290
+msgid "34 Market Street, South Melbourne"
+msgstr "商店街34号，南墨尔本"
+
+#: app/templates/auth/login_new.html:290
+msgid "Victoria 3009"
+msgstr "维多利亚3009号"
+
+#: app/templates/auth/login_new.html:292
+msgid "contact@website.com"
+msgstr ""
+
+#: app/templates/auth/login_new.html:293
+msgid "(03) 92337 4627"
+msgstr ""
+
+#: app/templates/auth/login_new.html:297
+msgid "shop"
+msgstr "商店"
+
+#: app/templates/auth/login_new.html:313
+msgid "Company"
+msgstr "公司"
+
+#: app/templates/auth/login_new.html:318
+msgid "Refund Policy"
+msgstr "退款政策"
+
+#: app/templates/auth/login_new.html:322
+msgid "Template"
+msgstr "模版"
+
+#: app/templates/auth/login_new.html:324
+msgid "Style Guide"
+msgstr "样式指导"
+
+#: app/templates/auth/login_new.html:325
+msgid "Changelog"
+msgstr "更改目录"
+
+#: app/templates/auth/login_new.html:326
+msgid "Getting Started"
+msgstr "即刻开始"
+
+#: app/templates/auth/login_new.html:327
+msgid "Licenses"
+msgstr "证书"
+
+#: app/templates/auth/login_new.html:328
+msgid "More Templates"
+msgstr "更多模版"
+

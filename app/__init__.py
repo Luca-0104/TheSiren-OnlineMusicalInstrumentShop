@@ -1,4 +1,4 @@
-from flask import Flask, session
+from flask import Flask, session, request
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
@@ -6,6 +6,8 @@ from config import config
 import logging
 from logging.handlers import RotatingFileHandler
 from flask_socketio import SocketIO
+from flask_moment import Moment
+from flask_babel import Babel
 
 # load the extensions we need
 db = SQLAlchemy()
@@ -13,6 +15,8 @@ bootstrap = Bootstrap()
 login_manager = LoginManager()
 login_manager.login_view = 'auth.login'
 socketio = SocketIO()
+moment = Moment()
+babel = Babel()
 
 
 def create_app(config_name):
@@ -27,6 +31,8 @@ def create_app(config_name):
     bootstrap.init_app(app)
     login_manager.init_app(app)
     socketio.init_app(app)
+    moment.init_app(app)
+    babel.init_app(app)
 
     # register the logger
     # register_logger(app)
@@ -71,3 +77,8 @@ def register_logger(app):
 
     # if not app.debug:
     app.logger.addHandler(file_handler)
+
+
+@babel.localeselector
+def get_locale():
+    return request.accept_languages.best_match(['en', 'zh'])
