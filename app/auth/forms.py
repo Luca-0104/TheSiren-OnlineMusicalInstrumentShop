@@ -3,16 +3,17 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField, Radio
 from wtforms.validators import DataRequired, Email, Length, ValidationError, EqualTo, Regexp
 
 from app.models import User
+from flask_babel import lazy_gettext as _l
 
 
 class LoginForm(FlaskForm):
     """
         The form class for login
     """
-    email = StringField('Email', validators=[DataRequired(), Length(1, 64), Email()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    remember_me = BooleanField('keep me login')
-    submit = SubmitField('Login')
+    email = StringField(_l('Email'), validators=[DataRequired(), Length(1, 64), Email()])
+    password = PasswordField(_l('Password'), validators=[DataRequired()])
+    remember_me = BooleanField(_l('keep me login'))
+    submit = SubmitField(_l('Login'))
 
     def validate_email(self, field):
         """
@@ -21,7 +22,7 @@ class LoginForm(FlaskForm):
         """
         user_found = User.query.filter_by(email=field.data, is_deleted=False).first()
         if user_found is None:
-            raise ValidationError('No such user!')
+            raise ValidationError(_l('No such user!'))
 
     def validate_password(self, field):
         """
@@ -33,18 +34,18 @@ class LoginForm(FlaskForm):
         if user_found is not None:
             # check the password of this user
             if not user_found.verify_password(field.data):
-                raise ValidationError('Incorrect password!')
+                raise ValidationError(_l('Incorrect password!'))
 
 
 class RegisterForm(FlaskForm):
     """
         The Form class for register
     """
-    username = StringField('Username', validators=[DataRequired(), Length(1, 64), Regexp('^[0-9a-zA-Z_.]{1,}$', 0, "Username must contain only letters, numbers, dots or underscores")])
-    email = StringField('Email', validators=[DataRequired(), Length(1, 64), Email()])
-    password1: PasswordField = PasswordField('Password', validators=[DataRequired(), EqualTo('password2', message='Passwords must match!')])
-    password2 = PasswordField('Confirm your password', validators=[DataRequired()])
-    submit = SubmitField('Register')
+    username = StringField(_l('Username'), validators=[DataRequired(), Length(1, 64), Regexp('^[0-9a-zA-Z_.]{1,}$', 0, "Username must contain only letters, numbers, dots or underscores")])
+    email = StringField(_l('Email'), validators=[DataRequired(), Length(1, 64), Email()])
+    password1: PasswordField = PasswordField(_l('Password'), validators=[DataRequired(), EqualTo('password2', message='Passwords must match!')])
+    password2 = PasswordField(_l('Confirm your password'), validators=[DataRequired()])
+    submit = SubmitField(_l('Register'))
 
     def validate_email(self, field):
         """
@@ -54,7 +55,7 @@ class RegisterForm(FlaskForm):
         :return:
         """
         if User.query.filter_by(email=field.data).first():
-            raise ValidationError('Email already exists!')
+            raise ValidationError(_l('Email already exists!'))
 
     # def validate_username(self, field):
     #     """

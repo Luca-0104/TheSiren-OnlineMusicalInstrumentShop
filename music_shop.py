@@ -2,7 +2,8 @@ import os
 
 from flask import session
 
-from app import create_app, db
+from app import create_app, db, socketio, moment
+from flask_script import Manager, Shell
 
 # create an object of our app
 from app.models import Tools, Permission, User, Role, Brand, Category, ModelType, ModelTypeIntroPic, ModelTypePic, \
@@ -32,3 +33,4 @@ def make_shell_context():
                 Cart=Cart,
                 OrderModelType=OrderModelType,
                 Order=Order)
+

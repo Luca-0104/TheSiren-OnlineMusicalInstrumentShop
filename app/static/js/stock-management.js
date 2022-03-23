@@ -16,7 +16,7 @@ function remove_product(product_id)
                 // get from server (backend)
                 let returnValue = response['returnValue'];
 
-                if (returnValue === 0)
+                if(returnValue === 0)
                 {
                     //success
                     console.log("Product " + product_id + "removed");
@@ -26,7 +26,7 @@ function remove_product(product_id)
 }
 
 //remove a specific model type, using ajax
-function remove_model_type(model_type_id)
+function remove_model_type(model_type_id, product_id)
 {
     let targetName = "modeltype-section-" + model_type_id;
     let target = document.getElementById(targetName);
@@ -45,11 +45,17 @@ function remove_model_type(model_type_id)
 
                 console.log(returnValue);
 
-                if (returnValue === 0)
+                if(returnValue === 0)
                 {
                     //success
                     console.log("ModelType " + model_type_id + "removed");
                     target.remove();
+                }
+                else if(returnValue === 2)
+                {
+                    //success and there is no modeltype in is product
+                    console.log("ModelType " + model_type_id + "removed");
+                    remove_product(product_id);
                 }
             });
 }
