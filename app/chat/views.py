@@ -12,7 +12,7 @@ from ..models import ChatRoom, Message, User
 
 
 @chat.route('/chat_room', methods=['GET', 'POST'])
-@login_required
+# @login_required
 def chat_room():
 
     if session.get('username') is not None:
