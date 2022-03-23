@@ -1,4 +1,7 @@
-from flask import session, flash, current_app, redirect, url_for, render_template
+import random
+
+from flask import session, flash, current_app, redirect, url_for, render_template, request
+from flask_login import logout_user, login_user
 
 from . import auth
 from .forms import LoginForm, RegisterForm
