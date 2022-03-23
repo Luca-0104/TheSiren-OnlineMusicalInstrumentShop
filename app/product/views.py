@@ -18,7 +18,7 @@ from ..public_tools import upload_picture
 # ------------------------------------------------ render the page  of stock management ------------------------------------------------
 
 
-@product.route('/stock-management')
+@product.route('/stock-management', methods=['GET', 'POST'])
 def show_page_stock_management():
     """
     This function has integrated the function of searching and rendering the stock management page
@@ -31,7 +31,10 @@ def show_page_stock_management():
     """ if the search form is submitted """
     if request.method == 'POST':
         key_word = request.form.get('key_word')
-        search_type = request.form.get('search_type')
+        search_type = int(request.form.get('search_type'))
+
+        is_search = True
+        previous_key = key_word
 
         """ search the model type using different search_type """
         mt_list = []
@@ -57,13 +60,18 @@ def show_page_stock_management():
 
     else:
         """ if the this is the init access of this page (no search now) """
+        is_search = False
+        previous_key = None
+
         # get all the products from the database
         product_list = Product.query.filter_by(is_deleted=False).all()
         # turn product list into a model_dict
         model_dict = {p: p.model_types.all() for p in product_list}
 
+    print(is_search)
+
     # render this page
-    return render_template('staff/page-list-product.html', model_dict=model_dict)
+    return render_template('staff/page-list-product.html', model_dict=model_dict, is_search=is_search, previous_key=previous_key)
 
 
 # ------------------------------------------------ Search functions for staffs to manage the stock ------------------------------------------------

@@ -10,7 +10,7 @@
     {% if session.get('username') %}
         {% for room in rooms %}
             {% if role_id == 1 %}
-                <li><a href="{{ url_for('chat.chat_for_user') }}">Contact</a></li>
+                <li><a href="{{ url_for('chat.chat_for_customer') }}">Contact</a></li>
             {% endif %}
             {% if role_id == 2 %}
                 <li><a href="/chat/{{room.customer_id}}">{{ room.customer.username }}</a></li>

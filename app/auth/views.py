@@ -1,5 +1,4 @@
-from flask import session, flash, current_app, redirect, url_for, render_template, request
-from flask_login import login_user, logout_user
+from flask import session, flash, current_app, redirect, url_for, render_template
 
 from . import auth
 from .forms import LoginForm, RegisterForm

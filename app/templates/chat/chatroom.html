@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    {% block script %}
+    {{ moment.include_moment() }}
+    {% endblock %}
 </head>
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/chat_style.css') }}">
 <body>
@@ -31,7 +34,7 @@
                             <br>
                             {{ message.content }}
                             <br>
-                            <span class="timestamp">{{ message.timestamp|times }}</span>
+                            <span class="timestamp">{{ moment(message.timestamp).format('YYYY-MM-DD HH:mm:ss') }}</span>
                         </p>
                     {% elif message.author_type == "staff" and role_id == 2 %}
                         <p class="my-msg">
@@ -39,7 +42,7 @@
                             <br>
                             {{ message.content }}
                             <br>
-                            <span class="timestamp">{{ message.timestamp|times }}</span>
+                            <span class="timestamp">{{ moment(message.timestamp).format('YYYY-MM-DD HH:mm:ss') }}</span>
                         </p>
                     {% endif %}
                     {% if message.author_type == "customer" and role_id == 2 %}
@@ -48,7 +51,7 @@
                             <br>
                             {{ message.content }}
                             <br>
-                            <span class="timestamp">{{ message.timestamp|times }}</span>
+                            <span class="timestamp">{{ moment(message.timestamp).format('YYYY-MM-DD HH:mm:ss') }}</span>
                         </p>
                     {% elif message.author_type == "staff" and role_id == 1 %}
                         <p class="others-msg">
@@ -56,7 +59,7 @@
                             <br>
                             {{ message.content }}
                             <br>
-                            <span class="timestamp">{{ message.timestamp|times }}</span>
+                            <span class="timestamp">{{ moment(message.timestamp).format('YYYY-MM-DD HH:mm:ss') }}</span>
                         </p>
                     {% endif %}
                 {% endfor %}
