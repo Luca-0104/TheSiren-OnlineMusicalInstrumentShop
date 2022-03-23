@@ -19,13 +19,6 @@ def index():
     """
     return render_template('main/index_test.html')
 
-@main.route('/homepage', methods=['GET', 'POST'])
-def home():
-    """
-        The function for rendering the main page
-    """
-    return render_template('main/index_new.html')
-
 
 @main.route('/search/<keywords>')
 def search(keywords):
