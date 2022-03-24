@@ -1,0 +1,11 @@
+.nav .nav-item {
+    /* let every item float to the left, then they can be located horizontally */
+    float: start;
+
+    /* background-color: red; */
+
+    /* make each item taking full height of the navbar */
+    height: 100%;
+    /* making the word in each item align center vertically */
+    line-height: 57px; /* should same as the height of the parent */
+}
