@@ -1,7 +1,7 @@
 import random
 
-from flask import session, flash, current_app, redirect, url_for, render_template
-from flask_babel import _
+from flask import session, flash, current_app, redirect, url_for, render_template, request
+from flask_login import logout_user, login_user
 
 from . import auth
 from .forms import LoginForm, RegisterForm
@@ -15,12 +15,17 @@ def logout():
     The function to log the user out
     :return: redirect back to the home page
     """
+    # pop out related sessions
     session.pop("username", None)
     session.pop("uid", None)
     session.pop("role_id", None)
     session.pop("avatar", None)
     session.pop("theme", None)
-    flash(_('You have been logged out'))
+
+    # logout using the flask-login
+    logout_user()
+
+    flash('You have been logged out')
 
     # logger
     current_app.logger.info("user logged out")
@@ -53,7 +58,7 @@ def register():
 
         db.session.add(user)
         db.session.commit()
-        flash(_("Register Successfully! You can go for login now!"))
+        flash("Register Successfully! You can go for login now!")
 
         # logger
         current_app.logger.info("a new user registered")
@@ -83,19 +88,25 @@ def login():
             session["avatar"] = user.avatar
             session["theme"] = user.theme
 
-            flash(_("Login success!"))
+            # use flask-login to login the user
+            login_user(user, form.remember_me.data)
+            next = request.args.get('next')
+            if next is None or not next.startswith('/'):
+                next = url_for('main.index')
+
+            flash("Login success!")
 
             # logger
             current_app.logger.info("a user logs in successfully: @" + user.username)
 
             # redirect back to the original url or the index page
-            return redirect(url_for('main.index'))
+            return redirect(next)
 
         # logger
         current_app.logger.info("a user logs in failed")
 
         # if we get here, this means the user give the wrong data and login failed
-        flash(_("Login Failed! Check your username or password."))
+        flash("Login Failed! Check your username or password.")
 
     # (GET method)
     return render_template('auth/login_new.html', form=form)

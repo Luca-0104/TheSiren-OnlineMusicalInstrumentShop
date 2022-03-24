@@ -2877,22 +2877,22 @@ figcaption {
 }
 
 .bg-primary {
-    background-color: #7f8567;
+    background-color: #662b2b;
     color: #fff;
 }
 
 .bg-primary-dark {
-    background-color: #393c2d;
+    background-color: #3D3430;
     color: #fff;
 }
 
 .bg-dark {
-    background-color: #343434;
+    background-color: #121212;
     color: #fff;
 }
 
 .bg-white {
-    background-color: #fff;
+    background-color: #ffffff;
 }
 
 .bg-white.border {
@@ -2930,10 +2930,10 @@ figcaption {
 
 .button {
     padding: 11px 42px 14px;
-    background-color: #eff1e5;
+    background-color: #8F8063;
     -webkit-transition: color 200ms ease, background-color 200ms ease;
     transition: color 200ms ease, background-color 200ms ease;
-    color: #343434;
+    color: #fff;
     font-size: 16px;
     line-height: 24px;
     font-weight: 700;
@@ -2941,8 +2941,8 @@ figcaption {
 }
 
 .button:hover {
-    background-color: #7f8567;
-    color: #fff;
+    background-color: #edcb79;
+    color: #343434;
 }
 
 .button.small {
@@ -2953,39 +2953,41 @@ figcaption {
 }
 
 .button.bg-primary-dark {
-    background-color: #393c2d;
+    background-color: #293336;
     color: #fff;
 }
 
 .button.bg-primary-dark:hover {
-    background-color: #7f8567;
+    background-color: #BD736E;
 }
 
 .button.bg-primary {
-    background-color: #7f8567;
+    background-color: #662b2b;
     color: #fff;
 }
 
 .button.bg-primary:hover {
-    background-color: #393c2d;
+    background-color: #470101;
 }
 
 .button.bg-white {
-    background-color: #fff;
+    background-color: #ffffff;
+    color: #343434;
 }
 
 .button.bg-white:hover {
-    background-color: #7f8567;
+    background-color: #8F9FB3;
+    color: #fff;
 }
 
 .button.bg-white-faded {
-    background-color: hsla(0, 0%, 100%, 0.2);
+    background-color: #828F7C;
     color: #fff;
 }
 
 .button.bg-white-faded:hover {
-    background-color: #fff;
-    color: #343434;
+    background-color: #1c262d;
+    color: #fff;
 }
 
 .button.no-top-margin {
@@ -3207,11 +3209,11 @@ figcaption {
 }
 
 .bg-primary-light {
-    background-color: #eff1e5;
+    background-color: #AEABA8;
 }
 
 .bg-grey {
-    background-color: #e0e0e0;
+    background-color: #E1DAD3;
 }
 
 .checkbox {
@@ -4102,6 +4104,9 @@ figcaption {
 .product-thumbnail {
     display: block;
     margin-bottom: 21px;
+    border-style: solid;
+    border-width: 6px;
+    border-color: #3d343091;
 }
 
 .price-container {
