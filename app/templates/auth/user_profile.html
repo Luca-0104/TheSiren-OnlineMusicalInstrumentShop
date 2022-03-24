@@ -228,37 +228,44 @@
                     <li class="profile-info">
                         {#                    the profile text information#}
                         <div class="profile-text">
-                            <p class="username">
-                                {{ user.username }}
-                            </p>
-
-                            <p class="account">
-                                Account Type: {% if user.role_id == 1 %}Customer{% else %}Retailer{% endif %}
-                            </p>
-
-                            <p class="date">
-                                Member since {{ user.start_datetime.date() }}
-
-                            </p>
-
                             <p class="email">
                                 Email: {{ user.email }}
                             </p>
 
+                            <p class="username">
+                                {{ user.username }}
+                            </p>
 
+                            <p class="date">
+                                Member since {{ user.start_datetime.date() }}
+                            </p>
+
+                            <p class="gender">
+                                {{ user.gender }}
+                            </p>
+
+                            <p class="tags">
+                                {{ user.tag }}
+                            </p>
+
+                            <p class="info">
+                                {{ user.information }}
+                            </p>
                         </div>
+
 
                         {% if user.username == session.get("username") %}
                             {#                    the edit button#}
-                            <div class="edit">
+                            <div class="button small nav-button w-inline-block" id="edit">
                                 <a href="{{ url_for('main.edit_profile') }}">Edit</a>
                             </div>
                         {% endif %}
 
+                        <p class="address">
+                            {{ user.address }}
+                        </p>
 
 
-                        {#                            This is an empty div, which is used to clear the float#}
-                        <div class="empty-for-clear-float"></div>
                     </li>
                 </ul>
             </div>
