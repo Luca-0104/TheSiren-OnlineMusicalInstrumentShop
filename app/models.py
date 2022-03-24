@@ -334,7 +334,7 @@ class ModelType(db.Model):
     description = db.Column(db.Text())
     price = db.Column(db.Float)
     stock = db.Column(db.Integer, default=0, nullable=False)
-    serial_number = db.Column(db.String(128), nullable=False, unique=True)
+    serial_number = db.Column(db.String(128), nullable=False)
     release_time = db.Column(db.DateTime(), index=True, default=datetime.utcnow)
     is_deleted = db.Column(db.Boolean, default=False)
     # 1 user(staff) --> n model type
@@ -359,6 +359,15 @@ class ModelType(db.Model):
         self.is_deleted = True
         db.session.add(self)
         db.session.commit()
+
+    def get_serial_number(self):
+        """
+        Concat the serial_prefix and serial_rank of the product of this model,
+        then concat it with the serial_number of this model to form the complete serial number of this model.
+        e.g. (b1-c1-t1-a1 + 2) + m1 >> b1-c1-t1-a1-2-m1
+        :return: The real complete serial number string
+        """
+        return '{}-{}'.format(self.product.get_serial_number(), self.serial_number)
 
     @staticmethod
     def insert_model_types():
