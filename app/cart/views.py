@@ -2,14 +2,23 @@ from flask import request, jsonify
 from flask_login import current_user, login_required
 
 from app import db
+from app.cart import cart
 from app.main import main
-from app.models import Cart
+from app.models import Cart, ModelType
+
+
+@cart.route('/show-my-cart')
+def show_my_cart():
+    """
+        for rendering the page of "my shopping cart"
+    """
+    pass
 
 
 # ------------------------------ BACK-END Server (using Ajax) ----------------------------------
 
 
-@main.route('/api/cart/update-cart-count', methods=['POST'])
+@cart.route('/api/cart/update-cart-count', methods=['POST'])
 @login_required
 def update_cart_count():
     """
@@ -28,14 +37,17 @@ def update_cart_count():
 
             # check whether the cart relation exists
             if cart_relation:
-                cart_relation.count = new_count
-                db.session.commit()
-                return jsonify({'returnValue': 0})
+                # check if the stock is enough
+                model = ModelType.query.get(model_id)
+                if new_count <= model.stock:
+                    cart_relation.count = new_count
+                    db.session.commit()
+                    return jsonify({'returnValue': 0})
 
     return jsonify({'returnValue': 1})
 
 
-@main.route('/api/cart/remove-cart-relation', methods=['POST'])
+@cart.route('/api/cart/remove-cart-relation', methods=['POST'])
 @login_required
 def remove_cart_relation():
     """
