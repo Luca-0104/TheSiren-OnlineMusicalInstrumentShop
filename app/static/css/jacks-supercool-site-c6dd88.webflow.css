@@ -3661,6 +3661,10 @@ figcaption {
     font-weight: 500;
 }
 
+.list-link:hover{
+    color: rgb(149, 149, 149);
+}
+
 .list-link.w--current {
     font-weight: 700;
 }

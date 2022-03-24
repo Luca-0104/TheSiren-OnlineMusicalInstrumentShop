@@ -904,13 +904,13 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Classification *</label>
-                                            <select name="categories[]" class="selectpicker form-control" data-style="py-0">
-                                                <option>Strings</option>
-                                                <option>Woodwinds</option>
-                                                <option>Brass</option>
-                                                <option>Percussion</option>
-                                                <option>Keyboard</option>
-                                                <option>Accessories</option>
+                                            <select id="classification" name="categories[]" class="selectpicker form-control" data-style="py-0">
+                                                <option sn="c1">Strings</option>
+                                                <option sn="c2">Woodwinds</option>
+                                                <option sn="c3">Brass</option>
+                                                <option sn="c4">Percussion</option>
+                                                <option sn="c5">Keyboard</option>
+                                                <option sn="c6">Accessories</option>
                                             </select>
                                             <div class="help-block with-errors"></div>
                                         </div>
@@ -918,70 +918,70 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Type *</label>
-                                            <select name="categories[]" class="selectpicker form-control" data-style="py-0">
+                                            <select id="type" name="categories[]" class="selectpicker form-control" data-style="py-0">
                                                 <optgroup label="String">
-                                                    <option>Violin</option>
-                                                    <option>Viola</option>
-                                                    <option>Cello</option>
-                                                    <option>Double Bass</option>
-                                                    <option>Guitar</option>
-                                                    <option>Bass</option>
-                                                    <option>Ukulele</option>
-                                                    <option>Harp</option>
-                                                    <option>Erhu</option>
-                                                    <option>Guzheng</option>
-                                                    <option>Guqin</option>
-                                                    <option>Pipa</option>
+                                                    <option sn="t1">Violin</option>
+                                                    <option sn="t2">Viola</option>
+                                                    <option sn="t3">Cello</option>
+                                                    <option sn="t4">Double Bass</option>
+                                                    <option sn="t5">Guitar</option>
+                                                    <option sn="t6">Bass</option>
+                                                    <option sn="t7">Ukulele</option>
+                                                    <option sn="t8">Harp</option>
+                                                    <option sn="t9">Erhu</option>
+                                                    <option sn="t10">Guzheng</option>
+                                                    <option sn="t11">Guqin</option>
+                                                    <option sn="t12">Pipa</option>
                                                 </optgroup>
 
                                                 <optgroup label="Woodwind">
-                                                    <option>Flute</option>
-                                                    <option>Clarinet</option>
-                                                    <option>Oboe</option>
-                                                    <option>Piccolo</option>
-                                                    <option>Saxophone</option>
-                                                    <option>English Horn</option>
-                                                    <option>Bassoon</option>
-                                                    <option>Recorder</option>
-                                                    <option>Bagpipes</option>
-                                                    <option>Suona Horn</option>
-                                                    <option>Sheng</option>
+                                                    <option sn="t13">Flute</option>
+                                                    <option sn="t14">Clarinet</option>
+                                                    <option sn="t15">Oboe</option>
+                                                    <option sn="t16">Piccolo</option>
+                                                    <option sn="t17">Saxophone</option>
+                                                    <option sn="t18">English Horn</option>
+                                                    <option sn="t19">Bassoon</option>
+                                                    <option sn="t20">Recorder</option>
+                                                    <option sn="t21">Bagpipes</option>
+                                                    <option sn="t22">Suona Horn</option>
+                                                    <option sn="t23">Sheng</option>
                                                 </optgroup>
 
                                                 <optgroup label="Brass">
-                                                    <option>Trumpet</option>
-                                                    <option>Trombone</option>
-                                                    <option>French Horn</option>
-                                                    <option>Tuba</option>
-                                                    <option>Euphonium</option>
-                                                    <option>Harmonica</option>
+                                                    <option sn="t24">Trumpet</option>
+                                                    <option sn="t25">Trombone</option>
+                                                    <option sn="t26">French Horn</option>
+                                                    <option sn="t27">Tuba</option>
+                                                    <option sn="t28">Euphonium</option>
+                                                    <option sn="t29">Harmonica</option>
                                                 </optgroup>
 
                                                 <optgroup label="Percussion">
-                                                    <option>Timpani</option>
-                                                    <option>Bass Drum</option>
-                                                    <option>Snare</option>
-                                                    <option>Cajon</option>
-                                                    <option>Cymbals</option>
-                                                    <option>Tam-tam</option>
-                                                    <option>Tambourine</option>
-                                                    <option>Marimba & Xylophone</option>
-                                                    <option>Vibraphone</option>
-                                                    <option>Drum Kit</option>
-                                                    <option>Other Percussion</option>
+                                                    <option sn="t30">Timpani</option>
+                                                    <option sn="t31">Bass Drum</option>
+                                                    <option sn="t32">Snare</option>
+                                                    <option sn="t33">Cajon</option>
+                                                    <option sn="t34">Cymbals</option>
+                                                    <option sn="t35">Tam-tam</option>
+                                                    <option sn="t36">Tambourine</option>
+                                                    <option sn="t37">Marimba & Xylophone</option>
+                                                    <option sn="t38">Vibraphone</option>
+                                                    <option sn="t39">Drum Kit</option>
+                                                    <option sn="t40">Other Percussion</option>
                                                 </optgroup>
 
                                                 <optgroup label="Keyboard">
-                                                    <option>Piano</option>
-                                                    <option>Accordion</option>
-                                                    <option>Launchpad</option>
+                                                    <option sn="t41">Piano</option>
+                                                    <option sn="t42">Accordion</option>
+                                                    <option sn="t43">Launchpad</option>
                                                 </optgroup>
 
                                                 <optgroup label="Accessories">
-                                                    <option>Effects</option>
-                                                    <option>Synthesizer</option>
-                                                    <option>Microphone</option>
-                                                    <option>Monitor Headphone</option>
+                                                    <option sn="t44">Effects</option>
+                                                    <option sn="t45">Synthesizer</option>
+                                                    <option sn="t46">Microphone</option>
+                                                    <option sn="t47">Monitor Headphone</option>
                                                 </optgroup>
                                             </select>
                                             <div class="help-block with-errors"></div>
@@ -992,11 +992,11 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Additional Specifications *</label>
-                                            <select name="categories[]" class="selectpicker form-control" data-style="py-0">
-                                                <option>Acoustic Only</option>
-                                                <option>Electricity Required</option>
-                                                <option>Electricity Support</option>
-                                                <option>Accessories</option>
+                                            <select id="additional" name="categories[]" class="selectpicker form-control" data-style="py-0">
+                                                <option sn="a1">Acoustic Only</option>
+                                                <option sn="a2">Electricity Required</option>
+                                                <option sn="a3">Electricity Support</option>
+                                                <option sn="a4">Accessories</option>
                                             </select>
                                         </div>
                                     </div>
@@ -1005,12 +1005,12 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Brand *</label>
-                                                <select name="product_brand" class="selectpicker form-control" data-style="py-0">
-                                                    <option>brand1</option>
-                                                    <option>brand2</option>
-                                                    <option>brand3</option>
-                                                    <option>brand4</option>
-                                                    <option>brand5</option>
+                                                <select id="brand" name="product_brand" class="selectpicker form-control" data-style="py-0">
+                                                    <option sn="b1">brand1</option>
+                                                    <option sn="b2">brand2</option>
+                                                    <option sn="b3">brand3</option>
+                                                    <option sn="b4">brand4</option>
+                                                    <option sn="b5">brand5</option>
                                                 </select>
                                         </div>
                                     </div>
@@ -1038,6 +1038,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Serial Number *</label>
+                                            <div id="sn_model_type"></div>
                                             <input name="1_model_num" type="text" class="form-control" placeholder="Enter Serial Number" data-errors="Please Enter Serial Number.">
                                             <div class="help-block with-errors"></div>
                                         </div>
