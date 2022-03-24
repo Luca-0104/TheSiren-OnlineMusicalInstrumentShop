@@ -153,8 +153,7 @@
         let brand_selected = $("#brand option:selected");
 
         let l = "-";
-        serial = serial
-               + "" + String(brand_selected.attr("sn"))
+        serial = String(brand_selected.attr("sn"))
                + l + String(classification_selected.attr("sn"))
                + l + String(type_selected.attr("sn"))
                + l + String(additional_selected.attr("sn"));
@@ -189,8 +188,7 @@
                        + l + String(type_selected.attr("sn"))
                        + l + String(additional_selected.attr("sn"));
 
-                product_form.attr("action","{{ url_for('product.upload_product', counter="+counter+", serial_prefix="+serial+", serial_rank="+serial_rank+") }}");
-
+                product_form.attr("action","/upload-product" + "?counter=" + counter + "&serial_prefix=" + serial + "&serial_rank=" + serial_rank);
             }
             else{
                 //failed
