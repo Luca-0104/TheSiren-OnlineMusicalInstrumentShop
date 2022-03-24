@@ -59,7 +59,8 @@
                 <a href="https://mmra.re/purchaseverse" class="button small nav-button w-inline-block" id="cart-button">
                     <div>Cart</div>
                 </a>
-                <a href="https://mmra.re/purchaseverse" class="button small nav-button w-inline-block" id="order-button">
+                <a href="https://mmra.re/purchaseverse" class="button small nav-button w-inline-block"
+                   id="order-button">
                     <div>Order</div>
                 </a>
                 <div data-node-type="commerce-cart-wrapper" data-open-product="" data-wf-cart-type="rightSidebar"
@@ -214,22 +215,54 @@
 </div>
 <div class="footer wf-section">
     <div class="main-container">
-        <div class="footer-subscribe-section">
+        <div class="profile-box">
+            {#        the avatar box#}
+            <div class="avatar-box">
+                {#                the avatar image#}
+                <img src="{{ url_for('static', filename=user.avatar) }}" alt="user-avatar">
+            </div>
+
+            <div class="profile-info">
+                <ul class="profile-list">
+
+                    <li class="profile-info">
+                        {#                    the profile text information#}
+                        <div class="profile-text">
+                            <p class="username">
+                                {{ user.username }}
+                            </p>
+
+                            <p class="account">
+                                Account Type: {% if user.role_id == 1 %}Customer{% else %}Retailer{% endif %}
+                            </p>
+
+                            <p class="date">
+                                Member since {{ user.start_datetime.date() }}
+
+                            </p>
+
+                            <p class="email">
+                                Email: {{ user.email }}
+                            </p>
 
 
-            {#        <h3 class="no-bottom-margin">Subscribe for stories and new product announcements.</h3>#}
-            {#        <div id="w-node-_3ee0633f-a568-72e0-ab7b-589be9d960dd-e9d960d8">#}
-            {#          <div class="form-block w-form">#}
-            {#            <form id="wf-form-Newsletter-Form" name="wf-form-Newsletter-Form" data-name="Newsletter Form" method="get" class="subscribe-form"><input type="email" class="form-input subscribe-form-input w-input" maxlength="256" name="email-2" data-name="Email 2" placeholder="Email Address" id="email-2" required=""><input type="submit" value="Subscribe" data-wait="Please wait..." class="button w-button"></form>#}
-            {#            <div class="form-success w-form-done">#}
-            {#              <div>Thanks for subscribing!</div>#}
-            {#            </div>#}
-            {#            <div class="form-error w-form-fail">#}
-            {#              <div>Oops! Something went wrong while submitting the form.</div>#}
-            {#            </div>#}
-            {#          </div>#}
-            {#          <div class="fine-print-text form-hint-text">We will never share your email with third parties.</div>#}
-            {#        </div>#}
+                        </div>
+
+                        {% if user.username == session.get("username") %}
+                            {#                    the edit button#}
+                            <div class="edit">
+                                <a href="{{ url_for('main.edit_profile') }}">Edit</a>
+                            </div>
+                        {% endif %}
+
+
+
+                        {#                            This is an empty div, which is used to clear the float#}
+                        <div class="empty-for-clear-float"></div>
+                    </li>
+                </ul>
+            </div>
+
         </div>
     </div>
     <div class="footer-details-section">
