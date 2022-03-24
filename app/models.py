@@ -524,6 +524,9 @@ class User(UserMixin, db.Model):
     start_datetime = db.Column(db.DateTime(), default=datetime.utcnow)
     avatar = db.Column(db.String(256), default='upload/avatar/default__0__.jpg')  # The avatar
     theme = db.Column(db.String(16), default='light')  # the user preferred theme of our website
+    language = db.Column(db.String(16), default='en')
+    about_me = db.Column(db.Text(300))
+    # gender = db.Col
     is_deleted = db.Column(db.Boolean, default=False)
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))  # 1 role --> n users
 

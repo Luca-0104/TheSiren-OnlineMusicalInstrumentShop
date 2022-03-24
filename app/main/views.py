@@ -1,4 +1,5 @@
-from flask import render_template
+from flask import render_template, request, redirect, url_for, session
+from sqlalchemy import and_
 
 from . import main
 from ..models import Product, ModelType, Category, Brand
