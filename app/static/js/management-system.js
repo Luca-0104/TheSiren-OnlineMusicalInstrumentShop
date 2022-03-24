@@ -70,7 +70,7 @@
                                        + repeat_model_stock + repeat_model_intro_pic + repeat_model_pic +
                                          repeat_model_description);
                     repeat_model_type.before(prepend_content);
-                    product_form.attr("action","/upload-product" + "?counter=" + counter + "&serial_prefix=" + serial + "&serial_rank=" + serial_rank);
+                    product_form.attr("action","/upload-product" + "?counter=" + counter + "&serial_prefix=" + serial + "&serial_rank=" + serial_rank_g);
                 }else{
                 counter += 1;
                 repeat_model_name = ["<div class=\"col-md-12\">",
@@ -123,7 +123,7 @@
                                        + repeat_model_stock + repeat_model_intro_pic + repeat_model_pic +
                                          repeat_model_description);
                 repeat_model_type.before(prepend_content);
-                product_form.attr("action","/upload-product" + "?counter=" + counter + "&serial_prefix=" + serial + "&serial_rank=" + serial_rank);
+                product_form.attr("action","/upload-product" + "?counter=" + counter + "&serial_prefix=" + serial + "&serial_rank=" + serial_rank_g);
                 }
         })
     });
