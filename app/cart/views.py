@@ -3,10 +3,10 @@ from flask_login import current_user, login_required
 
 from app import db
 from app.main import main
+from app.models import Cart
 
 
 # ------------------------------ BACK-END Server (using Ajax) ----------------------------------
-from app.models import Cart
 
 
 @main.route('/api/cart/update-cart-count', methods=['POST'])
@@ -31,10 +31,6 @@ def update_cart_count():
                 cart_relation.count = new_count
                 db.session.commit()
                 return jsonify({'returnValue': 0})
-            else:
-                return jsonify({'returnValue': 1})
-        else:
-            return jsonify({'returnValue': 1})
 
     return jsonify({'returnValue': 1})
 
