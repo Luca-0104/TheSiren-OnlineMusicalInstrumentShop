@@ -169,13 +169,28 @@
             console.log("server got serial number.");
             let returnValue = response['returnValue'];
             let final_serial;
+
             console.log(returnValue);
 
             if (returnValue === 0){
                 //success
+
                 final_serial = response["serial_number"].toString() + l;
                 $("#sn_model_type").html(final_serial);
                 console.log(final_serial);
+
+                let serial_break = final_serial.split("-");
+                console.log(serial_break);
+                let serial_rank = serial_break[serial_break.length - 2];
+
+                serial =
+                       String(brand_selected.attr("sn"))
+                       + l + String(classification_selected.attr("sn"))
+                       + l + String(type_selected.attr("sn"))
+                       + l + String(additional_selected.attr("sn"));
+
+                product_form.attr("action","{{ url_for('product.upload_product', counter="+counter+", serial_prefix="+serial+", serial_rank="+serial_rank+") }}");
+
             }
             else{
                 //failed
@@ -185,3 +200,5 @@
 
         serial = "";
     }
+
+
