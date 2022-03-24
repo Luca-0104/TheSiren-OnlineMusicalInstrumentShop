@@ -127,18 +127,21 @@ def upload_product():
     # if the form is submitted
     if request.method == 'POST':
         p_name = request.form.get('product_name')
-        p_serial_number = request.form.get('')
         cate_lst = request.values.getlist('categories[]')
         brand_name = request.form.get('product_brand')
         # get the brand object by its name
         brand = Brand.query.filter_by(name=brand_name).first()
 
-        # get the number count of init model types
+        # 'get' requests
+        # the number count of init model types
         mt_count = int(request.args.get('counter'))
+        serial_prefix = request.args.get('serial_prefix')
+        serial_rank = request.args.get('serial_rank')
 
         print('---------------------------------- product ----------------------------------')
         print('p_name: ', p_name)
-        print('p_serial_number: ', p_serial_number)
+        print('serial_prefix: ', serial_prefix)
+        print('serial_rank: ', serial_rank)
         print('cate_lst: ', cate_lst)
         print('brand_name: ', brand_name)
         print('mt_count: ', mt_count)
@@ -147,7 +150,7 @@ def upload_product():
             store the Product obj into the db 
         """
         # create an object of this new product
-        new_product = Product(name=p_name, serial_number=p_serial_number, brand=brand)
+        new_product = Product(name=p_name, serial_prefix=serial_prefix, serial_rank=serial_rank, brand=brand)
         db.session.add(new_product)
 
         # add categories to this product

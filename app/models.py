@@ -224,8 +224,6 @@ class Product(db.Model):
     """
     __tablename__ = 'products'
     id = db.Column(db.Integer, primary_key=True)
-    # (discarded)
-    serial_number = db.Column(db.String(128), nullable=False, unique=True)
     # e.g. b1-c1-t1-a1
     serial_prefix = db.Column(db.String(64), nullable=False)
     # e.g. 2
@@ -245,12 +243,11 @@ class Product(db.Model):
     def insert_products():
         for product_info in product_list:
             name = product_info[0]
-            serial_number = product_info[1]
             serial_prefix = product_info[2]
             serial_rank = product_info[3]
 
             """ brand and categories are random now for test!!! """
-            new_product = Product(name=name, serial_number=serial_number, brand_id=random.randint(1, 5), serial_prefix=serial_prefix, serial_rank=serial_rank)
+            new_product = Product(name=name, brand_id=random.randint(1, 5), serial_prefix=serial_prefix, serial_rank=serial_rank)
             db.session.add(new_product)
 
             """ add categories """
