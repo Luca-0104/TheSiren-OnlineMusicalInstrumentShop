@@ -445,6 +445,24 @@ class Permission:
     REMOVE_PRODUCT = 64
 
 
+class Address(db.Model):
+    """
+        The table records the address of delivery.
+        1 address -> 1 user (customer)
+        1 user (customer) -> n addresses
+    """
+    __tablename__ = 'addresses'
+    id = db.Column(db.Integer, primary_key=True)
+    recipient_name = db.Column(db.String(64), nullable=False)
+    phone = db.Column(db.String(24), nullable=False)
+    country = db.Column(db.String(128), nullable=False)
+    province_or_state = db.Column(db.String(128), nullable=False)
+    city = db.Column(db.String(128), nullable=False)
+    district = db.Column(db.String(128), nullable=False)
+    # 1 address -> 1 user (customer)
+    customer_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+
 class Role(db.Model):
     __tablename__ = 'roles'
     id = db.Column(db.Integer, primary_key=True)
@@ -526,7 +544,7 @@ class User(UserMixin, db.Model):
     theme = db.Column(db.String(16), default='light')  # the user preferred theme of our website
     language = db.Column(db.String(16), default='en')
     about_me = db.Column(db.Text(300))
-    # gender = db.Col
+    gender = db.Column(db.String(16), default='unknown')  # 3 possible values: 'Male', 'Female',
     is_deleted = db.Column(db.Boolean, default=False)
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))  # 1 role --> n users
 
@@ -549,6 +567,8 @@ class User(UserMixin, db.Model):
     chat_rooms_staff = db.relationship('ChatRoom', foreign_keys=[ChatRoom.staff_id], backref=db.backref('staff', lazy='joined'), lazy='dynamic', cascade='all, delete-orphan')
     # 1 user(staff) --> n products
     model_types = db.relationship('ModelType', backref='staff', lazy='dynamic')
+    # 1 user (customer) -> n addresses
+    addresses = db.relationship('Address', backref='customer', lazy='dynamic')
 
 
     def __repr__(self):
