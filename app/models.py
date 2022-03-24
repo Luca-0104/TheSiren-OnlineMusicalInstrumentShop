@@ -48,8 +48,9 @@ class Refund(db.Model):
     __tablename__ = 'refunds'
     id = db.Column(db.Integer, primary_key=True)
     order_model_type_id = db.Column(db.Integer, db.ForeignKey('order_model_types.id'))
-    count = db.Column(db.Integer, default=1)    # how many items is applied to be refund in this order_model_type. This should <= the count in this order_model_type
-    reason = db.Column(db.Text())   # customer should give the reason why they ask for a refund
+    count = db.Column(db.Integer,
+                      default=1)  # how many items is applied to be refund in this order_model_type. This should <= the count in this order_model_type
+    reason = db.Column(db.Text())  # customer should give the reason why they ask for a refund
     is_done = db.Column(db.Boolean, default=False)
 
 
@@ -124,17 +125,42 @@ class Order(db.Model):
         An order can contain multiple model types of products. (This is implemented by using a third-party table "OrderModelType")
         An order can contain multiple references to "OrderModelType" table
 
-        Every order have their states code: 0:"waiting for payment", 1:"on delivery", 2:"waiting for collection", 3:"finished", 4:"canceled"
+        Every order have their states code: 0:"waiting for payment",
+                                            1:"preparing"
+                                            2:"on delivery",
+                                            3:"waiting for collection",
+                                            4:"finished",
+                                            5:"canceled"
+                                            6:"expired
         "finished" orders can be seen as shopping histories
     """
     __tablename__ = 'orders'
     id = db.Column(db.Integer, primary_key=True)
     timestamp = db.Column(db.DateTime(), index=True, default=datetime.utcnow)
-    status = db.Column(db.Integer, index=True, default=0)  # the status code of this order
+    status_code = db.Column(db.Integer, default=0)  # the status code of this order
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))  # the uid of the customer who owns this order
     # 1 order -> n OrderModelType; 1 OrderModelType -> 1 order
     order_model_types = db.relationship('OrderModelType', backref='order', lazy='dynamic')
 
+    def get_status(self):
+        """
+        Get the status of this order.
+        :return: A string of the status of this order
+        """
+        if self.status_code == 0:
+            return 'waiting for payment'
+        elif self.status_code == 1:
+            return 'preparing'
+        elif self.status_code == 2:
+            return 'on delivery'
+        elif self.status_code == 3:
+            return 'waiting for collection'
+        elif self.status_code == 4:
+            return 'finished'
+        elif self.status_code == 5:
+            return 'canceled'
+        elif self.status_code == 6:
+            return 'expired'
 
 
 class OrderModelType(db.Model):
@@ -148,17 +174,14 @@ class OrderModelType(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     order_id = db.Column(db.Integer, db.ForeignKey('orders.id'))
     model_type_id = db.Column(db.Integer, db.ForeignKey('model_types.id'))
-    count = db.Column(db.Integer, default=1)    # how many this model type the user bought in this order
-    unit_pay = db.Column(db.Float, nullable=False)  # how much the user really paid for each of this model (unit_pay*count=total payment of this model)
+    count = db.Column(db.Integer, default=1)  # how many this model type the user bought in this order
+    unit_pay = db.Column(db.Float,
+                         nullable=False)  # how much the user really paid for each of this model (unit_pay*count=total payment of this model)
     # refund record (this can be none)
     refunds = db.relationship('Refund', backref='order_model_type', lazy='dynamic')
 
     def __repr__(self):
         return '<OrderModelType order_id: %r --- model_type: %r * %r>' % (self.order_id, self.model_type_id, self.count)
-
-
-# # class History(db.Model):
-# #     pass
 
 
 class Cart(db.Model):
@@ -247,7 +270,8 @@ class Product(db.Model):
             serial_rank = product_info[3]
 
             """ brand and categories are random now for test!!! """
-            new_product = Product(name=name, brand_id=random.randint(1, 5), serial_prefix=serial_prefix, serial_rank=serial_rank)
+            new_product = Product(name=name, brand_id=random.randint(1, 5), serial_prefix=serial_prefix,
+                                  serial_rank=serial_rank)
             db.session.add(new_product)
 
             """ add categories """
@@ -385,10 +409,10 @@ class ModelType(db.Model):
             user_id = [3, 4][random.randint(0, 1)]
             product_id = random.randint(1, 10)
             # create the object of this model type
-            new_mt = ModelType(name=name, description=description, price=price, stock=stock, serial_number=serial_number, user_id=user_id, product_id=product_id)
+            new_mt = ModelType(name=name, description=description, price=price, stock=stock,
+                               serial_number=serial_number, user_id=user_id, product_id=product_id)
             db.session.add(new_mt)
         db.session.commit()
-
 
 
 class Category(db.Model):
@@ -434,21 +458,27 @@ class Brand(db.Model):
         db.session.commit()
 
 
-class Permission:
+class Premium(db.Model):
     """
-    Using integers to represent different permissions
-    all the number are 2^n
-    so that the sum of a group of permission numbers
-    can represent a sole group of permissions.
-    This means when we get a sum number, we can know which permissions the user owns.
+        The table records the premium membership info.
+        1 user (customer) -> n premium (each period of premium is regarded as a record in our db)
+        (in a specific period of time, a user can possess only a single premium membership)
+        1 premium -> 1 user (customer)
     """
-    UPLOAD_PRODUCT = 1
-    VIEW_ALL_PRODUCT = 2
-    GRADE_STARS = 4
-    COMMENT = 8
-    VIEW_ALL_COMMENTS = 16
-    ADMIN = 32
-    REMOVE_PRODUCT = 64
+    __tablename__ = 'premiums'
+    id = db.Column(db.Integer, primary_key=True)
+    # 1 premium -> 1 user
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    start_time = db.Column(db.DateTime(), default=datetime.utcnow)
+    duration = db.Column(db.Integer, nullable=False)  # the unit is 'day': 7, 30, 365
+    is_expired = db.Column(db.Boolean, default=False)
+
+    def expire(self):
+        """
+            The function fot expire this piece of record
+        """
+        self.is_expired = True
+        db.session.commit()
 
 
 class Address(db.Model):
@@ -467,6 +497,23 @@ class Address(db.Model):
     district = db.Column(db.String(128), nullable=False)
     # 1 address -> 1 user (customer)
     customer_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+
+class Permission:
+    """
+    Using integers to represent different permissions
+    all the number are 2^n
+    so that the sum of a group of permission numbers
+    can represent a sole group of permissions.
+    This means when we get a sum number, we can know which permissions the user owns.
+    """
+    UPLOAD_PRODUCT = 1
+    VIEW_ALL_PRODUCT = 2
+    GRADE_STARS = 4
+    COMMENT = 8
+    VIEW_ALL_COMMENTS = 16
+    ADMIN = 32
+    REMOVE_PRODUCT = 64
 
 
 class Role(db.Model):
@@ -550,7 +597,10 @@ class User(UserMixin, db.Model):
     theme = db.Column(db.String(16), default='light')  # the user preferred theme of our website
     language = db.Column(db.String(16), default='en')
     about_me = db.Column(db.Text(300))
-    gender = db.Column(db.String(16), default='unknown')  # 3 possible values: 'Male', 'Female',
+    gender = db.Column(db.String(16), default='Unknown')  # 3 possible values: 'Male', 'Female', 'Unknown'
+    exp = db.Column(db.Integer, default=0)  # the experience (level) of the user
+    is_premium = db.Column(db.Boolean, default=False)
+    premium_left_days = db.Column(db.Integer, default=0)  # the day left of the premium membership
     is_deleted = db.Column(db.Boolean, default=False)
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))  # 1 role --> n users
 
@@ -569,13 +619,18 @@ class User(UserMixin, db.Model):
     # 1 user(customer) --> n orders
     orders = db.relationship('Order', backref='user', lazy='dynamic')
     # chat room relationship (For version 2)
-    chat_rooms_customer = db.relationship('ChatRoom', foreign_keys=[ChatRoom.customer_id], backref=db.backref('customer', lazy='joined'), lazy='dynamic', cascade='all, delete-orphan')
-    chat_rooms_staff = db.relationship('ChatRoom', foreign_keys=[ChatRoom.staff_id], backref=db.backref('staff', lazy='joined'), lazy='dynamic', cascade='all, delete-orphan')
+    chat_rooms_customer = db.relationship('ChatRoom', foreign_keys=[ChatRoom.customer_id],
+                                          backref=db.backref('customer', lazy='joined'), lazy='dynamic',
+                                          cascade='all, delete-orphan')
+    chat_rooms_staff = db.relationship('ChatRoom', foreign_keys=[ChatRoom.staff_id],
+                                       backref=db.backref('staff', lazy='joined'), lazy='dynamic',
+                                       cascade='all, delete-orphan')
     # 1 user(staff) --> n products
     model_types = db.relationship('ModelType', backref='staff', lazy='dynamic')
     # 1 user (customer) -> n addresses
     addresses = db.relationship('Address', backref='customer', lazy='dynamic')
-
+    # 1 user (customer) -> n premiums (in a specific period of time, a user can possess only a single premium membership)
+    premiums = db.relationship('Premium', backref='customer', lazy='dynamic')
 
     def __repr__(self):
         return '<User %r>' % self.username
@@ -619,6 +674,52 @@ class User(UserMixin, db.Model):
         :return: true means yes while false means no
         """
         return self.role is not None and self.role.has_permission(perm)
+
+    # ------ functions related to the premium membership
+    def get_current_premium(self):
+        """
+            A function for get the obj of current premium membership.
+        """
+        if self.is_premium:
+            for p in self.premiums.all():
+                if not p.is_expired:
+                    return p
+        else:
+            return None
+
+    def become_premium_member(self, duration: int):
+        """
+        Call this function to set this user as the premium member.
+        :param duration: the duration of this new premium membership, unit is 'day'
+        """
+
+        # mark the current premium record as expired
+        # (if this is a renewal of membership, we still need to let only a single record be marked as not expired)
+        p = self.get_current_premium()
+        if p:
+            p.expire()
+
+        # create a obj of new premium record
+        new_premium = Premium(user_id=self.id, duration=duration)
+
+        # update the premium Columns in this table
+        self.is_premium = True
+        self.premium_left_days += new_premium.duration
+        db.session.commit()
+
+    def expire_premium_member(self):
+        """
+            Call this function to deprive the premium member ship of this user
+        """
+        # mark the current premium records as 'expired'
+        p = self.get_current_premium()
+        if p:
+            p.expire()
+
+        # update the premium Columns in this table
+        self.is_premium = False
+        self.premium_left_days = 0
+        db.session.commit()
 
 
 @login_manager.user_loader

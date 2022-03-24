@@ -138,13 +138,13 @@ def upload_product():
         serial_prefix = request.args.get('serial_prefix')
         serial_rank = request.args.get('serial_rank')
 
-        print('---------------------------------- product ----------------------------------')
-        print('p_name: ', p_name)
-        print('serial_prefix: ', serial_prefix)
-        print('serial_rank: ', serial_rank)
-        print('cate_lst: ', cate_lst)
-        print('brand_name: ', brand_name)
-        print('mt_count: ', mt_count)
+        # print('---------------------------------- product ----------------------------------')
+        # print('p_name: ', p_name)
+        # print('serial_prefix: ', serial_prefix)
+        # print('serial_rank: ', serial_rank)
+        # print('cate_lst: ', cate_lst)
+        # print('brand_name: ', brand_name)
+        # print('mt_count: ', mt_count)
 
         """ 
             store the Product obj into the db 
@@ -185,14 +185,14 @@ def upload_product():
             m_pics_lst = request.files.getlist(key_pics)
             m_pics_intro_lst = request.files.getlist(key_pics_intro)
 
-            print('---------------------------------- models ----------------------------------')
-            print('m_name: ', m_name)
-            print('m_description: ', m_description)
-            print('m_price', m_price)
-            print('m_stock', m_stock)
-            print('m_serial_number', m_serial_number)
-            print('m_pics_lst', m_pics_lst)
-            print('m_pics_intro_lst', m_pics_intro_lst)
+            # print('---------------------------------- models ----------------------------------')
+            # print('m_name: ', m_name)
+            # print('m_description: ', m_description)
+            # print('m_price', m_price)
+            # print('m_stock', m_stock)
+            # print('m_serial_number', m_serial_number)
+            # print('m_pics_lst', m_pics_lst)
+            # print('m_pics_intro_lst', m_pics_intro_lst)
 
             # create an obj of this new model type
             new_model_type = ModelType(name=m_name, description=m_description, price=m_price, stock=m_stock, serial_number=m_serial_number, product=new_product)
