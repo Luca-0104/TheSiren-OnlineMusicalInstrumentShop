@@ -84,6 +84,17 @@ html.w-mod-touch * {
     display: inline-block;
 }
 
+#cart-button {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#order-button {
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-left: 15px;
+}
+
 .w-clearfix:before,
 .w-clearfix:after {
     content: " ";

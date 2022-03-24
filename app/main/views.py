@@ -1,5 +1,4 @@
-from flask import render_template, request, redirect, url_for
-from sqlalchemy import and_
+from flask import render_template
 
 from . import main
 from ..models import Product, ModelType, Category, Brand
@@ -21,6 +20,9 @@ def index_test():
     """
         The function for rendering the fake index page
     """
+
+    if session.get('language') is None:
+        session['language'] = 'en'
     return render_template('main/index_test.html')
 
 
@@ -132,5 +134,4 @@ def purchase_cart():
         into the History table.
     """
     pass
-
 
