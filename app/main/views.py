@@ -109,24 +109,6 @@ def change_theme():
     pass
 
 
-@main.route('/api/cart/update-product-count', methods=['POST'])
-def update_product_count():
-    """
-            update the product account of a specific cart relation, which is about
-            current user and the given product
-    """
-    pass
-
-
-@main.route('/api/cart/remove-cart-relation', methods=['POST'])
-def remove_cart_relation():
-    """
-        remove a specific cart relation according to the cart_id
-        (remove a product from shopping cart)
-    """
-    pass
-
-
 @main.route('/api/cart/purchase_cart', methods=['POST'])
 def purchase_cart():
     """
