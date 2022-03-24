@@ -82,4 +82,4 @@ def register_logger(app):
 @babel.localeselector
 def get_locale():
     # return request.accept_languages.best_match(['en', 'zh'])
-    return request.accept_languages.best_match([session['language']])
+    return request.accept_languages.best_match([session.get('language') or 'en'])
