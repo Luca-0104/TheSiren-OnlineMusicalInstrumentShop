@@ -126,3 +126,60 @@ $(document).ready(function (){
             }
     })
 });
+
+    //Serial collection
+    let classification = $("#classification");
+    let type = $("#type");
+    let additional = $("#additional");
+    let brand = $("#brand");
+    let serial = "";
+
+    classification.change(function(){ serial_number_half_collection() });
+    type.change(function(){ serial_number_half_collection() });
+    additional.change(function(){ serial_number_half_collection() });
+    brand.change(function(){ serial_number_half_collection() });
+
+    $(document).ready(function (){
+       serial_number_half_collection();
+    })
+
+    function serial_number_half_collection(){
+
+        let classification_selected = $("#classification option:selected");
+        let type_selected = $("#type option:selected");
+        let additional_selected = $("#additional option:selected");
+        let brand_selected = $("#brand option:selected");
+
+        let l = "-";
+        serial = serial
+               + "" + String(brand_selected.attr("sn"))
+               + l + String(classification_selected.attr("sn"))
+               + l + String(type_selected.attr("sn"))
+               + l + String(additional_selected.attr("sn"));
+
+        console.log(serial)
+        $.post("/api/stock-management/upload-product/validate-serial-p",{
+
+            "serial_prefix":serial
+
+        }).done(function (response){
+
+            console.log("server got serial number.");
+            let returnValue = response['returnValue'];
+            let final_serial;
+            console.log(returnValue);
+
+            if (returnValue === 0){
+                //success
+                final_serial = response["serial_number"].toString() + l;
+                $("#sn_model_type").html(final_serial);
+                console.log(final_serial);
+            }
+            else{
+                //failed
+                return 0;
+            }
+        })
+
+        serial = "";
+    }
