@@ -4108,6 +4108,9 @@ figcaption {
 .product-thumbnail {
     display: block;
     margin-bottom: 21px;
+    border-style: solid;
+    border-width: 6px;
+    border-color: #3d343091;
 }
 
 .price-container {
