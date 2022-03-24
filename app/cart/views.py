@@ -1,4 +1,4 @@
-from flask import request, jsonify
+from flask import request, jsonify, render_template
 from flask_login import current_user, login_required
 
 from app import db
@@ -8,11 +8,13 @@ from app.models import Cart, ModelType
 
 
 @cart.route('/show-my-cart')
+@login_required
 def show_my_cart():
     """
         for rendering the page of "my shopping cart"
     """
-    pass
+    cart_relation_lst = current_user.carts.all()
+    return render_template('', cart_relation_lst=cart_relation_lst)
 
 
 # ------------------------------ BACK-END Server (using Ajax) ----------------------------------
