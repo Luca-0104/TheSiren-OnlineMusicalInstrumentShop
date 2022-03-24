@@ -70,7 +70,7 @@
                                        + repeat_model_stock + repeat_model_intro_pic + repeat_model_pic +
                                          repeat_model_description);
                     repeat_model_type.before(prepend_content);
-                    product_form.attr("action","/upload-product" + "?counter=" + counter);
+                    product_form.attr("action","/upload-product" + "?counter=" + counter + "&serial_prefix=" + serial + "&serial_rank=" + serial_rank);
                 }else{
                 counter += 1;
                 repeat_model_name = ["<div class=\"col-md-12\">",
@@ -123,7 +123,7 @@
                                        + repeat_model_stock + repeat_model_intro_pic + repeat_model_pic +
                                          repeat_model_description);
                 repeat_model_type.before(prepend_content);
-                product_form.attr("action","/upload-product" + "?counter=" + counter);
+                product_form.attr("action","/upload-product" + "?counter=" + counter + "&serial_prefix=" + serial + "&serial_rank=" + serial_rank);
                 }
         })
     });
@@ -135,6 +135,7 @@
     let additional = $("#additional");
     let brand = $("#brand");
     let serial = "";
+    let serial_rank_g;
 
     classification.change(function(){ serial_number_half_collection() });
     type.change(function(){ serial_number_half_collection() });
@@ -189,6 +190,7 @@
                        + l + String(additional_selected.attr("sn"));
 
                 product_form.attr("action","/upload-product" + "?counter=" + counter + "&serial_prefix=" + serial + "&serial_rank=" + serial_rank);
+                serial_rank_g = serial_rank;
             }
             else{
                 //failed
@@ -198,5 +200,4 @@
 
         serial = "";
     }
-
 
