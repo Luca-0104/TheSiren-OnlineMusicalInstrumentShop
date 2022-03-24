@@ -222,22 +222,26 @@ def upload_product():
             """ add introduction pictures """
             result_intro = upload_picture(m_pics_intro_lst, new_model_type.id, Config.PIC_TYPE_MODEL_INTRO)
             # get the status code
-            status = result_intro[0]
-            if status == 0:
+            status2 = result_intro[0]
+            if status2 == 0:
                 # success
                 pass
-            elif status == 1:
+            elif status2 == 1:
                 # failed
-                flash(result[1])
-            elif status == 2:
+                flash(result_intro[1])
+            elif status2 == 2:
                 # partial success
-                failed_list = result[1]
+                failed_list = result_intro[1]
                 flash_str = 'Picture '
                 for name in failed_list:
                     flash_str += name
                     flash_str += ', '
                 flash_str += ' are failed to be uploaded! Check the suffix'
                 flash(flash_str)
+
+            # go back to the management page after adding the new product (not matter are there any failures about pictures)
+            flash('New product and its models are uploaded successfully!')
+            return redirect(url_for('product.show_page_stock_management'))
 
     return render_template('staff/page-add-product.html')
 
@@ -379,7 +383,7 @@ def upload_model_type(product_id):
         (Backend forms needed)
         :param product_id: Which product this model belongs to
     """
-    form = ModelUploadForm()
+    form = ModelUploadForm(product_id)
     if form.validate_on_submit():
         """
             Check if the related product exists.
