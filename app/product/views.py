@@ -118,7 +118,7 @@ def search_stock(key_word, search_type):
 # ------------------------------------------------ CUD operations on 'product' ------------------------------------------------
 
 
-@product.route('/upload-product')
+@product.route('/upload-product', methods=['GET', 'POST'])
 @login_required
 def upload_product():
     """
@@ -127,20 +127,30 @@ def upload_product():
     # if the form is submitted
     if request.method == 'POST':
         p_name = request.form.get('product_name')
-        p_serial_number = request.form.get('')
         cate_lst = request.values.getlist('categories[]')
         brand_name = request.form.get('product_brand')
         # get the brand object by its name
         brand = Brand.query.filter_by(name=brand_name).first()
 
-        # get the number count of init model types
+        # 'get' requests
+        # the number count of init model types
         mt_count = int(request.args.get('counter'))
+        serial_prefix = request.args.get('serial_prefix')
+        serial_rank = request.args.get('serial_rank')
+
+        print('---------------------------------- product ----------------------------------')
+        print('p_name: ', p_name)
+        print('serial_prefix: ', serial_prefix)
+        print('serial_rank: ', serial_rank)
+        print('cate_lst: ', cate_lst)
+        print('brand_name: ', brand_name)
+        print('mt_count: ', mt_count)
 
         """ 
             store the Product obj into the db 
         """
         # create an object of this new product
-        new_product = Product(name=p_name, serial_number=p_serial_number, brand=brand)
+        new_product = Product(name=p_name, serial_prefix=serial_prefix, serial_rank=serial_rank, brand=brand)
         db.session.add(new_product)
 
         # add categories to this product
@@ -158,13 +168,13 @@ def upload_product():
         # loop through all the init model types
         for i in range(1, mt_count + 1):
             # the 'name' attribute of <input/>s of this model
-            key_name = str(i) + '_'
-            key_description = str(i) + '_'
-            key_price = str(i) + '_'
-            key_stock = str(i) + '_'
-            key_serial_number = str(i) + '_'
-            key_pics = str(i) + '_'
-            key_pics_intro = str(i) + '_'
+            key_name = str(i) + '_model_name'
+            key_description = str(i) + '_model_description'
+            key_price = str(i) + '_model_price'
+            key_stock = str(i) + '_model_stock'
+            key_serial_number = str(i) + '_model_num'
+            key_pics = str(i) + '_model_pic'
+            key_pics_intro = str(i) + '_model_intro_pic'
 
             # get the information of this model from frontend form
             m_name = request.form.get(key_name)
@@ -174,6 +184,15 @@ def upload_product():
             m_serial_number = request.form.get(key_serial_number)
             m_pics_lst = request.files.getlist(key_pics)
             m_pics_intro_lst = request.files.getlist(key_pics_intro)
+
+            print('---------------------------------- models ----------------------------------')
+            print('m_name: ', m_name)
+            print('m_description: ', m_description)
+            print('m_price', m_price)
+            print('m_stock', m_stock)
+            print('m_serial_number', m_serial_number)
+            print('m_pics_lst', m_pics_lst)
+            print('m_pics_intro_lst', m_pics_intro_lst)
 
             # create an obj of this new model type
             new_model_type = ModelType(name=m_name, description=m_description, price=m_price, stock=m_stock, serial_number=m_serial_number, product=new_product)

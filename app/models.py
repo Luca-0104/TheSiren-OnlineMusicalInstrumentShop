@@ -224,8 +224,6 @@ class Product(db.Model):
     """
     __tablename__ = 'products'
     id = db.Column(db.Integer, primary_key=True)
-    # (discarded)
-    serial_number = db.Column(db.String(128), nullable=False, unique=True)
     # e.g. b1-c1-t1-a1
     serial_prefix = db.Column(db.String(64), nullable=False)
     # e.g. 2
@@ -245,12 +243,11 @@ class Product(db.Model):
     def insert_products():
         for product_info in product_list:
             name = product_info[0]
-            serial_number = product_info[1]
             serial_prefix = product_info[2]
             serial_rank = product_info[3]
 
             """ brand and categories are random now for test!!! """
-            new_product = Product(name=name, serial_number=serial_number, brand_id=random.randint(1, 5), serial_prefix=serial_prefix, serial_rank=serial_rank)
+            new_product = Product(name=name, brand_id=random.randint(1, 5), serial_prefix=serial_prefix, serial_rank=serial_rank)
             db.session.add(new_product)
 
             """ add categories """
@@ -337,7 +334,7 @@ class ModelType(db.Model):
     description = db.Column(db.Text())
     price = db.Column(db.Float)
     stock = db.Column(db.Integer, default=0, nullable=False)
-    serial_number = db.Column(db.String(128), nullable=False, unique=True)
+    serial_number = db.Column(db.String(128), nullable=False)
     release_time = db.Column(db.DateTime(), index=True, default=datetime.utcnow)
     is_deleted = db.Column(db.Boolean, default=False)
     # 1 user(staff) --> n model type
@@ -362,6 +359,15 @@ class ModelType(db.Model):
         self.is_deleted = True
         db.session.add(self)
         db.session.commit()
+
+    def get_serial_number(self):
+        """
+        Concat the serial_prefix and serial_rank of the product of this model,
+        then concat it with the serial_number of this model to form the complete serial number of this model.
+        e.g. (b1-c1-t1-a1 + 2) + m1 >> b1-c1-t1-a1-2-m1
+        :return: The real complete serial number string
+        """
+        return '{}-{}'.format(self.product.get_serial_number(), self.serial_number)
 
     @staticmethod
     def insert_model_types():
@@ -445,6 +451,24 @@ class Permission:
     REMOVE_PRODUCT = 64
 
 
+class Address(db.Model):
+    """
+        The table records the address of delivery.
+        1 address -> 1 user (customer)
+        1 user (customer) -> n addresses
+    """
+    __tablename__ = 'addresses'
+    id = db.Column(db.Integer, primary_key=True)
+    recipient_name = db.Column(db.String(64), nullable=False)
+    phone = db.Column(db.String(24), nullable=False)
+    country = db.Column(db.String(128), nullable=False)
+    province_or_state = db.Column(db.String(128), nullable=False)
+    city = db.Column(db.String(128), nullable=False)
+    district = db.Column(db.String(128), nullable=False)
+    # 1 address -> 1 user (customer)
+    customer_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+
 class Role(db.Model):
     __tablename__ = 'roles'
     id = db.Column(db.Integer, primary_key=True)
@@ -524,6 +548,9 @@ class User(UserMixin, db.Model):
     start_datetime = db.Column(db.DateTime(), default=datetime.utcnow)
     avatar = db.Column(db.String(256), default='upload/avatar/default__0__.jpg')  # The avatar
     theme = db.Column(db.String(16), default='light')  # the user preferred theme of our website
+    language = db.Column(db.String(16), default='en')
+    about_me = db.Column(db.Text(300))
+    gender = db.Column(db.String(16), default='unknown')  # 3 possible values: 'Male', 'Female',
     is_deleted = db.Column(db.Boolean, default=False)
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))  # 1 role --> n users
 
@@ -546,6 +573,8 @@ class User(UserMixin, db.Model):
     chat_rooms_staff = db.relationship('ChatRoom', foreign_keys=[ChatRoom.staff_id], backref=db.backref('staff', lazy='joined'), lazy='dynamic', cascade='all, delete-orphan')
     # 1 user(staff) --> n products
     model_types = db.relationship('ModelType', backref='staff', lazy='dynamic')
+    # 1 user (customer) -> n addresses
+    addresses = db.relationship('Address', backref='customer', lazy='dynamic')
 
 
     def __repr__(self):
