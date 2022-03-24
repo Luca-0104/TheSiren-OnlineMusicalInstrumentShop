@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, session
 
 from . import main
 
@@ -9,6 +9,9 @@ def index():
     """
         The function for rendering the main page
     """
+
+    if session.get('language') is None:
+        session['language'] = 'en'
     return render_template('main/index_test.html')
 
 
