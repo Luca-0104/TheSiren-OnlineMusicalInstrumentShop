@@ -1,8 +1,8 @@
 from flask_login import login_required, current_user
-from flask import render_template, redirect, url_for, request, json, flash
+from flask import render_template, redirect, url_for, request, json, flash, jsonify
 
 from app import db
-from app.models import Cart, Order, OrderModelType
+from app.models import Cart, Order, OrderModelType, ModelType
 from app.order import order
 
 
@@ -36,20 +36,43 @@ def generate_order_from_cart():
                     db.session.add(new_omt)
                 db.session.commit()
 
+                flash('Order created!')
                 return redirect(url_for('order.order_confirm', order_id=new_order.id))
 
     flash('Order generation failed!')
     return redirect(url_for('main.index'))
 
 
-@order.route('/generate-order-from-single', methods=['GET'])
+@order.route('/generate-order-from-buy-now/<int:model_id>/<int:count>', methods=['GET'])
 @login_required
-def generate_order_from_single():
+def generate_order_from_buy_now(model_id, count):
     """
-        Get the id of model type, get the count of this model.
-        Generate a order obj and its OrderModelType obj
+    Get the id of model type, get the count of this model.
+    Generate a order obj and its OrderModelType obj
+    :param model_id: which model type
+    :param count: how many
     """
-    # return redirect(url_for('order.order_confirm', order_id=))
+    # get model obj from db
+    model = ModelType.query.get(model_id)
+    if model:
+        # check stock number
+        if count <= model.stock:
+
+            # generate the order obj
+            new_order = Order(status_code=0, user_id=current_user.id)
+            db.session.add(new_order)
+            db.session.commit()
+
+            # add this model in to this order
+            new_omt = OrderModelType(order=new_order, model_type=model, count=count, unit_pay=model.price)
+            db.session.add(new_omt)
+            db.session.commit()
+
+            flash('Order created!')
+            return redirect(url_for('order.order_confirm', order_id=new_order.id))
+
+    flash('Order generation failed!')
+    return redirect(url_for('main.index'))
 
 
 @order.route('/order_confirm/<int:order_id>')
@@ -58,4 +81,4 @@ def order_confirm(order_id):
     """
         This function is for rendering the page of order confirmation.
     """
-    return render_template('order/order-confirm.html')
+    return render_template('order/order-confirm.html', order_id=order_id)

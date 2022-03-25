@@ -29,7 +29,7 @@ def update_cart_count():
     """
     if request.method == 'POST':
         # get the info from Ajax
-        model_id = request.form['model_id']
+        model_id = int(request.form['model_id'])
         new_count = int(request.form['new_count'])
 
         # new_count should larger than 0
@@ -45,6 +45,9 @@ def update_cart_count():
                     cart_relation.count = new_count
                     db.session.commit()
                     return jsonify({'returnValue': 0})
+                else:
+                    # the new count exceeds the maximum of the stock!
+                    return jsonify({'returnValue': 2, 'msg': 'exceed maximum'})
 
     return jsonify({'returnValue': 1})
 

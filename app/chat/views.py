@@ -11,21 +11,6 @@ from flask_socketio import emit, send, join_room, leave_room
 from ..models import ChatRoom, Message, User
 
 
-@chat.route('/change_language', methods=['GET', 'POST'])
-def change_language():
-    print(session['language'] == 'en')
-    print(session['language'] == 'zh')
-    if session['language'] == 'en':
-        session['language'] = 'zh'
-        print(session['language'])
-        return render_template('main/index_new.html')
-    if session['language'] == 'zh':
-        session['language'] = 'en'
-        print(session['language'])
-        return render_template('main/index_new.html')
-    return render_template('main/index_new.html')
-
-
 @chat.route('/chat_room', methods=['GET', 'POST'])
 # @login_required
 def chat_room():

@@ -175,8 +175,7 @@ class OrderModelType(db.Model):
     order_id = db.Column(db.Integer, db.ForeignKey('orders.id'))
     model_type_id = db.Column(db.Integer, db.ForeignKey('model_types.id'))
     count = db.Column(db.Integer, default=1)  # how many this model type the user bought in this order
-    unit_pay = db.Column(db.Float,
-                         nullable=False)  # how much the user really paid for each of this model (unit_pay*count=total payment of this model)
+    unit_pay = db.Column(db.Float, nullable=False)  # how much the user really paid for each of this model (unit_pay*count=total payment of this model)
     # refund record (this can be none)
     refunds = db.relationship('Refund', backref='order_model_type', lazy='dynamic')
 
