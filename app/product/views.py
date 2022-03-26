@@ -127,27 +127,30 @@ def upload_product():
     # if the form is submitted
     if request.method == 'POST':
         p_name = request.form.get('product_name')
-        p_serial_number = request.form.get('')
         cate_lst = request.values.getlist('categories[]')
         brand_name = request.form.get('product_brand')
         # get the brand object by its name
         brand = Brand.query.filter_by(name=brand_name).first()
 
-        # get the number count of init model types
+        # 'get' requests
+        # the number count of init model types
         mt_count = int(request.args.get('counter'))
+        serial_prefix = request.args.get('serial_prefix')
+        serial_rank = request.args.get('serial_rank')
 
-        print('---------------------------------- product ----------------------------------')
-        print('p_name: ', p_name)
-        print('p_serial_number: ', p_serial_number)
-        print('cate_lst: ', cate_lst)
-        print('brand_name: ', brand_name)
-        print('mt_count: ', mt_count)
+        # print('---------------------------------- product ----------------------------------')
+        # print('p_name: ', p_name)
+        # print('serial_prefix: ', serial_prefix)
+        # print('serial_rank: ', serial_rank)
+        # print('cate_lst: ', cate_lst)
+        # print('brand_name: ', brand_name)
+        # print('mt_count: ', mt_count)
 
         """ 
             store the Product obj into the db 
         """
         # create an object of this new product
-        new_product = Product(name=p_name, serial_number=p_serial_number, brand=brand)
+        new_product = Product(name=p_name, serial_prefix=serial_prefix, serial_rank=serial_rank, brand=brand)
         db.session.add(new_product)
 
         # add categories to this product
@@ -182,14 +185,14 @@ def upload_product():
             m_pics_lst = request.files.getlist(key_pics)
             m_pics_intro_lst = request.files.getlist(key_pics_intro)
 
-            print('---------------------------------- models ----------------------------------')
-            print('m_name: ', m_name)
-            print('m_description: ', m_description)
-            print('m_price', m_price)
-            print('m_stock', m_stock)
-            print('m_serial_number', m_serial_number)
-            print('m_pics_lst', m_pics_lst)
-            print('m_pics_intro_lst', m_pics_intro_lst)
+            # print('---------------------------------- models ----------------------------------')
+            # print('m_name: ', m_name)
+            # print('m_description: ', m_description)
+            # print('m_price', m_price)
+            # print('m_stock', m_stock)
+            # print('m_serial_number', m_serial_number)
+            # print('m_pics_lst', m_pics_lst)
+            # print('m_pics_intro_lst', m_pics_intro_lst)
 
             # create an obj of this new model type
             new_model_type = ModelType(name=m_name, description=m_description, price=m_price, stock=m_stock, serial_number=m_serial_number, product=new_product)
@@ -219,22 +222,26 @@ def upload_product():
             """ add introduction pictures """
             result_intro = upload_picture(m_pics_intro_lst, new_model_type.id, Config.PIC_TYPE_MODEL_INTRO)
             # get the status code
-            status = result_intro[0]
-            if status == 0:
+            status2 = result_intro[0]
+            if status2 == 0:
                 # success
                 pass
-            elif status == 1:
+            elif status2 == 1:
                 # failed
-                flash(result[1])
-            elif status == 2:
+                flash(result_intro[1])
+            elif status2 == 2:
                 # partial success
-                failed_list = result[1]
+                failed_list = result_intro[1]
                 flash_str = 'Picture '
                 for name in failed_list:
                     flash_str += name
                     flash_str += ', '
                 flash_str += ' are failed to be uploaded! Check the suffix'
                 flash(flash_str)
+
+            # go back to the management page after adding the new product (not matter are there any failures about pictures)
+            flash('New product and its models are uploaded successfully!')
+            return redirect(url_for('product.show_page_stock_management'))
 
     return render_template('staff/page-add-product.html')
 
@@ -376,7 +383,7 @@ def upload_model_type(product_id):
         (Backend forms needed)
         :param product_id: Which product this model belongs to
     """
-    form = ModelUploadForm()
+    form = ModelUploadForm(product_id)
     if form.validate_on_submit():
         """
             Check if the related product exists.

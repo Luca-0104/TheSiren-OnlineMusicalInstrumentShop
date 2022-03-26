@@ -22,6 +22,7 @@ def logout():
     session.pop("role_id", None)
     session.pop("avatar", None)
     session.pop("theme", None)
+    session.pop("language", None)
 
     # logout using the flask-login
     logout_user()
@@ -88,6 +89,7 @@ def login():
             session["role_id"] = user.role_id
             session["avatar"] = user.avatar
             session["theme"] = user.theme
+            session["language"] = user.language
 
             # use flask-login to login the user
             login_user(user, form.remember_me.data)
