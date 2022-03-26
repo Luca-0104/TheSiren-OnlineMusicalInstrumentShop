@@ -1,4 +1,3 @@
-
 console.log("cart.js activate");
 refreshCart();
 
@@ -51,15 +50,12 @@ function calculateTotalCost()
     spanTotalCost.html(totalCostStr);
 }
 
+// remove a model from cart
 $(".remove-a").on("click",function()
 {
-    console.log($(this).attr("focusID"));
     let focusID = $(this).attr("focusID");
-    console.log(focusID);
     let focusRow = $("#row_" + focusID);
-    console.log(focusRow);
     let cartID = focusRow.attr("cartid");
-    console.log(cartID);
 
     $.post("/api/cart/remove-cart-relation",
         {
@@ -85,6 +81,8 @@ $(".remove-a").on("click",function()
             });
 });
 
+// change quantity by input a number
+// this will automatically activate on every change of the input box
 $("input").on("input",function()
 {
     let focusID = $(this).attr("focusID");
@@ -138,6 +136,8 @@ $("input").on("input",function()
             });
 });
 
+// add 1 to the quantity
+// cannot add over the stock
 $(".add-a").on("click",function()
 {
     let focusID = $(this).attr("focusID");
@@ -189,6 +189,8 @@ $(".add-a").on("click",function()
             });
 });
 
+// remove 1 of quantity
+// cannot remove to 0
 $(".reduce-a").on("click",function()
 {
     let focusID = $(this).attr("focusID");
