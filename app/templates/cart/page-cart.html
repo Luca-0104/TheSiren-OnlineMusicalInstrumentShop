@@ -19,6 +19,7 @@
         <link href="../../static/css/normalize.css" rel="stylesheet" type="text/css">
         <link href="../../static/css/webflow.css" rel="stylesheet" type="text/css">
         <link href="../../static/css/jacks-supercool-site-c6dd88.webflow.css" rel="stylesheet" type="text/css">
+        <link href="../../static/css/cart/cart.css" rel="stylesheet" type="text/css">
 
         <!-- [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif] -->
         <script type="text/javascript">
@@ -149,7 +150,7 @@
                     <form data-node-type="commerce-cart-form" class="w-commerce-commercecartform">
                         <!-- List of Cart -->
                         <div class="w-commerce-commercecartlist cart-list">
-                            <table border="1" id="cart_table" total_row="4">
+                            <table border="1" id="cart_table" total_row="{{ length }}">
                                 <tr>
                                     <th>
                                         Select
@@ -165,126 +166,50 @@
                                     </th>
                                     <th></th>
                                 </tr>
-                                <tr rowID="1" id="row_1">
-                                    <td>
-                                        <input focusID="1" id="select_1" type="checkbox" name="selected" value="true">
-                                    </td>
-                                    <td>
-                                        <img src="../../static/images/example/yamaha_yep621s.jpg" alt="" class="w-commerce-commercecartitemimage cart-item-image"/>
-                                    </td>
-                                    <td>
-                                        <div class="w-commerce-commercecartproductname">
-                                            Yamaha YEP 621 S
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <input focusID="1" id="quantity_1" type="text" required="" pattern="^[0-9]+$"
-                                               inputMode="numeric" class="w-commerce-commercecartquantity"
-                                               data-wf-cart-action="update-item-quantity" data-commerce-sku-id="" value="1"/>
-                                    </td>
-                                    <td>
-                                        <div class="fine-print-text">
-                                            <span>$</span>
-                                            <span focusID="1" id="price_1">100.00</span>
-                                            <span>USD</span>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <a focusID="1" id="remove_1" href="#" class="w-inline-block" data-wf-cart-action="remove-item" data-commerce-sku-id="">
-                                            <div class="fine-print-text remove-link">Remove</div>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr rowID="2" id="row_2">
-                                    <td>
-                                        <input focusID="2" id="select_2" type="checkbox" name="selected" value="true">
-                                    </td>
-                                    <td>
-                                        <img src="../../static/images/example/yamaha_yep621s.jpg" alt="" class="w-commerce-commercecartitemimage cart-item-image"/>
-                                    </td>
-                                    <td>
-                                        <div class="w-commerce-commercecartproductname">
-                                            Yamaha YEP 621 S
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <input focusID="2" id="quantity_2" type="text" required="" pattern="^[0-9]+$"
-                                               inputMode="numeric" class="w-commerce-commercecartquantity"
-                                               data-wf-cart-action="update-item-quantity" data-commerce-sku-id="" value="1"/>
-                                    </td>
-                                    <td>
-                                        <div class="fine-print-text">
-                                            <span>$</span>
-                                            <span focusID="2" id="price_2">100.00</span>
-                                            <span>USD</span>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <a focusID="2" id="remove_2" href="#" class="w-inline-block" data-wf-cart-action="remove-item" data-commerce-sku-id="">
-                                            <div class="fine-print-text remove-link">Remove</div>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr rowID="3" id="row_3">
-                                    <td>
-                                        <input focusID="3" id="select_3" type="checkbox" name="selected" value="true">
-                                    </td>
-                                    <td>
-                                        <img src="../../static/images/example/yamaha_yep621s.jpg" alt="" class="w-commerce-commercecartitemimage cart-item-image"/>
-                                    </td>
-                                    <td>
-                                        <div class="w-commerce-commercecartproductname">
-                                            Yamaha YEP 621 S
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <input focusID="3" id="quantity_3" type="text" required="" pattern="^[0-9]+$"
-                                               inputMode="numeric" class="w-commerce-commercecartquantity"
-                                               data-wf-cart-action="update-item-quantity" data-commerce-sku-id="" value="1"/>
-                                    </td>
-                                    <td>
-                                        <div class="fine-print-text">
-                                            <span>$</span>
-                                            <span focusID="3" id="price_3">100.00</span>
-                                            <span>USD</span>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <a focusID="3" id="remove_3" href="#" class="w-inline-block" data-wf-cart-action="remove-item" data-commerce-sku-id="">
-                                            <div class="fine-print-text remove-link">Remove</div>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr rowID="4" id="row_4">
-                                    <td>
-                                        <input focusID="4" id="select_4" type="checkbox" name="selected" value="true">
-                                    </td>
-                                    <td>
-                                        <img src="../../static/images/example/yamaha_yep621s.jpg" alt="" class="w-commerce-commercecartitemimage cart-item-image"/>
-                                    </td>
-                                    <td>
-                                        <div class="w-commerce-commercecartproductname">
-                                            Yamaha YEP 621 S
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <input focusID="4" id="quantity_4" type="text" required="" pattern="^[0-9]+$"
-                                               inputMode="numeric" class="w-commerce-commercecartquantity"
-                                               data-wf-cart-action="update-item-quantity" data-commerce-sku-id="" value="1"/>
-                                    </td>
-                                    <td>
-                                        <div class="fine-print-text">
-                                            <span>$</span>
-                                            <span focusID="4" id="price_4">100.00</span>
-                                            <span>USD</span>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <a focusID="4" id="remove_4" href="#" class="w-inline-block" data-wf-cart-action="remove-item" data-commerce-sku-id="">
-                                            <div class="fine-print-text remove-link">Remove</div>
-                                        </a>
-                                    </td>
-                                </tr>
+                                {% for cart in cart_relation_lst %}
+                                    <tr rowID="{{ loop.index }}" modelid="{{ cart.model_type.id }}" id="row_{{ loop.index }}" single_price="{{ cart.model_type.price }}">
+                                        <td>
+                                            <input focusID="{{ loop.index }}" id="select_{{ loop.index }}" type="checkbox" name="selected" value="true">
+                                        </td>
+                                        <td>
+                                            <img src="../../static/images/example/yamaha_yep621s.jpg" alt="" class="w-commerce-commercecartitemimage cart-item-image"/>
+                                        </td>
+                                        <td>
+                                            <div class="w-commerce-commercecartproductname">
+                                                {{ cart.model_type.name }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <table border="1" class="quantity_table">
+                                                <tr>
+                                                    <td>
+                                                        <a focusID="{{ loop.index }}" id="add_{{ loop.index }}" href="#" class="w-commerce-commercecartquantity add-a">+</a>
+                                                    </td>
+                                                    <td>
+                                                        <input focusID="{{ loop.index }}" id="quantity_{{ loop.index }}" type="text" required="" pattern="^[0-9]+$"
+                                                               inputMode="numeric" class="w-commerce-commercecartquantity"
+                                                               data-wf-cart-action="update-item-quantity" data-commerce-sku-id="" value="{{ cart.count }}"/>
+                                                    </td>
+                                                    <td>
+                                                        <a focusID="{{ loop.index }}" id="reduce_{{ loop.index }}" href="#" class="w-commerce-commercecartquantity reduce-abtn">-</a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td>
+                                            <div class="fine-print-text">
+                                                <span>$</span>
+                                                <span focusID="{{ loop.index }}" id="price_{{ loop.index }}">{{ cart.model_type.price }}</span>
+                                                <span>USD</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a focusID="{{ loop.index }}" id="remove_{{ loop.index }}" href="#" class="w-inline-block" data-wf-cart-action="remove-item" data-commerce-sku-id="">
+                                                <div class="fine-print-text remove-link">Remove</div>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
                             </table>
                         </div>
 
@@ -411,11 +336,6 @@
         <script src="../../static/js/webflow.js" type="text/javascript"></script>
         <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
     </body>
-    <!-- the js for slide pictures (this should be after </body> ) -->
-    <script type="text/javascript" src="../../static/js/main/index_slide.js"></script>
-</html></title>
-</head>
-<body>
-
-</body>
+    <!-- the js for front end logic -->
+    <script type="text/javascript" src="../../static/js/cart/cart.js"></script>
 </html>
