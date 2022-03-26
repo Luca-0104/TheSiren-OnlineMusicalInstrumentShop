@@ -243,4 +243,27 @@ $(":checkbox").on("click",function()
     calculateTotalCost();
 });
 
+$("#checkout-a").on("click",function()
+{
+    let newRequest = new XMLHttpRequest();
+    newRequest.open("POST", "/generate-order-from-cart", true);
+    //newRequest.setRequestHeader('content-type', 'application/json');
 
+    var selected = new Array();
+    let totalRow = $("#cart_table").attr("total_row");
+    for(let i=1; i<=totalRow; i++)
+    {
+        if($("#select_"+i).prop('checked'))
+        {
+            let cartID = $("#row_" + i).attr("cartid");
+            selected.push(cartID);
+        }
+    }
+
+    var temp = JSON.stringify(selected);
+
+    $.post("/generate-order-from-cart",
+        {
+            "JSON_cart_list": temp
+        })
+});

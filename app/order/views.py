@@ -16,6 +16,7 @@ def generate_order_from_cart():
         Then link those OrderModelType objs in to that order obj
     """
     if request.method == 'POST':
+        print("here")
         # get the cart_id_list from ajax
         list_json = request.form["JSON_cart_list"]
 
