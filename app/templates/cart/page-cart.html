@@ -167,7 +167,7 @@
                                     <th></th>
                                 </tr>
                                 {% for cart in cart_relation_lst %}
-                                    <tr rowID="{{ loop.index }}" modelid="{{ cart.model_type.id }}" id="row_{{ loop.index }}" single_price="{{ cart.model_type.price }}">
+                                    <tr rowID="{{ loop.index }}" id="row_{{ loop.index }}" cartid="{{ cart.id }}" modelid="{{ cart.model_type.id }}" single_price="{{ cart.model_type.price }}">
                                         <td>
                                             <input focusID="{{ loop.index }}" id="select_{{ loop.index }}" type="checkbox" name="selected" value="true">
                                         </td>
@@ -191,7 +191,7 @@
                                                                data-wf-cart-action="update-item-quantity" data-commerce-sku-id="" value="{{ cart.count }}"/>
                                                     </td>
                                                     <td>
-                                                        <a focusID="{{ loop.index }}" id="reduce_{{ loop.index }}" href="#" class="w-commerce-commercecartquantity reduce-abtn">-</a>
+                                                        <a focusID="{{ loop.index }}" id="reduce_{{ loop.index }}" href="#" class="w-commerce-commercecartquantity reduce-a">-</a>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -204,7 +204,8 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <a focusID="{{ loop.index }}" id="remove_{{ loop.index }}" href="#" class="w-inline-block" data-wf-cart-action="remove-item" data-commerce-sku-id="">
+                                            <a focusID="{{ loop.index }}" id="remove_{{ loop.index }}" href="#"
+                                               class="w-inline-block remove-a" data-wf-cart-action="remove-item" data-commerce-sku-id="">
                                                 <div class="fine-print-text remove-link">Remove</div>
                                             </a>
                                         </td>

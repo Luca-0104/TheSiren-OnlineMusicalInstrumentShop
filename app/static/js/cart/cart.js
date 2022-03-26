@@ -51,24 +51,100 @@ function calculateTotalCost()
     spanTotalCost.html(totalCostStr);
 }
 
-$("input").on("input",function()
+$(".remove-a").on("click",function()
 {
+    console.log($(this).attr("focusID"));
     let focusID = $(this).attr("focusID");
-    calculatePrice(focusID);
-    if($("#select_"+focusID).prop('checked'))
-    {
-        calculateTotalCost();
-    }
+    console.log(focusID);
+    let focusRow = $("#row_" + focusID);
+    console.log(focusRow);
+    let cartID = focusRow.attr("cartid");
+    console.log(cartID);
+
+    $.post("/api/cart/remove-cart-relation",
+        {
+            "cart_id": cartID
+        }).done(function (response)
+            {
+                // get from server (backend)
+                let returnValue = response['returnValue'];
+
+                if (returnValue === 0)
+                {
+                    //success
+                    focusRow.remove();
+                } else if (returnValue === 1)
+                {
+                    spanQuantity.val(1);
+                    calculatePrice(focusID);
+                    if ($("#select_" + focusID).prop('checked'))
+                    {
+                        calculateTotalCost();
+                    }
+                }
+            });
 });
 
-$(".add-a").on("click",function()
+$("input").on("input",function()
 {
-    console.log("add");
     let focusID = $(this).attr("focusID");
 
     let spanQuantity = $("#quantity_"+focusID);
 
-    let modelID = $("row_"+focusID).attr("modelid");
+    let modelID = $("#row_"+focusID).attr("modelid");
+
+    let quantityStr = spanQuantity.val();
+    let quantity = parseInt(quantityStr);
+
+    $.post("/api/cart/update-cart-count",
+        {
+            "model_id": modelID,
+            "new_count": quantity
+        }).done(function (response)
+            {
+                // get from server (backend)
+                let returnValue = response['returnValue'];
+
+                if(returnValue === 0)
+                {
+                    //success
+                    calculatePrice(focusID);
+                    if($("#select_"+focusID).prop('checked'))
+                    {
+                        calculateTotalCost();
+                    }
+                }
+                else if(returnValue === 2)
+                {
+                    spanQuantity.val(1);
+                    calculatePrice(focusID);
+                    if($("#select_"+focusID).prop('checked'))
+                    {
+                        calculateTotalCost();
+                    }
+
+                    let msg = response['msg'];
+                    alert(msg);
+                }
+                else if(returnValue === 1)
+                {
+                    spanQuantity.val(1);
+                    calculatePrice(focusID);
+                    if($("#select_"+focusID).prop('checked'))
+                    {
+                        calculateTotalCost();
+                    }
+                }
+            });
+});
+
+$(".add-a").on("click",function()
+{
+    let focusID = $(this).attr("focusID");
+
+    let spanQuantity = $("#quantity_"+focusID);
+
+    let modelID = $("#row_"+focusID).attr("modelid");
 
     let quantityStr = spanQuantity.val();
     let quantity = parseInt(quantityStr);
@@ -96,28 +172,67 @@ $(".add-a").on("click",function()
                         calculateTotalCost();
                     }
                 }
+                else if(returnValue === 2)
+                {
+                    let msg = response['msg'];
+                    alert(msg);
+                }
+                else if(returnValue === 1)
+                {
+                    spanQuantity.val(1);
+                    calculatePrice(focusID);
+                    if($("#select_"+focusID).prop('checked'))
+                    {
+                        calculateTotalCost();
+                    }
+                }
             });
 });
 
-$(".reduce-abtn").on("click",function()
+$(".reduce-a").on("click",function()
 {
     let focusID = $(this).attr("focusID");
 
     let spanQuantity = $("#quantity_"+focusID);
+
+    let modelID = $("#row_"+focusID).attr("modelid");
 
     let quantityStr = spanQuantity.val();
     let quantity = parseInt(quantityStr);
 
     quantity = quantity - 1;
 
-    quantityStr = String(quantity);
+    $.post("/api/cart/update-cart-count",
+        {
+            "model_id": modelID,
+            "new_count": quantity
+        }).done(function (response)
+            {
+                // get from server (backend)
+                let returnValue = response['returnValue'];
 
-    spanQuantity.val(quantityStr);
-    calculatePrice(focusID);
-    if($("#select_"+focusID).prop('checked'))
-    {
-        calculateTotalCost();
-    }
+                if(returnValue === 0)
+                {
+                    //success
+                    quantityStr = String(quantity);
+
+                    spanQuantity.val(quantityStr);
+                    calculatePrice(focusID);
+                    if($("#select_"+focusID).prop('checked'))
+                    {
+                        calculateTotalCost();
+                    }
+                }
+                else if(returnValue === 1)
+                {
+                    spanQuantity.val(1);
+                    calculatePrice(focusID);
+                    if($("#select_"+focusID).prop('checked'))
+                    {
+                        calculateTotalCost();
+                    }
+                }
+            });
 });
 
 $(":checkbox").on("click",function()

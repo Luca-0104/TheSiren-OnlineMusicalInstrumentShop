@@ -29,9 +29,7 @@ def update_cart_count():
         update the model account of a specific cart relation, which is about
         current user and the given product
     """
-    print("here 1")
     if request.method == 'POST':
-        print("here 2")
         # get the info from Ajax
         model_id = int(request.form['model_id'])
         new_count = int(request.form['new_count'])
