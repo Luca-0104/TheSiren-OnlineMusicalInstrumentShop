@@ -151,9 +151,6 @@ $(".add-a").on("click",function()
 
     quantity = quantity + 1;
 
-    console.log(modelID)
-    console.log(quantity)
-
     $.post("/api/cart/update-cart-count",
         {
             "model_id": modelID,
