@@ -2,6 +2,7 @@ from datetime import datetime
 
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
+from faker import Faker
 
 from app import db
 from app.table_info import category_list, brand_list, user_list, product_list
@@ -37,9 +38,53 @@ class Tools:
         # ProductPic.insert_pictures()  # the pictures of the constant products
         # # products(100)  # 100 fake products
         ModelType.insert_model_types()  # the constant model types for testing
+        Cart.insert_carts()
+        Order.insert_orders(20)
+        OrderModelType.insert_omts()
+
+    @staticmethod
+    def delete_instance_state(dic):
+        # This method is for deleting the following item in dict
+        # This item is not JSON serializable, and we do not need it
+        if "_sa_instance_state" in dic:
+            del dic["_sa_instance_state"]
+        return dic
+
+    @staticmethod
+    def add_relation_to_dict(dic, relations, key_name):
+        """
+        This method is for adding the relation objects (in a list) in to the dictionary.
+        For example, adding carts relations into the JSON dict of a model type object.
+        :param dic: The JSON dict of a model type
+        :param relations: A db Model relation, for examples, carts, pictures...
+        :param key_name: The name of the key of the newly added item
+        :return: The dictionary after adding the relations
+        """
+        relation_lst = []
+        for r in relations:
+            relation_lst.append(r.to_dict())
+        dic[key_name] = relation_lst
 
 
-class Refund(db.Model):
+
+class BaseModel(db.Model):
+    """
+        This is a base model, which should be the superclass of all
+        the other Model classes
+    """
+    __abstract__ = True
+    id = db.Column(db.Integer, primary_key=True)
+
+    def to_dict(self):
+        """
+            Map the object to dictionary data structure
+        """
+        # turn columns into items in dictionary
+        result = self.__dict__
+        return result
+
+
+class Refund(BaseModel):
     """
         The refund records, each line in this table related to a line in 'OrderModelType' (1 to 1 relation (we implement it as 1 to n))
 
@@ -53,11 +98,15 @@ class Refund(db.Model):
     reason = db.Column(db.Text())  # customer should give the reason why they ask for a refund
     is_done = db.Column(db.Boolean, default=False)
 
+    def to_dict(self):
+        """ Map the object to dictionary data structure """
+        return Tools.delete_instance_state(super(Refund, self).to_dict())
+
 
 # class Change(db.Model):
 #     pass
 
-class ChatRoom(db.Model):
+class ChatRoom(BaseModel):
     """
         (Chatting version 2 -> ChatRoom + Message)
     """
@@ -71,8 +120,15 @@ class ChatRoom(db.Model):
     def __repr__(self):
         return '<ChatRoom cus: %r - staff: %r>' % (self.customer_id, self.staff_id)
 
+    def to_dict(self):
+        """ Map the object to dictionary data structure """
+        result = super(ChatRoom, self).to_dict()
+        # add relations to the result dict
+        Tools.add_relation_to_dict(result, self.messages.all(), "messages")
+        return Tools.delete_instance_state(result)
 
-class Message(db.Model):
+
+class Message(BaseModel):
     """
         (Chatting version 2 -> ChatRoom + Message)
         Storing the chatting record of a customer and staff(staff role, not a specific staff)
@@ -92,6 +148,10 @@ class Message(db.Model):
 
     def __repr__(self):
         return '<Chat %r>' % self.content[:10]
+
+    def to_dict(self):
+        """ Map the object to dictionary data structure """
+        return Tools.delete_instance_state(super(Message, self).to_dict())
 
 
 '''
@@ -118,7 +178,7 @@ class Chat(db.Model):
 '''
 
 
-class Order(db.Model):
+class Order(BaseModel):
     """
         A purchase can be regarded as an order.
 
@@ -142,6 +202,26 @@ class Order(db.Model):
     # 1 order -> n OrderModelType; 1 OrderModelType -> 1 order
     order_model_types = db.relationship('OrderModelType', backref='order', lazy='dynamic')
 
+    @staticmethod
+    def insert_orders(count):
+        # create a faker instance
+        faker = Faker()
+        # create some new orders into db
+        for i in range(count):
+            new_order = Order(timestamp=faker.past_datetime(), status_code=random.randint(0, 6), user_id=1)
+            db.session.add(new_order)
+        db.session.commit()
+
+
+    def to_dict(self):
+        """ Map the object to dictionary data structure """
+        result = super(Order, self).to_dict()
+        # add relations to the result dict
+        Tools.add_relation_to_dict(result, self.order_model_types.all(), "order_model_types")
+        # change status code to statement
+        result["status"] = self.get_status()
+        return Tools.delete_instance_state(result)
+
     def get_status(self):
         """
         Get the status of this order.
@@ -163,7 +243,7 @@ class Order(db.Model):
             return 'expired'
 
 
-class OrderModelType(db.Model):
+class OrderModelType(BaseModel):
     """
         This is a third-party table for recording the n to n relationship
         between "Order" table and "ModelType" table.
@@ -182,8 +262,37 @@ class OrderModelType(db.Model):
     def __repr__(self):
         return '<OrderModelType order_id: %r --- model_type: %r * %r>' % (self.order_id, self.model_type_id, self.count)
 
+    @staticmethod
+    def insert_omts():
+        """ we ensure each fake order has at least one order model type """
+        # get all the orders
+        order_lst = Order.query.all()
+        for order in order_lst:
+            # for each order, we get a random number of model types being included.
+            omt_count = random.randint(1, 6)
+            total_mt_count = ModelType.query.count()
+            model_type_set = set()
+            for i in range(omt_count):
+                # ensure model types in a order are different
+                mt = ModelType.query.get(random.randint(1, total_mt_count))
+                while mt in model_type_set:
+                    mt = ModelType.query.get(random.randint(1, total_mt_count))
+                model_type_set.add(mt)
+            # create omts for this order using the selected models
+            for mt in model_type_set:
+                new_omt = OrderModelType(order=order, model_type=mt, count=random.randint(1, 15), unit_pay=mt.price)
+                db.session.add(new_omt)
+        db.session.commit()
 
-class Cart(db.Model):
+    def to_dict(self):
+        """ Map the object to dictionary data structure """
+        result = super(OrderModelType, self).to_dict()
+        # add relations to the result dict
+        Tools.add_relation_to_dict(result, self.refunds.all(), "refunds")
+        return Tools.delete_instance_state(result)
+
+
+class Cart(BaseModel):
     """
     This is a table for recording the n to n relationship between
     a user and a specific model type of a product
@@ -200,8 +309,26 @@ class Cart(db.Model):
     def __repr__(self):
         return '<Cart user: %r --- model_type: %r * %r>' % (self.user, self.model_type, self.count)
 
+    def to_dict(self):
+        """
+            Map the object to dictionary data structure
+        """
+        return Tools.delete_instance_state(super(Cart, self).to_dict())
 
-class Comment(db.Model):
+    @staticmethod
+    def insert_carts():
+        for i in range(50):
+            # random info
+            user_id = [1, 2][random.randint(0, 1)]
+            model_type = ModelType.query.get(random.randint(1, ModelType.query.count()))
+            count = random.randint(1, 15)
+            # generate a new cart relation
+            new_cart = Cart(user_id=user_id, model_type=model_type, count=count)
+            db.session.add(new_cart)
+        db.session.commit()
+
+
+class Comment(BaseModel):
     """
         a table for storing the comments of products (star + text)
     """
@@ -217,8 +344,19 @@ class Comment(db.Model):
     def __repr__(self):
         return '<Comment %r>' % self.content[:10]
 
+    def to_dict(self):
+        """
+            Map the object to dictionary data structure
+        """
+        result = super(Comment, self).to_dict()
+        # add relations to the result dict
+        Tools.add_relation_to_dict(result, self.pictures.all(), "pictures")
 
-class CommentPic(db.Model):
+        return Tools.delete_instance_state(result)
+
+
+
+class CommentPic(BaseModel):
     """
         a table for storing all the pictures of the comments of a model type of a products
     """
@@ -230,6 +368,10 @@ class CommentPic(db.Model):
     def __repr__(self):
         return '<CommentPic %r>' % self.address
 
+    def to_dict(self):
+        """ Map the object to dictionary data structure """
+        return Tools.delete_instance_state(super(CommentPic, self).to_dict())
+
 
 '''
     This is a table for containing the 'n to n' relationship of Product model and Category model 
@@ -240,7 +382,7 @@ ProductCategory = db.Table('product_category',
                            )
 
 
-class Product(db.Model):
+class Product(BaseModel):
     """
         a table for storing all the products in our website
     """
@@ -288,6 +430,14 @@ class Product(db.Model):
 
         db.session.commit()
 
+    def to_dict(self):
+        """ Map the object to dictionary data structure """
+        result = super(Product, self).to_dict()
+        # add relations to the result dict
+        Tools.add_relation_to_dict(result, self.categories.all(), "categories")
+        Tools.add_relation_to_dict(result, self.get_exist_model_types(), "model_types")
+        return Tools.delete_instance_state(result)
+
     def delete(self):
         """
             Mark this product as is_deleted and also
@@ -315,7 +465,7 @@ class Product(db.Model):
         return '{}-{}'.format(self.serial_prefix, self.serial_rank)
 
 
-class ModelTypePic(db.Model):
+class ModelTypePic(BaseModel):
     """
         Each model type of a product can have a group of pictures
     """
@@ -327,8 +477,12 @@ class ModelTypePic(db.Model):
     def __repr__(self):
         return '<ModelTypePic %r>' % self.address
 
+    def to_dict(self):
+        """ Map the object to dictionary data structure """
+        return Tools.delete_instance_state(super(ModelTypePic, self).to_dict())
 
-class ModelTypeIntroPic(db.Model):
+
+class ModelTypeIntroPic(BaseModel):
     """
         Each model type of a product can have a group of intro pictures.
         Intro pictures are the pictures in the detail pages, when you scroll down you can see them.
@@ -342,8 +496,12 @@ class ModelTypeIntroPic(db.Model):
     def __repr__(self):
         return '<ModelTypeIntroPic %r>' % self.address
 
+    def to_dict(self):
+        """ Map the object to dictionary data structure """
+        return Tools.delete_instance_state(super(ModelTypeIntroPic, self).to_dict())
 
-class ModelType(db.Model):
+
+class ModelType(BaseModel):
     """
         A single product can contain several different specific model types
         For example, different colors or something...
@@ -374,6 +532,20 @@ class ModelType(db.Model):
     carts = db.relationship('Cart', backref='model_type', lazy='dynamic')
     # 1 model -> n OrderModelType; 1 OrderModelType -> 1 model
     order_model_types = db.relationship('OrderModelType', backref='model_type', lazy='dynamic')
+
+    def to_dict(self):
+        """
+            Map the object to dictionary data structure
+        """
+        result = super(ModelType, self).to_dict()
+        # add relations to the result dict
+        Tools.add_relation_to_dict(result, self.comments.all(), "comments")
+        Tools.add_relation_to_dict(result, self.pictures.all(), "pictures")
+        Tools.add_relation_to_dict(result, self.intro_pictures.all(), "intro_pictures")
+        Tools.add_relation_to_dict(result, self.carts.all(), "carts")
+        Tools.add_relation_to_dict(result, self.order_model_types.all(), "order_model_types")
+
+        return Tools.delete_instance_state(result)
 
     def delete(self):
         """
@@ -414,13 +586,17 @@ class ModelType(db.Model):
         db.session.commit()
 
 
-class Category(db.Model):
+class Category(BaseModel):
     __tablename__ = 'categories'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(32), unique=True, nullable=False)
 
     def __repr__(self):
         return '<Category %r>' % self.name
+
+    def to_dict(self):
+        """ Map the object to dictionary data structure """
+        return Tools.delete_instance_state(super(Category, self).to_dict())
 
     @staticmethod
     def insert_categories():
@@ -435,7 +611,7 @@ class Category(db.Model):
         db.session.commit()
 
 
-class Brand(db.Model):
+class Brand(BaseModel):
     __tablename__ = 'brands'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(32), unique=True, nullable=False)
@@ -443,6 +619,13 @@ class Brand(db.Model):
 
     def __repr__(self):
         return '<Brand %r>' % self.name
+    
+    def to_dict(self):
+        """ Map the object to dictionary data structure """
+        result = super(Brand, self).to_dict()
+        # add relations to the result dict
+        Tools.add_relation_to_dict(result, self.products.all(), "products")
+        return Tools.delete_instance_state(result)
 
     @staticmethod
     def insert_brands():
@@ -457,7 +640,7 @@ class Brand(db.Model):
         db.session.commit()
 
 
-class Premium(db.Model):
+class Premium(BaseModel):
     """
         The table records the premium membership info.
         1 user (customer) -> n premium (each period of premium is regarded as a record in our db)
@@ -479,8 +662,12 @@ class Premium(db.Model):
         self.is_expired = True
         db.session.commit()
 
+    def to_dict(self):
+        """ Map the object to dictionary data structure """
+        return Tools.delete_instance_state(super(Premium, self).to_dict())
 
-class Address(db.Model):
+
+class Address(BaseModel):
     """
         The table records the address of delivery.
         1 address -> 1 user (customer)
@@ -496,6 +683,10 @@ class Address(db.Model):
     district = db.Column(db.String(128), nullable=False)
     # 1 address -> 1 user (customer)
     customer_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    def to_dict(self):
+        """ Map the object to dictionary data structure """
+        return Tools.delete_instance_state(super(Address, self).to_dict())
 
 
 class Permission:
@@ -515,7 +706,7 @@ class Permission:
     REMOVE_PRODUCT = 64
 
 
-class Role(db.Model):
+class Role(BaseModel):
     __tablename__ = 'roles'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), unique=True)
@@ -531,6 +722,13 @@ class Role(db.Model):
 
     def __repr__(self):
         return '<Role %r>' % self.name
+    
+    def to_dict(self):
+        """ Map the object to dictionary data structure """
+        result = super(Role, self).to_dict()
+        # add relations to the result dict
+        Tools.add_relation_to_dict(result, self.users.all(), "users")
+        return Tools.delete_instance_state(result)
 
     # ----- functions for permission management (learned from the book) -----
     # book: 'Flask Web Development: Developing Web Applications with Python, Second Edition'
@@ -585,7 +783,7 @@ class Role(db.Model):
         db.session.commit()
 
 
-class User(UserMixin, db.Model):
+class User(UserMixin, BaseModel):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(64), unique=True, index=True)
@@ -633,6 +831,10 @@ class User(UserMixin, db.Model):
 
     def __repr__(self):
         return '<User %r>' % self.username
+    
+    def to_dict(self):
+        """ Map the object to dictionary data structure """
+        return Tools.delete_instance_state(super(User, self).to_dict())
 
     @staticmethod
     def insert_users():
