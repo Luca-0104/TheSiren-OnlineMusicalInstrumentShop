@@ -54,14 +54,19 @@ class ModelUploadForm(FlaskForm):
                                        render_kw={"accept": 'image/*'})
     submit = SubmitField('Submit')
 
+    # instance variables (those are not in the form)
+    def __init__(self, current_product_id):
+        super(ModelUploadForm, self).__init__()
+        self.current_product_id = current_product_id
+
     def validate_serial_number(self, field):
         """
         Determine whether the serial_number already exists.
         :param field: serial_number
         """
-        model_found = ModelType.query.filter_by(serial_number=field.data, is_deleted=False).first()
+        model_found = ModelType.query.filter_by(serial_number=field.data, product_id=self.current_product_id, is_deleted=False).first()
         if model_found is not None:
-            raise ValidationError('Serial Number already used.')
+            raise ValidationError('Serial Number already used in other model of this product!')
 
     def validate_pictures(self, field):
         """

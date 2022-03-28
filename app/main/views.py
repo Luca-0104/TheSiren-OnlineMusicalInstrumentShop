@@ -1,7 +1,9 @@
-from flask import render_template, request, redirect, url_for, session
+from flask import render_template, request, redirect, url_for, session, jsonify
+from flask_login import login_required, current_user
 from sqlalchemy import and_
 
 from . import main
+from .. import db
 from ..models import Product, ModelType, Category, Brand
 
 
@@ -21,9 +23,6 @@ def index_test():
     """
         The function for rendering the fake index page
     """
-
-    if session.get('language') is None:
-        session['language'] = 'en'
     return render_template('main/index_test.html')
 
 
@@ -87,6 +86,40 @@ def products_in_brand(brand_name):
     return render_template('', is_plist=True, product_lst=product_lst)  # see-all page
 
 
+@main.route('/change_language', methods=['GET', 'POST'])
+def change_language():
+    # if the user already logged in, we change language setting both in db and session
+    if current_user.is_authenticated:
+        # change setting in db
+        if current_user.language == 'en':
+            current_user.language = 'zh'
+        elif current_user.language == 'zh':
+            current_user.language = 'en'
+
+        db.session.add(current_user)
+        db.session.commit()
+
+        # change setting in session
+        session["language"] = current_user.language
+
+    else:
+        # if the user is anonymous, we only change the language setting in session
+
+        # if the first time access the website, we should init the session of language first
+        if session.get("language") is None:
+            session["language"] = 'en'
+
+        # change setting in the session
+        if session["language"] == 'zh':
+            session["language"] = 'en'
+        elif session["language"] == 'en':
+            session["language"] = 'zh'
+
+
+    return render_template('main/index_new.html')
+
+
+
 @main.route('/my-cart')
 def my_cart():
     """
@@ -109,24 +142,6 @@ def change_theme():
     pass
 
 
-@main.route('/api/cart/update-product-count', methods=['POST'])
-def update_product_count():
-    """
-            update the product account of a specific cart relation, which is about
-            current user and the given product
-    """
-    pass
-
-
-@main.route('/api/cart/remove-cart-relation', methods=['POST'])
-def remove_cart_relation():
-    """
-        remove a specific cart relation according to the cart_id
-        (remove a product from shopping cart)
-    """
-    pass
-
-
 @main.route('/api/cart/purchase_cart', methods=['POST'])
 def purchase_cart():
     """
@@ -136,3 +151,32 @@ def purchase_cart():
     """
     pass
 
+
+@main.route('/api/model-detail/validate-model-count', methods=['POST'])
+@login_required
+def validate_model_count():
+    """
+        (Using Ajax)
+        Validate the model account of a specific model in the detail page of this model.
+        If the count is out of the bound of the stock, response will be send to the frontend by ajax.
+        Everytime the count changed, frontend should send a ajax request to this function to validate the count.
+    """
+    if request.method == 'POST':
+        # get the info from Ajax
+        model_id = int(request.form['model_id'])
+        new_count = int(request.form['new_count'])
+
+        # new_count should larger than 0
+        if new_count > 0:
+            # get the model obj form db
+            model = ModelType.query.get(model_id)
+
+            if model:
+                if new_count < model.stock:
+                    return jsonify({'returnValue': 0, 'countStatus': 'less'})
+                elif new_count == model.stock:
+                    return jsonify({'returnValue': 0, 'countStatus': 'equal'})
+                elif new_count > model.stock:
+                    return jsonify({'returnValue': 0, 'countStatus': 'exceed'})
+
+    return jsonify({'returnValue': 1})

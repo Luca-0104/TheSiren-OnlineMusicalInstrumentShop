@@ -61,6 +61,10 @@ def create_app(config_name):
     from .payment import payment as payment_blueprint
     app.register_blueprint(payment_blueprint)
 
+    # register blueprint - cart
+    from .cart import cart as cart_blueprint
+    app.register_blueprint(cart_blueprint)
+
     return app
 
 

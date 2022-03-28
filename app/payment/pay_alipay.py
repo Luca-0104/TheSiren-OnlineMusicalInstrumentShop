@@ -4,7 +4,6 @@ from alipay import AliPay, AliPayConfig
 from flask import session, redirect, url_for
 
 from . import payment
-from ..models import Order
 
 
 @payment.route("/pay_order/<int:order_id>", methods=["POST", "GET"])
