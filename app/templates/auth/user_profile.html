@@ -19,6 +19,7 @@
     <link href="../../static/css/normalize.css" rel="stylesheet" type="text/css">
     <link href="../../static/css/webflow.css" rel="stylesheet" type="text/css">
     <link href="../../static/css/jacks-supercool-site-c6dd88.webflow.css" rel="stylesheet" type="text/css">
+    <link href="../../static/css/main/user_profile.css" rel="stylesheet" type="text/css">
     <!-- [if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"
             type="text/javascript"></script><![endif] -->
@@ -214,8 +215,31 @@
     </div>
 </div>
 <div class="footer wf-section">
-    <div class="main-container">
-        <div class="profile-box">
+    <div class="user-container">
+        <div>
+            <ul class="user-nav" id="">
+
+                <li class="" id="info">
+                    <a class="button nav nav-button w-inline-block">Information</a>
+                </li>
+
+                <li class="nav-item hover-item" id="brand">
+                    <a class="button nav nav-button w-inline-block">Followed Brand</a>
+                </li>
+                <li class="nav-item hover-item" id="category">
+                    <a class="button nav nav-button w-inline-block">Followed Category</a>
+                </li>
+                <li class="nav-item hover-item" id="prime">
+                    <a class="button nav nav-button w-inline-block">Prime</a>
+                </li>
+                <li class="nav-item hover-item" id="Order">
+                    <a class="button nav nav-button w-inline-block">Order</a>
+                </li>
+
+
+            </ul>
+        </div>
+        <div class="profile-box" id="right-box">
             {#        the avatar box#}
             <div class="avatar-box">
                 {#                the avatar image#}
@@ -228,38 +252,43 @@
                     <li class="profile-info">
                         {#                    the profile text information#}
                         <div class="profile-text">
-                            <p class="email">
-                                Email: {{ user.email }}
-                            </p>
+                            <div class="email-name">
+                                <p class="email">
+                                    Email: {{ user.email }}
+                                </p>
+                                <p class="username">
+                                    Username: {{ user.username }}
+                                </p>
+                            </div>
+                            <div class="date-gender">
+                                <p class="date">
+                                    Member since: {{ user.start_datetime.date() }}
+                                </p>
 
-                            <p class="username">
-                                {{ user.username }}
-                            </p>
+                                <p class="gender">
+                                    Gender: {{ user.gender }}
+                                </p>
+                            </div>
 
-                            <p class="date">
-                                Member since {{ user.start_datetime.date() }}
-                            </p>
-
-                            <p class="gender">
-                                {{ user.gender }}
-                            </p>
-
-                            <p class="tags">
+                            <div class="tag-info">
+                                <p class="tags">
                                 {{ user.tag }}
                             </p>
 
                             <p class="info">
                                 {{ user.information }}
                             </p>
+                            </div>
+
                         </div>
 
 
-{#                        {% if user.username == session.get("username") %}#}
-                            {#                    the edit button#}
-                            <div class="button small nav-button w-inline-block" id="edit">
-                                <a href="{{ url_for('main.edit_profile') }}">Edit</a>
-                            </div>
-{#                        {% endif %}#}
+                        {#                        {% if user.username == session.get("username") %}#}
+                        {#                    the edit button#}
+                        <div class="button small nav-button w-inline-block" id="edit">
+                            <a href="{{ url_for('main.edit_profile') }}">Edit</a>
+                        </div>
+                        {#                        {% endif %}#}
 
                         <p class="address">
                             {{ user.address }}

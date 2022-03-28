@@ -1,0 +1,62 @@
+/*.nav .nav-item {*/
+/*    !* let every item float to the left, then they can be located horizontally *!*/
+/*    float: start;*/
+
+/*    !* background-color: red; *!*/
+
+/*    !* make each item taking full height of the navbar *!*/
+/*    height: 100%;*/
+/*    !* making the word in each item align center vertically *!*/
+/*    line-height: 57px; !* should same as the height of the parent *!*/
+/*}*/
+
+.user-nav {
+    list-style: none;
+    float: left;
+    margin-left: 100px;
+}
+
+.button.nav {
+    padding: 10px 2px 13px;
+    border-style: none;
+    font-size: 14px;
+    line-height: 21px;
+    width: 145px;
+}
+
+.profile-list {
+    list-style: none;
+    font-size: 25px;
+}
+
+#right-box{
+    width: 70%;
+    margin-left: 285px;
+    border: solid;
+}
+
+.avatar-box{
+    height: 100px;
+    width: 100px;
+    margin-left: 40px;
+    margin-top: 10px;
+    margin-right: 40px;
+    float: left;
+}
+
+.email-name{
+    margin-top: 12px;
+}
+
+.date-gender{
+    margin-top: 50px;
+    display: flex;
+}
+
+.email{
+    margin-bottom: 40px;
+}
+
+.date{
+    margin-right: 20px;
+}
