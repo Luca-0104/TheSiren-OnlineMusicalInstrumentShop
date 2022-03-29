@@ -145,7 +145,7 @@ def filter_model_types():
 
         if access_method == 'search':
             # get the search content
-            pass
+            search_content = request.form.get('search_content')
         elif access_method == 'see_all':
             pass
         elif access_method == 'brand':
