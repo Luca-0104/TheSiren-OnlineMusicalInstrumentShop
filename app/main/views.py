@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from sqlalchemy import and_
 
 from . import main
+from .forms import EditAddressForm, EditProfileForm
 from .. import db
 from ..models import Product, ModelType, Category, Brand, User, Address
 
@@ -23,6 +24,9 @@ def index_test():
     """
         The function for rendering the fake index page
     """
+    if session.get('uid'):
+        user = User.query.filter_by(id=session['uid']).first()
+        return render_template('main/index_test.html', user=user)
     return render_template('main/index_test.html')
 
 
@@ -62,7 +66,28 @@ def user_profile(uid):
 @main.route('/edit-profile', methods=['GET', 'POST'])
 @login_required
 def edit_profile():
-    pass
+    """
+    (Backend Form)
+    :return:
+    """
+    form = EditProfileForm(current_user)
+    # form.gender.choices[('1', 'Man'), ('2', 'Woman'), ('3', 'Unknown')]
+    if form.validate_on_submit():
+        pass
+
+    form.username.data = current_user.username
+    form.email.data = current_user.email
+    form.about_me.data = current_user.about_me
+    if current_user.gender == 'Male':
+        form.gender.data = 0
+    elif current_user.gender == 'Female':
+        form.gender.data = 1
+    else:
+        form.gender.data = 2
+
+
+    return render_template('main/profile_test.html', form=form)
+
 
 
 @main.route('/add-address', methods=['GET', 'POST'])

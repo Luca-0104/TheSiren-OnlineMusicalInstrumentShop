@@ -24,7 +24,9 @@
     <li><a href="{{ '/chat_room' }}">Chat</a></li>
     <li><a href="{{ url_for('main.index') }}">Real index</a></li>
     <li><a href="{{ url_for('main.change_language') }}">Change Language</a></li>
-    <li><a href="{{ '/profile' }}">User Profile</a></li>
+    {% if session.get('username') %}
+        <li><a href="/user_profile/{{ user.id }}">User Profile</a></li>
+    {% endif %}
     <li><a href="{{ '/order_confirm' }}">Order Confirm</a></li>
     <li><a href="{{ '/show-my-cart' }}">My Cart</a></li>
 </ul>
