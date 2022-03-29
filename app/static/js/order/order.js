@@ -59,9 +59,153 @@ $(".subSec").on("click",function()
 
                 if(returnValue === 0)
                 {
+                    let mainTable = $("#order-listing-table");
+                    mainTable.empty();
+
+                    let newHtml = "";
 
                     //success
+                    for(let i=0; i<newOrders.length; i++)
+                    {
+                        let order = newOrders[i];
+                        newHtml = newHtml +
+                        "<tr>"+
+                            "<td href=\"#\" onClick=\"window.open('/order-details/" + order["id"] + "');\">"+
+                                "<table border=\"1\" width=\"100%\" height=\"100%\" className=\"clickable\">"+
+                                    "<tr>"+
+                                        "<td>"+
+                                            "Recipient Name"+
+                                        "</td>"+
+                                        "<td>"+
+                                            order["address"]+
+                                        "</td>"+
+                                    "</tr>"+
+                                    "<tr>"+
+                                        "<td>"+
+                                            "Contact Phone"+
+                                        "</td>"+
+                                        "<td>"+
+                                            order["address"]+
+                                        "</td>"+
+                                    "</tr>"+
+                                    "<tr>"+
+                                        "<td>"+
+                                            "Address"+
+                                        "</td>"+
+                                        "<td>"+
+                                            order["address"]+
+                                        "</td>"+
+                                    "</tr>"+
+                                    "<tr>"+
+                                        "<td>"+
+                                            "Time Stamp"+
+                                        "</td>"+
+                                        "<td>"+
+                                            order["address"]+
+                                        "</td>"+
+                                    "</tr>"+
+                                "</table>"+
+                            "</td>"+
+                            "<td>"+
+                                "<table border=\"1\" width=\"100%\" height=\"100%\">";
+                        for(let j=0; j<Math.min(order['model_types'].length, 4); j++)
+                        {
+                            newHtml = newHtml +
+                                    "<td>"+
+                                        "<img src=\"../../static/images/example/yamaha_yep621s.jpg\" loading=\"lazy\" alt=\"\" className=\"w-commerce-commercecartitemimage cart-item-image\">"
+                                    "</td>";
 
+                        }
+                        newHtml = newHtml +
+                                "</table>"+
+                            "</td>"+
+                            "<td>"+
+                                "<table id=\"status_table_" + order['id'] + "\" border=\"1\" width=\"100%\" height=\"100%\">";
+                        if(order['status_code'] == 0)
+                        {
+                            newHtml = newHtml +
+                                    "<tr>"+
+                                        "<td>"+
+                                            "Waiting for Payment"+
+                                        "</td>"+
+                                    "</tr>"+
+                                    "<tr>"+
+                                        "<td>"+
+                                            "<a href=\"#\">Pay</a>"+
+                                        "</td>"+
+                                    "</tr>"+
+                                    "<tr>"+
+                                        "<td>"+
+                                            "<a href=\"#\" onClick=\"changeStatusTo(" + order['id'] + ", 5)\">Cancel</a>"+
+                                        "</td>"+
+                                    "</tr>";
+                        }
+                        else if(order['status_code'] == 1)
+                        {
+                            newHtml = newHtml +
+                                    "<tr>"+
+                                        "<td>"+
+                                            "Preparing"+
+                                        "</td>"+
+                                    "</tr>";
+                        }
+                        else if(order['status_code'] == 2)
+                        {
+                            newHtml = newHtml +
+                                    "<tr>"+
+                                        "<td>"+
+                                            "On Delivery"+
+                                        "</td>"+
+                                    "</tr>"+
+                                    "<tr>"+
+                                        "<td>"+
+                                            "<a href=\"#\" onClick=\"changeStatusTo(" + order['id'] + ", 4)\">Comfirmed</a>"+
+                                        "</td>"+
+                                    "</tr>";
+                        }
+                        else if(order['status_code'] == 3)
+                        {
+                            newHtml = newHtml +
+                                    "<tr>"+
+                                        "<td>"+
+                                            "Waiting for Collection"+
+                                        "</td>"+
+                                    "</tr>";
+                        }
+                        else if(order['status_code'] == 4)
+                        {
+                            newHtml = newHtml +
+                                    "<tr>"+
+                                        "<td>"+
+                                            "Finished"+
+                                        "</td>"+
+                                    "</tr>";
+                        }
+                        else if(order['status_code'] == 5)
+                        {
+                            newHtml = newHtml +
+                                    "<tr>"+
+                                        "<td>"+
+                                            "Canceled"+
+                                        "</td>"+
+                                    "</tr>";
+                        }
+                        else if(order['status_code'] == 6)
+                        {
+                            newHtml = newHtml +
+                                    "<tr>"+
+                                        "<td>"+
+                                            "Expired"+
+                                        "</td>"+
+                                    "</tr>";
+                        }
+
+                        newHtml = newHtml +
+                                "</table>"+
+                            "</td>"+
+                        "</tr>";
+                    }
+                    mainTable.html(newHtml);
                 }
             });
 });

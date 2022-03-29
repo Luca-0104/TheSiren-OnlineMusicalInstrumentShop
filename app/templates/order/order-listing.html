@@ -170,7 +170,7 @@
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="order-listing-table">
                                 {% for order in order_lst %}
                                     <tr>
                                         <td href="#" onclick="window.open('/order-details/{{ order.id }}');">
