@@ -252,20 +252,24 @@
                     <li class="profile-info">
                         {#                    the profile text information#}
                         <div class="profile-text">
-                            <div class="email-name">
-                                <p class="email">
+                            <div class="email-name" >
+                                <div class="email" id="info-box">
+                                    <p>
                                     Email: {{ user.email }}
                                 </p>
-                                <p class="username">
+                                </div>
+                                <div class="username" id="info-box">
+                                    <p>
                                     Username: {{ user.username }}
                                 </p>
+                                </div>
                             </div>
                             <div class="date-gender">
-                                <p class="date">
+                                <p class="date" id="info-box">
                                     Member since: {{ user.start_datetime.date() }}
                                 </p>
 
-                                <p class="gender">
+                                <p class="gender" id="info-box">
                                     Gender: {{ user.gender }}
                                 </p>
                             </div>
