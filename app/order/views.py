@@ -110,7 +110,7 @@ def order_details(order_id):
     return render_template('order/order-detail.html', order_obj=order_obj)
 
 
-@order.route('/api/order/my-orders/filter-orders', methods=['GET'])
+@order.route('/api/order/my-orders/filter-orders', methods=['POST'])
 @login_required
 def filter_orders():
     """
@@ -118,9 +118,11 @@ def filter_orders():
     Query the order objs in given status and
     return them in the form of JSON dict
     """
-    if request.method == 'GET':
+    if request.method == 'POST':
+        print("here")
         # get status code from Ajax
-        status_code = int(request.args.get('status_code'))
+        status_code = int(request.form.get('status_code'))
+        print(status_code)
 
         # query the order object by status_code and current user
         order_lst = current_user.orders.filter_by(status_code=status_code).order_by(Order.timestamp.desc()).all()
@@ -133,6 +135,8 @@ def filter_orders():
         data = []
         for o in order_lst:
             data.append(o.to_dict())
+
+        print(data)
 
         return jsonify({'returnValue': 0, 'data': data})
 

@@ -9,3 +9,9 @@ tr{
 .clickable{
     cursor: pointer;
 }
+
+.selectedOne{
+    font-size: 16px;
+    color: #dd1e1e;
+    text-decoration: underline;
+}

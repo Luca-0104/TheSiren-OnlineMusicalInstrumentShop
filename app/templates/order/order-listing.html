@@ -146,6 +146,13 @@
                         <img src="images/icon-cross-large.svg" loading="lazy" alt="">
                     </a>
                 </div>
+                <div class="w-commerce-commercecartheader cart-header">
+                    <h6 class="w-commerce-commercecartheading subSec clickable selectedOne" subAim="-1">All</h6>
+                    <h6 class="w-commerce-commercecartheading subSec clickable" subAim="0">Unpaid</h6>
+                    <h6 class="w-commerce-commercecartheading subSec clickable" subAim="2">Delivering</h6>
+                    <h6 class="w-commerce-commercecartheading subSec clickable" subAim="3">Wait for Collection</h6>
+                    <h6 class="w-commerce-commercecartheading subSec clickable" subAim="4">Finished</h6>
+                </div>
                 <div class="w-commerce-commercecartformwrapper">
                     <!-- List of Cart -->
                     <div class="w-commerce-commercecartlist cart-list">
@@ -170,10 +177,18 @@
                                             <table border="1" width="100%" height="100%" class="clickable">
                                                 <tr>
                                                     <td>
-                                                        Order ID
+                                                        Recipient Name
                                                     </td>
                                                     <td>
-                                                        {{ order.id }}
+                                                        {{ order.address.recipient_name }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        Contact Phone
+                                                    </td>
+                                                    <td>
+                                                        {{ order.address.phone }}
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -181,7 +196,7 @@
                                                         Address
                                                     </td>
                                                     <td>
-                                                        China Beijing
+                                                        {{ order.address.country }} - {{ order.address.province_or_state }} - {{ order.address.city }} - {{ order.address.district }}
                                                     </td>
                                                 </tr>
                                                 <tr>

@@ -35,3 +35,33 @@ function changeStatusTo(order_id, new_code)
                 }
             });
 }
+
+$(".subSec").on("click",function()
+{
+    let subAimID = $(this).attr("subAim");
+    let curAim = $(".selectedOne");
+
+    curAim.removeClass("selectedOne");
+    $(this).addClass("selectedOne");
+
+    $.post("/api/order/my-orders/filter-orders",
+        {
+            "status_code": subAimID
+        }).done(function (response)
+            {
+                // get from server (backend)
+                let returnValue = response['returnValue'];
+                let newOrders = response['data'];
+
+                console.log(returnValue);
+
+                console.log(newOrders);
+
+                if(returnValue === 0)
+                {
+
+                    //success
+
+                }
+            });
+});
