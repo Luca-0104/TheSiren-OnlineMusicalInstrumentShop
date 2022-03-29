@@ -153,8 +153,8 @@ def change_status():
         6:"expired
 
         --- permission ---
-        customers -> {4, 5}
-        staff     -> {2, 3, 5}
+        customers -> {(2->)4, 5}
+        staff     -> {2, 3, (3->)4, 5}
     """
     if request.method == 'POST':
         # get data from Ajax
@@ -168,9 +168,12 @@ def change_status():
         if o is None:
             return jsonify({'returnValue': 1})
 
+        # get current status code
+        current_code = o.status_code
+
         # specify the permissions
         perm_cus = {4, 5}
-        perm_staff = {2, 3, 5}
+        perm_staff = {2, 3, 4, 5}
 
         # check the role of the current user
         # customer
@@ -179,6 +182,10 @@ def change_status():
             if o.user_id == current_user.id:
                 # check the permission
                 if new_code in perm_cus:
+                    # customer can only change the status to 'finished' when it is 'on delivery'
+                    if new_code == 4 and current_code != 2:
+                        return jsonify({'returnValue': 2, 'msg': 'Permission denied!'})
+                    # update status
                     o.status_code = new_code
                     db.session.add(o)
                     db.session.commit()
@@ -192,6 +199,10 @@ def change_status():
         elif current_user.role_id == 2:
             # check the permission
             if new_code in perm_staff:
+                # staff can only change the status to 'finished' when it is 'waiting for collection'
+                if new_code == 4 and current_code != 3:
+                    return jsonify({'returnValue': 2, 'msg': 'Permission denied!'})
+                # update status
                 o.status_code = new_code
                 db.session.add(o)
                 db.session.commit()
