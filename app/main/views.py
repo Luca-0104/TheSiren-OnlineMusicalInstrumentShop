@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for, session, jsonify
+from flask import render_template, request, redirect, url_for, session, jsonify, flash
 from flask_login import login_required, current_user
 from sqlalchemy import and_
 
@@ -85,6 +85,22 @@ def products_in_brand(brand_name):
     return render_template('', is_plist=True, product_lst=product_lst)  # see-all page
 
 
+@main.route('/product-details/<int:mt_id>')
+def model_type_details(mt_id):
+    """
+    Rendering the page of 'Mode Type details'
+    :param mt_id: The id of the selected model type
+    """
+    # get the model type by id
+    mt = ModelType.query.get(mt_id)
+    # check if the model type exists
+    if mt is not None and not mt.is_deleted:
+        return render_template('', model_type=mt)
+    else:
+        flash('No such commodity!')
+        return redirect(url_for('main.index_new'))
+
+
 @main.route('/change_language', methods=['GET', 'POST'])
 def change_language():
     # if the user already logged in, we change language setting both in db and session
@@ -116,7 +132,10 @@ def change_language():
 
     return render_template('main/index_new.html')
 
+
 # ------------------------------ BACK-END Server (using Ajax) ----------------------------------
+
+
 @main.route('/api/change-theme', methods=['POST'])
 def change_theme():
     pass
@@ -154,7 +173,6 @@ def filter_model_types():
         elif access_method == 'cate':
             # get the cate name
             cate_name = request.form.get('cate_name')
-
 
 
 @main.route('/api/model-detail/validate-model-count', methods=['POST'])
