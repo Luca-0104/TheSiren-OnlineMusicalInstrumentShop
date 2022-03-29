@@ -32,7 +32,7 @@ def go_all():
         The function for going to see all the products (model types).
         (Namely, a see-all-function without any filters)
     """
-    all_products = Product.query.all()
+    all_products = Product.query.filter_by(is_deleted=False).all()
     return render_template('', is_plist=True, all_products=all_products)  # see-all page
 
 
@@ -70,7 +70,7 @@ def products_in_category(category_name):
     """
     # get the category obj by its name
     cate = Category.query.filter_by(name=category_name).first()
-    product_lst = cate.products.all()
+    product_lst = cate.products.filter_by(is_deleted=False).all()
     return render_template('', is_plist=True, product_lst=product_lst)  # see-all page
 
 
@@ -81,7 +81,7 @@ def products_in_brand(brand_name):
     """
     # get the brand obj by its name
     brand = Brand.query.filter_by(name=brand_name).first()
-    product_lst = brand.products.all()
+    product_lst = brand.products.filter_by(is_deleted=False).all()
     return render_template('', is_plist=True, product_lst=product_lst)  # see-all page
 
 
@@ -116,23 +116,6 @@ def change_language():
 
     return render_template('main/index_new.html')
 
-
-@main.route('/my-cart')
-def my_cart():
-    """
-        showing the page of "my shopping cart" of current user
-    """
-    pass
-
-
-@main.route('/my-orders')
-def my_orders():
-    """
-        showing the page of "my orders" of current user
-    """
-    pass
-
-
 # ------------------------------ BACK-END Server (using Ajax) ----------------------------------
 @main.route('/api/change-theme', methods=['POST'])
 def change_theme():
@@ -149,12 +132,36 @@ def purchase_cart():
     pass
 
 
+@main.route('/api/filter-model-types', methods=['POST'])
+def filter_model_types():
+    """
+    (Using Ajax)
+    filter the model types with their categories, brands, popularity, stock...
+    :return:
+    """
+    if request.method == 'POST':
+        # check has the user searched anything to get there, or just get there by 'see all', 'brand' or 'cate'
+        access_method = request.form.get('access_method')
+
+        if access_method == 'search':
+            # get the search content
+            search_content = request.form.get('search_content')
+        elif access_method == 'see_all':
+            pass
+        elif access_method == 'brand':
+            # get the brand name
+            pass
+        elif access_method == 'cate':
+            # get the cate name
+            pass
+
+
+
 @main.route('/api/model-detail/validate-model-count', methods=['POST'])
-@login_required
 def validate_model_count():
     """
         (Using Ajax)
-        Validate the model account of a specific model in the detail page of this model.
+        Validate the model account of a specific model in the **detail page** of this model.
         If the count is out of the bound of the stock, response will be send to the frontend by ajax.
         Everytime the count changed, frontend should send a ajax request to this function to validate the count.
     """
