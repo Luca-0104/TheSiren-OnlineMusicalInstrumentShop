@@ -85,6 +85,21 @@ def products_in_brand(brand_name):
     return render_template('', is_plist=True, product_lst=product_lst)  # see-all page
 
 
+@main.route('/product-details/<int:product_id>')
+def product_details(product_id):
+    """
+    Rendering the page of 'product details'
+    :param product_id: The id of the selected product
+    """
+    # get the product by id
+    p = Product.query.get(product_id)
+    # check if the product exists
+    if p is not None and not p.is_deleted:
+        return render_template('', product=p)
+    else:
+        return render_template('main.index_new')
+
+
 @main.route('/change_language', methods=['GET', 'POST'])
 def change_language():
     # if the user already logged in, we change language setting both in db and session
@@ -116,7 +131,10 @@ def change_language():
 
     return render_template('main/index_new.html')
 
+
 # ------------------------------ BACK-END Server (using Ajax) ----------------------------------
+
+
 @main.route('/api/change-theme', methods=['POST'])
 def change_theme():
     pass
@@ -154,7 +172,6 @@ def filter_model_types():
         elif access_method == 'cate':
             # get the cate name
             cate_name = request.form.get('cate_name')
-
 
 
 @main.route('/api/model-detail/validate-model-count', methods=['POST'])
