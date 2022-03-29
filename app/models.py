@@ -199,8 +199,11 @@ class Order(BaseModel):
     timestamp = db.Column(db.DateTime(), index=True, default=datetime.utcnow)
     status_code = db.Column(db.Integer, default=0)  # the status code of this order
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))  # the uid of the customer who owns this order
+    # 1 order -> 1 Addresses; 1 Address -> n order
+    address_id = db.Column(db.Integer, db.ForeignKey('addresses.id'))
     # 1 order -> n OrderModelType; 1 OrderModelType -> 1 order
     order_model_types = db.relationship('OrderModelType', backref='order', lazy='dynamic')
+
 
     @staticmethod
     def insert_orders(count):
@@ -211,7 +214,6 @@ class Order(BaseModel):
             new_order = Order(timestamp=faker.past_datetime(), status_code=random.randint(0, 6), user_id=1)
             db.session.add(new_order)
         db.session.commit()
-
 
     def to_dict(self):
         """ Map the object to dictionary data structure """
@@ -683,10 +685,16 @@ class Address(BaseModel):
     district = db.Column(db.String(128), nullable=False)
     # 1 address -> 1 user (customer)
     customer_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    # 1 address -> n orders
+    orders = db.relationship('Order', backref='address', lazy='dynamic')
+
 
     def to_dict(self):
         """ Map the object to dictionary data structure """
-        return Tools.delete_instance_state(super(Address, self).to_dict())
+        result = super(Address, self).to_dict()
+        # add relations to the result dict
+        Tools.add_relation_to_dict(result, self.orders.all(), "orders")
+        return Tools.delete_instance_state(result)
 
 
 class Permission:

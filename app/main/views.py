@@ -168,23 +168,6 @@ def change_language():
 
     return render_template('main/index_new.html')
 
-
-@main.route('/my-cart')
-def my_cart():
-    """
-        showing the page of "my shopping cart" of current user
-    """
-    return render_template('')
-
-
-@main.route('/my-orders')
-def my_orders():
-    """
-        showing the page of "my orders" of current user
-    """
-    return render_template('')
-
-
 # ------------------------------ BACK-END Server (using Ajax) ----------------------------------
 @main.route('/api/change-theme', methods=['POST'])
 def change_theme():
@@ -214,7 +197,7 @@ def filter_model_types():
 
         if access_method == 'search':
             # get the search content
-            pass
+            search_content = request.form.get('search_content')
         elif access_method == 'see_all':
             pass
         elif access_method == 'brand':
