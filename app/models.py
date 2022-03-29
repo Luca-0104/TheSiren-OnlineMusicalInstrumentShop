@@ -31,6 +31,7 @@ class Tools:
         """
         Role.insert_roles()  # roles of users
         User.insert_users()  # the constant user accounts for test
+        Address.insert_address()    # addresses for delivery
         # # users(100)  # 100 fake users
         Category.insert_categories()  # the product categories
         Brand.insert_brands()  # the product brands
@@ -204,14 +205,13 @@ class Order(BaseModel):
     # 1 order -> n OrderModelType; 1 OrderModelType -> 1 order
     order_model_types = db.relationship('OrderModelType', backref='order', lazy='dynamic')
 
-
     @staticmethod
     def insert_orders(count):
         # create a faker instance
         faker = Faker()
         # create some new orders into db
         for i in range(count):
-            new_order = Order(timestamp=faker.past_datetime(), status_code=random.randint(0, 6), user_id=1)
+            new_order = Order(timestamp=faker.past_datetime(), status_code=random.randint(0, 6), user_id=1, address_id=random.randint(1, Address.query.count()))
             db.session.add(new_order)
         db.session.commit()
 
@@ -688,6 +688,13 @@ class Address(BaseModel):
     # 1 address -> n orders
     orders = db.relationship('Order', backref='address', lazy='dynamic')
 
+    @staticmethod
+    def insert_address():
+        fake = Faker()
+        for i in range(10):
+            new_address = Address(customer_id=1, recipient_name=fake.name(), phone=fake.phone_number(), country=fake.country(), province_or_state='Province{}'.format(i+1), city=fake.city(), district='District{}'.format(i+1))
+            db.session.add(new_address)
+        db.session.commit()
 
     def to_dict(self):
         """ Map the object to dictionary data structure """

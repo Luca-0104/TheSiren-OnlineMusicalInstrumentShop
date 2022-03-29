@@ -150,10 +150,10 @@ def filter_model_types():
             pass
         elif access_method == 'brand':
             # get the brand name
-            pass
+            brand_name = request.form.get('brand_name')
         elif access_method == 'cate':
             # get the cate name
-            pass
+            cate_name = request.form.get('cate_name')
 
 
 
