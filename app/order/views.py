@@ -5,6 +5,7 @@ from app import db
 from app.models import Cart, Order, OrderModelType, ModelType, User
 from app.order import order
 
+from datetime import datetime
 
 # -------------------------------------- generate orders --------------------------------------
 
@@ -101,6 +102,7 @@ def my_orders():
 
 
 @order.route('/order-details/<int:order_id>')
+@login_required
 def order_details(order_id):
     """
     Rendering the page of order details
@@ -122,17 +124,15 @@ def filter_orders():
         # get status code from Ajax
         status_code = int(request.args.get('status_code'))
 
-        # query the order object by status_code and current user
-        order_lst = current_user.orders.filter_by(status_code=status_code).order_by(Order.timestamp.desc()).all()
-
-        # for testing with 'postman'
-        # user = User.query.get(1)
-        # order_lst = user.orders.filter_by(status_code=status_code).order_by(Order.timestamp.desc()).all()
+        if status_code == -1:
+            # query all the orders of current user
+            order_lst = current_user.orders.order_by(Order.timestamp.desc()).all()
+        else:
+            # query the order object by status_code and current user
+            order_lst = current_user.orders.filter_by(status_code=status_code).order_by(Order.timestamp.desc()).all()
 
         # turn objects into a list of dicts
-        data = []
-        for o in order_lst:
-            data.append(o.to_dict())
+        data = [o.to_dict() for o in order_lst]
 
         return jsonify({'returnValue': 0, 'data': data})
 
@@ -140,6 +140,7 @@ def filter_orders():
 
 
 @order.route('/api/order/my-orders/change-status', methods=['POST'])
+@login_required
 def change_status():
     """
     (Using Ajax)
@@ -153,8 +154,8 @@ def change_status():
         6:"expired
 
         --- permission ---
-        customers -> {4, 5}
-        staff     -> {2, 3, 5}
+        customers -> {(2->)4, 5}
+        staff     -> {2, 3, (3->)4, 5}
     """
     if request.method == 'POST':
         # get data from Ajax
@@ -168,9 +169,12 @@ def change_status():
         if o is None:
             return jsonify({'returnValue': 1})
 
+        # get current status code
+        current_code = o.status_code
+
         # specify the permissions
         perm_cus = {4, 5}
-        perm_staff = {2, 3, 5}
+        perm_staff = {2, 3, 4, 5}
 
         # check the role of the current user
         # customer
@@ -179,7 +183,16 @@ def change_status():
             if o.user_id == current_user.id:
                 # check the permission
                 if new_code in perm_cus:
+                    # customer can only change the status to 'finished' when it is 'on delivery'
+                    if new_code == 4 and current_code != 2:
+                        return jsonify({'returnValue': 2, 'msg': 'Permission denied!'})
+                    # update status
                     o.status_code = new_code
+                    # record the time of status changing
+                    if new_code == 4:
+                        o.timestamp_4 = datetime.utcnow()
+                    elif new_code == 5:
+                        o.timestamp_5 = datetime.utcnow()
                     db.session.add(o)
                     db.session.commit()
                     return jsonify({'returnValue': 0})
@@ -192,7 +205,20 @@ def change_status():
         elif current_user.role_id == 2:
             # check the permission
             if new_code in perm_staff:
+                # staff can only change the status to 'finished' when it is 'waiting for collection'
+                if new_code == 4 and current_code != 3:
+                    return jsonify({'returnValue': 2, 'msg': 'Permission denied!'})
+                # update status
                 o.status_code = new_code
+                # record the time of status changing
+                if new_code == 2:
+                    o.timestamp_2 = datetime.utcnow()
+                elif new_code == 3:
+                    o.timestamp_3 = datetime.utcnow()
+                elif new_code == 4:
+                    o.timestamp_4 = datetime.utcnow()
+                elif new_code == 5:
+                    o.timestamp_5 = datetime.utcnow()
                 db.session.add(o)
                 db.session.commit()
                 return jsonify({'returnValue': 0})

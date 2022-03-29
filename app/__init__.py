@@ -65,6 +65,14 @@ def create_app(config_name):
     from .cart import cart as cart_blueprint
     app.register_blueprint(cart_blueprint)
 
+    # register blueprint - userinfo
+    from .userinfo import userinfo as userinfo_blueprint
+    app.register_blueprint(userinfo_blueprint)
+
+    # register blueprint - comment
+    from .comment import comment as comment_blueprint
+    app.register_blueprint(comment_blueprint)
+
     return app
 
 
