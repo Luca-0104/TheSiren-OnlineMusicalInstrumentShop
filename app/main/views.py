@@ -33,7 +33,7 @@ def go_all():
         (Namely, a see-all-function without any filters)
     """
     all_products = Product.query.all()
-    return render_template('', is_plist=True, all_products=all_products)   # see-all page
+    return render_template('', is_plist=True, all_products=all_products)  # see-all page
 
 
 @main.route('/search', methods=['POST'])
@@ -48,7 +48,7 @@ def search():
         # search model types by name
         mt_list = ModelType.query.filter(and_(ModelType.name.contains(key_word),
                                               ModelType.is_deleted == False)).order_by(ModelType.product_id).all()
-        return render_template('',  is_plist=False, mt_list=mt_list)  # see-all page
+        return render_template('', is_plist=False, mt_list=mt_list)  # see-all page
 
     return redirect(url_for('main.index'))
 
@@ -72,7 +72,6 @@ def products_in_category(category_name):
     cate = Category.query.filter_by(name=category_name).first()
     product_lst = cate.products.all()
     return render_template('', is_plist=True, product_lst=product_lst)  # see-all page
-
 
 
 @main.route('/products-in-brand/<brand_name>')
@@ -115,9 +114,7 @@ def change_language():
         elif session["language"] == 'en':
             session["language"] = 'zh'
 
-
     return render_template('main/index_new.html')
-
 
 
 @main.route('/my-cart')
@@ -180,3 +177,4 @@ def validate_model_count():
                     return jsonify({'returnValue': 0, 'countStatus': 'exceed'})
 
     return jsonify({'returnValue': 1})
+

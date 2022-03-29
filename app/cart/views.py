@@ -15,8 +15,8 @@ def show_my_cart():
         for rendering the page of "my shopping cart"
     """
     cart_relation_lst = current_user.carts.all()
-    l = len(cart_relation_lst)
-    return render_template('cart/page-cart.html', cart_relation_lst=cart_relation_lst, length=l)
+    length = len(cart_relation_lst)
+    return render_template('cart/page-cart.html', cart_relation_lst=cart_relation_lst, length=length)
 
 
 # ------------------------------ BACK-END Server (using Ajax) ----------------------------------

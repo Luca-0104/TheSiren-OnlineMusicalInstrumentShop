@@ -2,9 +2,11 @@ from flask_login import login_required, current_user
 from flask import render_template, redirect, url_for, request, json, flash, jsonify
 
 from app import db
-from app.models import Cart, Order, OrderModelType, ModelType
+from app.models import Cart, Order, OrderModelType, ModelType, User
 from app.order import order
 
+
+# -------------------------------------- generate orders --------------------------------------
 
 @order.route('/generate-order-from-cart', methods=['GET', 'POST'])
 @login_required
@@ -75,10 +77,126 @@ def generate_order_from_buy_now(model_id, count):
     return redirect(url_for('main.index'))
 
 
-@order.route('/order_confirm/<int:order_id>')
+@order.route('/order-confirm/<int:order_id>')
 @login_required
 def order_confirm(order_id):
     """
         This function is for rendering the page of order confirmation.
     """
     return render_template('order/order-confirm.html', order_id=order_id)
+
+
+# -------------------------------------- view my orders --------------------------------------
+
+@order.route('/my-orders')
+@login_required
+def my_orders():
+    """
+    For rendering the page of 'my orders'
+    and pass all the orders of this user to the frontend
+    """
+    # order the orders by their timestamps
+    order_lst = current_user.orders.order_by(Order.timestamp.desc()).all()
+    return render_template('', order_lst=order_lst)
+
+
+@order.route('/order-details/<int:order_id>')
+def order_details(order_id):
+    """
+    Rendering the page of order details
+    :param order_id: The id of the selected order
+    """
+    order_obj = Order.query.get(order_id)
+    return render_template('', order_obj=order_obj)
+
+
+@order.route('/api/order/my-orders/filter-orders', methods=['GET'])
+@login_required
+def filter_orders():
+    """
+    (Using ajax)
+    Query the order objs in given status and
+    return them in the form of JSON dict
+    """
+    if request.method == 'GET':
+        # get status code from Ajax
+        status_code = int(request.args.get('status_code'))
+
+        # query the order object by status_code and current user
+        order_lst = current_user.orders.filter_by(status_code=status_code).order_by(Order.timestamp.desc()).all()
+
+        # for testing with 'postman'
+        # user = User.query.get(1)
+        # order_lst = user.orders.filter_by(status_code=status_code).order_by(Order.timestamp.desc()).all()
+
+        # turn objects into a list of dicts
+        data = []
+        for o in order_lst:
+            data.append(o.to_dict())
+
+        return jsonify({'returnValue': 0, 'data': data})
+
+    return jsonify({'returnValue': 1})
+
+
+@order.route('/api/order/my-orders/change-status', methods=['POST'])
+def change_status():
+    """
+    (Using Ajax)
+        --- status code table ---
+        0:"waiting for payment",
+        1:"preparing"
+        2:"on delivery",
+        3:"waiting for collection",
+        4:"finished",
+        5:"canceled"
+        6:"expired
+
+        --- permission ---
+        customers -> {4, 5}
+        staff     -> {2, 3, 5}
+    """
+    if request.method == 'POST':
+        # get data from Ajax
+        new_code = int(request.form.get('new_code'))
+        order_id = int(request.form.get('order_id'))
+
+        # get the order by id
+        o = Order.query.get(order_id)
+
+        # check if the order exists
+        if o is None:
+            return jsonify({'returnValue': 1})
+
+        # specify the permissions
+        perm_cus = {4, 5}
+        perm_staff = {2, 3, 5}
+
+        # check the role of the current user
+        # customer
+        if current_user.role_id == 1:
+            # check if the oder is belong to this user
+            if o.user_id == current_user.id:
+                # check the permission
+                if new_code in perm_cus:
+                    o.status_code = new_code
+                    db.session.add(o)
+                    db.session.commit()
+                    return jsonify({'returnValue': 0})
+                else:
+                    return jsonify({'returnValue': 2, 'msg': 'Permission denied!'})
+            else:
+                return jsonify({'returnValue': 2, 'msg': 'Permission denied!'})
+
+        # staff
+        elif current_user.role_id == 2:
+            # check the permission
+            if new_code in perm_staff:
+                o.status_code = new_code
+                db.session.add(o)
+                db.session.commit()
+                return jsonify({'returnValue': 0})
+            else:
+                return jsonify({'returnValue': 2, 'msg': 'Permission denied!'})
+
+    return jsonify({'returnValue': 1})
