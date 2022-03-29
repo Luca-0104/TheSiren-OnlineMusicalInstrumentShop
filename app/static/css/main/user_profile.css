@@ -13,7 +13,7 @@
 .user-nav {
     list-style: none;
     float: left;
-    margin-left: 100px;
+    margin-left: 200px;
 }
 
 .button.nav {
@@ -30,8 +30,8 @@
 }
 
 #right-box {
-    width: 70%;
-    margin-left: 285px;
+    width: 60%;
+    margin-left: 385px;
     border: solid;
 }
 
@@ -73,7 +73,7 @@
 
 #info-box {
     height: 33px;
-    border: 2px solid;
-    border-radius: 3px;
+    /*border: 2px solid;*/
+    /*border-radius: 3px;*/
 }
 
