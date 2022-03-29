@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for, session, jsonify
+from flask import render_template, request, redirect, url_for, session, jsonify, flash
 from flask_login import login_required, current_user
 from sqlalchemy import and_
 
@@ -97,7 +97,8 @@ def model_type_details(mt_id):
     if mt is not None and not mt.is_deleted:
         return render_template('', model_type=mt)
     else:
-        return render_template('main.index_new')
+        flash('No such commodity!')
+        return redirect(url_for('main.index_new'))
 
 
 @main.route('/change_language', methods=['GET', 'POST'])
