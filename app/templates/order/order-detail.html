@@ -164,16 +164,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for order in order_lst %}
                                     <tr>
-                                        <td onclick="window.open('/order-details/{{ order.id }}');">
+                                        <td>
                                             <table border="1" width="100%" height="100%">
                                                 <tr>
                                                     <td>
                                                         Order ID
                                                     </td>
                                                     <td>
-                                                        {{ order.id }}
+                                                        {{ order_obj.id }}
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -189,34 +188,34 @@
                                                         Time Stamp
                                                     </td>
                                                     <td>
-                                                        {{ order.timestamp }}
+                                                        {{ order_obj.timestamp }}
                                                     </td>
                                                 </tr>
                                             </table>
                                         </td>
                                         <td>
                                             <table border="1" width="100%" height="100%">
-                                                {% for order_model in order.order_model_types.all() %}
-                                                    {% if loop.index <= 4 %}
+                                                {% for order_model in order_obj.order_model_types.all() %}
+                                                    <tr>
                                                         <td>
                                                             <img src="../../static/images/example/yamaha_yep621s.jpg" loading="lazy" alt="" class="w-commerce-commercecartitemimage cart-item-image">
                                                         </td>
-                                                        <!--<td>
+                                                        <td>
                                                             {{ order_model.model_type.name }}
                                                         </td>
                                                         <td>
                                                             Comment
-                                                        </td>-->
-                                                    {% endif %}
+                                                        </td>
+                                                    </tr>
                                                 {% endfor %}
                                             </table>
                                         </td>
                                         <td>
                                             <table border="1" width="100%" height="100%">
-                                                {% if order.status_code == 0 %}
+                                                {% if order_obj.status_code == 0 %}
                                                     <tr>
                                                         <td>
-                                                            {{ order.get_status() }}
+                                                            {{ order_obj.get_status() }}
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -229,10 +228,10 @@
                                                             Cancel
                                                         </td>
                                                     </tr>
-                                                {% elif order.status_code == 3 %}
+                                                {% elif order_obj.status_code == 3 %}
                                                     <tr>
                                                         <td>
-                                                            {{ order.get_status() }}
+                                                            {{ order_obj.get_status() }}
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -243,7 +242,7 @@
                                                 {% else %}
                                                     <tr>
                                                         <td>
-                                                            {{ order.get_status() }}
+                                                            {{ order_obj.get_status() }}
                                                         </td>
                                                     </tr>
                                                 {% endif %}
@@ -251,7 +250,6 @@
                                             </table>
                                         </td>
                                     </tr>
-                                {% endfor %}
                             </tbody>
                         </table>
                     </div>
