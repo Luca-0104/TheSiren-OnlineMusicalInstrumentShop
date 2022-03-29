@@ -85,17 +85,17 @@ def products_in_brand(brand_name):
     return render_template('', is_plist=True, product_lst=product_lst)  # see-all page
 
 
-@main.route('/product-details/<int:product_id>')
-def product_details(product_id):
+@main.route('/product-details/<int:mt_id>')
+def model_type_details(mt_id):
     """
-    Rendering the page of 'product details'
-    :param product_id: The id of the selected product
+    Rendering the page of 'Mode Type details'
+    :param mt_id: The id of the selected model type
     """
-    # get the product by id
-    p = Product.query.get(product_id)
-    # check if the product exists
-    if p is not None and not p.is_deleted:
-        return render_template('', product=p)
+    # get the model type by id
+    mt = ModelType.query.get(mt_id)
+    # check if the model type exists
+    if mt is not None and not mt.is_deleted:
+        return render_template('', model_type=mt)
     else:
         return render_template('main.index_new')
 
