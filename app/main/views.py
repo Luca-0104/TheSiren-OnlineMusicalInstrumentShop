@@ -116,23 +116,6 @@ def change_language():
 
     return render_template('main/index_new.html')
 
-
-@main.route('/my-cart')
-def my_cart():
-    """
-        showing the page of "my shopping cart" of current user
-    """
-    return render_template('')
-
-
-@main.route('/my-orders')
-def my_orders():
-    """
-        showing the page of "my orders" of current user
-    """
-    return render_template('')
-
-
 # ------------------------------ BACK-END Server (using Ajax) ----------------------------------
 @main.route('/api/change-theme', methods=['POST'])
 def change_theme():
