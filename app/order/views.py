@@ -97,7 +97,7 @@ def my_orders():
     """
     # order the orders by their timestamps
     order_lst = current_user.orders.order_by(Order.timestamp.desc()).all()
-    return render_template('', order_lst=order_lst)
+    return render_template('order/order-listing.html', order_lst=order_lst)
 
 
 @order.route('/order-details/<int:order_id>')
