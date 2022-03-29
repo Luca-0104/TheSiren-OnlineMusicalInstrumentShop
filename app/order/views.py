@@ -5,6 +5,7 @@ from app import db
 from app.models import Cart, Order, OrderModelType, ModelType, User
 from app.order import order
 
+from datetime import datetime
 
 # -------------------------------------- generate orders --------------------------------------
 
@@ -187,6 +188,11 @@ def change_status():
                         return jsonify({'returnValue': 2, 'msg': 'Permission denied!'})
                     # update status
                     o.status_code = new_code
+                    # record the time of status changing
+                    if new_code == 4:
+                        o.timestamp_4 = datetime.utcnow()
+                    elif new_code == 5:
+                        o.timestamp_5 = datetime.utcnow()
                     db.session.add(o)
                     db.session.commit()
                     return jsonify({'returnValue': 0})
@@ -204,6 +210,15 @@ def change_status():
                     return jsonify({'returnValue': 2, 'msg': 'Permission denied!'})
                 # update status
                 o.status_code = new_code
+                # record the time of status changing
+                if new_code == 2:
+                    o.timestamp_2 = datetime.utcnow()
+                elif new_code == 3:
+                    o.timestamp_3 = datetime.utcnow()
+                elif new_code == 4:
+                    o.timestamp_4 = datetime.utcnow()
+                elif new_code == 5:
+                    o.timestamp_5 = datetime.utcnow()
                 db.session.add(o)
                 db.session.commit()
                 return jsonify({'returnValue': 0})

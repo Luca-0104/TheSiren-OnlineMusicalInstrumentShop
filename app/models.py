@@ -200,6 +200,12 @@ class Order(BaseModel):
     timestamp = db.Column(db.DateTime(), index=True, default=datetime.utcnow)
     status_code = db.Column(db.Integer, default=0)  # the status code of this order
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))  # the uid of the customer who owns this order
+    timestamp_1 = db.Column(db.DateTime(), index=True)  # time record of status changing to 'preparing'
+    timestamp_2 = db.Column(db.DateTime(), index=True)  # time record of status changing to 'on delivery'
+    timestamp_3 = db.Column(db.DateTime(), index=True)  # time record of status changing to 'waiting got collection'
+    timestamp_4 = db.Column(db.DateTime(), index=True)  # time record of status changing to 'finished'
+    timestamp_5 = db.Column(db.DateTime(), index=True)  # time record of status changing to 'canceled'
+    timestamp_6 = db.Column(db.DateTime(), index=True)  # time record of status changing to 'expired'
     # 1 order -> 1 Addresses; 1 Address -> n order
     address_id = db.Column(db.Integer, db.ForeignKey('addresses.id'))
     # 1 order -> n OrderModelType; 1 OrderModelType -> 1 order
@@ -218,10 +224,15 @@ class Order(BaseModel):
     def to_dict(self):
         """ Map the object to dictionary data structure """
         result = super(Order, self).to_dict()
-        # add relations to the result dict
-        Tools.add_relation_to_dict(result, self.order_model_types.all(), "order_model_types")
         # change status code to statement
         result["status"] = self.get_status()
+        # add model list to this dict
+        model_types = []
+        for omt in self.order_model_types.all():
+            model_types.append(omt.model_type.to_dict())
+        result['model_types'] = model_types
+        # add address to this dict
+        result['address'] = self.address.to_dict()
         return Tools.delete_instance_state(result)
 
     def get_status(self):
@@ -545,7 +556,7 @@ class ModelType(BaseModel):
         Tools.add_relation_to_dict(result, self.pictures.all(), "pictures")
         Tools.add_relation_to_dict(result, self.intro_pictures.all(), "intro_pictures")
         Tools.add_relation_to_dict(result, self.carts.all(), "carts")
-        Tools.add_relation_to_dict(result, self.order_model_types.all(), "order_model_types")
+        # Tools.add_relation_to_dict(result, self.order_model_types.all(), "order_model_types")
 
         return Tools.delete_instance_state(result)
 
@@ -683,6 +694,7 @@ class Address(BaseModel):
     province_or_state = db.Column(db.String(128), nullable=False)
     city = db.Column(db.String(128), nullable=False)
     district = db.Column(db.String(128), nullable=False)
+    is_default = db.Column(db.Boolean(), default=False)
     # 1 address -> 1 user (customer)
     customer_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     # 1 address -> n orders
@@ -700,7 +712,7 @@ class Address(BaseModel):
         """ Map the object to dictionary data structure """
         result = super(Address, self).to_dict()
         # add relations to the result dict
-        Tools.add_relation_to_dict(result, self.orders.all(), "orders")
+        # Tools.add_relation_to_dict(result, self.orders.all(), "orders")
         return Tools.delete_instance_state(result)
 
 
