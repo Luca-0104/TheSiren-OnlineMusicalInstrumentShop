@@ -703,9 +703,16 @@ class Address(BaseModel):
     @staticmethod
     def insert_address():
         fake = Faker()
+
         for i in range(10):
             new_address = Address(customer_id=1, recipient_name=fake.name(), phone=fake.phone_number(), country=fake.country(), province_or_state='Province{}'.format(i+1), city=fake.city(), district='District{}'.format(i+1))
             db.session.add(new_address)
+
+        # add a default address for this customer
+        new_address = Address(is_default=True, customer_id=1, recipient_name=fake.name(), phone=fake.phone_number(),
+                              country=fake.country(), province_or_state='Province{}'.format(11), city=fake.city(),
+                              district='District{}'.format(11))
+        db.session.add(new_address)
         db.session.commit()
 
     def to_dict(self):
