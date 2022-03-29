@@ -5,3 +5,7 @@ table{
 tr{
     margin-bottom: 10px;
 }
+
+.clickable{
+    cursor: pointer;
+}

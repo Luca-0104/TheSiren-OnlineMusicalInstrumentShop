@@ -166,8 +166,8 @@
                             <tbody>
                                 {% for order in order_lst %}
                                     <tr>
-                                        <td onclick="window.open('/order-details/{{ order.id }}');">
-                                            <table border="1" width="100%" height="100%">
+                                        <td href="#" onclick="window.open('/order-details/{{ order.id }}');">
+                                            <table border="1" width="100%" height="100%" class="clickable">
                                                 <tr>
                                                     <td>
                                                         Order ID
