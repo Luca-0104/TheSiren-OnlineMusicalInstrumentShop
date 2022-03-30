@@ -148,9 +148,19 @@ def model_type_details(mt_id):
     """
     # get the model type by id
     mt = ModelType.query.get(mt_id)
-    # check if the model type exists
+
     if mt is not None:
-        return render_template('', model_type=mt)
+        # get the recommended related models (models in same cate with high popularity)
+        related_mt_lst = []
+        for cate in mt.product.categories:
+            for p in cate.products:
+                related_mt_lst += p.model_types.all()
+        # sort the related list
+        sort_db_models(related_mt_lst, sort_key=take_sales, reverse=True)
+        # limit the number of mt in related list
+        related_mt_lst = related_mt_lst[:10]
+        # check if the model type exists
+        return render_template('', model_type=mt, related_mt_lst=related_mt_lst)
     else:
         flash('No such commodity!')
         return redirect(url_for('main.index_new'))
