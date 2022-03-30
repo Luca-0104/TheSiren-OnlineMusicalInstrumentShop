@@ -81,7 +81,7 @@ class BaseModel(db.Model):
             Map the object to dictionary data structure
         """
         # turn columns into items in dictionary
-        result = self.__dict__
+        result = self.__dict__.copy()
         return result
 
 
@@ -99,9 +99,9 @@ class Refund(BaseModel):
     reason = db.Column(db.Text())  # customer should give the reason why they ask for a refund
     is_done = db.Column(db.Boolean, default=False)
 
-    def to_dict(self):
-        """ Map the object to dictionary data structure """
-        return Tools.delete_instance_state(super(Refund, self).to_dict())
+    # def to_dict(self):
+    #     """ Map the object to dictionary data structure """
+    #     return Tools.delete_instance_state(super(Refund, self).to_dict())
 
 
 # class Change(db.Model):
@@ -121,12 +121,12 @@ class ChatRoom(BaseModel):
     def __repr__(self):
         return '<ChatRoom cus: %r - staff: %r>' % (self.customer_id, self.staff_id)
 
-    def to_dict(self):
-        """ Map the object to dictionary data structure """
-        result = super(ChatRoom, self).to_dict()
-        # add relations to the result dict
-        Tools.add_relation_to_dict(result, self.messages.all(), "messages")
-        return Tools.delete_instance_state(result)
+    # def to_dict(self):
+    #     """ Map the object to dictionary data structure """
+    #     result = super(ChatRoom, self).to_dict()
+    #     # add relations to the result dict
+    #     Tools.add_relation_to_dict(result, self.messages.all(), "messages")
+    #     return Tools.delete_instance_state(result)
 
 
 class Message(BaseModel):
@@ -150,9 +150,9 @@ class Message(BaseModel):
     def __repr__(self):
         return '<Chat %r>' % self.content[:10]
 
-    def to_dict(self):
-        """ Map the object to dictionary data structure """
-        return Tools.delete_instance_state(super(Message, self).to_dict())
+    # def to_dict(self):
+    #     """ Map the object to dictionary data structure """
+    #     return Tools.delete_instance_state(super(Message, self).to_dict())
 
 
 '''
@@ -297,12 +297,12 @@ class OrderModelType(BaseModel):
                 db.session.add(new_omt)
         db.session.commit()
 
-    def to_dict(self):
-        """ Map the object to dictionary data structure """
-        result = super(OrderModelType, self).to_dict()
-        # add relations to the result dict
-        Tools.add_relation_to_dict(result, self.refunds.all(), "refunds")
-        return Tools.delete_instance_state(result)
+    # def to_dict(self):
+    #     """ Map the object to dictionary data structure """
+    #     result = super(OrderModelType, self).to_dict()
+    #     # add relations to the result dict
+    #     Tools.add_relation_to_dict(result, self.refunds.all(), "refunds")
+    #     return Tools.delete_instance_state(result)
 
 
 class Cart(BaseModel):
@@ -357,15 +357,15 @@ class Comment(BaseModel):
     def __repr__(self):
         return '<Comment %r>' % self.content[:10]
 
-    def to_dict(self):
-        """
-            Map the object to dictionary data structure
-        """
-        result = super(Comment, self).to_dict()
-        # add relations to the result dict
-        Tools.add_relation_to_dict(result, self.pictures.all(), "pictures")
-
-        return Tools.delete_instance_state(result)
+    # def to_dict(self):
+    #     """
+    #         Map the object to dictionary data structure
+    #     """
+    #     result = super(Comment, self).to_dict()
+    #     # add relations to the result dict
+    #     Tools.add_relation_to_dict(result, self.pictures.all(), "pictures")
+    #
+    #     return Tools.delete_instance_state(result)
 
 
 
@@ -381,9 +381,9 @@ class CommentPic(BaseModel):
     def __repr__(self):
         return '<CommentPic %r>' % self.address
 
-    def to_dict(self):
-        """ Map the object to dictionary data structure """
-        return Tools.delete_instance_state(super(CommentPic, self).to_dict())
+    # def to_dict(self):
+    #     """ Map the object to dictionary data structure """
+    #     return Tools.delete_instance_state(super(CommentPic, self).to_dict())
 
 
 '''
@@ -443,13 +443,13 @@ class Product(BaseModel):
 
         db.session.commit()
 
-    def to_dict(self):
-        """ Map the object to dictionary data structure """
-        result = super(Product, self).to_dict()
-        # add relations to the result dict
-        Tools.add_relation_to_dict(result, self.categories.all(), "categories")
-        Tools.add_relation_to_dict(result, self.get_exist_model_types(), "model_types")
-        return Tools.delete_instance_state(result)
+    # def to_dict(self):
+    #     """ Map the object to dictionary data structure """
+    #     result = super(Product, self).to_dict()
+    #     # add relations to the result dict
+    #     Tools.add_relation_to_dict(result, self.categories.all(), "categories")
+    #     Tools.add_relation_to_dict(result, self.get_exist_model_types(), "model_types")
+    #     return Tools.delete_instance_state(result)
 
     def delete(self):
         """
@@ -490,9 +490,9 @@ class ModelTypePic(BaseModel):
     def __repr__(self):
         return '<ModelTypePic %r>' % self.address
 
-    def to_dict(self):
-        """ Map the object to dictionary data structure """
-        return Tools.delete_instance_state(super(ModelTypePic, self).to_dict())
+    # def to_dict(self):
+    #     """ Map the object to dictionary data structure """
+    #     return Tools.delete_instance_state(super(ModelTypePic, self).to_dict())
 
 
 class ModelTypeIntroPic(BaseModel):
@@ -509,9 +509,9 @@ class ModelTypeIntroPic(BaseModel):
     def __repr__(self):
         return '<ModelTypeIntroPic %r>' % self.address
 
-    def to_dict(self):
-        """ Map the object to dictionary data structure """
-        return Tools.delete_instance_state(super(ModelTypeIntroPic, self).to_dict())
+    # def to_dict(self):
+    #     """ Map the object to dictionary data structure """
+    #     return Tools.delete_instance_state(super(ModelTypeIntroPic, self).to_dict())
 
 
 class ModelType(BaseModel):
@@ -561,6 +561,7 @@ class ModelType(BaseModel):
         # Tools.add_relation_to_dict(result, self.order_model_types.all(), "order_model_types")
 
         return Tools.delete_instance_state(result)
+        # return result
 
     def delete(self):
         """
@@ -609,9 +610,9 @@ class Category(BaseModel):
     def __repr__(self):
         return '<Category %r>' % self.name
 
-    def to_dict(self):
-        """ Map the object to dictionary data structure """
-        return Tools.delete_instance_state(super(Category, self).to_dict())
+    # def to_dict(self):
+    #     """ Map the object to dictionary data structure """
+    #     return Tools.delete_instance_state(super(Category, self).to_dict())
 
     @staticmethod
     def insert_categories():
@@ -635,12 +636,12 @@ class Brand(BaseModel):
     def __repr__(self):
         return '<Brand %r>' % self.name
     
-    def to_dict(self):
-        """ Map the object to dictionary data structure """
-        result = super(Brand, self).to_dict()
-        # add relations to the result dict
-        Tools.add_relation_to_dict(result, self.products.all(), "products")
-        return Tools.delete_instance_state(result)
+    # def to_dict(self):
+    #     """ Map the object to dictionary data structure """
+    #     result = super(Brand, self).to_dict()
+    #     # add relations to the result dict
+    #     Tools.add_relation_to_dict(result, self.products.all(), "products")
+    #     return Tools.delete_instance_state(result)
 
     @staticmethod
     def insert_brands():
@@ -677,9 +678,9 @@ class Premium(BaseModel):
         self.is_expired = True
         db.session.commit()
 
-    def to_dict(self):
-        """ Map the object to dictionary data structure """
-        return Tools.delete_instance_state(super(Premium, self).to_dict())
+    # def to_dict(self):
+    #     """ Map the object to dictionary data structure """
+    #     return Tools.delete_instance_state(super(Premium, self).to_dict())
 
 
 class Address(BaseModel):
@@ -759,12 +760,12 @@ class Role(BaseModel):
     def __repr__(self):
         return '<Role %r>' % self.name
     
-    def to_dict(self):
-        """ Map the object to dictionary data structure """
-        result = super(Role, self).to_dict()
-        # add relations to the result dict
-        Tools.add_relation_to_dict(result, self.users.all(), "users")
-        return Tools.delete_instance_state(result)
+    # def to_dict(self):
+    #     """ Map the object to dictionary data structure """
+    #     result = super(Role, self).to_dict()
+    #     # add relations to the result dict
+    #     Tools.add_relation_to_dict(result, self.users.all(), "users")
+    #     return Tools.delete_instance_state(result)
 
     # ----- functions for permission management (learned from the book) -----
     # book: 'Flask Web Development: Developing Web Applications with Python, Second Edition'
@@ -868,9 +869,9 @@ class User(UserMixin, BaseModel):
     def __repr__(self):
         return '<User %r>' % self.username
     
-    def to_dict(self):
-        """ Map the object to dictionary data structure """
-        return Tools.delete_instance_state(super(User, self).to_dict())
+    # def to_dict(self):
+    #     """ Map the object to dictionary data structure """
+    #     return Tools.delete_instance_state(super(User, self).to_dict())
 
     @staticmethod
     def insert_users():
