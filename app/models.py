@@ -198,6 +198,8 @@ class Order(BaseModel):
     __tablename__ = 'orders'
     id = db.Column(db.Integer, primary_key=True)
     timestamp = db.Column(db.DateTime(), index=True, default=datetime.utcnow)
+    order_type = db.Column(db.String(20), default='delivery')   # 'delivery' or 'self-collection'
+    delivery_fee = db.Column(db.Integer, default=9)  # if the order_type is 'self-collection', delivery fee should be 0
     status_code = db.Column(db.Integer, default=0)  # the status code of this order
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))  # the uid of the customer who owns this order
     timestamp_1 = db.Column(db.DateTime(), index=True)  # time record of status changing to 'preparing'
@@ -527,6 +529,7 @@ class ModelType(BaseModel):
     name = db.Column(db.String(128))
     description = db.Column(db.Text())
     price = db.Column(db.Float)
+    weight = db.Column(db.Float)    # kg
     stock = db.Column(db.Integer, default=0)
     sales = db.Column(db.Integer, default=0)    # how many this models have been sold out
     views = db.Column(db.Integer, default=0)    # how many times its details page has been viewed
@@ -591,12 +594,13 @@ class ModelType(BaseModel):
             name = 'Model' + str(i)
             description = 'This is the test Model Type NO.' + str(i)
             price = random.randint(2000, 999999)
+            weight = round(10*random.random(), 2)
             stock = random.randint(100, 500)
             serial_number = 'M' + str(i)
             user_id = [3, 4][random.randint(0, 1)]
             product_id = random.randint(1, 10)
             # create the object of this model type
-            new_mt = ModelType(name=name, description=description, price=price, stock=stock,
+            new_mt = ModelType(name=name, description=description, price=price, weight=weight, stock=stock,
                                serial_number=serial_number, user_id=user_id, product_id=product_id)
             db.session.add(new_mt)
         db.session.commit()
@@ -872,6 +876,13 @@ class User(UserMixin, BaseModel):
     # def to_dict(self):
     #     """ Map the object to dictionary data structure """
     #     return Tools.delete_instance_state(super(User, self).to_dict())
+
+    def get_level(self):
+        """
+        calculate the user level by their exp (experiences)
+        :return: A int number indicates the user level
+        """
+        return self.exp // 100
 
     @staticmethod
     def insert_users():
