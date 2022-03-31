@@ -10,10 +10,14 @@
 /*    line-height: 57px; !* should same as the height of the parent *!*/
 /*}*/
 
+.profile-box{
+    margin-top: 25px;
+}
+
 .user-nav {
     list-style: none;
     float: left;
-    margin-left: 100px;
+    margin-left: 200px;
 }
 
 .button.nav {
@@ -26,13 +30,14 @@
 
 .profile-list {
     list-style: none;
-    font-size: 25px;
+    /*font-size: 25px;*/
 }
 
 #right-box {
-    width: 70%;
-    margin-left: 285px;
-    border: solid;
+    width: 55%;
+    height: 850px;
+    margin-left: 385px;
+    border: 2px solid #e0e0e0;
 }
 
 .avatar-box {
@@ -44,19 +49,20 @@
     float: left;
 }
 
-.email-name {
-    margin-top: 20px;
-    width: 455px;
-    margin-left: 115px;
-}
+/*.email-name {*/
+/*    margin-top: 20px;*/
+/*    width: 455px;*/
+/*    margin-left: 115px;*/
+/*}*/
 
 .date-gender {
-    margin-top: 50px;
-    display: flex;
+    /*margin-bottom: 50px;*/
+    /*display: flex;*/
+    margin-top: 55%;
 }
 
 .email {
-    margin-bottom: 35px;
+    margin-bottom: 25px;
 }
 
 .date {
@@ -73,7 +79,67 @@
 
 #info-box {
     height: 33px;
-    border: 2px solid;
-    border-radius: 3px;
+    /*border: 2px solid;*/
+    /*border-radius: 3px;*/
 }
 
+.username {
+    font-weight: 600;
+    font-size: 35px;
+    margin-top: 30px;
+    float: left;
+}
+
+#prime-img {
+    height: 30px;
+    margin-top: 10px;
+    /*margin-left: 30px;*/
+}
+
+.exp_bar{
+    margin-top: 30px;
+}
+
+#bottom-bar {
+   width: 55%;
+    background-color: #ddd;
+    float: left;
+    /*margin-left: 140px;*/
+    /*!* margin-top: 20px; *!*/
+    /*margin-bottom: 10px;*/
+}
+
+#top-bar{
+    width: 50%;
+  height: 25px;
+  background-color: #ffe700;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+}
+
+#left-level{
+    margin-left: -10px;
+}
+
+#right-level{
+    margin-left: 400px;
+}
+#level-box{
+    /*margin-bottom: 5px;*/
+    margin-top: -10px;
+}
+#line{
+    width: 95%;
+    height: 1px;
+    background-color: #e0e0e0;
+    margin-bottom: 35px;
+    margin-top: 35px;
+}
+
+#edit{
+    margin-left: 80px;
+}
+#info-null{
+    color: #999999;
+}

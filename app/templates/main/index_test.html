@@ -24,7 +24,12 @@
     <li><a href="{{ '/chat_room' }}">Chat</a></li>
     <li><a href="{{ url_for('main.index') }}">Real index</a></li>
     <li><a href="{{ url_for('main.change_language') }}">Change Language</a></li>
-    <li><a href="{{ '/profile' }}">User Profile</a></li>
+    {% if session.get('username') %}
+        <li><a href="/user_profile/{{ current_user.id }}">User Profile</a></li>
+        <li><a href="/edit-profile">User Profile Update</a></li>
+        <li><a href="/add-address">Add New Address</a></li>
+        <li><a href="/update-avatar">Update Avatar</a></li>
+    {% endif %}
     <li><a href="{{ '/order_confirm' }}">Order Confirm</a></li>
     <li><a href="{{ '/show-my-cart' }}">My Cart</a></li>
     <li><a href="{{ '/my-orders' }}">My Orders</a></li>
