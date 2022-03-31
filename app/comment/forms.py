@@ -6,9 +6,9 @@ from app.models import User
 
 
 class AForm(FlaskForm):
-    text = StringField()
-    submit = SubmitField()
+    texta = StringField()
+    submita = SubmitField()
 
 class BForm(FlaskForm):
-    text = StringField()
-    submit = SubmitField()
+    textb = StringField()
+    submitb = SubmitField()
