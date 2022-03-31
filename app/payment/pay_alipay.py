@@ -45,7 +45,7 @@ def pay_order(order_id):
     # For web on PC (production), we need to redirect to：https://openapi.alipay.com/gateway.do? + order_string
     # For sandbox environment (development): https://openapi.alipaydev.com/gateway.do? + order_string
     order_string = alipay.api_alipay_trade_page_pay(
-        out_trade_no=order_id,    # id of the order in our database
+        out_trade_no=order_id,    # trade number, which should be unique inside a same retailer
         total_amount=0.01,  # total amount of the order (unit:'cent')
         subject=subject,    # subject of this order
         return_url=url_for('main.index'),   # where to go after the payment

@@ -49,8 +49,8 @@ def search():
     if request.method == 'POST':
         key_word = request.form.get('key_word')
         # search model types by name
-        mt_list = search_models_by_keyword(keyword=key_word)\
-            .order_by(ModelType.sales.desc(), ModelType.views.desc())\
+        mt_list = search_models_by_keyword(keyword=key_word) \
+            .order_by(ModelType.sales.desc(), ModelType.views.desc()) \
             .all()
         return render_template('', mt_list=mt_list)  # see-all page
 
@@ -64,7 +64,7 @@ def search_models_by_keyword(keyword):
     :return: A BaseQuery object that contains a list of models found
     """
     mt_bq_lst = ModelType.query.filter(and_(ModelType.name.contains(keyword),
-                                          ModelType.is_deleted == False))
+                                            ModelType.is_deleted == False))
     return mt_bq_lst
 
 
@@ -150,6 +150,10 @@ def model_type_details(mt_id):
     mt = ModelType.query.get(mt_id)
 
     if mt is not None:
+        # increase the views number
+        mt.views = mt.views + 1
+        db.session.add(mt)
+        db.session.commit()
         # get the recommended related models (models in same cate with high popularity)
         related_mt_lst = []
         for cate in mt.product.categories:
@@ -247,9 +251,8 @@ def filter_model_types():
             json_list_b = request.form["JSON_list_B"]  # Brand
             b_id_list = json.loads(json_list_b)
 
-
         """ Filter the models with the date gotten """
-        mt_lst = []     # for collecting the result mt
+        mt_lst = []  # for collecting the result mt
         if access_method == 'search':
             # get the search content
             search_content = request.form.get('search_content')
@@ -314,7 +317,6 @@ def filter_model_types():
 
             # filter the products
             mt_lst = filter_products_by_cate_groups(brand, c_id_list, t_id_list, a_id_list)
-
 
         """ sort the model list by the sale numbers """
         sort_db_models(mt_lst, sort_key=take_sales, reverse=True)

@@ -20,7 +20,7 @@ def generate_order_from_cart():
         Then link those OrderModelType objs in to that order obj
     """
     if request.method == 'POST':
-        # get the cart_id_list from ajax
+        # get the cart_id_list in from of JSON string list
         list_json = request.form["JSON_cart_list"]
 
         if list_json:
@@ -28,10 +28,8 @@ def generate_order_from_cart():
             cart_id_list = json.loads(list_json)
 
             if len(cart_id_list) > 0:
-                # calculate the delivery fee
-                delivery_fee = calculate_delivery_fee(cart_id_list)
                 # Create a new order
-                new_order = Order(status_code=0, user_id=current_user.id, delivery_fee=delivery_fee)
+                new_order = Order(status_code=0, user_id=current_user.id)
                 db.session.add(new_order)
                 db.session.commit()
 
@@ -43,74 +41,17 @@ def generate_order_from_cart():
                     db.session.add(new_omt)
                 db.session.commit()
 
+                # generate related payment amount
+                new_order.generate_delivery_fee()
+                new_order.generate_gross_payment()
+                # generate out_trade_no for this order, as it is created
+                new_order.generate_unique_out_trade_no()
+
                 flash('Order created!')
                 return redirect(url_for('order.order_confirm', order_id=new_order.id))
 
     flash('Order generation failed!')
     return redirect(url_for('main.index'))
-
-
-def calculate_delivery_fee(cart_id_list):
-    """
-    Calculate the delivery fee of the given list of cart relations.
-    Premium members can enjoy delivery for free.
-    The base fee is 9 RMB (within 1 kg), every extra 1 kg leads to an extra fee of 10 RMB.
-    The weight fee is up rounded. e.g. 2.x kg -> 3.0 kg (x > 0)
-    The top limit is 200 RMB.
-    :param cart_id_list: a list of car id
-    :return: The int number of delivery fee
-    """
-    # premium members get a free delivery
-    if current_user.is_premium:
-        return 0
-
-    # calculate the total weight in this cart of current user
-    total_weight = 0
-    for cart_id in cart_id_list:
-        cart = Cart.query.get(cart_id)
-        total_weight += cart.model_type.weight * cart.count
-
-    return calculate_delivery_fee_by_weight(total_weight)
-
-
-def calculate_delivery_fee_by_now(mt, count):
-    """
-    This is for calculating the delivery fee without a cart
-    :param mt: The model type obj
-    :param count: The number of this model will be bought
-    :return: An int number refers to the delivery fee
-    """
-    # premium members get a free delivery
-    if current_user.is_premium:
-        return 0
-
-    # calculate total weight
-    total_weight = mt.weight * count
-
-    return calculate_delivery_fee_by_weight(total_weight)
-
-
-def calculate_delivery_fee_by_weight(total_weight):
-    """
-    This function calculate the delivery fee by total weight of items
-    :param total_weight: A float number for weight
-    :return: An int number refers to the delivery fee
-    """
-    # less than 1 kg, is the base fee of 9 RMB
-    if total_weight < 1:
-        return 9
-
-    # calculate the extra fee
-    total_weight -= 1
-    # The weight is up rounded. e.g. 2.x kg -> 3.0 kg (x > 0)
-    if total_weight > (total_weight // 1):
-        total_weight = (total_weight // 1) + 1
-    # fee = base + extra
-    fee = 9 + (total_weight * 10)
-    if fee > 200:
-        fee = 200
-
-    return fee
 
 
 @order.route('/generate-order-from-buy-now/<int:model_id>/<int:count>', methods=['GET'])
@@ -127,10 +68,8 @@ def generate_order_from_buy_now(model_id, count):
     if model:
         # check stock number
         if count <= model.stock:
-            # calculate delivery fee
-            delivery_fee = calculate_delivery_fee_by_now(mt=model, count=count)
             # generate the order obj
-            new_order = Order(status_code=0, user_id=current_user.id, delivery_fee=delivery_fee)
+            new_order = Order(status_code=0, user_id=current_user.id)
             db.session.add(new_order)
             db.session.commit()
 
@@ -138,6 +77,12 @@ def generate_order_from_buy_now(model_id, count):
             new_omt = OrderModelType(order=new_order, model_type=model, count=count, unit_pay=model.price)
             db.session.add(new_omt)
             db.session.commit()
+
+            # generate related payment amount
+            new_order.generate_delivery_fee()
+            new_order.generate_gross_payment()
+            # generate out_trade_no for this order, as it is created
+            new_order.generate_unique_out_trade_no()
 
             flash('Order created!')
             return redirect(url_for('order.order_confirm', order_id=new_order.id))
@@ -152,7 +97,13 @@ def order_confirm(order_id):
     """
         This function is for rendering the page of order confirmation.
     """
-    return render_template('order/order-confirm.html', order_id=order_id)
+    o = Order.query.get(order_id)
+    # check if that order belong to current user
+    if o in current_user.orders:
+        return render_template('order/order-confirm.html', order_id=order_id)
+    else:
+        flash('Permission denied!')
+        return redirect(url_for('main.index'))
 
 
 # -------------------------------------- view my orders --------------------------------------

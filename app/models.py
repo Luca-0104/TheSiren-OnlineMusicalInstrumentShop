@@ -197,9 +197,11 @@ class Order(BaseModel):
     """
     __tablename__ = 'orders'
     id = db.Column(db.Integer, primary_key=True)
+    out_trade_no = db.Column(db.String(64), unique=True)    # trade number, which should be unique inside a same retailer
     timestamp = db.Column(db.DateTime(), index=True, default=datetime.utcnow)
     order_type = db.Column(db.String(20), default='delivery')   # 'delivery' or 'self-collection'
     delivery_fee = db.Column(db.Integer, default=9)  # if the order_type is 'self-collection', delivery fee should be 0
+    gross_payment = db.Column(db.Float)     # only 2 digits in decimal e.g. 10.xx
     status_code = db.Column(db.Integer, default=0)  # the status code of this order
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))  # the uid of the customer who owns this order
     timestamp_1 = db.Column(db.DateTime(), index=True)  # time record of status changing to 'preparing'
@@ -258,6 +260,101 @@ class Order(BaseModel):
             return 'expired'
 
 
+    def generate_delivery_fee(self):
+        """
+        Premium members can enjoy delivery for free.
+        The base fee is 9 RMB (within 1 kg), every extra 1 kg contributes to an extra fee of 2 RMB.
+        The weight fee is up rounded. e.g. 2.x kg -> 3.0 kg (x > 0)
+        The top limit is 200 RMB.
+        Then the field 'delivery_fee' will be filled.
+        :return:
+        """
+        # premium members get a free delivery
+        if self.user.is_premium:
+            fee = 0
+        else:
+            # calculate the total weight in order
+            total_weight = 0
+            for omt in self.order_model_types:
+                total_weight += omt.model_type.weight * omt.count
+
+            # less than 1 kg, is the base fee of 9 RMB
+            if total_weight < 1:
+                fee = 9
+            else:
+                # calculate the extra fee
+                total_weight -= 1
+                # The weight is up rounded. e.g. 2.x kg -> 3.0 kg (x > 0)
+                if total_weight > (total_weight // 1):
+                    total_weight = (total_weight // 1) + 1
+                # fee = base + extra
+                fee = 9 + (total_weight * 2)
+                if fee > 200:
+                    fee = 200
+
+        # write delivery_fee into db
+        self.delivery_fee = fee
+        db.session.add(self)
+        db.session.commit()
+
+        return fee
+
+    def generate_gross_payment(self):
+        """
+        This function calculates the gross payment of this order (delivery + commodities)
+        Then the field 'gross_payment' will be filled.
+        :return: gross_payment
+        """
+        gross = 0
+
+        # add delivery fee
+        if self.order_type == 'delivery':
+            gross += self.delivery_fee
+
+        # calculate and add fee for commodities
+        payment_commodity = 0
+        for omt in self.order_model_types:
+            payment_commodity += (omt.model_type.price * omt.count)
+        # check the premium discount
+        if self.user.is_premium:
+            payment_commodity *= 0.95
+        gross += payment_commodity
+
+        # remain 2 digits in decimal place
+        gross = round(gross, 2)
+
+        # write gross in to db
+        self.gross_payment = gross
+        db.session.add(self)
+        db.session.commit()
+
+        return gross
+
+    def generate_unique_out_trade_no(self):
+        """
+        for generating the unique out_trade_no, which is required by Alipay.
+        We add a random number and timestamp with order_id
+        The field 'out_trade_no' will be filled.
+        :return: out_trade_no
+        """
+        # get current datetime
+        datetime_suffix = str(datetime.utcnow()).replace(" ", "").replace(":", "").replace('-', '').replace('.', '')
+        # get a random int
+        random_num_suffix = random.randint(0, 99999999999999999999)
+        # form the out_trade_no
+        out_trade_no = '{}_{}_{}'.format(self.id, random_num_suffix, datetime_suffix)
+        # the max length is 64
+        if len(out_trade_no) > 64:
+            out_trade_no = out_trade_no[0:64]
+
+        # add the out_trade_no to this obj
+        self.out_trade_no = out_trade_no
+        db.session.add(self)
+        db.session.commit()
+
+        return out_trade_no
+
+
 class OrderModelType(BaseModel):
     """
         This is a third-party table for recording the n to n relationship
@@ -295,7 +392,7 @@ class OrderModelType(BaseModel):
                 model_type_set.add(mt)
             # create omts for this order using the selected models
             for mt in model_type_set:
-                new_omt = OrderModelType(order=order, model_type=mt, count=random.randint(1, 15), unit_pay=mt.price)
+                new_omt = OrderModelType(order=order, model_type=mt, count=random.randint(1, 3), unit_pay=mt.price)
                 db.session.add(new_omt)
         db.session.commit()
 
