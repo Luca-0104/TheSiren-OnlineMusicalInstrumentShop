@@ -94,6 +94,7 @@ def add_address():
     form = AddAddressForm()
     if form.validate_on_submit():
         addresses = Address.query.filter_by(customer_id=current_user.id).all()
+        # user has no address yet
         if addresses is None:
             address = Address(customer_id=current_user.id,
                               recipient_name=form.recipient_name.data,
@@ -102,7 +103,8 @@ def add_address():
                               province_or_state=form.province_or_state.data,
                               city=form.city.data,
                               district=form.district.data,
-                              is_default=1)
+                              is_default=True)
+        # user has multiple address
         else:
             address = Address(customer_id=current_user.id,
                               recipient_name=form.recipient_name.data,
@@ -115,7 +117,7 @@ def add_address():
         db.session.commit()
         flash('Address added successfully!')
 
-        return redirect(url_for('auth.user_profile'))
+        return redirect(url_for('userinfo.user_profile'), uid=current_user.id)
 
     return render_template('userinfo/add_address_test.html', form=form)
 
@@ -140,6 +142,8 @@ def edit_address(address_id):
         db.session.add(address)
         db.session.commit()
         flash('Address updated successfully!')
+
+        return redirect(url_for(""))
 
     form.recipient_name.data = address.recipient_name
     form.phone.data = address.phone
@@ -184,11 +188,43 @@ def remove_address():
 @userinfo.route('/api/change-default-address', methods=['POST'])
 @login_required
 def change_default_address():
-    pass
+
+    if request.method == 'POST':
+        # get the address id from ajax
+        address_id = request.form.get('address_id')
+
+        # find address from db
+        new_default_address = Address.query.get(address_id)
+        old_default_address = Address.query.filter_by(customer_id=current_user.id, is_default=True)
+
+        # check if the address exists
+        if new_default_address is None:
+            return jsonify({'returnValue': 1})
+
+        # check is this address belong to current user
+        if new_default_address.customer_id != current_user.id:
+            return jsonify({'returnValue': 1})
+
+        new_default_address.is_default = True
+        old_default_address.is_default = False
+
+        # update default address
+        db.session.add(new_default_address)
+        db.session.add(old_default_address)
+        db.session.commit()
+
+        return jsonify({'returnValue': 0})
+
+    return jsonify({'returnValue': 1})
 
 
 
 def address_prepare_for_json(address_obj):
+    """
+    This function is used to support ajax process
+    :param address_obj:
+    :return: address data in json
+    """
     address = {'id': address_obj.id, 'recipient_name': address_obj.recipient_name, 'phone': address_obj.phone,
                'country': address_obj.country, 'province_or_state': address_obj.province_or_state, 'city': address_obj.city,
                'district': address_obj.district, 'is_default': address_obj.district}
