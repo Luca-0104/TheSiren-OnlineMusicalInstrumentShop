@@ -111,9 +111,8 @@
     margin: auto;
     position: relative;
     overflow: hidden;
-    border: 2px solid #a3e5ff;
-    border-radius: 5px;
-    box-shadow: 20px 30px 70px rgba(0, 0, 255, .5);
+    border: 2px hidden;
+    box-shadow: 20px 30px 70px 20px rgb(187, 109, 109);
 }
 
 /* The picture list */
