@@ -77,7 +77,7 @@ $(".subSec").on("click",function()
                                             "Recipient Name"+
                                         "</td>"+
                                         "<td>"+
-                                            order["address"]+
+                                            order["address"]["recipient_name"]+
                                         "</td>"+
                                     "</tr>"+
                                     "<tr>"+
@@ -85,7 +85,7 @@ $(".subSec").on("click",function()
                                             "Contact Phone"+
                                         "</td>"+
                                         "<td>"+
-                                            order["address"]+
+                                            order["address"]["phone"]+
                                         "</td>"+
                                     "</tr>"+
                                     "<tr>"+
@@ -93,7 +93,7 @@ $(".subSec").on("click",function()
                                             "Address"+
                                         "</td>"+
                                         "<td>"+
-                                            order["address"]+
+                                            order["address"]["contry"]+order["address"]["province_or_state"]+order["address"]["city"]+order["address"]["city"]+
                                         "</td>"+
                                     "</tr>"+
                                     "<tr>"+
@@ -101,7 +101,7 @@ $(".subSec").on("click",function()
                                             "Time Stamp"+
                                         "</td>"+
                                         "<td>"+
-                                            order["address"]+
+                                            order["timestamp"]+
                                         "</td>"+
                                     "</tr>"+
                                 "</table>"+
@@ -112,7 +112,7 @@ $(".subSec").on("click",function()
                         {
                             newHtml = newHtml +
                                     "<td>"+
-                                        "<img src=\"../../static/images/example/yamaha_yep621s.jpg\" loading=\"lazy\" alt=\"\" className=\"w-commerce-commercecartitemimage cart-item-image\">"
+                                        "<img src=\"../../static/images/example/yamaha_yep621s.jpg\" loading=\"lazy\" alt=\"\" class=\"w-commerce-commercecartitemimage cart-item-image\">"
                                     "</td>";
 
                         }
