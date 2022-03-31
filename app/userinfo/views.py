@@ -10,7 +10,7 @@ from .. import db
 @userinfo.route('/user_profile/<int:uid>')
 def user_profile(uid):
     user = User.query.get(uid)
-    return render_template('auth/user_profile.html', user=user)
+    return render_template('userinfo/user_profile.html', user=user)
 
 
 @userinfo.route('/edit-profile', methods=['GET', 'POST'])
@@ -43,7 +43,7 @@ def edit_profile():
         flash('Profile update successfully!')
 
         # back to the stock management page
-        return redirect(url_for('auth.user_profile'))
+        return redirect(url_for('userinfo.user_profile'))
 
     form.username.data = current_user.username
     form.email.data = current_user.email
