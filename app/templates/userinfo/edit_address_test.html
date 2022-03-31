@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post">
+    {{ form.hidden_tag() }}
+    {{ form.recipient_name.label }}
+    {{ form.recipient_name() }}
+    <br>
+    {{ form.phone.label }}
+    {{ form.phone() }}
+    <br>
+    {{ form.country.label }}
+    {{ form.country() }}
+    <br>
+    {{ form.province_or_state.label }}
+    {{ form.province_or_state() }}
+    <br>
+    {{ form.city.label }}
+    {{ form.city() }}
+    <br>
+    {{ form.district.label }}
+    {{ form.district() }}
+
+    <br><br>
+    {{ form.submit() }}
+</form>
+
+</body>
+</html>
