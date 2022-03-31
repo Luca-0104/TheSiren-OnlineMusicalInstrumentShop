@@ -48,16 +48,6 @@ def register():
         user = User(email=form.email.data, username=form.username.data, password=form.password1.data,
                     role_id=1)
 
-        # find all staff
-        staffs = User.query.filter_by(role_id=2).all()
-        # pick up a staff randomly
-        staff_situation = random.randint(0, len(staffs) - 1)
-        # get the staff id
-        staff_id = staffs[staff_situation].id
-        # set up chat room
-        chat_room1 = ChatRoom(customer_id=session['uid'], staff_id=staff_id)
-        db.session.add(chat_room1)
-
         db.session.add(user)
         db.session.commit()
         flash(_("Register Successfully! You can go for login now!"))
@@ -90,6 +80,20 @@ def login():
             session["avatar"] = user.avatar
             session["theme"] = user.theme
             session["language"] = user.language
+
+            # check whether current user has the chat room
+            chat_room = ChatRoom.query.filter_by(customer_id=user.id).first()
+            if chat_room is None:
+                # find all staff
+                staffs = User.query.filter_by(role_id=2).all()
+                # pick up a staff randomly
+                staff_situation = random.randint(0, len(staffs) - 1)
+                # get the staff id
+                staff_id = staffs[staff_situation].id
+                # set up chat room
+                chat_room1 = ChatRoom(customer_id=user.id, staff_id=staff_id)
+                db.session.add(chat_room1)
+                db.session.commit()
 
             # use flask-login to login the user
             login_user(user, form.remember_me.data)
