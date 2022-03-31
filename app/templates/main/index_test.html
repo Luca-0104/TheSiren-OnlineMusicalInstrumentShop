@@ -26,6 +26,8 @@
     <li><a href="{{ url_for('main.change_language') }}">Change Language</a></li>
     {% if session.get('username') %}
         <li><a href="/user_profile/{{ user.id }}">User Profile</a></li>
+        <li><a href="/edit-profile">User Profile Update</a></li>
+        <li><a href="/add-address">Add New Address</a></li>
     {% endif %}
     <li><a href="{{ '/order_confirm' }}">Order Confirm</a></li>
     <li><a href="{{ '/show-my-cart' }}">My Cart</a></li>

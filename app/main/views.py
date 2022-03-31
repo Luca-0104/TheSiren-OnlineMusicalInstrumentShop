@@ -3,7 +3,6 @@ from flask_login import login_required, current_user
 from sqlalchemy import and_
 
 from . import main
-from .forms import EditAddressForm, EditProfileForm
 from .. import db
 from ..models import Product, ModelType, Category, Brand, User, Address
 
@@ -55,89 +54,6 @@ def search():
         return render_template('', is_plist=False, mt_list=mt_list)  # see-all page
 
     return redirect(url_for('main.index'))
-
-
-@main.route('/user_profile/<int:uid>')
-def user_profile(uid):
-    user = User.query.get(uid)
-    return render_template('auth/user_profile.html', user=user)
-
-
-@main.route('/edit-profile', methods=['GET', 'POST'])
-@login_required
-def edit_profile():
-    """
-    (Backend Form)
-    :return:
-    """
-    form = EditProfileForm(current_user)
-    # form.gender.choices[('1', 'Man'), ('2', 'Woman'), ('3', 'Unknown')]
-    if form.validate_on_submit():
-        pass
-
-    form.username.data = current_user.username
-    form.email.data = current_user.email
-    form.about_me.data = current_user.about_me
-    if current_user.gender == 'Male':
-        form.gender.data = 0
-    elif current_user.gender == 'Female':
-        form.gender.data = 1
-    else:
-        form.gender.data = 2
-
-
-    return render_template('main/profile_test.html', form=form)
-
-
-
-@main.route('/add-address', methods=['GET', 'POST'])
-@login_required
-def add_address():
-    """
-    (Backend Form)
-    :return:
-    """
-    pass
-
-
-@main.route('/edit-address', methods=['GET', 'POST'])
-@login_required
-def edit_address():
-    """
-    (Backend Form)
-    :return:
-    """
-    pass
-
-
-@main.route('/api/remove-address', methods=['POST'])
-@login_required
-def remove_address():
-    """
-    (Using Ajax)
-    """
-    if request.method == 'POST':
-        # get the address id from ajax
-        address_id = request.form.get('address_id')
-
-        # find address from db
-        address = Address.query.get(address_id)
-
-        # check if the address exists
-        if address is None:
-            return jsonify({'returnValue': 1})
-
-        # check is this address belong to current user
-        if address.customer_id != current_user.id:
-            return jsonify({'returnValue': 1})
-
-        # remove this address from db
-        db.session.remove(address)
-        db.session.commit()
-
-        return jsonify({'returnValue': 0})
-
-    return jsonify({'returnValue': 1})
 
 
 @main.route('/products-in-category/<category_name>')
@@ -250,6 +166,7 @@ def filter_model_types():
         elif access_method == 'cate':
             # get the cate name
             cate_name = request.form.get('cate_name')
+
 
 @main.route('/api/model-detail/validate-model-count', methods=['POST'])
 def validate_model_count():
