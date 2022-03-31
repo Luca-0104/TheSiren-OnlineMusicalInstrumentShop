@@ -47,7 +47,7 @@ def edit_profile():
         flash('Profile update successfully!')
 
         # back to the stock management page
-        return redirect(url_for('auth.user_profile'))
+        return redirect(url_for('userinfo.user_profile'))
 
     form.username.data = current_user.username
     form.email.data = current_user.email

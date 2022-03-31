@@ -254,55 +254,84 @@
                     <li class="profile-info">
                         {#                    the profile text information#}
                         <div class="profile-text">
-                            <div class="email-name">
-                                <div class="email" id="info-box">
-                                    <p>
-                                        Email: {{ user.email }}
-                                    </p>
-                                </div>
+                            <div class="top-box">
                                 <div class="username" id="info-box">
                                     <p>
-                                        Username: {{ user.username }}
+                                        {{ user.username }}
                                     </p>
                                 </div>
+                                <div>
+                                    {% if user.is_premium == true %}
+                                        <img id="prime-img" src="../../static/images/user/prime1.png">
+                                    {% else %}
+                                        <img id="prime-img" src="../../static/images/user/prime0.png">
+                                    {% endif %}
+                                </div>
                             </div>
-                            <div class="date-gender">
-                                <p class="date" id="info-box">
-                                    Member since: {{ user.start_datetime.date() }}
-                                </p>
+                            <div class="exp_bar">
+                                <div id="bottom-bar">
+                                    <div id="top-bar">
+                                        50/100
+                                    </div>
+                                </div>
+                                {#                        {% if user.username == session.get("username") %}#}
+                                {#                    the edit button#}
+                                <div class="button small nav-button w-inline-block" id="edit">
+                                    <a href="{{ url_for('userinfo.edit_profile') }}">Edit</a>
+                                </div>
+                                {#                        {% endif %}#}
+                                <div id="level-box">
+                                <span id="left-level">
+                                    Lv.0
+                                </span>
+                                    <span id="right-level">
+                                    Lv.1
+                                </span>
+                                </div>
 
-                                <p class="gender" id="info-box">
-                                    Gender: {{ user.gender }}
+                                <div id="line"></div>
+
+                            </div>
+
+
+                            <div class="email" id="info-box">
+                                <p>
+                                    Email: {{ user.email }}
                                 </p>
                             </div>
+
 
                             <div class="tag-info">
-                                <p class="tags">
-                                    {{ user.tag }}
-                                </p>
+                                {#                                <p class="tags">#}
+                                {#                                    {{ user.tag }}#}
+                                {#                                </p>#}
+                            Bio:
+                                {% if user.about_me == None %}
+                                    <p id="info-null">
+                                    Describe yourself...
+                                    </p>
 
+                               {% else %}
                                 <p class="info">
-                                    {{ user.information }}
+                                    {{ user.about_me }}
                                 </p>
+                                 {% endif %}
                             </div>
 
                         </div>
-
-
-                        {#                        {% if user.username == session.get("username") %}#}
-                        {#                    the edit button#}
-                        <div class="button small nav-button w-inline-block" id="edit">
-                            <a href="{{ url_for('userinfo.edit_profile') }}">Edit</a>
-                        </div>
-                        {#                        {% endif %}#}
-
-                        <p class="address">
-                            {{ user.address }}
-                        </p>
 
 
                     </li>
                 </ul>
+
+            </div>
+            <div class="date-gender">
+                <p class="date" id="info-box">
+                    Member since {{ user.start_datetime.date() }}
+                </p>
+                {#                                                                    <p class="gender" id="info-box">#}
+                {#                                                                        Gender: {{ user.gender }}#}
+                {#                                                                    </p>#}
             </div>
 
         </div>
