@@ -51,7 +51,7 @@ def edit_profile():
         flash('Profile update successfully!')
 
         # back to the stock management page
-        return redirect(url_for('userinfo.user_profile'))
+        return redirect(url_for('userinfo.user_profile', uid=current_user.id))
 
     form.username.data = current_user.username
     form.email.data = current_user.email
@@ -121,7 +121,7 @@ def add_address():
         db.session.commit()
         flash('Address added successfully!')
 
-        return redirect(url_for('userinfo.user_profile'), uid=current_user.id)
+        return redirect(url_for('userinfo.user_profile', uid=current_user.id))
 
     return render_template('userinfo/add_address_test.html', form=form)
 
@@ -147,7 +147,7 @@ def edit_address(address_id):
         db.session.commit()
         flash('Address updated successfully!')
 
-        return redirect(url_for(""))
+        return redirect(url_for("userinfo.user_profile", uid=current_user.id))
 
     form.recipient_name.data = address.recipient_name
     form.phone.data = address.phone
@@ -156,7 +156,7 @@ def edit_address(address_id):
     form.city.data = address.city
     form.district.data = address.district
 
-    return render_template('', form=form)
+    return render_template('userinfo/edit_address_test.html', form=form)
 
 
 @userinfo.route('/api/remove-address', methods=['POST'])
@@ -172,6 +172,14 @@ def remove_address():
 
         # find address from db
         address = Address.query.get(address_id)
+        if address.is_default is True:
+            print('default is true')
+            new_default_address = Address.query.filter_by(customer_id=current_user.id).first()
+            print(new_default_address)
+            if new_default_address is not None:
+                new_default_address.is_default = True
+                db.session.add(new_default_address)
+                print('over')
 
         # check if the address exists
         if address is None:
@@ -181,8 +189,9 @@ def remove_address():
         if address.customer_id != current_user.id:
             return jsonify({'returnValue': 1})
 
+        print(address)
         # remove this address from db
-        db.session.remove(address)
+        db.session.delete(address)
         db.session.commit()
 
         return jsonify({'returnValue': 0})
@@ -201,7 +210,7 @@ def change_default_address():
 
         # find address from db
         new_default_address = Address.query.get(address_id)
-        old_default_address = Address.query.filter_by(customer_id=current_user.id, is_default=True)
+        old_default_address = Address.query.filter_by(customer_id=current_user.id, is_default=True).first()
 
         # check if the address exists
         if new_default_address is None:
