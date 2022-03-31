@@ -527,7 +527,9 @@ class ModelType(BaseModel):
     name = db.Column(db.String(128))
     description = db.Column(db.Text())
     price = db.Column(db.Float)
-    stock = db.Column(db.Integer, default=0, nullable=False)
+    stock = db.Column(db.Integer, default=0)
+    sales = db.Column(db.Integer, default=0)    # how many this models have been sold out
+    views = db.Column(db.Integer, default=0)    # how many times its details page has been viewed
     serial_number = db.Column(db.String(128), nullable=False)
     release_time = db.Column(db.DateTime(), index=True, default=datetime.utcnow)
     is_deleted = db.Column(db.Boolean, default=False)
