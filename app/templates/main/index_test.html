@@ -15,7 +15,7 @@
     {% endif %}
 
     {# Test the payment #}
-    <li><a href="{{ url_for('payment.pay_order', order_id=99991) }}">Test Payment</a></li>
+    <li><a href="{{ url_for('payment.pay_order') }}">Test Payment</a></li>
     <li><a href="{{ '/stock-management' }}">Stock Management</a></li>
     <li><a href="{{ url_for('product.upload_product') }}">Upload Product</a></li>
     <li><a href="{{ '/modify-product/1' }}">Modify Product</a></li>

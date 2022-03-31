@@ -1,24 +1,21 @@
 import os
 
+import random
+from datetime import datetime
+
 from alipay import AliPay, AliPayConfig
 from flask import session, redirect, url_for
 
+from config import DevelopmentConfig
 from . import payment
 
 
-@payment.route("/pay_order/<int:order_id>", methods=["POST", "GET"])
-def pay_order(order_id):
+@payment.route("/pay_order", methods=["POST", "GET"])
+def pay_order():
     """
-    uid = session.get("uid")
-
-    # check the order
-    order = Order.query.filter(Order.id == order_id, Order.user_id == uid, Order.status == 0).first()
-
-    if not order:
-        return redirect(url_for('main.index'))
-
+    This is only for testing and adjustment now.
+    The one being adopted is in views.py
     """
-
     # initialize the files of keys
     dir_app_private_key_string = os.path.join(os.path.dirname(__file__), "keys/app_private_key.pem")
     dir_alipay_public_key_string = os.path.join(os.path.dirname(__file__), "keys/alipay_public_key.pem")
@@ -41,14 +38,15 @@ def pay_order(order_id):
     )
 
     subject = "测试订单"
+    test_out_trade_no = "{}_{}_{}".format(1, str(datetime.utcnow()).replace(" ", "").replace(":", "").replace('-', '').replace('.', ''), random.randint(1, 99999999999))
 
     # For web on PC (production), we need to redirect to：https://openapi.alipay.com/gateway.do? + order_string
     # For sandbox environment (development): https://openapi.alipaydev.com/gateway.do? + order_string
     order_string = alipay.api_alipay_trade_page_pay(
-        out_trade_no=order_id,    # trade number, which should be unique inside a same retailer
+        out_trade_no=test_out_trade_no,    # trade number, which should be unique inside a same retailer
         total_amount=0.01,  # total amount of the order (unit:'cent')
         subject=subject,    # subject of this order
-        return_url=url_for('main.index'),   # where to go after the payment
+        return_url=url_for('payment.payment_finished', _external=True),   # where to go after the payment
         notify_url=None  # 可选，不填则使用默认 notify url
     )
 
