@@ -23,6 +23,7 @@ def index_test():
     """
         The function for rendering the fake index page
     """
+
     return render_template('main/index_test.html')
 
 
@@ -66,16 +67,6 @@ def search_models_by_keyword(keyword):
     mt_bq_lst = ModelType.query.filter(and_(ModelType.name.contains(keyword),
                                             ModelType.is_deleted == False))
     return mt_bq_lst
-
-
-@main.route('/user_profile/<username>')
-def user_profile(username):
-    pass
-
-
-@main.route('/edit-profile', methods=['GET', 'POST'])
-def edit_profile():
-    pass
 
 
 @main.route('/products-in-category/<category_name>')
