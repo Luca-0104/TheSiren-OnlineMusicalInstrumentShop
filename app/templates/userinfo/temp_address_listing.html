@@ -60,7 +60,7 @@
                                     Reciving Address
                                 </td>
                                 <td>
-                                    {{ address.country }} - { address.province_or_state }} - {{ address.city }} - {{ address.district }}
+                                    {{ address.country }} - {{ address.province_or_state }} - {{ address.city }} - {{ address.district }}
                                 </td>
                             </tr>
                             <tr>
@@ -72,7 +72,7 @@
                                                href="javascript:set_default({{ address.id }});"><i class="ri-eye-line mr-0">Set as Default</i></a>
                                             <a class="badge bg-success mr-2" data-toggle="tooltip"
                                                data-placement="top" title="" data-original-title="Edit"
-                                               href="#"><i class="ri-pencil-line mr-0">Edit</i></a>
+                                               href="/edit-address/{{ address.id }}"><i class="ri-pencil-line mr-0">Edit</i></a>
                                             <a class="badge bg-warning mr-2" data-toggle="tooltip"
                                                data-placement="top" title="" data-original-title="Delete"
                                                href="javascript:remove_address({{ address.id }});"><i class="ri-delete-bin-line mr-0">Delete</i></a>
@@ -81,7 +81,7 @@
                                         <div id="action_{{ address.id }}" is_default="t" lass="d-flex align-items-center list-action">
                                             <a class="badge bg-success mr-2" data-toggle="tooltip"
                                                data-placement="top" title="" data-original-title="Edit"
-                                               href="#"><i class="ri-pencil-line mr-0">Edit</i></a>
+                                               href="/edit-address/{{ address.id }}"><i class="ri-pencil-line mr-0">Edit</i></a>
                                             <a class="badge bg-warning mr-2" data-toggle="tooltip"
                                                data-placement="top" title="" data-original-title="Delete"
                                                href="javascript:remove_address({{ address.id }});"><i class="ri-delete-bin-line mr-0">Delete</i></a>
