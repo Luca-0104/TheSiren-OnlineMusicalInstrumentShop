@@ -23,6 +23,7 @@ def index_test():
     """
         The function for rendering the fake index page
     """
+
     return render_template('main/index_test.html')
 
 

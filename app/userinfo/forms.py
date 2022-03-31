@@ -1,5 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, RadioField
+from flask_wtf.file import FileRequired, FileAllowed
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, RadioField, FileField
 from wtforms.validators import DataRequired, Email, Length, ValidationError, EqualTo, Regexp
 
 from app.models import User, Address
@@ -47,4 +48,8 @@ class EditProfileForm(FlaskForm):
         if user_found is not None and user_found.id != self.user.id:
             raise ValidationError('New email address already used.')
 
+
+class UpdateAvatarForm(FlaskForm):
+    avatar = FileField('Avatar: ', validators=[FileRequired(), FileAllowed(['jpg', 'png', 'gif', 'bmp', 'webp', 'pcx', 'tif', 'jpeg', 'tga', 'exif', 'fpx', 'svg', 'psd', 'cdr', 'pcd', 'dxf', 'ufo', 'eps', 'al', 'hdri', 'raw', 'wmf', 'flic', 'emf', 'ico', 'avif', 'apng'])])
+    submit = SubmitField("Update Avatar")
 

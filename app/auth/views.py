@@ -115,8 +115,8 @@ def login():
     return render_template('auth/login_new.html', form=form)
 
 
-@auth.route('/profile', methods=['GET', 'POST'])
-def user_profile():
-    user = User.query.filter_by(id=session["uid"]).first()
-    return render_template('auth/user_profile.html', user=user)
+# @auth.route('/profile', methods=['GET', 'POST'])
+# def user_profile():
+#     user = User.query.filter_by(id=session["uid"]).first()
+#     return render_template('auth/user_profile.html', user=user)
 

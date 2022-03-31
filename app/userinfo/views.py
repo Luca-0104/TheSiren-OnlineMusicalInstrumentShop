@@ -1,8 +1,12 @@
+import os
+
 from flask import render_template, request, jsonify, flash, redirect, url_for
 from flask_login import login_required, current_user
 
+from config import Config
 from . import userinfo
-from ..userinfo.forms import EditProfileForm, AddAddressForm, EditAddressForm
+from ..public_tools import generate_safe_pic_name
+from ..userinfo.forms import EditProfileForm, AddAddressForm, EditAddressForm, UpdateAvatarForm
 from ..models import User, Address
 from .. import db
 
@@ -10,7 +14,7 @@ from .. import db
 @userinfo.route('/user_profile/<int:uid>')
 def user_profile(uid):
     user = User.query.get(uid)
-    return render_template('auth/user_profile.html', user=user)
+    return render_template('userinfo/user_profile.html', user=user)
 
 
 @userinfo.route('/edit-profile', methods=['GET', 'POST'])
@@ -56,6 +60,28 @@ def edit_profile():
         form.gender.data = 2
 
     return render_template('userinfo/profile_test.html', form=form)
+
+
+@userinfo.route('/update-avatar', methods=['GET', 'POST'])
+@login_required
+def update_avatar():
+
+    form = UpdateAvatarForm()
+    path = 'upload/avatar'
+    if form.validate_on_submit():
+        print('get in')
+        avatar_name = form.avatar.data.filename
+        picname = generate_safe_pic_name(avatar_name)
+        file_path = os.path.join(Config.avatar_dir, picname).replace('\\', '/')
+        form.avatar.data.save(file_path)
+        user = User.query.get(current_user.id)
+        user.avatar = os.path.join(path, picname).replace('\\', '/')
+        db.session.add(user)
+        db.session.commit()
+        flash("Avatar update successfully!")
+        return redirect(url_for("userinfo.user_profile", uid=current_user.id))
+
+    return render_template('userinfo/avatar_update_test.html', form=form)
 
 
 @userinfo.route('/add-address', methods=['GET', 'POST'])
