@@ -68,16 +68,6 @@ def search_models_by_keyword(keyword):
     return mt_bq_lst
 
 
-@main.route('/user_profile/<username>')
-def user_profile(username):
-    pass
-
-
-@main.route('/edit-profile', methods=['GET', 'POST'])
-def edit_profile():
-    pass
-
-
 @main.route('/products-in-category/<category_name>')
 def products_in_category(category_name):
     """

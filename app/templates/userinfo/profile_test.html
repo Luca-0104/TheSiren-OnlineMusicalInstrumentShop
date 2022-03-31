@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post">
+    {{ form.hidden_tag() }}
+    {{ form.email.label }}
+    {{ form.email() }}
+    <br>
+    {{ form.username.label }}
+    {{ form.username() }}
+    <br>
+    {{ form.gender.label }}
+    {{ form.gender() }}
+    <br>
+    {{ form.about_me.label }}
+    {{ form.about_me() }}
+    <br><br>
+    {{ form.submit() }}
+</form>
+
+</body>
+</html>
