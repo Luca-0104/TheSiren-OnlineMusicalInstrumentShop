@@ -16,6 +16,10 @@ def user_profile(uid):
     user = User.query.get(uid)
     return render_template('userinfo/user_profile.html', user=user)
 
+@userinfo.route('/01')
+def temp_address_listing():
+    user = current_user
+    return render_template('userinfo/temp_address_listing.html', user=user)
 
 @userinfo.route('/edit-profile', methods=['GET', 'POST'])
 @login_required
@@ -164,6 +168,7 @@ def remove_address():
     if request.method == 'POST':
         # get the address id from ajax
         address_id = request.form.get('address_id')
+        print(address_id)
 
         # find address from db
         address = Address.query.get(address_id)
@@ -192,6 +197,7 @@ def change_default_address():
     if request.method == 'POST':
         # get the address id from ajax
         address_id = request.form.get('address_id')
+        print(address_id)
 
         # find address from db
         new_default_address = Address.query.get(address_id)
