@@ -1,0 +1,17 @@
+table{
+    text-align: center;
+}
+
+tr{
+    margin-bottom: 10px;
+}
+
+.clickable{
+    cursor: pointer;
+}
+
+.selectedOne{
+    font-size: 16px;
+    color: #dd1e1e;
+    text-decoration: underline;
+}
