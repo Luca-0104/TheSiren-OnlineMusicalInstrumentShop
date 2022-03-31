@@ -18,6 +18,7 @@ $("#close_triger").on("click",function()
 
 function remove_address(address_id)
 {
+    console.log("#address_row_"+address_id);
     let targetRow = $("#address_row_"+address_id);
 
     $.post("/api/remove-address",
@@ -31,7 +32,7 @@ function remove_address(address_id)
                 if(returnValue === 0)
                 {
                     //success
-                    target.remove();
+                    targetRow.remove();
                 }
             });
 }
@@ -39,9 +40,13 @@ function remove_address(address_id)
 function set_default(address_id)
 {
     let targetRow = $("#address_row_"+address_id);
-    let targetTable = $("address_table_"+address_id);
+    let targetTable = $("#address_table_"+address_id);
+    let targetDiv = $("#action_"+address_id);
+    let targetBtn = $("#default_btn_"+address_id);
 
     let previousDefaultBar = $("#default_bar");
+    let previousID = previousDefaultBar.attr("address_id");
+    let previousDefaultDiv = $('[is_default=t]');
 
     $.post("/api/change-default-address",
         {
@@ -54,9 +59,17 @@ function set_default(address_id)
                 if(returnValue === 0)
                 {
                     //success
-                    let newHtml = "<tr><td id=\"default_bar\" class=\"bg-primary\" colspan=\"2\">Default</td></tr>";
+                    let newHtml = "<tr><td id=\"default_bar\" address_id=\"" + address_id + "\" class=\"bg-primary\" colspan=\"2\">Default</td></tr>";
                     targetTable.prepend(newHtml);
+                    targetDiv.attr("is_default","t");
+
+                    newHtml = "<a id=\"default_btn_" + previousID + "\" class=\"badge badge-info mr-2\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"\" data-original-title=\"View\""+
+                       "href=\"javascript:set_default(" + previousID + ");\"><i class=\"ri-eye-line mr-0\">Set as Default</i></a>";
+                    previousDefaultDiv.prepend(newHtml);
+                    previousDefaultDiv.attr("is_default","f");
+
                     previousDefaultBar.remove();
+                    targetBtn.remove();
                 }
             });
 }
