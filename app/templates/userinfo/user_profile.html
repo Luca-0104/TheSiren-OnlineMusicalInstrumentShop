@@ -245,7 +245,7 @@
             {#        the avatar box#}
             <div class="avatar-box">
                 {#                the avatar image#}
-                <img src="{{ url_for('static', filename=user.avatar) }}" alt="user-avatar">
+                <img id="avatar" src="{{ url_for('static', filename=user.avatar) }}" alt="user-avatar">
             </div>
 
             <div class="profile-info">
@@ -305,17 +305,17 @@
                                 {#                                <p class="tags">#}
                                 {#                                    {{ user.tag }}#}
                                 {#                                </p>#}
-                            Bio:
-                                {% if user.about_me == None %}
+                                Bio:
+                                {% if user.about_me == None or user.about_me == ""%}
                                     <p id="info-null">
-                                    Describe yourself...
+                                        Describe yourself...
                                     </p>
 
-                               {% else %}
-                                <p class="info">
-                                    {{ user.about_me }}
-                                </p>
-                                 {% endif %}
+                                {% else %}
+                                    <p class="info">
+                                        {{ user.about_me }}
+                                    </p>
+                                {% endif %}
                             </div>
 
                         </div>

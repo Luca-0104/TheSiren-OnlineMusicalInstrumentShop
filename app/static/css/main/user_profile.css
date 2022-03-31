@@ -143,3 +143,51 @@
 #info-null{
     color: #999999;
 }
+
+.avatar-box {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+  }
+.avatar-box:after {
+       content: "";
+    background: rgba(0,0,0,0.4);
+    z-index: 2;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -ms-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+    position: absolute;
+    top: 0px;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+    filter: alpha(opacity=0)
+  }
+  .avatar-box:hover:after {
+    opacity: 100;
+    filter: alpha(opacity=0);
+    cursor: pointer;
+  }
+
+
+  .avatar-box:before {
+       content: "Change";
+    display: inline-block;
+    float: right;
+    position: absolute;
+    z-index: 5;
+    top: 70px;
+    left: 18px;
+    opacity: 0;
+    color: white;
+    filter: alpha(opacity=0);
+  }
+  .avatar-box:hover:before {
+    opacity: 100;
+    filter: alpha(opacity=0);
+    cursor: pointer;
+  }
+
