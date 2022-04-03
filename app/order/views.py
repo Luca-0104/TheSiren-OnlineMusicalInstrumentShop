@@ -7,6 +7,7 @@ from app.order import order
 
 from datetime import datetime
 
+
 # -------------------------------------- generate orders --------------------------------------
 
 @order.route('/generate-order-from-cart', methods=['GET', 'POST'])
@@ -19,7 +20,7 @@ def generate_order_from_cart():
         Then link those OrderModelType objs in to that order obj
     """
     if request.method == 'POST':
-        # get the cart_id_list from ajax
+        # get the cart_id_list in from of JSON string list
         list_json = request.form["JSON_cart_list"]
 
         if list_json:
@@ -35,9 +36,16 @@ def generate_order_from_cart():
                 # Add the models that the user has chosen into this order
                 for cart_id in cart_id_list:
                     cart = Cart.query.get(cart_id)
-                    new_omt = OrderModelType(order=new_order, model_type=cart.model_type, count=cart.count, unit_pay=cart.model_type.price)
+                    new_omt = OrderModelType(order=new_order, model_type=cart.model_type, count=cart.count,
+                                             unit_pay=cart.model_type.price)
                     db.session.add(new_omt)
                 db.session.commit()
+
+                # generate related payment amount
+                new_order.generate_delivery_fee()
+                new_order.generate_gross_payment()
+                # generate out_trade_no for this order, as it is created
+                new_order.generate_unique_out_trade_no()
 
                 flash('Order created!')
                 return redirect(url_for('order.order_confirm', order_id=new_order.id))
@@ -60,7 +68,6 @@ def generate_order_from_buy_now(model_id, count):
     if model:
         # check stock number
         if count <= model.stock:
-
             # generate the order obj
             new_order = Order(status_code=0, user_id=current_user.id)
             db.session.add(new_order)
@@ -70,6 +77,12 @@ def generate_order_from_buy_now(model_id, count):
             new_omt = OrderModelType(order=new_order, model_type=model, count=count, unit_pay=model.price)
             db.session.add(new_omt)
             db.session.commit()
+
+            # generate related payment amount
+            new_order.generate_delivery_fee()
+            new_order.generate_gross_payment()
+            # generate out_trade_no for this order, as it is created
+            new_order.generate_unique_out_trade_no()
 
             flash('Order created!')
             return redirect(url_for('order.order_confirm', order_id=new_order.id))
@@ -84,7 +97,13 @@ def order_confirm(order_id):
     """
         This function is for rendering the page of order confirmation.
     """
-    return render_template('order/order-confirm.html', order_id=order_id)
+    o = Order.query.get(order_id)
+    # check if that order belong to current user
+    if o in current_user.orders:
+        return render_template('order/order-confirm.html', order_id=order_id)
+    else:
+        flash('Permission denied!')
+        return redirect(url_for('main.index'))
 
 
 # -------------------------------------- view my orders --------------------------------------

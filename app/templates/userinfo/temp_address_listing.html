@@ -34,7 +34,7 @@
                         <table id="address_table_{{ address.id }}" border="1" width="100%">
                             {% if address.is_default %}
                                 <tr>
-                                    <td id="default_bar" class="bg-primary" colspan="2">
+                                    <td id="default_bar" address_id="{{ address.id }}" class="bg-primary" colspan="2" colspan="2">
                                         Default
                                     </td>
                                 </tr>
@@ -60,24 +60,33 @@
                                     Reciving Address
                                 </td>
                                 <td>
-                                    {{ address.country }} - { address.province_or_state }} - {{ address.city }} - {{ address.district }}
+                                    {{ address.country }} - {{ address.province_or_state }} - {{ address.city }} - {{ address.district }}
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <div class="d-flex align-items-center list-action">
-                                        {% if not address.is_default %}
-                                            <a class="badge badge-info mr-2" data-toggle="tooltip"
+                                    {% if not address.is_default %}
+                                        <div id="action_{{ address.id }}" is_default="f" class="d-flex align-items-center list-action">
+                                            <a id="default_btn_{{ address.id }}" class="badge badge-info mr-2" data-toggle="tooltip"
                                                data-placement="top" title="" data-original-title="View"
                                                href="javascript:set_default({{ address.id }});"><i class="ri-eye-line mr-0">Set as Default</i></a>
-                                        {% endif %}
-                                        <a class="badge bg-success mr-2" data-toggle="tooltip"
-                                           data-placement="top" title="" data-original-title="Edit"
-                                           href="#"><i class="ri-pencil-line mr-0">Edit</i></a>
-                                        <a class="badge bg-warning mr-2" data-toggle="tooltip"
-                                           data-placement="top" title="" data-original-title="Delete"
-                                           href="javascript:remove_address({{ address.id }});"><i class="ri-delete-bin-line mr-0">Delete</i></a>
-                                    </div>
+                                            <a class="badge bg-success mr-2" data-toggle="tooltip"
+                                               data-placement="top" title="" data-original-title="Edit"
+                                               href="/edit-address/{{ address.id }}"><i class="ri-pencil-line mr-0">Edit</i></a>
+                                            <a class="badge bg-warning mr-2" data-toggle="tooltip"
+                                               data-placement="top" title="" data-original-title="Delete"
+                                               href="javascript:remove_address({{ address.id }});"><i class="ri-delete-bin-line mr-0">Delete</i></a>
+                                        </div>
+                                    {% else %}
+                                        <div id="action_{{ address.id }}" is_default="t" lass="d-flex align-items-center list-action">
+                                            <a class="badge bg-success mr-2" data-toggle="tooltip"
+                                               data-placement="top" title="" data-original-title="Edit"
+                                               href="/edit-address/{{ address.id }}"><i class="ri-pencil-line mr-0">Edit</i></a>
+                                            <a class="badge bg-warning mr-2" data-toggle="tooltip"
+                                               data-placement="top" title="" data-original-title="Delete"
+                                               href="javascript:remove_address({{ address.id }});"><i class="ri-delete-bin-line mr-0">Delete</i></a>
+                                        </div>
+                                    {% endif %}
                                 </td>
                             </tr>
                         </table>

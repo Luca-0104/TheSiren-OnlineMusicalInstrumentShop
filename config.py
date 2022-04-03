@@ -17,7 +17,6 @@ class Config:
     PIC_TYPE_MODEL_INTRO = 'ModelTypeIntroPic'
     PIC_TYPE_COMMENT = 'CommentPic'
 
-
     """ Following define the directories used in this project """
     app_dir = os.path.join(basedir, 'app')
     static_dir = os.path.join(app_dir, 'static')
@@ -49,14 +48,23 @@ class DevelopmentConfig(Config):
     # print('----------------------------------------------------------------------------')
     # print(SQLALCHEMY_DATABASE_URI)
 
+    # Alipay config
+    RETURN_URL = "http://127.0.0.1:5000/"
+
 
 class TestingConfig(Config):
     TESTING = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('TEST_DATABASE_URL') or 'sqlite://'
 
+    # Alipay config
+    RETURN_URL = ""
+
 
 class ProductionConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
+
+    # Alipay config
+    RETURN_URL = ""
 
 
 config = {
