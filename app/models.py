@@ -584,7 +584,7 @@ class ModelTypePic(BaseModel):
     """
     __tablename__ = 'model_type_pictures'
     id = db.Column(db.Integer, primary_key=True)
-    address = db.Column(db.String(256), default='upload/model_type/default.png')
+    address = db.Column(db.String(256), default='upload/model_type/default.jpg')
     model_id = db.Column(db.Integer, db.ForeignKey('model_types.id'))  # 1 model type --> n picture
 
     def __repr__(self):

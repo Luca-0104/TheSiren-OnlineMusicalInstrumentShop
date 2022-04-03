@@ -391,48 +391,64 @@
                     <!-- Right listing -->
                     <div class="w-dyn-list">
                         <div role="list" class="product-thirds-grid featured-products w-dyn-items">
-                            <div role="listitem" class="w-dyn-item" style="padding: 10">
-                                <div>
-                                    <a href="#" class="product-preview-link w-inline-block">
-                                        <img src="../../static/images/example/gibson_sj200.jpg" loading="lazy" alt="" class="product-thumbnail">
-                                        <div class="uppercase-text brand">Gibson</div>
-                                        <h5 class="no-bottom-margin">SJ 200</h5>
-                                        <div class="price-container">
-                                            <div class="old-price">$4,999.00</div>
-                                            <div>$4,800.00</div>
-                                            <div></div>
-                                        </div>
-                                    </a>
+                            {% for rec_view_pro in rec_views %}
+                                <div role="listitem" class="w-dyn-item" style="padding: 10">
+                                    <div>
+                                        <a href="#" class="product-preview-link w-inline-block">
+                                            <img src="{{ url_for("static",filename=rec_view_pro.pictures.first().address) }}" loading="lazy" alt="" class="product-thumbnail">
+                                            <div class="uppercase-text brand">{{ rec_view_pro.brand }}</div>
+                                            <h5 class="no-bottom-margin">{{ rec_view_pro.name }}</h5>
+                                            <div class="price-container">
+                                                <div class="old-price">${{ rec_view_pro.price }}</div>
+                                                <div>${{ rec_view_pro.price }}</div>
+                                                <div></div>
+                                            </div>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div role="listitem" class="w-dyn-item" style="padding: 10">
-                                <div>
-                                    <a href="#" class="product-preview-link w-inline-block">
-                                        <img src="../../static/images/example/steinway_modelD.jpg" loading="lazy" alt="" class="product-thumbnail">
-                                        <div class="uppercase-text brand">Steinway & Son.</div>
-                                        <h5 class="no-bottom-margin">Steinway Model D Concert Grand</h5>
-                                        <div class="price-container">
-                                            <div>$100000.00</div>
-                                            <div></div>
-                                            <div></div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div role="listitem" class="w-dyn-item" style="padding: 10">
-                                <div>
-                                    <a href="#" class="product-preview-link w-inline-block">
-                                        <img src="../../static/images/example/gibson_Les_Paul_Standard.jpg" loading="lazy" alt="" class="product-thumbnail">
-                                        <div class="uppercase-text brand">Gibson</div>
-                                        <h5 class="no-bottom-margin">Les Paul Standard</h5>
-                                        <div class="price-container">
-                                            <div>$2,699.00</div>
-                                            <div></div>
-                                            <div></div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
+                            {% endfor %}
+{#                            <div role="listitem" class="w-dyn-item" style="padding: 10">#}
+{#                                <div>#}
+{#                                    <a href="#" class="product-preview-link w-inline-block">#}
+{#                                        <img src="../../static/images/example/gibson_sj200.jpg" loading="lazy" alt="" class="product-thumbnail">#}
+{#                                        <div class="uppercase-text brand">Gibson</div>#}
+{#                                        <h5 class="no-bottom-margin">SJ 200</h5>#}
+{#                                        <div class="price-container">#}
+{#                                            <div class="old-price">$4,999.00</div>#}
+{#                                            <div>$4,800.00</div>#}
+{#                                            <div></div>#}
+{#                                        </div>#}
+{#                                    </a>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div role="listitem" class="w-dyn-item" style="padding: 10">#}
+{#                                <div>#}
+{#                                    <a href="#" class="product-preview-link w-inline-block">#}
+{#                                        <img src="../../static/images/example/steinway_modelD.jpg" loading="lazy" alt="" class="product-thumbnail">#}
+{#                                        <div class="uppercase-text brand">Steinway & Son.</div>#}
+{#                                        <h5 class="no-bottom-margin">Steinway Model D Concert Grand</h5>#}
+{#                                        <div class="price-container">#}
+{#                                            <div>$100000.00</div>#}
+{#                                            <div></div>#}
+{#                                            <div></div>#}
+{#                                        </div>#}
+{#                                    </a>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div role="listitem" class="w-dyn-item" style="padding: 10">#}
+{#                                <div>#}
+{#                                    <a href="#" class="product-preview-link w-inline-block">#}
+{#                                        <img src="../../static/images/example/gibson_Les_Paul_Standard.jpg" loading="lazy" alt="" class="product-thumbnail">#}
+{#                                        <div class="uppercase-text brand">Gibson</div>#}
+{#                                        <h5 class="no-bottom-margin">Les Paul Standard</h5>#}
+{#                                        <div class="price-container">#}
+{#                                            <div>$2,699.00</div>#}
+{#                                            <div></div>#}
+{#                                            <div></div>#}
+{#                                        </div>#}
+{#                                    </a>#}
+{#                                </div>#}
+{#                            </div>#}
                         </div>
 {#                        <div class="empty-state w-dyn-empty">#}
 {#                            <div>There are no Products set to featured.</div>#}
