@@ -400,7 +400,7 @@
                                             {% else %}
                                                 <img src="{{ url_for("static",filename=rec_view_pro.pictures.first().address) }}" loading="lazy" alt="" class="product-thumbnail">
                                             {% endif %}
-                                            <div class="uppercase-text brand">{{ rec_view_pro.brand }}</div>
+                                            <div class="uppercase-text brand">{{ rec_view_pro.product.brand.name }}</div>
                                             <h5 class="no-bottom-margin">{{ rec_view_pro.name }}</h5>
                                             <div class="price-container">
                                                 <div class="old-price">${{ rec_view_pro.price }}</div>
@@ -473,20 +473,20 @@
                         <!-- Right listing -->
                         <div class="w-dyn-list">
                             <div role="list" class="product-thirds-grid featured-products w-dyn-items">
-                                {% for rec_preferenc_pro in rec_preferenc %}
+                                {% for rec_preference_pro in rec_preference %}
                                     <div role="listitem" class="w-dyn-item" style="padding: 10">
                                         <div>
                                             <a href="#" class="product-preview-link w-inline-block">
-                                                {% if rec_preferenc_pro.pictures.first() == None %}
+                                                {% if rec_preference_pro.pictures.first() == None %}
                                                     <img src="../../static/images/example/yamaha_yep621s.jpg" loading="lazy" alt="" class="product-thumbnail">
                                                 {% else %}
-                                                    <img src="{{ url_for("static",filename=rec_preferenc_pro.pictures.first().address) }}" loading="lazy" alt="" class="product-thumbnail">
+                                                    <img src="{{ url_for("static",filename=rec_preference_pro.pictures.first().address) }}" loading="lazy" alt="" class="product-thumbnail">
                                                 {% endif %}
-                                                <div class="uppercase-text brand">{{ rec_preferenc_pro.brand }}</div>
-                                                <h5 class="no-bottom-margin">{{ rec_preferenc_pro.name }}</h5>
+                                                <div class="uppercase-text brand">{{ rec_preference_pro.product.brand.name }}</div>
+                                                <h5 class="no-bottom-margin">{{ rec_preference_pro.name }}</h5>
                                                 <div class="price-container">
-                                                    <div class="old-price">${{ rec_preferenc_pro.price }}</div>
-                                                    <div>${{ rec_preferenc_pro.price }}</div>
+                                                    <div class="old-price">${{ rec_preference_pro.price }}</div>
+                                                    <div>${{ rec_preference_pro.price }}</div>
                                                     <div></div>
                                                 </div>
                                             </a>
@@ -573,62 +573,82 @@
                 <h3 class="section-title">Just Arrived</h3>
                 <div class="w-dyn-list">
                     <div role="list" class="product-quarters-grid w-dyn-items">
-                        <div role="listitem" class="w-dyn-item">
-                            <div>
-                                <a href="#" class="product-preview-link w-inline-block">
-                                    <img src="../../static/images/example/example_product_04.jpg" loading="lazy" alt="" class="product-thumbnail">
-                                    <div class="uppercase-text brand">Brand</div>
-                                    <h5 class="no-bottom-margin">Product 1</h5>
-                                    <div class="price-container">
-                                        <div class="old-price">100.00</div>
-                                        <div></div>
-                                        <div></div>
-                                    </div>
-                                </a>
+                        {% for rec_time_pro in rec_time %}
+                            <div role="listitem" class="w-dyn-item">
+                                <div>
+                                    <a href="#" class="product-preview-link w-inline-block">
+                                        {% if rec_time_pro.pictures.first() == None %}
+                                            <img src="../../static/images/example/yamaha_yep621s.jpg" loading="lazy" alt="" class="product-thumbnail">
+                                        {% else %}
+                                            <img src="{{ url_for("static",filename=rec_time_pro.pictures.first().address) }}" loading="lazy" alt="" class="product-thumbnail">
+                                        {% endif %}
+                                        <div class="uppercase-text brand">{{ rec_time_pro.product.brand.name }}</div>
+                                        <h5 class="no-bottom-margin">{{ rec_time_pro.name }}</h5>
+                                        <div class="price-container">
+                                            <div class="old-price">${{ rec_time_pro.price }}</div>
+                                            <div>${{ rec_time_pro.price }}</div>
+                                            <div></div>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <div role="listitem" class="w-dyn-item">
-                            <div>
-                                <a href="#" class="product-preview-link w-inline-block">
-                                    <img src="../../static/images/example/yamaha_yep621s.jpg" loading="lazy" alt="" class="product-thumbnail">
-                                    <div class="uppercase-text brand">Yamaha</div>
-                                    <h5 class="no-bottom-margin">YEP 621 S</h5>
-                                    <div class="price-container">
-                                        <div class="old-price">$6075.35</div>
-                                        <div>$6000.00</div>
-                                        <div></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div role="listitem" class="w-dyn-item">
-                            <div>
-                                <a href="#" class="product-preview-link w-inline-block">
-                                    <img src="../../static/images/example/example_product_06.jpg" loading="lazy" alt="" class="product-thumbnail">
-                                    <div class="uppercase-text brand">Brand</div>
-                                    <h5 class="no-bottom-margin">Product 3</h5>
-                                    <div class="price-container">
-                                        <div class="old-price">100.00</div>
-                                        <div></div>
-                                        <div></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div role="listitem" class="w-dyn-item">
-                            <div>
-                                <a href="#" class="product-preview-link w-inline-block">
-                                    <img src="../../static/images/example/example_product_07.jpg" loading="lazy" alt="" class="product-thumbnail">
-                                    <div class="uppercase-text brand">Brand</div>
-                                    <h5 class="no-bottom-margin">Product 4</h5>
-                                    <div class="price-container">
-                                        <div class="old-price">100.00</div>
-                                        <div></div>
-                                        <div></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                        {% endfor %}
+{#                        <div role="listitem" class="w-dyn-item">#}
+{#                            <div>#}
+{#                                <a href="#" class="product-preview-link w-inline-block">#}
+{#                                    <img src="../../static/images/example/example_product_04.jpg" loading="lazy" alt="" class="product-thumbnail">#}
+{#                                    <div class="uppercase-text brand">Brand</div>#}
+{#                                    <h5 class="no-bottom-margin">Product 1</h5>#}
+{#                                    <div class="price-container">#}
+{#                                        <div class="old-price">100.00</div>#}
+{#                                        <div></div>#}
+{#                                        <div></div>#}
+{#                                    </div>#}
+{#                                </a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div role="listitem" class="w-dyn-item">#}
+{#                            <div>#}
+{#                                <a href="#" class="product-preview-link w-inline-block">#}
+{#                                    <img src="../../static/images/example/yamaha_yep621s.jpg" loading="lazy" alt="" class="product-thumbnail">#}
+{#                                    <div class="uppercase-text brand">Yamaha</div>#}
+{#                                    <h5 class="no-bottom-margin">YEP 621 S</h5>#}
+{#                                    <div class="price-container">#}
+{#                                        <div class="old-price">$6075.35</div>#}
+{#                                        <div>$6000.00</div>#}
+{#                                        <div></div>#}
+{#                                    </div>#}
+{#                                </a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div role="listitem" class="w-dyn-item">#}
+{#                            <div>#}
+{#                                <a href="#" class="product-preview-link w-inline-block">#}
+{#                                    <img src="../../static/images/example/example_product_06.jpg" loading="lazy" alt="" class="product-thumbnail">#}
+{#                                    <div class="uppercase-text brand">Brand</div>#}
+{#                                    <h5 class="no-bottom-margin">Product 3</h5>#}
+{#                                    <div class="price-container">#}
+{#                                        <div class="old-price">100.00</div>#}
+{#                                        <div></div>#}
+{#                                        <div></div>#}
+{#                                    </div>#}
+{#                                </a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div role="listitem" class="w-dyn-item">#}
+{#                            <div>#}
+{#                                <a href="#" class="product-preview-link w-inline-block">#}
+{#                                    <img src="../../static/images/example/example_product_07.jpg" loading="lazy" alt="" class="product-thumbnail">#}
+{#                                    <div class="uppercase-text brand">Brand</div>#}
+{#                                    <h5 class="no-bottom-margin">Product 4</h5>#}
+{#                                    <div class="price-container">#}
+{#                                        <div class="old-price">100.00</div>#}
+{#                                        <div></div>#}
+{#                                        <div></div>#}
+{#                                    </div>#}
+{#                                </a>#}
+{#                            </div>#}
+{#                        </div>#}
                     </div>
                 </div>
             </div>
