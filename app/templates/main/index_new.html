@@ -395,7 +395,11 @@
                                 <div role="listitem" class="w-dyn-item" style="padding: 10">
                                     <div>
                                         <a href="#" class="product-preview-link w-inline-block">
-                                            <img src="{{ url_for("static",filename=rec_view_pro.pictures.first().address) }}" loading="lazy" alt="" class="product-thumbnail">
+                                            {% if rec_view_pro.pictures.first() == None %}
+                                                <img src="../../static/images/example/yamaha_yep621s.jpg" loading="lazy" alt="" class="product-thumbnail">
+                                            {% else %}
+                                                <img src="{{ url_for("static",filename=rec_view_pro.pictures.first().address) }}" loading="lazy" alt="" class="product-thumbnail">
+                                            {% endif %}
                                             <div class="uppercase-text brand">{{ rec_view_pro.brand }}</div>
                                             <h5 class="no-bottom-margin">{{ rec_view_pro.name }}</h5>
                                             <div class="price-container">
@@ -458,60 +462,83 @@
                 <br>
                 <br>
                 <br>
-                <!-- Personal Recommendation -->
-                <div class="w-layout-grid featured-products-grid">
-                    <!-- Left text -->
-                    <div class="featured-items-title">
-                        <h3 class="large-heading featured-items-heading">Your<br>Intreres</h3>
-                    </div>
-                    <!-- Right listing -->
-                    <div class="w-dyn-list">
-                        <div role="list" class="product-thirds-grid featured-products w-dyn-items">
-                            <div role="listitem" class="w-dyn-item">
-                                <div>
-                                    <a href="#" class="product-preview-link w-inline-block">
-                                        <img src="../../static/images/example/yamaha_yep621s.jpg" loading="lazy" alt="" class="product-thumbnail">
-                                        <div class="uppercase-text brand">Yamaha</div>
-                                        <h5 class="no-bottom-margin">YEP 621 S</h5>
-                                        <div class="price-container">
-                                            <div class="old-price">$6075.35</div>
-                                            <div>$6000.00</div>
-                                            <div></div>
+
+                {% if current_user.is_authenticated %}
+                    <!-- Personal Recommendation -->
+                    <div class="w-layout-grid featured-products-grid">
+                        <!-- Left text -->
+                        <div class="featured-items-title">
+                            <h3 class="large-heading featured-items-heading">Your<br>Intreres</h3>
+                        </div>
+                        <!-- Right listing -->
+                        <div class="w-dyn-list">
+                            <div role="list" class="product-thirds-grid featured-products w-dyn-items">
+                                {% for rec_preferenc_pro in rec_preferenc %}
+                                    <div role="listitem" class="w-dyn-item" style="padding: 10">
+                                        <div>
+                                            <a href="#" class="product-preview-link w-inline-block">
+                                                {% if rec_preferenc_pro.pictures.first() == None %}
+                                                    <img src="../../static/images/example/yamaha_yep621s.jpg" loading="lazy" alt="" class="product-thumbnail">
+                                                {% else %}
+                                                    <img src="{{ url_for("static",filename=rec_preferenc_pro.pictures.first().address) }}" loading="lazy" alt="" class="product-thumbnail">
+                                                {% endif %}
+                                                <div class="uppercase-text brand">{{ rec_preferenc_pro.brand }}</div>
+                                                <h5 class="no-bottom-margin">{{ rec_preferenc_pro.name }}</h5>
+                                                <div class="price-container">
+                                                    <div class="old-price">${{ rec_preferenc_pro.price }}</div>
+                                                    <div>${{ rec_preferenc_pro.price }}</div>
+                                                    <div></div>
+                                                </div>
+                                            </a>
                                         </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div role="listitem" class="w-dyn-item">
-                                <div>
-                                    <a href="#" class="product-preview-link w-inline-block">
-                                        <img src="../../static/images/example/TP-6300R_large_3000x1038_a5b9f19690cd9d6d8fb42266e19ce78e.jpg" loading="lazy" alt="" class="product-thumbnail">
-                                        <div class="uppercase-text brand">Yamaha</div>
-                                        <h5 class="no-bottom-margin">TP 6300R</h5>
-                                        <div class="price-container">
-                                            <div class="old-price">$9419.15</div>
-                                            <div>$9419.00</div>
-                                            <div></div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div role="listitem" class="w-dyn-item">
-                                <div>
-                                    <a href="#" class="product-preview-link w-inline-block">
-                                        <img src="../../static/images/example/hohner_super64.jpg" loading="lazy" alt="" class="product-thumbnail">
-                                        <div class="uppercase-text brand">HOHNER</div>
-                                        <h5 class="no-bottom-margin">HOHNER Super 64</h5>
-                                        <div class="price-container">
-                                            <div>$500</div>
-                                            <div></div>
-                                            <div></div>
-                                        </div>
-                                    </a>
-                                </div>
+                                    </div>
+                                {% endfor %}
+    {#                            <div role="listitem" class="w-dyn-item">#}
+    {#                                <div>#}
+    {#                                    <a href="#" class="product-preview-link w-inline-block">#}
+    {#                                        <img src="../../static/images/example/yamaha_yep621s.jpg" loading="lazy" alt="" class="product-thumbnail">#}
+    {#                                        <div class="uppercase-text brand">Yamaha</div>#}
+    {#                                        <h5 class="no-bottom-margin">YEP 621 S</h5>#}
+    {#                                        <div class="price-container">#}
+    {#                                            <div class="old-price">$6075.35</div>#}
+    {#                                            <div>$6000.00</div>#}
+    {#                                            <div></div>#}
+    {#                                        </div>#}
+    {#                                    </a>#}
+    {#                                </div>#}
+    {#                            </div>#}
+    {#                            <div role="listitem" class="w-dyn-item">#}
+    {#                                <div>#}
+    {#                                    <a href="#" class="product-preview-link w-inline-block">#}
+    {#                                        <img src="../../static/images/example/TP-6300R_large_3000x1038_a5b9f19690cd9d6d8fb42266e19ce78e.jpg" loading="lazy" alt="" class="product-thumbnail">#}
+    {#                                        <div class="uppercase-text brand">Yamaha</div>#}
+    {#                                        <h5 class="no-bottom-margin">TP 6300R</h5>#}
+    {#                                        <div class="price-container">#}
+    {#                                            <div class="old-price">$9419.15</div>#}
+    {#                                            <div>$9419.00</div>#}
+    {#                                            <div></div>#}
+    {#                                        </div>#}
+    {#                                    </a>#}
+    {#                                </div>#}
+    {#                            </div>#}
+    {#                            <div role="listitem" class="w-dyn-item">#}
+    {#                                <div>#}
+    {#                                    <a href="#" class="product-preview-link w-inline-block">#}
+    {#                                        <img src="../../static/images/example/hohner_super64.jpg" loading="lazy" alt="" class="product-thumbnail">#}
+    {#                                        <div class="uppercase-text brand">HOHNER</div>#}
+    {#                                        <h5 class="no-bottom-margin">HOHNER Super 64</h5>#}
+    {#                                        <div class="price-container">#}
+    {#                                            <div>$500</div>#}
+    {#                                            <div></div>#}
+    {#                                            <div></div>#}
+    {#                                        </div>#}
+    {#                                    </a>#}
+    {#                                </div>#}
+    {#                            </div>#}
                             </div>
                         </div>
                     </div>
-                </div>
+                {% endif %}
             </div>
         </div>
 
