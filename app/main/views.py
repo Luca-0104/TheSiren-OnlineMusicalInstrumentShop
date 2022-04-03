@@ -6,6 +6,8 @@ from . import main
 from .. import db
 from ..models import Product, ModelType, Category, Brand
 
+import random
+
 
 @main.route('/index')
 def index():
@@ -13,8 +15,96 @@ def index():
         The function is for rendering the real index page
     """
 
-    """  """
-    return render_template('main/index_new.html')
+    """ top 3 of 'views' number """
+    rec_views = ModelType.query.filter_by(is_deleted=False).order_by(ModelType.views.desc()).limit(3).all()
+
+    """ (if logged in) top 3 recommendation according to viewing history """
+    rec_preference = None
+    if current_user.is_authenticated:
+        rec_preference = []
+        # find out user preference from their histories
+        cate_dic = dict()
+        for history in current_user.browsing_histories:
+            # filter out the 'type' cate
+            for cate in history.model_type.product.categories.filter(Category.id > 6).filter(Category.id < 53):
+                if cate.id in cate_dic:
+                    cate_dic[cate.id] += 1
+                else:
+                    cate_dic[cate.id] = 1
+        # sort the dict and get top 3 preferred 'type' cate
+        sorted_id = sorted(cate_dic, key=cate_dic.get, reverse=True)[:3]
+
+        # get 3 models randomly from top 3 cates
+        if len(sorted_id) == 3:
+            # for each cate type, we randomly get a model type
+            for cate_id in sorted_id:
+                cate = Category.query.get(cate_id)
+                p_lst = cate.products.all()
+                if len(p_lst) > 0:
+                    # get a product randomly
+                    p = p_lst[random.randint(0, len(p_lst) - 1)]
+                    # get a model from this product randomly
+                    mt = p.model_types.all()[random.randint(0, p.model_types.count() - 1)]
+                    rec_preference.append(mt)
+
+        elif len(sorted_id) == 2:
+            # we give two models from cate1 and 1 model from cate2
+            cate1 = Category.query.get(sorted_id[0])
+            cate2 = Category.query.get(sorted_id[1])
+
+            # get 2 models from cate1
+            p_lst1 = cate1.products.all()
+            m_lst1 = []
+            for p in p_lst1:
+                m_lst1 += p.model_types.all()
+
+            if len(m_lst1) >= 2:
+                for i in range(2):
+                    mt = m_lst1[random.randint(0, len(m_lst1) - 1)]
+                    while mt in rec_preference:
+                        mt = m_lst1[random.randint(0, len(m_lst1) - 1)]
+                    rec_preference.append(mt)
+            elif len(m_lst1) == 1:
+                rec_preference.append(m_lst1[0])
+
+            # get 1 model from cate2
+            p_lst2 = cate2.products.all()
+            m_lst2 = []
+            for p in p_lst2:
+                m_lst2 += p.model_types.all()
+
+            if len(m_lst2) > 0:
+                mt = m_lst2[random.randint(0, len(m_lst2) - 1)]
+
+        elif len(sorted_id) == 1:
+            # get 3 models from this cate
+            cate = Category.query.get(sorted_id[0])
+            p_lst = cate.products.all()
+            m_lst = []
+            for p in p_lst:
+                m_lst += p.model_types.all()
+
+            if len(m_lst) >= 3:
+                for i in range(3):
+                    mt = m_lst[random.randint(0, len(m_lst) - 1)]
+                    while mt in rec_preference:
+                        mt = m_lst[random.randint(0, len(m_lst) - 1)]
+                    rec_preference.append(mt)
+            else:
+                rec_preference += m_lst
+
+        # check if the number of model is not enough (3 models)
+        if len(rec_preference) < 3:
+            diff = 3 - len(rec_preference)
+            # fill up the blank randomly
+            for i in range(diff):
+                mt = ModelType.query.get(random.randint(1, ModelType.query.count()))
+                rec_preference.append(mt)
+
+    """ 'just arrive' (top 4 according to datetime) """
+    rec_time = ModelType.query.filter_by(is_deleted=False).order_by(ModelType.release_time.desc()).limit(4).all()
+
+    return render_template('main/index_new.html', rec_time=rec_time, rec_views=rec_views, rec_preference=rec_preference)
 
 
 @main.route('/')
