@@ -584,7 +584,7 @@ class ModelTypePic(BaseModel):
     """
     __tablename__ = 'model_type_pictures'
     id = db.Column(db.Integer, primary_key=True)
-    address = db.Column(db.String(256), default='upload/model_type/default.png')
+    address = db.Column(db.String(256), default='upload/model_type/default.jpg')
     model_id = db.Column(db.Integer, db.ForeignKey('model_types.id'))  # 1 model type --> n picture
 
     def __repr__(self):
@@ -648,6 +648,8 @@ class ModelType(BaseModel):
     carts = db.relationship('Cart', backref='model_type', lazy='dynamic')
     # 1 model -> n OrderModelType; 1 OrderModelType -> 1 model
     order_model_types = db.relationship('OrderModelType', backref='model_type', lazy='dynamic')
+    # 1 model --> n B_histories
+    browsing_histories = db.relationship('BrowsingHistory', backref='model_type', lazy='dynamic')
 
     def to_dict(self):
         """
@@ -701,6 +703,9 @@ class ModelType(BaseModel):
             new_mt = ModelType(name=name, description=description, price=price, weight=weight, stock=stock,
                                serial_number=serial_number, user_id=user_id, product_id=product_id)
             db.session.add(new_mt)
+            # add a pic for this model type
+            new_mt_pic = ModelTypePic(model_type=new_mt)
+            db.session.add(new_mt_pic)
         db.session.commit()
 
 
@@ -756,6 +761,19 @@ class Brand(BaseModel):
             new_brand = Brand(name=brand_name)
             db.session.add(new_brand)
         db.session.commit()
+
+
+class BrowsingHistory(BaseModel):
+    """
+        A table records the browsing history of each user
+        1 BH -> 1 user and 1 model type
+    """
+    __tablename__ = 'browsing_histories'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    model_type_id = db.Column(db.Integer, db.ForeignKey('model_types.id'), nullable=False)
+    timestamp = db.Column(db.DateTime(), default=datetime.utcnow)
+    is_deleted = db.Column(db.Boolean, default=False)
 
 
 class Premium(BaseModel):
@@ -967,6 +985,9 @@ class User(UserMixin, BaseModel):
     addresses = db.relationship('Address', backref='customer', lazy='dynamic')
     # 1 user (customer) -> n premiums (in a specific period of time, a user can possess only a single premium membership)
     premiums = db.relationship('Premium', backref='customer', lazy='dynamic')
+    # 1 user --> n B_histories
+    browsing_histories = db.relationship('BrowsingHistory', backref='user', lazy='dynamic')
+
 
     def __repr__(self):
         return '<User %r>' % self.username
