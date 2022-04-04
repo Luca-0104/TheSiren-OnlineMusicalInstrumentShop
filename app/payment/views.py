@@ -15,6 +15,7 @@ from alipay import AliPay, AliPayConfig
 @login_required
 def pay_for_order_instrument():
     """
+        (Using Ajax)
         Pay for the order of instruments.
         Firstly, update the order info according to the order confirm page.
         Then call the Alipay API to pay for this order.
@@ -57,41 +58,40 @@ def pay_for_order_instrument():
         pay_order(order_obj=order)
 
 
-@payment.route('/pay-for-order/premium', methods=['POST'])
+@payment.route('/pay-for-order/premium/<int:p_order_id>')
 @login_required
-def pay_for_order_premium():
+def pay_for_order_premium(p_order_id):
     """
         Pay for the order of premium membership.
         No need to update any info here.
+        :param p_order_id: The db id of the PremiumOrder that should be paid
     """
-    if request.method == 'POST':
-        """ get order """
-        # get the premiumOrder id
-        p_order_id = int(request.form.get('p_order_id'))
-        # get premiumOrder obj from db
-        p_order = PremiumOrder.query.get(p_order_id)
 
-        """ order validations """
-        # check if the p_order exists
-        if p_order is not None:
-            # check the status of this order (only "waiting for payment" is acceptable)
-            if p_order.is_paid:
-                current_app.logger.warning('Attempt to double pay!')
-                flash("You cannot pay for the same order second time!")
-                return redirect(url_for('main.index'))
+    """ get order """
+    # get premiumOrder obj from db
+    p_order = PremiumOrder.query.get(p_order_id)
 
-            # check is that order belongs to current user
-            if p_order not in current_user.premium_orders:
-                current_app.logger.warning('Attempt to pay for others premiumOder!')
-                flash("This is not your premiumOrder, you cannot pay for it!")
-                return redirect(url_for('main.index'))
-        else:
-            current_app.logger.warning('premiumOrder does not exist!')
-            flash("premiumOrder does not exist!")
+    """ order validations """
+    # check if the p_order exists
+    if p_order is not None:
+        # check the status of this order (only "waiting for payment" is acceptable)
+        if p_order.is_paid:
+            current_app.logger.warning('Attempt to double pay!')
+            flash("You cannot pay for the same order second time!")
             return redirect(url_for('main.index'))
 
-        """ call Alipay API """
-        pay_order(order_obj=p_order)
+        # check is that order belongs to current user
+        if p_order.user_id != current_user.id:
+            current_app.logger.warning('Attempt to pay for others premiumOder!')
+            flash("This is not your premiumOrder, you cannot pay for it!")
+            return redirect(url_for('main.index'))
+    else:
+        current_app.logger.warning('premiumOrder does not exist!')
+        flash("premiumOrder does not exist!")
+        return redirect(url_for('main.index'))
+
+    """ call Alipay API """
+    pay_order(order_obj=p_order)
 
 
 def pay_order(order_obj):

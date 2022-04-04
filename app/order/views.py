@@ -1,8 +1,8 @@
 from flask_login import login_required, current_user
-from flask import render_template, redirect, url_for, request, json, flash, jsonify
+from flask import render_template, redirect, url_for, request, json, flash, jsonify, current_app
 
 from app import db
-from app.models import Cart, Order, OrderModelType, ModelType, User
+from app.models import Cart, Order, OrderModelType, ModelType, PremiumOrder
 from app.order import order
 
 from datetime import datetime
@@ -250,3 +250,54 @@ def change_status():
                 return jsonify({'returnValue': 2, 'msg': 'Permission denied!'})
 
     return jsonify({'returnValue': 1})
+
+
+# -------------------------------------------- Premium orders --------------------------------------------
+
+@order.route('/api/generate-premium-order', methods=['POST'])
+@login_required
+def generate_premium_order():
+    """
+    (Using Ajax)
+    This function works like the function 'order_confirm'.
+    For the premium order, we order generation and confirm can be integrated together,
+    because no status of "waiting for payment" for premium orders.
+    :return:
+    """
+    if request.method == 'POST':
+        # get order info from Ajax
+        duration = request.form.get('duration')  # how many days
+        payment = request.form.get('payment')
+
+        # validate the info we get
+        if duration:
+            try:
+                duration = int(duration)
+            except Exception as e:
+                current_app.logger.error(e)
+                flash("Error in Duration info!")
+                return redirect(url_for('main.index'))
+        else:
+            current_app.logger.warning('Duration is None!')
+            flash("No duration info!")
+            return redirect(url_for('main.index'))
+
+        if payment:
+            try:
+                payment = int(payment)
+            except Exception as e:
+                current_app.logger.error(e)
+                flash("Error in payment info!")
+                return redirect(url_for('main.index'))
+        else:
+            current_app.logger.warning('Payment is None!')
+            flash("No payment info!")
+            return redirect(url_for('main.index'))
+
+        # create a new premium order
+        new_p_order = PremiumOrder(user=current_user, duration=duration, payment=payment)
+        db.session.add(new_p_order)
+        db.session.commit()
+
+        # start process of Alipay
+        return redirect(url_for('payment.pay_for_order_premium', p_order_id=new_p_order.id))
