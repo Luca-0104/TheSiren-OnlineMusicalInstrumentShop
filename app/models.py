@@ -767,12 +767,14 @@ class BrowsingHistory(BaseModel):
     """
         A table records the browsing history of each user
         1 BH -> 1 user and 1 model type
+        1 user and 1 model type -> 1 BH
     """
     __tablename__ = 'browsing_histories'
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    model_type_id = db.Column(db.Integer, db.ForeignKey('model_types.id'), nullable=False)
-    timestamp = db.Column(db.DateTime(), default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False, primary_key=True)
+    model_type_id = db.Column(db.Integer, db.ForeignKey('model_types.id'), nullable=False, primary_key=True)
+    timestamp = db.Column(db.DateTime(), default=datetime.utcnow)   # the last visit time
+    count = db.Column(db.Integer, default=1)    # How many time the user viewed this model type
     is_deleted = db.Column(db.Boolean, default=False)
 
 

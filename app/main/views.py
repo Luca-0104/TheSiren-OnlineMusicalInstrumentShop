@@ -1,10 +1,10 @@
-from flask import render_template, request, redirect, url_for, session, jsonify, flash, json
+from flask import render_template, request, redirect, url_for, session, jsonify, flash, json, current_app
 from flask_login import login_required, current_user
 from sqlalchemy import and_
 
 from . import main
 from .. import db
-from ..models import Product, ModelType, Category, Brand
+from ..models import Product, ModelType, Category, Brand, BrowsingHistory
 
 import random
 
@@ -28,7 +28,7 @@ def index():
             # filter out the 'type' cate
             for cate in history.model_type.product.categories.filter(Category.id > 6).filter(Category.id < 53):
                 if cate.id in cate_dic:
-                    cate_dic[cate.id] += 1
+                    cate_dic[cate.id] += history.count
                 else:
                     cate_dic[cate.id] = 1
         # sort the dict and get top 3 preferred 'type' cate
@@ -228,13 +228,20 @@ def model_type_details(mt_id):
     :param mt_id: The id of the selected model type
     """
     # get the model type by id
-    mt = ModelType.query.get(mt_id)
+    try:
+        mt = ModelType.query.get(mt_id)
+    except Exception as e:
+        current_app.logger.error(e)
+        mt = None
 
+    # check if the model type exists
     if mt is not None:
         # increase the views number
         mt.views = mt.views + 1
         db.session.add(mt)
         db.session.commit()
+        # record the user browsing history
+
         # get the recommended related models (models in same cate with high popularity)
         related_mt_lst = []
         for cate in mt.product.categories:
@@ -244,7 +251,7 @@ def model_type_details(mt_id):
         sort_db_models(related_mt_lst, sort_key=take_sales, reverse=True)
         # limit the number of mt in related list
         related_mt_lst = related_mt_lst[:10]
-        # check if the model type exists
+
         return render_template('', model_type=mt, related_mt_lst=related_mt_lst)
     else:
         flash('No such commodity!')
