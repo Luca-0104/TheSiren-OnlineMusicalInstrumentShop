@@ -14,6 +14,7 @@ from datetime import datetime
 @login_required
 def generate_order_from_cart():
     """
+        (Using Ajax)
         Get a list of cart relation objs from frontend.
         Generate a new order obj first.
         Then generate several OrderModelType objs according to the cart objs.
