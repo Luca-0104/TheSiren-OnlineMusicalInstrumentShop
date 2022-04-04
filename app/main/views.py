@@ -1,12 +1,13 @@
-from flask import render_template, request, redirect, url_for, session, jsonify, flash, json
+from flask import render_template, request, redirect, url_for, session, jsonify, flash, json, current_app
 from flask_login import login_required, current_user
 from sqlalchemy import and_
 
 from . import main
 from .. import db
-from ..models import Product, ModelType, Category, Brand
+from ..models import Product, ModelType, Category, Brand, BrowsingHistory
 
 import random
+from datetime import datetime
 
 
 @main.route('/index')
@@ -28,7 +29,7 @@ def index():
             # filter out the 'type' cate
             for cate in history.model_type.product.categories.filter(Category.id > 6).filter(Category.id < 53):
                 if cate.id in cate_dic:
-                    cate_dic[cate.id] += 1
+                    cate_dic[cate.id] += history.count
                 else:
                     cate_dic[cate.id] = 1
         # sort the dict and get top 3 preferred 'type' cate
@@ -228,13 +229,39 @@ def model_type_details(mt_id):
     :param mt_id: The id of the selected model type
     """
     # get the model type by id
-    mt = ModelType.query.get(mt_id)
+    try:
+        mt = ModelType.query.get(mt_id)
+    except Exception as e:
+        current_app.logger.error(e)
+        flash('No such commodity!')
+        return redirect(url_for('main.index'))
 
+    # check if the model type exists
     if mt is not None:
         # increase the views number
         mt.views = mt.views + 1
         db.session.add(mt)
         db.session.commit()
+
+        # record the user browsing history
+        if current_user.is_authenticated:
+            # check if the user has viewed this model before
+            bh = BrowsingHistory.query.filter_by(user=current_user, model_type=mt).first()
+            if bh:
+                # update the count and time
+                bh.count = bh.count + 1
+                bh.timestamp = datetime.utcnow()
+                db.session.add(bh)
+            else:
+                # record this new history
+                new_bh = BrowsingHistory(user=current_user, model_type=mt)
+                db.session.add(new_bh)
+            try:
+                db.session.commit()
+            except Exception as e:
+                current_app.logger.error(e)
+                db.session.rollback()
+
         # get the recommended related models (models in same cate with high popularity)
         related_mt_lst = []
         for cate in mt.product.categories:
@@ -244,11 +271,11 @@ def model_type_details(mt_id):
         sort_db_models(related_mt_lst, sort_key=take_sales, reverse=True)
         # limit the number of mt in related list
         related_mt_lst = related_mt_lst[:10]
-        # check if the model type exists
+
         return render_template('', model_type=mt, related_mt_lst=related_mt_lst)
     else:
         flash('No such commodity!')
-        return redirect(url_for('main.index_new'))
+        return redirect(url_for('main.index'))
 
 
 @main.route('/change_language', methods=['GET', 'POST'])
