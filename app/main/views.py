@@ -7,6 +7,7 @@ from .. import db
 from ..models import Product, ModelType, Category, Brand, BrowsingHistory
 
 import random
+from datetime import datetime
 
 
 @main.route('/index')
@@ -232,7 +233,8 @@ def model_type_details(mt_id):
         mt = ModelType.query.get(mt_id)
     except Exception as e:
         current_app.logger.error(e)
-        mt = None
+        flash('No such commodity!')
+        return redirect(url_for('main.index'))
 
     # check if the model type exists
     if mt is not None:
@@ -240,7 +242,25 @@ def model_type_details(mt_id):
         mt.views = mt.views + 1
         db.session.add(mt)
         db.session.commit()
+
         # record the user browsing history
+        if current_user.is_authenticated:
+            # check if the user has viewed this model before
+            bh = BrowsingHistory.query.filter_by(user=current_user, model_type=mt).first()
+            if bh:
+                # update the count and time
+                bh.count = bh.count + 1
+                bh.timestamp = datetime.utcnow()
+                db.session.add(bh)
+            else:
+                # record this new history
+                new_bh = BrowsingHistory(user=current_user, model_type=mt)
+                db.session.add(new_bh)
+            try:
+                db.session.commit()
+            except Exception as e:
+                current_app.logger.error(e)
+                db.session.rollback()
 
         # get the recommended related models (models in same cate with high popularity)
         related_mt_lst = []
@@ -255,7 +275,7 @@ def model_type_details(mt_id):
         return render_template('', model_type=mt, related_mt_lst=related_mt_lst)
     else:
         flash('No such commodity!')
-        return redirect(url_for('main.index_new'))
+        return redirect(url_for('main.index'))
 
 
 @main.route('/change_language', methods=['GET', 'POST'])
