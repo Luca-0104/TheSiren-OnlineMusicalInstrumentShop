@@ -590,9 +590,9 @@ class ModelTypePic(BaseModel):
     def __repr__(self):
         return '<ModelTypePic %r>' % self.address
 
-    # def to_dict(self):
-    #     """ Map the object to dictionary data structure """
-    #     return Tools.delete_instance_state(super(ModelTypePic, self).to_dict())
+    def to_dict(self):
+        """ Map the object to dictionary data structure """
+        return Tools.delete_instance_state(super(ModelTypePic, self).to_dict())
 
 
 class ModelTypeIntroPic(BaseModel):
@@ -659,7 +659,7 @@ class ModelType(BaseModel):
         # add relations to the result dict
         Tools.add_relation_to_dict(result, self.comments.all(), "comments")
         Tools.add_relation_to_dict(result, self.pictures.all(), "pictures")
-        Tools.add_relation_to_dict(result, self.intro_pictures.all(), "intro_pictures")
+        # Tools.add_relation_to_dict(result, self.intro_pictures.all(), "intro_pictures")
         Tools.add_relation_to_dict(result, self.carts.all(), "carts")
         # Tools.add_relation_to_dict(result, self.order_model_types.all(), "order_model_types")
 
