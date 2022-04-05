@@ -11,6 +11,8 @@ from . import login_manager
 
 import random
 
+from .prestore.product_info import pm_lst
+
 
 class Tools:
     """
@@ -39,9 +41,85 @@ class Tools:
         # ProductPic.insert_pictures()  # the pictures of the constant products
         # # products(100)  # 100 fake products
         ModelType.insert_model_types()  # the constant model types for testing
+        # ------
+        Tools.insert_pm()   # pre-stored product and mt info
+        # ------
         Cart.insert_carts()
         Order.insert_orders(20)
         OrderModelType.insert_omts()
+
+    @staticmethod
+    def insert_pm():
+        """
+        Insert the pre-stored products and its models into the database.
+        :return:
+        """
+        for p_info in pm_lst:
+            # get product info
+            p_name = p_info[0]
+            brand_id = p_info[1]
+            cate_id_c = p_info[2]
+            cate_id_t = p_info[3]
+            cate_id_a = p_info[4]
+            mt_lst = p_info[5]
+
+            """ create the product first """
+            # create the serial_prefix
+            serial_prefix = "b{}-c{}-t{}-a{}".format(brand_id, cate_id_c, cate_id_t, cate_id_a)
+            # query for the serial_rank
+            serial_rank = 1 + Product.query.filter_by(serial_prefix=serial_prefix).count()
+            # create Product
+            new_product = Product(serial_prefix=serial_prefix,
+                                  serial_rank=serial_rank,
+                                  name=p_name,
+                                  brand_id=brand_id)
+            # add categories
+            cate_c = Category.query.get(cate_id_c)
+            cate_t = Category.query.get(cate_id_t)
+            cate_a = Category.query.get(cate_id_a)
+            new_product.categories.append(cate_c)
+            new_product.categories.append(cate_t)
+            new_product.categories.append(cate_a)
+            # add to db session
+            db.session.add(new_product)
+
+            """ create the model types """
+            for mt_info in mt_lst:
+                # get model type info
+                mt_name = mt_info[0]
+                description = mt_info[1]
+                price = mt_info[2]
+                weight = mt_info[3]
+                pic_lst = mt_info[4]
+                # generate some random info
+                stock = random.randint(100, 500)
+                sales = random.randint(0, 300)
+                views = random.randint(0, 50000)
+                serial_number = 'M{}'.format(ModelType.query.count())
+                user_id = [3, 4][random.randint(0, 1)]
+                # create this model type object
+                new_mt = ModelType(name=mt_name,
+                                   description=description,
+                                   price=price,
+                                   weight=weight,
+                                   stock=stock,
+                                   sales=sales,
+                                   views=views,
+                                   serial_number=serial_number,
+                                   user_id=user_id,
+                                   product=new_product)
+                # add to db session
+                db.session.add(new_mt)
+
+                """ create picture objects for this mt """
+                for pic_name in pic_lst:
+                    address = "upload/model_type/prestore/{}".format(pic_name)
+                    new_mtp = ModelTypePic(model_type=new_mt, address=address)
+                    # add to db session
+                    db.session.add(new_mtp)
+
+        # commit db session
+        db.session.commit()
 
     @staticmethod
     def delete_instance_state(dic):
@@ -81,7 +159,7 @@ class BaseModel(db.Model):
             Map the object to dictionary data structure
         """
         # turn columns into items in dictionary
-        result = self.__dict__
+        result = self.__dict__.copy()
         return result
 
 
@@ -99,9 +177,9 @@ class Refund(BaseModel):
     reason = db.Column(db.Text())  # customer should give the reason why they ask for a refund
     is_done = db.Column(db.Boolean, default=False)
 
-    def to_dict(self):
-        """ Map the object to dictionary data structure """
-        return Tools.delete_instance_state(super(Refund, self).to_dict())
+    # def to_dict(self):
+    #     """ Map the object to dictionary data structure """
+    #     return Tools.delete_instance_state(super(Refund, self).to_dict())
 
 
 # class Change(db.Model):
@@ -121,12 +199,12 @@ class ChatRoom(BaseModel):
     def __repr__(self):
         return '<ChatRoom cus: %r - staff: %r>' % (self.customer_id, self.staff_id)
 
-    def to_dict(self):
-        """ Map the object to dictionary data structure """
-        result = super(ChatRoom, self).to_dict()
-        # add relations to the result dict
-        Tools.add_relation_to_dict(result, self.messages.all(), "messages")
-        return Tools.delete_instance_state(result)
+    # def to_dict(self):
+    #     """ Map the object to dictionary data structure """
+    #     result = super(ChatRoom, self).to_dict()
+    #     # add relations to the result dict
+    #     Tools.add_relation_to_dict(result, self.messages.all(), "messages")
+    #     return Tools.delete_instance_state(result)
 
 
 class Message(BaseModel):
@@ -150,9 +228,9 @@ class Message(BaseModel):
     def __repr__(self):
         return '<Chat %r>' % self.content[:10]
 
-    def to_dict(self):
-        """ Map the object to dictionary data structure """
-        return Tools.delete_instance_state(super(Message, self).to_dict())
+    # def to_dict(self):
+    #     """ Map the object to dictionary data structure """
+    #     return Tools.delete_instance_state(super(Message, self).to_dict())
 
 
 '''
@@ -197,7 +275,12 @@ class Order(BaseModel):
     """
     __tablename__ = 'orders'
     id = db.Column(db.Integer, primary_key=True)
+    out_trade_no = db.Column(db.String(64), unique=True)    # trade number, which should be unique inside a same retailer (us), includes numbers, letters and '_' only
+    trade_no = db.Column(db.String(72), unique=True)    # this is generated by Alipay for each order after payment
     timestamp = db.Column(db.DateTime(), index=True, default=datetime.utcnow)
+    order_type = db.Column(db.String(20), default='delivery')   # 'delivery' or 'self-collection'
+    delivery_fee = db.Column(db.Integer, default=9)  # if the order_type is 'self-collection', delivery fee should be 0
+    gross_payment = db.Column(db.Float)     # only 2 digits in decimal e.g. 10.xx
     status_code = db.Column(db.Integer, default=0)  # the status code of this order
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))  # the uid of the customer who owns this order
     timestamp_1 = db.Column(db.DateTime(), index=True)  # time record of status changing to 'preparing'
@@ -256,6 +339,101 @@ class Order(BaseModel):
             return 'expired'
 
 
+    def generate_delivery_fee(self):
+        """
+        Premium members can enjoy delivery for free.
+        The base fee is 9 RMB (within 1 kg), every extra 1 kg contributes to an extra fee of 2 RMB.
+        The weight fee is up rounded. e.g. 2.x kg -> 3.0 kg (x > 0)
+        The top limit is 200 RMB.
+        Then the field 'delivery_fee' will be filled.
+        :return:
+        """
+        # premium members get a free delivery
+        if self.user.is_premium:
+            fee = 0
+        else:
+            # calculate the total weight in order
+            total_weight = 0
+            for omt in self.order_model_types:
+                total_weight += omt.model_type.weight * omt.count
+
+            # less than 1 kg, is the base fee of 9 RMB
+            if total_weight < 1:
+                fee = 9
+            else:
+                # calculate the extra fee
+                total_weight -= 1
+                # The weight is up rounded. e.g. 2.x kg -> 3.0 kg (x > 0)
+                if total_weight > (total_weight // 1):
+                    total_weight = (total_weight // 1) + 1
+                # fee = base + extra
+                fee = 9 + (total_weight * 2)
+                if fee > 200:
+                    fee = 200
+
+        # write delivery_fee into db
+        self.delivery_fee = fee
+        db.session.add(self)
+        db.session.commit()
+
+        return fee
+
+    def generate_gross_payment(self):
+        """
+        This function calculates the gross payment of this order (delivery + commodities)
+        Then the field 'gross_payment' will be filled.
+        :return: gross_payment
+        """
+        gross = 0
+
+        # add delivery fee
+        if self.order_type == 'delivery':
+            gross += self.delivery_fee
+
+        # calculate and add fee for commodities
+        payment_commodity = 0
+        for omt in self.order_model_types:
+            payment_commodity += (omt.model_type.price * omt.count)
+        # check the premium discount
+        if self.user.is_premium:
+            payment_commodity *= 0.95
+        gross += payment_commodity
+
+        # remain 2 digits in decimal place
+        gross = round(gross, 2)
+
+        # write gross in to db
+        self.gross_payment = gross
+        db.session.add(self)
+        db.session.commit()
+
+        return gross
+
+    def generate_unique_out_trade_no(self):
+        """
+        for generating the unique out_trade_no, which is required by Alipay.
+        We add a random number and timestamp with order_id
+        The field 'out_trade_no' will be filled.
+        :return: out_trade_no
+        """
+        # get current datetime
+        datetime_suffix = str(datetime.utcnow()).replace(" ", "").replace(":", "").replace('-', '').replace('.', '')
+        # get a random int
+        random_num_suffix = random.randint(0, 99999999999999999999)
+        # form the out_trade_no ('I' refers to instruments)
+        out_trade_no = '{}_{}_{}_{}'.format('I', self.id, random_num_suffix, datetime_suffix)
+        # the max length is 64
+        if len(out_trade_no) > 64:
+            out_trade_no = out_trade_no[0:64]
+
+        # add the out_trade_no to this obj
+        self.out_trade_no = out_trade_no
+        db.session.add(self)
+        db.session.commit()
+
+        return out_trade_no
+
+
 class OrderModelType(BaseModel):
     """
         This is a third-party table for recording the n to n relationship
@@ -293,16 +471,16 @@ class OrderModelType(BaseModel):
                 model_type_set.add(mt)
             # create omts for this order using the selected models
             for mt in model_type_set:
-                new_omt = OrderModelType(order=order, model_type=mt, count=random.randint(1, 15), unit_pay=mt.price)
+                new_omt = OrderModelType(order=order, model_type=mt, count=random.randint(1, 3), unit_pay=mt.price)
                 db.session.add(new_omt)
         db.session.commit()
 
-    def to_dict(self):
-        """ Map the object to dictionary data structure """
-        result = super(OrderModelType, self).to_dict()
-        # add relations to the result dict
-        Tools.add_relation_to_dict(result, self.refunds.all(), "refunds")
-        return Tools.delete_instance_state(result)
+    # def to_dict(self):
+    #     """ Map the object to dictionary data structure """
+    #     result = super(OrderModelType, self).to_dict()
+    #     # add relations to the result dict
+    #     Tools.add_relation_to_dict(result, self.refunds.all(), "refunds")
+    #     return Tools.delete_instance_state(result)
 
 
 class Cart(BaseModel):
@@ -357,15 +535,15 @@ class Comment(BaseModel):
     def __repr__(self):
         return '<Comment %r>' % self.content[:10]
 
-    def to_dict(self):
-        """
-            Map the object to dictionary data structure
-        """
-        result = super(Comment, self).to_dict()
-        # add relations to the result dict
-        Tools.add_relation_to_dict(result, self.pictures.all(), "pictures")
-
-        return Tools.delete_instance_state(result)
+    # def to_dict(self):
+    #     """
+    #         Map the object to dictionary data structure
+    #     """
+    #     result = super(Comment, self).to_dict()
+    #     # add relations to the result dict
+    #     Tools.add_relation_to_dict(result, self.pictures.all(), "pictures")
+    #
+    #     return Tools.delete_instance_state(result)
 
 
 
@@ -381,9 +559,9 @@ class CommentPic(BaseModel):
     def __repr__(self):
         return '<CommentPic %r>' % self.address
 
-    def to_dict(self):
-        """ Map the object to dictionary data structure """
-        return Tools.delete_instance_state(super(CommentPic, self).to_dict())
+    # def to_dict(self):
+    #     """ Map the object to dictionary data structure """
+    #     return Tools.delete_instance_state(super(CommentPic, self).to_dict())
 
 
 '''
@@ -443,13 +621,13 @@ class Product(BaseModel):
 
         db.session.commit()
 
-    def to_dict(self):
-        """ Map the object to dictionary data structure """
-        result = super(Product, self).to_dict()
-        # add relations to the result dict
-        Tools.add_relation_to_dict(result, self.categories.all(), "categories")
-        Tools.add_relation_to_dict(result, self.get_exist_model_types(), "model_types")
-        return Tools.delete_instance_state(result)
+    # def to_dict(self):
+    #     """ Map the object to dictionary data structure """
+    #     result = super(Product, self).to_dict()
+    #     # add relations to the result dict
+    #     Tools.add_relation_to_dict(result, self.categories.all(), "categories")
+    #     Tools.add_relation_to_dict(result, self.get_exist_model_types(), "model_types")
+    #     return Tools.delete_instance_state(result)
 
     def delete(self):
         """
@@ -484,7 +662,7 @@ class ModelTypePic(BaseModel):
     """
     __tablename__ = 'model_type_pictures'
     id = db.Column(db.Integer, primary_key=True)
-    address = db.Column(db.String(256), default='upload/model_type/default.png')
+    address = db.Column(db.String(512), default='upload/model_type/default.jpg')
     model_id = db.Column(db.Integer, db.ForeignKey('model_types.id'))  # 1 model type --> n picture
 
     def __repr__(self):
@@ -509,9 +687,9 @@ class ModelTypeIntroPic(BaseModel):
     def __repr__(self):
         return '<ModelTypeIntroPic %r>' % self.address
 
-    def to_dict(self):
-        """ Map the object to dictionary data structure """
-        return Tools.delete_instance_state(super(ModelTypeIntroPic, self).to_dict())
+    # def to_dict(self):
+    #     """ Map the object to dictionary data structure """
+    #     return Tools.delete_instance_state(super(ModelTypeIntroPic, self).to_dict())
 
 
 class ModelType(BaseModel):
@@ -527,6 +705,7 @@ class ModelType(BaseModel):
     name = db.Column(db.String(128))
     description = db.Column(db.Text())
     price = db.Column(db.Float)
+    weight = db.Column(db.Float)    # kg
     stock = db.Column(db.Integer, default=0)
     sales = db.Column(db.Integer, default=0)    # how many this models have been sold out
     views = db.Column(db.Integer, default=0)    # how many times its details page has been viewed
@@ -547,6 +726,8 @@ class ModelType(BaseModel):
     carts = db.relationship('Cart', backref='model_type', lazy='dynamic')
     # 1 model -> n OrderModelType; 1 OrderModelType -> 1 model
     order_model_types = db.relationship('OrderModelType', backref='model_type', lazy='dynamic')
+    # 1 model --> n B_histories
+    browsing_histories = db.relationship('BrowsingHistory', backref='model_type', lazy='dynamic')
 
     def to_dict(self):
         """
@@ -556,11 +737,12 @@ class ModelType(BaseModel):
         # add relations to the result dict
         Tools.add_relation_to_dict(result, self.comments.all(), "comments")
         Tools.add_relation_to_dict(result, self.pictures.all(), "pictures")
-        Tools.add_relation_to_dict(result, self.intro_pictures.all(), "intro_pictures")
+        # Tools.add_relation_to_dict(result, self.intro_pictures.all(), "intro_pictures")
         Tools.add_relation_to_dict(result, self.carts.all(), "carts")
         # Tools.add_relation_to_dict(result, self.order_model_types.all(), "order_model_types")
 
         return Tools.delete_instance_state(result)
+        # return result
 
     def delete(self):
         """
@@ -590,14 +772,18 @@ class ModelType(BaseModel):
             name = 'Model' + str(i)
             description = 'This is the test Model Type NO.' + str(i)
             price = random.randint(2000, 999999)
+            weight = round(10*random.random(), 2)
             stock = random.randint(100, 500)
             serial_number = 'M' + str(i)
             user_id = [3, 4][random.randint(0, 1)]
             product_id = random.randint(1, 10)
             # create the object of this model type
-            new_mt = ModelType(name=name, description=description, price=price, stock=stock,
+            new_mt = ModelType(name=name, description=description, price=price, weight=weight, stock=stock,
                                serial_number=serial_number, user_id=user_id, product_id=product_id)
             db.session.add(new_mt)
+            # add a pic for this model type
+            new_mt_pic = ModelTypePic(model_type=new_mt)
+            db.session.add(new_mt_pic)
         db.session.commit()
 
 
@@ -609,9 +795,9 @@ class Category(BaseModel):
     def __repr__(self):
         return '<Category %r>' % self.name
 
-    def to_dict(self):
-        """ Map the object to dictionary data structure """
-        return Tools.delete_instance_state(super(Category, self).to_dict())
+    # def to_dict(self):
+    #     """ Map the object to dictionary data structure """
+    #     return Tools.delete_instance_state(super(Category, self).to_dict())
 
     @staticmethod
     def insert_categories():
@@ -635,12 +821,12 @@ class Brand(BaseModel):
     def __repr__(self):
         return '<Brand %r>' % self.name
     
-    def to_dict(self):
-        """ Map the object to dictionary data structure """
-        result = super(Brand, self).to_dict()
-        # add relations to the result dict
-        Tools.add_relation_to_dict(result, self.products.all(), "products")
-        return Tools.delete_instance_state(result)
+    # def to_dict(self):
+    #     """ Map the object to dictionary data structure """
+    #     result = super(Brand, self).to_dict()
+    #     # add relations to the result dict
+    #     Tools.add_relation_to_dict(result, self.products.all(), "products")
+    #     return Tools.delete_instance_state(result)
 
     @staticmethod
     def insert_brands():
@@ -655,31 +841,61 @@ class Brand(BaseModel):
         db.session.commit()
 
 
-class Premium(BaseModel):
+class BrowsingHistory(BaseModel):
     """
-        The table records the premium membership info.
-        1 user (customer) -> n premium (each period of premium is regarded as a record in our db)
-        (in a specific period of time, a user can possess only a single premium membership)
+        A table records the browsing history of each user
+        1 BH -> 1 user and 1 model type
+        1 user and 1 model type -> 1 BH
+    """
+    __tablename__ = 'browsing_histories'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False, primary_key=True)
+    model_type_id = db.Column(db.Integer, db.ForeignKey('model_types.id'), nullable=False, primary_key=True)
+    timestamp = db.Column(db.DateTime(), default=datetime.utcnow)   # the last visit time
+    count = db.Column(db.Integer, default=1)    # How many time the user viewed this model type
+    is_deleted = db.Column(db.Boolean, default=False)
+
+
+class PremiumOrder(BaseModel):
+    """
+        The table records the payment orders of premium membership info.
+        1 user (customer) -> n premiumOrder
         1 premium -> 1 user (customer)
     """
-    __tablename__ = 'premiums'
+    __tablename__ = 'premium_orders'
     id = db.Column(db.Integer, primary_key=True)
     # 1 premium -> 1 user
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    start_time = db.Column(db.DateTime(), default=datetime.utcnow)
+    timestamp = db.Column(db.DateTime(), default=datetime.utcnow)
     duration = db.Column(db.Integer, nullable=False)  # the unit is 'day': 7, 30, 365
-    is_expired = db.Column(db.Boolean, default=False)
+    payment = db.Column(db.Float, nullable=False)   # only 2 digits in decimal e.g. 10.xx
+    out_trade_no = db.Column(db.String(64), unique=True)  # trade number, which should be unique inside a same retailer (us), includes numbers, letters and '_' only
+    trade_no = db.Column(db.String(72), unique=True)  # this is generated by Alipay for each order after payment
+    is_paid = db.Column(db.Boolean, default=False)  # whether the payment is finished
 
-    def expire(self):
+    def generate_unique_out_trade_no(self):
         """
-            The function fot expire this piece of record
+        for generating the unique out_trade_no, which is required by Alipay.
+        We add a random number and timestamp with order_id
+        The field 'out_trade_no' will be filled.
+        :return: out_trade_no
         """
-        self.is_expired = True
+        # get current datetime
+        datetime_suffix = str(datetime.utcnow()).replace(" ", "").replace(":", "").replace('-', '').replace('.', '')
+        # get a random int
+        random_num_suffix = random.randint(0, 99999999999999999999)
+        # form the out_trade_no ('P' refers to premium)
+        out_trade_no = '{}_{}_{}_{}'.format('P', self.id, random_num_suffix, datetime_suffix)
+        # the max length is 64
+        if len(out_trade_no) > 64:
+            out_trade_no = out_trade_no[0:64]
+
+        # add the out_trade_no to this obj
+        self.out_trade_no = out_trade_no
+        db.session.add(self)
         db.session.commit()
 
-    def to_dict(self):
-        """ Map the object to dictionary data structure """
-        return Tools.delete_instance_state(super(Premium, self).to_dict())
+        return out_trade_no
 
 
 class Address(BaseModel):
@@ -759,12 +975,12 @@ class Role(BaseModel):
     def __repr__(self):
         return '<Role %r>' % self.name
     
-    def to_dict(self):
-        """ Map the object to dictionary data structure """
-        result = super(Role, self).to_dict()
-        # add relations to the result dict
-        Tools.add_relation_to_dict(result, self.users.all(), "users")
-        return Tools.delete_instance_state(result)
+    # def to_dict(self):
+    #     """ Map the object to dictionary data structure """
+    #     result = super(Role, self).to_dict()
+    #     # add relations to the result dict
+    #     Tools.add_relation_to_dict(result, self.users.all(), "users")
+    #     return Tools.delete_instance_state(result)
 
     # ----- functions for permission management (learned from the book) -----
     # book: 'Flask Web Development: Developing Web Applications with Python, Second Edition'
@@ -862,15 +1078,25 @@ class User(UserMixin, BaseModel):
     model_types = db.relationship('ModelType', backref='staff', lazy='dynamic')
     # 1 user (customer) -> n addresses
     addresses = db.relationship('Address', backref='customer', lazy='dynamic')
-    # 1 user (customer) -> n premiums (in a specific period of time, a user can possess only a single premium membership)
-    premiums = db.relationship('Premium', backref='customer', lazy='dynamic')
+    # 1 user (customer) -> n premiumsOrder
+    premium_orders = db.relationship('PremiumOrder', backref='user', lazy='dynamic')
+    # 1 user --> n B_histories
+    browsing_histories = db.relationship('BrowsingHistory', backref='user', lazy='dynamic')
+
 
     def __repr__(self):
         return '<User %r>' % self.username
     
-    def to_dict(self):
-        """ Map the object to dictionary data structure """
-        return Tools.delete_instance_state(super(User, self).to_dict())
+    # def to_dict(self):
+    #     """ Map the object to dictionary data structure """
+    #     return Tools.delete_instance_state(super(User, self).to_dict())
+
+    def get_level(self):
+        """
+        calculate the user level by their exp (experiences)
+        :return: A int number indicates the user level
+        """
+        return self.exp // 100
 
     @staticmethod
     def insert_users():

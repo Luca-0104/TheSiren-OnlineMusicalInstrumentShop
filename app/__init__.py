@@ -35,7 +35,7 @@ def create_app(config_name):
     babel.init_app(app)
 
     # register the logger
-    # register_logger(app)
+    register_logger(app)
 
     # register blueprint - main
     from .main import main as main_blueprint
@@ -80,10 +80,10 @@ def register_logger(app):
     """
     Define the configure of the logger file
     """
-    app.logger.setLevel(logging.INFO)
+    app.logger.setLevel(level=logging.INFO)
     formatter = logging.Formatter("%(asctime)s %(levelname)s %(message)s", "%Y%b%d-%H:%M:%S")
 
-    file_handler = RotatingFileHandler('logs/prweb.log', maxBytes=10 * 1024, backupCount=10)
+    file_handler = RotatingFileHandler('logs/log.log', maxBytes=100 * 1024, backupCount=10)
     file_handler.setFormatter(formatter)
     file_handler.setLevel(logging.INFO)
 

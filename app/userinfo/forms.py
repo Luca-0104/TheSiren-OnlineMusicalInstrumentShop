@@ -7,32 +7,32 @@ from app.models import User, Address
 
 
 class AddAddressForm(FlaskForm):
-    recipient_name = StringField('Recipient Name: ', validators=[DataRequired(), Length(1, 64)])
-    phone = StringField('Phone: ', validators=[DataRequired(), Length(1, 24)])
-    country = StringField('Country: ', validators=[DataRequired(), Length(1, 128)])
-    province_or_state = StringField('Province or State:', validators=[DataRequired(), Length(1, 128)])
-    city = StringField('City:', validators=[DataRequired(), Length(1, 128)])
-    district = StringField('District: ', validators=[DataRequired(), Length(1, 128)])
-    submit = SubmitField('Add Address')
+    add_recipient_name = StringField('Recipient Name: ', validators=[DataRequired(), Length(1, 64)])
+    add_phone = StringField('Phone: ', validators=[DataRequired(), Length(1, 24)])
+    add_country = StringField('Country: ', validators=[DataRequired(), Length(1, 128)])
+    add_province_or_state = StringField('Province or State:', validators=[DataRequired(), Length(1, 128)])
+    add_city = StringField('City:', validators=[DataRequired(), Length(1, 128)])
+    add_district = StringField('District: ', validators=[DataRequired(), Length(1, 128)])
+    add_address_submit = SubmitField('Add Address')
 
 
 class EditAddressForm(FlaskForm):
-    recipient_name = StringField('Recipient Name: ', validators=[DataRequired(), Length(1, 64)])
-    phone = StringField('Phone: ', validators=[DataRequired(), Length(1, 24)])
-    country = StringField('Country: ', validators=[DataRequired(), Length(1, 128)])
-    province_or_state = StringField('Province or State:', validators=[DataRequired(), Length(1, 128)])
-    city = StringField('City:', validators=[DataRequired(), Length(1, 128)])
-    district = StringField('District: ', validators=[DataRequired(), Length(1, 128)])
-    submit = SubmitField('Update Address')
+    edit_recipient_name = StringField('Recipient Name: ', validators=[DataRequired(), Length(1, 64)])
+    edit_phone = StringField('Phone: ', validators=[DataRequired(), Length(1, 24)])
+    edit_country = StringField('Country: ', validators=[DataRequired(), Length(1, 128)])
+    edit_province_or_state = StringField('Province or State:', validators=[DataRequired(), Length(1, 128)])
+    edit_city = StringField('City:', validators=[DataRequired(), Length(1, 128)])
+    edit_district = StringField('District: ', validators=[DataRequired(), Length(1, 128)])
+    edit_address_submit = SubmitField('Update Address')
 
 
 class EditProfileForm(FlaskForm):
-    email = StringField('Email: ', validators=[DataRequired(), Length(1, 64), Email()])
-    username = StringField('Username: ', validators=[DataRequired(), Length(1, 64), Regexp('^[0-9a-zA-Z_.]{1,}$', 0, "Username must contain only letters, numbers, dots or underscores")])
+    edit_profile_email = StringField('Email: ', validators=[DataRequired(), Length(1, 64), Email()])
+    edit_profile_username = StringField('Username: ', validators=[DataRequired(), Length(1, 64), Regexp('^[0-9a-zA-Z_.]{1,}$', 0, "Username must contain only letters, numbers, dots or underscores")])
     # new_password = PasswordField('Password: ', validators=[DataRequired()])
-    about_me = StringField('About Me: ', validators=[Length(0, 300)])
-    gender = RadioField('Gender: ', choices=[(0, 'Male'), (1, 'Female'), (2, 'Unknown')], coerce=int, validators=[DataRequired()])
-    submit = SubmitField('Update Profile')
+    edit_profile_about_me = StringField('About Me: ', validators=[Length(0, 300)])
+    edit_profile_gender = RadioField('Gender: ', choices=[(0, 'Male'), (1, 'Female'), (2, 'Unknown')], coerce=int, validators=[DataRequired()])
+    edit_profile_submit = SubmitField('Update Profile')
 
     def __init__(self, user):
         super(EditProfileForm, self).__init__()
@@ -50,6 +50,6 @@ class EditProfileForm(FlaskForm):
 
 
 class UpdateAvatarForm(FlaskForm):
-    avatar = FileField('Avatar: ', validators=[FileRequired(), FileAllowed(['jpg', 'png', 'gif', 'bmp', 'webp', 'pcx', 'tif', 'jpeg', 'tga', 'exif', 'fpx', 'svg', 'psd', 'cdr', 'pcd', 'dxf', 'ufo', 'eps', 'al', 'hdri', 'raw', 'wmf', 'flic', 'emf', 'ico', 'avif', 'apng'])])
-    submit = SubmitField("Update Avatar")
+    update_avatar = FileField('Avatar: ', validators=[FileRequired(), FileAllowed(['jpg', 'png', 'gif', 'bmp', 'webp', 'pcx', 'tif', 'jpeg', 'tga', 'exif', 'fpx', 'svg', 'psd', 'cdr', 'pcd', 'dxf', 'ufo', 'eps', 'al', 'hdri', 'raw', 'wmf', 'flic', 'emf', 'ico', 'avif', 'apng'])])
+    update_avatar_submit = SubmitField("Update Avatar")
 

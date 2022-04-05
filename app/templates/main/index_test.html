@@ -15,7 +15,7 @@
     {% endif %}
 
     {# Test the payment #}
-    <li><a href="{{ url_for('payment.pay_order', order_id=99991) }}">Test Payment</a></li>
+    <li><a href="{{ url_for('payment.pay_order') }}">Test Payment</a></li>
     <li><a href="{{ '/stock-management' }}">Stock Management</a></li>
     <li><a href="{{ url_for('product.upload_product') }}">Upload Product</a></li>
     <li><a href="{{ '/modify-product/1' }}">Modify Product</a></li>
@@ -30,7 +30,7 @@
         <li><a href="/add-address">Add New Address</a></li>
         <li><a href="/update-avatar">Update Avatar</a></li>
     {% endif %}
-    <li><a href="{{ '/order_confirm' }}">Order Confirm</a></li>
+    <li><a href="{{ '/order-confirm/1' }}">Order Confirm</a></li>
     <li><a href="{{ '/show-my-cart' }}">My Cart</a></li>
     <li><a href="{{ '/my-orders' }}">My Orders</a></li>
 </ul>

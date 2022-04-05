@@ -265,5 +265,20 @@ $("#checkout-a").on("click",function()
     $.post("/generate-order-from-cart",
         {
             "JSON_cart_list": temp
-        })
+        }).done(function (response)
+            {
+                // get from server (backend)
+                let returnValue = response['returnValue'];
+                let order_id = response['order_id'];
+
+                if(returnValue === 0)
+                {
+                    //success
+                    window.location.href="/order-confirm/"+order_id;
+                }
+                else if(returnValue === 1)
+                {
+
+                }
+            });
 });

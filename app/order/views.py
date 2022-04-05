@@ -1,11 +1,12 @@
 from flask_login import login_required, current_user
-from flask import render_template, redirect, url_for, request, json, flash, jsonify
+from flask import render_template, redirect, url_for, request, json, flash, jsonify, current_app
 
 from app import db
-from app.models import Cart, Order, OrderModelType, ModelType, User
+from app.models import Cart, Order, OrderModelType, ModelType, PremiumOrder
 from app.order import order
 
 from datetime import datetime
+
 
 # -------------------------------------- generate orders --------------------------------------
 
@@ -13,13 +14,14 @@ from datetime import datetime
 @login_required
 def generate_order_from_cart():
     """
+        (Using Ajax)
         Get a list of cart relation objs from frontend.
         Generate a new order obj first.
         Then generate several OrderModelType objs according to the cart objs.
         Then link those OrderModelType objs in to that order obj
     """
     if request.method == 'POST':
-        # get the cart_id_list from ajax
+        # get the cart_id_list in from of JSON string list
         list_json = request.form["JSON_cart_list"]
 
         if list_json:
@@ -35,15 +37,24 @@ def generate_order_from_cart():
                 # Add the models that the user has chosen into this order
                 for cart_id in cart_id_list:
                     cart = Cart.query.get(cart_id)
-                    new_omt = OrderModelType(order=new_order, model_type=cart.model_type, count=cart.count, unit_pay=cart.model_type.price)
+                    new_omt = OrderModelType(order=new_order, model_type=cart.model_type, count=cart.count,
+                                             unit_pay=cart.model_type.price)
                     db.session.add(new_omt)
                 db.session.commit()
 
+                # generate related payment amount
+                new_order.generate_delivery_fee()
+                new_order.generate_gross_payment()
+                # generate out_trade_no for this order, as it is created
+                new_order.generate_unique_out_trade_no()
+
                 flash('Order created!')
-                return redirect(url_for('order.order_confirm', order_id=new_order.id))
+                return jsonify({'returnValue': 0, 'order_id': new_order.id})
+                # return redirect(url_for('order.order_confirm', order_id=new_order.id))
 
     flash('Order generation failed!')
-    return redirect(url_for('main.index'))
+    return jsonify({'returnValue': 1})
+    # return redirect(url_for('main.index'))
 
 
 @order.route('/generate-order-from-buy-now/<int:model_id>/<int:count>', methods=['GET'])
@@ -60,7 +71,6 @@ def generate_order_from_buy_now(model_id, count):
     if model:
         # check stock number
         if count <= model.stock:
-
             # generate the order obj
             new_order = Order(status_code=0, user_id=current_user.id)
             db.session.add(new_order)
@@ -71,20 +81,37 @@ def generate_order_from_buy_now(model_id, count):
             db.session.add(new_omt)
             db.session.commit()
 
+            # generate related payment amount
+            new_order.generate_delivery_fee()
+            new_order.generate_gross_payment()
+            # generate out_trade_no for this order, as it is created
+            new_order.generate_unique_out_trade_no()
+
             flash('Order created!')
-            return redirect(url_for('order.order_confirm', order_id=new_order.id))
+            return jsonify({'returnValue': 0, 'order_id': new_order.id})
+            # return redirect(url_for('order.order_confirm', order_id=new_order.id))
 
-    flash('Order generation failed!')
-    return redirect(url_for('main.index'))
+    # flash('Order generation failed!')
+    # return redirect(url_for('main.index'))
+    return jsonify({'returnValue': 1})
 
 
-@order.route('/order-confirm/<int:order_id>')
+@order.route('/order-confirm/<int:order_id>', methods=['GET', 'POST'])
 @login_required
 def order_confirm(order_id):
     """
         This function is for rendering the page of order confirmation.
     """
-    return render_template('order/order-confirm.html', order_id=order_id)
+    print("here in confirm, oid:{}".format(order_id))
+    o = Order.query.get(order_id)
+    # check if that order belong to current user
+    if o in current_user.orders:
+        print("here in ascojan")
+        return render_template('order/order-confirm.html', oreder=o)
+    else:
+        flash('Permission denied!')
+        return redirect(url_for('main.index'))
+
 
 
 # -------------------------------------- view my orders --------------------------------------
@@ -230,3 +257,54 @@ def change_status():
                 return jsonify({'returnValue': 2, 'msg': 'Permission denied!'})
 
     return jsonify({'returnValue': 1})
+
+
+# -------------------------------------------- Premium orders --------------------------------------------
+
+@order.route('/api/generate-premium-order', methods=['POST'])
+@login_required
+def generate_premium_order():
+    """
+    (Using Ajax)
+    This function works like the function 'order_confirm'.
+    For the premium order, we order generation and confirm can be integrated together,
+    because no status of "waiting for payment" for premium orders.
+    :return:
+    """
+    if request.method == 'POST':
+        # get order info from Ajax
+        duration = request.form.get('duration')  # how many days
+        payment = request.form.get('payment')
+
+        # validate the info we get
+        if duration:
+            try:
+                duration = int(duration)
+            except Exception as e:
+                current_app.logger.error(e)
+                flash("Error in Duration info!")
+                return redirect(url_for('main.index'))
+        else:
+            current_app.logger.warning('Duration is None!')
+            flash("No duration info!")
+            return redirect(url_for('main.index'))
+
+        if payment:
+            try:
+                payment = int(payment)
+            except Exception as e:
+                current_app.logger.error(e)
+                flash("Error in payment info!")
+                return redirect(url_for('main.index'))
+        else:
+            current_app.logger.warning('Payment is None!')
+            flash("No payment info!")
+            return redirect(url_for('main.index'))
+
+        # create a new premium order
+        new_p_order = PremiumOrder(user=current_user, duration=duration, payment=payment)
+        db.session.add(new_p_order)
+        db.session.commit()
+
+        # start process of Alipay
+        return redirect(url_for('payment.pay_for_order_premium', p_order_id=new_p_order.id))

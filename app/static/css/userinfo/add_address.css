@@ -1,0 +1,31 @@
+.middle-floating{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+.blocker{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background-color: #c3c3e0;
+    opacity: 0.5;
+    z-index: 100;
+}
+
+.action_area{
+    z-index: 101;
+}
+
+.title_section{
+    width:25%;
+}
+
+.clickable{
+    cursor: pointer;
+}
+
+.clicked a{
+    background-color: #662b2b
+}

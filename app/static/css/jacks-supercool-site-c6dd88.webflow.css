@@ -2877,28 +2877,28 @@ figcaption {
 }
 
 .bg-primary {
-    background-color: #662b2b;
-    color: #fff;
+    background-color: #662b2b !important;
+    color: #fff !important;
 }
 
 .bg-primary-dark {
-    background-color: #3D3430;
-    color: #fff;
+    background-color: #3D3430 !important;
+    color: #fff !important;
 }
 
 .bg-dark {
-    background-color: #121212;
-    color: #fff;
+    background-color: #121212 !important;
+    color: #fff !important;
 }
 
 .bg-white {
-    background-color: #ffffff;
+    background-color: #ffffff !important;
 }
 
 .bg-white.border {
-    border-style: solid;
-    border-width: 1px;
-    border-color: #e0e0e0;
+    border-style: solid !important;
+    border-width: 1px !important;
+    border-color: #e0e0e0 !important;
 }
 
 .style-guide-section-contents {

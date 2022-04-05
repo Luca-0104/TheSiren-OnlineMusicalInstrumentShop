@@ -1,10 +1,13 @@
-from flask import render_template, request, redirect, url_for, session, jsonify, flash, json
+from flask import render_template, request, redirect, url_for, session, jsonify, flash, json, current_app
 from flask_login import login_required, current_user
 from sqlalchemy import and_
 
 from . import main
 from .. import db
-from ..models import Product, ModelType, Category, Brand
+from ..models import Product, ModelType, Category, Brand, BrowsingHistory
+
+import random
+from datetime import datetime
 
 
 @main.route('/index')
@@ -13,8 +16,96 @@ def index():
         The function is for rendering the real index page
     """
 
-    """  """
-    return render_template('main/index_new.html')
+    """ top 3 of 'views' number """
+    rec_views = ModelType.query.filter_by(is_deleted=False).order_by(ModelType.views.desc()).limit(3).all()
+
+    """ (if logged in) top 3 recommendation according to viewing history """
+    rec_preference = None
+    if current_user.is_authenticated:
+        rec_preference = []
+        # find out user preference from their histories
+        cate_dic = dict()
+        for history in current_user.browsing_histories:
+            # filter out the 'type' cate
+            for cate in history.model_type.product.categories.filter(Category.id > 6).filter(Category.id < 53):
+                if cate.id in cate_dic:
+                    cate_dic[cate.id] += history.count
+                else:
+                    cate_dic[cate.id] = 1
+        # sort the dict and get top 3 preferred 'type' cate
+        sorted_id = sorted(cate_dic, key=cate_dic.get, reverse=True)[:3]
+
+        # get 3 models randomly from top 3 cates
+        if len(sorted_id) == 3:
+            # for each cate type, we randomly get a model type
+            for cate_id in sorted_id:
+                cate = Category.query.get(cate_id)
+                p_lst = cate.products.all()
+                if len(p_lst) > 0:
+                    # get a product randomly
+                    p = p_lst[random.randint(0, len(p_lst) - 1)]
+                    # get a model from this product randomly
+                    mt = p.model_types.all()[random.randint(0, p.model_types.count() - 1)]
+                    rec_preference.append(mt)
+
+        elif len(sorted_id) == 2:
+            # we give two models from cate1 and 1 model from cate2
+            cate1 = Category.query.get(sorted_id[0])
+            cate2 = Category.query.get(sorted_id[1])
+
+            # get 2 models from cate1
+            p_lst1 = cate1.products.all()
+            m_lst1 = []
+            for p in p_lst1:
+                m_lst1 += p.model_types.all()
+
+            if len(m_lst1) >= 2:
+                for i in range(2):
+                    mt = m_lst1[random.randint(0, len(m_lst1) - 1)]
+                    while mt in rec_preference:
+                        mt = m_lst1[random.randint(0, len(m_lst1) - 1)]
+                    rec_preference.append(mt)
+            elif len(m_lst1) == 1:
+                rec_preference.append(m_lst1[0])
+
+            # get 1 model from cate2
+            p_lst2 = cate2.products.all()
+            m_lst2 = []
+            for p in p_lst2:
+                m_lst2 += p.model_types.all()
+
+            if len(m_lst2) > 0:
+                mt = m_lst2[random.randint(0, len(m_lst2) - 1)]
+
+        elif len(sorted_id) == 1:
+            # get 3 models from this cate
+            cate = Category.query.get(sorted_id[0])
+            p_lst = cate.products.all()
+            m_lst = []
+            for p in p_lst:
+                m_lst += p.model_types.all()
+
+            if len(m_lst) >= 3:
+                for i in range(3):
+                    mt = m_lst[random.randint(0, len(m_lst) - 1)]
+                    while mt in rec_preference:
+                        mt = m_lst[random.randint(0, len(m_lst) - 1)]
+                    rec_preference.append(mt)
+            else:
+                rec_preference += m_lst
+
+        # check if the number of model is not enough (3 models)
+        if len(rec_preference) < 3:
+            diff = 3 - len(rec_preference)
+            # fill up the blank randomly
+            for i in range(diff):
+                mt = ModelType.query.get(random.randint(1, ModelType.query.count()))
+                rec_preference.append(mt)
+
+    """ 'just arrive' (top 4 according to datetime) """
+    rec_time = ModelType.query.filter_by(is_deleted=False).order_by(ModelType.release_time.desc()).limit(4).all()
+
+    return render_template('main/index_new.html', rec_time=rec_time, rec_views=rec_views, rec_preference=rec_preference)
 
 
 @main.route('/')
@@ -50,8 +141,8 @@ def search():
     if request.method == 'POST':
         key_word = request.form.get('key_word')
         # search model types by name
-        mt_list = search_models_by_keyword(keyword=key_word)\
-            .order_by(ModelType.sales.desc(), ModelType.views.desc())\
+        mt_list = search_models_by_keyword(keyword=key_word) \
+            .order_by(ModelType.sales.desc(), ModelType.views.desc()) \
             .all()
         return render_template('', mt_list=mt_list)  # see-all page
 
@@ -65,7 +156,7 @@ def search_models_by_keyword(keyword):
     :return: A BaseQuery object that contains a list of models found
     """
     mt_bq_lst = ModelType.query.filter(and_(ModelType.name.contains(keyword),
-                                          ModelType.is_deleted == False))
+                                            ModelType.is_deleted == False))
     return mt_bq_lst
 
 
@@ -138,13 +229,53 @@ def model_type_details(mt_id):
     :param mt_id: The id of the selected model type
     """
     # get the model type by id
-    mt = ModelType.query.get(mt_id)
+    try:
+        mt = ModelType.query.get(mt_id)
+    except Exception as e:
+        current_app.logger.error(e)
+        flash('No such commodity!')
+        return redirect(url_for('main.index'))
+
     # check if the model type exists
     if mt is not None:
-        return render_template('', model_type=mt)
+        # increase the views number
+        mt.views = mt.views + 1
+        db.session.add(mt)
+        db.session.commit()
+
+        # record the user browsing history
+        if current_user.is_authenticated:
+            # check if the user has viewed this model before
+            bh = BrowsingHistory.query.filter_by(user=current_user, model_type=mt).first()
+            if bh:
+                # update the count and time
+                bh.count = bh.count + 1
+                bh.timestamp = datetime.utcnow()
+                db.session.add(bh)
+            else:
+                # record this new history
+                new_bh = BrowsingHistory(user=current_user, model_type=mt)
+                db.session.add(new_bh)
+            try:
+                db.session.commit()
+            except Exception as e:
+                current_app.logger.error(e)
+                db.session.rollback()
+
+        # get the recommended related models (models in same cate with high popularity)
+        related_mt_lst = []
+        for cate in mt.product.categories:
+            for p in cate.products:
+                related_mt_lst += p.model_types.all()
+        # sort the related list
+        sort_db_models(related_mt_lst, sort_key=take_sales, reverse=True)
+        # limit the number of mt in related list
+        related_mt_lst = related_mt_lst[:10]
+
+        return render_template('', model_type=mt, related_mt_lst=related_mt_lst)
     else:
         flash('No such commodity!')
-        return redirect(url_for('main.index_new'))
+        return redirect(url_for('main.index'))
 
 
 @main.route('/change_language', methods=['GET', 'POST'])
@@ -228,9 +359,8 @@ def filter_model_types():
             json_list_b = request.form["JSON_list_B"]  # Brand
             b_id_list = json.loads(json_list_b)
 
-
         """ Filter the models with the date gotten """
-        mt_lst = []     # for collecting the result mt
+        mt_lst = []  # for collecting the result mt
         if access_method == 'search':
             # get the search content
             search_content = request.form.get('search_content')
@@ -295,7 +425,6 @@ def filter_model_types():
 
             # filter the products
             mt_lst = filter_products_by_cate_groups(brand, c_id_list, t_id_list, a_id_list)
-
 
         """ sort the model list by the sale numbers """
         sort_db_models(mt_lst, sort_key=take_sales, reverse=True)
