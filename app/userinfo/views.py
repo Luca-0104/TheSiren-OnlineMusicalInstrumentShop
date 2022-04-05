@@ -22,12 +22,12 @@ def user_profile(uid):
     # user submit the edit profile form
     if edit_profile_form.edit_profile_submit.data and edit_profile_form.validate():
 
-        user.username = edit_profile_form.username.data
-        user.email = edit_profile_form.email.data
-        user.about_me = edit_profile_form.about_me.data
-        if edit_profile_form.gender.data == 0:
+        user.username = edit_profile_form.edit_profile_username.data
+        user.email = edit_profile_form.edit_profile_email.data
+        user.about_me = edit_profile_form.edit_profile_about_me.data
+        if edit_profile_form.edit_profile_gender.data == 0:
             user.gender = 'Male'
-        elif edit_profile_form.gender.data == 1:
+        elif edit_profile_form.edit_profile_gender.data == 1:
             user.gender = 'Female'
         else:
             user.gender = 'Unknown'
@@ -43,23 +43,23 @@ def user_profile(uid):
         return redirect(url_for('userinfo.user_profile', uid=current_user.id))
 
     # initialize the edit profile form data
-    edit_profile_form.username.data = current_user.username
-    edit_profile_form.email.data = current_user.email
-    edit_profile_form.about_me.data = current_user.about_me
+    edit_profile_form.edit_profile_username.data = current_user.username
+    edit_profile_form.edit_profile_email.data = current_user.email
+    edit_profile_form.edit_profile_about_me.data = current_user.about_me
     if current_user.gender == 'Male':
-        edit_profile_form.gender.data = 0
+        edit_profile_form.edit_profile_gender.data = 0
     elif current_user.gender == 'Female':
-        edit_profile_form.gender.data = 1
+        edit_profile_form.edit_profile_gender.data = 1
     else:
-        edit_profile_form.gender.data = 2
+        edit_profile_form.edit_profile_gender.data = 2
 
     # user submit the update avatar form
     if update_avatar_form.update_avatar_submit.data and update_avatar_form.validate():
         path = 'upload/avatar'
-        avatar_name = update_avatar_form.avatar.data.filename
+        avatar_name = update_avatar_form.update_avatar.data.filename
         picname = generate_safe_pic_name(avatar_name)
         file_path = os.path.join(Config.avatar_dir, picname).replace('\\', '/')
-        update_avatar_form.avatar.data.save(file_path)
+        update_avatar_form.update_avatar.data.save(file_path)
         user = User.query.get(current_user.id)
         user.avatar = os.path.join(path, picname).replace('\\', '/')
         db.session.add(user)
@@ -101,12 +101,12 @@ def user_profile(uid):
     if edit_address_form.edit_address_submit.data and edit_address_form.validate():
         address_id = request.form.get("address_id")
         address = Address.query.filter_by(id=address_id).first()
-        address.recipient_name = edit_address_form.recipient_name.data
-        address.phone = edit_address_form.phone.data
-        address.country = edit_address_form.country.data
-        address.province_or_state = edit_address_form.province_or_state.data
-        address.city = edit_address_form.city.data
-        address.district = edit_address_form.district.data
+        address.recipient_name = edit_address_form.edit_recipient_name.data
+        address.phone = edit_address_form.edit_phone.data
+        address.country = edit_address_form.edit_country.data
+        address.province_or_state = edit_address_form.edit_province_or_state.data
+        address.city = edit_address_form.edit_city.data
+        address.district = edit_address_form.edit_district.data
 
         db.session.add(address)
         db.session.commit()
