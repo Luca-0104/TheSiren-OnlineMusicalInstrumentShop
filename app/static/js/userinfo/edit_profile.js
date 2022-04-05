@@ -1,6 +1,6 @@
-$("#show").on("click",function()
+$("#show_edit").on("click",function()
 {window.alert("1111111111")
-    let target = $("#avatar_form");
+    let target = $("#profile_form");
     if(target.css("display")=='none')
     {
         window.alert("2222222222")
@@ -11,7 +11,7 @@ $("#show").on("click",function()
 
 $("#close_triger").on("click",function()
 {
-    let target = $("#avatar_form");
+    let target = $("#profile_form");
     if(target.css("display")!='none')
     {
         target.css('display','none');

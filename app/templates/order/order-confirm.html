@@ -100,11 +100,11 @@
                                         </div>
                                         <div>
                                             <div data-node-type="commerce-cart-quick-checkout-actions">
-                                                <a data-node-type="commerce-cart-apple-pay-button"
-                                                   class="w-commerce-commercecartapplepaybutton">
+{#                                                <a data-node-type="commerce-cart-apple-pay-button"#}
+{#                                                   class="w-commerce-commercecartapplepaybutton">#}
                                                     <img src="../../static/images/alipay.PNG" loading="eager" alt=""
                                                          height="30px">
-                                                </a>
+{#                                                </a>#}
                                                 {#                          <a data-node-type="commerce-cart-quick-checkout-button" style="display:none" class="w-commerce-commercecartquickcheckoutbutton"><svg class="w-commerce-commercequickcheckoutgoogleicon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewbox="0 0 16 16">#}
                                                 {#                              <defs>#}
                                                 {#                                <polygon id="google-mark-a" points="0 .329 3.494 .329 3.494 7.649 0 7.649"></polygon>#}
@@ -252,18 +252,18 @@
                         <div>Pay with browser.</div>
                     </a>
                 </div>
-                <form data-node-type="commerce-checkout-customer-info-wrapper"
-                      class="w-commerce-commercecheckoutcustomerinfowrapper">
-                    <div class="w-commerce-commercecheckoutblockheader block-header">
-                        <h4 class="checkout-heading">Customer Info</h4>
-                        <div class="fine-print-text">* Required</div>
-                    </div>
-                    <fieldset class="w-commerce-commercecheckoutblockcontent"><label
-                            class="w-commerce-commercecheckoutlabel">Email *</label><input type="text" name="email"
-                                                                                           required=""
-                                                                                           class="w-commerce-commercecheckoutemailinput">
-                    </fieldset>
-                </form>
+{#                <form data-node-type="commerce-checkout-customer-info-wrapper"#}
+{#                      class="w-commerce-commercecheckoutcustomerinfowrapper">#}
+{#                    <div class="w-commerce-commercecheckoutblockheader block-header">#}
+{#                        <h4 class="checkout-heading">Customer Info</h4>#}
+{#                        <div class="fine-print-text">* Required</div>#}
+{#                    </div>#}
+{#                    <fieldset class="w-commerce-commercecheckoutblockcontent"><label#}
+{#                            class="w-commerce-commercecheckoutlabel">Email *</label><input type="text" name="email"#}
+{#                                                                                           required=""#}
+{#                                                                                           class="w-commerce-commercecheckoutemailinput">#}
+{#                    </fieldset>#}
+{#                </form>#}
                 <form data-node-type="commerce-checkout-shipping-address-wrapper"
                       class="w-commerce-commercecheckoutshippingaddresswrapper">
                     <div class="w-commerce-commercecheckoutblockheader block-header">
@@ -568,10 +568,11 @@
                                                                                              name="shipping-method-choice">
                             <div class="w-commerce-commercecheckoutshippingmethoddescriptionblock">
                                 <div class="w-commerce-commerceboldtextblock"></div>
-                                <div>{{ form.shop_method.label }}
-                                    {{ form.shop_method() }}</div>
+                                {#                                <div>{{ form.shop_method.label }}#}
+                                {#                                    {{ form.shop_method() }}</div>#}
                             </div>
-                            <div></div>
+                            <div>
+                            </div>
                         </label></div>
                         <div data-node-type="commerce-checkout-shipping-methods-empty-state" style="display:none"
                              class="w-commerce-commercecheckoutshippingmethodsemptystate">
@@ -893,6 +894,49 @@
                         <div class="w-commerce-commercecheckoutorderitemslist"
                              data-wf-collection="database.commerceOrder.userItems"
                              data-wf-template-id="wf-template-619d8e8b85c224cbfbc36b42000000000086"></div>
+                        <div>
+                            <table border="1" id="cart_table" total_row="{{ length }}">
+                                <tr>
+
+                                    <th colspan="2">
+                                        Model Info
+                                    </th>
+                                    <th>
+                                        Quantity
+                                    </th>
+                                    <th>
+                                        Price
+                                    </th>
+                                    <th></th>
+                                </tr>
+                                {% for order in order_relation_lst %}
+                                    <tr rowID="{{ loop.index }}" id="row_{{ loop.index }}" orderid="{{ order.id }}"
+                                        modelid="{{ order.model_type.id }}" single_price="{{ order.model_type.price }}">
+
+                                        <td>
+                                            <img src="../../static/images/example/yamaha_yep621s.jpg" alt=""
+                                                 class="w-commerce-commercecartitemimage cart-item-image"/>
+                                        </td>
+                                        <td>
+                                            <div class="w-commerce-commercecartproductname">
+                                                {{ order.model_type.name }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                           <div >{{ order.count }}</div>
+                                        </td>
+                                        <td>
+                                            <div class="fine-print-text">
+                                                <span>$</span>
+                                                <span focusID="{{ loop.index }}"
+                                                      id="price_{{ loop.index }}">{{ order.model_type.price }}</span>
+                                                <span>USD</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
                     </fieldset>
                 </div>
             </div>
