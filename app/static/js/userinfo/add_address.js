@@ -1,15 +1,18 @@
 $("#show_triger").on("click",function()
 {
-    let target = $("#address_form");
+    console.log("try to show");
+    let target = $("#address_form_blocker");
     if(target.css("display")=='none')
     {
+        console.log("change css to show");
         target.css('display','');
+        console.log(target.css("display"));
     }
 });
 
 $("#close_triger").on("click",function()
 {
-    let target = $("#address_form");
+    let target = $("#address_form_blocker");
     if(target.css("display")!='none')
     {
         target.css('display','none');

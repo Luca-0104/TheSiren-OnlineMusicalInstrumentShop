@@ -97,6 +97,7 @@ def add_address():
     """
     form = AddAddressForm()
     if form.validate_on_submit():
+        print(request.form.get("parmas1"))
         addresses = Address.query.filter_by(customer_id=current_user.id).all()
         # user has no address yet
         if addresses is None:
