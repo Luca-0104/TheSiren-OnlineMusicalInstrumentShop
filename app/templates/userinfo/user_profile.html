@@ -222,37 +222,36 @@
         </div>
 
         <div class="user-container">
-                <div>
-                    <ul class="user-nav" id="">
+            <div>
+                <ul class="user-nav" id="">
+                    <li class="" id="info">
+                        <a class="button nav nav-button w-inline-block">Information</a>
+                    </li>
+                    <li class="nav-item hover-item" id="Address">
+                        <a class="button nav nav-button w-inline-block">Address</a>
+                    </li>
+                    <li class="nav-item hover-item" id="brand">
+                        <a class="button nav nav-button w-inline-block">Followed Brand</a>
+                    </li>
+                    <li class="nav-item hover-item" id="category">
+                        <a class="button nav nav-button w-inline-block">Followed Category</a>
+                    </li>
+                    <li class="nav-item hover-item" id="prime">
+                        <a class="button nav nav-button w-inline-block">Prime</a>
+                    </li>
+                    <li class="nav-item hover-item" id="Order">
+                        <a class="button nav nav-button w-inline-block">Order</a>
+                    </li>
+                </ul>
+            </div>
 
-                        <li class="" id="info">
-                            <a class="button nav nav-button w-inline-block">Information</a>
-                        </li>
-                        <li class="nav-item hover-item" id="Address">
-                            <a class="button nav nav-button w-inline-block">Address</a>
-                        </li>
-                        <li class="nav-item hover-item" id="brand">
-                            <a class="button nav nav-button w-inline-block">Followed Brand</a>
-                        </li>
-                        <li class="nav-item hover-item" id="category">
-                            <a class="button nav nav-button w-inline-block">Followed Category</a>
-                        </li>
-                        <li class="nav-item hover-item" id="prime">
-                            <a class="button nav nav-button w-inline-block">Prime</a>
-                        </li>
-                        <li class="nav-item hover-item" id="Order">
-                            <a class="button nav nav-button w-inline-block">Order</a>
-                        </li>
-
-
-                    </ul>
-                </div>
                 <div class="profile-box" id="right-box">
                     {#        the avatar box#}
                     <div class="avatar-box" id="show">
                         {#                the avatar image#}
                         <img id="avatar" src="{{ url_for('static', filename=user.avatar) }}" alt="user-avatar">
                     </div>
+
                     <div id="avatar_form" class="middle-floating bg-dark" style="display: none">
                         <div id="close_triger" class="bg-primary">
                             close
@@ -268,7 +267,6 @@
 
                     <div class="profile-info">
                         <ul class="profile-list">
-
                             <li class="profile-info">
                                 {#                    the profile text information#}
                                 <div class="profile-text">
@@ -299,25 +297,23 @@
                                         </div>
                                         {#                        {% endif %}#}
                                         <div id="level-box">
-                                        <span id="left-level">
-                                            Lv.0
-                                        </span>
-                                            <span id="right-level">
-                                            Lv.1
-                                        </span>
+                                            <span id="left-level">
+                                                Lv.0
+                                            </span>
+                                                <span id="right-level">
+                                                Lv.1
+                                            </span>
                                         </div>
 
                                         <div id="line"></div>
 
                                     </div>
 
-
                                     <div class="email" id="info-box">
                                         <p>
                                             Email: {{ user.email }}
                                         </p>
                                     </div>
-
 
                                     <div class="tag-info">
                                         {#                                <p class="tags">#}
@@ -335,14 +331,12 @@
                                             </p>
                                         {% endif %}
                                     </div>
-
                                 </div>
-
-
                             </li>
                         </ul>
 
                     </div>
+
                     <div class="date-gender">
                         <p class="date" id="info-box">
                             Member since {{ user.start_datetime.date() }}
@@ -355,7 +349,7 @@
                 </div>
             </div>
 
-        <!-- side -->
+        <!-- footer section -->
         <div class="footer wf-section">
             <div class="footer-details-section">
                 <div class="main-container">
