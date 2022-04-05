@@ -49,10 +49,12 @@ def generate_order_from_cart():
                 new_order.generate_unique_out_trade_no()
 
                 flash('Order created!')
-                return redirect(url_for('order.order_confirm', order_id=new_order.id))
+                return jsonify({'returnValue': 0, 'order_id': new_order.id})
+                # return redirect(url_for('order.order_confirm', order_id=new_order.id))
 
     flash('Order generation failed!')
-    return redirect(url_for('main.index'))
+    return jsonify({'returnValue': 1})
+    # return redirect(url_for('main.index'))
 
 
 @order.route('/generate-order-from-buy-now/<int:model_id>/<int:count>', methods=['GET'])
@@ -105,10 +107,11 @@ def order_confirm(order_id):
     # check if that order belong to current user
     if o in current_user.orders:
         print("here in ascojan")
-        return render_template('order/order-confirm.html', order_id=order_id)
+        return render_template('order/order-confirm.html', oreder=o)
     else:
         flash('Permission denied!')
         return redirect(url_for('main.index'))
+
 
 
 # -------------------------------------- view my orders --------------------------------------
