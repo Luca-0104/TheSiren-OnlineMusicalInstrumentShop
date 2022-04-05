@@ -14,7 +14,8 @@ from .. import db
 @userinfo.route('/user_profile/<int:uid>')
 def user_profile(uid):
     user = User.query.get(uid)
-    return render_template('userinfo/user_profile.html', user=user)
+    form = UpdateAvatarForm()
+    return render_template('userinfo/user_profile.html', user=user, form=form)
 
 @userinfo.route('/01')
 def temp_address_listing():
