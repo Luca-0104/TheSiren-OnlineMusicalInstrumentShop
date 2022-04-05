@@ -86,10 +86,12 @@ def generate_order_from_buy_now(model_id, count):
             new_order.generate_unique_out_trade_no()
 
             flash('Order created!')
-            return redirect(url_for('order.order_confirm', order_id=new_order.id))
+            return jsonify({'returnValue': 0, 'order_id': new_order.id})
+            # return redirect(url_for('order.order_confirm', order_id=new_order.id))
 
-    flash('Order generation failed!')
-    return redirect(url_for('main.index'))
+    # flash('Order generation failed!')
+    # return redirect(url_for('main.index'))
+    return jsonify({'returnValue': 1})
 
 
 @order.route('/order-confirm/<int:order_id>')
@@ -98,9 +100,11 @@ def order_confirm(order_id):
     """
         This function is for rendering the page of order confirmation.
     """
+    print("here in confirm, oid:{}".format(order_id))
     o = Order.query.get(order_id)
     # check if that order belong to current user
     if o in current_user.orders:
+        print("here in ascojan")
         return render_template('order/order-confirm.html', order_id=order_id)
     else:
         flash('Permission denied!')
