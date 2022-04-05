@@ -50,6 +50,13 @@ class EditProfileForm(FlaskForm):
 
 
 class UpdateAvatarForm(FlaskForm):
-    update_avatar = FileField('Avatar: ', validators=[FileRequired(), FileAllowed(['jpg', 'png', 'gif', 'bmp', 'webp', 'pcx', 'tif', 'jpeg', 'tga', 'exif', 'fpx', 'svg', 'psd', 'cdr', 'pcd', 'dxf', 'ufo', 'eps', 'al', 'hdri', 'raw', 'wmf', 'flic', 'emf', 'ico', 'avif', 'apng'])])
+    update_avatar = FileField('Avatar: ', validators=[FileRequired(), FileAllowed(['jpg', 'png', 'gif', 'bmp',
+                                                                                   'webp', 'pcx', 'tif', 'jpeg',
+                                                                                   'tga', 'exif', 'fpx', 'svg',
+                                                                                   'psd', 'cdr', 'pcd', 'dxf',
+                                                                                   'ufo', 'eps', 'al', 'hdri',
+                                                                                   'raw', 'wmf', 'flic', 'emf',
+                                                                                   'ico', 'avif', 'apng'],
+                                                                                  message='Please use valid picture file format!')])
     update_avatar_submit = SubmitField("Update Avatar")
 
