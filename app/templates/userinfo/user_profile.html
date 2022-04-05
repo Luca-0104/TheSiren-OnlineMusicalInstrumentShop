@@ -245,109 +245,109 @@
                 </ul>
             </div>
 
-                <div class="profile-box" id="right-box">
-                    {#        the avatar box#}
-                    <div class="avatar-box" id="show">
-                        {#                the avatar image#}
-                        <img id="avatar" src="{{ url_for('static', filename=user.avatar) }}" alt="user-avatar">
+            <div class="profile-box" id="right-box">
+                {#        the avatar box#}
+                <div class="avatar-box" id="show">
+                    {#                the avatar image#}
+                    <img id="avatar" src="{{ url_for('static', filename=user.avatar) }}" alt="user-avatar">
+                </div>
+
+                <div id="avatar_form" class="middle-floating bg-dark" style="display: none">
+                    <div id="close_triger" class="bg-primary">
+                        close
                     </div>
+                    <form enctype="multipart/form-data" method="post" novalidate>
+                        {{ form.hidden_tag() }}
+                        {{ form.avatar.label }}
+                        {{ form.avatar() }}
+                        <br>
+                        {{ form.submit() }}
+                    </form>
+                </div>
 
-                    <div id="avatar_form" class="middle-floating bg-dark" style="display: none">
-                        <div id="close_triger" class="bg-primary">
-                            close
-                        </div>
-                        <form enctype="multipart/form-data" method="post" novalidate>
-                            {{ form.hidden_tag() }}
-                            {{ form.avatar.label }}
-                            {{ form.avatar() }}
-                            <br>
-                            {{ form.submit() }}
-                        </form>
-                    </div>
-
-                    <div class="profile-info">
-                        <ul class="profile-list">
-                            <li class="profile-info">
-                                {#                    the profile text information#}
-                                <div class="profile-text">
-                                    <div class="top-box">
-                                        <div class="username" id="info-box">
-                                            <p>
-                                                {{ user.username }}
-                                            </p>
-                                        </div>
-                                        <div>
-                                            {% if user.is_premium == true %}
-                                                <img id="prime-img" src="../../static/images/user/prime1.png">
-                                            {% else %}
-                                                <img id="prime-img" src="../../static/images/user/prime0.png">
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                    <div class="exp_bar">
-                                        <div id="bottom-bar">
-                                            <div id="top-bar">
-                                                50/100
-                                            </div>
-                                        </div>
-                                        {#                        {% if user.username == session.get("username") %}#}
-                                        {#                    the edit button#}
-                                        <div class="button small nav-button w-inline-block" id="edit">
-                                            <a href="{{ url_for('userinfo.edit_profile') }}">Edit</a>
-                                        </div>
-                                        {#                        {% endif %}#}
-                                        <div id="level-box">
-                                            <span id="left-level">
-                                                Lv.0
-                                            </span>
-                                                <span id="right-level">
-                                                Lv.1
-                                            </span>
-                                        </div>
-
-                                        <div id="line"></div>
-
-                                    </div>
-
-                                    <div class="email" id="info-box">
+                <div class="profile-info">
+                    <ul class="profile-list">
+                        <li class="profile-info">
+                            {#                    the profile text information#}
+                            <div class="profile-text">
+                                <div class="top-box">
+                                    <div class="username" id="info-box">
                                         <p>
-                                            Email: {{ user.email }}
+                                            {{ user.username }}
                                         </p>
                                     </div>
-
-                                    <div class="tag-info">
-                                        {#                                <p class="tags">#}
-                                        {#                                    {{ user.tag }}#}
-                                        {#                                </p>#}
-                                        Bio:
-                                        {% if user.about_me == None or user.about_me == "" %}
-                                            <p id="info-null">
-                                                Describe yourself...
-                                            </p>
-
+                                    <div>
+                                        {% if user.is_premium == true %}
+                                            <img id="prime-img" src="../../static/images/user/prime1.png">
                                         {% else %}
-                                            <p class="info">
-                                                {{ user.about_me }}
-                                            </p>
+                                            <img id="prime-img" src="../../static/images/user/prime0.png">
                                         {% endif %}
                                     </div>
                                 </div>
-                            </li>
-                        </ul>
+                                <div class="exp_bar">
+                                    <div id="bottom-bar">
+                                        <div id="top-bar">
+                                            50/100
+                                        </div>
+                                    </div>
+                                    {#                        {% if user.username == session.get("username") %}#}
+                                    {#                    the edit button#}
+                                    <div class="button small nav-button w-inline-block" id="edit">
+                                        <a href="{{ url_for('userinfo.edit_profile') }}">Edit</a>
+                                    </div>
+                                    {#                        {% endif %}#}
+                                    <div id="level-box">
+                                        <span id="left-level">
+                                            Lv.0
+                                        </span>
+                                            <span id="right-level">
+                                            Lv.1
+                                        </span>
+                                    </div>
 
-                    </div>
+                                    <div id="line"></div>
 
-                    <div class="date-gender">
-                        <p class="date" id="info-box">
-                            Member since {{ user.start_datetime.date() }}
-                        </p>
-                        {#                                                                    <p class="gender" id="info-box">#}
-                        {#                                                                        Gender: {{ user.gender }}#}
-                        {#                                                                    </p>#}
-                    </div>
+                                </div>
+
+                                <div class="email" id="info-box">
+                                    <p>
+                                        Email: {{ user.email }}
+                                    </p>
+                                </div>
+
+                                <div class="tag-info">
+                                    {#                                <p class="tags">#}
+                                    {#                                    {{ user.tag }}#}
+                                    {#                                </p>#}
+                                    Bio:
+                                    {% if user.about_me == None or user.about_me == "" %}
+                                        <p id="info-null">
+                                            Describe yourself...
+                                        </p>
+
+                                    {% else %}
+                                        <p class="info">
+                                            {{ user.about_me }}
+                                        </p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
 
                 </div>
+
+                <div class="date-gender">
+                    <p class="date" id="info-box">
+                        Member since {{ user.start_datetime.date() }}
+                    </p>
+                    {#                                                                    <p class="gender" id="info-box">#}
+                    {#                                                                        Gender: {{ user.gender }}#}
+                    {#                                                                    </p>#}
+                </div>
+
             </div>
+        </div>
 
         <!-- footer section -->
         <div class="footer wf-section">
