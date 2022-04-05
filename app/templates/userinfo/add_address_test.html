@@ -16,12 +16,15 @@
 
         <input type="text" placeholder="type here to search...">
 
-        <div id="address_form" class="middle-floating bg-dark" >
+        <div id="address_form_blocker" class="middle-floating blocker"></div>
+
+        <div id="address_form" class="middle-floating bg-dark">
             <div id="close_triger" class="bg-primary">
                 close
             </div>
             <form method="post">
                 {{ form.hidden_tag() }}
+                <input type="hidden" name="address_id" value="1">
                 {{ form.recipient_name.label }}
                 {{ form.recipient_name() }}
                 <br>

@@ -67,6 +67,7 @@ def user_profile(uid):
         flash("Avatar update successfully!")
         return redirect(url_for("userinfo.user_profile", uid=current_user.id))
 
+    return render_template('userinfo/avatar_update_test.html', form=form)
 
     # user submit the add address form
     if add_address_form.submita.data and add_address_form.validate():
@@ -96,6 +97,7 @@ def user_profile(uid):
 
         return redirect(url_for('userinfo.user_profile', uid=current_user.id))
 
+    return render_template('userinfo/add_address_test.html', form=form)
 
 
     if edit_address_form.submita.data and edit_address_form.validate():
