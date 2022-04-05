@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileRequired, FileAllowed
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, RadioField, FileField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, RadioField, FileField, HiddenField
 from wtforms.validators import DataRequired, Email, Length, ValidationError, EqualTo, Regexp
 
 from app.models import User, Address
@@ -17,6 +17,7 @@ class AddAddressForm(FlaskForm):
 
 
 class EditAddressForm(FlaskForm):
+    edit_address_id = StringField()
     edit_recipient_name = StringField('Recipient Name: ', validators=[DataRequired(), Length(1, 64)])
     edit_phone = StringField('Phone: ', validators=[DataRequired(), Length(1, 24)])
     edit_country = StringField('Country: ', validators=[DataRequired(), Length(1, 128)])
