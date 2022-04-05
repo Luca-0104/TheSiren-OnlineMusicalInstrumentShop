@@ -139,7 +139,7 @@
     margin-top: 35px;
 }
 
-#edit{
+#show_edit_info_form_btn{
     margin-left: 80px;
 }
 #info-null{
@@ -193,6 +193,6 @@
     cursor: pointer;
   }
 
-/*#avatar_form{*/
-/*      display:none;*/
-/*  }*/
+#change_avatar_form{
+    line-height: 200%;
+}
