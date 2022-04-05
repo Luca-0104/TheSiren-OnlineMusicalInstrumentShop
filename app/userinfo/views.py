@@ -11,7 +11,7 @@ from ..models import User, Address
 from .. import db
 
 
-@userinfo.route('/user_profile/<int:uid>')
+@userinfo.route('/user_profile/<int:uid>', methods=['GET', 'POST'])
 def user_profile(uid):
     user = User.query.get(uid)
     edit_profile_form = EditProfileForm(current_user)
