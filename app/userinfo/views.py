@@ -99,7 +99,9 @@ def user_profile(uid):
 
     # user submit the edit address form
     if edit_address_form.edit_address_submit.data and edit_address_form.validate():
-        address_id = request.form.get("address_id")
+        # address_id = request.form.get("address_id")
+        address_id = edit_address_form.edit_address_id.data
+        print(edit_address_form.edit_recipient_name.data)
         address = Address.query.filter_by(id=address_id).first()
         address.recipient_name = edit_address_form.edit_recipient_name.data
         address.phone = edit_address_form.edit_phone.data
@@ -115,7 +117,7 @@ def user_profile(uid):
         return redirect(url_for("userinfo.user_profile", uid=current_user.id))
 
 
-    return render_template('userinfo/user_profile.html', user=user, update_avatar_form=update_avatar_form, add_address_form=add_address_form)
+    return render_template('userinfo/user_profile.html', user=user, update_avatar_form=update_avatar_form, add_address_form=add_address_form, edit_address_form=edit_address_form)
 
 
 # @userinfo.route('/01')

@@ -107,8 +107,13 @@ function start_edit_address(address_id)
         show_add_form.css('display','');
     }
 
-    let address_form_hidden_id = $("#address_form_hidden_id");
-    address_form_hidden_id.val(address_id);
+    // document.getElementById('address_form_hidden_id').value = address_id;
+    // console.log("pre id"+address_form_hidden_id.val());
+    // address_form_hidden_id.val(String(address_id));
+    // console.log("post id"+document.getElementById('address_form_hidden_id').value);
+
+    let address_form_address_id = $("#address_form_hidden_idasdf");
+    address_form_address_id.val(address_id);
 
     let address_form_recipient_name = $("#address_form_recipient_name");
     address_form_recipient_name.val(recipient_name);
