@@ -74,22 +74,22 @@ def user_profile(uid):
         # user has no address yet
         if addresses is None:
             address = Address(customer_id=current_user.id,
-                              recipient_name=add_address_form.recipient_name.data,
-                              phone=add_address_form.phone.data,
-                              country=add_address_form.country.data,
-                              province_or_state=add_address_form.province_or_state.data,
-                              city=add_address_form.city.data,
-                              district=add_address_form.district.data,
+                              recipient_name=add_address_form.add_recipient_name.data,
+                              phone=add_address_form.add_phone.data,
+                              country=add_address_form.add_country.data,
+                              province_or_state=add_address_form.add_province_or_state.data,
+                              city=add_address_form.add_city.data,
+                              district=add_address_form.add_district.data,
                               is_default=True)
         # user has multiple address
         else:
             address = Address(customer_id=current_user.id,
-                              recipient_name=add_address_form.recipient_name.data,
-                              phone=add_address_form.phone.data,
-                              country=add_address_form.country.data,
-                              province_or_state=add_address_form.province_or_state.data,
-                              city=add_address_form.city.data,
-                              district=add_address_form.district.data)
+                              recipient_name=add_address_form.add_recipient_name.data,
+                              phone=add_address_form.add_phone.data,
+                              country=add_address_form.add_country.data,
+                              province_or_state=add_address_form.add_province_or_state.data,
+                              city=add_address_form.add_city.data,
+                              district=add_address_form.add_district.data)
         db.session.add(address)
         db.session.commit()
         flash('Address added successfully!')
@@ -262,27 +262,27 @@ def user_profile(uid):
 #     return render_template('userinfo/edit_address_test.html', form=form)
 
 
-@userinfo.route('/api/edit-address', methods=['POST'])
-@login_required
-def edit_address():
-
-    if request.method == 'POST':
-        address_id = request.form.get('address_id')
-        address = Address.query.get(address_id)
-
-        # check if the address exists
-        if address is None:
-            return jsonify({'returnValue': 1})
-
-        # check is this address belong to current user
-        if address.customer_id != current_user.id:
-            return jsonify({'returnValue': 1})
-
-        address_json = address_prepare_for_json(address)
-        return jsonify({'returnValue': 0,
-                        'address': address_json})
-
-    return jsonify({'returnValue': 1})
+# @userinfo.route('/api/edit-address', methods=['POST'])
+# @login_required
+# def edit_address():
+#
+#     if request.method == 'POST':
+#         address_id = request.form.get('address_id')
+#         address = Address.query.get(address_id)
+#
+#         # check if the address exists
+#         if address is None:
+#             return jsonify({'returnValue': 1})
+#
+#         # check is this address belong to current user
+#         if address.customer_id != current_user.id:
+#             return jsonify({'returnValue': 1})
+#
+#         address_json = address_prepare_for_json(address)
+#         return jsonify({'returnValue': 0,
+#                         'address': address_json})
+#
+#     return jsonify({'returnValue': 1})
 
 
 
