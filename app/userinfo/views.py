@@ -20,7 +20,8 @@ def user_profile(uid):
 @userinfo.route('/01')
 def temp_address_listing():
     user = current_user
-    return render_template('userinfo/temp_address_listing.html', user=user)
+    form = AddAddressForm()
+    return render_template('userinfo/temp_address_listing.html', user=user, form=form)
 
 @userinfo.route('/edit-profile', methods=['GET', 'POST'])
 @login_required

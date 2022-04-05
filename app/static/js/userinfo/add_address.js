@@ -1,21 +1,24 @@
-$("#show_triger").on("click",function()
+$("#show_add_form_btn").on("click",function()
 {
     console.log("try to show");
-    let target = $("#address_form_blocker");
-    if(target.css("display")=='none')
+    let blocker = $("#address_form_blocker");
+    let show_add_form = $("#address_form");
+    if(blocker.css("display")=='none')
     {
         console.log("change css to show");
-        target.css('display','');
-        console.log(target.css("display"));
+        blocker.css('display','');
+        show_add_form.css('display','');
     }
 });
 
-$("#close_triger").on("click",function()
+$("#close_add_form_btn").on("click",function()
 {
-    let target = $("#address_form_blocker");
-    if(target.css("display")!='none')
+    let blocker = $("#address_form_blocker");
+    let show_add_form = $("#address_form");
+    if(blocker.css("display")!='none')
     {
-        target.css('display','none');
+        blocker.css('display','none');
+        show_add_form.css('display','none');
     }
 });
 

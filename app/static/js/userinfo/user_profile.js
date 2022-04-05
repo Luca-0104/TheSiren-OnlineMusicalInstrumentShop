@@ -9,6 +9,13 @@ $("#info_btn").on("click",function()
     let prime_container = $("#prime_container");
     let order_container = $("#order_container");
 
+    let info_btn = $("#info_btn");
+    let Address_btn = $("#info_btn");
+    let brand_btn = $("#info_btn");
+    let category_btn = $("#info_btn");
+    let prime_btn = $("#info_btn");
+    let Order_btn = $("#info_btn");
+
     if(info_container.css("display")=='none')
     {
         console.log("#info_container to show");
