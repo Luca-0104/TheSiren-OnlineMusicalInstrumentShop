@@ -274,7 +274,7 @@ $("#checkout-a").on("click",function()
                 if(returnValue === 0)
                 {
                     //success
-                    location.href="/order-confirm/"+order_id;
+                    window.location.href="/order-confirm/"+order_id;
                 }
                 else if(returnValue === 1)
                 {

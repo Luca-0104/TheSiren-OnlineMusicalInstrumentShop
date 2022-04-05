@@ -94,7 +94,7 @@ def generate_order_from_buy_now(model_id, count):
     return jsonify({'returnValue': 1})
 
 
-@order.route('/order-confirm/<int:order_id>')
+@order.route('/order-confirm/<int:order_id>', methods=['GET', 'POST'])
 @login_required
 def order_confirm(order_id):
     """
