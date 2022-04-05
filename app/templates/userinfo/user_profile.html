@@ -28,7 +28,7 @@
         <link href="../../static/css/normalize.css" rel="stylesheet" type="text/css">
         <link href="../../static/css/webflow.css" rel="stylesheet" type="text/css">
         <link href="../../static/css/jacks-supercool-site-c6dd88.webflow.css" rel="stylesheet" type="text/css">
-        <link href="../../static/css/main/user_profile.css" rel="stylesheet" type="text/css">
+        <link href="../../static/css/userinfo/user_profile.css" rel="stylesheet" type="text/css">
         <link href="../../static/css/userinfo/add_address.css" rel="stylesheet" type="text/css">
 
         <!-- [if lt IE 9]>
@@ -262,23 +262,23 @@
                 <!-- 1. Information section -->
                 <div class="topic_container" id="info_container">
                     {#        the avatar box#}
-                    <div class="avatar-box" id="show">
+                    <div class="avatar-box" id="show_change_avatar_form_btn">
                         {#                the avatar image#}
                         <img id="avatar" src="{{ url_for('static', filename=user.avatar) }}" alt="user-avatar">
                     </div>
 
-                    <div id="avatar_form" class="middle-floating bg-dark" style="display: none">
-                        <div id="close_triger" class="bg-primary">
-                            close
-                        </div>
-                        <form enctype="multipart/form-data" method="post" novalidate>
-                            {{ update_avatar_form.hidden_tag() }}
-                            {{ update_avatar_form.update_avatar.label }}
-                            {{ update_avatar_form.update_avatar() }}
-                            <br>
-                            {{ update_avatar_form.update_avatar_submit() }}
-                        </form>
-                    </div>
+{#                    <div id="change_avatar_form" class="middle-floating bg-dark" style="display: none">#}
+{#                        <div id="close_triger" class="bg-primary">#}
+{#                            close#}
+{#                        </div>#}
+{#                        <form enctype="multipart/form-data" method="post" novalidate>#}
+{#                            {{ update_avatar_form.hidden_tag() }}#}
+{#                            {{ update_avatar_form.update_avatar.label }}#}
+{#                            {{ update_avatar_form.update_avatar() }}#}
+{#                            <br>#}
+{#                            {{ update_avatar_form.update_avatar_submit() }}#}
+{#                        </form>#}
+{#                    </div>#}
 
                     <div class="profile-info">
                         <ul class="profile-list">
@@ -541,7 +541,21 @@
         </div>
 
         <!-- blocker & floating section -->
-        <div id="address_form_blocker" class="middle-floating blocker" style="display: none"></div>
+        <div id="profile_form_blocker" class="middle-floating blocker" style="display: none"></div>
+
+        <!-- Change avatar floating section-->
+        <div id="change_avatar_form" class="middle-floating bg-dark action_area" style="display: none">
+                        <div id="close_change_avatar_form_btn" class="bg-primary">
+                            close
+                        </div>
+                        <form enctype="multipart/form-data" method="post" novalidate>
+                            {{ update_avatar_form.hidden_tag() }}
+                            {{ update_avatar_form.update_avatar.label }}
+                            {{ update_avatar_form.update_avatar() }}
+                            <br>
+                            {{ update_avatar_form.update_avatar_submit(class="button bg-white-faded middle")}}
+                        </form>
+                    </div>
 
         <!-- Add address floating section -->
         <div id="add_address_form" class="middle-floating bg-dark action_area" style="display: none">
