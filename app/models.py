@@ -11,6 +11,8 @@ from . import login_manager
 
 import random
 
+from .prestore.product_info import pm_lst
+
 
 class Tools:
     """
@@ -39,9 +41,85 @@ class Tools:
         # ProductPic.insert_pictures()  # the pictures of the constant products
         # # products(100)  # 100 fake products
         ModelType.insert_model_types()  # the constant model types for testing
+        # ------
+        Tools.insert_pm()   # pre-stored product and mt info
+        # ------
         Cart.insert_carts()
         Order.insert_orders(20)
         OrderModelType.insert_omts()
+
+    @staticmethod
+    def insert_pm():
+        """
+        Insert the pre-stored products and its models into the database.
+        :return:
+        """
+        for p_info in pm_lst:
+            # get product info
+            p_name = p_info[0]
+            brand_id = p_info[1]
+            cate_id_c = p_info[2]
+            cate_id_t = p_info[3]
+            cate_id_a = p_info[4]
+            mt_lst = p_info[5]
+
+            """ create the product first """
+            # create the serial_prefix
+            serial_prefix = "b{}-c{}-t{}-a{}".format(brand_id, cate_id_c, cate_id_t, cate_id_a)
+            # query for the serial_rank
+            serial_rank = 1 + Product.query.filter_by(serial_prefix=serial_prefix).count()
+            # create Product
+            new_product = Product(serial_prefix=serial_prefix,
+                                  serial_rank=serial_rank,
+                                  name=p_name,
+                                  brand_id=brand_id)
+            # add categories
+            cate_c = Category.query.get(cate_id_c)
+            cate_t = Category.query.get(cate_id_t)
+            cate_a = Category.query.get(cate_id_a)
+            new_product.categories.append(cate_c)
+            new_product.categories.append(cate_t)
+            new_product.categories.append(cate_a)
+            # add to db session
+            db.session.add(new_product)
+
+            """ create the model types """
+            for mt_info in mt_lst:
+                # get model type info
+                mt_name = mt_info[0]
+                description = mt_info[1]
+                price = mt_info[2]
+                weight = mt_info[3]
+                pic_lst = mt_info[4]
+                # generate some random info
+                stock = random.randint(100, 500)
+                sales = random.randint(0, 300)
+                views = random.randint(0, 50000)
+                serial_number = 'M{}'.format(ModelType.query.count())
+                user_id = [3, 4][random.randint(0, 1)]
+                # create this model type object
+                new_mt = ModelType(name=mt_name,
+                                   description=description,
+                                   price=price,
+                                   weight=weight,
+                                   stock=stock,
+                                   sales=sales,
+                                   views=views,
+                                   serial_number=serial_number,
+                                   user_id=user_id,
+                                   product=new_product)
+                # add to db session
+                db.session.add(new_mt)
+
+                """ create picture objects for this mt """
+                for pic_name in pic_lst:
+                    address = "upload/model_type/prestore/{}".format(pic_name)
+                    new_mtp = ModelTypePic(model_type=new_mt, address=address)
+                    # add to db session
+                    db.session.add(new_mtp)
+
+        # commit db session
+        db.session.commit()
 
     @staticmethod
     def delete_instance_state(dic):
@@ -584,7 +662,7 @@ class ModelTypePic(BaseModel):
     """
     __tablename__ = 'model_type_pictures'
     id = db.Column(db.Integer, primary_key=True)
-    address = db.Column(db.String(256), default='upload/model_type/default.jpg')
+    address = db.Column(db.String(512), default='upload/model_type/default.jpg')
     model_id = db.Column(db.Integer, db.ForeignKey('model_types.id'))  # 1 model type --> n picture
 
     def __repr__(self):
