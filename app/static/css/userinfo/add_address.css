@@ -26,6 +26,6 @@
     cursor: pointer;
 }
 
-.clicked{
+.clicked a{
     background-color: #662b2b
 }

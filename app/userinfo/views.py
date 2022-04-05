@@ -20,7 +20,7 @@ def user_profile(uid):
     edit_address_form = EditAddressForm()
 
     # user submit the edit profile form
-    if edit_profile_form.submita.data and edit_profile_form.validate():
+    if edit_profile_form.edit_profile_submit.data and edit_profile_form.validate():
 
         user.username = edit_profile_form.username.data
         user.email = edit_profile_form.email.data
@@ -54,7 +54,7 @@ def user_profile(uid):
         edit_profile_form.gender.data = 2
 
     # user submit the update avatar form
-    if update_avatar_form.submita.data and update_avatar_form.validate():
+    if update_avatar_form.update_avatar_submit.data and update_avatar_form.validate():
         path = 'upload/avatar'
         avatar_name = update_avatar_form.avatar.data.filename
         picname = generate_safe_pic_name(avatar_name)
@@ -69,7 +69,7 @@ def user_profile(uid):
 
 
     # user submit the add address form
-    if add_address_form.submita.data and add_address_form.validate():
+    if add_address_form.add_address_submit.data and add_address_form.validate():
         addresses = Address.query.filter_by(customer_id=current_user.id).all()
         # user has no address yet
         if addresses is None:
@@ -98,7 +98,7 @@ def user_profile(uid):
 
 
     # user submit the edit address form
-    if edit_address_form.submita.data and edit_address_form.validate():
+    if edit_address_form.edit_address_submit.data and edit_address_form.validate():
         address_id = request.form.get("address_id")
         address = Address.query.filter_by(id=address_id).first()
         address.recipient_name = edit_address_form.recipient_name.data
@@ -115,7 +115,7 @@ def user_profile(uid):
         return redirect(url_for("userinfo.user_profile", uid=current_user.id))
 
 
-    return render_template('userinfo/user_profile.html', user=user)
+    return render_template('userinfo/user_profile.html', user=user, update_avatar_form=update_avatar_form, add_address_form=add_address_form)
 
 
 # @userinfo.route('/01')

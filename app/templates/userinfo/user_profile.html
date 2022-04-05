@@ -229,23 +229,23 @@
             <!-- nav on left hand side-->
             <div>
                 <ul class="user-nav" id="">
-                    <li class="" id="info_btn">
-                        <a class="button nav nav-button w-inline-block clicked">Information</a>
+                    <li class="nav-item hover-item clicked" id="info_btn">
+                        <a class="button nav nav-button w-inline-block">Information</a>
                     </li>
-                    <li class="nav-item hover-item" id="Address_btn">
-                        <a class="button nav nav-button w-inline-block clickable">Address</a>
+                    <li class="nav-item hover-item clickable" id="Address_btn">
+                        <a class="button nav nav-button w-inline-block">Address</a>
                     </li>
-                    <li class="nav-item hover-item" id="brand_btn">
-                        <a class="button nav nav-button w-inline-block clickable">Followed Brand</a>
+                    <li class="nav-item hover-item clickable" id="brand_btn">
+                        <a class="button nav nav-button w-inline-block">Followed Brand</a>
                     </li>
-                    <li class="nav-item hover-item" id="category_btn">
-                        <a class="button nav nav-button w-inline-block clickable">Followed Category</a>
+                    <li class="nav-item hover-item clickable" id="category_btn">
+                        <a class="button nav nav-button w-inline-block">Followed Category</a>
                     </li>
-                    <li class="nav-item hover-item" id="prime_btn">
-                        <a class="button nav nav-button w-inline-block clickable">Prime</a>
+                    <li class="nav-item hover-item clickable" id="prime_btn">
+                        <a class="button nav nav-button w-inline-block">Prime</a>
                     </li>
-                    <li class="nav-item hover-item" id="Order_btn">
-                        <a class="button nav nav-button w-inline-block clickable">Order</a>
+                    <li class="nav-item hover-item clickable" id="Order_btn">
+                        <a class="button nav nav-button w-inline-block">Order</a>
                     </li>
                 </ul>
             </div>
@@ -265,11 +265,11 @@
                             close
                         </div>
                         <form enctype="multipart/form-data" method="post" novalidate>
-                            {{ form.hidden_tag() }}
-                            {{ form.avatar.label }}
-                            {{ form.avatar() }}
+                            {{ update_avatar_form.hidden_tag() }}
+                            {{ update_avatar_form.update_avatar.label }}
+                            {{ update_avatar_form.update_avatar() }}
                             <br>
-                            {{ form.submit() }}
+                            {{ update_avatar_form.update_avatar_submit() }}
                         </form>
                     </div>
 
@@ -442,28 +442,28 @@
                             close
                         </div>
                         <form method="post">
-                            {{ form.hidden_tag() }}
+                            {{ add_address_form.hidden_tag() }}
                             <input type="hidden" name="address_id" value="1">
-                            {{ form.recipient_name.label }}
-                            {{ form.recipient_name() }}
+                            {{ add_address_form.add_recipient_name.label }}
+                            {{ add_address_form.add_recipient_name() }}
                             <br>
-                            {{ form.phone.label }}
-                            {{ form.phone() }}
+                            {{ add_address_form.add_phone.label }}
+                            {{ add_address_form.add_phone() }}
                             <br>
-                            {{ form.country.label }}
-                            {{ form.country() }}
+                            {{ add_address_form.add_country.label }}
+                            {{ add_address_form.add_country() }}
                             <br>
-                            {{ form.province_or_state.label }}
-                            {{ form.province_or_state() }}
+                            {{ add_address_form.add_province_or_state.label }}
+                            {{ add_address_form.add_province_or_state() }}
                             <br>
-                            {{ form.city.label }}
-                            {{ form.city() }}
+                            {{ add_address_form.add_city.label }}
+                            {{ add_address_form.add_city() }}
                             <br>
-                            {{ form.district.label }}
-                            {{ form.district() }}
+                            {{ add_address_form.add_district.label }}
+                            {{ add_address_form.add_district() }}
 
                             <br><br>
-                            {{ form.submit() }}
+                            {{ add_address_form.add_address_submit() }}
                         </form>
                     </div>
                 </div>
