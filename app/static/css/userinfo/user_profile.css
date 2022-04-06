@@ -118,6 +118,7 @@
     text-align: center;
     line-height: 30px;
     color: white;
+    transition: 1.2s;
 }
 
 #left-level {

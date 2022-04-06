@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileRequired, FileAllowed
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, RadioField, FileField, HiddenField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, RadioField, FileField, HiddenField, SelectField
 from wtforms.validators import DataRequired, Email, Length, ValidationError, EqualTo, Regexp
 
 from app.models import User, Address
@@ -32,7 +32,7 @@ class EditProfileForm(FlaskForm):
     edit_profile_username = StringField('Username: ', validators=[DataRequired(), Length(1, 64), Regexp('^[0-9a-zA-Z_.]{1,}$', 0, "Username must contain only letters, numbers, dots or underscores")])
     # new_password = PasswordField('Password: ', validators=[DataRequired()])
     edit_profile_about_me = StringField('About Me: ', validators=[Length(0, 300)])
-    edit_profile_gender = RadioField('Gender: ', choices=[(0, 'Male'), (1, 'Female'), (2, 'Unknown')], coerce=int, validators=[DataRequired()])
+    edit_profile_gender = SelectField('Gender: ', choices=[(0, 'Male'), (1, 'Female'), (2, 'Unknown')], coerce=int, validators=[DataRequired()])
     edit_profile_submit = SubmitField('Update Profile')
 
     def __init__(self, user):

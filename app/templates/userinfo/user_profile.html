@@ -301,7 +301,7 @@
                             </div>
                             <div class="exp_bar">
                                 <div id="bottom-bar">
-                                    <div id="top-bar">{{ user.exp%100 }}%</div>
+                                    <div id="top-bar" total_exp="{{ user.exp%100 }}">{{ user.exp%100 }}%</div>
                                 </div>
                                 {#                        {% if user.username == session.get("username") %}#}
                                 {#                    the edit button#}
@@ -364,19 +364,19 @@
 
         <!-- 2. Address section -->
         <div class="topic_container" id="address_container" style="display: none">
-            <div class="w-commerce-commercecartheader cart-header">
+            <div class="cart-header">
                 <h4 class="w-commerce-commercecartheading">Your Address</h4>
-                <a href="#" data-node-type="commerce-cart-close-link"
+                <!--<a href="#" data-node-type="commerce-cart-close-link"
                    class="w-commerce-commercecartcloselink close-cart-button w-inline-block">
                     <img src="images/icon-cross-large.svg" loading="lazy" alt="">
-                </a>
+                </a>-->
             </div>
-            <div class="w-commerce-commercecartheader cart-header">
+            <div class="">
                 <a href="#" id="show_add_form_btn" class="button small nav-button w-inline-block">
                     <div>Add</div>
                 </a>
             </div>
-            <table style="border-collapse:separate; border-spacing:10px;">
+            <table id="address_listing_table" style="border-collapse:separate; border-spacing:10px;">
                 {% for address in user.addresses.all() %}
                     <tr id="address_row_{{ address.id }}">
                         <td>
@@ -418,7 +418,7 @@
                                     <td colspan="2">
                                         {% if not address.is_default %}
                                             <div id="action_{{ address.id }}" is_default="f"
-                                                 class="d-flex align-items-center list-action">
+                                                 class="align-items-center list-action">
                                                 <a id="default_btn_{{ address.id }}" class="badge badge-info mr-2"
                                                    data-toggle="tooltip"
                                                    data-placement="top" title="" data-original-title="View"
@@ -453,6 +453,8 @@
                     </tr>
                 {% endfor %}
             </table>
+
+
 
 
         </div>
