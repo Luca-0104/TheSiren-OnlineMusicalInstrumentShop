@@ -1,6 +1,6 @@
 $("#show_add_form_btn").on("click",function()
 {
-    let blocker = $("#address_form_blocker");
+    let blocker = $("#profile_form_blocker");
     let show_add_form = $("#add_address_form");
     if(blocker.css("display")=='none')
     {
@@ -11,7 +11,7 @@ $("#show_add_form_btn").on("click",function()
 
 $("#close_add_form_btn").on("click",function()
 {
-    let blocker = $("#address_form_blocker");
+    let blocker = $("#profile_form_blocker");
     let show_add_form = $("#add_address_form");
     if(blocker.css("display")!='none')
     {
@@ -22,7 +22,7 @@ $("#close_add_form_btn").on("click",function()
 
 $("#close_edit_form_btn").on("click",function()
 {
-    let blocker = $("#address_form_blocker");
+    let blocker = $("#profile_form_blocker");
     let show_add_form = $("#edit_address_form");
     if(blocker.css("display")!='none')
     {
@@ -99,7 +99,7 @@ function start_edit_address(address_id)
     let city = place[2];
     let district = place[3];
 
-    let blocker = $("#address_form_blocker");
+    let blocker = $("#profile_form_blocker");
     let show_add_form = $("#edit_address_form");
     if(blocker.css("display")=='none')
     {
