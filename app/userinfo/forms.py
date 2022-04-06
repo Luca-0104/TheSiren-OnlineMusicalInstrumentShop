@@ -1,5 +1,6 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileRequired, FileAllowed
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, RadioField, FileField, HiddenField, SelectField
 from flask_babel import lazy_gettext as _l
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, RadioField, FileField, HiddenField
 from wtforms.validators import DataRequired, Email, Length, ValidationError, EqualTo, Regexp
@@ -38,6 +39,9 @@ class EditProfileForm(FlaskForm):
     edit_profile_gender = RadioField(_l('Gender: '), choices=[(0, 'Male'), (1, 'Female'), (2, 'Unknown')], coerce=int,
                                      validators=[DataRequired()])
     edit_profile_submit = SubmitField(_l('Update Profile'))
+    edit_profile_about_me = StringField('About Me: ', validators=[Length(0, 300)])
+    edit_profile_gender = SelectField('Gender: ', choices=[(0, 'Male'), (1, 'Female'), (2, 'Unknown')], coerce=int, validators=[DataRequired()])
+    edit_profile_submit = SubmitField('Update Profile')
 
     def __init__(self, user):
         super(EditProfileForm, self).__init__()

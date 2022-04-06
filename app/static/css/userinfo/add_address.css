@@ -21,6 +21,7 @@
 
 .action_area{
     z-index: 101;
+    width: 60%;
 }
 
 .title_section{
@@ -45,4 +46,16 @@
     padding: 10px;
 }
 
+h4.w-commerce-commercecartheading{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+}
 
+.topic_container{
+    text-align: center;
+}
+
+#address_listing_table{
+    width: 100%;
+}
