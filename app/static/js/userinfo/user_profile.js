@@ -1,3 +1,36 @@
+function topicBtnRefresh()
+{
+    let info_btn = $("#info_btn");
+    info_btn.removeClass("clicked");
+    info_btn.removeClass("clickable");
+    info_btn.addClass("clickable");
+
+    let Address_btn = $("#Address_btn");
+    Address_btn.removeClass("clicked");
+    Address_btn.removeClass("clickable");
+    Address_btn.addClass("clickable");
+
+    let brand_btn = $("#brand_btn");
+    brand_btn.removeClass("clicked");
+    brand_btn.removeClass("clickable");
+    brand_btn.addClass("clickable");
+
+    let category_btn = $("#category_btn");
+    category_btn.removeClass("clicked");
+    category_btn.removeClass("clickable");
+    category_btn.addClass("clickable");
+
+    let prime_btn = $("#prime_btn");
+    prime_btn.removeClass("clicked");
+    prime_btn.removeClass("clickable");
+    prime_btn.addClass("clickable");
+
+    let Order_btn = $("#Order_btn");
+    Order_btn.removeClass("clicked");
+    Order_btn.removeClass("clickable");
+    Order_btn.addClass("clickable");
+}
+
 $("#info_btn").on("click",function()
 {
     let info_container = $("#info_container");
@@ -8,11 +41,6 @@ $("#info_btn").on("click",function()
     let order_container = $("#order_container");
 
     let info_btn = $("#info_btn");
-    let Address_btn = $("#Address_btn");
-    let brand_btn = $("#brand_btn");
-    let category_btn = $("#category_btn");
-    let prime_btn = $("#prime_btn");
-    let Order_btn = $("#Order_btn");
 
     if(info_container.css("display")=='none')
     {
@@ -23,14 +51,9 @@ $("#info_btn").on("click",function()
         prime_container.css('display','none');
         order_container.css('display','none');
 
-        console.log("delete class");
-        info_btn.removeClass("clicked");
-        Address_btn.removeClass("clicked");
-        brand_btn.removeClass("clicked");
-        category_btn.removeClass("clicked");
-        prime_btn.removeClass("clicked");
-        Order_btn.removeClass("clicked");
+        topicBtnRefresh();
 
+        info_btn.removeClass("clickable");
         info_btn.addClass("clicked");
     }
 });
@@ -44,12 +67,7 @@ $("#Address_btn").on("click",function()
     let prime_container = $("#prime_container");
     let order_container = $("#order_container");
 
-    let info_btn = $("#info_btn");
     let Address_btn = $("#Address_btn");
-    let brand_btn = $("#brand_btn");
-    let category_btn = $("#category_btn");
-    let prime_btn = $("#prime_btn");
-    let Order_btn = $("#Order_btn");
 
     if(address_container.css("display")=='none')
     {
@@ -60,14 +78,9 @@ $("#Address_btn").on("click",function()
         prime_container.css('display','none');
         order_container.css('display','none');
 
-        console.log("delete class");
-        info_btn.removeClass("clicked");
-        Address_btn.removeClass("clicked");
-        brand_btn.removeClass("clicked");
-        category_btn.removeClass("clicked");
-        prime_btn.removeClass("clicked");
-        Order_btn.removeClass("clicked");
+        topicBtnRefresh();
 
+        Address_btn.removeClass("clickable");
         Address_btn.addClass("clicked");
     }
 });
@@ -81,12 +94,7 @@ $("#brand_btn").on("click",function()
     let prime_container = $("#prime_container");
     let order_container = $("#order_container");
 
-    let info_btn = $("#info_btn");
-    let Address_btn = $("#Address_btn");
     let brand_btn = $("#brand_btn");
-    let category_btn = $("#category_btn");
-    let prime_btn = $("#prime_btn");
-    let Order_btn = $("#Order_btn");
 
     if(brand_container.css("display")=='none')
     {
@@ -97,14 +105,9 @@ $("#brand_btn").on("click",function()
         prime_container.css('display','none');
         order_container.css('display','none');
 
-        console.log("delete class");
-        info_btn.removeClass("clicked");
-        Address_btn.removeClass("clicked");
-        brand_btn.removeClass("clicked");
-        category_btn.removeClass("clicked");
-        prime_btn.removeClass("clicked");
-        Order_btn.removeClass("clicked");
+        topicBtnRefresh();
 
+        brand_btn.removeClass("clickable");
         brand_btn.addClass("clicked");
     }
 });
@@ -118,12 +121,7 @@ $("#category_btn").on("click",function()
     let prime_container = $("#prime_container");
     let order_container = $("#order_container");
 
-    let info_btn = $("#info_btn");
-    let Address_btn = $("#Address_btn");
-    let brand_btn = $("#brand_btn");
     let category_btn = $("#category_btn");
-    let prime_btn = $("#prime_btn");
-    let Order_btn = $("#Order_btn");
 
     if(category_container.css("display")=='none')
     {
@@ -134,14 +132,9 @@ $("#category_btn").on("click",function()
         prime_container.css('display','none');
         order_container.css('display','none');
 
-        console.log("delete class");
-        info_btn.removeClass("clicked");
-        Address_btn.removeClass("clicked");
-        brand_btn.removeClass("clicked");
-        category_btn.removeClass("clicked");
-        prime_btn.removeClass("clicked");
-        Order_btn.removeClass("clicked");
+        topicBtnRefresh();
 
+        category_btn.removeClass("clickable");
         category_btn.addClass("clicked");
     }
 });
@@ -155,12 +148,7 @@ $("#prime_btn").on("click",function()
     let prime_container = $("#prime_container");
     let order_container = $("#order_container");
 
-    let info_btn = $("#info_btn");
-    let Address_btn = $("#Address_btn");
-    let brand_btn = $("#brand_btn");
-    let category_btn = $("#category_btn");
     let prime_btn = $("#prime_btn");
-    let Order_btn = $("#Order_btn");
 
     if(prime_container.css("display")=='none')
     {
@@ -171,14 +159,9 @@ $("#prime_btn").on("click",function()
         prime_container.css('display','');
         order_container.css('display','none');
 
-        console.log("delete class");
-        info_btn.removeClass("clicked");
-        Address_btn.removeClass("clicked");
-        brand_btn.removeClass("clicked");
-        category_btn.removeClass("clicked");
-        prime_btn.removeClass("clicked");
-        Order_btn.removeClass("clicked");
+        topicBtnRefresh();
 
+        prime_btn.removeClass("clickable");
         prime_btn.addClass("clicked");
     }
 });
@@ -192,11 +175,6 @@ $("#Order_btn").on("click",function()
     let prime_container = $("#prime_container");
     let order_container = $("#order_container");
 
-    let info_btn = $("#info_btn");
-    let Address_btn = $("#Address_btn");
-    let brand_btn = $("#brand_btn");
-    let category_btn = $("#category_btn");
-    let prime_btn = $("#prime_btn");
     let Order_btn = $("#Order_btn");
 
     if(order_container.css("display")=='none')
@@ -208,14 +186,9 @@ $("#Order_btn").on("click",function()
         prime_container.css('display','none');
         order_container.css('display','');
 
-        console.log("delete class");
-        info_btn.removeClass("clicked");
-        Address_btn.removeClass("clicked");
-        brand_btn.removeClass("clicked");
-        category_btn.removeClass("clicked");
-        prime_btn.removeClass("clicked");
-        Order_btn.removeClass("clicked");
+        topicBtnRefresh();
 
+        Order_btn.removeClass("clickable");
         Order_btn.addClass("clicked");
     }
 });
