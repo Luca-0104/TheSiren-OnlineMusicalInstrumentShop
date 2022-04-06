@@ -1,0 +1,152 @@
+/* The entire box */
+.product-box{
+    height: 485px;
+    background-color: white;
+}
+
+.product-box:hover{
+    /* making the shadow when hovering over the hole box */
+    /*box-shadow: 0 0 10px 10px #999;*/
+}
+
+/* The pic cover */
+.product-box .box-img-cover{
+    visibility: hidden;
+    height: 300px;
+    width: 273px;
+    position: absolute;
+    /* The hint text */
+    font-size: 30px;
+    text-align: center;
+    line-height: 40px;
+    transition: 1.3s;
+}
+
+.product-box:hover .box-img-cover{
+    visibility: inherit;
+    background-color: black;
+    position: absolute;
+    opacity: 0.4;
+    cursor: pointer;
+    /* The hint text */
+    line-height: 300px;
+}
+
+/* The info card, which contains all info except pic */
+.box-product-info-card{
+    padding: 8px;
+}
+
+/* The pic */
+.product-box img{
+    width: 300px;
+    height: 300px;
+}
+
+/* price */
+.price-container{
+    margin-top: -10px;
+    padding: 4px 0px;
+}
+
+.old-price{
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+.new-price{
+    color: #a60101;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* name of the model type */
+.box-product-name{
+    width: 100%;
+    text-align: left;
+    font: 900 1.1rem '';
+    margin-bottom: 2px;
+
+    /* we will only show 1 line of name */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+/* description of the model type */
+.box-product-description{
+    color: #999;
+    font-size: 15px;
+    line-height: 18px;
+    word-break: break-all;
+
+    /* we will only show 2 lines of descriptions */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+/* comment number info */
+.box-product-cmt{
+    margin-bottom: -7px;
+}
+
+.box-product-cmt a:hover{
+    color: red;
+}
+
+/*
+    rate star info
+*/
+.box-product-rate{
+    /* take up an entire row */
+    display: inline-block;
+}
+/* the star list */
+.box-product-rate .box-rate-stars{
+    float: left;
+    margin-bottom: 3px;
+    width: 230px;
+    padding-left: 0px;
+    margin-left: -5px;
+}
+/* all those five stars */
+.box-product-rate .box-rate-stars li{
+    float: left;
+    margin: 3px;
+    font-size: 22px;
+    list-style: none;
+}
+/* bright stars */
+.star-bright{
+    /*color: #ffec39;*/
+    color: #fcdb02;
+}
+/* dark stars */
+.star-dark{
+    color: #9c9c9c;
+}
+
+/* brand info */
+.box-brand {
+    color: #999;
+    font-size: 15px;
+    line-height: 18px;
+    word-break: break-all;
+    margin-top: -11px;
+    /* we will only show 1 lines of descriptions */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+.box-brand p{
+
+}
+
+.box-brand a:hover{
+    color: red;
+}

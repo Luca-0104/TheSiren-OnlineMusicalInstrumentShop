@@ -106,14 +106,12 @@
 
 /* the container of the pictures slide panel */
 .picture-panel-box {
-    width: 576px;
-    height: 324px;
+    width: 960px;
+    height: 540px;
     margin: auto;
     position: relative;
     overflow: hidden;
-    border: 2px solid #a3e5ff;
-    border-radius: 5px;
-    box-shadow: 20px 30px 70px rgba(0, 0, 255, .5);
+    box-shadow: 67px 0px 143px rgba(255, 255, 255, .5);
 }
 
 /* The picture list */
@@ -129,8 +127,8 @@
 /* each single picture in the picture list */
 .pic-container .pic img {
     /* size should be same as the picture-panel-box */
-    width: 576px;
-    height: 324px;
+    width: 960px;
+    height: 540px;
     background-size: cover;
 }
 

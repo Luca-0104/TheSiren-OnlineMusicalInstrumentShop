@@ -42,7 +42,7 @@ class Tools:
         # # products(100)  # 100 fake products
         ModelType.insert_model_types()  # the constant model types for testing
         # ------
-        Tools.insert_pm()   # pre-stored product and mt info
+        # Tools.insert_pm()   # pre-stored product and mt info
         # ------
         Cart.insert_carts()
         Order.insert_orders(20)
@@ -706,6 +706,7 @@ class ModelType(BaseModel):
     description = db.Column(db.Text())
     price = db.Column(db.Float)
     weight = db.Column(db.Float)    # kg
+    rate = db.Column(db.Float, default=3)   # the star rating
     stock = db.Column(db.Integer, default=0)
     sales = db.Column(db.Integer, default=0)    # how many this models have been sold out
     views = db.Column(db.Integer, default=0)    # how many times its details page has been viewed
@@ -771,6 +772,7 @@ class ModelType(BaseModel):
             # create some information for showing
             name = 'Model' + str(i)
             description = 'This is the test Model Type NO.' + str(i)
+            description = 'A dramatically more powerful camera system. A display so responsive, every interaction feels new again. The world’s fastest smartphone chip. Exceptional durability. And a huge leap in battery life.'
             price = random.randint(2000, 999999)
             weight = round(10*random.random(), 2)
             stock = random.randint(100, 500)
@@ -1090,6 +1092,16 @@ class User(UserMixin, BaseModel):
     # def to_dict(self):
     #     """ Map the object to dictionary data structure """
     #     return Tools.delete_instance_state(super(User, self).to_dict())
+
+    def get_default_address(self):
+        """
+        Get the default address of this user
+        :return:
+        """
+        for ad in self.addresses:
+            if ad.is_default:
+                return ad
+        return None
 
     def get_level(self):
         """
