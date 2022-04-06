@@ -287,7 +287,7 @@
                         <div class="profile-text">
                             <div class="top-box">
                                 <div class="username" id="info-box">
-                                    <p>
+                                    <p id="username">
                                         {{ user.username }}
                                     </p>
                                 </div>
@@ -323,7 +323,7 @@
                             </div>
 
                             <div class="email" id="info-box">
-                                <p>
+                                <p id="email">
                                     Email: {{ user.email }}
                                 </p>
                             </div>
@@ -334,12 +334,12 @@
                                 {#                                </p>#}
                                 Bio:
                                 {% if user.about_me == None or user.about_me == "" %}
-                                    <p id="info-null">
+                                    <p class="info-null" id="about">
                                         Describe yourself...
                                     </p>
 
                                 {% else %}
-                                    <p class="info">
+                                    <p class="info" id="about">
                                         {{ user.about_me }}
                                     </p>
                                 {% endif %}
@@ -350,12 +350,15 @@
             </div>
 
             <div class="date-gender">
-                <p class="date" id="info-box">
-                    Member since {{ user.start_datetime.date() }}
-                </p>
-                {#                                                                    <p class="gender" id="info-box">#}
-                {#                                                                        Gender: {{ user.gender }}#}
-                {#                                                                    </p>#}
+                <div class="date" id="info-box">
+                    <p id="date">
+                        Member since {{ user.start_datetime.date() }}
+                    </p></div>
+                <div class="gender" id="info-box">
+                    <p id="gender">
+                    Gender: {{ user.gender }}
+                </p></div>
+
             </div>
         </div>
 
@@ -583,7 +586,7 @@
                     <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." required>-->
                     {{ edit_profile_form.edit_profile_username.label }}
                     {{ edit_profile_form.edit_profile_username(id='profile_form_username', class="form-control") }}
-                    {% for error in edit_address_form.edit_recipient_name.errors %}
+                    {% for error in edit_profile_form.edit_profile_username.errors %}
                         <span>{{ error }}</span>
                     {% endfor %}
                     <div class="help-block with-errors"></div>
@@ -594,9 +597,9 @@
                 <div class="form-group">
                     <!--<label>Price *</label>
                     <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." required>-->
-                    {{ edit_address_form.edit_phone.label }}
-                    {{ edit_address_form.edit_phone(id='address_form_phone', class="form-control") }}
-                    {% for error in edit_address_form.edit_phone.errors %}
+                    {{ edit_profile_form.edit_profile_email.label }}
+                    {{ edit_profile_form.edit_profile_email(id='profile_form_email', class="form-control") }}
+                    {% for error in edit_profile_form.edit_profile_email.errors %}
                         <span>{{ error }}</span>
                     {% endfor %}
                     <div class="help-block with-errors"></div>
@@ -607,12 +610,12 @@
                 <div class="form-group">
                     <!--<label>Price *</label>
                     <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." required>-->
-                    {{ edit_address_form.edit_country.label }}
-                    {{ edit_address_form.edit_country(id='address_form_country', class="form-control") }}
-                    {% for error in edit_address_form.edit_country.errors %}
-                        <span>{{ error }}</span>
-                    {% endfor %}
-                    <div class="help-block with-errors"></div>
+                    {{ edit_profile_form.edit_profile_gender.label }}
+                    {{ edit_profile_form.edit_profile_gender(id='profile_form_gender', class="form-control") }}
+                    {#                    {% for error in edit_profile_form.edit_.errors %}#}
+                    {#                        <span>{{ error }}</span>#}
+                    {#                    {% endfor %}#}
+                    {#                    <div class="help-block with-errors"></div>#}
                 </div>
             </div>
 
@@ -620,9 +623,9 @@
                 <div class="form-group">
                     <!--<label>Price *</label>
                     <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." required>-->
-                    {{ edit_address_form.edit_province_or_state.label }}
-                    {{ edit_address_form.edit_province_or_state(id='address_form_pos', class="form-control") }}
-                    {% for error in edit_address_form.edit_province_or_state.errors %}
+                    {{ edit_profile_form.edit_profile_about_me.label }}
+                    {{ edit_profile_form.edit_profile_about_me(id='profile_form_about', class="form-control") }}
+                    {% for error in edit_profile_form.edit_profile_about_me.errors %}
                         <span>{{ error }}</span>
                     {% endfor %}
                     <div class="help-block with-errors"></div>
@@ -830,6 +833,7 @@
         crossorigin="anonymous"></script>
 <script src="../../static/js/webflow.js" type="text/javascript"></script>
 <script type="text/javascript" src="../../static/js/userinfo/change_avatar.js"></script>
+<script type="text/javascript" src="../../static/js/userinfo/edit_profile.js"></script>
 
 <!-- [if lte IE 9]>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->

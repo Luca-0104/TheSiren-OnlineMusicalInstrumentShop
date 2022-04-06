@@ -117,7 +117,7 @@ def user_profile(uid):
         return redirect(url_for("userinfo.user_profile", uid=current_user.id))
 
 
-    return render_template('userinfo/user_profile.html', user=user, update_avatar_form=update_avatar_form, add_address_form=add_address_form, edit_address_form=edit_address_form)
+    return render_template('userinfo/user_profile.html', user=user, update_avatar_form=update_avatar_form, add_address_form=add_address_form, edit_address_form=edit_address_form, edit_profile_form=edit_profile_form)
 
 
 # @userinfo.route('/01')
