@@ -72,7 +72,7 @@ Category
     - Bass Drum 大鼓
     - Snare 小鼓
     - Cajon 箱鼓
-    - Cymbals 钹
+    - SoundBox 音箱
     - Tam-tam 锣
     - Tambourine 铃鼓
     - Marimba & Xylophone 马林巴 & 木琴
@@ -133,7 +133,7 @@ category_list = [
     'Bass Drum',
     'Snare',
     'Cajon',
-    'Cymbals',
+    'SoundBox',
     'Tam-tam',
     'Tambourine',
     'Marimba & Xylophone',
