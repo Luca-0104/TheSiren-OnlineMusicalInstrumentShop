@@ -1,11 +1,17 @@
 <!DOCTYPE html><!--  This site was created in Webflow. http://www.webflow.com  -->
 <!--  Last Published: Thu Mar 10 2022 01:58:46 GMT+0000 (Coordinated Universal Time)  -->
-<html data-wf-page="6221c36b59f19896625ac608" data-wf-site="6221c36b59f1986aa65ac5f0">
+<html data-wf-page="6221c36b59f198bf8d5ac611" data-wf-site="6221c36b59f1986aa65ac5f0"
+      xmlns="http://www.w3.org/1999/html">
 <head>
   <meta charset="utf-8">
   <title>Verse - Webflow Ecommerce Website Template</title>
+  <meta content="An E-Commerce template for brand curators. Create beautiful, minimal online retail stores in almost any category: homewares, furniture, beauty, fashion and more." name="description">
   <meta content="Verse - Webflow Ecommerce Website Template" property="og:title">
+  <meta content="An E-Commerce template for brand curators. Create beautiful, minimal online retail stores in almost any category: homewares, furniture, beauty, fashion and more." property="og:description">
   <meta content="Verse - Webflow Ecommerce Website Template" property="twitter:title">
+  <meta content="An E-Commerce template for brand curators. Create beautiful, minimal online retail stores in almost any category: homewares, furniture, beauty, fashion and more." property="twitter:description">
+  <meta property="og:type" content="website">
+  <meta content="summary_large_image" name="twitter:card">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="Webflow" name="generator">
   <link href="../../static/css/normalize.css" rel="stylesheet" type="text/css">
@@ -26,14 +32,6 @@ select, input, textarea {
 </style>
 </head>
 <body>
-  <div class="announcement-bar">
-    <div class="main-container">
-      <div class="announcement-contents">
-        <div class="announcement-text">Welcome to Verse â€“ An E-Commerce template for brand curators. <a href="https://mmra.re/portfolio" target="_blank">View all templates here</a>
-        </div>
-      </div>
-    </div><img src="images/icon-cross.svg" loading="lazy" alt="" class="announcement-cross">
-  </div>
   <div class="div-block-2">
     <div id="Top" class="top"></div>
     <div class="main-container">
@@ -124,15 +122,12 @@ select, input, textarea {
         </div>
         <nav role="navigation" class="w-nav-menu">
           <div class="nav-menu-row">
-            <a href="shop.html" class="nav-link">All</a>
+            <a href="shop.html" aria-current="page" class="nav-link w--current">All</a>
             <div class="w-dyn-list">
               <div role="list" class="navbar-categories w-dyn-items">
                 <div role="listitem" class="w-dyn-item">
                   <a href="#" class="nav-link"></a>
                 </div>
-              </div>
-              <div class="w-dyn-empty">
-                <div>No items found.</div>
               </div>
             </div>
             <div class="nav-menu-divider"></div>
@@ -144,193 +139,159 @@ select, input, textarea {
       </div>
     </div>
   </div>
+  <div class="section shop-title wf-section">
+    <div class="main-container">
+      <h1 class="medium-heading no-bottom-margin">All Products</h1>
+    </div>
+  </div>
+
   <div class="section wf-section">
     <div class="main-container">
-      <div class="w-layout-grid product-grid"><img src="../../static/images/popo.jpg" loading="lazy" alt="" class="main-product-image">
-        <div id="w-node-c7e51d0f-2d88-d3ea-4d4e-74172b8dc048-625ac608" class="vertical-border"></div>
-        <div class="product-description">
-          <div class="breadcrumbs">
-            <a href="shop.html">Shop</a><img src="images/icon-caret-right.svg" loading="lazy" alt="" class="breadcrumb-arrow">
+      <div class="w-layout-grid sidebar-layout-grid">
+        <div class="sidebar">
+          <div>
+
+           <form id="category_checkbox">
+            <h4>By Category</h4>
+              <h5 style="color: #444444">Classification</h5>
+
+            <div class="checkbox-thirds-grid">
+
+                    <label class="checkbox-labels">
+                        <input id="check_class_1" name="checkboxes" type="checkbox" class="checkbox w--redirected-checked category">
+                        See All
+                    </label>
+                    <label class="checkbox-labels">
+                        <input id="check_class_2" name="checkboxes" type="checkbox" class="checkbox category">
+                        String
+                    </label>
+                    <label class="checkbox-labels">
+                        <input id="check_class_3" name="checkboxes" type="checkbox" class="checkbox">
+                        Woodwinds
+                    </label>
+                    <label class="checkbox-labels">
+                        <input id="check_class_4" name="checkboxes" type="checkbox" class="checkbox">
+                        Brass
+                    </label>
+                    <label class="checkbox-labels">
+                        <input id="check_class_5" name="checkboxes" type="checkbox" class="checkbox">
+                        Percussion
+                    </label>
+                    <label class="checkbox-labels">
+                        <input id="check_class_6" name="checkboxes" type="checkbox" class="checkbox">
+                        Keyboard
+                    </label>
+                    <label class="checkbox-labels">
+                        <input id="check_class_7" name="checkboxes" type="checkbox" class="checkbox">
+                        Accessories
+                    </label>
+
+            </div>
+
+               <h5 style="color: #444444">Type</h5>
+            <div class="checkbox-thirds-grid">
+
+                    <label class="checkbox-labels">
+                        <input id="check_type_1" name="checkboxes" type="checkbox" class="checkbox">
+                        See All
+                    </label>
+                    <label class="checkbox-labels">
+                        <input id="check_type_1" name="checkboxes" type="checkbox" class="checkbox">
+                        Violin
+                    </label>
+                    <label class="checkbox-labels">
+                        <input id="check_type_2" name="checkboxes" type="checkbox" class="checkbox">
+                        Viola
+                    </label>
+                    <label class="checkbox-labels">
+                        <input id="check_type_3" name="checkboxes" type="checkbox" class="checkbox">
+                        Cello
+                    </label>
+                    <label class="checkbox-labels">
+                        <input id="check_type_4" name="checkboxes" type="checkbox" class="checkbox">
+                        Double Bass
+                    </label>
+                    <label class="checkbox-labels">
+                        <input id="check_type_5" name="checkboxes" type="checkbox" class="checkbox">
+                        Guitar
+                    </label>
+                    <label class="check_type_6">
+                        <input id="bass" name="checkboxes" type="checkbox" class="checkbox">
+                        Bass
+                    </label>
+                    <label class="checkbox-labels">
+                        <input id="check_type_7" name="checkboxes" type="checkbox" class="checkbox">
+                        Ukulele
+                    </label>
+                    <label class="checkbox-labels">
+                        <input id="check_type_8" name="checkboxes" type="checkbox" class="checkbox">
+                        Violin
+                    </label>
+                    <label class="checkbox-labels">
+                        <input id="check_type_9" name="checkboxes" type="checkbox" class="checkbox">
+                        Viola
+                    </label>
+                    <label class="checkbox-labels">
+                        <input id="check_type_10" name="checkboxes" type="checkbox" class="checkbox">
+                        Cello
+                    </label>
+                    <label class="checkbox-labels">
+                        <input id="check_type_11" name="checkboxes" type="checkbox" class="checkbox">
+                        Double Bass
+                    </label>
+                    <label class="checkbox-labels">
+                        <input id="check_type_12" name="checkboxes" type="checkbox" class="checkbox">
+                        Guitar
+                    </label>
+                    <label class="checkbox-labels">
+                        <input id="check_type_13" name="checkboxes" type="checkbox" class="checkbox">
+                        Bass
+                    </label>
+
+            </div>
+
+               <div class="checkbox-labels">
+                   <button type="submit" class="button">Submit</button>
+               </div>
+           </form>
+          </div>
+          <div>
+            <h4>By Brand</h4>
             <div class="w-dyn-list">
-              <div role="list" class="w-dyn-items">
+              <div role="list" class="links-grid w-dyn-items">
                 <div role="listitem" class="w-dyn-item">
-                  <a href="#">Acoustic</a>
+                  <a href="#" class="list-link"></a>
                 </div>
               </div>
-                {% if model.name == none %}
-              <div class="w-dyn-empty">
-                <div>No items found.</div>
-              </div>
-                {% endif %}
-            </div>
-          </div>
-          <a href="#" class="w-inline-block">
-            <h5>{{ model.brand }}</h5>
-          </a>
-          <h1 class="medium-heading">{{ model.name }}</h1>
-          <div class="price-container large-text">
-            <div class="old-price increased-margin"></div>
-            <div>{{ model.price }}</div>
-            <div></div>
-          </div>
-          <div class="w-layout-grid product-details-grid">
-            <div>
-              <h6 class="uppercase-text product-details-heading">Description</h6>
-              <div>{{ model.description }}</div>
-            </div>
-{#            <div>#}
-{#              <h6 class="uppercase-text product-details-heading">details</h6>#}
-{#              <div class="product-details-list w-richtext">#}
-{#                  <ul class="product-details-list">#}
-{#                      <li>质量高达3kg，品质首选</li>#}
-{#                      <li>自带加湿功能</li>#}
-{#                      <li>工作一天仅需5元食物</li>#}
-{#                      <li>质保期限：直到您的墩布退休！</li>#}
-{#                  </ul>#}
-{#              </div>#}
-{#            </div>#}
-{#            <div>#}
-{#              <h6 class="uppercase-text product-details-heading">Dimensions (MM)</h6>#}
-{#              <div class="product-dimensions">#}
-{#                <div>#}
-{#                  <div class="dimensions-heading">String</div>#}
-{#                  <div>Copper</div>#}
-{#                </div>#}
-{#                <div>#}
-{#                  <div class="dimensions-heading">Texture</div>#}
-{#                  <div>2 * 1.5 dm mosaic oak wood</div>#}
-{#                </div>#}
-{#                <div>#}
-{#                  <div class="dimensions-heading">Genre</div>#}
-{#                  <div>Dreadnought Acoustic</div>#}
-{#                </div>#}
-{#              </div>#}
-{#            </div>#}
-            <div>
-              <h6 class="uppercase-text product-details-heading">Additional information</h6>
-              <div class="product-description">Please Notice that this is a consumable product and cannot be refunded once sold after 7-days.</div>
-            </div>
-            <div>
 
-                {% if model.is_deleted == False %}
-                  <form data-node-type="commerce-add-to-cart-form" class="w-commerce-commerceaddtocartform cart-default-state">
-                    <div class="add-to-cart-form">
-                      <div class="quantity-wrapper"><label for="quantity-6194caf15498d8612861f033e8278855" class="quantity-label">Quantity:</label><input type="number" pattern="^[0-9]+$" inputmode="numeric" id="quantity-6194caf15498d8612861f033e8278855" name="commerce-add-to-cart-quantity-input" min="1" class="w-commerce-commerceaddtocartquantityinput quantity-input" value="1"></div><input type="submit" data-node-type="commerce-add-to-cart-button" data-loading-text="Adding to cart..." value="Add to Cart" class="w-commerce-commerceaddtocartbutton button small">
-                    </div>
-                    <a href="checkout.html" data-node-type="commerce-buy-now-button" data-default-text="Buy It Now" data-subscription-text="Subscribe now" class="w-commerce-commercebuynowbutton button no-top-margin bg-primary">Buy It Now</a>
-                  </form>
-                {% else %}
-                    <div>
-                        <h6 class="uppercase-text product-details-heading" style="color: darkred">This item is no longer available.</h6>
-                    </div>
-                {% endif %}
-
-              <div style="display:none" class="w-commerce-commerceaddtocartoutofstock empty-state">
-                <div>This product is out of stock.</div>
-              </div>
-              <div data-node-type="commerce-add-to-cart-error" style="display:none" class="w-commerce-commerceaddtocarterror form-error">
-                <div data-node-type="commerce-add-to-cart-error" data-w-add-to-cart-quantity-error="Product is not available in this quantity." data-w-add-to-cart-general-error="Something went wrong when adding this item to the cart." data-w-add-to-cart-mixed-cart-error="You canâ€™t purchase another product with a subscription." data-w-add-to-cart-buy-now-error="Something went wrong when trying to purchase this item." data-w-add-to-cart-checkout-disabled-error="Checkout is disabled on this site." data-w-add-to-cart-select-all-options-error="Please select an option in each set.">Product is not available in this quantity.</div>
-              </div>
-            </div>
-            <div class="fine-print-text muted">This product supports 7-days refund and the quality is guaranteed.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="section bg-primary-dark wf-section">
-    <div class="main-container">
-      <div class="w-layout-grid grid-halves">
-        <div class="container">
-          <h6 class="uppercase-text product-details-heading">about the brand</h6>
-          <h3 class="medium-heading"></h3>
-          <div class="large-text"></div>
-          <div class="button-row">
-            <a href="#" class="button bg-white-faded w-inline-block">
-              <div>View Range</div>
-            </a>
-          </div>
-        </div>
-        <div class="container"><img src="" loading="lazy" alt=""></div>
-      </div>
-    </div>
-  </div>
-  <div class="section bg-primary-light wf-section">
-    <div class="main-container">
-      <div class="section-title more-from-brand-title">
-        <h3 class="no-bottom-margin">More fromÂ </h3>
-        <h3 class="no-bottom-margin"></h3>
-      </div>
-      <div class="w-dyn-list">
-        <div role="list" class="product-quarters-grid w-dyn-items">
-          <div role="listitem" class="w-dyn-item">
-            <div>
-              <a href="#" class="product-preview-link w-inline-block"><img src="" loading="lazy" alt="" class="product-thumbnail">
-                <div class="uppercase-text brand"></div>
-                <h5 class="no-bottom-margin"></h5>
-                <div class="price-container">
-                  <div class="old-price"></div>
-                  <div></div>
-                  <div></div>
-                </div>
-              </a>
             </div>
           </div>
         </div>
-        <div class="empty-state bg-primary w-dyn-empty">
-          <div>There are no more products from this brand yet.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="section wf-section">
-    <div class="main-container">
-      <div class="section-title more-from-brand-title">
-        <h3 class="no-bottom-margin">More fromÂ </h3>
         <div class="w-dyn-list">
-          <div role="list" class="w-dyn-items">
+          <div role="list" class="product-thirds-grid w-dyn-items">
             <div role="listitem" class="w-dyn-item">
-              <h3 class="no-bottom-margin"></h3>
-            </div>
-          </div>
-            {% if model.name == none%}
-              <div class="w-dyn-empty">
-                <div>No items found.</div>
+              <div>
+                <a href="#" class="product-preview-link w-inline-block"><img src="" loading="lazy" alt="" class="product-thumbnail">
+                  <div class="uppercase-text brand"></div>
+                  <h5 class="no-bottom-margin"></h5>
+                  <div class="price-container">
+                    <div class="old-price"></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                </a>
               </div>
-            {% endif %}
-        </div>
-      </div>
-      <div class="w-dyn-list">
-        <div role="list" class="product-quarters-grid w-dyn-items">
-          <div role="listitem" class="w-dyn-item">
-            <div>
-              <a href="#" class="product-preview-link w-inline-block"><img src="" loading="lazy" alt="" class="product-thumbnail">
-                <div class="uppercase-text brand"></div>
-                <h5 class="no-bottom-margin"></h5>
-                <div class="price-container">
-                  <div class="old-price"></div>
-                  <div></div>
-                  <div></div>
-                </div>
-              </a>
             </div>
           </div>
-        </div>
-        <div class="empty-state bg-primary w-dyn-empty">
-          <div>There are no more products from this category yet.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="section bg-primary-dark wf-section">
-    <div class="main-container">
-      <div class="w-layout-grid grid-halves">
-        <div class="w-layout-grid social-images"><img src="images/social-06.jpg" loading="lazy" alt=""><img src="images/social-01.jpg" loading="lazy" alt=""><img src="images/social-03.jpg" loading="lazy" alt=""></div>
-        <div class="text-center">
-          <h4 class="medium-heading">Follow us for inspiration</h4>
-          <div class="button-row justify-content-center">
-            <a href="https://mmra.re/portfolio" target="_blank" class="button bg-white-faded w-inline-block">
-              <div>Follow Now</div>
+          <div class="empty-state w-dyn-empty">
+            <div>There are no published Products yet.</div>
+          </div>
+          <div role="navigation" aria-label="List" class="w-pagination-wrapper pagination">
+            <a href="#" aria-label="Previous Page" class="w-pagination-previous button small"><img src="images/icon-caret-right.svg" loading="lazy" alt="" class="pagination-arrow left">
+              <div class="w-inline-block">Previous</div>
+            </a>
+            <a href="#" aria-label="Next Page" class="w-pagination-next button small">
+              <div class="w-inline-block">Next</div><img src="images/icon-caret-right.svg" loading="lazy" alt="" class="pagination-arrow">
             </a>
           </div>
         </div>
@@ -369,15 +330,12 @@ select, input, textarea {
           <div>
             <div class="uppercase-text links-grid-title">shop</div>
             <div class="links-grid">
-              <a href="shop.html" class="list-link">All</a>
+              <a href="shop.html" aria-current="page" class="list-link w--current">All</a>
               <div class="w-dyn-list">
                 <div role="list" class="links-grid w-dyn-items">
                   <div role="listitem" class="w-dyn-item">
                     <a href="#" class="list-link"></a>
                   </div>
-                </div>
-                <div class="w-dyn-empty">
-                  <div>No items found.</div>
                 </div>
               </div>
             </div>
@@ -403,7 +361,7 @@ select, input, textarea {
           </div>
         </div>
         <div class="footer-fine-print">
-          <div class="fine-print-text">Â© Copyright Company powered by <a href="https://www.webflow.com" target="_blank" class="underline-link">Webflow</a>
+          <div class="fine-print-text">© Copyright Company powered by <a href="https://www.webflow.com" target="_blank" class="underline-link">Webflow</a>
           </div>
           <div class="social-links">
             <a href="https://webflow.com" target="_blank" class="social-link w-inline-block"><img src="images/icon-Instagram.svg" loading="lazy" alt=""></a>
@@ -418,5 +376,6 @@ select, input, textarea {
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6221c36b59f1986aa65ac5f0" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="js/webflow.js" type="text/javascript"></script>
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+ <script src="../../static/js/main/commodities_filter.js"></script>
 </body>
 </html>
