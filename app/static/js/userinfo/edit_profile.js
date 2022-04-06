@@ -29,7 +29,7 @@ $("#close_edit_profile_form_btn").on("click",function()
     }
 });
 
-function start_edit_profile(address_id)
+$("#show_edit_info_form_btn").on("click",function()
 {
     let recipient_name = $("#address_recipient_name_"+address_id)[0].innerText;
     let phone = $("#address_phone_"+address_id)[0].innerText;
@@ -72,7 +72,7 @@ function start_edit_profile(address_id)
 
     let address_form_district = $("#address_form_district");
     address_form_district.val(district);
-}
+});
 
 function update_address()
 {

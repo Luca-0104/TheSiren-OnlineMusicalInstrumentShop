@@ -301,9 +301,7 @@
                             </div>
                             <div class="exp_bar">
                                 <div id="bottom-bar">
-                                    <div id="top-bar">
-                                        50/100
-                                    </div>
+                                    <div id="top-bar">{{ user.exp%100 }}%</div>
                                 </div>
                                 {#                        {% if user.username == session.get("username") %}#}
                                 {#                    the edit button#}
@@ -313,10 +311,10 @@
                                 {#                        {% endif %}#}
                                 <div id="level-box">
                                             <span id="left-level">
-                                                Lv.0
+                                                Lv.{{ user.get_level() }}
                                             </span>
                                     <span id="right-level">
-                                                Lv.1
+                                                Lv.{{ user.get_level() + 1 }}
                                             </span>
                                 </div>
 
@@ -572,73 +570,70 @@
 </div>
 
 <!-- Edit profile information section-->
-{#<div id="edit_profile_form" class="middle-floating bg-dark action_area" style="display: none">#}
-{#    <div id="close_edit_profile_form_btn" class="bg-primary">#}
-{#        close#}
-{#    </div>#}
-{#    <form method="post">#}
-{#        <div class="row">#}
-{#            {{ edit_profile_form.hidden_tag() }}#}
-{#            {{ edit_profile_form.edit_profile_email(id="address_form_hidden_idasdf", style="display: none") }}#}
-{#                                <input type="hidden" id="address_form_hidden_id" name="address_id">#}
-{##}
-{#            <div class="col-md-4">#}
-{#                <div class="form-group">#}
-{#                    <!--<label>Price *</label>#}
-{#                    <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." required>-->#}
-{#                    {{ edit_address_form.edit_recipient_name.label }}#}
-{#                    {{ edit_address_form.edit_recipient_name(id='address_form_recipient_name', class="form-control") }}#}
-{#                    {% for error in edit_address_form.edit_recipient_name.errors %}#}
-{#                        <span>{{ error }}</span>#}
-{#                    {% endfor %}#}
-{#                    <div class="help-block with-errors"></div>#}
-{#                </div>#}
-{#            </div>#}
-{##}
-{#            <div class="col-md-4">#}
-{#                <div class="form-group">#}
-{#                    <!--<label>Price *</label>#}
-{#                    <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." required>-->#}
-{#                    {{ edit_address_form.edit_phone.label }}#}
-{#                    {{ edit_address_form.edit_phone(id='address_form_phone', class="form-control") }}#}
-{#                    {% for error in edit_address_form.edit_phone.errors %}#}
-{#                        <span>{{ error }}</span>#}
-{#                    {% endfor %}#}
-{#                    <div class="help-block with-errors"></div>#}
-{#                </div>#}
-{#            </div>#}
-{##}
-{#            <div class="col-md-4">#}
-{#                <div class="form-group">#}
-{#                    <!--<label>Price *</label>#}
-{#                    <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." required>-->#}
-{#                    {{ edit_address_form.edit_country.label }}#}
-{#                    {{ edit_address_form.edit_country(id='address_form_country', class="form-control") }}#}
-{#                    {% for error in edit_address_form.edit_country.errors %}#}
-{#                        <span>{{ error }}</span>#}
-{#                    {% endfor %}#}
-{#                    <div class="help-block with-errors"></div>#}
-{#                </div>#}
-{#            </div>#}
-{##}
-{#            <div class="col-md-4">#}
-{#                <div class="form-group">#}
-{#                    <!--<label>Price *</label>#}
-{#                    <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." required>-->#}
-{#                    {{ edit_address_form.edit_province_or_state.label }}#}
-{#                    {{ edit_address_form.edit_province_or_state(id='address_form_pos', class="form-control") }}#}
-{#                    {% for error in edit_address_form.edit_province_or_state.errors %}#}
-{#                        <span>{{ error }}</span>#}
-{#                    {% endfor %}#}
-{#                    <div class="help-block with-errors"></div>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
-{#        <div class="middle">#}
-{#            {{ edit_profile_form.edit_profile_submit(class="button bg-white-faded middle") }}#}
-{#        </div>#}
-{#    </form>#}
-{#</div>#}
+<div id="edit_profile_form" class="middle-floating bg-dark action_area" style="display: none">
+    <div id="close_edit_profile_form_btn" class="bg-primary">
+        close
+    </div>
+    <form method="post">
+        <div class="row">
+            {{ edit_profile_form.hidden_tag() }}
+            <div class="col-md-4">
+                <div class="form-group">
+                    <!--<label>Price *</label>
+                    <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." required>-->
+                    {{ edit_profile_form.edit_profile_username.label }}
+                    {{ edit_profile_form.edit_profile_username(id='profile_form_username', class="form-control") }}
+                    {% for error in edit_address_form.edit_recipient_name.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <!--<label>Price *</label>
+                    <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." required>-->
+                    {{ edit_address_form.edit_phone.label }}
+                    {{ edit_address_form.edit_phone(id='address_form_phone', class="form-control") }}
+                    {% for error in edit_address_form.edit_phone.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <!--<label>Price *</label>
+                    <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." required>-->
+                    {{ edit_address_form.edit_country.label }}
+                    {{ edit_address_form.edit_country(id='address_form_country', class="form-control") }}
+                    {% for error in edit_address_form.edit_country.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <!--<label>Price *</label>
+                    <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." required>-->
+                    {{ edit_address_form.edit_province_or_state.label }}
+                    {{ edit_address_form.edit_province_or_state(id='address_form_pos', class="form-control") }}
+                    {% for error in edit_address_form.edit_province_or_state.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+        </div>
+        <div class="middle">
+            {{ edit_profile_form.edit_profile_submit(class="button bg-white-faded middle") }}
+        </div>
+    </form>
+</div>
 
 <!-- Add address floating section -->
 <div id="add_address_form" class="middle-floating bg-dark action_area" style="display: none">

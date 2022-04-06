@@ -10,7 +10,7 @@
 /*    line-height: 57px; !* should same as the height of the parent *!*/
 /*}*/
 
-.profile-box{
+.profile-box {
     margin-top: 25px;
     padding-bottom: 0px;
 }
@@ -98,12 +98,12 @@
     /*margin-left: 30px;*/
 }
 
-.exp_bar{
+.exp_bar {
     margin-top: 30px;
 }
 
 #bottom-bar {
-   width: 55%;
+    width: 55%;
     background-color: #ddd;
     float: left;
     /*margin-left: 140px;*/
@@ -111,27 +111,29 @@
     /*margin-bottom: 10px;*/
 }
 
-#top-bar{
-    width: 50%;
-  height: 25px;
-  background-color: #ffe700;
-  text-align: center;
-  line-height: 30px;
-  color: white;
+#top-bar {
+    width: 0%;
+    height: 25px;
+    background-color: #ffe700;
+    text-align: center;
+    line-height: 30px;
+    color: white;
 }
 
-#left-level{
+#left-level {
     margin-left: -10px;
 }
 
-#right-level{
+#right-level {
     margin-left: 400px;
 }
-#level-box{
+
+#level-box {
     /*margin-bottom: 5px;*/
     margin-top: -10px;
 }
-#line{
+
+#line {
     width: 95%;
     height: 1px;
     background-color: #e0e0e0;
@@ -139,10 +141,11 @@
     margin-top: 35px;
 }
 
-#show_edit_info_form_btn{
+#show_edit_info_form_btn {
     margin-left: 80px;
 }
-#info-null{
+
+#info-null {
     color: #999999;
 }
 
@@ -150,10 +153,11 @@
     position: relative;
     z-index: 1;
     display: inline-block;
-  }
+}
+
 .avatar-box:after {
-       content: "";
-    background: rgba(0,0,0,0.4);
+    content: "";
+    background: rgba(0, 0, 0, 0.4);
     z-index: 2;
     -webkit-transition: 0.2s;
     -moz-transition: 0.2s;
@@ -167,16 +171,17 @@
     height: 100px;
     opacity: 0;
     filter: alpha(opacity=0)
-  }
-  .avatar-box:hover:after {
+}
+
+.avatar-box:hover:after {
     opacity: 100;
     filter: alpha(opacity=0);
     cursor: pointer;
-  }
+}
 
 
-  .avatar-box:before {
-       content: "Change";
+.avatar-box:before {
+    content: "Change";
     display: inline-block;
     float: right;
     position: absolute;
@@ -186,13 +191,14 @@
     opacity: 0;
     color: white;
     filter: alpha(opacity=0);
-  }
-  .avatar-box:hover:before {
+}
+
+.avatar-box:hover:before {
     opacity: 100;
     filter: alpha(opacity=0);
     cursor: pointer;
-  }
+}
 
-#change_avatar_form{
+#change_avatar_form {
     line-height: 200%;
 }

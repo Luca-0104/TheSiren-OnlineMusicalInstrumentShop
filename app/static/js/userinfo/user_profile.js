@@ -192,3 +192,14 @@ $("#Order_btn").on("click",function()
         Order_btn.addClass("clicked");
     }
 });
+
+window.on('load',function ()
+{
+    window.alert("3456789io0");
+    let top_bar = $("#top_bar");
+    let percent = top_bar.val();
+    // top_bar.style.width= "percent%";
+     top_bar.css("width",function (){return percent})
+    var message = top_bar.css;
+    window.alert(message);
+});
