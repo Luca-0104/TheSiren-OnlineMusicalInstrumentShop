@@ -72,11 +72,11 @@
                     <a href="../index.html" class="w-inline-block"><img src="../images/Verse.svg" loading="eager" alt=""></a>
                     <div id="w-node-dab1a8fd-38ef-ff9e-e737-a0bdf6abf413-f6abf40a" class="navbar-right-contents">
                         <a href="https://mmra.re/purchaseverse" class="button small nav-button w-inline-block" id="cart-button">
-                            <div>Cart</div>
+                            <div>{{ _('Cart') }}</div>
                         </a>
                         <a href="https://mmra.re/purchaseverse" class="button small nav-button w-inline-block"
                            id="order-button">
-                            <div>Order</div>
+                            <div>{{ _('Order') }}</div>
                         </a>
                         <div data-node-type="commerce-cart-wrapper" data-open-product="" data-wf-cart-type="rightSidebar"
                              data-wf-cart-query="" data-wf-page-link-href-prefix="" class="w-commerce-commercecartwrapper">
@@ -90,7 +90,7 @@
                                 <div data-node-type="commerce-cart-container"
                                      class="w-commerce-commercecartcontainer cart-container">
                                     <div class="w-commerce-commercecartheader cart-header">
-                                        <h4 class="w-commerce-commercecartheading">Your Cart</h4>
+                                        <h4 class="w-commerce-commercecartheading">{{ _('Your Cart')}}</h4>
                                         <a href="#" data-node-type="commerce-cart-close-link"
                                            class="w-commerce-commercecartcloselink close-cart-button w-inline-block"><img
                                                 src="../images/icon-cross-large.svg" loading="lazy" alt=""></a>
@@ -105,7 +105,7 @@
                                                  data-wf-template-id="wf-template-dab1a8fd-38ef-ff9e-e737-a0bdf6abf424"></div>
                                             <div class="w-commerce-commercecartfooter cart-footer">
                                                 <div class="w-commerce-commercecartlineitem">
-                                                    <div>Subtotal</div>
+                                                    <div>{{ _('Subtotal') }}</div>
                                                     <div class="w-commerce-commercecartordervalue"></div>
                                                 </div>
                                                 <div>
@@ -162,18 +162,18 @@
                                                                              points="15 15 9 15 9 9 15 9"></polygon>
                                                                 </g>
                                                             </svg>
-                                                            <div>Pay with browser.</div>
+                                                            <div>{{ _('Pay with browser.')}}</div>
                                                         </a>
                                                     </div>
                                                     <a href="../checkout.html" value="Continue to Checkout"
                                                        data-node-type="cart-checkout-button"
                                                        class="w-commerce-commercecartcheckoutbutton button bg-primary-dark"
-                                                       data-loading-text="Hang Tight...">Continue to Checkout</a>
+                                                       data-loading-text="Hang Tight...">{{ _('Continue to Checkout')}}</a>
                                                 </div>
                                             </div>
                                         </form>
                                         <div class="w-commerce-commercecartemptystate">
-                                            <div>No items found.</div>
+                                            <div>{{ _('No items found.')}}</div>
                                         </div>
                                         <div style="display:none" data-node-type="commerce-cart-error"
                                              class="w-commerce-commercecarterrorstate">
@@ -183,7 +183,7 @@
                                                  data-w-cart-checkout-error="Checkout is disabled on this site."
                                                  data-w-cart-cart_order_min-error="The order minimum was not met. Add more items to your cart to continue."
                                                  data-w-cart-subscription_error-error="Before you purchase, please use your email invite to verify your address so we can send order updates.">
-                                                Product is not available in this quantity.
+                                                {{ _('Product is not available in this quantity.')}}
                                             </div>
                                         </div>
                                     </div>
@@ -206,11 +206,11 @@
                 <div data-collapse="small" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease"
                      role="banner" class="navbar w-nav">
                     <div class="button bg-primary wide w-nav-button">
-                        <div>Menu</div>
+                        <div>{{ _('Menu') }}</div>
                     </div>
                     <nav role="navigation" class="w-nav-menu">
                         <div class="nav-menu-row">
-                            <a href="../shop.html" class="nav-link">All</a>
+                            <a href="../shop.html" class="nav-link">{{ _('All') }}</a>
                             <div class="w-dyn-list">
                                 <div role="list" class="navbar-categories w-dyn-items">
                                     <div role="listitem" class="w-dyn-item">
@@ -218,13 +218,13 @@
                                     </div>
                                 </div>
                                 <div class="w-dyn-empty">
-                                    <div>No items found.</div>
+                                    <div>{{ _('No items found.')}}</div>
                                 </div>
                             </div>
                             <div class="nav-menu-divider"></div>
-                            <a href="../about.html" class="nav-link">About</a>
-                            <a href="../journal.html" class="nav-link">Journal</a>
-                            <a href="../contact.html" class="nav-link">Contact</a>
+                            <a href="../about.html" class="nav-link">{{ _('About') }}</a>
+                            <a href="../journal.html" class="nav-link">{{ _('Journal') }}</a>
+                            <a href="../contact.html" class="nav-link">{{ _('Contact') }}</a>
                         </div>
                     </nav>
                 </div>
@@ -237,22 +237,22 @@
             <div>
                 <ul class="user-nav" id="">
                     <li class="nav-item hover-item clicked" id="info_btn">
-                        <a class="button nav nav-button w-inline-block">Information</a>
+                        <a class="button nav nav-button w-inline-block">{{ _('Information') }}</a>
                     </li>
                     <li class="nav-item hover-item clickable" id="Address_btn">
-                        <a class="button nav nav-button w-inline-block">Address</a>
+                        <a class="button nav nav-button w-inline-block">{{ _('Address') }}</a>
                     </li>
                     <li class="nav-item hover-item clickable" id="brand_btn">
-                        <a class="button nav nav-button w-inline-block">Followed Brand</a>
+                        <a class="button nav nav-button w-inline-block">{{ _('Followed Brand')}}</a>
                     </li>
                     <li class="nav-item hover-item clickable" id="category_btn">
-                        <a class="button nav nav-button w-inline-block">Followed Category</a>
+                        <a class="button nav nav-button w-inline-block">{{ _('Followed Category')}}</a>
                     </li>
                     <li class="nav-item hover-item clickable" id="prime_btn">
-                        <a class="button nav nav-button w-inline-block">Prime</a>
+                        <a class="button nav nav-button w-inline-block">{{ _('Prime') }}</a>
                     </li>
                     <li class="nav-item hover-item clickable" id="Order_btn">
-                        <a class="button nav nav-button w-inline-block">Order</a>
+                        <a class="button nav nav-button w-inline-block">{{ _('Order') }}</a>
                     </li>
                 </ul>
             </div>
@@ -308,7 +308,7 @@
                                         {#                        {% if user.username == session.get("username") %}#}
                                         {#                    the edit button#}
                                         <div class="button small nav-button w-inline-block" id="edit">
-                                            <a href="#">Edit</a>
+                                            <a href="#">{{ _('Edit') }}</a>
                                         </div>
                                         {#                        {% endif %}#}
                                         <div id="level-box">
@@ -337,7 +337,7 @@
                                         Bio:
                                         {% if user.about_me == None or user.about_me == "" %}
                                             <p id="info-null">
-                                                Describe yourself...
+                                                {{ _('Describe yourself...')}}
                                             </p>
 
                                         {% else %}
@@ -353,7 +353,7 @@
 
                     <div class="date-gender">
                         <p class="date" id="info-box">
-                            Member since {{ user.start_datetime.date() }}
+                            {{ _('Member since ')}} {{ user.start_datetime.date() }}
                         </p>
                         {#                                                                    <p class="gender" id="info-box">#}
                         {#                                                                        Gender: {{ user.gender }}#}
@@ -364,14 +364,14 @@
                 <!-- 2. Address section -->
                 <div class="topic_container" id="address_container" style="display: none">
                     <div class="w-commerce-commercecartheader cart-header">
-                        <h4 class="w-commerce-commercecartheading">Your Order</h4>
+                        <h4 class="w-commerce-commercecartheading">{{ _('Your Order')}}</h4>
                         <a href="#" data-node-type="commerce-cart-close-link" class="w-commerce-commercecartcloselink close-cart-button w-inline-block">
                             <img src="images/icon-cross-large.svg" loading="lazy" alt="">
                         </a>
                     </div>
                     <div class="w-commerce-commercecartheader cart-header">
                         <a href="#" id="show_add_form_btn" class="button small nav-button w-inline-block">
-                            <div>Add</div>
+                            <div>{{ _('Add') }}</div>
                         </a>
                     </div>
                     <table style = "border-collapse:separate; border-spacing:10px;">
@@ -382,13 +382,13 @@
                                         {% if address.is_default %}
                                             <tr>
                                                 <td id="default_bar" address_id="{{ address.id }}" class="bg-primary" colspan="2" colspan="2">
-                                                    Default
+                                                    {{ _('Default') }}
                                                 </td>
                                             </tr>
                                         {% endif %}
                                         <tr>
                                             <td class="title_section">
-                                                Recipient Name
+                                                {{ _('Recipient Name')}}
                                             </td>
                                             <td id="address_recipient_name_{{ address.id }}">
                                                 {{ address.recipient_name }}
@@ -396,7 +396,7 @@
                                         </tr>
                                         <tr>
                                             <td class="title_section">
-                                                Phone
+                                                {{ _('Phone') }}
                                             </td>
                                             <td id="address_phone_{{ address.id }}">
                                                 {{ address.phone }}
@@ -404,7 +404,7 @@
                                         </tr>
                                         <tr>
                                             <td class="title_section">
-                                                Reciving Address
+                                                {{ _('Receiving Address')}}
                                             </td>
                                             <td id="address_place_{{ address.id }}">
                                                 {{ address.country }} - {{ address.province_or_state }} - {{ address.city }} - {{ address.district }}
@@ -416,22 +416,23 @@
                                                     <div id="action_{{ address.id }}" is_default="f" class="d-flex align-items-center list-action">
                                                         <a id="default_btn_{{ address.id }}" class="badge badge-info mr-2" data-toggle="tooltip"
                                                            data-placement="top" title="" data-original-title="View"
-                                                           href="javascript:set_default({{ address.id }});"><i class="ri-eye-line mr-0">Set as Default</i></a>
+                                                           href="javascript:set_default({{ address.id }});"><i class="ri-eye-line mr-0">{{ _('Set
+                                                                as Default')}}</i></a>
                                                         <a class="badge bg-success mr-2" data-toggle="tooltip"
                                                            data-placement="top" title="" data-original-title="Edit"
-                                                           href="javascript:start_edit_address({{ address.id }});"><i class="ri-pencil-line mr-0">Edit</i></a>
+                                                           href="javascript:start_edit_address({{ address.id }});"><i class="ri-pencil-line mr-0">{{ _('Edit') }}</i></a>
                                                         <a class="badge bg-warning mr-2" data-toggle="tooltip"
                                                            data-placement="top" title="" data-original-title="Delete"
-                                                           href="javascript:remove_address({{ address.id }});"><i class="ri-delete-bin-line mr-0">Delete</i></a>
+                                                           href="javascript:remove_address({{ address.id }});"><i class="ri-delete-bin-line mr-0">{{ _('Delete') }}</i></a>
                                                     </div>
                                                 {% else %}
                                                     <div id="action_{{ address.id }}" is_default="t" lass="d-flex align-items-center list-action">
                                                         <a class="badge bg-success mr-2" data-toggle="tooltip"
                                                            data-placement="top" title="" data-original-title="Edit"
-                                                           href="javascript:start_edit_address({{ address.id }});"><i class="ri-pencil-line mr-0">Edit</i></a>
+                                                           href="javascript:start_edit_address({{ address.id }});"><i class="ri-pencil-line mr-0">{{ _('Edit') }}</i></a>
                                                         <a class="badge bg-warning mr-2" data-toggle="tooltip"
                                                            data-placement="top" title="" data-original-title="Delete"
-                                                           href="javascript:remove_address({{ address.id }});"><i class="ri-delete-bin-line mr-0">Delete</i></a>
+                                                           href="javascript:remove_address({{ address.id }});"><i class="ri-delete-bin-line mr-0">{{ _('Delete') }}</i></a>
                                                     </div>
                                                 {% endif %}
                                             </td>

@@ -1,5 +1,6 @@
 from flask import render_template, request, redirect, url_for, session, jsonify, flash, json, current_app
 from flask_login import login_required, current_user
+from flask_babel import _
 from sqlalchemy import and_
 
 from . import main
@@ -274,7 +275,7 @@ def model_type_details(mt_id):
 
         return render_template('', model_type=mt, related_mt_lst=related_mt_lst)
     else:
-        flash('No such commodity!')
+        flash(_('No such commodity!'))
         return redirect(url_for('main.index'))
 
 

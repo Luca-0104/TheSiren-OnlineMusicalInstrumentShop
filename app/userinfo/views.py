@@ -2,6 +2,7 @@ import os
 
 from flask import render_template, request, jsonify, flash, redirect, url_for
 from flask_login import login_required, current_user
+from flask_babel import _
 
 from config import Config
 from . import userinfo
@@ -37,7 +38,7 @@ def user_profile(uid):
         db.session.add(user)
         db.session.commit()
 
-        flash('Profile update successfully!')
+        flash(_('Profile update successfully!'))
 
         # back to the stock management page
         return redirect(url_for('userinfo.user_profile', uid=current_user.id))
@@ -64,7 +65,7 @@ def user_profile(uid):
         user.avatar = os.path.join(path, picname).replace('\\', '/')
         db.session.add(user)
         db.session.commit()
-        flash("Avatar update successfully!")
+        flash(_("Avatar update successfully!"))
         return redirect(url_for("userinfo.user_profile", uid=current_user.id))
 
 
@@ -92,7 +93,7 @@ def user_profile(uid):
                               district=add_address_form.add_district.data)
         db.session.add(address)
         db.session.commit()
-        flash('Address added successfully!')
+        flash(_('Address added successfully!'))
 
         return redirect(url_for('userinfo.user_profile', uid=current_user.id))
 
@@ -112,7 +113,7 @@ def user_profile(uid):
 
         db.session.add(address)
         db.session.commit()
-        flash('Address updated successfully!')
+        flash(_('Address updated successfully!'))
 
         return redirect(url_for("userinfo.user_profile", uid=current_user.id))
 
@@ -323,6 +324,8 @@ def remove_address():
         db.session.delete(address)
         db.session.commit()
 
+        flash(_('Address has been deleted!'))
+
         return jsonify({'returnValue': 0})
 
     return jsonify({'returnValue': 1})
@@ -356,6 +359,8 @@ def change_default_address():
         db.session.add(new_default_address)
         db.session.add(old_default_address)
         db.session.commit()
+
+        flash(_('Default address changed successfully!'))
 
         return jsonify({'returnValue': 0})
 
