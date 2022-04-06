@@ -1,11 +1,12 @@
 /* The entire box */
 .product-box{
     height: 485px;
+    background-color: white;
 }
 
 .product-box:hover{
     /* making the shadow when hovering over the hole box */
-    box-shadow: 0 0 10px 10px #999;
+    /*box-shadow: 0 0 10px 10px #999;*/
 }
 
 /* The pic cover */
@@ -62,7 +63,7 @@
 /* name of the model type */
 .box-product-name{
     width: 100%;
-    text-align: center;
+    text-align: left;
     font: 900 1rem '';
 
     /* we will only show 1 line of name */
