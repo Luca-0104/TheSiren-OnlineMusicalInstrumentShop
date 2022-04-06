@@ -64,7 +64,8 @@
 .box-product-name{
     width: 100%;
     text-align: left;
-    font: 900 1rem '';
+    font: 900 1.1rem '';
+    margin-bottom: 2px;
 
     /* we will only show 1 line of name */
     display: -webkit-box;
