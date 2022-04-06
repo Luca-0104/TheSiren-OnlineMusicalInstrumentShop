@@ -146,7 +146,7 @@ select, input, textarea {
   </div>
   <div class="section wf-section">
     <div class="main-container">
-      <div class="w-layout-grid product-grid"><img src="../../static/images/popo.jpg" loading="lazy" alt="" class="main-product-image">
+      <div class="w-layout-grid product-grid"><img src="{{ url_for('static', filename=model.pictures.first().address) }}" loading="lazy" alt="" class="main-product-image">
         <div id="w-node-c7e51d0f-2d88-d3ea-4d4e-74172b8dc048-625ac608" class="vertical-border"></div>
         <div class="product-description">
           <div class="breadcrumbs">
