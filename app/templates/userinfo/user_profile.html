@@ -551,7 +551,6 @@
             <form method="post">
                 <div class="row">
                     {{ add_address_form.hidden_tag() }}
-                    <input type="hidden" id="address_form_hidden_id" value="1">
 
                     <div class="col-md-6">
                         <div class="form-group">
@@ -645,16 +644,17 @@
             </div>
             <form method="post">
                 <div class="row">
-                    {{ add_address_form.hidden_tag() }}
-                    <input type="hidden" id="address_form_hidden_id" value="1">
+                    {{ edit_address_form.hidden_tag() }}
+                    {{ edit_address_form.edit_address_id(id="address_form_hidden_idasdf", style="display: none") }}
+{#                    <input type="hidden" id="address_form_hidden_id" name="address_id">#}
 
                     <div class="col-md-6">
                         <div class="form-group">
                             <!--<label>Price *</label>
                             <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." required>-->
-                            {{ add_address_form.add_recipient_name.label }}
-                            {{ add_address_form.add_recipient_name(id='address_form_recipient_name', class="form-control") }}
-                            {% for error in add_address_form.add_recipient_name.errors %}
+                            {{ edit_address_form.edit_recipient_name.label }}
+                            {{ edit_address_form.edit_recipient_name(id='address_form_recipient_name', class="form-control") }}
+                            {% for error in edit_address_form.edit_recipient_name.errors %}
                                 <span>{{ error }}</span>
                             {% endfor %}
                             <div class="help-block with-errors"></div>
@@ -665,9 +665,9 @@
                         <div class="form-group">
                             <!--<label>Price *</label>
                             <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." required>-->
-                            {{ add_address_form.add_phone.label }}
-                            {{ add_address_form.add_phone(id='address_form_phone', class="form-control") }}
-                            {% for error in add_address_form.add_phone.errors %}
+                            {{ edit_address_form.edit_phone.label }}
+                            {{ edit_address_form.edit_phone(id='address_form_phone', class="form-control") }}
+                            {% for error in edit_address_form.edit_phone.errors %}
                                 <span>{{ error }}</span>
                             {% endfor %}
                             <div class="help-block with-errors"></div>
@@ -678,9 +678,9 @@
                         <div class="form-group">
                             <!--<label>Price *</label>
                             <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." required>-->
-                            {{ add_address_form.add_country.label }}
-                            {{ add_address_form.add_country(id='address_form_country', class="form-control") }}
-                            {% for error in add_address_form.add_country.errors %}
+                            {{ edit_address_form.edit_country.label }}
+                            {{ edit_address_form.edit_country(id='address_form_country', class="form-control") }}
+                            {% for error in edit_address_form.edit_country.errors %}
                                 <span>{{ error }}</span>
                             {% endfor %}
                             <div class="help-block with-errors"></div>
@@ -691,9 +691,9 @@
                         <div class="form-group">
                             <!--<label>Price *</label>
                             <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." required>-->
-                            {{ add_address_form.add_province_or_state.label }}
-                            {{ add_address_form.add_province_or_state(id='address_form_pos', class="form-control") }}
-                            {% for error in add_address_form.add_province_or_state.errors %}
+                            {{ edit_address_form.edit_province_or_state.label }}
+                            {{ edit_address_form.edit_province_or_state(id='address_form_pos', class="form-control") }}
+                            {% for error in edit_address_form.edit_province_or_state.errors %}
                                 <span>{{ error }}</span>
                             {% endfor %}
                             <div class="help-block with-errors"></div>
@@ -704,9 +704,9 @@
                         <div class="form-group">
                             <!--<label>Price *</label>
                             <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." required>-->
-                            {{ add_address_form.add_city.label }}
-                            {{ add_address_form.add_city(id='address_form_city', class="form-control") }}
-                            {% for error in add_address_form.add_city.errors %}
+                            {{ edit_address_form.edit_city.label }}
+                            {{ edit_address_form.edit_city(id='address_form_city', class="form-control") }}
+                            {% for error in edit_address_form.edit_city.errors %}
                                 <span>{{ error }}</span>
                             {% endfor %}
                             <div class="help-block with-errors"></div>
@@ -717,9 +717,9 @@
                         <div class="form-group">
                             <!--<label>Price *</label>
                             <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." required>-->
-                            {{ add_address_form.add_district.label }}
-                            {{ add_address_form.add_district(id='address_form_district', class="form-control") }}
-                            {% for error in add_address_form.add_district.errors %}
+                            {{ edit_address_form.edit_district.label }}
+                            {{ edit_address_form.edit_district(id='address_form_district', class="form-control") }}
+                            {% for error in edit_address_form.edit_district.errors %}
                                 <span>{{ error }}</span>
                             {% endfor %}
                             <div class="help-block with-errors"></div>
@@ -728,9 +728,7 @@
 
                 </div>
                 <div class="middle">
-                    <a class="button bg-white-faded middle" href="javascript:void(0)" onclick="update_address()">
-                        <i>Update Address</i>
-                    </a>
+                    {{ edit_address_form.edit_address_submit(class="button bg-white-faded middle") }}
                 </div>
             </form>
         </div>

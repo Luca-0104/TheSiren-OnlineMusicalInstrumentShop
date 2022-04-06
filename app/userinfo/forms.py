@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileRequired, FileAllowed
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, RadioField, FileField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, RadioField, FileField, HiddenField
 from wtforms.validators import DataRequired, Email, Length, ValidationError, EqualTo, Regexp
 
 from app.models import User, Address
@@ -17,6 +17,7 @@ class AddAddressForm(FlaskForm):
 
 
 class EditAddressForm(FlaskForm):
+    edit_address_id = StringField()
     edit_recipient_name = StringField('Recipient Name: ', validators=[DataRequired(), Length(1, 64)])
     edit_phone = StringField('Phone: ', validators=[DataRequired(), Length(1, 24)])
     edit_country = StringField('Country: ', validators=[DataRequired(), Length(1, 128)])
@@ -50,6 +51,13 @@ class EditProfileForm(FlaskForm):
 
 
 class UpdateAvatarForm(FlaskForm):
-    update_avatar = FileField('Avatar: ', validators=[FileRequired(), FileAllowed(['jpg', 'png', 'gif', 'bmp', 'webp', 'pcx', 'tif', 'jpeg', 'tga', 'exif', 'fpx', 'svg', 'psd', 'cdr', 'pcd', 'dxf', 'ufo', 'eps', 'al', 'hdri', 'raw', 'wmf', 'flic', 'emf', 'ico', 'avif', 'apng'])])
+    update_avatar = FileField('Avatar: ', validators=[FileRequired(), FileAllowed(['jpg', 'png', 'gif', 'bmp',
+                                                                                   'webp', 'pcx', 'tif', 'jpeg',
+                                                                                   'tga', 'exif', 'fpx', 'svg',
+                                                                                   'psd', 'cdr', 'pcd', 'dxf',
+                                                                                   'ufo', 'eps', 'al', 'hdri',
+                                                                                   'raw', 'wmf', 'flic', 'emf',
+                                                                                   'ico', 'avif', 'apng'],
+                                                                                  message='Please use valid picture file format!')])
     update_avatar_submit = SubmitField("Update Avatar")
 
