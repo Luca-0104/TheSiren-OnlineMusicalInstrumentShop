@@ -77,11 +77,11 @@
                         <!-- Auth -->
                         {% if session.get('username') %}
                             <a href="{{ url_for('auth.logout') }}" class="button small nav-button w-inline-block">
-                                <div>Logout</div>
+                                <div>{{ _('Logout') }}</div>
                             </a>
                         {% else %}
                             <a href="{{ url_for('auth.login') }}" class="button small nav-button w-inline-block">
-                                <div>Login</div>
+                                <div>{{ _('Login') }}</div>
                             </a>
                         {% endif %}
 
@@ -104,22 +104,22 @@
             <div class="main-container">
                 <div data-collapse="small" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-nav">
                     <div class="button bg-primary wide w-nav-button">
-                        <div>Menu</div>
+                        <div>{{ _('Menu') }}</div>
                     </div>
                     <nav role="navigation" class="w-nav-menu">
                         <div class="nav-menu-row">
                             <!-- Left side -->
                             <!-- All product -->
-                            <a href="shop.html" class="nav-link">All</a>
+                            <a href="shop.html" class="nav-link">{{ _('All') }}</a>
 
                             <!-- Specific -->
                             <div class="w-dyn-list">
                                 <div role="list" class="navbar-categories w-dyn-items">
                                     <div role="listitem" class="w-dyn-item">
-                                        <a href="#" class="nav-link">Gatagory</a>
+                                        <a href="#" class="nav-link">{{ _('Gatagory') }}</a>
                                     </div>
                                     <div role="listitem" class="w-dyn-item">
-                                        <a href="#" class="nav-link">Brand</a>
+                                        <a href="#" class="nav-link">{{ _('Brand') }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -128,8 +128,8 @@
                             <div class="nav-menu-divider"></div>
 
                             <!-- Right side -->
-                            <a href="about.html" class="nav-link">About</a>
-                            <a href="contact.html" class="nav-link">Contact</a>
+                            <a href="about.html" class="nav-link">{{ _('About') }}</a>
+                            <a href="contact.html" class="nav-link">{{ _('Contact') }}</a>
                         </div>
                     </nav>
                 </div>
@@ -141,7 +141,7 @@
             <div class="main-container">
                 <!-- Cart -->
                 <div class="w-commerce-commercecartheader cart-header">
-                    <h4 class="w-commerce-commercecartheading">Your Cart</h4>
+                    <h4 class="w-commerce-commercecartheading">{{ _('Your Cart') }}</h4>
                     <a href="#" data-node-type="commerce-cart-close-link" class="w-commerce-commercecartcloselink close-cart-button w-inline-block">
                         <img src="images/icon-cross-large.svg" loading="lazy" alt="">
                     </a>
@@ -153,16 +153,16 @@
                             <table border="1" id="cart_table" total_row="{{ length }}">
                                 <tr>
                                     <th>
-                                        Select
+                                        {{ _('Select') }}
                                     </th>
                                     <th colspan="2">
-                                        Model Info
+                                        {{ _('Model Info') }}
                                     </th>
                                     <th>
-                                        Quantity
+                                        {{ _('Quantity') }}
                                     </th>
                                     <th>
-                                        Price
+                                        {{ _('Price') }}
                                     </th>
                                     <th></th>
                                 </tr>
@@ -206,7 +206,7 @@
                                         <td>
                                             <a focusID="{{ loop.index }}" id="remove_{{ loop.index }}" href="#"
                                                class="w-inline-block remove-a" data-wf-cart-action="remove-item" data-commerce-sku-id="">
-                                                <div class="fine-print-text remove-link">Remove</div>
+                                                <div class="fine-print-text remove-link">{{ _('Remove') }}</div>
                                             </a>
                                         </td>
                                     </tr>
@@ -217,7 +217,7 @@
                         <!-- Footer of Cart -->
                         <div class="w-commerce-commercecartfooter cart-footer">
                             <div class="w-commerce-commercecartlineitem">
-                                <div>Total Cost</div>
+                                <div>{{ _('Total Cost') }}</div>
                                 <div class="w-commerce-commercecartordervalue">
                                     <span>$</span>
                                     <span id="total_cost">100.00</span>
@@ -228,7 +228,7 @@
                                 <a id="checkout-a" href="#" value="Continue to Checkout"
                                    data-node-type="cart-checkout-button"
                                    class="w-commerce-commercecartcheckoutbutton button bg-primary-dark"
-                                   data-loading-text="Hang Tight...">Continue to Checkout</a>
+                                   data-loading-text="Hang Tight...">{{ _('Continue to Checkout') }}</a>
                             </div>
                         </div>
                     </form>
@@ -267,16 +267,16 @@
                             <a href="#" class="footer-logo-link w-inline-block">
                                 <img src="../../static/images/Black-logo-no-background.svg" loading="lazy" alt="" class="footer-logo">
                             </a>
-                            <div>34 Market Street, South Melbourne<br>Victoria 3009</div>
+                            <div>{{ _('34 Market Street, South Melbourne') }}<br>{{ _('Victoria 3009') }}</div>
                             <div class="contact-links in-footer">
                                 <a href="#" class="small-text">contact@website.com</a>
                                 <a href="#" class="small-text">(03) 92337 4627</a>
                             </div>
                         </div>
                         <div>
-                            <div class="uppercase-text links-grid-title">shop</div>
+                            <div class="uppercase-text links-grid-title">{{ _('shop') }}</div>
                             <div class="links-grid">
-                                <a href="shop.html" class="list-link">All</a>
+                                <a href="shop.html" class="list-link">{{ _('All') }}</a>
                                 <div class="w-dyn-list">
                                     <div role="list" class="links-grid w-dyn-items">
                                         <div role="listitem" class="w-dyn-item">
@@ -284,18 +284,18 @@
                                         </div>
                                     </div>
                                     <div class="w-dyn-empty">
-                                        <div>No items found.</div>
+                                        <div>{{ _('No items found.')}}</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div>
-                            <div class="uppercase-text links-grid-title">Company</div>
+                            <div class="uppercase-text links-grid-title">{{ _('Company') }}</div>
                             <div class="links-grid">
-                                <a href="about.html" class="list-link">About</a>
-                                <a href="journal.html" class="list-link">Journal</a>
-                                <a href="contact.html" class="list-link">Contact</a>
-                                <a href="refund-policy.html" class="list-link">Refund Policy</a>
+                                <a href="about.html" class="list-link">{{ _('About') }}</a>
+                                <a href="journal.html" class="list-link">{{ _('Journal') }}</a>
+                                <a href="contact.html" class="list-link">{{ _('Contact') }}</a>
+                                <a href="refund-policy.html" class="list-link">{{ _('Refund Policy')}}</a>
                             </div>
                         </div>
                         <div>

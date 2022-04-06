@@ -77,11 +77,11 @@
                         <!-- Auth -->
                         {% if session.get('username') %}
                             <a href="{{ url_for('auth.logout') }}" class="button small nav-button w-inline-block">
-                                <div>Logout</div>
+                                <div>{{ _('Logout') }}</div>
                             </a>
                         {% else %}
                             <a href="{{ url_for('auth.login') }}" class="button small nav-button w-inline-block">
-                                <div>Login</div>
+                                <div>{{ _('Login') }}</div>
                             </a>
                         {% endif %}
 
@@ -104,22 +104,22 @@
             <div class="main-container">
                 <div data-collapse="small" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-nav">
                     <div class="button bg-primary wide w-nav-button">
-                        <div>Menu</div>
+                        <div>{{ _('Menu') }}</div>
                     </div>
                     <nav role="navigation" class="w-nav-menu">
                         <div class="nav-menu-row">
                             <!-- Left side -->
                             <!-- All product -->
-                            <a href="shop.html" class="nav-link">All</a>
+                            <a href="shop.html" class="nav-link">{{ _('All') }}</a>
 
                             <!-- Specific -->
                             <div class="w-dyn-list">
                                 <div role="list" class="navbar-categories w-dyn-items">
                                     <div role="listitem" class="w-dyn-item">
-                                        <a href="#" class="nav-link">Gatagory</a>
+                                        <a href="#" class="nav-link">{{ _('Gatagory') }}</a>
                                     </div>
                                     <div role="listitem" class="w-dyn-item">
-                                        <a href="#" class="nav-link">Brand</a>
+                                        <a href="#" class="nav-link">{{ _('Brand') }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -128,8 +128,8 @@
                             <div class="nav-menu-divider"></div>
 
                             <!-- Right side -->
-                            <a href="about.html" class="nav-link">About</a>
-                            <a href="contact.html" class="nav-link">Contact</a>
+                            <a href="about.html" class="nav-link">{{ _('About') }}</a>
+                            <a href="contact.html" class="nav-link">{{ _('Contact') }}</a>
                         </div>
                     </nav>
                 </div>
@@ -141,7 +141,7 @@
             <div class="main-container">
                 <!-- Cart -->
                 <div class="w-commerce-commercecartheader cart-header">
-                    <h4 class="w-commerce-commercecartheading">Your Order</h4>
+                    <h4 class="w-commerce-commercecartheading">{{ _('Your Order')}}</h4>
                     <a href="#" data-node-type="commerce-cart-close-link" class="w-commerce-commercecartcloselink close-cart-button w-inline-block">
                         <img src="images/icon-cross-large.svg" loading="lazy" alt="">
                     </a>
@@ -153,13 +153,13 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        Order
+                                        {{ _('Order') }}
                                     </th>
                                     <th>
-                                        Models
+                                        {{ _('Models') }}
                                     </th>
                                     <th>
-                                        Status
+                                        {{ _('Status') }}
                                     </th>
                                 </tr>
                             </thead>
@@ -169,7 +169,7 @@
                                             <table border="1" width="100%" height="100%">
                                                 <tr>
                                                     <td>
-                                                        Order ID
+                                                        {{ _('Order ID')}}
                                                     </td>
                                                     <td>
                                                         {{ order_obj.id }}
@@ -177,7 +177,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        Address
+                                                        {{ _('Address') }}
                                                     </td>
                                                     <td>
                                                         China Beijing
