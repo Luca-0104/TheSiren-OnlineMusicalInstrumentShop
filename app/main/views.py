@@ -273,7 +273,7 @@ def model_type_details(mt_id):
         # limit the number of mt in related list
         related_mt_lst = related_mt_lst[:10]
 
-        return render_template('', model_type=mt, related_mt_lst=related_mt_lst)
+        return render_template('main/page-commodity-details.html', model=mt, related_mt_lst=related_mt_lst)
     else:
         flash(_('No such commodity!'))
         return redirect(url_for('main.index'))

@@ -103,11 +103,9 @@ def order_confirm(order_id):
     """
         This function is for rendering the page of order confirmation.
     """
-    print("here in confirm, oid:{}".format(order_id))
     o = Order.query.get(order_id)
     # check if that order belong to current user
     if o in current_user.orders:
-        print("here in ascojan")
         return render_template('order/order-confirm.html', oreder=o)
     else:
         flash(_('Permission denied!'))

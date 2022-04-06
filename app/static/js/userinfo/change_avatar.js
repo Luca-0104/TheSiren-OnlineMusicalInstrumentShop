@@ -1,19 +1,21 @@
-$("#show").on("click",function()
-{window.alert("1111111111")
-    let target = $("#avatar_form");
-    if(target.css("display")=='none')
+$("#show_change_avatar_form_btn").on("click",function()
+{
+    let blocker = $("#profile_form_blocker");
+    let show_add_form = $("#change_avatar_form");
+    if(blocker.css("display")=='none')
     {
-        window.alert("2222222222")
-        target.css('display','');
-        window.alert(target.css)
+        blocker.css('display','');
+        show_add_form.css('display','');
     }
 });
 
-$("#close_triger").on("click",function()
+$("#close_change_avatar_form_btn").on("click",function()
 {
-    let target = $("#avatar_form");
-    if(target.css("display")!='none')
+    let blocker = $("#profile_form_blocker");
+    let show_add_form = $("#change_avatar_form");
+    if(blocker.css("display")!='none')
     {
-        target.css('display','none');
+        blocker.css('display','none');
+        show_add_form.css('display','none');
     }
 });
