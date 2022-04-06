@@ -395,7 +395,7 @@
                         <div role="list" class="product-thirds-grid featured-products w-dyn-items">
                             {% for rec_view_pro in rec_views %}
                                 <div role="listitem" class="w-dyn-item product-box" style="padding: 10">
-                                    <a href="#" class="product-preview-link w-inline-block">
+                                    <a href="{{ url_for('main.model_type_details', mt_id=rec_view_pro.id) }}" class="product-preview-link w-inline-block">
                                         {# The gray cover on the pic when hovering #}
                                         <div class="box-img-cover">Click for Details</div>
 
@@ -541,7 +541,7 @@
                             <div role="list" class="product-thirds-grid featured-products w-dyn-items">
                                 {% for rec_preference_pro in rec_preference %}
                                     <div role="listitem" class="w-dyn-item product-box" style="padding: 10">
-                                        <a href="#" class="product-preview-link w-inline-block">
+                                        <a href="{{ url_for('main.model_type_details', mt_id=rec_preference_pro.id) }}" class="product-preview-link w-inline-block">
                                             {# The gray cover on the pic when hovering #}
                                             <div class="box-img-cover">Click for Details</div>
 
@@ -704,7 +704,7 @@
                     <div role="list" class="product-quarters-grid w-dyn-items">
                         {% for rec_time_pro in rec_time %}
                             <div role="listitem" class="w-dyn-item product-box" style="padding: 10">
-                                <a href="#" class="product-preview-link w-inline-block">
+                                <a href="{{ url_for('main.model_type_details', mt_id=rec_time_pro.id) }}" class="product-preview-link w-inline-block">
                                     {# The gray cover on the pic when hovering #}
                                     <div class="box-img-cover">Click for Details</div>
 
