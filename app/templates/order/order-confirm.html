@@ -66,7 +66,7 @@
             <a href="/" class="w-inline-block"><img src="images/Verse.svg" loading="eager" alt=""></a>
             <div id="w-node-dab1a8fd-38ef-ff9e-e737-a0bdf6abf413-f6abf40a" class="navbar-right-contents">
                 <a href="https://mmra.re/purchaseverse" class="button small nav-button w-inline-block">
-                    <div>Buy Now</div>
+                    <div>{{ _('Buy Now')}}</div>
                 </a>
                 <div data-node-type="commerce-cart-wrapper" data-open-product="" data-wf-cart-type="rightSidebar"
                      data-wf-cart-query="" data-wf-page-link-href-prefix="" class="w-commerce-commercecartwrapper">
@@ -80,7 +80,7 @@
                         <div data-node-type="commerce-cart-container"
                              class="w-commerce-commercecartcontainer cart-container">
                             <div class="w-commerce-commercecartheader cart-header">
-                                <h4 class="w-commerce-commercecartheading">Your Cart</h4>
+                                <h4 class="w-commerce-commercecartheading">{{ _('Your Cart') }}</h4>
                                 <a href="#" data-node-type="commerce-cart-close-link"
                                    class="w-commerce-commercecartcloselink close-cart-button w-inline-block"><img
                                         src="images/icon-cross-large.svg" loading="lazy" alt=""></a>
@@ -95,7 +95,7 @@
                                          data-wf-template-id="wf-template-dab1a8fd-38ef-ff9e-e737-a0bdf6abf424"></div>
                                     <div class="w-commerce-commercecartfooter cart-footer">
                                         <div class="w-commerce-commercecartlineitem">
-                                            <div>Subtotal</div>
+                                            <div>{{ _('Subtotal') }}</div>
                                             <div class="w-commerce-commercecartordervalue"></div>
                                         </div>
                                         <div>
@@ -138,12 +138,12 @@
                                             <a href="/checkout" value="Continue to Checkout"
                                                data-node-type="cart-checkout-button"
                                                class="w-commerce-commercecartcheckoutbutton button bg-primary-dark"
-                                               data-loading-text="Hang Tight...">Continue to Checkout</a>
+                                               data-loading-text="Hang Tight...">{{ _('Continue to Checkout') }}</a>
                                         </div>
                                     </div>
                                 </form>
                                 <div class="w-commerce-commercecartemptystate">
-                                    <div>No items found.</div>
+                                    <div>{{ _('No items found.') }}</div>
                                 </div>
                                 <div style="display:none" data-node-type="commerce-cart-error"
                                      class="w-commerce-commercecarterrorstate">
@@ -153,7 +153,7 @@
                                          data-w-cart-checkout-error="Checkout is disabled on this site."
                                          data-w-cart-cart_order_min-error="The order minimum was not met. Add more items to your cart to continue."
                                          data-w-cart-subscription_error-error="Before you purchase, please use your email invite to verify your address so we can send order updates.">
-                                        Product is not available in this quantity.
+                                        {{ _('Product is not available in this quantity.') }}
                                     </div>
                                 </div>
                             </div>
@@ -174,11 +174,11 @@
         <div data-collapse="small" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease"
              role="banner" class="navbar w-nav">
             <div class="button bg-primary wide w-nav-button">
-                <div>Menu</div>
+                <div>{{ _('Menu') }}</div>
             </div>
             <nav role="navigation" class="w-nav-menu">
                 <div class="nav-menu-row">
-                    <a href="/shop" class="nav-link">All</a>
+                    <a href="/shop" class="nav-link">{{ _('All') }}</a>
                     <div class="w-dyn-list">
                         <div role="list" class="navbar-categories w-dyn-items">
                             <div role="listitem" class="w-dyn-item">
@@ -186,13 +186,13 @@
                             </div>
                         </div>
                         <div class="w-dyn-empty">
-                            <div>No items found.</div>
+                            <div>{{ ('No items found.')}}</div>
                         </div>
                     </div>
                     <div class="nav-menu-divider"></div>
-                    <a href="/about" class="nav-link">About</a>
-                    <a href="/journal" class="nav-link">Journal</a>
-                    <a href="/contact" class="nav-link">Contact</a>
+                    <a href="/about" class="nav-link">{{ _('About') }}</a>
+                    <a href="/journal" class="nav-link">{{ _('Journal') }}</a>
+                    <a href="/contact" class="nav-link">{{ _('Contact') }}</a>
                 </div>
             </nav>
         </div>
@@ -249,7 +249,7 @@
                                 <polygon fill="#FFB700" points="15 15 9 15 9 9 15 9"></polygon>
                             </g>
                         </svg>
-                        <div>Pay with browser.</div>
+                        <div>{{ _('Pay with browser.')}}</div>
                     </a>
                 </div>
 {#                <form data-node-type="commerce-checkout-customer-info-wrapper"#}
@@ -267,14 +267,14 @@
                 <form data-node-type="commerce-checkout-shipping-address-wrapper"
                       class="w-commerce-commercecheckoutshippingaddresswrapper">
                     <div class="w-commerce-commercecheckoutblockheader block-header">
-                        <h4 class="checkout-heading">Shipping Address</h4>
-                        <div class="fine-print-text">* Required</div>
+                        <h4 class="checkout-heading">{{ _('Shipping Address') }}</h4>
+                        <div class="fine-print-text">* {{ _('Required') }}</div>
                     </div>
                     <fieldset class="w-commerce-commercecheckoutblockcontent"><label
-                            class="w-commerce-commercecheckoutlabel">Full Name *</label><input type="text" name="name"
+                            class="w-commerce-commercecheckoutlabel">{{ _('Full Name')}} *</label><input type="text" name="name"
                                                                                                required=""
                                                                                                class="w-commerce-commercecheckoutshippingfullname"><label
-                            class="w-commerce-commercecheckoutlabel">Street Address *</label><input type="text"
+                            class="w-commerce-commercecheckoutlabel">{{ _('Street Address')}} *</label><input type="text"
                                                                                                     name="address_line1"
                                                                                                     required=""
                                                                                                     class="w-commerce-commercecheckoutshippingstreetaddress"><input
@@ -282,25 +282,25 @@
                             class="w-commerce-commercecheckoutshippingstreetaddressoptional">
                         <div class="w-commerce-commercecheckoutrow">
                             <div class="w-commerce-commercecheckoutcolumn"><label
-                                    class="w-commerce-commercecheckoutlabel">City *</label><input type="text"
+                                    class="w-commerce-commercecheckoutlabel">{{ _('City') }} *</label><input type="text"
                                                                                                   name="address_city"
                                                                                                   required=""
                                                                                                   class="w-commerce-commercecheckoutshippingcity">
                             </div>
                             <div class="w-commerce-commercecheckoutcolumn"><label
-                                    class="w-commerce-commercecheckoutlabel">State/Province</label><input type="text"
+                                    class="w-commerce-commercecheckoutlabel">{{ _('State/Province') }}</label><input type="text"
                                                                                                           name="address_state"
                                                                                                           class="w-commerce-commercecheckoutshippingstateprovince">
                             </div>
                             <div class="w-commerce-commercecheckoutcolumn"><label
-                                    class="w-commerce-commercecheckoutlabel">Zip/Postal Code *</label><input type="text"
+                                    class="w-commerce-commercecheckoutlabel">{{ _('Zip/Postal Code') }} *</label><input type="text"
                                                                                                              name="address_zip"
                                                                                                              required=""
                                                                                                              data-node-type="commerce-checkout-shipping-zip-field"
                                                                                                              class="w-commerce-commercecheckoutshippingzippostalcode">
                             </div>
                         </div>
-                        <label class="w-commerce-commercecheckoutlabel">Country *</label><select name="address_country"
+                        <label class="w-commerce-commercecheckoutlabel">{{ _('Country') }} *</label><select name="address_country"
                                                                                                  class="w-commerce-commercecheckoutshippingcountryselector">
                             <option value="AF">Afghanistan</option>
                             <option value="AX">Aland Islands</option>
@@ -555,7 +555,7 @@
                 <form data-node-type="commerce-checkout-shipping-methods-wrapper"
                       class="w-commerce-commercecheckoutshippingmethodswrapper">
                     <div class="w-commerce-commercecheckoutblockheader block-header">
-                        <h4 class="checkout-heading">Shipping Method</h4>
+                        <h4 class="checkout-heading">{{ _('Shipping Method') }}</h4>
                     </div>
                     <fieldset>
                         <script type="text/x-wf-template"
@@ -576,7 +576,7 @@
                         </label></div>
                         <div data-node-type="commerce-checkout-shipping-methods-empty-state" style="display:none"
                              class="w-commerce-commercecheckoutshippingmethodsemptystate">
-                            <div>No shipping methods are available for the address given.</div>
+                            <div>{{ _('No shipping methods are available for the address given.') }}</div>
                         </div>
                     </fieldset>
                 </form>
@@ -899,13 +899,13 @@
                                 <tr>
 
                                     <th colspan="2">
-                                        Model Info
+                                        {{ _('Model Info') }}
                                     </th>
                                     <th>
-                                        Quantity
+                                        {{ _('Quantity') }}
                                     </th>
                                     <th>
-                                        Price
+                                        {{ _('Price') }}
                                     </th>
                                     <th></th>
                                 </tr>
@@ -943,11 +943,11 @@
             <div class="w-commerce-commercelayoutsidebar checkout-sidebar">
                 <div class="w-commerce-commercecheckoutordersummarywrapper">
                     <div class="w-commerce-commercecheckoutsummaryblockheader block-header">
-                        <h4 class="checkout-heading">Order Summary</h4>
+                        <h4 class="checkout-heading">{{ _('Order Summary') }}</h4>
                     </div>
                     <fieldset class="w-commerce-commercecheckoutblockcontent">
                         <div class="w-commerce-commercecheckoutsummarylineitem">
-                            <div>Subtotal</div>
+                            <div>{{ _('Subtotal') }}</div>
                             <div></div>
                         </div>
                         <script type="text/x-wf-template"
@@ -961,14 +961,14 @@
                             </div>
                         </div>
                         <div class="w-commerce-commercecheckoutsummarylineitem">
-                            <div>Total</div>
+                            <div>{{ _('Total') }}</div>
                             <div class="w-commerce-commercecheckoutsummarytotal"></div>
                         </div>
                     </fieldset>
                 </div>
                 <a href="#" value="Place Order" data-node-type="commerce-checkout-place-order-button"
                    class="w-commerce-commercecheckoutplaceorderbutton button bg-primary-dark"
-                   data-loading-text="Placing Order...">Place Order</a>
+                   data-loading-text="Placing Order...">{{ _('Place Order')}}</a>
                 <div data-node-type="commerce-checkout-error-state" style="display:none"
                      class="w-commerce-commercecheckouterrorstate">
                     <div class="w-checkout-error-msg"
@@ -984,8 +984,8 @@
                          data-w-expired-discount-error="This discount is no longer available."
                          data-w-usage-reached-discount-error="This discount is no longer available."
                          data-w-requirements-not-met-error="Your order does not meet the requirements for this discount.">
-                        There was an error processing your customer info. Please try again, or contact us if you
-                        continue to have problems.
+                        {{ _('There was an error processing your customer info. Please try again, or contact us if you
+                                continue to have problems.')}}
                     </div>
                 </div>
             </div>
@@ -1016,16 +1016,16 @@
                 <div id="w-node-_3ee0633f-a568-72e0-ab7b-589be9d960ed-e9d960d8" class="footer-contact-details">
                     <a href="#" class="footer-logo-link w-inline-block"><img src="images/Verse.svg" loading="lazy"
                                                                              alt="" class="footer-logo"></a>
-                    <div>34 Market Street, South Melbourne<br>Victoria 3009</div>
+                    <div>{{ _('34 Market Street, South Melbourne')}}<br>{{ _('Victoria 3009')}}</div>
                     <div class="contact-links in-footer">
                         <a href="#" class="small-text">contact@website.com</a>
                         <a href="#" class="small-text">(03) 92337 4627</a>
                     </div>
                 </div>
                 <div>
-                    <div class="uppercase-text links-grid-title">shop</div>
+                    <div class="uppercase-text links-grid-title">{{ _('shop') }}</div>
                     <div class="links-grid">
-                        <a href="/shop" class="list-link">All</a>
+                        <a href="/shop" class="list-link">{{ _('All') }}</a>
                         <div class="w-dyn-list">
                             <div role="list" class="links-grid w-dyn-items">
                                 <div role="listitem" class="w-dyn-item">
@@ -1033,22 +1033,22 @@
                                 </div>
                             </div>
                             <div class="w-dyn-empty">
-                                <div>No items found.</div>
+                                <div>{{ _('No items found.')}}</div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <div class="uppercase-text links-grid-title">Company</div>
+                    <div class="uppercase-text links-grid-title">{{ _('Company') }}</div>
                     <div class="links-grid">
-                        <a href="/about" class="list-link">About</a>
-                        <a href="/journal" class="list-link">Journal</a>
-                        <a href="/contact" class="list-link">Contact</a>
-                        <a href="/refund-policy" class="list-link">Refund Policy</a>
+                        <a href="/about" class="list-link">{{ _('About') }}</a>
+                        <a href="/journal" class="list-link">{{ _('Journal') }}</a>
+                        <a href="/contact" class="list-link">{{ _('Contact') }}</a>
+                        <a href="/refund-policy" class="list-link">{{ _('Refund Policy') }}</a>
                     </div>
                 </div>
                 <div>
-                    <div class="uppercase-text links-grid-title">Template</div>
+                    <div class="uppercase-text links-grid-title">{{ _('Template') }}</div>
                     <div class="links-grid">
                         <a href="/template/style-guide" class="list-link">Style Guide</a>
                         <a href="/template/changelog" class="list-link">Changelog</a>

@@ -1,5 +1,6 @@
 from flask_login import login_required, current_user
 from flask import render_template, redirect, url_for, request, json, flash, jsonify, current_app
+from flask_babel import _
 
 from app import db
 from app.models import Cart, Order, OrderModelType, ModelType, PremiumOrder
@@ -48,11 +49,11 @@ def generate_order_from_cart():
                 # generate out_trade_no for this order, as it is created
                 new_order.generate_unique_out_trade_no()
 
-                flash('Order created!')
+                flash(_('Order created!'))
                 return jsonify({'returnValue': 0, 'order_id': new_order.id})
                 # return redirect(url_for('order.order_confirm', order_id=new_order.id))
 
-    flash('Order generation failed!')
+    flash(_('Order generation failed!'))
     return jsonify({'returnValue': 1})
     # return redirect(url_for('main.index'))
 
@@ -87,7 +88,7 @@ def generate_order_from_buy_now(model_id, count):
             # generate out_trade_no for this order, as it is created
             new_order.generate_unique_out_trade_no()
 
-            flash('Order created!')
+            flash(_('Order created!'))
             return jsonify({'returnValue': 0, 'order_id': new_order.id})
             # return redirect(url_for('order.order_confirm', order_id=new_order.id))
 
@@ -107,7 +108,7 @@ def order_confirm(order_id):
     if o in current_user.orders:
         return render_template('order/order-confirm.html', oreder=o)
     else:
-        flash('Permission denied!')
+        flash(_('Permission denied!'))
         return redirect(url_for('main.index'))
 
 
@@ -280,11 +281,11 @@ def generate_premium_order():
                 duration = int(duration)
             except Exception as e:
                 current_app.logger.error(e)
-                flash("Error in Duration info!")
+                flash(_("Error in Duration info!"))
                 return redirect(url_for('main.index'))
         else:
             current_app.logger.warning('Duration is None!')
-            flash("No duration info!")
+            flash(_("No duration info!"))
             return redirect(url_for('main.index'))
 
         if payment:
@@ -292,11 +293,11 @@ def generate_premium_order():
                 payment = int(payment)
             except Exception as e:
                 current_app.logger.error(e)
-                flash("Error in payment info!")
+                flash(_("Error in payment info!"))
                 return redirect(url_for('main.index'))
         else:
             current_app.logger.warning('Payment is None!')
-            flash("No payment info!")
+            flash(_("No payment info!"))
             return redirect(url_for('main.index'))
 
         # create a new premium order

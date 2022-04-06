@@ -1,4 +1,5 @@
 from flask_wtf import FlaskForm
+from flask_babel import lazy_gettext as _l
 from wtforms import StringField, FloatField, IntegerField, MultipleFileField, SelectField, SubmitField
 from wtforms.validators import DataRequired, Length, number_range, ValidationError
 from app.models import ModelType, Brand, Product
@@ -8,13 +9,13 @@ class ProductModifyForm(FlaskForm):
     """
         The form for staffs to modify product info
     """
-    name = StringField('Name', validators=[DataRequired(), Length(1, 128)],
+    name = StringField(_l('Name'), validators=[DataRequired(), Length(1, 128)],
                        render_kw={"data-errors": 'Please Enter Name.'})
-    serial_number = StringField('Serial Number', validators=[DataRequired(), Length(1, 128)],
+    serial_number = StringField(_l('Serial Number'), validators=[DataRequired(), Length(1, 128)],
                                 render_kw={"data-errors": 'Please Enter Serial Number.'})
     # choices should be defined in views.py
-    brand_id = SelectField('Brand', validators=[DataRequired()], coerce=int, render_kw={"data-style": 'py-0'})
-    submit = SubmitField('Add Product')
+    brand_id = SelectField(_l('Brand'), validators=[DataRequired()], coerce=int, render_kw={"data-style": 'py-0'})
+    submit = SubmitField(_l('Add Product'))
 
     # instance variables (those are not in the form)
     def __init__(self, current_product_id):
@@ -29,30 +30,30 @@ class ProductModifyForm(FlaskForm):
         product_found = Product.query.filter_by(serial_number=field.data, is_deleted=False).first()
         # If the product with the same serial number is not the current product itself
         if product_found is not None and product_found.id != self.current_product_id:
-            raise ValidationError('Serial Number already used.')
+            raise ValidationError(_l('Serial Number already used.'))
 
 
 class ModelUploadForm(FlaskForm):
     """
         The form for staffs to upload a new model type of a specific product
     """
-    name = StringField('Name', validators=[DataRequired(), Length(1, 128)],
+    name = StringField(_l('Name'), validators=[DataRequired(), Length(1, 128)],
                        render_kw={"data-errors": 'Please Enter Name.'})
-    description = StringField('Description', validators=[DataRequired()], render_kw={"row": 4})
-    price = FloatField('Price', validators=[DataRequired(), number_range(0, 999999999999)],
+    description = StringField(_l('Description'), validators=[DataRequired()], render_kw={"row": 4})
+    price = FloatField(_l('Price'), validators=[DataRequired(), number_range(0, 999999999999)],
                        render_kw={"data-errors": 'Please Enter Price.'})
-    stock = IntegerField('Stock', validators=[DataRequired(), number_range(0, 9999999)],
+    stock = IntegerField(_l('Stock'), validators=[DataRequired(), number_range(0, 9999999)],
                          render_kw={"data-errors": 'Please Enter Stock.'})
     # serial_number = StringField('Serial Number', validators=[DataRequired(), Length(1, 128)],
     #                             render_kw={"data-errors": 'Please Enter Serial Number.'})
-    serial_number = StringField('Serial Number', validators=[DataRequired(), Length(1, 128)])
-    pictures = MultipleFileField('Pictures for exhibition', validators=[DataRequired(), Length(1, 10,
+    serial_number = StringField(_l('Serial Number'), validators=[DataRequired(), Length(1, 128)])
+    pictures = MultipleFileField(_l('Pictures for exhibition'), validators=[DataRequired(), Length(1, 10,
                                                                                                'You must give 1-10 pictures of this commodity')],
                                  render_kw={"accept": 'image/*'})
-    intro_pictures = MultipleFileField('Introduction Pictures', validators=[DataRequired(), Length(1, 10,
+    intro_pictures = MultipleFileField(_l('Introduction Pictures'), validators=[DataRequired(), Length(1, 10,
                                                                                                    'You must give 1-10 introduction pictures')],
                                        render_kw={"accept": 'image/*'})
-    submit = SubmitField('Submit')
+    submit = SubmitField(_l('Submit'))
 
     # instance variables (those are not in the form)
     def __init__(self, current_product_id):
@@ -66,7 +67,7 @@ class ModelUploadForm(FlaskForm):
         """
         model_found = ModelType.query.filter_by(serial_number=field.data, product_id=self.current_product_id, is_deleted=False).first()
         if model_found is not None:
-            raise ValidationError('Serial Number already used in other model of this product!')
+            raise ValidationError(_l('Serial Number already used in other model of this product!'))
 
     def validate_pictures(self, field):
         """
@@ -76,7 +77,7 @@ class ModelUploadForm(FlaskForm):
         """
         for pic in field.data:
             if len(pic.filename) > 214:
-                raise ValidationError('Picture name cannot longer than 216 chars!')
+                raise ValidationError(_l('Picture name cannot longer than 216 chars!'))
 
     def validate_intro_pictures(self, field):
         """
@@ -86,25 +87,25 @@ class ModelUploadForm(FlaskForm):
         """
         for pic in field.data:
             if len(pic.filename) > 214:
-                raise ValidationError('Picture name cannot longer than 216 chars!')
+                raise ValidationError(_l('Picture name cannot longer than 216 chars!'))
 
 
 class ModelModifyForm(FlaskForm):
     """
         The form for staffs to modify the info of a model type
     """
-    name = StringField('Name', validators=[DataRequired(), Length(1, 128)],
+    name = StringField(_l('Name'), validators=[DataRequired(), Length(1, 128)],
                        render_kw={"data-errors": 'Please Enter Name.'})
-    description = StringField('Description', validators=[DataRequired()], render_kw={"row": 4})
-    price = FloatField('Price', validators=[DataRequired(), number_range(0, 999999999999)],
+    description = StringField(_l('Description'), validators=[DataRequired()], render_kw={"row": 4})
+    price = FloatField(_l('Price'), validators=[DataRequired(), number_range(0, 999999999999)],
                        render_kw={"data-errors": 'Please Enter Price.'})
-    stock = IntegerField('Stock', validators=[DataRequired(), number_range(0, 9999999)],
+    stock = IntegerField(_l('Stock'), validators=[DataRequired(), number_range(0, 9999999)],
                          render_kw={"data-errors": 'Please Enter Stock.'})
-    serial_number = StringField('Serial Number', validators=[DataRequired(), Length(1, 128)],
+    serial_number = StringField(_l('Serial Number'), validators=[DataRequired(), Length(1, 128)],
                                 render_kw={"data-errors": 'Please Enter Serial Number.'})
-    pictures = MultipleFileField('Pictures for exhibition', validators=[Length(0, 10, 'You must give 1-10 pictures of this commodity')])
-    intro_pictures = MultipleFileField('Introduction Pictures', validators=[Length(0, 10, 'You must give 1-10 introduction pictures')])
-    submit = SubmitField('Submit')
+    pictures = MultipleFileField(_l('Pictures for exhibition'), validators=[Length(0, 10, 'You must give 1-10 pictures of this commodity')])
+    intro_pictures = MultipleFileField(_l('Introduction Pictures'), validators=[Length(0, 10, 'You must give 1-10 introduction pictures')])
+    submit = SubmitField(_l('Submit'))
 
     # get the model_id of the
     def __init__(self, current_model_id):
@@ -119,7 +120,7 @@ class ModelModifyForm(FlaskForm):
         model_found = ModelType.query.filter_by(serial_number=field.data, is_deleted=False).first()
         # If the model type with the same serial number is not the current model itself
         if model_found is not None and model_found.id != self.current_model_id:
-            raise ValidationError('Serial Number already used.')
+            raise ValidationError(_l('Serial Number already used.'))
 
     def validate_pictures(self, field):
         """
@@ -129,7 +130,7 @@ class ModelModifyForm(FlaskForm):
         """
         for pic in field.data:
             if len(pic.filename) > 214:
-                raise ValidationError('Picture name cannot longer than 216 chars!')
+                raise ValidationError(_l('Picture name cannot longer than 216 chars!'))
 
     def validate_intro_pictures(self, field):
         """
@@ -139,4 +140,4 @@ class ModelModifyForm(FlaskForm):
         """
         for pic in field.data:
             if len(pic.filename) > 214:
-                raise ValidationError('Picture name cannot longer than 216 chars!')
+                raise ValidationError(_l('Picture name cannot longer than 216 chars!'))

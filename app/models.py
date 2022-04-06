@@ -783,9 +783,10 @@ class ModelType(BaseModel):
             new_mt = ModelType(name=name, description=description, price=price, weight=weight, stock=stock,
                                serial_number=serial_number, user_id=user_id, product_id=product_id)
             db.session.add(new_mt)
-            # add a pic for this model type
-            new_mt_pic = ModelTypePic(model_type=new_mt)
-            db.session.add(new_mt_pic)
+            # add several pics for this model type
+            for j in range(3):
+                new_mt_pic = ModelTypePic(model_type=new_mt)
+                db.session.add(new_mt_pic)
         db.session.commit()
 
 

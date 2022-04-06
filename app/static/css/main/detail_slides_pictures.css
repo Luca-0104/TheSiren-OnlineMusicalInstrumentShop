@@ -1,0 +1,66 @@
+* {
+    list-style: none;
+}
+
+/* the container of the pictures slide panel */
+.picture-panel-box {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    /*border: 10px solid #a3e5ff;*/
+    /*border-radius: 5px;*/
+    /*box-shadow: 20px 30px 20px rgba(0, 0, 0, .5);*/
+}
+
+/* The picture list */
+.pic-container {
+    padding: 0;
+    margin: 0;
+    margin-top: -6%;
+    width: 100%;    /* !! This should be changed by js (if 3 pics here, this should be 300%) */
+    height: auto;
+    display: flex;
+    position: absolute;
+    left: 0;
+    transition: .2s;
+}
+
+/* each single picture in the picture list */
+.pic-container .pic img {
+    /* size should be same as the picture-panel-box */
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    /* for test */
+    /*border: red 2px solid;*/
+}
+
+/* the outer box contains 'left' and 'right' button */
+.btn {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    /* the user cannot select the text in button by their cursor */
+    user-select: none;
+}
+
+/* the buttons inside the box */
+.btn-left, .btn-right {
+    font-size: 0;
+    padding: 0 20px;
+    /* the parent has the height of 500px, so that set line-height same as parent's height to locate at the center vertically  */
+    line-height: 680px;
+    transition: .5s;
+}
+
+/* when hovering the picture, we will show the buttons */
+.btn:hover .btn-left, .btn:hover .btn-right {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.4);
+    font-size: 50px;
+    cursor: pointer;
+}
