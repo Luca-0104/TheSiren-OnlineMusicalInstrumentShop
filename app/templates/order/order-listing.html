@@ -77,11 +77,11 @@
                         <!-- Auth -->
                         {% if session.get('username') %}
                             <a href="{{ url_for('auth.logout') }}" class="button small nav-button w-inline-block">
-                                <div>Logout</div>
+                                <div>{{ _('Logout') }}</div>
                             </a>
                         {% else %}
                             <a href="{{ url_for('auth.login') }}" class="button small nav-button w-inline-block">
-                                <div>Login</div>
+                                <div>{{ _('Login') }}</div>
                             </a>
                         {% endif %}
 
@@ -104,22 +104,22 @@
             <div class="main-container">
                 <div data-collapse="small" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-nav">
                     <div class="button bg-primary wide w-nav-button">
-                        <div>Menu</div>
+                        <div>{{ _('Menu') }}</div>
                     </div>
                     <nav role="navigation" class="w-nav-menu">
                         <div class="nav-menu-row">
                             <!-- Left side -->
                             <!-- All product -->
-                            <a href="shop.html" class="nav-link">All</a>
+                            <a href="shop.html" class="nav-link">{{ _('All') }}</a>
 
                             <!-- Specific -->
                             <div class="w-dyn-list">
                                 <div role="list" class="navbar-categories w-dyn-items">
                                     <div role="listitem" class="w-dyn-item">
-                                        <a href="#" class="nav-link">Gatagory</a>
+                                        <a href="#" class="nav-link">{{ _('Category') }}</a>
                                     </div>
                                     <div role="listitem" class="w-dyn-item">
-                                        <a href="#" class="nav-link">Brand</a>
+                                        <a href="#" class="nav-link">{{ _('Brand') }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -128,8 +128,8 @@
                             <div class="nav-menu-divider"></div>
 
                             <!-- Right side -->
-                            <a href="about.html" class="nav-link">About</a>
-                            <a href="contact.html" class="nav-link">Contact</a>
+                            <a href="about.html" class="nav-link">{{ _('About') }}</a>
+                            <a href="contact.html" class="nav-link">{{ _('Contact') }}</a>
                         </div>
                     </nav>
                 </div>
@@ -141,17 +141,17 @@
             <div class="main-container">
                 <!-- Cart -->
                 <div class="w-commerce-commercecartheader cart-header">
-                    <h4 class="w-commerce-commercecartheading">Your Order</h4>
+                    <h4 class="w-commerce-commercecartheading">{{ _('Your Order')}}</h4>
                     <a href="#" data-node-type="commerce-cart-close-link" class="w-commerce-commercecartcloselink close-cart-button w-inline-block">
                         <img src="images/icon-cross-large.svg" loading="lazy" alt="">
                     </a>
                 </div>
                 <div class="w-commerce-commercecartheader cart-header">
-                    <h6 class="w-commerce-commercecartheading subSec clickable selectedOne" subAim="-1">All</h6>
-                    <h6 class="w-commerce-commercecartheading subSec clickable" subAim="0">Unpaid</h6>
-                    <h6 class="w-commerce-commercecartheading subSec clickable" subAim="2">Delivering</h6>
-                    <h6 class="w-commerce-commercecartheading subSec clickable" subAim="3">Wait for Collection</h6>
-                    <h6 class="w-commerce-commercecartheading subSec clickable" subAim="4">Finished</h6>
+                    <h6 class="w-commerce-commercecartheading subSec clickable selectedOne" subAim="-1">{{ _('All') }}</h6>
+                    <h6 class="w-commerce-commercecartheading subSec clickable" subAim="0">{{ _('Unpaid') }}</h6>
+                    <h6 class="w-commerce-commercecartheading subSec clickable" subAim="2">{{ _('Delivering') }}</h6>
+                    <h6 class="w-commerce-commercecartheading subSec clickable" subAim="3">{{ _('Wait for Collection')}}</h6>
+                    <h6 class="w-commerce-commercecartheading subSec clickable" subAim="4">{{ _('Finished') }}</h6>
                 </div>
                 <div class="w-commerce-commercecartformwrapper">
                     <!-- List of Cart -->
@@ -160,13 +160,13 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        Order
+                                        {{ _('Order') }}
                                     </th>
                                     <th>
-                                        Models
+                                        {{ _('Models') }}
                                     </th>
                                     <th>
-                                        Status
+                                        {{ _('Status') }}
                                     </th>
                                 </tr>
                             </thead>
@@ -177,7 +177,7 @@
                                             <table border="1" width="100%" height="100%" class="clickable">
                                                 <tr>
                                                     <td>
-                                                        Recipient Name
+                                                        {{ _('Recipient Name')}}
                                                     </td>
                                                     <td>
                                                         {{ order.address.recipient_name }}
@@ -185,7 +185,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        Contact Phone
+                                                        {{ _('Contact Phone')}}
                                                     </td>
                                                     <td>
                                                         {{ order.address.phone }}
@@ -193,7 +193,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        Address
+                                                        {{ _('Address') }}
                                                     </td>
                                                     <td>
                                                         {{ order.address.country }} - {{ order.address.province_or_state }} - {{ order.address.city }} - {{ order.address.district }}
@@ -201,7 +201,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        Time Stamp
+                                                        {{ _('Time Stamp')}}
                                                     </td>
                                                     <td>
                                                         {{ order.timestamp }}
@@ -231,29 +231,29 @@
                                                 {% if order.status_code == 0 %}
                                                     <tr>
                                                         <td>
-                                                            Waiting for Payment
+                                                            {{ _('Waiting for Payment')}}
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>
-                                                            <a href="#">Pay</a>
+                                                            <a href="#">{{ _('Pay') }}</a>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>
-                                                            <a href="#" onclick="changeStatusTo({{ order.id }}, 5)">Cancel</a>
+                                                            <a href="#" onclick="changeStatusTo({{ order.id }}, 5)">{{ _('Cancel') }}</a>
                                                         </td>
                                                     </tr>
                                                 {% elif order.status_code == 1 %}
                                                     <tr>
                                                         <td>
-                                                            Preparing
+                                                            {{ _('Preparing') }}
                                                         </td>
                                                     </tr>
                                                 {% elif order.status_code == 2 %}
                                                     <tr>
                                                         <td>
-                                                            On Delivery
+                                                            {{ _('On Delivery')}}
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -264,25 +264,25 @@
                                                 {% elif order.status_code == 3 %}
                                                     <tr>
                                                         <td>
-                                                            Waiting for Collection
+                                                            {{ _('Waiting for Collection')}}
                                                         </td>
                                                     </tr>
                                                 {% elif order.status_code == 4 %}
                                                     <tr>
                                                         <td>
-                                                            Finished
+                                                            {{ _('Finished') }}
                                                         </td>
                                                     </tr>
                                                 {% elif order.status_code == 5 %}
                                                     <tr>
                                                         <td>
-                                                            Canceled
+                                                            {{ _('Canceled') }}
                                                         </td>
                                                     </tr>
                                                 {% elif order.status_code == 6 %}
                                                     <tr>
                                                         <td>
-                                                            Expired
+                                                            {{ _('Expired') }}
                                                         </td>
                                                     </tr>
                                                 {% endif %}
@@ -329,16 +329,16 @@
                             <a href="#" class="footer-logo-link w-inline-block">
                                 <img src="../../static/images/Black-logo-no-background.svg" loading="lazy" alt="" class="footer-logo">
                             </a>
-                            <div>34 Market Street, South Melbourne<br>Victoria 3009</div>
+                            <div>{{ _('34 Market Street, South Melbourne')}}<br>{{ _('Victoria 3009')}}</div>
                             <div class="contact-links in-footer">
                                 <a href="#" class="small-text">contact@website.com</a>
                                 <a href="#" class="small-text">(03) 92337 4627</a>
                             </div>
                         </div>
                         <div>
-                            <div class="uppercase-text links-grid-title">shop</div>
+                            <div class="uppercase-text links-grid-title">{{ _('shop') }}</div>
                             <div class="links-grid">
-                                <a href="shop.html" class="list-link">All</a>
+                                <a href="shop.html" class="list-link">{{ _('All') }}</a>
                                 <div class="w-dyn-list">
                                     <div role="list" class="links-grid w-dyn-items">
                                         <div role="listitem" class="w-dyn-item">
@@ -346,18 +346,18 @@
                                         </div>
                                     </div>
                                     <div class="w-dyn-empty">
-                                        <div>No items found.</div>
+                                        <div>{{ _('No items found.')}}</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div>
-                            <div class="uppercase-text links-grid-title">Company</div>
+                            <div class="uppercase-text links-grid-title">{{ _('Company') }}</div>
                             <div class="links-grid">
-                                <a href="about.html" class="list-link">About</a>
-                                <a href="journal.html" class="list-link">Journal</a>
-                                <a href="contact.html" class="list-link">Contact</a>
-                                <a href="refund-policy.html" class="list-link">Refund Policy</a>
+                                <a href="about.html" class="list-link">{{ _('About') }}</a>
+                                <a href="journal.html" class="list-link">{{ _('Journal') }}</a>
+                                <a href="contact.html" class="list-link">{{ _('Contact') }}</a>
+                                <a href="refund-policy.html" class="list-link">{{ _('Refund Policy')}}</a>
                             </div>
                         </div>
                         <div>

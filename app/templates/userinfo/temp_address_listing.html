@@ -20,7 +20,7 @@
     </head>
     <body>
         <div class="w-commerce-commercecartheader cart-header">
-            <h4 class="w-commerce-commercecartheading">Your Order</h4>
+            <h4 class="w-commerce-commercecartheading">{{ _('Your Order')}}</h4>
             <a href="#" data-node-type="commerce-cart-close-link" class="w-commerce-commercecartcloselink close-cart-button w-inline-block">
                 <img src="images/icon-cross-large.svg" loading="lazy" alt="">
             </a>
@@ -38,13 +38,13 @@
                             {% if address.is_default %}
                                 <tr>
                                     <td id="default_bar" address_id="{{ address.id }}" class="bg-primary" colspan="2" colspan="2">
-                                        Default
+                                        {{ _('Default') }}
                                     </td>
                                 </tr>
                             {% endif %}
                             <tr>
                                 <td class="title_section">
-                                    Recipient Name
+                                    {{ _('Recipient Name')}}
                                 </td>
                                 <td>
                                     {{ address.recipient_name }}
@@ -52,7 +52,7 @@
                             </tr>
                             <tr>
                                 <td class="title_section">
-                                    Phone
+                                    {{ _('Phone') }}
                                 </td>
                                 <td>
                                     {{ address.phone }}
@@ -60,7 +60,7 @@
                             </tr>
                             <tr>
                                 <td class="title_section">
-                                    Reciving Address
+                                    {{ _('Receiving Address')}}
                                 </td>
                                 <td>
                                     {{ address.country }} - {{ address.province_or_state }} - {{ address.city }} - {{ address.district }}
@@ -72,22 +72,23 @@
                                         <div id="action_{{ address.id }}" is_default="f" class="d-flex align-items-center list-action">
                                             <a id="default_btn_{{ address.id }}" class="badge badge-info mr-2" data-toggle="tooltip"
                                                data-placement="top" title="" data-original-title="View"
-                                               href="javascript:set_default({{ address.id }});"><i class="ri-eye-line mr-0">Set as Default</i></a>
+                                               href="javascript:set_default({{ address.id }});"><i class="ri-eye-line mr-0">{{ _('Set
+                                                    as Default')}}</i></a>
                                             <a class="badge bg-success mr-2" data-toggle="tooltip"
                                                data-placement="top" title="" data-original-title="Edit"
-                                               href="/edit-address/{{ address.id }}"><i class="ri-pencil-line mr-0">Edit</i></a>
+                                               href="/edit-address/{{ address.id }}"><i class="ri-pencil-line mr-0">{{ _('Edit') }}</i></a>
                                             <a class="badge bg-warning mr-2" data-toggle="tooltip"
                                                data-placement="top" title="" data-original-title="Delete"
-                                               href="javascript:remove_address({{ address.id }});"><i class="ri-delete-bin-line mr-0">Delete</i></a>
+                                               href="javascript:remove_address({{ address.id }});"><i class="ri-delete-bin-line mr-0">{{ _('Delete') }}</i></a>
                                         </div>
                                     {% else %}
                                         <div id="action_{{ address.id }}" is_default="t" lass="d-flex align-items-center list-action">
                                             <a class="badge bg-success mr-2" data-toggle="tooltip"
                                                data-placement="top" title="" data-original-title="Edit"
-                                               href="/edit-address/{{ address.id }}"><i class="ri-pencil-line mr-0">Edit</i></a>
+                                               href="/edit-address/{{ address.id }}"><i class="ri-pencil-line mr-0">{{ _('Edit') }}</i></a>
                                             <a class="badge bg-warning mr-2" data-toggle="tooltip"
                                                data-placement="top" title="" data-original-title="Delete"
-                                               href="javascript:remove_address({{ address.id }});"><i class="ri-delete-bin-line mr-0">Delete</i></a>
+                                               href="javascript:remove_address({{ address.id }});"><i class="ri-delete-bin-line mr-0">{{ _('Delete') }}</i></a>
                                         </div>
                                     {% endif %}
                                 </td>

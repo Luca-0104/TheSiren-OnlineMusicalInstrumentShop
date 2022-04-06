@@ -3,6 +3,7 @@
 """
 from flask import jsonify, request, flash, render_template, redirect, url_for, json
 from flask_login import login_required
+from flask_babel import _
 from sqlalchemy import and_
 from collections import defaultdict
 
@@ -240,7 +241,7 @@ def upload_product():
                 flash(flash_str)
 
             # go back to the management page after adding the new product (not matter are there any failures about pictures)
-            flash('New product and its models are uploaded successfully!')
+            flash(_('New product and its models are uploaded successfully!'))
             return redirect(url_for('product.show_page_stock_management'))
 
     return render_template('staff/page-add-product.html')
@@ -360,7 +361,7 @@ def modify_product(product_id):
         db.session.add(p)
         db.session.commit()
 
-        flash('The product information updated!')
+        flash(_('The product information updated!'))
 
         # back to the stock management page
         return redirect(url_for('product.show_page_stock_management'))
@@ -457,7 +458,7 @@ def upload_model_type(product_id):
                 flash(flash_str)
 
         else:  # The product does not exist
-            flash('Error! The product does not exist! Try it again!')
+            flash(_('Error! The product does not exist! Try it again!'))
 
         # back to the stock management page
         # return redirect(url_for('product.show_page_stock_management'))
@@ -568,7 +569,7 @@ def modify_model_type(model_id):
                 flash(flash_str)
         # --------------------------------------------------
         db.session.commit()
-        flash('Model updated!')
+        flash(_('Model updated!'))
         # back to the stock management page
         return redirect(url_for('product.show_page_stock_management'))
 

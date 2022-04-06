@@ -3,6 +3,7 @@ from urllib import parse
 
 from flask import request, redirect, url_for, flash, render_template, current_app
 from flask_login import login_required, current_user
+from flask_babel import _
 
 from app import db
 from app.models import Order, PremiumOrder
@@ -33,17 +34,17 @@ def pay_for_order_instrument():
             # check the status of this order (only "waiting for payment" is acceptable)
             if order.status_code != 0:
                 current_app.logger.warning('Attempt to double pay!')
-                flash("You cannot pay for the same order second time!")
+                flash(_("You cannot pay for the same order second time!"))
                 return redirect(url_for('main.index'))
 
             # check is that order belongs to current user
             if order not in current_user.orders:
                 current_app.logger.warning('Attempt to pay for others oder!')
-                flash("This is not your order, you cannot pay for it!")
+                flash(_("This is not your order, you cannot pay for it!"))
                 return redirect(url_for('main.index'))
         else:
             current_app.logger.warning('Order does not exist!')
-            flash("Order does not exist!")
+            flash(_("Order does not exist!"))
             return redirect(url_for('main.index'))
 
         """ update order information """
@@ -77,17 +78,17 @@ def pay_for_order_premium(p_order_id):
         # check the status of this order (only "waiting for payment" is acceptable)
         if p_order.is_paid:
             current_app.logger.warning('Attempt to double pay!')
-            flash("You cannot pay for the same order second time!")
+            flash(_("You cannot pay for the same order second time!"))
             return redirect(url_for('main.index'))
 
         # check is that order belongs to current user
         if p_order.user_id != current_user.id:
             current_app.logger.warning('Attempt to pay for others premiumOder!')
-            flash("This is not your premiumOrder, you cannot pay for it!")
+            flash(_("This is not your premiumOrder, you cannot pay for it!"))
             return redirect(url_for('main.index'))
     else:
         current_app.logger.warning('premiumOrder does not exist!')
-        flash("premiumOrder does not exist!")
+        flash(_("premiumOrder does not exist!"))
         return redirect(url_for('main.index'))
 
     """ call Alipay API """

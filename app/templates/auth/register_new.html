@@ -43,8 +43,8 @@
 <div class="announcement-bar">
     <div class="main-container">
         <div class="announcement-contents">
-            <div class="announcement-text">Welcome to Verse – An E-Commerce template for brand curators. <a
-                    href="https://mmra.re/portfolio" target="_blank">View all templates here</a>
+            <div class="announcement-text">{{ _('Welcome to Verse – An E-Commerce template for brand curators.') }} <a
+                    href="https://mmra.re/portfolio" target="_blank">{{ _('View all templates here') }}</a>
             </div>
         </div>
     </div>
@@ -57,7 +57,7 @@
             <a href="../index.html" class="w-inline-block"><img src="../images/Verse.svg" loading="eager" alt=""></a>
             <div id="w-node-dab1a8fd-38ef-ff9e-e737-a0bdf6abf413-f6abf40a" class="navbar-right-contents">
                 <a href="https://mmra.re/purchaseverse" class="button small nav-button w-inline-block">
-                    <div>Buy Now</div>
+                    <div>{{ _('Buy Now') }}</div>
                 </a>
                 <div data-node-type="commerce-cart-wrapper" data-open-product="" data-wf-cart-type="rightSidebar"
                      data-wf-cart-query="" data-wf-page-link-href-prefix="" class="w-commerce-commercecartwrapper">
@@ -71,7 +71,7 @@
                         <div data-node-type="commerce-cart-container"
                              class="w-commerce-commercecartcontainer cart-container">
                             <div class="w-commerce-commercecartheader cart-header">
-                                <h4 class="w-commerce-commercecartheading">Your Cart</h4>
+                                <h4 class="w-commerce-commercecartheading">{{ _('Your Cart') }}</h4>
                                 <a href="#" data-node-type="commerce-cart-close-link"
                                    class="w-commerce-commercecartcloselink close-cart-button w-inline-block"><img
                                         src="../images/icon-cross-large.svg" loading="lazy" alt=""></a>
@@ -86,7 +86,7 @@
                                          data-wf-template-id="wf-template-dab1a8fd-38ef-ff9e-e737-a0bdf6abf424"></div>
                                     <div class="w-commerce-commercecartfooter cart-footer">
                                         <div class="w-commerce-commercecartlineitem">
-                                            <div>Subtotal</div>
+                                            <div>{{ _('Subtotal') }}</div>
                                             <div class="w-commerce-commercecartordervalue"></div>
                                         </div>
                                         <div>
@@ -143,18 +143,18 @@
                                                                      points="15 15 9 15 9 9 15 9"></polygon>
                                                         </g>
                                                     </svg>
-                                                    <div>Pay with browser.</div>
+                                                    <div>{{ _('Pay with browser.') }}</div>
                                                 </a>
                                             </div>
                                             <a href="../checkout.html" value="Continue to Checkout"
                                                data-node-type="cart-checkout-button"
                                                class="w-commerce-commercecartcheckoutbutton button bg-primary-dark"
-                                               data-loading-text="Hang Tight...">Continue to Checkout</a>
+                                               data-loading-text="Hang Tight...">{{ _('Continue to Checkout') }}</a>
                                         </div>
                                     </div>
                                 </form>
                                 <div class="w-commerce-commercecartemptystate">
-                                    <div>No items found.</div>
+                                    <div>{{ _('No items found.') }}</div>
                                 </div>
                                 <div style="display:none" data-node-type="commerce-cart-error"
                                      class="w-commerce-commercecarterrorstate">
@@ -164,7 +164,7 @@
                                          data-w-cart-checkout-error="Checkout is disabled on this site."
                                          data-w-cart-cart_order_min-error="The order minimum was not met. Add more items to your cart to continue."
                                          data-w-cart-subscription_error-error="Before you purchase, please use your email invite to verify your address so we can send order updates.">
-                                        Product is not available in this quantity.
+                                        {{ _('Product is not available in this quantity.') }}
                                     </div>
                                 </div>
                             </div>
@@ -185,7 +185,7 @@
         <div data-collapse="small" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease"
              role="banner" class="navbar w-nav">
             <div class="button bg-primary wide w-nav-button">
-                <div>Menu</div>
+                <div>{{ _('Menu') }}</div>
             </div>
             <nav role="navigation" class="w-nav-menu">
                 <div class="nav-menu-row">
@@ -197,13 +197,13 @@
                             </div>
                         </div>
                         <div class="w-dyn-empty">
-                            <div>No items found.</div>
+                            <div>{{ _('No items found.') }}</div>
                         </div>
                     </div>
                     <div class="nav-menu-divider"></div>
-                    <a href="../about.html" class="nav-link">About</a>
-                    <a href="../journal.html" class="nav-link">Journal</a>
-                    <a href="../contact.html" class="nav-link">Contact</a>
+                    <a href="../about.html" class="nav-link">{{ _('About') }}</a>
+                    <a href="../journal.html" class="nav-link">{{ _('Journal') }}</a>
+                    <a href="../contact.html" class="nav-link">{{ _('Contact') }}</a>
                 </div>
             </nav>
         </div>
@@ -212,7 +212,7 @@
 <div class="footer wf-section">
     <div class="main-container">
         <div class="footer-subscribe-section">
-            <div><h3 class="no-bottom-margin">Join us now!</h3><br>
+            <div><h3 class="no-bottom-margin">{{ _('Join us now!') }}</h3><br>
             </div>
 
 
@@ -263,14 +263,14 @@
                 {#                        <input type="checkbox" name="remember-me" id="remember_me" value="true">keep me login</br>#}
                 {#                        <input type="submit" value="Login" data-wait="Please wait..." class="button w-button"></form>#}
                 <div class="form-success w-form-done">
-                    <div>Login success!</div>
+                    <div>{{ _('Login success!') }}</div>
                 </div>
                 <div class="form-error w-form-fail">
-                    <div>Oops! Something went wrong while submitting the form.</div>
+                    <div>{{ _('Oops! Something went wrong while submitting the form.') }}</div>
                 </div>
             </div>
-            <div class="fine-print-text form-hint-text">We will never share your personal information with third
-                parties.
+            <div class="fine-print-text form-hint-text">{{ _('We will never share your personal information with third
+                    parties.') }}
             </div>
 
             {#                <div><h4 class="no-bottom-margin">New here?#}
@@ -288,16 +288,16 @@
             <div id="w-node-_3ee0633f-a568-72e0-ab7b-589be9d960ed-e9d960d8" class="footer-contact-details">
                 <a href="#" class="footer-logo-link w-inline-block"><img src="../images/Verse.svg" loading="lazy" alt=""
                                                                          class="footer-logo"></a>
-                <div>34 Market Street, South Melbourne<br>Victoria 3009</div>
+                <div>{{ _('34 Market Street, South Melbourne') }}<br>{{ _('Victoria 3009') }}</div>
                 <div class="contact-links in-footer">
                     <a href="#" class="small-text">contact@website.com</a>
                     <a href="#" class="small-text">(03) 92337 4627</a>
                 </div>
             </div>
             <div>
-                <div class="uppercase-text links-grid-title">shop</div>
+                <div class="uppercase-text links-grid-title">{{ _('shop') }}</div>
                 <div class="links-grid">
-                    <a href="../shop.html" class="list-link">All</a>
+                    <a href="../shop.html" class="list-link">{{ _('All') }}</a>
                     <div class="w-dyn-list">
                         <div role="list" class="links-grid w-dyn-items">
                             <div role="listitem" class="w-dyn-item">
@@ -305,28 +305,28 @@
                             </div>
                         </div>
                         <div class="w-dyn-empty">
-                            <div>No items found.</div>
+                            <div>{{ _('No items found.') }}</div>
                         </div>
                     </div>
                 </div>
             </div>
             <div>
-                <div class="uppercase-text links-grid-title">Company</div>
+                <div class="uppercase-text links-grid-title">{{ _('Company') }}</div>
                 <div class="links-grid">
-                    <a href="../about.html" class="list-link">About</a>
-                    <a href="../journal.html" class="list-link">Journal</a>
-                    <a href="../contact.html" class="list-link">Contact</a>
-                    <a href="../refund-policy.html" class="list-link">Refund Policy</a>
+                    <a href="../about.html" class="list-link">{{ _('About') }}</a>
+                    <a href="../journal.html" class="list-link">{{ _('Journal') }}</a>
+                    <a href="../contact.html" class="list-link">{{ _('Contact') }}</a>
+                    <a href="../refund-policy.html" class="list-link">{{ _('Refund Policy') }}</a>
                 </div>
             </div>
             <div>
-                <div class="uppercase-text links-grid-title">Template</div>
+                <div class="uppercase-text links-grid-title">{{ _('Template') }}</div>
                 <div class="links-grid">
-                    <a href="../template/style-guide.html" class="list-link">Style Guide</a>
-                    <a href="../template/changelog.html" class="list-link">Changelog</a>
-                    <a href="../template/getting-started.html" class="list-link">Getting Started</a>
-                    <a href="../template/licensing.html" class="list-link">Licenses</a>
-                    <a href="https://mmra.re/portfolio" target="_blank" class="list-link">More Templates</a>
+                    <a href="../template/style-guide.html" class="list-link">{{ _('Style Guide')}}</a>
+                    <a href="../template/changelog.html" class="list-link">{{ -('Changelog') }}</a>
+                    <a href="../template/getting-started.html" class="list-link">{{ -('Getting Started') }}</a>
+                    <a href="../template/licensing.html" class="list-link">{{ _('Licenses') }}</a>
+                    <a href="https://mmra.re/portfolio" target="_blank" class="list-link">{{ _('More Templates') }}</a>
                 </div>
             </div>
         </div>

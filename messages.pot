@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-23 15:52+0800\n"
+"POT-Creation-Date: 2022-04-06 21:10+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,7 @@ msgstr ""
 "Generated-By: Babel 2.9.1\n"
 
 #: app/auth/forms.py:13 app/auth/forms.py:45
+#: app/templates/staff/backup-staff-modify.html:842
 msgid "Email"
 msgstr ""
 
@@ -29,7 +30,12 @@ msgstr ""
 msgid "keep me login"
 msgstr ""
 
-#: app/auth/forms.py:16
+#: app/auth/forms.py:16 app/templates/cart/page-cart.html:84
+#: app/templates/main/index_new.html:90
+#: app/templates/order/order-detail.html:84
+#: app/templates/order/order-listing.html:84
+#: app/templates/staff/backup-staff-modify.html:403
+#: app/templates/staff/page-list-product.html:488
 msgid "Login"
 msgstr ""
 
@@ -50,6 +56,8 @@ msgid "Confirm your password"
 msgstr ""
 
 #: app/auth/forms.py:48 app/templates/auth/login_new.html:219
+#: app/templates/staff/backup-staff-modify.html:408
+#: app/templates/staff/page-list-product.html:493
 msgid "Register"
 msgstr ""
 
@@ -57,52 +65,207 @@ msgstr ""
 msgid "Email already exists!"
 msgstr ""
 
-#: app/auth/views.py:23
+#: app/auth/views.py:30
 msgid "You have been logged out"
 msgstr ""
 
-#: app/auth/views.py:56
+#: app/auth/views.py:53
 msgid "Register Successfully! You can go for login now!"
 msgstr ""
 
-#: app/auth/views.py:86 app/templates/auth/login_new.html:265
+#: app/auth/views.py:104 app/templates/auth/login_new.html:265
+#: app/templates/auth/register_new.html:266
 msgid "Login success!"
 msgstr ""
 
-#: app/auth/views.py:98
+#: app/auth/views.py:116
 msgid "Login Failed! Check your username or password."
 msgstr ""
 
-#: app/templates/auth/login_new.html:46
+#: app/main/views.py:278
+msgid "No such commodity!"
+msgstr ""
+
+#: app/order/views.py:52 app/order/views.py:91
+msgid "Order created!"
+msgstr ""
+
+#: app/order/views.py:56
+msgid "Order generation failed!"
+msgstr ""
+
+#: app/order/views.py:111
+msgid "Permission denied!"
+msgstr ""
+
+#: app/order/views.py:284
+msgid "Error in Duration info!"
+msgstr ""
+
+#: app/order/views.py:288
+msgid "No duration info!"
+msgstr ""
+
+#: app/order/views.py:296
+msgid "Error in payment info!"
+msgstr ""
+
+#: app/order/views.py:300
+msgid "No payment info!"
+msgstr ""
+
+#: app/payment/views.py:37 app/payment/views.py:81
+msgid "You cannot pay for the same order second time!"
+msgstr ""
+
+#: app/payment/views.py:43
+msgid "This is not your order, you cannot pay for it!"
+msgstr ""
+
+#: app/payment/views.py:47
+msgid "Order does not exist!"
+msgstr ""
+
+#: app/payment/views.py:87
+msgid "This is not your premiumOrder, you cannot pay for it!"
+msgstr ""
+
+#: app/payment/views.py:91
+msgid "premiumOrder does not exist!"
+msgstr ""
+
+#: app/product/forms.py:12 app/product/forms.py:40 app/product/forms.py:97
+msgid "Name"
+msgstr ""
+
+#: app/product/forms.py:14 app/product/forms.py:49 app/product/forms.py:104
+#: app/templates/staff/backup-staff-modify.html:882
+msgid "Serial Number"
+msgstr ""
+
+#: app/product/forms.py:17 app/templates/cart/page-cart.html:122
+#: app/templates/main/index_new.html:242
+#: app/templates/order/order-detail.html:122
+#: app/templates/order/order-listing.html:122
+#: app/templates/staff/backup-staff-modify.html:991
+msgid "Brand"
+msgstr ""
+
+#: app/product/forms.py:18 app/templates/staff/backup-staff-modify.html:68
+#: app/templates/staff/backup-staff-modify.html:1060
+#: app/templates/staff/page-list-product.html:79
+msgid "Add Product"
+msgstr ""
+
+#: app/product/forms.py:33 app/product/forms.py:123
+msgid "Serial Number already used."
+msgstr ""
+
+#: app/product/forms.py:42 app/product/forms.py:99
+msgid "Description"
+msgstr ""
+
+#: app/product/forms.py:43 app/product/forms.py:100
+#: app/templates/cart/page-cart.html:165
+#: app/templates/order/order-confirm.html:908
+#: app/templates/staff/backup-staff-modify.html:1026
+msgid "Price"
+msgstr ""
+
+#: app/product/forms.py:45 app/product/forms.py:102
+msgid "Stock"
+msgstr ""
+
+#: app/product/forms.py:50 app/product/forms.py:106
+msgid "Pictures for exhibition"
+msgstr ""
+
+#: app/product/forms.py:53 app/product/forms.py:107
+msgid "Introduction Pictures"
+msgstr ""
+
+#: app/product/forms.py:56 app/product/forms.py:108
+msgid "Submit"
+msgstr ""
+
+#: app/product/forms.py:70
+msgid "Serial Number already used in other model of this product!"
+msgstr ""
+
+#: app/product/forms.py:80 app/product/forms.py:90 app/product/forms.py:133
+#: app/product/forms.py:143
+msgid "Picture name cannot longer than 216 chars!"
+msgstr ""
+
+#: app/product/views.py:244
+msgid "New product and its models are uploaded successfully!"
+msgstr ""
+
+#: app/product/views.py:364
+msgid "The product information updated!"
+msgstr ""
+
+#: app/product/views.py:461
+msgid "Error! The product does not exist! Try it again!"
+msgstr ""
+
+#: app/product/views.py:572
+msgid "Model updated!"
+msgstr ""
+
+#: app/templates/auth/login_new.html:46 app/templates/auth/register_new.html:46
 msgid "Welcome to Verse – An E-Commerce template for brand curators."
 msgstr ""
 
-#: app/templates/auth/login_new.html:47
+#: app/templates/auth/login_new.html:47 app/templates/auth/register_new.html:47
 msgid "View all templates here"
 msgstr ""
 
-#: app/templates/auth/login_new.html:60
+#: app/templates/auth/login_new.html:60 app/templates/auth/register_new.html:60
+#: app/templates/order/order-confirm.html:69
 msgid "Buy Now"
 msgstr ""
 
-#: app/templates/auth/login_new.html:74
+#: app/templates/auth/login_new.html:74 app/templates/auth/register_new.html:74
+#: app/templates/cart/page-cart.html:144 app/templates/main/index_new.html:107
+#: app/templates/order/order-confirm.html:83
 msgid "Your Cart"
 msgstr ""
 
-#: app/templates/auth/login_new.html:89
+#: app/templates/auth/login_new.html:89 app/templates/auth/register_new.html:89
+#: app/templates/main/index_new.html:122
+#: app/templates/order/order-confirm.html:98
+#: app/templates/order/order-confirm.html:950
 msgid "Subtotal"
 msgstr ""
 
 #: app/templates/auth/login_new.html:146
+#: app/templates/auth/register_new.html:146
+#: app/templates/main/index_new.html:176
+#: app/templates/order/order-confirm.html:252
+#: app/templates/userinfo/user_profile.html:165
 msgid "Pay with browser."
 msgstr ""
 
 #: app/templates/auth/login_new.html:152
+#: app/templates/auth/register_new.html:152
+#: app/templates/cart/page-cart.html:231 app/templates/main/index_new.html:182
+#: app/templates/order/order-confirm.html:141
+#: app/templates/userinfo/user_profile.html:171
 msgid "Continue to Checkout"
 msgstr ""
 
 #: app/templates/auth/login_new.html:157 app/templates/auth/login_new.html:200
 #: app/templates/auth/login_new.html:307
+#: app/templates/auth/register_new.html:157
+#: app/templates/auth/register_new.html:200
+#: app/templates/auth/register_new.html:308
+#: app/templates/cart/page-cart.html:287 app/templates/main/index_new.html:187
+#: app/templates/main/index_new.html:1292
+#: app/templates/order/order-confirm.html:146
+#: app/templates/order/order-confirm.html:1036
+#: app/templates/order/order-listing.html:349
+#: app/templates/userinfo/user_profile.html:221
 msgid "No items found."
 msgstr ""
 
@@ -111,22 +274,65 @@ msgid "Search here"
 msgstr ""
 
 #: app/templates/auth/login_new.html:188
+#: app/templates/auth/register_new.html:188
+#: app/templates/cart/page-cart.html:107 app/templates/main/index_new.html:222
+#: app/templates/order/order-confirm.html:177
+#: app/templates/order/order-detail.html:107
+#: app/templates/order/order-listing.html:107
+#: app/templates/userinfo/user_profile.html:209
 msgid "Menu"
 msgstr ""
 
 #: app/templates/auth/login_new.html:192 app/templates/auth/login_new.html:299
+#: app/templates/auth/register_new.html:300
+#: app/templates/cart/page-cart.html:113 app/templates/cart/page-cart.html:279
+#: app/templates/main/index_new.html:228 app/templates/main/index_new.html:1284
+#: app/templates/order/order-confirm.html:181
+#: app/templates/order/order-confirm.html:1028
+#: app/templates/order/order-detail.html:113
+#: app/templates/order/order-listing.html:113
+#: app/templates/order/order-listing.html:150
+#: app/templates/order/order-listing.html:341
+#: app/templates/userinfo/user_profile.html:213
 msgid "All"
 msgstr ""
 
 #: app/templates/auth/login_new.html:204 app/templates/auth/login_new.html:315
+#: app/templates/auth/register_new.html:204
+#: app/templates/auth/register_new.html:316
+#: app/templates/cart/page-cart.html:131 app/templates/cart/page-cart.html:295
+#: app/templates/main/index_new.html:256 app/templates/main/index_new.html:1300
+#: app/templates/order/order-confirm.html:193
+#: app/templates/order/order-confirm.html:1044
+#: app/templates/order/order-detail.html:131
+#: app/templates/order/order-listing.html:131
+#: app/templates/order/order-listing.html:357
+#: app/templates/userinfo/user_profile.html:225
 msgid "About"
 msgstr ""
 
 #: app/templates/auth/login_new.html:205 app/templates/auth/login_new.html:316
+#: app/templates/auth/register_new.html:205
+#: app/templates/auth/register_new.html:317
+#: app/templates/cart/page-cart.html:296 app/templates/main/index_new.html:1301
+#: app/templates/order/order-confirm.html:194
+#: app/templates/order/order-confirm.html:1045
+#: app/templates/order/order-listing.html:358
+#: app/templates/userinfo/user_profile.html:226
 msgid "Journal"
 msgstr ""
 
 #: app/templates/auth/login_new.html:206 app/templates/auth/login_new.html:317
+#: app/templates/auth/register_new.html:206
+#: app/templates/auth/register_new.html:318
+#: app/templates/cart/page-cart.html:132 app/templates/cart/page-cart.html:297
+#: app/templates/main/index_new.html:257 app/templates/main/index_new.html:1302
+#: app/templates/order/order-confirm.html:195
+#: app/templates/order/order-confirm.html:1046
+#: app/templates/order/order-detail.html:132
+#: app/templates/order/order-listing.html:132
+#: app/templates/order/order-listing.html:359
+#: app/templates/userinfo/user_profile.html:227
 msgid "Contact"
 msgstr ""
 
@@ -139,20 +345,30 @@ msgid "New here?"
 msgstr ""
 
 #: app/templates/auth/login_new.html:268
+#: app/templates/auth/register_new.html:269
 msgid "Oops! Something went wrong while submitting the form."
 msgstr ""
 
 #: app/templates/auth/login_new.html:271
+#: app/templates/auth/register_new.html:272
 msgid ""
 "We will never share your personal information with third\n"
 "                    parties."
 msgstr ""
 
 #: app/templates/auth/login_new.html:290
+#: app/templates/auth/register_new.html:291
+#: app/templates/cart/page-cart.html:270 app/templates/main/index_new.html:1275
+#: app/templates/order/order-confirm.html:1019
+#: app/templates/order/order-listing.html:332
 msgid "34 Market Street, South Melbourne"
 msgstr ""
 
 #: app/templates/auth/login_new.html:290
+#: app/templates/auth/register_new.html:291
+#: app/templates/cart/page-cart.html:270 app/templates/main/index_new.html:1275
+#: app/templates/order/order-confirm.html:1019
+#: app/templates/order/order-listing.html:332
 msgid "Victoria 3009"
 msgstr ""
 
@@ -165,22 +381,37 @@ msgid "(03) 92337 4627"
 msgstr ""
 
 #: app/templates/auth/login_new.html:297
+#: app/templates/auth/register_new.html:298
+#: app/templates/cart/page-cart.html:277 app/templates/main/index_new.html:1282
+#: app/templates/order/order-confirm.html:1026
+#: app/templates/order/order-listing.html:339
 msgid "shop"
 msgstr ""
 
 #: app/templates/auth/login_new.html:313
+#: app/templates/auth/register_new.html:314
+#: app/templates/cart/page-cart.html:293 app/templates/main/index_new.html:1298
+#: app/templates/order/order-confirm.html:1042
+#: app/templates/order/order-listing.html:355
 msgid "Company"
 msgstr ""
 
 #: app/templates/auth/login_new.html:318
+#: app/templates/auth/register_new.html:319
+#: app/templates/cart/page-cart.html:298 app/templates/main/index_new.html:1303
+#: app/templates/order/order-confirm.html:1047
+#: app/templates/order/order-listing.html:360
 msgid "Refund Policy"
 msgstr ""
 
 #: app/templates/auth/login_new.html:322
+#: app/templates/auth/register_new.html:323
+#: app/templates/order/order-confirm.html:1051
 msgid "Template"
 msgstr ""
 
 #: app/templates/auth/login_new.html:324
+#: app/templates/auth/register_new.html:325
 msgid "Style Guide"
 msgstr ""
 
@@ -193,10 +424,837 @@ msgid "Getting Started"
 msgstr ""
 
 #: app/templates/auth/login_new.html:327
+#: app/templates/auth/register_new.html:328
 msgid "Licenses"
 msgstr ""
 
 #: app/templates/auth/login_new.html:328
+#: app/templates/auth/register_new.html:329
 msgid "More Templates"
+msgstr ""
+
+#: app/templates/auth/register_new.html:167
+#: app/templates/main/index_new.html:197
+#: app/templates/order/order-confirm.html:156
+#: app/templates/userinfo/user_profile.html:186
+msgid "Product is not available in this quantity."
+msgstr ""
+
+#: app/templates/auth/register_new.html:215
+msgid "Join us now!"
+msgstr ""
+
+#: app/templates/cart/page-cart.html:80 app/templates/main/index_new.html:86
+#: app/templates/order/order-detail.html:80
+#: app/templates/order/order-listing.html:80
+msgid "Logout"
+msgstr ""
+
+#: app/templates/cart/page-cart.html:119 app/templates/main/index_new.html:234
+#: app/templates/order/order-detail.html:119
+msgid "Gatagory"
+msgstr ""
+
+#: app/templates/cart/page-cart.html:156
+msgid "Select"
+msgstr ""
+
+#: app/templates/cart/page-cart.html:159
+#: app/templates/order/order-confirm.html:902
+msgid "Model Info"
+msgstr ""
+
+#: app/templates/cart/page-cart.html:162
+#: app/templates/order/order-confirm.html:905
+#: app/templates/staff/backup-staff-modify.html:1042
+msgid "Quantity"
+msgstr ""
+
+#: app/templates/cart/page-cart.html:209
+msgid "Remove"
+msgstr ""
+
+#: app/templates/cart/page-cart.html:220
+msgid "Total Cost"
+msgstr ""
+
+#: app/templates/main/index_new.html:393
+msgid "Featured"
+msgstr ""
+
+#: app/templates/main/index_new.html:393
+msgid "Collection"
+msgstr ""
+
+#: app/templates/main/index_new.html:539
+msgid "Your"
+msgstr ""
+
+#: app/templates/main/index_new.html:539
+msgid "Interests"
+msgstr ""
+
+#: app/templates/main/index_new.html:692
+msgid "About Us"
+msgstr ""
+
+#: app/templates/main/index_new.html:704
+msgid "Just Arrived"
+msgstr ""
+
+#: app/templates/main/index_new.html:860
+msgid "Join"
+msgstr ""
+
+#: app/templates/main/index_new.html:867
+msgid "Get In Touch"
+msgstr ""
+
+#: app/templates/order/order-confirm.html:270
+msgid "Shipping Address"
+msgstr ""
+
+#: app/templates/order/order-confirm.html:271
+msgid "Required"
+msgstr ""
+
+#: app/templates/order/order-confirm.html:274
+msgid "Full Name"
+msgstr ""
+
+#: app/templates/order/order-confirm.html:277
+msgid "Street Address"
+msgstr ""
+
+#: app/templates/order/order-confirm.html:285
+msgid "City"
+msgstr ""
+
+#: app/templates/order/order-confirm.html:291
+msgid "State/Province"
+msgstr ""
+
+#: app/templates/order/order-confirm.html:296
+msgid "Zip/Postal Code"
+msgstr ""
+
+#: app/templates/order/order-confirm.html:303
+msgid "Country"
+msgstr ""
+
+#: app/templates/order/order-confirm.html:558
+msgid "Shipping Method"
+msgstr ""
+
+#: app/templates/order/order-confirm.html:579
+msgid "No shipping methods are available for the address given."
+msgstr ""
+
+#: app/templates/order/order-confirm.html:946
+msgid "Order Summary"
+msgstr ""
+
+#: app/templates/order/order-confirm.html:964
+msgid "Total"
+msgstr ""
+
+#: app/templates/order/order-confirm.html:971
+msgid "Place Order"
+msgstr ""
+
+#: app/templates/order/order-confirm.html:987
+msgid ""
+"There was an error processing your customer info. Please try again, or "
+"contact us if you\n"
+"                                continue to have problems."
+msgstr ""
+
+#: app/templates/order/order-detail.html:144
+#: app/templates/order/order-listing.html:144
+#: app/templates/userinfo/temp_address_listing.html:23
+msgid "Your Order"
+msgstr ""
+
+#: app/templates/order/order-detail.html:156
+#: app/templates/order/order-listing.html:163
+#: app/templates/userinfo/user_profile.html:79
+#: app/templates/userinfo/user_profile.html:255
+msgid "Order"
+msgstr ""
+
+#: app/templates/order/order-detail.html:159
+#: app/templates/order/order-listing.html:166
+msgid "Models"
+msgstr ""
+
+#: app/templates/order/order-detail.html:162
+#: app/templates/order/order-listing.html:169
+msgid "Status"
+msgstr ""
+
+#: app/templates/order/order-detail.html:172
+msgid "Order ID"
+msgstr ""
+
+#: app/templates/order/order-detail.html:180
+#: app/templates/order/order-listing.html:196
+#: app/templates/userinfo/user_profile.html:243
+msgid "Address"
+msgstr ""
+
+#: app/templates/order/order-listing.html:119
+#: app/templates/staff/backup-staff-modify.html:1005
+msgid "Category"
+msgstr ""
+
+#: app/templates/order/order-listing.html:151
+msgid "Unpaid"
+msgstr ""
+
+#: app/templates/order/order-listing.html:152
+msgid "Delivering"
+msgstr ""
+
+#: app/templates/order/order-listing.html:153
+msgid "Wait for Collection"
+msgstr ""
+
+#: app/templates/order/order-listing.html:154
+#: app/templates/order/order-listing.html:273
+msgid "Finished"
+msgstr ""
+
+#: app/templates/order/order-listing.html:180
+#: app/templates/userinfo/temp_address_listing.html:47
+#: app/templates/userinfo/user_profile.html:393
+msgid "Recipient Name"
+msgstr ""
+
+#: app/templates/order/order-listing.html:188
+msgid "Contact Phone"
+msgstr ""
+
+#: app/templates/order/order-listing.html:204
+msgid "Time Stamp"
+msgstr ""
+
+#: app/templates/order/order-listing.html:234
+msgid "Waiting for Payment"
+msgstr ""
+
+#: app/templates/order/order-listing.html:239
+msgid "Pay"
+msgstr ""
+
+#: app/templates/order/order-listing.html:244
+#: app/templates/staff/backup-staff-modify.html:847
+msgid "Cancel"
+msgstr ""
+
+#: app/templates/order/order-listing.html:250
+msgid "Preparing"
+msgstr ""
+
+#: app/templates/order/order-listing.html:256
+msgid "On Delivery"
+msgstr ""
+
+#: app/templates/order/order-listing.html:267
+msgid "Waiting for Collection"
+msgstr ""
+
+#: app/templates/order/order-listing.html:279
+msgid "Canceled"
+msgstr ""
+
+#: app/templates/order/order-listing.html:285
+msgid "Expired"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:31
+msgid "Siren Management"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:45
+msgid "Dashboards"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:54
+#: app/templates/staff/page-list-product.html:63
+msgid "Products"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:63
+#: app/templates/staff/page-list-product.html:74
+msgid "List Product"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:86
+#: app/templates/staff/page-list-product.html:103
+msgid "List Category"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:91
+#: app/templates/staff/page-list-product.html:108
+msgid "Add Category"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:101
+msgid "Sale"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:109
+#: app/templates/staff/page-list-product.html:132
+msgid "List Sale"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:114
+#: app/templates/staff/page-list-product.html:137
+msgid "Add Sale"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:124
+msgid "Purchases"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:132
+#: app/templates/staff/page-list-product.html:161
+msgid "List Purchases"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:137
+#: app/templates/staff/page-list-product.html:166
+msgid "Add purchase"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:155
+#: app/templates/staff/page-list-product.html:192
+msgid "List Returns"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:160
+#: app/templates/staff/page-list-product.html:197
+msgid "Add Return"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:170
+msgid "People"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:178
+#: app/templates/staff/page-list-product.html:223
+msgid "Customers"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:183
+#: app/templates/staff/page-list-product.html:228
+msgid "Add Customers"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:188
+#: app/templates/staff/page-list-product.html:233
+msgid "Users"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:193
+#: app/templates/staff/page-list-product.html:238
+msgid "Add Users"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:198
+#: app/templates/staff/page-list-product.html:243
+msgid "Suppliers"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:203
+#: app/templates/staff/page-list-product.html:248
+msgid "Add Suppliers"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:213
+#: app/templates/staff/page-list-product.html:264
+msgid "Reports"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:223
+msgid "other page"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:234
+#: app/templates/staff/page-list-product.html:297
+msgid "User Details"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:242
+#: app/templates/staff/page-list-product.html:309
+msgid "User Profile"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:247
+#: app/templates/staff/page-list-product.html:314
+msgid "User Add"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:252
+#: app/templates/staff/page-list-product.html:319
+msgid "User List"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:262
+msgid "UI Elements"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:270
+#: app/templates/staff/page-list-product.html:344
+msgid "Avatars"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:275
+#: app/templates/staff/page-list-product.html:349
+msgid "Alerts"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:280
+#: app/templates/staff/page-list-product.html:354
+msgid "Badges"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:285
+#: app/templates/staff/page-list-product.html:359
+msgid "Breadcrumb"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:290
+#: app/templates/staff/page-list-product.html:364
+msgid "Buttons"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:295
+#: app/templates/staff/page-list-product.html:369
+msgid "Buttons Group"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:300
+#: app/templates/staff/page-list-product.html:374
+msgid "Box Shadow"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:305
+#: app/templates/staff/page-list-product.html:379
+msgid "Colors"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:310
+#: app/templates/staff/page-list-product.html:384
+msgid "Cards"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:315
+#: app/templates/staff/page-list-product.html:389
+msgid "Carousel"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:320
+#: app/templates/staff/page-list-product.html:394
+msgid "Grid"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:325
+msgid "Helper classes"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:330
+#: app/templates/staff/page-list-product.html:404
+msgid "Images"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:335
+#: app/templates/staff/page-list-product.html:409
+msgid "list Group"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:340
+#: app/templates/staff/page-list-product.html:414
+msgid "Media"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:345
+#: app/templates/staff/page-list-product.html:419
+msgid "Modal"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:350
+#: app/templates/staff/backup-staff-modify.html:751
+#: app/templates/staff/page-list-product.html:424
+msgid "Notifications"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:355
+#: app/templates/staff/page-list-product.html:429
+msgid "Pagination"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:360
+#: app/templates/staff/page-list-product.html:434
+msgid "Popovers"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:365
+#: app/templates/staff/page-list-product.html:439
+msgid "Progressbars"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:370
+#: app/templates/staff/page-list-product.html:444
+msgid "Typography"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:375
+#: app/templates/staff/page-list-product.html:449
+msgid "Tabs"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:380
+#: app/templates/staff/page-list-product.html:454
+msgid "Tooltips"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:385
+#: app/templates/staff/page-list-product.html:459
+msgid "Video"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:395
+msgid "Authentication"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:413
+#: app/templates/staff/page-list-product.html:498
+msgid "Recover Password"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:418
+#: app/templates/staff/page-list-product.html:503
+msgid "Confirm Mail"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:423
+#: app/templates/staff/page-list-product.html:508
+msgid "Lock Screen"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:433
+msgid "Forms"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:441
+#: app/templates/staff/page-list-product.html:534
+msgid "Form Elements"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:446
+#: app/templates/staff/page-list-product.html:539
+msgid "Form Input"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:451
+#: app/templates/staff/page-list-product.html:544
+msgid "Form Validation"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:456
+#: app/templates/staff/page-list-product.html:549
+msgid "Form Switch"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:461
+#: app/templates/staff/page-list-product.html:554
+msgid "Form Checkbox"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:466
+#: app/templates/staff/page-list-product.html:559
+msgid "Form Radio"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:471
+#: app/templates/staff/page-list-product.html:564
+msgid "Form Textarea"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:489
+#: app/templates/staff/page-list-product.html:592
+msgid "Basic Tables"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:494
+#: app/templates/staff/page-list-product.html:597
+msgid "Data Table"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:499
+#: app/templates/staff/page-list-product.html:602
+msgid "Table Tree"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:509
+msgid "Pricing"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:532
+#: app/templates/staff/page-list-product.html:651
+msgid "Invoice"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:540
+#: app/templates/staff/page-list-product.html:664
+msgid "Error"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:563
+#: app/templates/staff/page-list-product.html:695
+msgid "Blank Page"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:571
+#: app/templates/staff/page-list-product.html:706
+msgid "Maintenance"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:583
+#: app/templates/staff/page-list-product.html:720
+msgid "Get More Feature by Upgrading"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:584
+#: app/templates/staff/page-list-product.html:721
+msgid "Go Premium"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:682
+msgid "All Messages"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:799
+msgid ""
+"View\n"
+"                                                            All"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:839
+#: app/templates/staff/page-list-product.html:823
+msgid "New Order"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:848
+msgid "Create"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:864
+msgid "Modify Product"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:891
+msgid "Classification"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:905
+msgid "Type"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:977
+msgid "Extra Requirement"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:1019
+msgid "Cost"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:1033
+msgid "Tax Method"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:1049
+msgid "Image"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:1055
+msgid "Description / Product Details"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:1061
+msgid "Reset"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:1080
+msgid "Privacy Policy"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:1081
+msgid "Terms of Use"
+msgstr ""
+
+#: app/templates/userinfo/temp_address_listing.html:41
+#: app/templates/userinfo/user_profile.html:387
+msgid "Default"
+msgstr ""
+
+#: app/templates/userinfo/temp_address_listing.html:55
+#: app/templates/userinfo/user_profile.html:401
+msgid "Phone"
+msgstr ""
+
+#: app/templates/userinfo/temp_address_listing.html:63
+#: app/templates/userinfo/user_profile.html:409
+msgid "Receiving Address"
+msgstr ""
+
+#: app/templates/userinfo/temp_address_listing.html:75
+msgid ""
+"Set\n"
+"                                                    as Default"
+msgstr ""
+
+#: app/templates/userinfo/temp_address_listing.html:79
+#: app/templates/userinfo/temp_address_listing.html:88
+#: app/templates/userinfo/user_profile.html:311
+#: app/templates/userinfo/user_profile.html:429
+#: app/templates/userinfo/user_profile.html:441
+msgid "Edit"
+msgstr ""
+
+#: app/templates/userinfo/temp_address_listing.html:82
+#: app/templates/userinfo/temp_address_listing.html:91
+#: app/templates/userinfo/user_profile.html:433
+#: app/templates/userinfo/user_profile.html:445
+msgid "Delete"
+msgstr ""
+
+#: app/templates/userinfo/user_profile.html:75
+msgid "Cart"
+msgstr ""
+
+#: app/templates/userinfo/user_profile.html:240
+msgid "Information"
+msgstr ""
+
+#: app/templates/userinfo/user_profile.html:246
+msgid "Followed Brand"
+msgstr ""
+
+#: app/templates/userinfo/user_profile.html:249
+msgid "Followed Category"
+msgstr ""
+
+#: app/templates/userinfo/user_profile.html:252
+msgid "Prime"
+msgstr ""
+
+#: app/templates/userinfo/user_profile.html:340
+msgid "Describe yourself..."
+msgstr ""
+
+#: app/templates/userinfo/user_profile.html:356
+msgid "Member since "
+msgstr ""
+
+#: app/templates/userinfo/user_profile.html:375
+msgid "Add"
+msgstr ""
+
+#: app/templates/userinfo/user_profile.html:425
+msgid "Set as Default"
+msgstr ""
+
+#: app/userinfo/forms.py:11 app/userinfo/forms.py:22
+msgid "Recipient Name: "
+msgstr ""
+
+#: app/userinfo/forms.py:12 app/userinfo/forms.py:23
+msgid "Phone: "
+msgstr ""
+
+#: app/userinfo/forms.py:13 app/userinfo/forms.py:24
+msgid "Country: "
+msgstr ""
+
+#: app/userinfo/forms.py:14 app/userinfo/forms.py:25
+msgid "Province or State:"
+msgstr ""
+
+#: app/userinfo/forms.py:15 app/userinfo/forms.py:26
+msgid "City:"
+msgstr ""
+
+#: app/userinfo/forms.py:16 app/userinfo/forms.py:27
+msgid "District: "
+msgstr ""
+
+#: app/userinfo/forms.py:17
+msgid "Add Address"
+msgstr ""
+
+#: app/userinfo/forms.py:28
+msgid "Update Address"
+msgstr ""
+
+#: app/userinfo/forms.py:32
+msgid "Email: "
+msgstr ""
+
+#: app/userinfo/forms.py:33
+msgid "Username: "
+msgstr ""
+
+#: app/userinfo/forms.py:37
+msgid "About Me: "
+msgstr ""
+
+#: app/userinfo/forms.py:38
+msgid "Gender: "
+msgstr ""
+
+#: app/userinfo/forms.py:40
+msgid "Update Profile"
+msgstr ""
+
+#: app/userinfo/forms.py:49
+msgid "New username already used."
+msgstr ""
+
+#: app/userinfo/forms.py:54
+msgid "New email address already used."
+msgstr ""
+
+#: app/userinfo/forms.py:58
+msgid "Avatar: "
+msgstr ""
+
+#: app/userinfo/forms.py:66
+msgid "Update Avatar"
+msgstr ""
+
+#: app/userinfo/views.py:41
+msgid "Profile update successfully!"
+msgstr ""
+
+#: app/userinfo/views.py:68
+msgid "Avatar update successfully!"
+msgstr ""
+
+#: app/userinfo/views.py:96
+msgid "Address added successfully!"
+msgstr ""
+
+#: app/userinfo/views.py:116
+msgid "Address updated successfully!"
+msgstr ""
+
+#: app/userinfo/views.py:327
+msgid "Address has been deleted!"
+msgstr ""
+
+#: app/userinfo/views.py:363
+msgid "Default address changed successfully!"
 msgstr ""
 
