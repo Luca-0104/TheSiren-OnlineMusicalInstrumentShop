@@ -51,6 +51,12 @@
     float: left;
 }
 
+#avatar{
+    height: 100%;
+    width: 100%;
+    border: 1px solid;
+}
+
 /*.email-name {*/
 /*    margin-top: 20px;*/
 /*    width: 455px;*/
@@ -202,4 +208,5 @@
 
 #change_avatar_form {
     line-height: 200%;
+    height: 40%;
 }
