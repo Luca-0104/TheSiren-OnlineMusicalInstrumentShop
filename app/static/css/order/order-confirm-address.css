@@ -1,9 +1,0 @@
-.address{
-    list-style: none;
-    border: red 1px solid;
-}
-
-/* THis class should be added to the selected address by js */
-.chosen-address{
-    background-color: #3A7734;
-}

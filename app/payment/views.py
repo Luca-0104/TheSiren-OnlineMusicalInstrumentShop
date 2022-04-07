@@ -12,7 +12,7 @@ from app.payment import payment
 from alipay import AliPay, AliPayConfig
 
 
-@payment.route('/pay-for-order/instrument', methods=['POST'])
+@payment.route('/api/pay-for-order/instrument', methods=['POST'])
 @login_required
 def pay_for_order_instrument():
     """

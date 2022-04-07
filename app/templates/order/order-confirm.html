@@ -21,7 +21,7 @@
     <link href="../../static/css/normalize.css" rel="stylesheet" type="text/css">
     <link href="../../static/css/webflow.css" rel="stylesheet" type="text/css">
     <link href="../../static/css/jacks-supercool-site-c6dd88.webflow.css" rel="stylesheet" type="text/css">
-    <link href="../../static/css/order/order-confirm-address.css" rel="stylesheet" type="text/css">
+    <link href="../../static/css/order/order-confirm.css" rel="stylesheet" type="text/css">
 
 
     <!-- [if lt IE 9]>
@@ -254,37 +254,46 @@
                         <div>{{ _('Pay with browser.')}}</div>
                     </a>
                 </div>
-{#                <form data-node-type="commerce-checkout-customer-info-wrapper"#}
-{#                      class="w-commerce-commercecheckoutcustomerinfowrapper">#}
-{#                    <div class="w-commerce-commercecheckoutblockheader block-header">#}
-{#                        <h4 class="checkout-heading">Customer Info</h4>#}
-{#                        <div class="fine-print-text">* Required</div>#}
-{#                    </div>#}
-{#                    <fieldset class="w-commerce-commercecheckoutblockcontent"><label#}
-{#                            class="w-commerce-commercecheckoutlabel">Email *</label><input type="text" name="email"#}
-{#                                                                                           required=""#}
-{#                                                                                           class="w-commerce-commercecheckoutemailinput">#}
-{#                    </fieldset>#}
-{#                </form>#}
 
-{#                    address section #}
-                    <div>
-{#                        title header #}
+                {# recipient section #}
+                <div id="recipient-section" class="hidden-field">
+                    <form data-node-type="commerce-checkout-customer-info-wrapper"
+                      class="w-commerce-commercecheckoutcustomerinfowrapper">
+                    <div class="w-commerce-commercecheckoutblockheader block-header">
+                        <h4 class="checkout-heading">Recipient Info</h4>
+                        <div class="fine-print-text">* Required</div>
+                    </div>
+                    <fieldset id="recipient-field" class="w-commerce-commercecheckoutblockcontent">
+                        <label class="w-commerce-commercecheckoutlabel">Recipient Name *</label>
+                        <input type="text" name="recipient_name" required="" class="w-commerce-commercecheckoutemailinput">
+
+                        <label class="w-commerce-commercecheckoutlabel">Phone Number *</label>
+                        <input type="text" name="phone" required="" class="w-commerce-commercecheckoutemailinput">
+                    </fieldset>
+                </form>
+                </div>
+
+                    {# address section #}
+                    <div id="address-section">
+                        {# title header #}
                         <div class="w-commerce-commercecheckoutblockheader block-header">
                             <h4 class="checkout-heading">{{ _('Shipping Address') }}</h4>
                             <div class="fine-print-text">* {{ _('Required') }}</div>
                         </div>
-{#                        the address list #}
-                        <ul class="address-list">
-                            {% for address in order.user.addresses %}
-                                <li class="address">
-                                    <span class="address-name">{{ address.recipient_name }}</span> <span class="address-address">{{ address.get_address() }}</span>
-                                    {% if address.is_default %}
-                                        <span class="address-default-sign">[default]</span>
-                                    {% endif %}
-                                </li>
-                            {% endfor %}
-                        </ul>
+                        <fieldset id="address-field" class="w-commerce-commercecheckoutblockcontent">
+                            {# the address list #}
+                            <ul class="address-list" order-id="{{ order.id }}">
+                                {% for address in order.user.addresses %}
+                                    <li id="address-{{ address.id }}" class="address" address-id="{{ address.id }}">
+                                        <span>{{ address.id }}</span>
+                                        <span class="address-name">{{ address.recipient.recipient_name }}</span> <span class="address-address">{{ address.get_address() }}</span>
+                                        {% if address.is_default %}
+                                            <span id="address-default-sign">[default]</span>
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </fieldset>
                     </div>
 
 {#                <form data-node-type="commerce-checkout-shipping-address-wrapper"#}
@@ -572,32 +581,18 @@
 {#                        </select>#}
 {#                    </fieldset>#}
 {#                </form>#}
+
+                {# shipping method section #}
                 <form data-node-type="commerce-checkout-shipping-methods-wrapper"
                       class="w-commerce-commercecheckoutshippingmethodswrapper">
                     <div class="w-commerce-commercecheckoutblockheader block-header">
                         <h4 class="checkout-heading">{{ _('Shipping Method') }}</h4>
                     </div>
-                    <fieldset>
-                        <script type="text/x-wf-template"
-                                id="wf-template-619d8e8b85c224cbfbc36b42000000000042"></script>
-                        <div data-node-type="commerce-checkout-shipping-methods-list"
-                             class="w-commerce-commercecheckoutshippingmethodslist"
-                             data-wf-collection="database.commerceOrder.availableShippingMethods"
-                             data-wf-template-id="wf-template-619d8e8b85c224cbfbc36b42000000000042"><label
-                                class="w-commerce-commercecheckoutshippingmethoditem"><input type="radio" required=""
-                                                                                             name="shipping-method-choice">
-                            <div class="w-commerce-commercecheckoutshippingmethoddescriptionblock">
-                                <div class="w-commerce-commerceboldtextblock"></div>
-                                {#                                <div>{{ form.shop_method.label }}#}
-                                {#                                    {{ form.shop_method() }}</div>#}
-                            </div>
-                            <div>
-                            </div>
-                        </label></div>
-                        <div data-node-type="commerce-checkout-shipping-methods-empty-state" style="display:none"
-                             class="w-commerce-commercecheckoutshippingmethodsemptystate">
-                            <div>{{ _('No shipping methods are available for the address given.') }}</div>
-                        </div>
+                    <fieldset id="shipping-method-field" class="w-commerce-commercecheckoutblockcontent">
+                        <ul class="shipping-method-list">
+                            <li id="method-delivery" class= "chosen-shipping-method">delivery</li>
+                            <li id="method-self">self-collecting</li>
+                        </ul>
                     </fieldset>
                 </form>
                 {#                <div class="w-commerce-commercecheckoutpaymentinfowrapper">#}
@@ -966,23 +961,23 @@
                         <h4 class="checkout-heading">{{ _('Order Summary') }}</h4>
                     </div>
                     <fieldset class="w-commerce-commercecheckoutblockcontent">
+                        {# payment -- subtotal #}
                         <div class="w-commerce-commercecheckoutsummarylineitem">
-                            <div>{{ _('Subtotal') }}</div>
-                            <div></div>
+                            <div>{{ _('Subtotal (without delivery fee)') }}</div>
+                            <div id="pay-subtotal"></div>
                         </div>
-                        <script type="text/x-wf-template"
-                                id="wf-template-619d8e8b85c224cbfbc36b420000000000a0"></script>
                         <div class="w-commerce-commercecheckoutordersummaryextraitemslist"
                              data-wf-collection="database.commerceOrder.extraItems"
                              data-wf-template-id="wf-template-619d8e8b85c224cbfbc36b420000000000a0">
                             <div class="w-commerce-commercecheckoutordersummaryextraitemslistitem">
-                                <div></div>
-                                <div></div>
+                                <div>Delivery Fee</div>
+                                <div id="pay-delivery"></div>
                             </div>
                         </div>
+                        {# payment -- total #}
                         <div class="w-commerce-commercecheckoutsummarylineitem">
                             <div>{{ _('Total') }}</div>
-                            <div class="w-commerce-commercecheckoutsummarytotal"></div>
+                            <div id="pay-total" class="w-commerce-commercecheckoutsummarytotal"></div>
                         </div>
                     </fieldset>
                 </div>
@@ -1102,5 +1097,5 @@
 <script src="../../static/js/webflow.js" type="text/javascript"></script>
 <!-- [if lte IE 9]>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
-<script src="../../static/js/order/order-confirm-address.js" type="text/javascript"></script>
+<script src="../../static/js/order/order-confirm.js" type="text/javascript"></script>
 </body>
