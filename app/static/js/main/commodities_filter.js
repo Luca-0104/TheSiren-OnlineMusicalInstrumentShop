@@ -139,7 +139,7 @@ $(document).ready(function (){
 
 
 
-     $.post("/api/stock-management/remove-model-type",
+     $.post("/api/filter-model-types",
         {
             "classification": classification,
             "type": type,
