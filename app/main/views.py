@@ -279,6 +279,15 @@ def model_type_details(mt_id):
         return redirect(url_for('main.index'))
 
 
+@main.route('/model-listing/<string:search_content>')
+def model_listing(search_content):
+    """
+    This function is used to render the page of "model-listing"
+    :param search_content: The content of the "search", if this is "", this means the used did not get to here by searching
+    """
+    return render_template('', search_content=search_content)
+
+
 @main.route('/change_language', methods=['GET', 'POST'])
 def change_language():
     # if the user already logged in, we change language setting both in db and session
@@ -340,17 +349,16 @@ def filter_model_types():
     :return:
     """
     if request.method == 'POST':
-        # get the access method
-        access_method = request.form.get("access_method")
         # get the filter elements (c, t, a, b)
         filter_c = request.form.get("c", default="")    # e.g. c1, c2, c3, ...
         filter_t = request.form.get("t", default="")
         filter_a = request.form.get("a", default="")
         filter_b = request.form.get("b", default="")
+        # get search content, if it is "", we will get all the models
+        search_content = request.form.get('search_content', default="")
 
-        if access_method == "search":
-            # if the access method is 'search', we need to get the key word and search initially
-            search_content = request.form.get('search_content')
+        if search_content != "":
+            # if the user has searched something
             # search a BaseQuery obj that contains a list of model types
             mt_bq_lst = search_models_by_keyword(keyword=search_content)
             # (serial_prefix e.g. b1-c1-t1-a1)
