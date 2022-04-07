@@ -33,6 +33,7 @@ class Tools:
         """
         Role.insert_roles()  # roles of users
         User.insert_users()  # the constant user accounts for test
+        Recipient.insert_recipients(100)  # the recipient info
         Address.insert_address()    # addresses for delivery
         # # users(100)  # 100 fake users
         Category.insert_categories()  # the product categories
@@ -291,18 +292,31 @@ class Order(BaseModel):
     timestamp_6 = db.Column(db.DateTime(), index=True)  # time record of status changing to 'expired'
     # 1 order -> 1 Addresses; 1 Address -> n order
     address_id = db.Column(db.Integer, db.ForeignKey('addresses.id'))
+    # 1 order (self-collection) -> 1 recipient
+    recipient_id = db.Column(db.Integer, db.ForeignKey('recipients.id'))
     # 1 order -> n OrderModelType; 1 OrderModelType -> 1 order
     order_model_types = db.relationship('OrderModelType', backref='order', lazy='dynamic')
 
     @staticmethod
     def insert_orders(count):
+        # a order for test
+        test_order = Order(status_code=0, user_id=1, gross_payment=100)
+        db.session.add(test_order)
+
         # create a faker instance
         faker = Faker()
         # create some new orders into db
         for i in range(count):
-            new_order = Order(timestamp=faker.past_datetime(), status_code=random.randint(0, 6), user_id=1, address_id=random.randint(1, Address.query.count()))
+            new_order = Order(timestamp=faker.past_datetime(), status_code=random.randint(0, 6), user_id=1, order_type=["delivery", "self-collection"][random.randint(0, 1)])
+            if new_order.order_type == "delivery":
+                # need address(contains recipient info)
+                new_order.address_id = random.randint(1, Address.query.count())
+            elif new_order.order_type == "self-collection":
+                # need recipient info
+                new_order.recipient_id = random.randint(1, Recipient.query.count())
             db.session.add(new_order)
         db.session.commit()
+
 
     def to_dict(self):
         """ Map the object to dictionary data structure """
@@ -602,7 +616,7 @@ class Product(BaseModel):
             serial_rank = product_info[3]
 
             """ brand and categories are random now for test!!! """
-            new_product = Product(name=name, brand_id=random.randint(1, 5), serial_prefix=serial_prefix,
+            new_product = Product(name=name, brand_id=random.randint(1, Brand.query.count()), serial_prefix=serial_prefix,
                                   serial_rank=serial_rank)
             db.session.add(new_product)
 
@@ -901,6 +915,30 @@ class PremiumOrder(BaseModel):
         return out_trade_no
 
 
+class Recipient(BaseModel):
+    """
+        The recipient information.
+        1 address -> 1 recipient
+        1 order (self-collection) -> 1 recipient OR 1 order (delivery) -> 1 address
+    """
+    __tablename__ = "recipients"
+    id = db.Column(db.Integer, primary_key=True)
+    recipient_name = db.Column(db.String(64), nullable=False)
+    phone = db.Column(db.String(24), nullable=False)
+    # 1 recipient -> n address
+    addresses = db.relationship('Address', backref='recipient', lazy='dynamic')
+    # 1 recipient -> n orders
+    orders = db.relationship('Order', backref='recipient', lazy='dynamic')
+
+    @staticmethod
+    def insert_recipients(count):
+        fake = Faker()
+        for i in range(count):
+            new_recipient = Recipient(recipient_name=fake.name(), phone=fake.phone_number())
+            db.session.add(new_recipient)
+        db.session.commit()
+
+
 class Address(BaseModel):
     """
         The table records the address of delivery.
@@ -909,13 +947,14 @@ class Address(BaseModel):
     """
     __tablename__ = 'addresses'
     id = db.Column(db.Integer, primary_key=True)
-    recipient_name = db.Column(db.String(64), nullable=False)
-    phone = db.Column(db.String(24), nullable=False)
     country = db.Column(db.String(128), nullable=False)
     province_or_state = db.Column(db.String(128), nullable=False)
     city = db.Column(db.String(128), nullable=False)
     district = db.Column(db.String(128), nullable=False)
+    details = db.Column(db.String(128), nullable=False)
     is_default = db.Column(db.Boolean(), default=False)
+    # 1 address -> 1 recipient
+    recipient_id = db.Column(db.Integer, db.ForeignKey('recipients.id'))
     # 1 address -> 1 user (customer)
     customer_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     # 1 address -> n orders
@@ -926,13 +965,13 @@ class Address(BaseModel):
         fake = Faker()
 
         for i in range(10):
-            new_address = Address(customer_id=1, recipient_name=fake.name(), phone=fake.phone_number(), country=fake.country(), province_or_state='Province{}'.format(i+1), city=fake.city(), district='District{}'.format(i+1))
+            new_address = Address(customer_id=1, recipient_id=random.randint(1, Recipient.query.count()), country=fake.country(), province_or_state='Province{}'.format(i+1), city=fake.city(), district='District{}'.format(i+1), details="A test detailed address")
             db.session.add(new_address)
 
         # add a default address for this customer
-        new_address = Address(is_default=True, customer_id=1, recipient_name=fake.name(), phone=fake.phone_number(),
+        new_address = Address(is_default=True, customer_id=1, recipient_id=1,
                               country=fake.country(), province_or_state='Province{}'.format(11), city=fake.city(),
-                              district='District{}'.format(11))
+                              district='District{}'.format(11), details="A test detailed address")
         db.session.add(new_address)
         db.session.commit()
 
@@ -942,6 +981,10 @@ class Address(BaseModel):
         # add relations to the result dict
         # Tools.add_relation_to_dict(result, self.orders.all(), "orders")
         return Tools.delete_instance_state(result)
+
+    def get_address(self):
+        address = "{} {} {} {} {}".format(self.country, self.province_or_state, self.city, self.district, self.details)
+        return address
 
 
 class Permission:
