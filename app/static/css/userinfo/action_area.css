@@ -31,7 +31,7 @@ textarea.form-control {
 .form-control {
     display: block;
     width: 100%;
-    height: calc(1.5em + 0.75rem + 19px);
+    height: calc(1.5em + 0.75rem + 12px);
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     font-weight: 400;
@@ -65,17 +65,17 @@ textarea.form-control {
 
 .action_table{
     width: 100%;
-}
+/* overflow-y: hidden; */}
 
 .action_table tr{
     width: 100%;
 }
 
 .action_table td{
-    padding-left: 30px;
+    /* margin-bottom: -27px; */padding-left: 30px;
     padding-right: 30px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    /* padding-top: 0px; */
+    /* padding-bottom: 5px; */
 }
 
 .submit_btn{
@@ -103,4 +103,14 @@ textarea.form-control {
     font-size: 25px;
     text-align: center;
     height: 35px;
+}
+
+.action-table-form{
+    overflow-y: scroll;
+    height: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 36px;
+    bottom: 0;
 }
