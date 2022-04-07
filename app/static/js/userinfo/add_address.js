@@ -93,11 +93,11 @@ function start_edit_address(address_id)
 {
     let recipient_name = $("#address_recipient_name_"+address_id)[0].innerText;
     let phone = $("#address_phone_"+address_id)[0].innerText;
-    let place = $("#address_place_"+address_id)[0].innerText.split(" - ");
-    let country = place[0];
-    let province_or_state = place[1];
-    let city = place[2];
-    let district = place[3];
+    let country = $("#address_place_"+address_id).attr("country");
+    let province_or_state = $("#address_place_"+address_id).attr("pos");
+    let city = $("#address_place_"+address_id).attr("city");
+    let district = $("#address_place_"+address_id).attr("district");
+    let details = $("#address_place_"+address_id).attr("details");
 
     let blocker = $("#profile_form_blocker");
     let show_add_form = $("#edit_address_form");
@@ -132,6 +132,9 @@ function start_edit_address(address_id)
 
     let address_form_district = $("#address_form_district");
     address_form_district.val(district);
+
+    let address_form_details = $("#address_form_details");
+    address_form_details.val(details);
 }
 
 function update_address()
