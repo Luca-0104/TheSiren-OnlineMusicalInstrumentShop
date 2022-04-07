@@ -15,6 +15,7 @@ class AddAddressForm(FlaskForm):
     add_province_or_state = StringField(_l('Province or State:'), validators=[DataRequired(), Length(1, 128)])
     add_city = StringField(_l('City:'), validators=[DataRequired(), Length(1, 128)])
     add_district = StringField(_l('District: '), validators=[DataRequired(), Length(1, 128)])
+    add_details = StringField(_l('Details: '), validators=[DataRequired(), Length(1, 128)])
     add_address_submit = SubmitField(_l('Add Address'))
 
 
@@ -26,6 +27,7 @@ class EditAddressForm(FlaskForm):
     edit_province_or_state = StringField(_l('Province or State:'), validators=[DataRequired(), Length(1, 128)])
     edit_city = StringField(_l('City:'), validators=[DataRequired(), Length(1, 128)])
     edit_district = StringField(_l('District: '), validators=[DataRequired(), Length(1, 128)])
+    edit_details = StringField(_l('Details: '), validators=[DataRequired(), Length(1, 128)])
     edit_address_submit = SubmitField(_l('Update Address'))
 
 

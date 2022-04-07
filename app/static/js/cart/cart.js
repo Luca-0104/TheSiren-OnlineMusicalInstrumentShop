@@ -81,6 +81,16 @@ $(".remove-a").on("click",function()
             });
 });
 
+function disable(rowID)
+{
+    $("#row_"+rowID).attr("row_disable", true);
+}
+
+function setable(rowID)
+{
+    $("#row_"+rowID).attr("row_disable", false);
+}
+
 // change quantity by input a number
 // this will automatically activate on every change of the input box
 $("input").on("input",function()
@@ -136,6 +146,14 @@ $("input").on("input",function()
             });
 });
 
+$("input").mouseover(function(){
+    disable($(this).attr("focusID"));
+});
+
+$("input").mouseout(function(){
+    setable($(this).attr("focusID"));
+});
+
 // add 1 to the quantity
 // cannot add over the stock
 $(".add-a").on("click",function()
@@ -171,6 +189,8 @@ $(".add-a").on("click",function()
                     {
                         calculateTotalCost();
                     }
+
+
                 }
                 else if(returnValue === 2)
                 {
@@ -187,6 +207,14 @@ $(".add-a").on("click",function()
                     }
                 }
             });
+});
+
+$(".add-a").mouseover(function(){
+    disable($(this).attr("focusID"));
+});
+
+$(".add-a").mouseout(function(){
+    setable($(this).attr("focusID"));
 });
 
 // remove 1 of quantity
@@ -237,10 +265,37 @@ $(".reduce-a").on("click",function()
             });
 });
 
+$(".reduce-a").mouseover(function(){
+    disable($(this).attr("focusID"));
+});
+
+$(".reduce-a").mouseout(function(){
+    setable($(this).attr("focusID"));
+});
+
 $(":checkbox").on("click",function()
 {
     calculateEachPrice();
     calculateTotalCost();
+});
+
+$(".cart_row").on("click",function()
+{
+    if($("#row_"+$(this).attr("rowID")).attr("row_disable")=="false")
+    {
+        let cb = $("#select_"+$(this).attr("rowID"));
+        if (cb.prop("checked"))
+        {
+            cb.attr("checked", false);
+        }
+        else
+        {
+            cb.attr("checked", 'checked');
+        }
+
+        calculateEachPrice();
+        calculateTotalCost();
+    }
 });
 
 $("#checkout-a").on("click",function()
