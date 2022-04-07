@@ -27,7 +27,26 @@ product_list = [
 ]
 
 # brands
-brand_list = ['brand1', 'brand2', 'brand3', 'brand4', 'brand5']
+# brand_list = ['brand1', 'brand2', 'brand3', 'brand4', 'brand5']
+brand_list = [
+      "Lowden",
+      "Gibson",
+      "Orange",
+      "Stentor",
+      "Martin",
+      "Buffet Crampon",
+      "Besson London",
+      "Hohner",
+      "Marshall",
+      "Meinl",
+      "Henri Selmer Paris",
+      "Steinway",
+      "Boss",
+      "Fender",
+      "Taylor",
+      "Yamaha",
+      "others"
+]
 
 '''
 Category
