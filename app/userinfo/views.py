@@ -83,6 +83,7 @@ def user_profile(uid):
                               province_or_state=add_address_form.add_province_or_state.data,
                               city=add_address_form.add_city.data,
                               district=add_address_form.add_district.data,
+                              details=add_address_form.add_details.data,
                               is_default=True)
         # user has multiple address
         else:
@@ -90,7 +91,9 @@ def user_profile(uid):
                               country=add_address_form.add_country.data,
                               province_or_state=add_address_form.add_province_or_state.data,
                               city=add_address_form.add_city.data,
-                              district=add_address_form.add_district.data)
+                              district=add_address_form.add_district.data,
+                              details=add_address_form.add_details.data
+                              )
 
         # set recipient for this new address
         address.recipient = new_recipient
@@ -113,6 +116,7 @@ def user_profile(uid):
         address.province_or_state = edit_address_form.edit_province_or_state.data
         address.city = edit_address_form.edit_city.data
         address.district = edit_address_form.edit_district.data
+        address.details = edit_address_form.edit_details.data
 
         db.session.add(address)
         db.session.add(address.recipient)
