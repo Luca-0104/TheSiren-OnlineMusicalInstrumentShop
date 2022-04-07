@@ -136,8 +136,8 @@
             </div>
         </div>
 
-        <!-- Recommendation Section -->
-        <div class="section wf-section">
+        <!-- Cart Section -->
+        <div class="section wf-section cart-section">
             <div class="main-container">
                 <!-- Cart -->
                 <div class="w-commerce-commercecartheader cart-header">
@@ -152,35 +152,35 @@
                         <div class="w-commerce-commercecartlist cart-list">
                             <table border="1" id="cart_table" total_row="{{ length }}">
                                 <tr>
-                                    <th>
+                                    <th class="table-head bg-primary-light">
                                         {{ _('Select') }}
                                     </th>
-                                    <th colspan="2">
+                                    <th colspan="2" class="table-head bg-primary-light">
                                         {{ _('Model Info') }}
                                     </th>
-                                    <th>
+                                    <th class="table-head bg-primary-light">
                                         {{ _('Quantity') }}
                                     </th>
-                                    <th>
+                                    <th class="bg-primary-light">
                                         {{ _('Price') }}
                                     </th>
-                                    <th></th>
+                                    <th class="table-head bg-primary-light"></th>
                                 </tr>
                                 {% for cart in cart_relation_lst %}
-                                    <tr rowID="{{ loop.index }}" id="row_{{ loop.index }}" cartid="{{ cart.id }}" modelid="{{ cart.model_type.id }}" single_price="{{ cart.model_type.price }}">
-                                        <td>
+                                    <tr rowID="{{ loop.index }}" id="row_{{ loop.index }}" class="cart_row" cartid="{{ cart.id }}" modelid="{{ cart.model_type.id }}" single_price="{{ cart.model_type.price }}">
+                                        <td class="buttom-border">
                                             <input focusID="{{ loop.index }}" id="select_{{ loop.index }}" type="checkbox" name="selected" value="true">
                                         </td>
-                                        <td>
+                                        <td class="buttom-border">
                                             <img src="../../static/images/example/yamaha_yep621s.jpg" alt="" class="w-commerce-commercecartitemimage cart-item-image"/>
                                         </td>
-                                        <td>
+                                        <td class="buttom-border">
                                             <div class="w-commerce-commercecartproductname">
                                                 {{ cart.model_type.name }}
                                             </div>
                                         </td>
-                                        <td>
-                                            <table border="1" class="quantity_table">
+                                        <td class="buttom-border">
+                                            <table class="quantity_table">
                                                 <tr>
                                                     <td>
                                                         <a focusID="{{ loop.index }}" id="add_{{ loop.index }}" href="#" class="w-commerce-commercecartquantity add-a">+</a>
@@ -196,14 +196,14 @@
                                                 </tr>
                                             </table>
                                         </td>
-                                        <td>
+                                        <td class="buttom-border">
                                             <div class="fine-print-text">
                                                 <span>$</span>
                                                 <span focusID="{{ loop.index }}" id="price_{{ loop.index }}">{{ cart.model_type.price }}</span>
                                                 <span>USD</span>
                                             </div>
                                         </td>
-                                        <td>
+                                        <td class="buttom-border">
                                             <a focusID="{{ loop.index }}" id="remove_{{ loop.index }}" href="#"
                                                class="w-inline-block remove-a" data-wf-cart-action="remove-item" data-commerce-sku-id="">
                                                 <div class="fine-print-text remove-link">{{ _('Remove') }}</div>
@@ -215,7 +215,7 @@
                         </div>
 
                         <!-- Footer of Cart -->
-                        <div class="w-commerce-commercecartfooter cart-footer">
+                        <div class="w-commerce-commercecartfooter cart-footer at-bottom">
                             <div class="w-commerce-commercecartlineitem">
                                 <div>{{ _('Total Cost') }}</div>
                                 <div class="w-commerce-commercecartordervalue">

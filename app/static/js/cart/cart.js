@@ -81,6 +81,20 @@ $(".remove-a").on("click",function()
             });
 });
 
+function disable(rowID)
+{
+    console.log("disable "+rowID);
+    $("#row_"+rowID).attr("disabled", true);
+    console.log($("#row_"+rowID).attr("disabled"));
+}
+
+function setable(rowID)
+{
+    console.log("setable "+rowID);
+    $("#row_"+rowID).attr("disabled", false);
+    console.log($("#row_"+rowID).attr("disabled"));
+}
+
 // change quantity by input a number
 // this will automatically activate on every change of the input box
 $("input").on("input",function()
@@ -140,6 +154,7 @@ $("input").on("input",function()
 // cannot add over the stock
 $(".add-a").on("click",function()
 {
+    console.log("add "+$(this).attr("focusID"));
     let focusID = $(this).attr("focusID");
 
     let spanQuantity = $("#quantity_"+focusID);
@@ -165,12 +180,16 @@ $(".add-a").on("click",function()
                     //success
                     quantityStr = String(quantity);
 
+                    console.log("add success");
+
                     spanQuantity.val(quantityStr);
                     calculatePrice(focusID);
                     if($("#select_"+focusID).prop('checked'))
                     {
                         calculateTotalCost();
                     }
+
+
                 }
                 else if(returnValue === 2)
                 {
@@ -188,6 +207,21 @@ $(".add-a").on("click",function()
                 }
             });
 });
+
+$(".add-a").mouseover(function(){
+    console.log("mouseover");
+    disable($(this).attr("focusID"));
+  });
+
+$(".add-a").mouseout(function(){
+    console.log("mouseout");
+    setable($(this).attr("focusID"));
+  });
+
+$(".add-a").hover(
+    disable($(this).attr("focusID")),
+    setable($(this).attr("focusID"))
+);
 
 // remove 1 of quantity
 // cannot remove to 0
@@ -241,6 +275,26 @@ $(":checkbox").on("click",function()
 {
     calculateEachPrice();
     calculateTotalCost();
+});
+
+$(".cart_row").on("click",function()
+{
+    console.log("cart "+$(this).attr("rowID"));
+    if($("#row_"+$(this).attr("rowID")).attr("disabled"))
+    {
+        let cb = $("#select_"+$(this).attr("rowID"));
+        if (cb.prop("checked"))
+        {
+            cb.attr("checked", false);
+        }
+        else
+        {
+            cb.attr("checked", 'checked');
+        }
+
+        calculateEachPrice();
+        calculateTotalCost();
+    }
 });
 
 $("#checkout-a").on("click",function()
