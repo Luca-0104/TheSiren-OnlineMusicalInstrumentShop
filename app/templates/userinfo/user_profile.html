@@ -390,7 +390,7 @@
                                                 {{ _('Recipient Name')}}
                                             </td>
                                             <td id="address_recipient_name_{{ address.id }}">
-                                                {{ address.recipient_name }}
+                                                {{ address.recipient.recipient_name }}
                                             </td>
                                         </tr>
                                         <tr>
@@ -398,7 +398,7 @@
                                                 {{ _('Phone') }}
                                             </td>
                                             <td id="address_phone_{{ address.id }}">
-                                                {{ address.phone }}
+                                                {{ address.recipient.phone }}
                                             </td>
                                         </tr>
                                         <tr>
@@ -571,14 +571,14 @@
         </div>
 
         <!-- Edit profile information section-->
-        <div id="edit_profile_form" class="middle-floating bg-grey action_area" style="display: none">
+        <div id="edit_profile_form" class="middle-floating bg-grey action_area" style="display: none"5>
             <div id="form_top_bar" class="bg-dark">
                 Edit profile
                 <div id="close_edit_profile_form_btn" class="bg-primary close_btn">
                     &times;
                 </div>
             </div>
-            <form method="post">
+            <form method="post" class="action-table-form">
                 <table class="action_table">
                     {{ edit_profile_form.hidden_tag() }}
                     <tr>
@@ -665,7 +665,7 @@
                     &times;
                 </div>
             </div>
-            <form method="post">
+            <form method="post" class="action-table-form">
                 <table class="action_table">
                     {{ add_address_form.hidden_tag() }}
                     <tr>
@@ -784,7 +784,7 @@
                     &times;
                 </div>
             </div>
-            <form method="post">
+            <form method="post" class="action-table-form">
                 <table class="action_table">
                     {{ edit_address_form.hidden_tag() }}
                     {{ edit_address_form.edit_address_id(id="address_form_hidden_idasdf", style="display: none") }}

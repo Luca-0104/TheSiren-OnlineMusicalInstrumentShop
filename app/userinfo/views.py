@@ -8,7 +8,7 @@ from config import Config
 from . import userinfo
 from ..public_tools import generate_safe_pic_name
 from ..userinfo.forms import EditProfileForm, AddAddressForm, EditAddressForm, UpdateAvatarForm
-from ..models import User, Address
+from ..models import User, Address, Recipient
 from .. import db
 
 
@@ -68,57 +68,66 @@ def user_profile(uid):
         flash(_("Avatar update successfully!"))
         return redirect(url_for("userinfo.user_profile", uid=current_user.id))
 
-
     # user submit the add address form
     if add_address_form.add_address_submit.data and add_address_form.validate():
-        addresses = Address.query.filter_by(customer_id=current_user.id).all()
+        addresses = Address.query.filter_by(customer_id=current_user.id).first()
+        # create a recipient obj
+        new_recipient = Recipient(recipient_name=add_address_form.add_recipient_name.data,
+                                  phone=add_address_form.add_phone.data)
+        db.session.add(new_recipient)
+
         # user has no address yet
         if addresses is None:
             address = Address(customer_id=current_user.id,
-                              recipient_name=add_address_form.add_recipient_name.data,
-                              phone=add_address_form.add_phone.data,
                               country=add_address_form.add_country.data,
                               province_or_state=add_address_form.add_province_or_state.data,
                               city=add_address_form.add_city.data,
                               district=add_address_form.add_district.data,
+                              details=add_address_form.add_details.data,
                               is_default=True)
         # user has multiple address
         else:
             address = Address(customer_id=current_user.id,
-                              recipient_name=add_address_form.add_recipient_name.data,
-                              phone=add_address_form.add_phone.data,
                               country=add_address_form.add_country.data,
                               province_or_state=add_address_form.add_province_or_state.data,
                               city=add_address_form.add_city.data,
-                              district=add_address_form.add_district.data)
+                              district=add_address_form.add_district.data,
+                              details=add_address_form.add_details.data
+                              )
+
+        # set recipient for this new address
+        address.recipient = new_recipient
+
         db.session.add(address)
         db.session.commit()
         flash(_('Address added successfully!'))
 
         return redirect(url_for('userinfo.user_profile', uid=current_user.id))
 
-
     # user submit the edit address form
     if edit_address_form.edit_address_submit.data and edit_address_form.validate():
         # address_id = request.form.get("address_id")
         address_id = edit_address_form.edit_address_id.data
         print(edit_address_form.edit_recipient_name.data)
-        address = Address.query.filter_by(id=address_id).first()
-        address.recipient_name = edit_address_form.edit_recipient_name.data
-        address.phone = edit_address_form.edit_phone.data
+        address = Address.query.get(address_id)
+        address.recipient.recipient_name = edit_address_form.edit_recipient_name.data
+        address.recipient.phone = edit_address_form.edit_phone.data
         address.country = edit_address_form.edit_country.data
         address.province_or_state = edit_address_form.edit_province_or_state.data
         address.city = edit_address_form.edit_city.data
         address.district = edit_address_form.edit_district.data
+        address.details = edit_address_form.edit_details.data
 
         db.session.add(address)
+        db.session.add(address.recipient)
         db.session.commit()
         flash(_('Address updated successfully!'))
 
         return redirect(url_for("userinfo.user_profile", uid=current_user.id))
 
-
-    return render_template('userinfo/user_profile.html', user=user, update_avatar_form=update_avatar_form, add_address_form=add_address_form, edit_address_form=edit_address_form, edit_profile_form=edit_profile_form)
+    return render_template('userinfo/user_profile.html', user=user, update_avatar_form=update_avatar_form,
+                           add_address_form=add_address_form, edit_address_form=edit_address_form,
+                           edit_profile_form=edit_profile_form)
 
 
 # @userinfo.route('/01')
@@ -288,7 +297,6 @@ def user_profile(uid):
 #     return jsonify({'returnValue': 1})
 
 
-
 @userinfo.route('/api/remove-address', methods=['POST'])
 @login_required
 def remove_address():
@@ -334,7 +342,6 @@ def remove_address():
 @userinfo.route('/api/change-default-address', methods=['POST'])
 @login_required
 def change_default_address():
-
     if request.method == 'POST':
         # get the address id from ajax
         address_id = request.form.get('address_id')
@@ -367,7 +374,6 @@ def change_default_address():
     return jsonify({'returnValue': 1})
 
 
-
 def address_prepare_for_json(address_obj):
     """
     This function is used to support ajax process
@@ -375,12 +381,7 @@ def address_prepare_for_json(address_obj):
     :return: address data in json
     """
     address = {'id': address_obj.id, 'recipient_name': address_obj.recipient_name, 'phone': address_obj.phone,
-               'country': address_obj.country, 'province_or_state': address_obj.province_or_state, 'city': address_obj.city,
+               'country': address_obj.country, 'province_or_state': address_obj.province_or_state,
+               'city': address_obj.city,
                'district': address_obj.district, 'is_default': address_obj.district}
     return address
-
-
-
-
-
-
