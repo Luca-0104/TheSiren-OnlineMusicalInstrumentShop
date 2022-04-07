@@ -1,5 +1,5 @@
-let checked_value = [];
-
+let checked_value = new Array(4);
+    checked_value = ['','','',''];
 //This need to be modified if brand number is changed!!!
 //Every number is plus one compared to original because "see all" option.
 let checking_numbers = [7,48,5,6];
@@ -43,7 +43,9 @@ $(document).ready(function (){
              $(this).attr("class","checkbox w--redirected-checked category");
              $(this).prop("checked","on");
 
+             checked_value[0] = $(this).attr("name");
              console.log($(this).attr("checked")+'2');
+             console.log(checked_value);
          }
      });
 
@@ -66,7 +68,9 @@ $(document).ready(function (){
              $(this).attr("class","checkbox w--redirected-checked type");
              $(this).prop("checked","on");
 
+             checked_value[1] = $(this).attr("name");
              console.log($(this).attr("checked")+'2');
+             console.log(checked_value);
          }
      });
 
@@ -90,7 +94,9 @@ $(document).ready(function (){
              $(this).attr("class","checkbox w--redirected-checked add");
              $(this).prop("checked","on");
 
+             checked_value[2] = $(this).attr("name");
              console.log($(this).attr("checked")+'2');
+             console.log(checked_value);
          }
      });
 
@@ -113,7 +119,9 @@ $(document).ready(function (){
              $(this).attr("class","checkbox w--redirected-checked brand");
              $(this).prop("checked","on");
 
+             checked_value[3] = $(this).attr("name");
              console.log($(this).attr("checked")+'2');
+             console.log(checked_value);
          }
      });
      // $('#category_checkbox').on("change",function (){
@@ -131,5 +139,6 @@ $(document).ready(function (){
             checked_value.push($(this).val());
             console.log(checked_value);
         });
+
 
 });
