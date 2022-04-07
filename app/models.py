@@ -331,6 +331,9 @@ class Order(BaseModel):
         if self.address is not None:
             # add address to this dict
             result['address'] = self.address.to_dict()
+        if self.recipient is not None:
+            # add address to this dict
+            result['recipient'] = self.recipient.to_dict()
         return Tools.delete_instance_state(result)
 
     def get_status(self):
