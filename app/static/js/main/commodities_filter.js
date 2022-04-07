@@ -1,5 +1,9 @@
 let checked_value = new Array(4);
     checked_value = ['','','',''];
+
+let classification, type, additional, brand;
+
+let data;
 //This need to be modified if brand number is changed!!!
 //Every number is plus one compared to original because "see all" option.
 let checking_numbers = [7,48,5,6];
@@ -44,6 +48,8 @@ $(document).ready(function (){
              $(this).prop("checked","on");
 
              checked_value[0] = $(this).attr("name");
+
+             classification = checked_value[0];
              console.log($(this).attr("checked")+'2');
              console.log(checked_value);
          }
@@ -69,6 +75,8 @@ $(document).ready(function (){
              $(this).prop("checked","on");
 
              checked_value[1] = $(this).attr("name");
+
+             type = checked_value[1];
              console.log($(this).attr("checked")+'2');
              console.log(checked_value);
          }
@@ -95,6 +103,8 @@ $(document).ready(function (){
              $(this).prop("checked","on");
 
              checked_value[2] = $(this).attr("name");
+
+             additional = checked_value[2];
              console.log($(this).attr("checked")+'2');
              console.log(checked_value);
          }
@@ -120,25 +130,48 @@ $(document).ready(function (){
              $(this).prop("checked","on");
 
              checked_value[3] = $(this).attr("name");
+
+             brand = checked_value[3];
              console.log($(this).attr("checked")+'2');
              console.log(checked_value);
          }
      });
-     // $('#category_checkbox').on("change",function (){
-     //    for (let i=1; i<=7; i++){
-     //        console.log(i);
-     //        $('#check_class_'+i).on("click",function (){
-     //            $(this).attr("class","checkbox w--redirected-checked");
-     //            $(this).attr("checked","checked");
-     //        })
-     //    }
-     // });
+
+
+
+     $.post("/api/filter-model-types",
+        {
+            "classification": classification,
+            "type": type,
+            "additional": additional,
+            "brand": brand
+        }).done(function (response)
+            {
+                console.log('')
+                // get from server
+                let returnValue = response['returnValue'];
+
+                console.log(returnValue);
+
+                if(returnValue === 0)
+                {
+                    //success
+                    console.log("ModelType " + model_type_id + "removed");
+                    data = response['data'];
+                }
+                else if(returnValue === 1){
+                    //failure
+
+                }
+            });
+
 
         $("input[name='checkboxes']:checked").each(function(){
             checked_value=[];
             checked_value.push($(this).val());
             console.log(checked_value);
         });
+
 
 
 });
