@@ -414,33 +414,53 @@
                                         <tr>
                                             <td colspan="2">
                                                 {% if not address.is_default %}
-                                                    <div id="action_{{ address.id }}" is_default="f"
-                                                         class="align-items-center list-action">
-                                                        <a id="default_btn_{{ address.id }}" class="badge badge-info mr-2"
-                                                           data-toggle="tooltip"
-                                                           data-placement="top" title="" data-original-title="View"
-                                                           href="javascript:set_default({{ address.id }});"><i
-                                                                class="ri-eye-line mr-0">{{ _('Set as Default')}}</i></a>
-                                                        <a class="badge bg-success mr-2" data-toggle="tooltip"
-                                                           data-placement="top" title="" data-original-title="Edit"
-                                                           href="javascript:start_edit_address({{ address.id }});"><i
-                                                                class="ri-pencil-line mr-0">{{ _('Edit') }}</i></a>
-                                                        <a class="badge bg-warning mr-2" data-toggle="tooltip"
-                                                           data-placement="top" title="" data-original-title="Delete"
-                                                           href="javascript:remove_address({{ address.id }});"><i
-                                                                class="ri-delete-bin-line mr-0">{{ _('Delete') }}</i></a>
+                                                    <div class="align-items-center list-action">
+                                                        <table class="address_action_btn_table">
+                                                            <tr id="action_{{ address.id }}" is_default="f">
+                                                                <td id="default_btn_{{ address.id }}" class="address_action_btn bg-grey">
+                                                                    <a class="set_default_btn"
+                                                                       data-toggle="tooltip" data-placement="top" title="" data-original-title="View"
+                                                                       href="javascript:set_default({{ address.id }});">
+                                                                        <i class="ri-eye-line mr-0">{{ _('Set as Default')}}</i>
+                                                                    </a>
+                                                                </td>
+                                                                <td class="address_action_btn bg-grey">
+                                                                    <a class="edit_btn"
+                                                                       data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"
+                                                                       href="javascript:start_edit_address({{ address.id }});">
+                                                                        <i class="ri-pencil-line mr-0">{{ _('Edit') }}</i>
+                                                                    </a>
+                                                                </td>
+                                                                <td class="address_action_btn bg-grey">
+                                                                    <a class="delete_btn"
+                                                                       data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"
+                                                                       href="javascript:remove_address({{ address.id }});">
+                                                                        <i class="ri-delete-bin-line mr-0">{{ _('Delete') }}</i>
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
                                                     </div>
                                                 {% else %}
-                                                    <div id="action_{{ address.id }}" is_default="t"
-                                                         lass="d-flex align-items-center list-action">
-                                                        <a class="badge bg-success mr-2" data-toggle="tooltip"
-                                                           data-placement="top" title="" data-original-title="Edit"
-                                                           href="javascript:start_edit_address({{ address.id }});"><i
-                                                                class="ri-pencil-line mr-0">{{ _('Edit') }}</i></a>
-                                                        <a class="badge bg-warning mr-2" data-toggle="tooltip"
-                                                           data-placement="top" title="" data-original-title="Delete"
-                                                           href="javascript:remove_address({{ address.id }});"><i
-                                                                class="ri-delete-bin-line mr-0">{{ _('Delete') }}</i></a>
+                                                    <div class="align-items-center list-action">
+                                                        <table class="address_action_btn_table">
+                                                            <tr id="action_{{ address.id }}" is_default="t">
+                                                                <td class="address_action_btn bg-grey">
+                                                                    <a class="edit_btn" data-toggle="tooltip"
+                                                                       data-placement="top" title="" data-original-title="Edit"
+                                                                       href="javascript:start_edit_address({{ address.id }});">
+                                                                        <i class="ri-pencil-line mr-0">{{ _('Edit') }}</i>
+                                                                    </a>
+                                                                </td>
+                                                                <td class="address_action_btn bg-grey">
+                                                                    <a class="delete_btn" data-toggle="tooltip"
+                                                                       data-placement="top" title="" data-original-title="Delete"
+                                                                       href="javascript:remove_address({{ address.id }});">
+                                                                        <i class="ri-delete-bin-line mr-0">{{ _('Delete') }}</i>
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
                                                     </div>
                                                 {% endif %}
                                             </td>

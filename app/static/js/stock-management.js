@@ -59,3 +59,5 @@ function remove_model_type(model_type_id, product_id)
                 }
             });
 }
+
+$(".brands").template()

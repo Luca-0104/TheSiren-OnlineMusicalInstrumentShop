@@ -89,8 +89,8 @@ function set_default(address_id)
                     targetTable.prepend(newHtml);
                     targetDiv.attr("is_default","t");
 
-                    newHtml = "<a id=\"default_btn_" + previousID + "\" class=\"badge badge-info mr-2\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"\" data-original-title=\"View\""+
-                       "href=\"javascript:set_default(" + previousID + ");\"><i class=\"ri-eye-line mr-0\">Set as Default</i></a>";
+                    newHtml = "<td id=\"default_btn_" + previousID + "\" class=\"address_action_btn bg-grey\"><a class=\"set_default_btn\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"\" data-original-title=\"View\""+
+                       "href=\"javascript:set_default(" + previousID + ");\"><i class=\"ri-eye-line mr-0\">Set as Default</i></a></td>";
                     previousDefaultDiv.prepend(newHtml);
                     previousDefaultDiv.attr("is_default","f");
 
