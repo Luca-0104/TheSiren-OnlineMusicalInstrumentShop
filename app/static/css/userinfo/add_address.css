@@ -27,6 +27,11 @@
 
 .title_section{
     width:25%;
+    text-align: right;
+}
+
+.content_section{
+    text-align: left;
 }
 
 .clickable{

@@ -983,7 +983,7 @@ class Address(BaseModel):
         return Tools.delete_instance_state(result)
 
     def get_address(self):
-        address = "{} {} {} {} {}".format(self.country, self.province_or_state, self.city, self.district, self.details)
+        address = "{} - {} - {} - {} - {}".format(self.country, self.province_or_state, self.city, self.district, self.details)
         return address
 
 

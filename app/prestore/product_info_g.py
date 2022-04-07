@@ -42,9 +42,9 @@ pm_lst = [
     # product 1 ----------------------------------------------------
     [
         "Stentor Amati model violin",  # product name
-        1,  # Stentor
+        4,  # Stentor
         1,  # cate id - C
-        1,  # cate id - T
+        7,  # cate id - T
         53,  # cate id - A
         [  # model type list
             # model 1 ----------------------------------------------------------
@@ -68,9 +68,9 @@ pm_lst = [
     # product 2 ----------------------------------------------------
     [
         "Stentor Arcadia viola",  # product name
-        1,  # Stentor
+        4,  # Stentor
         1,  # cate id - C
-        2,  # cate id - T
+        8,  # cate id - T
         53,  # cate id - A
         [  # model type list
             # model 1 ----------------------------------------------------------
@@ -92,9 +92,9 @@ pm_lst = [
     # product 3 ----------------------------------------------------
     [
         "Stentor Arcadia cello",  # product name
-        1,  # Stentor
+        4,  # Stentor
         1,  # cate id - C
-        3,  # cate id - T
+        9,  # cate id - T
         53,  # cate id - A
         [  # model type list
             # model 1 ----------------------------------------------------------
@@ -117,9 +117,9 @@ pm_lst = [
     # product 4 ----------------------------------------------------
     [
         "Stentor Arcadia double bass",  # product name
-        1,  # Stentor
+        4,  # Stentor
         1,  # cate id - C
-        4,  # cate id - T
+        10,  # cate id - T
         53,  # cate id - A
         [  # model type list
             # model 1 ----------------------------------------------------------
@@ -145,7 +145,7 @@ pm_lst = [
         "product-name-test",  # product name
         1,  # brand id
         1,  # cate id - C
-        7,  # cate id - T
+        11,  # cate id - T
         53,  # cate id - A
         [  # model type list
             # model 1 ----------------------------------------------------------
@@ -221,7 +221,7 @@ pm_lst = [
         ]
     ],
 
-    # product 4 ----------------------------------------------------
+    # product 8 ----------------------------------------------------
     [
         "product-name-test",  # product name
         1,  # brand id
@@ -248,7 +248,7 @@ pm_lst = [
         ]
     ],
 
-    # product 4 ----------------------------------------------------
+    # product 9 ----------------------------------------------------
     [
         "product-name-test",  # product name
         1,  # brand id
@@ -275,7 +275,7 @@ pm_lst = [
         ]
     ],
 
-    # product 4 ----------------------------------------------------
+    # product 10 ----------------------------------------------------
     [
         "product-name-test",  # product name
         1,  # brand id

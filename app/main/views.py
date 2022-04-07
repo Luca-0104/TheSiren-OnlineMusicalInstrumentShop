@@ -333,6 +333,49 @@ def purchase_cart():
 def filter_model_types():
     """
     (Using Ajax)
+    Get a group of filters from Ajax (c, t, a, b)
+    Each one has and only has a single element.
+    Concatenating all the filter elements together can get a serial-prefix for searching the products and models.
+    If the User access this page using "search" function, we need to search again before filtering.
+    :return:
+    """
+    if request.method == 'POST':
+        # get the access method
+        access_method = request.form.get("access_method")
+        # get the filter elements (c, t, a, b)
+        filter_c = request.form.get("c", default="")    # e.g. c1, c2, c3, ...
+        filter_t = request.form.get("t", default="")
+        filter_a = request.form.get("a", default="")
+        filter_b = request.form.get("b", default="")
+
+        if access_method == "search":
+            # if the access method is 'search', we need to get the key word and search initially
+            search_content = request.form.get('search_content')
+            # search a BaseQuery obj that contains a list of model types
+            mt_bq_lst = search_models_by_keyword(keyword=search_content)
+            # (serial_prefix e.g. b1-c1-t1-a1)
+            mt_lst = mt_bq_lst.join(Product).filter(Product.serial_prefix.like("%{}%{}%{}%{}%".format(filter_b, filter_c, filter_t, filter_a))).all()
+
+        else:
+            # filter all the models according to the filters(check box)
+            mt_lst = db.session.query(ModelType).join(Product).filter(Product.serial_prefix.like("%{}%{}%{}%{}%".format(filter_b, filter_c, filter_t, filter_a))).all()
+
+        """ sort the model list by the sale numbers """
+        sort_db_models(mt_lst, sort_key=take_sales, reverse=True)
+
+        """ structure the return data into a JSON dict """
+        data = [mt.to_dict() for mt in mt_lst]
+
+        return jsonify({'returnValue': 0, 'data': data})
+
+    return jsonify({'returnValue': 1})
+
+
+'''
+@main.route('/api/filter-model-types', methods=['POST'])
+def filter_model_types():
+    """
+    (Using Ajax)
     filter the model types with their categories, brands, popularity, stock...
     If access_method == 'search', there will be 4 groups of filters
     If access_method == 'see_all', there will be 4 groups of filters
@@ -496,6 +539,7 @@ def filter_products_by_cate_groups(brand, c_id_list, t_id_list, a_id_list) -> li
         mt_list += product.get_exist_model_types()
 
     return mt_list
+'''
 
 
 @main.route('/api/model-detail/validate-model-count', methods=['POST'])
