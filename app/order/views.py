@@ -106,7 +106,7 @@ def order_confirm(order_id):
     o = Order.query.get(order_id)
     # check if that order belong to current user
     if o in current_user.orders:
-        return render_template('order/order-confirm.html', oreder=o)
+        return render_template('order/order-confirm.html', order=o)
     else:
         flash(_('Permission denied!'))
         return redirect(url_for('main.index'))
