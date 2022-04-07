@@ -70,7 +70,7 @@
                                 </ul>
                             </li>
                             <li class=" ">
-                                <a href="#category" class="collapsed" data-toggle="collapse" aria-expanded="false">
+                                <a href="#category" class="colllapsed" data-toggle="collapse" aria-expanded="false">
                                     <svg class="svg-icon" id="p-dash3" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                         <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                                     </svg>
@@ -852,6 +852,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="content-page">
                 <div class="container-fluid add-form-list">
                     <div class="row">
@@ -859,7 +860,7 @@
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between">
                                     <div class="header-title">
-                                        <h4 class="card-title">Modify Model</h4>
+                                        <h4 class="card-title">{{ _('Modify Model')}}</h4>
                                     </div>
                                 </div>
                                 <div class="card-body">
@@ -872,7 +873,7 @@
                                                     <!--<label>Model Name *</label>
                                                     <input type="text" class="form-control" placeholder="Enter Name" data-errors="Please Enter Name." required>-->
                                                     {{ form.name.label }}
-                                                    {{ form.name(class="form-control", placeholder="Enter Name") }}
+                                                    {{ form.name(class="form-control", placeholder="{{_('Enter Name')}}") }}
                                                     {% for error in form.name.errors %}
                                                         <span>{{ error }}</span>
                                                     {% endfor %}
@@ -886,7 +887,7 @@
                                                     <!--<label>Serial Number *</label>
                                                     <input type="text" class="form-control" placeholder="Enter Serial Number" data-errors="Please Enter Serial Number." required>-->
                                                     {{ form.serial_number.label }}
-                                                    {{ form.serial_number(class="form-control", placeholder="Enter Serial Number") }}
+                                                    {{ form.serial_number(class="form-control", placeholder="{{_('Enter Serial Number')}}") }}
                                                     {% for error in form.serial_number.errors %}
                                                         <span>{{ error }}</span>
                                                     {% endfor %}
@@ -900,7 +901,7 @@
                                                     <!--<label>Price *</label>
                                                     <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." required>-->
                                                     {{ form.price.label }}
-                                                    {{ form.price(class="form-control", placeholder="Enter Price") }}
+                                                    {{ form.price(class="form-control", placeholder="{{_('Enter Price')}}") }}
                                                     {% for error in form.price.errors %}
                                                         <span>{{ error }}</span>
                                                     {% endfor %}
@@ -914,7 +915,7 @@
                                                     <!--<label>Stock *</label>
                                                     <input type="text" class="form-control" placeholder="Enter Stock" data-errors="Please Enter Stock." required>-->
                                                     {{ form.stock.label }}
-                                                    {{ form.stock(class="form-control", placeholder="Enter Stock") }}
+                                                    {{ form.stock(class="form-control", placeholder="{{_('Enter Stock')}}") }}
                                                     {% for error in form.stock.errors %}
                                                         <span>{{ error }}</span>
                                                     {% endfor %}
@@ -967,7 +968,7 @@
                                                     <!--<label>Description / Product Details</label>
                                                     <textarea class="form-control" rows="4"></textarea>-->
                                                     {{ form.description.label }}
-                                                    {{ form.description(class="form-control", placeholder="Enter Stock") }}
+                                                    {{ form.description(class="form-control", placeholder="{{_('Enter Stock')}}") }}
                                                     {% for error in form.description.errors %}
                                                         <span>{{ error }}</span>
                                                     {% endfor %}
@@ -976,7 +977,7 @@
                                         </div>
                                         <!--<button type="submit" class="btn btn-primary mr-2">Add Product</button>-->
                                         {{ form.submit(class="btn btn-primary mr-2") }}
-                                        <button type="reset" class="btn btn-danger">Reset</button>
+                                        <button type="reset" class="btn btn-danger">{{ _('Reset') }}</button>
                                     </form>
                                 </div>
                             </div>
@@ -995,8 +996,8 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <ul class="list-inline mb-0">
-                                <li class="list-inline-item"><a href="../backend/privacy-policy.html">Privacy Policy</a></li>
-                                <li class="list-inline-item"><a href="../backend/terms-of-service.html">Terms of Use</a></li>
+                                <li class="list-inline-item"><a href="../backend/privacy-policy.html">{{ _('Privacy Policy')}}</a></li>
+                                <li class="list-inline-item"><a href="../backend/terms-of-service.html">{{ _('Terms of Use')}}</a></li>
                             </ul>
                         </div>
                         <div class="col-lg-6 text-right">
