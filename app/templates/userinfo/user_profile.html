@@ -322,7 +322,7 @@
 
                                     <div class="email" id="info-box">
                                         <p id="email">
-                                            Email: {{ user.email }}
+                                            {{ _('Email') }}: {{ user.email }}
                                         </p>
                                     </div>
 
@@ -330,7 +330,7 @@
                                         {#                                <p class="tags">#}
                                         {#                                    {{ user.tag }}#}
                                         {#                                </p>#}
-                                        Bio:
+                                        {{ _('Bio') }}:
                                         {% if user.about_me == None or user.about_me == "" %}
                                             <p class="info-null" id="about">
                                                 {{ _('Describe yourself...')}}
@@ -353,7 +353,7 @@
                             </p></div>
                         <div class="gender" id="info-box">
                             <p id="gender">
-                            Gender: {{ user.gender }}
+                                {{ _('Gender') }}: {{ user.gender }}
                         </p></div>
                     </div>
                 </div>
@@ -361,7 +361,7 @@
                 <!-- 2. Address section -->
                 <div class="topic_container text-middle" id="address_container" style="display: none">
                     <div class="cart-header">
-                        <h4 class="w-commerce-commercecartheading">Your Address</h4>
+                        <h4 class="w-commerce-commercecartheading">{{ _('Your Address')}}</h4>
                         <!--<a href="#" data-node-type="commerce-cart-close-link"
                            class="w-commerce-commercecartcloselink close-cart-button w-inline-block">
                             <img src="images/icon-cross-large.svg" loading="lazy" alt="">
@@ -454,22 +454,22 @@
 
                 <!-- 3. Brand section -->
                 <div class="topic_container" id="brand_container" style="display: none">
-                    3. Brand section
+                    3. {{ _('Brand section')}}
                 </div>
 
                 <!-- 4. Category section -->
                 <div class="topic_container" id="category_container" style="display: none">
-                    4. Category section
+                    4. {{ _('Category section')}}
                 </div>
 
                 <!-- 5. Prime section -->
                 <div class="topic_container" id="prime_container" style="display: none">
-                    5. Prime section
+                    5. {{ _('Prime section')}}
                 </div>
 
                 <!-- 6. Order section -->
                 <div class="topic_container" id="order_container" style="display: none">
-                    6. Order section
+                    6. {{ _('Order section')}}
                 </div>
             </div>
         </div>
@@ -570,7 +570,7 @@
         <!-- Edit profile information section-->
         <div id="edit_profile_form" class="middle-floating bg-grey action_area" style="display: none"5>
             <div id="form_top_bar" class="bg-dark">
-                Edit profile
+                {{ _('Edit profile')}}
                 <div id="close_edit_profile_form_btn" class="bg-primary close_btn">
                     &times;
                 </div>
@@ -657,7 +657,7 @@
         <!-- Add address floating section -->
         <div id="add_address_form" class="middle-floating bg-grey action_area" style="display: none">
             <div id="form_top_bar" class="bg-dark">
-                Add address
+                {{ _('Add address')}}
                 <div id="close_add_form_btn" class="bg-primary close_btn">
                     &times;
                 </div>
@@ -792,7 +792,7 @@
         <!-- Edit address floating section -->
         <div id="edit_address_form" class="middle-floating bg-grey action_area" style="display: none">
             <div id="form_top_bar" class="bg-dark">
-                Edit address
+                {{ _('Edit address')}}
                 <div id="close_edit_form_btn" class="bg-primary close_btn">
                     &times;
                 </div>
