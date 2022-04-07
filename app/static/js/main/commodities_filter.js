@@ -141,10 +141,10 @@ $(document).ready(function (){
 
      $.post("/api/filter-model-types",
         {
-            "classification": classification,
-            "type": type,
-            "additional": additional,
-            "brand": brand
+            "c": classification,
+            "t": type,
+            "a": additional,
+            "b": brand
         }).done(function (response)
             {
                 console.log('')
@@ -156,8 +156,10 @@ $(document).ready(function (){
                 if(returnValue === 0)
                 {
                     //success
-                    console.log("ModelType " + model_type_id + "removed");
+                    // console.log("ModelType " + model_type_id + "removed");
                     data = response['data'];
+                    console.log("data below")
+                    console.log(data)
                 }
                 else if(returnValue === 1){
                     //failure

@@ -119,7 +119,7 @@ def index_test():
     return render_template('main/index_test.html')
 
 
-@main.route('/')
+@main.route('/all-models')
 def go_all():
     """
         The function for going to see all the products (model types).
@@ -129,7 +129,7 @@ def go_all():
     all_model_type = ModelType.query.filter_by(is_deleted=False) \
         .order_by(ModelType.sales.desc(), ModelType.views.desc()) \
         .all()
-    return render_template('', mt_list=all_model_type)  # see-all page
+    return render_template('main/page_all_commodities.html', mt_list=all_model_type)  # see-all page
 
 
 @main.route('/search', methods=['POST'])
@@ -145,7 +145,7 @@ def search():
         mt_list = search_models_by_keyword(keyword=key_word) \
             .order_by(ModelType.sales.desc(), ModelType.views.desc()) \
             .all()
-        return render_template('', mt_list=mt_list)  # see-all page
+        return render_template('main/page_all_commodities.html', mt_list=mt_list)  # see-all page
 
     return redirect(url_for('main.index'))
 
@@ -285,7 +285,14 @@ def model_listing(search_content):
     This function is used to render the page of "model-listing"
     :param search_content: The content of the "search", if this is "", this means the used did not get to here by searching
     """
-    return render_template('', search_content=search_content)
+    # search the models by search_content
+    if search_content != "":
+        mt_bq_lst = search_models_by_keyword(keyword=search_content)
+        mt_lst = mt_bq_lst.all()
+    else:
+        # if com here by clicking on "go all"
+        mt_lst = ModelType.query.all()
+    return render_template('main/page_all_commodities.html', search_content=search_content, mt_lst=mt_lst)
 
 
 @main.route('/change_language', methods=['GET', 'POST'])
@@ -357,6 +364,12 @@ def filter_model_types():
         # get search content, if it is "", we will get all the models
         search_content = request.form.get('search_content', default="")
 
+        print("c: ", filter_c)
+        print("t: ", filter_t)
+        print("a:", filter_a)
+        print("b: ", filter_b)
+        print("search_count: ", search_content)
+
         if search_content != "":
             # if the user has searched something
             # search a BaseQuery obj that contains a list of model types
@@ -368,11 +381,15 @@ def filter_model_types():
             # filter all the models according to the filters(check box)
             mt_lst = db.session.query(ModelType).join(Product).filter(Product.serial_prefix.like("%{}%{}%{}%{}%".format(filter_b, filter_c, filter_t, filter_a))).all()
 
+        # print(mt_lst)
+
         """ sort the model list by the sale numbers """
         sort_db_models(mt_lst, sort_key=take_sales, reverse=True)
 
         """ structure the return data into a JSON dict """
         data = [mt.to_dict() for mt in mt_lst]
+
+        # print(data)
 
         return jsonify({'returnValue': 0, 'data': data})
 
