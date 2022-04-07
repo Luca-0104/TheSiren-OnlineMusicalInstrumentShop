@@ -207,3 +207,11 @@
 .address_table td{
     padding: 3px;
 }
+
+.address_action_btn_table{
+    width: 100%;
+}
+
+.address_action_btn{
+    width: 30%;
+}

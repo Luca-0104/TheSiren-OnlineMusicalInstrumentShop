@@ -69,3 +69,7 @@ h4.w-commerce-commercecartheading{
 #address_listing_table{
     width: 100%;
 }
+
+#address_listing_table td{
+    margin: 100px;
+}
