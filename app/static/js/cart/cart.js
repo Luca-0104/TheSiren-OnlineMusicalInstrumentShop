@@ -84,15 +84,15 @@ $(".remove-a").on("click",function()
 function disable(rowID)
 {
     console.log("disable "+rowID);
-    $("#row_"+rowID).attr("disabled", true);
-    console.log($("#row_"+rowID).attr("disabled"));
+    $("#row_"+rowID).attr("row_disable", true);
+    console.log($("#row_"+rowID).attr("row_disable"));
 }
 
 function setable(rowID)
 {
     console.log("setable "+rowID);
-    $("#row_"+rowID).attr("disabled", false);
-    console.log($("#row_"+rowID).attr("disabled"));
+    $("#row_"+rowID).attr("row_disable", false);
+    console.log($("#row_"+rowID).attr("row_disable"));
 }
 
 // change quantity by input a number
@@ -280,7 +280,7 @@ $(":checkbox").on("click",function()
 $(".cart_row").on("click",function()
 {
     console.log("cart "+$(this).attr("rowID"));
-    if($("#row_"+$(this).attr("rowID")).attr("disabled"))
+    if($("#row_"+$(this).attr("rowID")).attr("row_disable"))
     {
         let cb = $("#select_"+$(this).attr("rowID"));
         if (cb.prop("checked"))
