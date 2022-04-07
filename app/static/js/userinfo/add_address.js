@@ -33,7 +33,7 @@ $("#close_edit_form_btn").on("click",function()
 
 function remove_address(address_id)
 {
-    console.log("#address_row_"+address_id);
+    console.log("remove #address_row_"+address_id);
     let targetRow = $("#address_row_"+address_id);
 
     $.post("/api/remove-address",
@@ -47,6 +47,17 @@ function remove_address(address_id)
                 if(returnValue === 0)
                 {
                     //success
+                    targetRow.remove();
+                }
+                else if(returnValue === 2)
+                {
+                    targetRow.remove();
+                    let new_id = response['new_id'];
+                    console.log("new id: " + new_id);
+                    set_default(new_id);
+                }
+                else if(returnValue === 3)
+                {
                     targetRow.remove();
                 }
             });

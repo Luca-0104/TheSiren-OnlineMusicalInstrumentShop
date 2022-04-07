@@ -306,18 +306,9 @@ def remove_address():
     if request.method == 'POST':
         # get the address id from ajax
         address_id = request.form.get('address_id')
-        print(address_id)
 
         # find address from db
         address = Address.query.get(address_id)
-        if address.is_default is True:
-            print('default is true')
-            new_default_address = Address.query.filter_by(customer_id=current_user.id).first()
-            print(new_default_address)
-            if new_default_address is not None:
-                new_default_address.is_default = True
-                db.session.add(new_default_address)
-                print('over')
 
         # check if the address exists
         if address is None:
@@ -327,10 +318,37 @@ def remove_address():
         if address.customer_id != current_user.id:
             return jsonify({'returnValue': 1})
 
-        print(address)
-        # remove this address from db
-        db.session.delete(address)
-        db.session.commit()
+        # if the one we gonna delete is a default address
+        if address.is_default is True:
+            # whether this is the only address of this user
+            if current_user.addresses.count() == 1 and current_user.addresses.first() == address:
+                # if this is the only one, we can just delte it
+                db.session.delete(address)
+                db.session.commit()
+                flash(_('Address has been deleted!'))
+
+                # '3' means no new_id
+                return jsonify({'returnValue': 3})
+
+            else:
+                # if there are still some other addresses, we set the first one as new default address after removal
+                # first, remove this one
+                db.session.delete(address)
+                db.session.commit()
+                # then, change the first one to default
+                new_default_address = current_user.addresses.first()
+                new_default_address.is_default = True
+                db.session.add(new_default_address)
+                db.session.commit()
+
+                flash(_('Address has been deleted!'))
+                return jsonify({'returnValue': 2, 'new_id': new_default_address.id})
+
+        else:
+            # if the one we gonna delete is not a default address
+            # we can just delete it
+            db.session.delete(address)
+            db.session.commit()
 
         flash(_('Address has been deleted!'))
 
@@ -345,11 +363,11 @@ def change_default_address():
     if request.method == 'POST':
         # get the address id from ajax
         address_id = request.form.get('address_id')
-        print(address_id)
 
         # find address from db
         new_default_address = Address.query.get(address_id)
-        old_default_address = Address.query.filter_by(customer_id=current_user.id, is_default=True).first()
+        # old_default_address = Address.query.filter_by(customer_id=current_user.id, is_default=True).first()
+        old_default_address = current_user.addresses.filter_by(is_default=True).first()
 
         # check if the address exists
         if new_default_address is None:
@@ -359,8 +377,12 @@ def change_default_address():
         if new_default_address.customer_id != current_user.id:
             return jsonify({'returnValue': 1})
 
+        for address in current_user.addresses:
+            address.is_default = False
+            db.session.add(address)
+
+        # set this one as detault
         new_default_address.is_default = True
-        old_default_address.is_default = False
 
         # update default address
         db.session.add(new_default_address)

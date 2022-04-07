@@ -376,7 +376,7 @@
                         {% for address in user.addresses.all() %}
                             <tr id="address_row_{{ address.id }}">
                                 <td>
-                                    <table id="address_table_{{ address.id }}" border="1" width="100%">
+                                    <table id="address_table_{{ address.id }}" class="address_table" border="1" width="100%">
                                         {% if address.is_default %}
                                             <tr>
                                                 <td id="default_bar" address_id="{{ address.id }}" class="bg-primary"
@@ -389,7 +389,7 @@
                                             <td class="title_section">
                                                 {{ _('Recipient Name')}}
                                             </td>
-                                            <td id="address_recipient_name_{{ address.id }}">
+                                            <td id="address_recipient_name_{{ address.id }}" class="content_section">
                                                 {{ address.recipient.recipient_name }}
                                             </td>
                                         </tr>
@@ -397,7 +397,7 @@
                                             <td class="title_section">
                                                 {{ _('Phone') }}
                                             </td>
-                                            <td id="address_phone_{{ address.id }}">
+                                            <td id="address_phone_{{ address.id }}" class="content_section">
                                                 {{ address.recipient.phone }}
                                             </td>
                                         </tr>
@@ -406,7 +406,8 @@
                                                 {{ _('Receiving Address')}}
                                             </td>
                                             <td id="address_place_{{ address.id }}" country="{{ address.country }}" pos="{{ address.province_or_state }}"
-                                                city="{{ address.city }}" district="{{ address.district }}" details="{{ address.details }}">
+                                                city="{{ address.city }}" district="{{ address.district }}" details="{{ address.details }}"
+                                                class="content_section">
                                                 {{ address.get_address() }}
                                             </td>
                                         </tr>

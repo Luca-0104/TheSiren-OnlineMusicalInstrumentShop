@@ -167,7 +167,7 @@
                                     <th class="table-head bg-primary-light"></th>
                                 </tr>
                                 {% for cart in cart_relation_lst %}
-                                    <tr rowID="{{ loop.index }}" id="row_{{ loop.index }}" class="cart_row" cartid="{{ cart.id }}" modelid="{{ cart.model_type.id }}" single_price="{{ cart.model_type.price }}">
+                                    <tr rowID="{{ loop.index }}" id="row_{{ loop.index }}" row_disable="false" class="cart_row" cartid="{{ cart.id }}" modelid="{{ cart.model_type.id }}" single_price="{{ cart.model_type.price }}">
                                         <td class="buttom-border">
                                             <input focusID="{{ loop.index }}" id="select_{{ loop.index }}" type="checkbox" name="selected" value="true">
                                         </td>
