@@ -219,7 +219,7 @@
                     <!-- Search -->
                     <form action="/search" id="w-node-dab1a8fd-38ef-ff9e-e737-a0bdf6abf40d-f6abf40a" class="nav-search-form w-form">
                         <img src="../../static/images/icon-search.svg" loading="eager" alt="">
-                        <input type="search" class="search-form-input w-input" maxlength="256" name="query" placeholder="Search here" id="search-2" required="">
+                        <input type="search" class="search-form-input w-input" maxlength="256" name="query" placeholder="{{ _('Search here')}}" id="search-2" required="">
                         <input type="submit" value="Search" class="hide-button w-button">
                     </form>
                 </div>
@@ -355,7 +355,7 @@
                             <div class="large-text" id="slide-text"></div>
                             <div class="button-row justify-content-center">
                                 <a href="shop.html" class="button bg-white-faded w-inline-block">
-                                    <div>Start Browsing</div>
+                                    <div>{{ _('Start Browsing')}}</div>
                                 </a>
                             </div>
                         </div>
@@ -411,7 +411,7 @@
                                 <div role="listitem" class="w-dyn-item product-box" style="padding: 10">
                                     <a href="{{ url_for('main.model_type_details', mt_id=rec_view_pro.id) }}" class="product-preview-link w-inline-block">
                                         {# The gray cover on the pic when hovering #}
-                                        <div class="box-img-cover">Click for Details</div>
+                                        <div class="box-img-cover">{{ _('Click for Details')}}</div>
 
                                         {# product picture #}
                                         {% if rec_view_pro.pictures.first() == None %}
@@ -437,7 +437,7 @@
 
                                         <!-- number of comments (clickable) -->
                                         <div class="no-bottom-margin box-product-cmt">
-                                            <a href="#">{{ rec_view_pro.comments.count() }}</a> <span>comments</span>
+                                            <a href="#">{{ rec_view_pro.comments.count() }}</a> <span>{{ _('comments') }}</span>
                                         </div>
 
                                         <!-- rating stars of this product -->
@@ -557,7 +557,7 @@
                                     <div role="listitem" class="w-dyn-item product-box" style="padding: 10">
                                         <a href="{{ url_for('main.model_type_details', mt_id=rec_preference_pro.id) }}" class="product-preview-link w-inline-block">
                                             {# The gray cover on the pic when hovering #}
-                                            <div class="box-img-cover">Click for Details</div>
+                                            <div class="box-img-cover">{{ _('Click for Details')}}</div>
 
                                             {# product picture #}
                                             {% if rec_preference_pro.pictures.first() == None %}
@@ -582,7 +582,7 @@
 
                                             <!-- number of comments (clickable) -->
                                             <div class="no-bottom-margin box-product-cmt">
-                                                <a href="#">{{ rec_preference_pro.comments.count() }}</a> <span>comments</span>
+                                                <a href="#">{{ rec_preference_pro.comments.count() }}</a> <span>{{ _('comments') }}</span>
                                             </div>
 
                                             <!-- rating stars of this product -->
@@ -745,7 +745,7 @@
 
                                     <!-- number of comments (clickable) -->
                                     <div class="no-bottom-margin box-product-cmt">
-                                        <a href="#">{{ rec_time_pro.comments.count() }}</a> <span>comments</span>
+                                        <a href="#">{{ rec_time_pro.comments.count() }}</a> <span>{{ _('comments') }}</span>
                                     </div>
 
                                     <!-- rating stars of this product -->
@@ -1264,11 +1264,11 @@
                         <img src="../../static/images/index/keyboard.jpg" loading="lazy" alt="">
                     </div>
                     <div class="text-center">
-                        <h4 class="medium-heading slogan">Music should strike fire from the heart of man.</h4>
-                        <h6 class="small-heading slogan_name">Beethoven</h6>
+                        <h4 class="medium-heading slogan">{{ _('Music should strike fire from the heart of man.')}}</h4>
+                        <h6 class="small-heading slogan_name">{{ _('Beethoven') }}</h6>
                         <div class="button-row justify-content-center">
                             <a href="{{ url_for('auth.register') }}" target="_blank" class="button bg-white-faded w-inline-block">
-                                <div>Start Voyage</div>
+                                <div>{{ _('Start Voyage')}}</div>
                             </a>
                         </div>
                     </div>
