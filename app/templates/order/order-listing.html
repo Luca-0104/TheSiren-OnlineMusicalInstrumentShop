@@ -92,7 +92,7 @@
                     <!-- Search -->
                     <form action="/search" id="w-node-dab1a8fd-38ef-ff9e-e737-a0bdf6abf40d-f6abf40a" class="nav-search-form w-form">
                         <img src="images/icon-search.svg" loading="eager" alt="">
-                        <input type="search" class="search-form-input w-input" maxlength="256" name="query" placeholder="Search here" id="search-2" required="">
+                        <input type="search" class="search-form-input w-input" maxlength="256" name="query" placeholder="{{ _('Search here')}}" id="search-2" required="">
                         <input type="submit" value="Search" class="hide-button w-button">
                     </form>
                 </div>
@@ -258,7 +258,7 @@
                                                     </tr>
                                                     <tr>
                                                         <td>
-                                                            <a href="#" onclick="changeStatusTo({{ order.id }}, 4)">Comfirmed</a>
+                                                            <a href="#" onclick="changeStatusTo({{ order.id }}, 4)">{{ _('Comfirmed') }}</a>
                                                         </td>
                                                     </tr>
                                                 {% elif order.status_code == 3 %}

@@ -281,6 +281,7 @@ $(":checkbox").on("click",function()
 
 $(".cart_row").on("click",function()
 {
+    console.log($(this).attr("rowID"));
     if($("#row_"+$(this).attr("rowID")).attr("row_disable")=="false")
     {
         let cb = $("#select_"+$(this).attr("rowID"));

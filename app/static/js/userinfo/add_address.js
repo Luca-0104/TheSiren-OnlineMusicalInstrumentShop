@@ -33,7 +33,7 @@ $("#close_edit_form_btn").on("click",function()
 
 function remove_address(address_id)
 {
-    console.log("#address_row_"+address_id);
+    console.log("remove #address_row_"+address_id);
     let targetRow = $("#address_row_"+address_id);
 
     $.post("/api/remove-address",
@@ -47,6 +47,17 @@ function remove_address(address_id)
                 if(returnValue === 0)
                 {
                     //success
+                    targetRow.remove();
+                }
+                else if(returnValue === 2)
+                {
+                    targetRow.remove();
+                    let new_id = response['new_id'];
+                    console.log("new id: " + new_id);
+                    set_default(new_id);
+                }
+                else if(returnValue === 3)
+                {
                     targetRow.remove();
                 }
             });
@@ -78,8 +89,8 @@ function set_default(address_id)
                     targetTable.prepend(newHtml);
                     targetDiv.attr("is_default","t");
 
-                    newHtml = "<a id=\"default_btn_" + previousID + "\" class=\"badge badge-info mr-2\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"\" data-original-title=\"View\""+
-                       "href=\"javascript:set_default(" + previousID + ");\"><i class=\"ri-eye-line mr-0\">Set as Default</i></a>";
+                    newHtml = "<td id=\"default_btn_" + previousID + "\" class=\"address_action_btn bg-grey\"><a class=\"set_default_btn\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"\" data-original-title=\"View\""+
+                       "href=\"javascript:set_default(" + previousID + ");\"><i class=\"ri-eye-line mr-0\">Set as Default</i></a></td>";
                     previousDefaultDiv.prepend(newHtml);
                     previousDefaultDiv.attr("is_default","f");
 

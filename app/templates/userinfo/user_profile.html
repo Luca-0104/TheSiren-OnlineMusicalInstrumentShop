@@ -65,21 +65,17 @@
             <div id="Top" class="top"></div>
             <div class="main-container">
                 <div class="navbar-top">
-                    <a href="../index.html" class="w-inline-block"><img src="../images/Verse.svg" loading="eager"
-                                                                        alt=""></a>
+                    <a href="../index.html" class="w-inline-block"><img src="../images/Verse.svg" loading="eager" alt=""></a>
                     <div id="w-node-dab1a8fd-38ef-ff9e-e737-a0bdf6abf413-f6abf40a" class="navbar-right-contents">
-                        <a href="https://mmra.re/purchaseverse" class="button small nav-button w-inline-block"
-                           id="cart-button">
+                        <a href="https://mmra.re/purchaseverse" class="button small nav-button w-inline-block" id="cart-button">
                             <div>{{ _('Cart') }}</div>
                         </a>
                         <a href="https://mmra.re/purchaseverse" class="button small nav-button w-inline-block"
                            id="order-button">
                             <div>{{ _('Order') }}</div>
                         </a>
-                        <div data-node-type="commerce-cart-wrapper" data-open-product=""
-                             data-wf-cart-type="rightSidebar"
-                             data-wf-cart-query="" data-wf-page-link-href-prefix=""
-                             class="w-commerce-commercecartwrapper">
+                        <div data-node-type="commerce-cart-wrapper" data-open-product="" data-wf-cart-type="rightSidebar"
+                             data-wf-cart-query="" data-wf-page-link-href-prefix="" class="w-commerce-commercecartwrapper">
                             <a href="#" data-node-type="commerce-cart-open-link"
                                class="w-commerce-commercecartopenlink nav-cart-button w-inline-block"><img
                                     src="../images/icon-shopping-bag.svg" loading="eager" alt="">
@@ -150,12 +146,10 @@
                                                                 </g>
                                                             </svg>
                                                             <svg class="w-commerce-commercequickcheckoutmicrosofticon"
-                                                                 xmlns="http://www.w3.org/2000/svg" width="16"
-                                                                 height="16"
+                                                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                                  viewbox="0 0 16 16">
                                                                 <g fill="none" fill-rule="evenodd">
-                                                                    <polygon fill="#F05022"
-                                                                             points="7 7 1 7 1 1 7 1"></polygon>
+                                                                    <polygon fill="#F05022" points="7 7 1 7 1 1 7 1"></polygon>
                                                                     <polygon fill="#7DB902"
                                                                              points="15 7 9 7 9 1 15 1"></polygon>
                                                                     <polygon fill="#00A4EE"
@@ -194,12 +188,10 @@
                         </div>
                     </div>
                     <form action="/search" id="w-node-dab1a8fd-38ef-ff9e-e737-a0bdf6abf40d-f6abf40a"
-                          class="nav-search-form w-form"><img src="../images/icon-search.svg" loading="eager"
-                                                              alt=""><input
+                          class="nav-search-form w-form"><img src="../images/icon-search.svg" loading="eager" alt=""><input
                             type="search" class="search-form-input w-input" maxlength="256" name="query"
                             placeholder="Search here" id="search-2" required=""><input type="submit" value="Search"
-                                                                                       class="hide-button w-button">
-                    </form>
+                                                                                       class="hide-button w-button"></form>
                 </div>
             </div>
         </div>
@@ -207,8 +199,7 @@
         <!-- Lower Section of Top nav bar -->
         <div class="div-block">
             <div class="main-container">
-                <div data-collapse="small" data-animation="default" data-duration="400" data-easing="ease"
-                     data-easing2="ease"
+                <div data-collapse="small" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease"
                      role="banner" class="navbar w-nav">
                     <div class="button bg-primary wide w-nav-button">
                         <div>{{ _('Menu') }}</div>
@@ -332,7 +323,7 @@
 
                                     <div class="email" id="info-box">
                                         <p id="email">
-                                            Email: {{ user.email }}
+                                            {{ _('Email') }}: {{ user.email }}
                                         </p>
                                     </div>
 
@@ -340,7 +331,7 @@
                                         {#                                <p class="tags">#}
                                         {#                                    {{ user.tag }}#}
                                         {#                                </p>#}
-                                        Bio:
+                                        {{ _('Bio') }}:
                                         {% if user.about_me == None or user.about_me == "" %}
                                             <p class="info-null" id="about">
                                                 {{ _('Describe yourself...') }}
@@ -363,15 +354,15 @@
                             </p></div>
                         <div class="gender" id="info-box">
                             <p id="gender">
-                                Gender: {{ user.gender }}
-                            </p></div>
+                                {{ _('Gender') }}: {{ user.gender }}
+                        </p></div>
                     </div>
                 </div>
 
                 <!-- 2. Address section -->
                 <div class="topic_container text-middle" id="address_container" style="display: none">
                     <div class="cart-header">
-                        <h4 class="w-commerce-commercecartheading">Your Address</h4>
+                        <h4 class="w-commerce-commercecartheading">{{ _('Your Address')}}</h4>
                         <!--<a href="#" data-node-type="commerce-cart-close-link"
                            class="w-commerce-commercecartcloselink close-cart-button w-inline-block">
                             <img src="images/icon-cross-large.svg" loading="lazy" alt="">
@@ -386,7 +377,7 @@
                         {% for address in user.addresses.all() %}
                             <tr id="address_row_{{ address.id }}">
                                 <td>
-                                    <table id="address_table_{{ address.id }}" border="1" width="100%">
+                                    <table id="address_table_{{ address.id }}" class="address_table" border="1" width="100%">
                                         {% if address.is_default %}
                                             <tr>
                                                 <td id="default_bar" address_id="{{ address.id }}" class="bg-primary"
@@ -399,7 +390,7 @@
                                             <td class="title_section">
                                                 {{ _('Recipient Name') }}
                                             </td>
-                                            <td id="address_recipient_name_{{ address.id }}">
+                                            <td id="address_recipient_name_{{ address.id }}" class="content_section">
                                                 {{ address.recipient.recipient_name }}
                                             </td>
                                         </tr>
@@ -407,7 +398,7 @@
                                             <td class="title_section">
                                                 {{ _('Phone') }}
                                             </td>
-                                            <td id="address_phone_{{ address.id }}">
+                                            <td id="address_phone_{{ address.id }}" class="content_section">
                                                 {{ address.recipient.phone }}
                                             </td>
                                         </tr>
@@ -415,44 +406,62 @@
                                             <td class="title_section">
                                                 {{ _('Receiving Address') }}
                                             </td>
-                                            <td id="address_place_{{ address.id }}" country="{{ address.country }}"
-                                                pos="{{ address.province_or_state }}"
-                                                city="{{ address.city }}" district="{{ address.district }}"
-                                                details="{{ address.details }}">
+                                            <td id="address_place_{{ address.id }}" country="{{ address.country }}" pos="{{ address.province_or_state }}"
+                                                city="{{ address.city }}" district="{{ address.district }}" details="{{ address.details }}"
+                                                class="content_section">
                                                 {{ address.get_address() }}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2">
                                                 {% if not address.is_default %}
-                                                    <div id="action_{{ address.id }}" is_default="f"
-                                                         class="align-items-center list-action">
-                                                        <a id="default_btn_{{ address.id }}"
-                                                           class="badge badge-info mr-2"
-                                                           data-toggle="tooltip"
-                                                           data-placement="top" title="" data-original-title="View"
-                                                           href="javascript:set_default({{ address.id }});"><i
-                                                                class="ri-eye-line mr-0">{{ _('Set as Default') }}</i></a>
-                                                        <a class="badge bg-success mr-2" data-toggle="tooltip"
-                                                           data-placement="top" title="" data-original-title="Edit"
-                                                           href="javascript:start_edit_address({{ address.id }});"><i
-                                                                class="ri-pencil-line mr-0">{{ _('Edit') }}</i></a>
-                                                        <a class="badge bg-warning mr-2" data-toggle="tooltip"
-                                                           data-placement="top" title="" data-original-title="Delete"
-                                                           href="javascript:remove_address({{ address.id }});"><i
-                                                                class="ri-delete-bin-line mr-0">{{ _('Delete') }}</i></a>
+                                                    <div class="align-items-center list-action">
+                                                        <table class="address_action_btn_table">
+                                                            <tr id="action_{{ address.id }}" is_default="f">
+                                                                <td id="default_btn_{{ address.id }}" class="address_action_btn bg-grey">
+                                                                    <a class="set_default_btn"
+                                                                       data-toggle="tooltip" data-placement="top" title="" data-original-title="View"
+                                                                       href="javascript:set_default({{ address.id }});">
+                                                                        <i class="ri-eye-line mr-0">{{ _('Set as Default')}}</i>
+                                                                    </a>
+                                                                </td>
+                                                                <td class="address_action_btn bg-grey">
+                                                                    <a class="edit_btn"
+                                                                       data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"
+                                                                       href="javascript:start_edit_address({{ address.id }});">
+                                                                        <i class="ri-pencil-line mr-0">{{ _('Edit') }}</i>
+                                                                    </a>
+                                                                </td>
+                                                                <td class="address_action_btn bg-grey">
+                                                                    <a class="delete_btn"
+                                                                       data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"
+                                                                       href="javascript:remove_address({{ address.id }});">
+                                                                        <i class="ri-delete-bin-line mr-0">{{ _('Delete') }}</i>
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
                                                     </div>
                                                 {% else %}
-                                                    <div id="action_{{ address.id }}" is_default="t"
-                                                         lass="d-flex align-items-center list-action">
-                                                        <a class="badge bg-success mr-2" data-toggle="tooltip"
-                                                           data-placement="top" title="" data-original-title="Edit"
-                                                           href="javascript:start_edit_address({{ address.id }});"><i
-                                                                class="ri-pencil-line mr-0">{{ _('Edit') }}</i></a>
-                                                        <a class="badge bg-warning mr-2" data-toggle="tooltip"
-                                                           data-placement="top" title="" data-original-title="Delete"
-                                                           href="javascript:remove_address({{ address.id }});"><i
-                                                                class="ri-delete-bin-line mr-0">{{ _('Delete') }}</i></a>
+                                                    <div class="align-items-center list-action">
+                                                        <table class="address_action_btn_table">
+                                                            <tr id="action_{{ address.id }}" is_default="t">
+                                                                <td class="address_action_btn bg-grey">
+                                                                    <a class="edit_btn" data-toggle="tooltip"
+                                                                       data-placement="top" title="" data-original-title="Edit"
+                                                                       href="javascript:start_edit_address({{ address.id }});">
+                                                                        <i class="ri-pencil-line mr-0">{{ _('Edit') }}</i>
+                                                                    </a>
+                                                                </td>
+                                                                <td class="address_action_btn bg-grey">
+                                                                    <a class="delete_btn" data-toggle="tooltip"
+                                                                       data-placement="top" title="" data-original-title="Delete"
+                                                                       href="javascript:remove_address({{ address.id }});">
+                                                                        <i class="ri-delete-bin-line mr-0">{{ _('Delete') }}</i>
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
                                                     </div>
                                                 {% endif %}
                                             </td>
@@ -466,22 +475,22 @@
 
                 <!-- 3. Brand section -->
                 <div class="topic_container" id="brand_container" style="display: none">
-                    3. Brand section
+                    3. {{ _('Brand section')}}
                 </div>
 
                 <!-- 4. Category section -->
                 <div class="topic_container" id="category_container" style="display: none">
-                    4. Category section
+                    4. {{ _('Category section')}}
                 </div>
 
                 <!-- 5. Prime section -->
                 <div class="topic_container" id="prime_container" style="display: none">
-                    5. Prime section
+                    5. {{ _('Prime section')}}
                 </div>
 
                 <!-- 6. Order section -->
                 <div class="topic_container" id="order_container" style="display: none">
-                    6. Order section
+                    6. {{ _('Order section')}}
                 </div>
             </div>
         </div>
@@ -604,7 +613,7 @@
         <!-- Edit profile information section-->
         <div id="edit_profile_form" class="middle-floating bg-grey action_area" style="display: none" 5>
             <div id="form_top_bar" class="bg-dark">
-                Edit profile
+                {{ _('Edit profile')}}
                 <div id="close_edit_profile_form_btn" class="bg-primary close_btn">
                     &times;
                 </div>
@@ -691,7 +700,7 @@
         <!-- Add address floating section -->
         <div id="add_address_form" class="middle-floating bg-grey action_area" style="display: none">
             <div id="form_top_bar" class="bg-dark">
-                Add address
+                {{ _('Add address')}}
                 <div id="close_add_form_btn" class="bg-primary close_btn">
                     &times;
                 </div>
@@ -826,7 +835,7 @@
         <!-- Edit address floating section -->
         <div id="edit_address_form" class="middle-floating bg-grey action_area" style="display: none">
             <div id="form_top_bar" class="bg-dark">
-                Edit address
+                {{ _('Edit address')}}
                 <div id="close_edit_form_btn" class="bg-primary close_btn">
                     &times;
                 </div>

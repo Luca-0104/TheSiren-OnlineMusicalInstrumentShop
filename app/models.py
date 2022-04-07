@@ -328,8 +328,12 @@ class Order(BaseModel):
         for omt in self.order_model_types.all():
             model_types.append(omt.model_type.to_dict())
         result['model_types'] = model_types
-        # add address to this dict
-        result['address'] = self.address.to_dict()
+        if self.address is not None:
+            # add address to this dict
+            result['address'] = self.address.to_dict()
+        if self.recipient is not None:
+            # add address to this dict
+            result['recipient'] = self.recipient.to_dict()
         return Tools.delete_instance_state(result)
 
     def get_status(self):
@@ -983,7 +987,7 @@ class Address(BaseModel):
         return Tools.delete_instance_state(result)
 
     def get_address(self):
-        address = "{} {} {} {} {}".format(self.country, self.province_or_state, self.city, self.district, self.details)
+        address = "{} - {} - {} - {} - {}".format(self.country, self.province_or_state, self.city, self.district, self.details)
         return address
 
 
