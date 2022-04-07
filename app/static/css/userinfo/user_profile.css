@@ -95,7 +95,7 @@
 #prime-img {
     height: 30px;
     margin-top: 10px;
-    /*margin-left: 30px;*/
+    /*margin-left: -53%;*/
 }
 
 .exp_bar {
@@ -118,10 +118,11 @@
     text-align: center;
     line-height: 30px;
     color: white;
+    transition: 1.2s;
 }
 
 #left-level {
-    margin-left: -10px;
+    margin-left: -2%;
 }
 
 #right-level {

@@ -1,3 +1,14 @@
+function startboost()
+{
+    let top_bar = $("#top-bar");
+    let percent = top_bar.attr("total_exp") + "%";
+    // top_bar.style.width= "percent%";
+    top_bar.css("width",function (){return percent})
+    var message = top_bar.css;
+}
+
+startboost();
+
 function topicBtnRefresh()
 {
     let info_btn = $("#info_btn");
@@ -193,13 +204,3 @@ $("#Order_btn").on("click",function()
     }
 });
 
-window.on('load',function ()
-{
-    window.alert("3456789io0");
-    let top_bar = $("#top_bar");
-    let percent = top_bar.val();
-    // top_bar.style.width= "percent%";
-     top_bar.css("width",function (){return percent})
-    var message = top_bar.css;
-    window.alert(message);
-});
