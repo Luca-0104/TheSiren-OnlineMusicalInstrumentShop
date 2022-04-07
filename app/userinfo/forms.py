@@ -38,12 +38,11 @@ class EditProfileForm(FlaskForm):
                                                                              "Username must contain only letters, numbers, dots or underscores")])
     # new_password = PasswordField('Password: ', validators=[DataRequired()])
     edit_profile_about_me = StringField(_l('About Me: '), validators=[Length(0, 300)])
-    edit_profile_gender = RadioField(_l('Gender: '), choices=[(0, 'Male'), (1, 'Female'), (2, 'Unknown')], coerce=int,
+    edit_profile_gender = RadioField(_l('Gender: '), choices=[(0, _l('Male')), (1, _l('Female')), (2, _l('Unknown'))], coerce=int,
                                      validators=[DataRequired()])
+    edit_profile_about_me = StringField(_l('About Me: '), validators=[Length(0, 300)])
+    edit_profile_gender = SelectField(_l('Gender: '), choices=[(0, _l('Male')), (1, _l('Female')), (2, _l('Unknown'))], coerce=int, validators=[DataRequired()])
     edit_profile_submit = SubmitField(_l('Update Profile'))
-    edit_profile_about_me = StringField('About Me: ', validators=[Length(0, 300)])
-    edit_profile_gender = SelectField('Gender: ', choices=[(0, 'Male'), (1, 'Female'), (2, 'Unknown')], coerce=int, validators=[DataRequired()])
-    edit_profile_submit = SubmitField('Update Profile')
 
     def __init__(self, user):
         super(EditProfileForm, self).__init__()
