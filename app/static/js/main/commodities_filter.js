@@ -47,7 +47,7 @@ $(document).ready(function (){
          }
      });
 
-     $('.category').on("change", function (){
+     $('.type').on("change", function (){
          console.log($(this).attr('id'));
 
          console.log($(this).attr("checked"));
@@ -56,21 +56,66 @@ $(document).ready(function (){
 
          if (!$(this).prop('checked')){
 
-             for (let i = 1; i <= checking_numbers[0]; i++){
+             for (let i = 1; i <= checking_numbers[1]; i++){
                  if(p !== i){
-                     let cancel_select = $('#check_class_'+i);
-                     cancel_select.attr("class","checkbox category");
+                     let cancel_select = $('#check_type_'+i);
+                     cancel_select.attr("class","checkbox type");
                      cancel_select.prop("checked","off");
-
                  }
              }
-             $(this).attr("class","checkbox w--redirected-checked category");
+             $(this).attr("class","checkbox w--redirected-checked type");
              $(this).prop("checked","on");
 
              console.log($(this).attr("checked")+'2');
          }
      });
 
+
+     $('.add').on("change", function (){
+         console.log($(this).attr('id'));
+
+         console.log($(this).attr("checked"));
+         let p = $(this).attr('id').split('_').pop();
+         console.log(p);
+
+         if (!$(this).prop('checked')){
+
+             for (let i = 1; i <= checking_numbers[2]; i++){
+                 if(p !== i){
+                     let cancel_select = $('#check_add_'+i);
+                     cancel_select.attr("class","checkbox add");
+                     cancel_select.prop("checked","off");
+                 }
+             }
+             $(this).attr("class","checkbox w--redirected-checked add");
+             $(this).prop("checked","on");
+
+             console.log($(this).attr("checked")+'2');
+         }
+     });
+
+     $('.brands').on("change", function (){
+         console.log($(this).attr('id'));
+
+         console.log($(this).attr("checked"));
+         let p = $(this).attr('id').split('_').pop();
+         console.log(p);
+
+         if (!$(this).prop('checked')){
+
+             for (let i = 1; i <= checking_numbers[3]; i++){
+                 if(p !== i){
+                     let cancel_select = $('#check_brand_'+i);
+                     cancel_select.attr("class","checkbox brand");
+                     cancel_select.prop("checked","off");
+                 }
+             }
+             $(this).attr("class","checkbox w--redirected-checked brand");
+             $(this).prop("checked","on");
+
+             console.log($(this).attr("checked")+'2');
+         }
+     });
      // $('#category_checkbox').on("change",function (){
      //    for (let i=1; i<=7; i++){
      //        console.log(i);
