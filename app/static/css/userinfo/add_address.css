@@ -21,7 +21,8 @@
 
 .action_area{
     z-index: 101;
-    width: 60%;
+    width: 45%;
+    height: 60%;
 }
 
 .title_section{
