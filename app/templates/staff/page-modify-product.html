@@ -601,7 +601,7 @@
                         <div class="iq-search-bar device-search">
                             <form action="#" class="searchbox">
                                 <a class="search-link" href="#"><i class="ri-search-line"></i></a>
-                                <input type="text" class="text search-input" placeholder="Search here...">
+                                <input type="text" class="text search-input" placeholder="{{ _('Search here...')}}">
                             </form>
                         </div>
                         <div class="d-flex align-items-center">
@@ -852,6 +852,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="content-page">
                 <div class="container-fluid add-form-list">
                     <!-- Content Start -->
@@ -860,7 +861,7 @@
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between">
                                     <div class="header-title">
-                                        <h4 class="card-title">Modify Product</h4>
+                                        <h4 class="card-title">{{ _('Modify Product')}}</h4>
                                     </div>
                                 </div>
                                 <div class="card-body">
@@ -873,7 +874,7 @@
                                                     <!--<label>Product Name *</label>
                                                     <input type="text" class="form-control" placeholder="Enter Name" data-errors="Please Enter Name." required>-->
                                                     {{ form.name.label }}
-                                                    {{ form.name(class="form-control", placeholder="Enter Name") }}
+                                                    {{ form.name(class="form-control", placeholder="{{_('Enter Name')}}") }}
                                                     {% for error in form.name.errors %}
                                                         <span>{{ error }}</span>
                                                     {% endfor %}
@@ -887,7 +888,7 @@
                                                     <!--<label>Serial Number *</label>
                                                     <input type="text" class="form-control" placeholder="Enter Serial Number" data-errors="Please Enter Serial Number." required>-->
                                                     {{ form.serial_number.label }}
-                                                    {{ form.serial_number(class="form-control", placeholder="Enter Serial Number") }}
+                                                    {{ form.serial_number(class="form-control", placeholder="{{_('Enter Serial Number')}}") }}
                                                     {% for error in form.serial_number.errors %}
                                                         <span>{{ error }}</span>
                                                     {% endfor %}
@@ -898,7 +899,7 @@
                                             <!-- Catagory section -->
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label>Classification *</label>
+                                                    <label>{{ _('Classification') }} *</label>
                                                     <select name="categories[]" class="selectpicker form-control" data-style="py-0">
                                                         <option>Strings</option>
                                                         <option>Woodwinds</option>
@@ -912,7 +913,7 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label>Type *</label>
+                                                    <label>{{ _('Type') }} *</label>
                                                     <select name="categories[]" class="selectpicker form-control" data-style="py-0">
                                                         <optgroup label="String">
                                                             <option>Violin</option>
@@ -984,7 +985,7 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label>Extra Requirement *</label>
+                                                    <label>{{ _('Extra Requirement')}} *</label>
                                                     <select name="categories[]" class="selectpicker form-control" data-style="py-0">
                                                         <option>Acoustic Only</option>
                                                         <option>Electricity Required</option>
@@ -1018,7 +1019,7 @@
                                         </div>
                                         <!--<button type="submit" class="btn btn-primary mr-2">Add Product</button>-->
                                         {{ form.submit(class="btn btn-primary mr-2") }}
-                                        <button type="reset" class="btn btn-danger">Reset</button>
+                                        <button type="reset" class="btn btn-danger">{{ _('Reset') }}</button>
                                     </form>
                                 </div>
                             </div>
@@ -1036,8 +1037,8 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <ul class="list-inline mb-0">
-                                <li class="list-inline-item"><a href="../backend/privacy-policy.html">Privacy Policy</a></li>
-                                <li class="list-inline-item"><a href="../backend/terms-of-service.html">Terms of Use</a></li>
+                                <li class="list-inline-item"><a href="../backend/privacy-policy.html">{{ _('Privacy Policy')}}</a></li>
+                                <li class="list-inline-item"><a href="../backend/terms-of-service.html">{{ _('Terms of Use')}}</a></li>
                             </ul>
                         </div>
                         <div class="col-lg-6 text-right">
