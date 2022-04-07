@@ -158,13 +158,13 @@
                                                                              points="15 15 9 15 9 9 15 9"></polygon>
                                                                 </g>
                                                             </svg>
-                                                            <div>{{ _('Pay with browser.')}}</div>
+                                                            <div>{{ _('Pay with browser.') }}</div>
                                                         </a>
                                                     </div>
                                                     <a href="../checkout.html" value="Continue to Checkout"
                                                        data-node-type="cart-checkout-button"
                                                        class="w-commerce-commercecartcheckoutbutton button bg-primary-dark"
-                                                       data-loading-text="Hang Tight...">{{ _('Continue to Checkout')}}</a>
+                                                       data-loading-text="Hang Tight...">{{ _('Continue to Checkout') }}</a>
                                                 </div>
                                             </div>
                                         </form>
@@ -179,7 +179,7 @@
                                                  data-w-cart-checkout-error="Checkout is disabled on this site."
                                                  data-w-cart-cart_order_min-error="The order minimum was not met. Add more items to your cart to continue."
                                                  data-w-cart-subscription_error-error="Before you purchase, please use your email invite to verify your address so we can send order updates.">
-                                                {{ _('Product is not available in this quantity.')}}
+                                                {{ _('Product is not available in this quantity.') }}
                                             </div>
                                         </div>
                                     </div>
@@ -214,7 +214,7 @@
                                     </div>
                                 </div>
                                 <div class="w-dyn-empty">
-                                    <div>{{ _('No items found.')}}</div>
+                                    <div>{{ _('No items found.') }}</div>
                                 </div>
                             </div>
                             <div class="nav-menu-divider"></div>
@@ -239,10 +239,10 @@
                         <a class="button nav nav-button w-inline-block">{{ _('Address') }}</a>
                     </li>
                     <li class="nav-item hover-item clickable" id="brand_btn">
-                        <a class="button nav nav-button w-inline-block">{{ _('Followed Brand')}}</a>
+                        <a class="button nav nav-button w-inline-block">{{ _('Followed Brand') }}</a>
                     </li>
                     <li class="nav-item hover-item clickable" id="category_btn">
-                        <a class="button nav nav-button w-inline-block">{{ _('Followed Category')}}</a>
+                        <a class="button nav nav-button w-inline-block">{{ _('Followed Category') }}</a>
                     </li>
                     <li class="nav-item hover-item clickable" id="prime_btn">
                         <a class="button nav nav-button w-inline-block">{{ _('Prime') }}</a>
@@ -303,7 +303,8 @@
                                         {#                    the edit button#}
 
 
-                                        <a href="#" id="show_edit_info_form_btn" class="button small nav-button w-inline-block">
+                                        <a href="#" id="show_edit_info_form_btn"
+                                           class="button small nav-button w-inline-block">
                                             <div>{{ _('Edit') }}</div>
                                         </a>
                                         {#                        {% endif %}#}
@@ -333,7 +334,7 @@
                                         {{ _('Bio') }}:
                                         {% if user.about_me == None or user.about_me == "" %}
                                             <p class="info-null" id="about">
-                                                {{ _('Describe yourself...')}}
+                                                {{ _('Describe yourself...') }}
                                             </p>
 
                                         {% else %}
@@ -349,7 +350,7 @@
                     <div class="date-gender">
                         <div class="date" id="info-box">
                             <p id="date">
-                                {{ _('Member since ')}} {{ user.start_datetime.date() }}
+                                {{ _('Member since ') }} {{ user.start_datetime.date() }}
                             </p></div>
                         <div class="gender" id="info-box">
                             <p id="gender">
@@ -387,7 +388,7 @@
                                         {% endif %}
                                         <tr>
                                             <td class="title_section">
-                                                {{ _('Recipient Name')}}
+                                                {{ _('Recipient Name') }}
                                             </td>
                                             <td id="address_recipient_name_{{ address.id }}" class="content_section">
                                                 {{ address.recipient.recipient_name }}
@@ -403,7 +404,7 @@
                                         </tr>
                                         <tr>
                                             <td class="title_section">
-                                                {{ _('Receiving Address')}}
+                                                {{ _('Receiving Address') }}
                                             </td>
                                             <td id="address_place_{{ address.id }}" country="{{ address.country }}" pos="{{ address.province_or_state }}"
                                                 city="{{ address.city }}" district="{{ address.district }}" details="{{ address.details }}"
@@ -500,7 +501,8 @@
                 <div class="main-container">
                     <div class="w-layout-grid footer-grid">
                         <div id="w-node-_3ee0633f-a568-72e0-ab7b-589be9d960ed-e9d960d8" class="footer-contact-details">
-                            <a href="#" class="footer-logo-link w-inline-block"><img src="../images/Verse.svg" loading="lazy"
+                            <a href="#" class="footer-logo-link w-inline-block"><img src="../images/Verse.svg"
+                                                                                     loading="lazy"
                                                                                      alt="" class="footer-logo"></a>
                             <div>34 Market Street, South Melbourne<br>Victoria 3009</div>
                             <div class="contact-links in-footer">
@@ -571,24 +573,45 @@
         <div id="profile_form_blocker" class="middle-floating blocker" style="display: none"></div>
 
         <!-- Change avatar floating section-->
-        <div id="change_avatar_form" class="middle-floating bg-dark action_area" style="display: none">
-            <div id="close_change_avatar_form_btn" class="bg-primary">
-                close
+        <div id="change_avatar_form" class="middle-floating bg-grey action_area" style="display: none">
+            {#            <div id="close_change_avatar_form_btn" class="bg-primary">#}
+            {#                &times;#}
+            {#            </div>#}
+            <div id="form_top_bar" class="bg-dark">
+                Change Avatar
+                <div id="close_change_avatar_form_btn" class="bg-primary close_btn">
+                    &times;
+                </div>
             </div>
-            <form enctype="multipart/form-data" method="post" novalidate>
-                {{ update_avatar_form.hidden_tag() }}
-                {{ update_avatar_form.update_avatar.label }}
-                {{ update_avatar_form.update_avatar() }}
-                {% for error in update_avatar_form.update_avatar().errors %}
-                    <div class="error-message">[{{ error }}]</div>
-                {% endfor %}
-                <br>
-                {{ update_avatar_form.update_avatar_submit(class="button bg-white-faded middle") }}
+            <form enctype="multipart/form-data" method="post" novalidate class="action-table-form">
+                <table class="action_table">
+                    <tr>
+                        <td>
+                            <div>
+                                <div class="form-group">
+                                    {{ update_avatar_form.hidden_tag() }}
+                                    {{ update_avatar_form.update_avatar.label }}
+                                    {{ update_avatar_form.update_avatar() }}
+                                    {% for error in update_avatar_form.update_avatar().errors %}
+                                        <div class="error-message">[{{ error }}]</div>
+                                    {% endfor %}
+                                    <div class="help-block with-errors"></div>
+                                    <br>
+                                    <div class="middle submit_btn">
+                                        {{ update_avatar_form.update_avatar_submit(class="button bg-white-faded middle") }}
+                                    </div>
+
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
             </form>
         </div>
 
         <!-- Edit profile information section-->
-        <div id="edit_profile_form" class="middle-floating bg-grey action_area" style="display: none"5>
+        <div id="edit_profile_form" class="middle-floating bg-grey action_area" style="display: none" 5>
             <div id="form_top_bar" class="bg-dark">
                 {{ _('Edit profile')}}
                 <div id="close_edit_profile_form_btn" class="bg-primary close_btn">
@@ -954,7 +977,8 @@
         <script type="text/javascript" src="../../static/js/userinfo/edit_profile.js"></script>
 
         <!-- [if lte IE 9]>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script>
+        <![endif] -->
     </body>
     <script type="text/javascript" src="../../static/js/userinfo/user_profile.js"></script>
     <script type="text/javascript" src="../../static/js/userinfo/add_address.js"></script>
