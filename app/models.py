@@ -300,7 +300,7 @@ class Order(BaseModel):
     @staticmethod
     def insert_orders(count):
         # a order for test
-        test_order = Order(status_code=0, user_id=1, gross_payment=100)
+        test_order = Order(status_code=0, user_id=1, order_type='self-collection')
         # need recipient info
         test_order.recipient_id = random.randint(1, Recipient.query.count())
         db.session.add(test_order)
