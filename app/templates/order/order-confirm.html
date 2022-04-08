@@ -265,10 +265,10 @@
                     </div>
                     <fieldset id="recipient-field" class="w-commerce-commercecheckoutblockcontent">
                         <label class="w-commerce-commercecheckoutlabel">Recipient Name *</label>
-                        <input type="text" name="recipient_name" required="" class="w-commerce-commercecheckoutemailinput">
+                        <input id="recipient-name" type="text" name="recipient_name" required="" class="w-commerce-commercecheckoutemailinput">
 
                         <label class="w-commerce-commercecheckoutlabel">Phone Number *</label>
-                        <input type="text" name="phone" required="" class="w-commerce-commercecheckoutemailinput">
+                        <input id="recipient-phone" type="text" name="phone" required="" class="w-commerce-commercecheckoutemailinput">
                     </fieldset>
                 </form>
                 </div>
@@ -981,7 +981,7 @@
                         </div>
                     </fieldset>
                 </div>
-                <a href="#" value="Place Order" data-node-type="commerce-checkout-place-order-button"
+                <a href="#" id="btn-place-order" value="Place Order" data-node-type="commerce-checkout-place-order-button"
                    class="w-commerce-commercecheckoutplaceorderbutton button bg-primary-dark"
                    data-loading-text="Placing Order...">{{ _('Place Order')}}</a>
                 <div data-node-type="commerce-checkout-error-state" style="display:none"

@@ -3,6 +3,9 @@ $(document).ready(function (){
     //get the order id of current order
     let orderId = $(".address-list").attr("order-id")
 
+    //shipping method of this order, default value is "delivery"
+    let shippingMethod = "delivery"
+
     // set the default address as selected
     let defaultSign = $("#address-default-sign")
     let defaultAddressId = defaultSign.parent(".address").attr("address-id")
@@ -24,7 +27,7 @@ $(document).ready(function (){
     $(".shipping-method-list li").on("click", function(){
         //get the id of the selected method
         let methodId = $(this).attr("id")
-        let shippingMethod = "delivery"
+
         if(methodId === "method-delivery"){
             shippingMethod = "delivery"
         }else if(methodId === "method-self"){
@@ -33,6 +36,31 @@ $(document).ready(function (){
 
         //send an ajax request to update the shipping method
         update_order_shipping(orderId, shippingMethod)
+    });
+
+    /* When the "place order" btn is clicked */
+    $("#btn-place-order").on("click", function (){
+        //get the shipping method, if it is "self-collecting", we will ensure the recipient info are not None
+        if(shippingMethod === "self-collection"){
+            //get the recipient name and phone
+            let recipientName = $("#recipient-name").val().trim();
+            let recipientPhone = $("#recipient-phone").val().trim();
+            // check the recipient info
+            if(recipientName === "" || recipientPhone === ""){
+                window.alert("If you choose self-collecting, the recipient info should not be empty!")
+            }else if(recipientName.length > 64){
+                window.alert("The recipient name should not longer than 64 characters!")
+            }else if(recipientPhone.length > 24){
+                window.alert("The recipient phone number should not longer than 24 characters!")
+            }else{
+                //send Ajax request for updating the order and paying
+                update_order_recipient(orderId, recipientName, recipientPhone);
+            }
+
+        }else if (shippingMethod === "delivery"){
+            //send Ajax request for paying directly
+            pay_for_order(orderId)
+        }
     });
 
 });
@@ -131,5 +159,49 @@ function update_order_shipping(orderId, shippingMethod){
             }
         }
     });
+}
 
+/**
+ * THis function updates the recipient info of the given order
+ * @param orderId
+ * @param recipientName
+ * @param recipientPhone
+ */
+function update_order_recipient(orderId, recipientName, recipientPhone){
+    $.post("/api/update-order-recipient", {
+        "order_id": orderId,
+        "recipient_name": recipientName,
+        "recipient_phone": recipientPhone
+
+    }).done(function (response){
+        //get response from server
+        let returnValue = response['returnValue'];
+
+        if (returnValue === 0) { //success
+            console.log("recipient updated")
+            //if success, we can send another Ajax for paying
+            pay_for_order(orderId);
+        }
+
+    });
+}
+
+/**
+ * This function sends Ajax request to call Alipay for paying the order
+ * @param orderId
+ */
+function pay_for_order(orderId){
+    $.post("/api/pay-for-order/instrument", {
+        "order_id": orderId,
+
+    }).done(function (response){
+        //get response from server
+        let returnValue = response['returnValue'];
+
+        if (returnValue === 0) { //success
+            // get payment URL then redirect to that URL
+            let paymentURL = response['paymentURL']
+            location.href = paymentURL;
+        }
+    });
 }
