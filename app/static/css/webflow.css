@@ -116,13 +116,19 @@ html.w-mod-touch * {
 .w-button {
     display: inline-block;
     padding: 9px 15px;
-    background-color: #3898EC;
+    background-color: #828F7C;
     color: white;
     border: 0;
     line-height: inherit;
     text-decoration: none;
     cursor: pointer;
     border-radius: 0;
+}
+
+.w-button:hover{
+    background-color: #54634f;
+    transition: 0.2s;
+    transition-timing-function: ease-in;
 }
 
 input.w-button {

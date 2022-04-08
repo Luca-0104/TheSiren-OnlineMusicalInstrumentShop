@@ -3,7 +3,7 @@ from flask import render_template, redirect, url_for, request, json, flash, json
 from flask_babel import _
 
 from app import db
-from app.models import Cart, Order, OrderModelType, ModelType, PremiumOrder
+from app.models import Cart, Order, OrderModelType, ModelType, PremiumOrder, Address, Recipient
 from app.order import order
 
 from datetime import datetime
@@ -112,8 +112,150 @@ def order_confirm(order_id):
         return redirect(url_for('main.index'))
 
 
+# -------------------------------------- Ajax in order confirm page --------------------------------------
+
+@order.route('/api/get-order-payment', methods=['POST'])
+@login_required
+def get_order_payment():
+    """
+    This functions query the order payment info
+    of specific order and send them back to the frontend.
+    """
+    if request.method == 'POST':
+        # get order id
+        order_id = request.form.get("order_id")
+
+        if order_id is None:
+            current_app.logger.error("info are not gotten from Ajax")
+            return jsonify({"returnValue": 1})
+
+        # query out the Order obj from db
+        o = Order.query.get(order_id)
+
+        if o is None:
+            current_app.logger.error("No order with this id")
+            return jsonify({"returnValue": 1})
+
+        # get the payment and return it to front end
+        return jsonify({"returnValue": 0, "payTotal": o.gross_payment, "deliveryFee": o.delivery_fee})
+    return jsonify({"returnValue": 1})
+
+
+
+@order.route('/api/update-order-address', methods=['POST'])
+@login_required
+def update_order_address():
+    """
+    (Using Ajax)
+    This function will update the address of the given order
+    into the given address.
+    """
+    if request.method == 'POST':
+        # get the order id and new address id from Ajax
+        order_id = request.form.get("order_id")
+        address_id = request.form.get("address_id")
+
+        if order_id is None or address_id is None:
+            current_app.logger.error("info are not gotten from Ajax")
+            return jsonify({"returnValue": 1})
+
+        # query the order and address obj from db
+        o = Order.query.get(order_id)
+        address = Address.query.get(address_id)
+
+        if o is None or address is None:
+            current_app.logger.error("No order or address with this id")
+            return jsonify({"returnValue": 1})
+
+        o.address = address
+        db.session.add(o)
+        db.session.commit()
+
+        return jsonify({"returnValue": 0})
+    return jsonify({"returnValue": 1})
+
+
+@order.route('/api/update-order-shipping', methods=['POST'])
+@login_required
+def update_order_shipping():
+    """
+    (Using Ajax)
+    This function will update the shipping method of the given order
+    into the given method.
+    """
+    if request.method == 'POST':
+        # get the id of the order and the new shipping method
+        order_id = request.form.get("order_id")
+        shipping_method = request.form.get("shipping_method")
+
+        if order_id is None or shipping_method is None:
+            current_app.logger.error("info are not gotten from Ajax")
+            return jsonify({"returnValue": 1})
+
+        # get the order obj from db
+        o = Order.query.get(order_id)
+
+        if o is None:
+            current_app.logger.error("No order with the given id")
+            return jsonify({"returnValue": 1})
+
+        # update shipping method
+        o.order_type = shipping_method
+        # update delivery fee
+        if shipping_method == "self-collection":
+            o.delivery_fee = 0
+        else:
+            o.generate_delivery_fee()
+        # update gross payment
+        o.generate_gross_payment()
+
+        db.session.add(o)
+        db.session.commit()
+
+        return jsonify({"returnValue": 0, "payTotal": o.gross_payment, "deliveryFee": o.delivery_fee})
+    return jsonify({"returnValue": 1})
+
+
+@order.route('/api/update-order-recipient', methods=['POST'])
+@login_required
+def update_order_recipient():
+    """
+    This function updates the recipient info of the given order
+    """
+    if request.method == "POST":
+        # get info from Ajax
+        order_id = request.form.get("order_id")
+        recipient_name = request.form.get("recipient_name")
+        recipient_phone = request.form.get("recipient_phone")
+
+        if order_id is None or recipient_name is None or recipient_phone is None:
+            current_app.logger.error("info are not gotten from Ajax")
+            return jsonify({"returnValue": 1})
+
+        # query order obj from db by using its id
+        o = Order.query.get(order_id)
+
+        if o is None:
+            current_app.logger.error("No order with the given id")
+            return jsonify({"returnValue": 1})
+
+        if o.order_type != "self-collection":
+            current_app.logger.error("Order type error")
+            return jsonify({"returnValue": 1})
+
+        # create the recipient info for this order
+        new_recipient = Recipient(recipient_name=recipient_name, phone=recipient_phone)
+        o.recipient = new_recipient
+        db.session.add(new_recipient)
+        db.session.add(o)
+        db.session.commit()
+
+        return jsonify({"returnValue": 0})
+    return jsonify({"returnValue": 1})
+
 
 # -------------------------------------- view my orders --------------------------------------
+
 
 @order.route('/my-orders')
 @login_required

@@ -217,10 +217,12 @@
 
                     <!-- Left part -->
                     <!-- Search -->
-                    <form action="/search" id="w-node-dab1a8fd-38ef-ff9e-e737-a0bdf6abf40d-f6abf40a" class="nav-search-form w-form">
-                        <img src="../../static/images/icon-search.svg" loading="eager" alt="">
-                        <input type="search" class="search-form-input w-input" maxlength="256" name="query" placeholder="{{ _('Search here')}}" id="search-2" required="">
-                        <input type="submit" value="Search" class="hide-button w-button">
+                    <form action="/search" method="POST" id="w-node-dab1a8fd-38ef-ff9e-e737-a0bdf6abf40d-f6abf40a" class="nav-search-form w-form">
+                        <div class="w-inline-block">
+                           <input type="image" src="../../static/images/icon-search.svg" value="Search" class="w-button" alt="submit">
+                        </div>
+                           <input type="search" class="search-form-input w-input" maxlength="256" name="query" placeholder="{{ _('Search here')}}" id="search-2" required="">
+
                     </form>
                 </div>
             </div>

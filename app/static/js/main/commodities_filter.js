@@ -139,34 +139,37 @@ $(document).ready(function (){
 
 
 
-     $.post("/api/filter-model-types",
-        {
-            "c": classification,
-            "t": type,
-            "a": additional,
-            "b": brand
-        }).done(function (response)
+     $('#category_checkbox').on("change", function (){
+
+
+         $.post("/api/filter-model-types",
             {
-                console.log('')
-                // get from server
-                let returnValue = response['returnValue'];
-
-                console.log(returnValue);
-
-                if(returnValue === 0)
+                "c": classification,
+                "t": type,
+                "a": additional,
+                "b": brand
+            }).done(function (response)
                 {
-                    //success
-                    // console.log("ModelType " + model_type_id + "removed");
-                    data = response['data'];
-                    console.log("data below")
-                    console.log(data)
-                }
-                else if(returnValue === 1){
-                    //failure
+                    console.log('')
+                    // get from server
+                    let returnValue = response['returnValue'];
 
-                }
-            });
+                    console.log(returnValue);
 
+                    if(returnValue === 0)
+                    {
+                        //success
+                        // console.log("ModelType " + model_type_id + "removed");
+                        data = response['data'];
+                        console.log("data below")
+                        console.log(data)
+                    }
+                    else if(returnValue === 1){
+                        //failure
+
+                    }
+                });
+     })
 
         $("input[name='checkboxes']:checked").each(function(){
             checked_value=[];
