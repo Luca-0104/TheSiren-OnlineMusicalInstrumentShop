@@ -21,8 +21,30 @@
     line-height: 40px;
     transition: 1.3s;
 }
+/* The pic cover for the cards that on a row which has 4 cards */
+.product-box .box-img-cover-4{
+    visibility: hidden;
+    height: 300px;
+    width: 282px;
+    position: absolute;
+    /* The hint text */
+    font-size: 30px;
+    text-align: center;
+    line-height: 40px;
+    transition: 1.3s;
+}
 
 .product-box:hover .box-img-cover{
+    visibility: inherit;
+    background-color: black;
+    position: absolute;
+    opacity: 0.4;
+    cursor: pointer;
+    /* The hint text */
+    line-height: 300px;
+}
+
+.product-box:hover .box-img-cover-4{
     visibility: inherit;
     background-color: black;
     position: absolute;
