@@ -245,7 +245,7 @@
                                                                 </tr>
                                                             {% elif loop.index == 4 %}
                                                                 <tr>
-                                                                    <td colspan="3">
+                                                                    <td class="clickable" colspan="3" onclick="window.open('/order-details/{{ order.id }}');">
                                                                         View All
                                                                     </td>
                                                                 </tr>
@@ -255,7 +255,7 @@
                                                 </td>
                                                 <td class="rn_col">
                                                     {% if order.order_type == "delivery" %}
-                                                        {{ order.address.id }}
+                                                        {{ order.address.recipient.recipient_name }}
                                                     {% elif order.order_type == "self-collection" %}
                                                         {{ order.recipient.recipient_name }}
                                                     {% endif %}
@@ -281,32 +281,41 @@
                                                     {% endif %}
                                                 </td>
                                                 <td class="action_col">
-                                                    <table border="1" width="100%">
+                                                    <table id="action_table_{{ order.id }}" border="1" width="100%">
                                                         {% if order.status_code == 0 %}
                                                             <tr>
                                                                 <td>
-                                                                    Pay
+                                                                    <a href="#">Pay</a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="#" onclick="changeStatusTo({{ order.id }}, 5)">Cancel</a>
                                                                 </td>
                                                             </tr>
                                                         {% elif order.status_code == 1  %}
                                                             <tr>
                                                                 <td>
-                                                                    View Progress
+                                                                    <a href="/order-details/{{ order.id }}">View Progress</a>
                                                                 </td>
                                                             </tr>
                                                         {% elif order.status_code == 2  %}
                                                             <tr>
                                                                 <td>
-                                                                    View Progress
+                                                                    <a href="/order-details/{{ order.id }}">View Progress</a>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    Confirm
+                                                                    <a href="#" onclick="changeStatusTo({{ order.id }}, 4)">Comfirm</a>
                                                                 </td>
                                                             </tr>
                                                         {% elif order.status_code == 3  %}
-                                                            Waiting for Collection
+                                                            <tr>
+                                                                <td>
+                                                                    Waiting for Collection
+                                                                </td>
+                                                            </tr>
                                                         {% elif order.status_code == 4  %}
                                                             <tr>
                                                                 <td>
@@ -319,9 +328,17 @@
                                                                 </td>
                                                             </tr>
                                                         {% elif order.status_code == 5  %}
-                                                            Canceled
+                                                            <tr>
+                                                                <td>
+                                                                    Canceled
+                                                                </td>
+                                                            </tr>
                                                         {% elif order.status_code == 6  %}
-                                                            Expired
+                                                            <tr>
+                                                                <td>
+                                                                    Expired
+                                                                </td>
+                                                            </tr>
                                                         {% endif %}
                                                     </table>
                                                 </td>

@@ -277,7 +277,7 @@ def order_details(order_id):
     :param order_id: The id of the selected order
     """
     order_obj = Order.query.get(order_id)
-    return render_template('order/order-detail.html', order_obj=order_obj)
+    return render_template('order/order-detail.html', order=order_obj)
 
 
 @order.route('/api/order/my-orders/filter-orders', methods=['POST'])

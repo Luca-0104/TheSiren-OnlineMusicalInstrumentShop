@@ -1,5 +1,13 @@
-table {
+.at_middle {
     text-align: center;
+}
+
+.at_left {
+    text-align: left;
+}
+
+.at_right {
+    text-align: right;
 }
 
 .clickable {
@@ -15,6 +23,14 @@ table {
 .content_row_intendation{
     width: 2%;
 max-width: 6px;min-width: 2px;}
+
+#model_table_col{
+
+}
+
+.model_table{
+    text-align: center;
+}
 
 .model_col {
     width: 50%
