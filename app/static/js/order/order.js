@@ -10,25 +10,34 @@ function changeStatusTo(order_id, new_code)
                 let returnValue = response['returnValue'];
 
                 let orderRow = $("#order_row_"+order_id);
+                let statusBar = $("#status_"+order_id);
                 let actionTable = $("#action_table_"+order_id);
 
                 if(returnValue === 0)
                 {
-
                     //success
                     if(new_code == 5)
                     {
-                        orderRow.attr('current_status_code',5);
-                        let newHtml="<tr><td>Canceled</td></tr>";
+                        orderRow.attr("current_status_code",5);
+
+                        let newStatusHtml = "<td colspan=\"3\" class=\"status_col status_c\"> Canceled </td>";
+                        statusBar.empty();
+                        statusBar.html(newStatusHtml);
+
                         actionTable.empty();
-                        actionTable.html(newHtml);
                     }
                     else if(new_code == 4)
                     {
-                        orderRow.attr('current_status_code',4);
-                        let newHtml="<tr><td>After Sale Service</td></tr><tr><td>Comment</td></tr>";
+                        orderRow.attr("current_status_code",4);
+
+                        let newStatusHtml = "<td colspan=\"3\" class=\"status_col status_f\"> Finished </td>";
+                        statusBar.empty();
+                        statusBar.html(newStatusHtml);
+
+                        let newActionHtml = "<tr><td className=\"clickable action_service button\" onClick=\"\">After Sale Service</td></tr>"+
+                                        "<tr><td className=\"clickable action_Comment button\" onClick=\"\">Comment</td></tr>";
                         actionTable.empty();
-                        actionTable.html(newHtml);
+                        actionTable.html(Action);
                     }
                 }
                 else
