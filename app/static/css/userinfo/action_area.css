@@ -84,33 +84,31 @@ textarea.form-control {
 
 .close_btn{
     float: right;
-    font-size: 23px;
+    font-size: 68px;
     text-align: center;
-    width: 35px;
-    height: 35px;
 }
 
 .close_btn:hover{
     float: right;
-    font-size: 33px;
+    color: #662b2b;
+    font-size: 68px;
     text-align: center;
-    width: 35px;
-    height: 35px;
     cursor:pointer;
 }
 
 #form_top_bar{
-    font-size: 25px;
     text-align: center;
     height: 35px;
 }
 
 .action-table-form{
+    margin-top: 60px;
     overflow-y: scroll;
     height: auto;
     position: absolute;
     left: 0;
     right: 0;
-    top: 36px;
+    top: 0px;
     bottom: 0;
+    border-top: 1px solid #c3c3c3;
 }

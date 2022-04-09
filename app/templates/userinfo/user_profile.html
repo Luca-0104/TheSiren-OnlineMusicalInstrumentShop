@@ -24,8 +24,8 @@
         <link href="../../static/css/webflow.css" rel="stylesheet" type="text/css">
         <link href="../../static/css/jacks-supercool-site-c6dd88.webflow.css" rel="stylesheet" type="text/css">
         <link href="../../static/css/userinfo/user_profile.css" rel="stylesheet" type="text/css">
-        <link href="../../static/css/userinfo/add_address.css" rel="stylesheet" type="text/css">
         <link href="../../static/css/userinfo/action_area.css" rel="stylesheet" type="text/css">
+        <link href="../../static/css/userinfo/address.css" rel="stylesheet" type="text/css">
 
         <!-- [if lt IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"
@@ -57,28 +57,39 @@
                     </div>
                 </div>
             </div>
-            <img src="../images/icon-cross.svg" loading="lazy" alt="" class="announcement-cross">
+            <img src="../../static/images/icon-cross.svg" loading="lazy" alt="" class="announcement-cross">
         </div>
 
         <!-- Upper Section of Top nav bar -->
         <div class="div-block-2">
-            <div id="Top" class="top"></div>
+            <div id="Top" class="top">
+            </div>
             <div class="main-container">
                 <div class="navbar-top">
-                    <a href="../index.html" class="w-inline-block"><img src="../images/Verse.svg" loading="eager" alt=""></a>
+                    <!-- Middel part -->
+                    <a href="index.html" aria-current="page" class="w-inline-block w--current">
+                        <img src="../../static/images/Black-logo-no-background.svg" loading="eager" alt="" height="45px">
+                    </a>
+
+                    <!-- Right part -->
                     <div id="w-node-dab1a8fd-38ef-ff9e-e737-a0bdf6abf413-f6abf40a" class="navbar-right-contents">
-                        <a href="https://mmra.re/purchaseverse" class="button small nav-button w-inline-block" id="cart-button">
-                            <div>{{ _('Cart') }}</div>
-                        </a>
-                        <a href="https://mmra.re/purchaseverse" class="button small nav-button w-inline-block"
-                           id="order-button">
-                            <div>{{ _('Order') }}</div>
-                        </a>
+                        <!-- Auth -->
+                        {% if session.get('username') %}
+                            <a href="{{ url_for('auth.logout') }}" class="button small nav-button w-inline-block">
+                                <div>{{ _('Logout') }}</div>
+                            </a>
+                        {% else %}
+                            <a href="{{ url_for('auth.login') }}" class="button small nav-button w-inline-block">
+                                <div>{{ _('Login') }}</div>
+                            </a>
+                        {% endif %}
+
+                        <!-- Cart -->
                         <div data-node-type="commerce-cart-wrapper" data-open-product="" data-wf-cart-type="rightSidebar"
                              data-wf-cart-query="" data-wf-page-link-href-prefix="" class="w-commerce-commercecartwrapper">
                             <a href="#" data-node-type="commerce-cart-open-link"
                                class="w-commerce-commercecartopenlink nav-cart-button w-inline-block"><img
-                                    src="../images/icon-shopping-bag.svg" loading="eager" alt="">
+                                    src="../../static/images/icon-shopping-bag.svg" loading="eager" alt="">
                                 <div class="w-commerce-commercecartopenlinkcount cart-quantity">0</div>
                             </a>
                             <div data-node-type="commerce-cart-container-wrapper" style="display:none"
@@ -86,10 +97,10 @@
                                 <div data-node-type="commerce-cart-container"
                                      class="w-commerce-commercecartcontainer cart-container">
                                     <div class="w-commerce-commercecartheader cart-header">
-                                        <h4 class="w-commerce-commercecartheading">Your Cart</h4>
-                                        <a href="#" data-node-type="commerce-cart-close-link"
-                                           class="w-commerce-commercecartcloselink close-cart-button w-inline-block"><img
-                                                src="../images/icon-cross-large.svg" loading="lazy" alt=""></a>
+                                        <h4 class="w-commerce-commercecartheading">{{ _('Your Cart') }}</h4>
+                                        <a href="#" data-node-type="commerce-cart-close-link" class="w-commerce-commercecartcloselink close-cart-button w-inline-block">
+                                            <img src="../../static/images/icon-cross-large.svg" loading="lazy" alt="">
+                                        </a>
                                     </div>
                                     <div class="w-commerce-commercecartformwrapper">
                                         <form data-node-type="commerce-cart-form" style="display:none"
@@ -101,7 +112,7 @@
                                                  data-wf-template-id="wf-template-dab1a8fd-38ef-ff9e-e737-a0bdf6abf424"></div>
                                             <div class="w-commerce-commercecartfooter cart-footer">
                                                 <div class="w-commerce-commercecartlineitem">
-                                                    <div>Subtotal</div>
+                                                    <div>{{ _('Subtotal') }}</div>
                                                     <div class="w-commerce-commercecartordervalue"></div>
                                                 </div>
                                                 <div>
@@ -150,18 +161,15 @@
                                                                  viewbox="0 0 16 16">
                                                                 <g fill="none" fill-rule="evenodd">
                                                                     <polygon fill="#F05022" points="7 7 1 7 1 1 7 1"></polygon>
-                                                                    <polygon fill="#7DB902"
-                                                                             points="15 7 9 7 9 1 15 1"></polygon>
-                                                                    <polygon fill="#00A4EE"
-                                                                             points="7 15 1 15 1 9 7 9"></polygon>
-                                                                    <polygon fill="#FFB700"
-                                                                             points="15 15 9 15 9 9 15 9"></polygon>
+                                                                    <polygon fill="#7DB902" points="15 7 9 7 9 1 15 1"></polygon>
+                                                                    <polygon fill="#00A4EE" points="7 15 1 15 1 9 7 9"></polygon>
+                                                                    <polygon fill="#FFB700" points="15 15 9 15 9 9 15 9"></polygon>
                                                                 </g>
                                                             </svg>
                                                             <div>{{ _('Pay with browser.') }}</div>
                                                         </a>
                                                     </div>
-                                                    <a href="../checkout.html" value="Continue to Checkout"
+                                                    <a href="checkout.html" value="Continue to Checkout"
                                                        data-node-type="cart-checkout-button"
                                                        class="w-commerce-commercecartcheckoutbutton button bg-primary-dark"
                                                        data-loading-text="Hang Tight...">{{ _('Continue to Checkout') }}</a>
@@ -169,7 +177,7 @@
                                             </div>
                                         </form>
                                         <div class="w-commerce-commercecartemptystate">
-                                            <div>No items found.</div>
+                                            <div>{{ _('No items found.') }}</div>
                                         </div>
                                         <div style="display:none" data-node-type="commerce-cart-error"
                                              class="w-commerce-commercecarterrorstate">
@@ -179,7 +187,7 @@
                                                  data-w-cart-checkout-error="Checkout is disabled on this site."
                                                  data-w-cart-cart_order_min-error="The order minimum was not met. Add more items to your cart to continue."
                                                  data-w-cart-subscription_error-error="Before you purchase, please use your email invite to verify your address so we can send order updates.">
-                                                {{ _('Product is not available in this quantity.') }}
+                                                {{ _('Product is not available in this quantity.')}}
                                             </div>
                                         </div>
                                     </div>
@@ -187,11 +195,16 @@
                             </div>
                         </div>
                     </div>
-                    <form action="/search" id="w-node-dab1a8fd-38ef-ff9e-e737-a0bdf6abf40d-f6abf40a"
-                          class="nav-search-form w-form"><img src="../images/icon-search.svg" loading="eager" alt=""><input
-                            type="search" class="search-form-input w-input" maxlength="256" name="query"
-                            placeholder="Search here" id="search-2" required=""><input type="submit" value="Search"
-                                                                                       class="hide-button w-button"></form>
+
+                    <!-- Left part -->
+                    <!-- Search -->
+                    <form action="/search" method="POST" id="w-node-dab1a8fd-38ef-ff9e-e737-a0bdf6abf40d-f6abf40a" class="nav-search-form w-form">
+                        <div class="w-inline-block">
+                           <input type="image" src="../../static/images/icon-search.svg" value="Search" class="w-button" alt="submit">
+                        </div>
+                           <input type="search" class="search-form-input w-input" maxlength="256" name="query" placeholder="{{ _('Search here')}}" id="search-2" required="">
+
+                    </form>
                 </div>
             </div>
         </div>
@@ -199,28 +212,34 @@
         <!-- Lower Section of Top nav bar -->
         <div class="div-block">
             <div class="main-container">
-                <div data-collapse="small" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease"
-                     role="banner" class="navbar w-nav">
+                <div data-collapse="small" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-nav">
                     <div class="button bg-primary wide w-nav-button">
                         <div>{{ _('Menu') }}</div>
                     </div>
                     <nav role="navigation" class="w-nav-menu">
                         <div class="nav-menu-row">
-                            <a href="../shop.html" class="nav-link">{{ _('All') }}</a>
+                            <!-- Left side -->
+                            <!-- All product -->
+                            <a href="{{ url_for("main.go_all") }}" class="nav-link">{{ _('All') }}</a>
+
+                            <!-- Specific -->
                             <div class="w-dyn-list">
                                 <div role="list" class="navbar-categories w-dyn-items">
-                                    <div role="listitem" class="w-dyn-item">
-                                        <a href="#" class="nav-link"></a>
+                                    <div role="listitem" class="w-dyn-item nav_topic">
+                                        <a href="#" class="nav-link">{{ _('Gatagory') }}</a>
+                                    </div>
+                                    <div role="listitem" class="w-dyn-item nav_topic">
+                                        <a href="#" class="nav-link">{{ _('Brand') }}</a>
                                     </div>
                                 </div>
-                                <div class="w-dyn-empty">
-                                    <div>{{ _('No items found.') }}</div>
-                                </div>
                             </div>
+
+                            <!-- Divider line -->
                             <div class="nav-menu-divider"></div>
-                            <a href="../about.html" class="nav-link">{{ _('About') }}</a>
-                            <a href="../journal.html" class="nav-link">{{ _('Journal') }}</a>
-                            <a href="../contact.html" class="nav-link">{{ _('Contact') }}</a>
+
+                            <!-- Right side -->
+                            <a href="about.html" class="nav-link">{{ _('About') }}</a>
+                            <a href="contact.html" class="nav-link">{{ _('Contact') }}</a>
                         </div>
                     </nav>
                 </div>
@@ -229,291 +248,349 @@
 
         <!-- main section -->
         <div class="user-container">
-            <!-- nav on left hand side-->
-            <div>
-                <ul class="user-nav" id="">
-                    <li class="nav-item hover-item clicked" id="info_btn">
-                        <a class="button nav nav-button w-inline-block">{{ _('Information') }}</a>
-                    </li>
-                    <li class="nav-item hover-item clickable" id="Address_btn">
-                        <a class="button nav nav-button w-inline-block">{{ _('Address') }}</a>
-                    </li>
-                    <li class="nav-item hover-item clickable" id="brand_btn">
-                        <a class="button nav nav-button w-inline-block">{{ _('Followed Brand') }}</a>
-                    </li>
-                    <li class="nav-item hover-item clickable" id="category_btn">
-                        <a class="button nav nav-button w-inline-block">{{ _('Followed Category') }}</a>
-                    </li>
-                    <li class="nav-item hover-item clickable" id="prime_btn">
-                        <a class="button nav nav-button w-inline-block">{{ _('Prime') }}</a>
-                    </li>
-                    <li class="nav-item hover-item clickable" id="Order_btn">
-                        <a class="button nav nav-button w-inline-block">{{ _('Order') }}</a>
-                    </li>
-                </ul>
-            </div>
+            <table width="100%">
+                <tr>
+                    <td class="left_col">
+                        <!-- left col -->
+                        <div class="col_wrapper">
+                            <ul class="user-nav" id="">
+                                <li class="nav-item hover-item clicked" id="info_btn">
+                                    <a class="button nav nav-button w-inline-block">{{ _('Information') }}</a>
+                                </li>
+                                <li class="nav-item hover-item clickable" id="Address_btn">
+                                    <a class="button nav nav-button w-inline-block">{{ _('Address') }}</a>
+                                </li>
+                                <li class="nav-item hover-item clickable" id="brand_btn">
+                                    <a class="button nav nav-button w-inline-block">{{ _('Followed Brand') }}</a>
+                                </li>
+                                <li class="nav-item hover-item clickable" id="category_btn">
+                                    <a class="button nav nav-button w-inline-block">{{ _('Followed Category') }}</a>
+                                </li>
+                                <li class="nav-item hover-item clickable" id="prime_btn">
+                                    <a class="button nav nav-button w-inline-block">{{ _('Prime') }}</a>
+                                </li>
+                                <li class="nav-item hover-item clickable" id="Order_btn">
+                                    <a class="button nav nav-button w-inline-block">{{ _('Order') }}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td class="middel_col">
+                        <!-- middle col -->
+                        <div class="profile-box main_section" id="right-box">
+                            <!-- 1. Information section -->
+                            <div class="topic_container" id="info_container">
+                                <table>
+                                    <tr>
+                                        <td id="avatar_cell" rowspan="3">
+                                            <!-- the avatar box -->
+                                            <div class="avatar-box" id="show_change_avatar_form_btn">
+                                                <!-- the avatar image -->
+                                                <img id="avatar" src="{{ url_for('static', filename=user.avatar) }}"
+                                                     alt="user-avatar">
+                                            </div>
+                                        </td>
+                                        <td id="name_cell" colspan="2">
+                                            <div class="username" id="info-box">
+                                                <p id="username">
+                                                    {{ user.username }}
+                                                </p>
+                                            </div>
+                                            <span>
+                                                {% if user.is_premium == true %}
+                                                    <img id="prime-img" src="../../static/images/user/prime1.png">
+                                                {% else %}
+                                                    <img id="prime-img" src="../../static/images/user/prime0.png">
+                                                {% endif %}
+                                            </span>
+                                        </td>
+                                        <td id="edit_cell" rowspan="3">
+                                            <a href="#" id="show_edit_info_form_btn"
+                                               class="button small nav-button w-inline-block">
+                                                <div>{{ _('Edit') }}</div>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td id="exp_cell" colspan="2">
+                                            <div class="exp_bar">
+                                                <div id="bottom-bar">
+                                                    <div id="top-bar" total_exp="{{ user.exp%100 }}">
+                                                        {{ user.exp%100 }}%
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td id="level_cell_left">
+                                            <span id="left-level">
+                                                Lv.{{ user.get_level() }}
+                                            </span>
+                                        </td>
+                                        <td id="level_cell_right">
+                                            <span id="right-level">
+                                                Lv.{{ user.get_level() + 1 }}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </table>
 
-            <!-- main section on right hand side -->
-            <div class="profile-box main_section" id="right-box">
-                <!-- 1. Information section -->
-                <div class="topic_container" id="info_container">
-                    {#        the avatar box#}
-                    <div class="avatar-box" id="show_change_avatar_form_btn">
-                        {#                the avatar image#}
-                        <img id="avatar" src="{{ url_for('static', filename=user.avatar) }}" alt="user-avatar">
-                    </div>
 
-                    {#                    <div id="change_avatar_form" class="middle-floating bg-dark" style="display: none">#}
-                    {#                        <div id="close_triger" class="bg-primary">#}
-                    {#                            close#}
-                    {#                        </div>#}
-                    {#                        <form enctype="multipart/form-data" method="post" novalidate>#}
-                    {#                            {{ update_avatar_form.hidden_tag() }}#}
-                    {#                            {{ update_avatar_form.update_avatar.label }}#}
-                    {#                            {{ update_avatar_form.update_avatar() }}#}
-                    {#                            <br>#}
-                    {#                            {{ update_avatar_form.update_avatar_submit() }}#}
-                    {#                        </form>#}
-                    {#                    </div>#}
+                                {#                    <div id="change_avatar_form" class="middle-floating bg-dark" style="display: none">#}
+                                {#                        <div id="close_triger" class="bg-primary">#}
+                                {#                            close#}
+                                {#                        </div>#}
+                                {#                        <form enctype="multipart/form-data" method="post" novalidate>#}
+                                {#                            {{ update_avatar_form.hidden_tag() }}#}
+                                {#                            {{ update_avatar_form.update_avatar.label }}#}
+                                {#                            {{ update_avatar_form.update_avatar() }}#}
+                                {#                            <br>#}
+                                {#                            {{ update_avatar_form.update_avatar_submit() }}#}
+                                {#                        </form>#}
+                                {#                    </div>#}
 
-                    <div class="profile-info">
-                        <ul class="profile-list">
-                            <li class="profile-info">
-                                {#                    the profile text information#}
-                                <div class="profile-text">
-                                    <div class="top-box">
-                                        <div class="username" id="info-box">
-                                            <p id="username">
-                                                {{ user.username }}
-                                            </p>
-                                        </div>
-                                        <span>
+                                <!--<div class="profile-info">
+                                    <ul class="profile-list">
+                                        <li class="profile-info">
+                                            {#                    the profile text information#}
+                                            <div class="profile-text">
+                                                <div class="top-box">
+                                                    <div class="username" id="info-box">
+                                                        <p id="username">
+                                                            {{ user.username }}
+                                                        </p>
+                                                    </div>
+                                                    <span>
                                             {% if user.is_premium == true %}
                                                 <img id="prime-img" src="../../static/images/user/prime1.png">
                                             {% else %}
                                                 <img id="prime-img" src="../../static/images/user/prime0.png">
                                             {% endif %}
                                         </span>
-                                    </div>
-                                    <div class="exp_bar">
-                                        <div id="bottom-bar">
-                                            <div id="top-bar" total_exp="{{ user.exp%100 }}">{{ user.exp%100 }}%</div>
-                                        </div>
-                                        {#                        {% if user.username == session.get("username") %}#}
-                                        {#                    the edit button#}
+                                                </div>
+                                                <div class="exp_bar">
+                                                    <div id="bottom-bar">
+                                                        <div id="top-bar"
+                                                             total_exp="{{ user.exp%100 }}">{{ user.exp%100 }}%
+                                                        </div>
+                                                    </div>
+                                                    {#                        {% if user.username == session.get("username") %}#}
+                                                    {#                    the edit button#}
 
 
-                                        <a href="#" id="show_edit_info_form_btn"
-                                           class="button small nav-button w-inline-block">
-                                            <div>{{ _('Edit') }}</div>
-                                        </a>
-                                        {#                        {% endif %}#}
-                                        <div id="level-box">
-                                                    <span id="left-level">
-                                                        Lv.{{ user.get_level() }}
-                                                    </span>
-                                            <span id="right-level">
+                                                    <a href="#" id="show_edit_info_form_btn"
+                                                       class="button small nav-button w-inline-block">
+                                                        <div>{{ _('Edit') }}</div>
+                                                    </a>
+                                                    {#                        {% endif %}#}
+                                                    <div id="level-box">
+                                                        <span id="left-level">
+                                                            Lv.{{ user.get_level() }}
+                                                        </span>
+                                                        <span id="right-level">
                                                         Lv.{{ user.get_level() + 1 }}
-                                                    </span>
-                                        </div>
+                                                        </span>
+                                                    </div>
 
-                                        <div id="line"></div>
+                                                    <div id="line"></div>
 
-                                    </div>
+                                                </div>
 
-                                    <div class="email" id="info-box">
-                                        <p id="email">
-                                            {{ _('Email') }}: {{ user.email }}
-                                        </p>
-                                    </div>
+                                                <div class="email" id="info-box">
+                                                    <p id="email">
+                                                        {{ _('Email') }}: {{ user.email }}
+                                                    </p>
+                                                </div>
 
-                                    <div class="tag-info">
-                                        {#                                <p class="tags">#}
-                                        {#                                    {{ user.tag }}#}
-                                        {#                                </p>#}
-                                        {{ _('Bio') }}:
-                                        {% if user.about_me == None or user.about_me == "" %}
-                                            <p class="info-null" id="about">
-                                                {{ _('Describe yourself...') }}
-                                            </p>
+                                                <div class="tag-info">
+                                                    {#                                <p class="tags">#}
+                                                    {#                                    {{ user.tag }}#}
+                                                    {#                                </p>#}
+                                                    {{ _('Bio') }}:
+                                                    {% if user.about_me == None or user.about_me == "" %}
+                                                        <p class="info-null" id="about">
+                                                            {{ _('Describe yourself...') }}
+                                                        </p>
 
-                                        {% else %}
-                                            <p class="info" id="about">
-                                                {{ user.about_me }}
-                                            </p>
-                                        {% endif %}
-                                    </div>
+                                                    {% else %}
+                                                        <p class="info" id="about">
+                                                            {{ user.about_me }}
+                                                        </p>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>-->
+                                <div class="date-gender">
+                                    <div class="date" id="info-box">
+                                        <p id="date">
+                                            {{ _('Member since ') }} {{ user.start_datetime.date() }}
+                                        </p></div>
+                                    <div class="gender" id="info-box">
+                                        <p id="gender">
+                                            {{ _('Gender') }}: {{ user.gender }}
+                                        </p></div>
                                 </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="date-gender">
-                        <div class="date" id="info-box">
-                            <p id="date">
-                                {{ _('Member since ') }} {{ user.start_datetime.date() }}
-                            </p></div>
-                        <div class="gender" id="info-box">
-                            <p id="gender">
-                                {{ _('Gender') }}: {{ user.gender }}
-                        </p></div>
-                    </div>
-                </div>
+                            </div>
 
-                <!-- 2. Address section -->
-                <div class="topic_container text-middle" id="address_container" style="display: none">
-                    <div class="cart-header">
-                        <h4 class="w-commerce-commercecartheading">{{ _('Your Address')}}</h4>
-                        <!--<a href="#" data-node-type="commerce-cart-close-link"
-                           class="w-commerce-commercecartcloselink close-cart-button w-inline-block">
-                            <img src="images/icon-cross-large.svg" loading="lazy" alt="">
-                        </a>-->
-                    </div>
-                    <div class="">
-                        <a href="#" id="show_add_form_btn" class="button small nav-button w-inline-block">
-                            <div>{{ _('Add') }}</div>
-                        </a>
-                    </div>
-                    <table id="address_listing_table" style="border-collapse:separate; border-spacing:10px;">
-                        {% for address in user.addresses.all() %}
-                            <tr id="address_row_{{ address.id }}">
-                                <td>
-                                    <table id="address_table_{{ address.id }}" class="address_table" border="1" width="100%">
-                                        {% if address.is_default %}
-                                            <tr>
-                                                <td id="default_bar" address_id="{{ address.id }}" class="bg-primary"
-                                                    colspan="2" colspan="2">
-                                                    {{ _('Default') }}
-                                                </td>
-                                            </tr>
-                                        {% endif %}
-                                        <tr>
-                                            <td class="title_section">
-                                                {{ _('Recipient Name') }}
-                                            </td>
-                                            <td id="address_recipient_name_{{ address.id }}" class="content_section">
-                                                {{ address.recipient.recipient_name }}
+                            <!-- 2. Address section -->
+                            <div class="topic_container text-middle" id="address_container" style="display: none">
+                                <div class="cart-header">
+                                    <h4 class="w-commerce-commercecartheading">{{ _('Your Address') }}</h4>
+                                </div>
+                                <div class="">
+                                    <a href="#" id="show_add_form_btn" class="button small nav-button w-inline-block">
+                                        <div>{{ _('Add') }}</div>
+                                    </a>
+                                </div>
+                                <table id="address_listing_table">
+                                    {% for address in user.addresses.all() %}
+                                        <tr id="address_row_{{ address.id }}">
+                                            <td>
+                                                <table class="single_address" width="100%">
+                                                    <tr>
+                                                        {% if address.is_default %}
+                                                            <td id="default_bar_{{ address.id }}"
+                                                                class="bg-primary default_one"
+                                                                address_id="{{ address.id }}">
+                                                                <a id="default_a_{{ address.id }}" class="unclickable"
+                                                                   href="">
+                                                                    {{ _('Default') }}
+                                                                </a>
+                                                            </td>
+                                                        {% else %}
+                                                            <td id="default_bar_{{ address.id }}"
+                                                                class="not_default"
+                                                                address_id="{{ address.id }}">
+                                                                <a id="default_a_{{ address.id }}" class="set_default_btn"
+                                                                   href="javascript:set_default({{ address.id }});">
+                                                                    {{ _('Set as Default') }}
+                                                                </a>
+                                                            </td>
+                                                        {% endif %}
+                                                        <td class="index_section bg-dark">
+                                                            {{ loop.index }}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2">
+                                                            <table id="address_table_{{ address.id }}"
+                                                                   class="address_table"
+                                                                   width="100%">
+                                                                <tr>
+                                                                    <td id="address_recipient_name_{{ address.id }}"
+                                                                        class="content_section name_section medium-heading">
+                                                                        {{ address.recipient.recipient_name }}
+                                                                    </td>
+                                                                    <td id="address_phone_{{ address.id }}"
+                                                                        class="content_section phone_section">
+                                                                        {{ address.recipient.phone }}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td id="address_place_{{ address.id }}"
+                                                                        country="{{ address.country }}"
+                                                                        pos="{{ address.province_or_state }}"
+                                                                        city="{{ address.city }}"
+                                                                        district="{{ address.district }}"
+                                                                        details="{{ address.details }}"
+                                                                        class="content_section address_section large-text extra_indent"
+                                                                        colspan="2">
+                                                                        {{ address.country }} - {{ address.province_or_state }} - {{ address.city }} - {{ address.district }}<br>
+                                                                        {{ address.details }}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        <div class="align-items-center list-action">
+                                                                            <table class="address_action_btn_table">
+                                                                                <tr id="action_{{ address.id }}"
+                                                                                    is_default="t">
+                                                                                    <td class="address_action_btn bg-grey">
+                                                                                        <a class="edit_btn"
+                                                                                           data-toggle="tooltip"
+                                                                                           data-placement="top"
+                                                                                           title=""
+                                                                                           data-original-title="Edit"
+                                                                                           href="javascript:start_edit_address({{ address.id }});">
+                                                                                            <i class="ri-pencil-line mr-0">{{ _('Edit') }}</i>
+                                                                                        </a>
+                                                                                    </td>
+                                                                                    <td class="address_action_btn bg-grey">
+                                                                                        <a class="delete_btn"
+                                                                                           data-toggle="tooltip"
+                                                                                           data-placement="top"
+                                                                                           title=""
+                                                                                           data-original-title="Delete"
+                                                                                           href="javascript:remove_address({{ address.id }});">
+                                                                                            <i class="ri-delete-bin-line mr-0">{{ _('Delete') }}</i>
+                                                                                        </a>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td class="title_section">
-                                                {{ _('Phone') }}
-                                            </td>
-                                            <td id="address_phone_{{ address.id }}" class="content_section">
-                                                {{ address.recipient.phone }}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="title_section">
-                                                {{ _('Receiving Address') }}
-                                            </td>
-                                            <td id="address_place_{{ address.id }}" country="{{ address.country }}" pos="{{ address.province_or_state }}"
-                                                city="{{ address.city }}" district="{{ address.district }}" details="{{ address.details }}"
-                                                class="content_section">
-                                                {{ address.get_address() }}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2">
-                                                {% if not address.is_default %}
-                                                    <div class="align-items-center list-action">
-                                                        <table class="address_action_btn_table">
-                                                            <tr id="action_{{ address.id }}" is_default="f">
-                                                                <td id="default_btn_{{ address.id }}" class="address_action_btn bg-grey">
-                                                                    <a class="set_default_btn"
-                                                                       data-toggle="tooltip" data-placement="top" title="" data-original-title="View"
-                                                                       href="javascript:set_default({{ address.id }});">
-                                                                        <i class="ri-eye-line mr-0">{{ _('Set as Default')}}</i>
-                                                                    </a>
-                                                                </td>
-                                                                <td class="address_action_btn bg-grey">
-                                                                    <a class="edit_btn"
-                                                                       data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"
-                                                                       href="javascript:start_edit_address({{ address.id }});">
-                                                                        <i class="ri-pencil-line mr-0">{{ _('Edit') }}</i>
-                                                                    </a>
-                                                                </td>
-                                                                <td class="address_action_btn bg-grey">
-                                                                    <a class="delete_btn"
-                                                                       data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"
-                                                                       href="javascript:remove_address({{ address.id }});">
-                                                                        <i class="ri-delete-bin-line mr-0">{{ _('Delete') }}</i>
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </div>
-                                                {% else %}
-                                                    <div class="align-items-center list-action">
-                                                        <table class="address_action_btn_table">
-                                                            <tr id="action_{{ address.id }}" is_default="t">
-                                                                <td class="address_action_btn bg-grey">
-                                                                    <a class="edit_btn" data-toggle="tooltip"
-                                                                       data-placement="top" title="" data-original-title="Edit"
-                                                                       href="javascript:start_edit_address({{ address.id }});">
-                                                                        <i class="ri-pencil-line mr-0">{{ _('Edit') }}</i>
-                                                                    </a>
-                                                                </td>
-                                                                <td class="address_action_btn bg-grey">
-                                                                    <a class="delete_btn" data-toggle="tooltip"
-                                                                       data-placement="top" title="" data-original-title="Delete"
-                                                                       href="javascript:remove_address({{ address.id }});">
-                                                                        <i class="ri-delete-bin-line mr-0">{{ _('Delete') }}</i>
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </div>
-                                                {% endif %}
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    </table>
-                </div>
+                                    {% endfor %}
+                                </table>
+                            </div>
 
-                <!-- 3. Brand section -->
-                <div class="topic_container" id="brand_container" style="display: none">
-                    3. {{ _('Brand section')}}
-                </div>
+                            <!-- 3. Brand section -->
+                            <div class="topic_container" id="brand_container" style="display: none">
+                                3. {{ _('Brand section') }}
+                            </div>
 
-                <!-- 4. Category section -->
-                <div class="topic_container" id="category_container" style="display: none">
-                    4. {{ _('Category section')}}
-                </div>
+                            <!-- 4. Category section -->
+                            <div class="topic_container" id="category_container" style="display: none">
+                                4. {{ _('Category section') }}
+                            </div>
 
-                <!-- 5. Prime section -->
-                <div class="topic_container" id="prime_container" style="display: none">
-                    5. {{ _('Prime section')}}
-                </div>
+                            <!-- 5. Prime section -->
+                            <div class="topic_container" id="prime_container" style="display: none">
+                                5. {{ _('Prime section') }}
+                            </div>
 
-                <!-- 6. Order section -->
-                <div class="topic_container" id="order_container" style="display: none">
-                    6. {{ _('Order section')}}
-                </div>
-            </div>
+                            <!-- 6. Order section -->
+                            <div class="topic_container" id="order_container" style="display: none">
+                                6. {{ _('Order section') }}
+                            </div>
+                        </div>
+                    </td>
+                    <td class="right_col">
+                        <!-- right col -->
+                        <div></div>
+                    </td>
+                </tr>
+            </table>
         </div>
 
-        <!-- footer section -->
+        <!-- Footer Section -->
         <div class="footer wf-section">
             <div class="footer-details-section">
                 <div class="main-container">
                     <div class="w-layout-grid footer-grid">
                         <div id="w-node-_3ee0633f-a568-72e0-ab7b-589be9d960ed-e9d960d8" class="footer-contact-details">
-                            <a href="#" class="footer-logo-link w-inline-block"><img src="../images/Verse.svg"
-                                                                                     loading="lazy"
-                                                                                     alt="" class="footer-logo"></a>
-                            <div>34 Market Street, South Melbourne<br>Victoria 3009</div>
+                            <a href="#" class="footer-logo-link w-inline-block">
+                                <img src="../../static/images/Black-logo-no-background.svg" loading="lazy" alt="" class="footer-logo">
+                            </a>
+                            <div>{{ _('34 Market Street, South Melbourne') }}<br>{{ _('Victoria 3009') }}</div>
                             <div class="contact-links in-footer">
                                 <a href="#" class="small-text">contact@website.com</a>
                                 <a href="#" class="small-text">(03) 92337 4627</a>
                             </div>
                         </div>
                         <div>
-                            <div class="uppercase-text links-grid-title">shop</div>
+                            <div class="uppercase-text links-grid-title">{{ _('shop') }}</div>
                             <div class="links-grid">
-                                <a href="../shop.html" class="list-link">All</a>
+                                <a href="shop.html" class="list-link">{{ _('All') }}</a>
                                 <div class="w-dyn-list">
                                     <div role="list" class="links-grid w-dyn-items">
                                         <div role="listitem" class="w-dyn-item">
@@ -521,47 +598,47 @@
                                         </div>
                                     </div>
                                     <div class="w-dyn-empty">
-                                        <div>No items found.</div>
+                                        <div>{{ _('No items found.')}} </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div>
-                            <div class="uppercase-text links-grid-title">Company</div>
+                            <div class="uppercase-text links-grid-title">{{ _('Company') }}</div>
                             <div class="links-grid">
-                                <a href="../about.html" class="list-link">About</a>
-                                <a href="../journal.html" class="list-link">Journal</a>
-                                <a href="../contact.html" class="list-link">Contact</a>
-                                <a href="../refund-policy.html" class="list-link">Refund Policy</a>
+                                <a href="about.html" class="list-link">{{ _('About') }}</a>
+                                <a href="journal.html" class="list-link">{{ _('Journal') }}</a>
+                                <a href="contact.html" class="list-link">{{ _('Contact') }}</a>
+                                <a href="refund-policy.html" class="list-link">{{ _('Refund Policy') }}</a>
                             </div>
                         </div>
                         <div>
                             <div class="uppercase-text links-grid-title">Template</div>
                             <div class="links-grid">
-                                <a href="../template/style-guide.html" class="list-link">Style Guide</a>
-                                <a href="../template/changelog.html" class="list-link">Changelog</a>
-                                <a href="../template/getting-started.html" class="list-link">Getting Started</a>
-                                <a href="../template/licensing.html" class="list-link">Licenses</a>
+                                <a href="template/style-guide.html" class="list-link">Style Guide</a>
+                                <a href="template/changelog.html" class="list-link">Changelog</a>
+                                <a href="template/getting-started.html" class="list-link">Getting Started</a>
+                                <a href="template/licensing.html" class="list-link">Licenses</a>
                                 <a href="https://mmra.re/portfolio" target="_blank" class="list-link">More Templates</a>
                             </div>
                         </div>
                     </div>
                     <div class="footer-fine-print">
-                        <div class="fine-print-text">© Copyright Company powered by
-                            <a href="https://www.webflow.com" target="_blank" class="underline-link">Webflow</a>
+                        <div class="fine-print-text">© Copyright Company powered by <a href="https://www.webflow.com"
+                                                                                       target="_blank" class="underline-link">Webflow</a>
                         </div>
                         <div class="social-links">
                             <a href="https://webflow.com" target="_blank" class="social-link w-inline-block">
-                                <img src="../images/icon-Instagram.svg" loading="lazy" alt="">
+                                <img src="images/icon-Instagram.svg" loading="lazy" alt="">
                             </a>
                             <a href="https://webflow.com" target="_blank" class="social-link w-inline-block">
-                                <img src="../images/icon-LinkedIn.svg" loading="lazy" alt="">
+                                <img src="images/icon-LinkedIn.svg" loading="lazy" alt="">
                             </a>
                             <a href="https://webflow.com" target="_blank" class="social-link w-inline-block">
-                                <img src="../images/icon-Google.svg" loading="lazy" alt="">
+                                <img src="images/icon-Google.svg" loading="lazy" alt="">
                             </a>
                             <a href="https://webflow.com" target="_blank" class="social-link w-inline-block">
-                                <img src="../images/icon-Pinterest.svg" loading="lazy" alt="">
+                                <img src="images/icon-Pinterest.svg" loading="lazy" alt="">
                             </a>
                         </div>
                     </div>
@@ -577,11 +654,11 @@
             {#            <div id="close_change_avatar_form_btn" class="bg-primary">#}
             {#                &times;#}
             {#            </div>#}
-            <div id="form_top_bar" class="bg-dark">
+            <div id="close_change_avatar_form_btn" class="close_btn">
+                &times;
+            </div>
+            <div id="form_top_bar" class="medium-heading">
                 Change Avatar
-                <div id="close_change_avatar_form_btn" class="bg-primary close_btn">
-                    &times;
-                </div>
             </div>
             <form enctype="multipart/form-data" method="post" novalidate class="action-table-form">
                 <table class="action_table">
@@ -598,7 +675,7 @@
                                     <div class="help-block with-errors"></div>
                                     <br>
                                     <div class="middle submit_btn">
-                                        {{ update_avatar_form.update_avatar_submit(class="button bg-white-faded middle") }}
+                                        {{ update_avatar_form.update_avatar_submit(class="button bg-primary middle small") }}
                                     </div>
 
                                 </div>
@@ -612,11 +689,11 @@
 
         <!-- Edit profile information section-->
         <div id="edit_profile_form" class="middle-floating bg-grey action_area" style="display: none" 5>
-            <div id="form_top_bar" class="bg-dark">
+            <div id="close_edit_profile_form_btn" class="close_btn">
+                &times;
+            </div>
+            <div id="form_top_bar" class="medium-heading">
                 {{ _('Edit profile')}}
-                <div id="close_edit_profile_form_btn" class="bg-primary close_btn">
-                    &times;
-                </div>
             </div>
             <form method="post" class="action-table-form">
                 <table class="action_table">
@@ -688,7 +765,7 @@
                     <tr>
                         <td>
                             <div class="middle submit_btn">
-                                {{ edit_profile_form.edit_profile_submit(class="button bg-white-faded middle") }}
+                                {{ edit_profile_form.edit_profile_submit(class="button bg-primary middle small") }}
                             </div>
                         </td>
                     </tr>
@@ -699,11 +776,11 @@
 
         <!-- Add address floating section -->
         <div id="add_address_form" class="middle-floating bg-grey action_area" style="display: none">
-            <div id="form_top_bar" class="bg-dark">
+            <div id="close_add_form_btn" class="close_btn">
+                &times;
+            </div>
+            <div id="form_top_bar" class="medium-heading">
                 {{ _('Add address')}}
-                <div id="close_add_form_btn" class="bg-primary close_btn">
-                    &times;
-                </div>
             </div>
             <form method="post" class="action-table-form">
                 <table class="action_table">
@@ -823,7 +900,7 @@
                     <tr>
                         <td>
                             <div class="middle submit_btn">
-                                {{ add_address_form.add_address_submit(class="button bg-white-faded middle") }}
+                                {{ add_address_form.add_address_submit(class="button bg-primary middle small") }}
                             </div>
                         </td>
                     </tr>
@@ -834,11 +911,11 @@
 
         <!-- Edit address floating section -->
         <div id="edit_address_form" class="middle-floating bg-grey action_area" style="display: none">
-            <div id="form_top_bar" class="bg-dark">
+            <div id="close_edit_form_btn" class="close_btn">
+                &times;
+            </div>
+            <div id="form_top_bar" class="medium-heading">
                 {{ _('Edit address')}}
-                <div id="close_edit_form_btn" class="bg-primary close_btn">
-                    &times;
-                </div>
             </div>
             <form method="post" class="action-table-form">
                 <table class="action_table">
@@ -960,7 +1037,7 @@
                     <tr>
                         <td>
                             <div class="middle submit_btn">
-                                {{ edit_address_form.edit_address_submit(class="button bg-white-faded middle") }}
+                                {{ edit_address_form.edit_address_submit(class="button bg-primary middle small") }}
                             </div>
                         </td>
                     </tr>

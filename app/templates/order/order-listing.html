@@ -175,54 +175,64 @@
                 <div class="w-commerce-commercecartformwrapper">
                     <!-- List of Order -->
                     <div class="w-commerce-commercecartlist cart-list">
-                        <table border="1" width="100%">
+                        <table class="order_table" width="100%">
                             {% for order in order_lst %}
                                 <tr id="order_row_{{ order.id }}" class="order_row"
                                     current_status_code="{{ order.status_code }}">
                                     <td>
-                                        <table border="1" width="100%">
+                                        <table class="single_order" width="100%">
                                             <tr id="basic_info_row_{{ order.id }}">
-                                                <td colspan="6">
-                                                    <table id="basic_info_table_{{ order.id }}" border="1"
+                                                <td colspan="3" class="basic_info_cell">
+                                                    <table id="basic_info_table_{{ order.id }}"
                                                            class="basic_info_table">
                                                         <tr>
-                                                            <td id="order_time_{{ order.id }}">
+                                                            <td id="order_time_{{ order.id }}" class="order_time small-text">
                                                                 {{ order.timestamp }}
                                                             </td>
-                                                            <td id="order_num_{{ order.id }}">
+                                                            <td id="order_num_{{ order.id }}" class="order_num small-text">
                                                                 Trade No.{{ order.out_trade_no }}
                                                             </td>
-                                                            {% if order.status_code==1 or order.status_code==2 or order.status_code==3 or order.status_code==4 %}
-                                                                <td id="">
-                                                                    Payment No.{{ order.trade_no }}
-                                                                </td>
-                                                            {% endif %}
                                                         </tr>
                                                     </table>
                                                 </td>
                                             </tr>
-                                            <tr id="table_head_row_{{ order.id }}">
-                                                <th></th>
-                                                <th>
-                                                    Models
-                                                </th>
-                                                <th>
-                                                    Recipient Name
-                                                </th>
-                                                <th>
-                                                    Total Price
-                                                </th>
-                                                <th>
-                                                    Status
-                                                </th>
-                                                <th></th>
+                                            <tr id="status_{{ order.id }}">
+                                                {% if order.status_code == 0 %}
+                                                    <td colspan="3" class="status_col status_wp">
+                                                        Waiting for Payment
+                                                    </td>
+                                                {% elif order.status_code == 1 %}
+                                                    <td colspan="3" class="status_col status_p">
+                                                        Preparing
+                                                    </td>
+                                                {% elif order.status_code == 2 %}
+                                                    <td colspan="3" class="status_col status_od">
+                                                        On Delivery
+                                                    </td>
+                                                {% elif order.status_code == 3 %}
+                                                    <td colspan="3" class="status_col status_wc">
+                                                        Waiting for Collection
+                                                    </td>
+                                                {% elif order.status_code == 4 %}
+                                                    <td colspan="3" class="status_col status_f">
+                                                        Finished
+                                                    </td>
+                                                {% elif order.status_code == 5 %}
+                                                    <td colspan="3" class="status_col status_c">
+                                                        Canceled
+                                                    </td>
+                                                {% elif order.status_code == 6 %}
+                                                    <td colspan="3" class="status_col status_e">
+                                                        Expired
+                                                    </td>
+                                                {% endif %}
                                             </tr>
                                             <tr id="content_row_{{ order.id }}">
-                                                <td class="content_row_intendation">
+                                                <td class="content_row_intendation"></td>
                                                 <td class="model_col">
-                                                    <table id="model_table_{{ order.id }}" border="1" width="100%">
+                                                    <table id="model_table_{{ order.id }}" class="model_listing_table" width="100%">
                                                         {% for order_model in order.order_model_types %}
-                                                            {% if loop.index < 4 %}
+                                                            {% if loop.index < 3 %}
                                                                 <tr id="model_row_{{ order_model.model_type.id }}"
                                                                     order_id="{{ order.id }}">
                                                                     <td class="model_img_col">
@@ -240,12 +250,12 @@
                                                                         {{ order_model.model_type.name }}
                                                                     </td>
                                                                     <td class="model_quantity_col">
-                                                                        X {{ order_model.count }}
+                                                                        &times; {{ order_model.count }}
                                                                     </td>
                                                                 </tr>
-                                                            {% elif loop.index == 4 %}
+                                                            {% elif loop.index == 3 %}
                                                                 <tr>
-                                                                    <td class="clickable" colspan="3" onclick="window.open('/order-details/{{ order.id }}');">
+                                                                    <td class="clickable view_all button bg-primary" colspan="3" onclick="window.open('/order-details/{{ order.id }}');">
                                                                         View All
                                                                     </td>
                                                                 </tr>
@@ -253,7 +263,88 @@
                                                         {% endfor %}
                                                     </table>
                                                 </td>
-                                                <td class="rn_col">
+                                                <td>
+                                                    <table class="info_table" width="100%" height="100%">
+                                                        <tr>
+                                                            <td class="rn_col medium-heading">
+                                                                {% if order.order_type == "delivery" %}
+                                                                    {{ order.address.recipient.recipient_name }}
+                                                                {% elif order.order_type == "self-collection" %}
+                                                                    {{ order.recipient.recipient_name }}
+                                                                {% endif %}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="cost_col large-text">
+                                                                ${{ order.generate_gross_payment() }}
+                                                            </td>
+                                                        </tr>
+                                                        {% if order.order_type == "delivery" %}
+                                                            <tr>
+                                                                <td class="address_col large-text">
+                                                                    {{ order.address.country }} - {{ order.address.province_or_state }}
+                                                                    - {{ order.address.city }} - {{ order.address.district }}<br>
+                                                                    {{ order.address.details }}
+                                                                </td>
+                                                            </tr>
+                                                        {% endif %}
+                                                        <tr>
+                                                            <td class="action_col">
+                                                                <table id="action_table_{{ order.id }}" class="action_table"
+                                                                       width="100%">
+                                                                    {% if order.status_code == 0 %}
+                                                                        <tr>
+                                                                            <td class="clickable action_pay button"
+                                                                                onclick="">
+                                                                                Pay
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="clickable action_cancel button bg-white-faded"
+                                                                                onclick="changeStatusTo({{ order.id }}, 5);">
+                                                                                Cancel
+                                                                            </td>
+                                                                        </tr>
+                                                                    {% elif order.status_code == 1 %}
+                                                                        <tr>
+                                                                            <td class="clickable action_view button bg-primary"
+                                                                                onclick="window.open('/order-details/{{ order.id }}');">
+                                                                                View Progress
+                                                                            </td>
+                                                                        </tr>
+                                                                    {% elif order.status_code == 2 %}
+                                                                        <tr>
+                                                                            <td class="clickable action_view button bg-primary"
+                                                                                onclick="window.open('/order-details/{{ order.id }}');">
+                                                                                View Progress
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="clickable action_comfirm button"
+                                                                                onclick="changeStatusTo({{ order.id }}, 4);">
+                                                                                Comfirm
+                                                                            </td>
+                                                                        </tr>
+                                                                    {% elif order.status_code == 4 %}
+                                                                        <tr>
+                                                                            <td class="clickable action_service button"
+                                                                                onclick="">
+                                                                                After Sale Service
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="clickable action_Comment button"
+                                                                                onclick="">
+                                                                                Comment
+                                                                            </td>
+                                                                        </tr>
+                                                                    {% endif %}
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <!--<td class="rn_col">
                                                     {% if order.order_type == "delivery" %}
                                                         {{ order.address.recipient.recipient_name }}
                                                     {% elif order.order_type == "self-collection" %}
@@ -341,7 +432,7 @@
                                                             </tr>
                                                         {% endif %}
                                                     </table>
-                                                </td>
+                                                </td>-->
                                             </tr>
                                         </table>
                                     </td>
