@@ -282,17 +282,18 @@
                         </div>
                         <fieldset id="address-field" class="w-commerce-commercecheckoutblockcontent">
                             {# the address list #}
-                            <ul class="address-list" order-id="{{ order.id }}">
-                                {% for address in order.user.addresses %}
-                                    <li id="address-{{ address.id }}" class="address" address-id="{{ address.id }}">
-                                        <span>{{ address.id }}</span>
-                                        <span class="address-name">{{ address.recipient.recipient_name }}</span> <span class="address-address">{{ address.get_address() }}</span>
-                                        {% if address.is_default %}
-                                            <span id="address-default-sign">[default]</span>
-                                        {% endif %}
-                                    </li>
-                                {% endfor %}
-                            </ul>
+                                <ul class="address-list" order-id="{{ order.id }}">
+                                    {% for address in order.user.addresses %}
+                                        <li id="address-{{ address.id }}" class="address" address-id="{{ address.id }}">
+                                            <span class="checkbox-labels address large-heading">{{ address.id }}</span>
+                                            <br><br>
+                                            <span class="address-name">{{ address.recipient.recipient_name }}</span> <span class="address-address">{{ address.get_address() }}</span>
+                                            {% if address.is_default %}
+                                                <span id="address-default-sign">[default]</span>
+                                            {% endif %}
+                                        </li>
+                                    {% endfor %}
+                                </ul>
                         </fieldset>
                     </div>
 
