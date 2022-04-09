@@ -145,6 +145,7 @@ def search():
         mt_list = search_models_by_keyword(keyword=key_word) \
             .order_by(ModelType.sales.desc(), ModelType.views.desc()) \
             .all()
+
         return render_template('main/page_all_commodities.html', mt_list=mt_list)  # see-all page
 
     return redirect(url_for('main.index'))
