@@ -9,18 +9,44 @@
     /*box-shadow: 0 0 10px 10px #999;*/
 }
 
+.list_img_container{
+    position: relative;
+}
+
+.box-img-cover-normal{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    transition: 1.3s;
+    background-image: linear-gradient(#fff0, #00000012);
+}
+
+.product-box:hover .box-img-cover-normal{
+    opacity: 1;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
 /* The pic cover */
 .product-box .box-img-cover{
     visibility: hidden;
-    height: 300px;
-    width: 273px;
+    height: 100%;
+    width: 100%;
     position: absolute;
-    /* The hint text */
+    top: 0px;
+    left: 0px;
     font-size: 30px;
     text-align: center;
     line-height: 40px;
     transition: 1.3s;
+    z-index: 2;
 }
+
 /* The pic cover for the cards that on a row which has 4 cards */
 .product-box .box-img-cover-4{
     visibility: hidden;
@@ -35,13 +61,14 @@
 }
 
 .product-box:hover .box-img-cover{
-    visibility: inherit;
+    visibility: visible;
     background-color: black;
     position: absolute;
     opacity: 0.4;
     cursor: pointer;
     /* The hint text */
     line-height: 300px;
+    z-index: 2;
 }
 
 .product-box:hover .box-img-cover-4{
@@ -63,6 +90,8 @@
 .product-box img{
     width: 300px;
     height: 300px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 /* price */

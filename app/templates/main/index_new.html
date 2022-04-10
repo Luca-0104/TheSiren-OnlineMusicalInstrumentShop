@@ -219,9 +219,9 @@
                     <!-- Left part -->
                     <!-- Search -->
                     <form action="/search" method="POST" id="w-node-dab1a8fd-38ef-ff9e-e737-a0bdf6abf40d-f6abf40a" class="nav-search-form w-form">
-                        <div class="w-inline-block">
+                        <!--<div class="w-inline-block">-->
                            <input type="image" src="../../static/images/icon-search.svg" value="Search" class="w-button" alt="submit">
-                        </div>
+                        <!--</div>-->
                            <input type="search" class="search-form-input w-input" maxlength="256" name="key_word" placeholder="{{ _('Search here')}}" id="search-2" required="">
                     </form>
                 </div>
@@ -276,7 +276,7 @@
         </div>
 
         <!-- Collection Section -->
-        <div class="bg-primary">
+        <div class="bg-dark">
             {# slide pics in the index page #}
             <div class="grid-halves-section wf-section">
 {#                <img src="images/square-01.jpg" loading="lazy" sizes="100vw" srcset="images/square-01-p-500.jpeg 500w, images/square-01-p-800.jpeg 800w, images/square-01-p-1080.jpeg 1080w, images/square-01.jpg 1200w" alt="" class="grid-halves-image">#}
@@ -353,7 +353,7 @@
                 <div class="section">
                     <div class="main-container">
                         <div class="container align-center one animate fadeUp">
-                            <h1 >The New Home Collection</h1>
+                            <h1>The New Home Collection</h1>
                             <div class="large-text" id="slide-text"></div>
                             <div class="button-row justify-content-center">
                                 <a href="shop.html" class="button bg-white-faded w-inline-block">
@@ -401,7 +401,7 @@
         <div class="section wf-section">
             <div class="main-container">
                 <!-- General Recommendation -->
-                <div class="w-layout-grid featured-products-grid">
+                <div class="w-layout-grid featured-products-grid  bg-primary-dark">
                     <!-- Left text -->
                     <div class="featured-items-title fade-in-text">
                         <p>nice</p>
@@ -413,16 +413,23 @@
                             {% for rec_view_pro in rec_views %}
                                 <div role="listitem" class="w-dyn-item product-box" style="padding: 10">
                                     <a href="{{ url_for('main.model_type_details', mt_id=rec_view_pro.id) }}" class="product-preview-link w-inline-block">
-                                        {# The gray cover on the pic when hovering #}
-                                        <div class="box-img-cover">{{ _('Click for Details')}}</div>
+                                        <div class="list_img_container">
+                                            <!-- product picture -->
+                                            {% if rec_view_pro.pictures.first() == None %}
+                                                <img src="../../static/images/example/hohner_super64.jpg" loading="lazy"
+                                                     alt="" class="product-thumbnail bottom-border">
+                                            {% else %}
+                                                <img src="{{ url_for("static",filename=rec_view_pro.pictures.first().address) }}"
+                                                     loading="lazy" alt="" class="product-thumbnail bottom-border">
+                                                {#                                            <img src="../../static/images/example/hohner_super64.jpg" loading="lazy" alt="" class="product-thumbnail">#}
+                                            {% endif %}
 
-                                        {# product picture #}
-                                        {% if rec_view_pro.pictures.first() == None %}
-                                            <img src="../../static/images/example/hohner_super64.jpg" loading="lazy" alt="" class="product-thumbnail">
-                                        {% else %}
-                                            <img src="{{ url_for("static",filename=rec_view_pro.pictures.first().address) }}" loading="lazy" alt="" class="product-thumbnail">
-{#                                            <img src="../../static/images/example/hohner_super64.jpg" loading="lazy" alt="" class="product-thumbnail">#}
-                                        {% endif %}
+                                            <!-- The gray cover on the pic when not hovering -->
+                                            <div class="box-img-cover-normal"></div>
+
+                                            <!-- The gray cover on the pic when hovering -->
+                                            <div class="box-img-cover">{{ _('Click for Details') }}</div>
+                                        </div>
                                     </a>
 
                                     <div class="box-product-info-card">
@@ -548,7 +555,7 @@
 
                 {% if current_user.is_authenticated %}
                     <!-- Personal Recommendation -->
-                    <div class="w-layout-grid featured-products-grid">
+                    <div class="w-layout-grid featured-products-grid  bg-primary-dark">
                         <!-- Left text -->
                         <div class="featured-items-title">
                             <h3 class="large-heading featured-items-heading">{{ _('Your') }}<br>{{ _('Interests') }}</h3>
@@ -559,15 +566,22 @@
                                 {% for rec_preference_pro in rec_preference %}
                                     <div role="listitem" class="w-dyn-item product-box" style="padding: 10">
                                         <a href="{{ url_for('main.model_type_details', mt_id=rec_preference_pro.id) }}" class="product-preview-link w-inline-block">
-                                            {# The gray cover on the pic when hovering #}
-                                            <div class="box-img-cover">{{ _('Click for Details')}}</div>
+                                            <div class="list_img_container">
+                                                <!-- product picture -->
+                                                {% if rec_preference_pro.pictures.first() == None %}
+                                                    <img src="../../static/images/example/yamaha_yep621s.jpg"
+                                                         loading="lazy" alt="" class="product-thumbnail bottom-border">
+                                                {% else %}
+                                                    <img src="{{ url_for("static",filename=rec_preference_pro.pictures.first().address) }}"
+                                                         loading="lazy" alt="" class="product-thumbnail bottom-border">
+                                                {% endif %}
 
-                                            {# product picture #}
-                                            {% if rec_preference_pro.pictures.first() == None %}
-                                                <img src="../../static/images/example/yamaha_yep621s.jpg" loading="lazy" alt="" class="product-thumbnail">
-                                            {% else %}
-                                                <img src="{{ url_for("static",filename=rec_preference_pro.pictures.first().address) }}" loading="lazy" alt="" class="product-thumbnail">
-                                            {% endif %}
+                                                <!-- The gray cover on the pic when not hovering -->
+                                                <div class="box-img-cover-normal"></div>
+
+                                                <!-- The gray cover on the pic when hovering -->
+                                                <div class="box-img-cover">{{ _('Click for Details') }}</div>
+                                            </div>
                                         </a>
 
                                         <div class="box-product-info-card">
@@ -689,7 +703,7 @@
         </div>
 
         <!-- About Us Section -->
-        <div class="section bg-primary-dark wf-section">
+        <div class="section bg-dark wf-section">
             <div class="main-container">
                 <div class="w-layout-grid portrait-image-left-grid">
                     <img src="../../static/images/index/about_us.png" loading="lazy" sizes="100vw"
@@ -703,7 +717,7 @@
                                 explore your range of products. Don’t forget to mention the unique selling point of the brand.
                             </div>
                             <div class="button-row">
-                                <a href="about.html" class="button bg-white w-inline-block">
+                                <a href="about.html" class="button bg-primary-dark w-inline-block">
                                     <div>{{ _('About Us') }}</div>
                                 </a>
                             </div>
@@ -714,7 +728,7 @@
         </div>
 
         <!-- Just Arrive Section -->
-        <div class="section wf-section">
+        <div class="section bg-primary-light wf-section">
             <div class="main-container">
                 <h3 class="section-title">{{ _('Just Arrived')}}</h3>
                 <div class="w-dyn-list">
@@ -722,15 +736,20 @@
                         {% for rec_time_pro in rec_time %}
                             <div role="listitem" class="w-dyn-item product-box" style="padding: 10">
                                 <a href="{{ url_for('main.model_type_details', mt_id=rec_time_pro.id) }}" class="product-preview-link w-inline-block">
-                                    {# The gray cover on the pic when hovering #}
-                                    <div class="box-img-cover-4">Click for Details</div>
+                                    <div class="list_img_container">
+                                        <!-- product picture -->
+                                        {% if rec_time_pro.pictures.first() == None %}
+                                            <img src="../../static/images/example/yamaha_yep621s.jpg" loading="lazy" alt="" class="product-thumbnail full-border">
+                                        {% else %}
+                                            <img src="{{ url_for("static",filename=rec_time_pro.pictures.first().address) }}" loading="lazy" alt="" class="product-thumbnail full-border">
+                                        {% endif %}
 
-                                    {# product picture #}
-                                    {% if rec_time_pro.pictures.first() == None %}
-                                        <img src="../../static/images/example/yamaha_yep621s.jpg" loading="lazy" alt="" class="product-thumbnail">
-                                    {% else %}
-                                        <img src="{{ url_for("static",filename=rec_time_pro.pictures.first().address) }}" loading="lazy" alt="" class="product-thumbnail">
-                                    {% endif %}
+                                        <!-- The gray cover on the pic when not hovering -->
+                                        <div class="box-img-cover-normal"></div>
+
+                                        <!-- The gray cover on the pic when hovering -->
+                                        <div class="box-img-cover">{{ _('Click for Details') }}</div>
+                                    </div>
                                 </a>
 
                                 <div class="box-product-info-card">
@@ -889,27 +908,6 @@
         </div>
 
         <!-- Brands Section -->
-        <!--<div class="section wf-section">
-            <div class="main-container">
-                <div class="w-dyn-list">
-                    <div role="list" class="journal-grid w-dyn-items">
-                        <div role="listitem" class="w-dyn-item">
-                            <div>
-                                <a href="#" class="journal-link w-inline-block">
-                                    <img src="" loading="lazy" alt="" class="journal-thumbnail">
-                                    <div class="uppercase-text article-date"></div>
-                                    <h5 class="no-bottom-margin"></h5>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="empty-state w-dyn-empty">
-                        <div>Here should be listing some logos of brands we will have.</div>
-                    </div>
-                </div>
-            </div>
-        </div>-->
-
         <div class="aut_brand">
 			<div class="center_1200 clearfix">
 				<div class="aut_brand_right">
@@ -1255,10 +1253,8 @@
 			</div>
 		</div>
 
-
-
         <!-- Subscribe Section -->
-        <div class="section bg-primary-dark wf-section">
+        <div class="section bg-dark wf-section">
             <div class="main-container">
                 <div class="w-layout-grid grid-halves">
                     <div class="w-layout-grid social-images">
@@ -1280,7 +1276,7 @@
         </div>
 
         <!-- Footer Section -->
-        <div class="footer wf-section">
+        <div class="footer bg-primary-dark wf-section">
             <div class="footer-details-section">
                 <div class="main-container">
                     <div class="w-layout-grid footer-grid">
