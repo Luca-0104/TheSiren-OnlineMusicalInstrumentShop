@@ -768,6 +768,9 @@ class ModelType(BaseModel):
         Tools.add_relation_to_dict(result, self.carts.all(), "carts")
         # Tools.add_relation_to_dict(result, self.order_model_types.all(), "order_model_types")
 
+        # add brand name
+        result["brand_name"] = self.product.brand.name
+
         return Tools.delete_instance_state(result)
         # return result
 
