@@ -20,6 +20,7 @@
         <link href="../../static/css/webflow.css" rel="stylesheet" type="text/css">
         <link href="../../static/css/jacks-supercool-site-c6dd88.webflow.css" rel="stylesheet" type="text/css">
         <link href="../../static/css/order/order-detail.css" rel="stylesheet" type="text/css">
+        {#        <link href="../../static/css/order/order.css" rel="stylesheet" type="text/css">#}
 
         <!-- [if lt IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"
@@ -47,7 +48,7 @@
             }
         </style>
     </head>
-    <body class="body">
+    <body>
         <!-- Section of Announcement Bar -->
         <div class="announcement-bar">
             <div class="main-container">
@@ -151,68 +152,90 @@
                     </a>
                 </div>
                 <div class="w-commerce-commercecartformwrapper">
-                    <div class="w-commerce-commercecartlist cart-list">
-                        <table border="1">
+
+                    <div class="w-commerce-commercecartlist cart-list main-container">
+
+                        <table border="0">
+                            <tr id="status_{{ order.id }}" style="text-align: center">
+                                {% if order.status_code == 0 %}
+                                    <td colspan="3" class="status_col status_wp">
+                                        Waiting for Payment
+                                    </td>
+                                {% elif order.status_code == 1 %}
+                                    <td colspan="3" class="status_col status_p">
+                                        Preparing
+                                    </td>
+                                {% elif order.status_code == 2 %}
+                                    <td colspan="3" class="status_col status_od">
+                                        On Delivery
+                                    </td>
+                                {% elif order.status_code == 3 %}
+                                    <td colspan="3" class="status_col status_wc">
+                                        Waiting for Collection
+                                    </td>
+                                {% elif order.status_code == 4 %}
+                                    <td colspan="3" class="status_col status_f">
+                                        Finished
+                                    </td>
+                                {% elif order.status_code == 5 %}
+                                    <td colspan="3" class="status_col status_c">
+                                        Canceled
+                                    </td>
+                                {% elif order.status_code == 6 %}
+                                    <td colspan="3" class="status_col status_e">
+                                        Expired
+                                    </td>
+                                {% endif %}
+                            </tr>
                             <tr>
-                                <td colspan="2">
-                                    <table border="1" width="100%">
+                                <td colspan="2" class="top-td">
+                                    <table border="0" width="100%">
                                         <tr>
-                                            <td colspan="2">
+                                            <td colspan="2" class="medium-heading">
                                                 Basic Information
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                --
+
                                             </td>
                                             <td>
-                                                <table border="1" width="100%">
+                                                <table border="0" width="100%">
                                                     <tr>
                                                         <td>
                                                             {{ order.timestamp }}
                                                         </td>
+                                                    </tr>
+                                                      <tr>
                                                         <td>
-                                                            {% if order.status_code == 0 %}
-                                                                Waiting for Payment
-                                                            {% elif order.status_code == 1  %}
-                                                                Preparing
-                                                            {% elif order.status_code == 2  %}
-                                                                On Delivery
-                                                            {% elif order.status_code == 3  %}
-                                                                Waiting for Collection
-                                                            {% elif order.status_code == 4  %}
-                                                                Finished
-                                                            {% elif order.status_code == 5  %}
-                                                                Canceled
-                                                            {% elif order.status_code == 6  %}
-                                                                Expired
-                                                            {% endif %}
+                                                            Total Cost: ${{ order.generate_gross_payment() }}
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td colspan="2">
+                                                        <td colspan="2" class="order_num">
                                                             Trade No.{{ order.out_trade_no }}
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td colspan="2">
+                                                        <td colspan="2" class="order_num">
                                                             Payment No.{{ order.trade_no }}
                                                         </td>
                                                     </tr>
+
                                                 </table>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td colspan="2">
+                                            <td colspan="2" class="medium-heading">
                                                 Address Information
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                --
+
                                             </td>
                                             <td>
-                                                <table border="1" width="100%">
+                                                <table border="0" width="100%">
                                                     {% if order.order_type == "delivery" %}
                                                         <tr>
                                                             <td>
@@ -229,7 +252,7 @@
                                                         </tr>
                                                     {% elif order.order_type == "self-collection" %}
                                                         <tr>
-                                                            <td>
+                                                            <td class="name-box">
                                                                 {{ order.recipient.recipient_name }}
                                                             </td>
                                                             <td>
@@ -245,7 +268,7 @@
                             </tr>
                             <tr>
                                 <td id="model_table_col">
-                                    <table border="1" width="100%" class="model_table">
+                                    <table border="0" width="100%" class="model_listing_table">
                                         {% for order_model in order.order_model_types %}
                                             <tr id="model_row_{{ order_model.model_type.id }}"
                                                 order_id="{{ order.id }}">
@@ -263,6 +286,9 @@
                                                 <td class="model_name_col">
                                                     {{ order_model.model_type.name }}
                                                 </td>
+                                                <td class="model_price_col">
+                                                    ${{ order_model.model_type.price }}
+                                                </td>
                                                 <td class="model_quantity_col">
                                                     X {{ order_model.count }}
                                                 </td>
@@ -270,62 +296,62 @@
                                         {% endfor %}
                                     </table>
                                 </td>
-                                <td>
-                                    <table border="1" width="100%" class="progress_table">
-                                        <tr>
-                                            <td rowspan="2" class="progress_mark">
-                                                \/
-                                            </td>
-                                            <td class="progress_stage">
-                                                Orderd
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="progress_time">
-                                                2022-04-08
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td rowspan="2" class="progress_mark">
-                                                \/
-                                            </td>
-                                            <td class="progress_stage">
-                                                Preparing
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="progress_time">
-                                                2022-04-08
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td rowspan="2" class="progress_mark">
-                                                \/
-                                            </td>
-                                            <td class="progress_stage">
-                                                Delivering
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="progress_time">
-                                                2022-04-08
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td rowspan="2" class="progress_mark">
-                                                \/
-                                            </td>
-                                            <td class="progress_stage">
-                                                Finished
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="progress_time">
-                                                2022-04-08
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
+                                {#                                <td>#}
+                                {#                                    <table border="1" width="100%" class="progress_table">#}
+                                {#                                        <tr>#}
+                                {#                                            <td rowspan="2" class="progress_mark">#}
+                                {#                                                \/#}
+                                {#                                            </td>#}
+                                {#                                            <td class="progress_stage">#}
+                                {#                                                Orderd#}
+                                {#                                            </td>#}
+                                {#                                        </tr>#}
+                                {#                                        <tr>#}
+                                {#                                            <td class="progress_time">#}
+                                {#                                                2022-04-08#}
+                                {#                                            </td>#}
+                                {#                                        </tr>#}
+                                {#                                        <tr>#}
+                                {#                                            <td rowspan="2" class="progress_mark">#}
+                                {#                                                \/#}
+                                {#                                            </td>#}
+                                {#                                            <td class="progress_stage">#}
+                                {#                                                Preparing#}
+                                {#                                            </td>#}
+                                {#                                        </tr>#}
+                                {#                                        <tr>#}
+                                {#                                            <td class="progress_time">#}
+                                {#                                                2022-04-08#}
+                                {#                                            </td>#}
+                                {#                                        </tr>#}
+                                {#                                        <tr>#}
+                                {#                                            <td rowspan="2" class="progress_mark">#}
+                                {#                                                \/#}
+                                {#                                            </td>#}
+                                {#                                            <td class="progress_stage">#}
+                                {#                                                Delivering#}
+                                {#                                            </td>#}
+                                {#                                        </tr>#}
+                                {#                                        <tr>#}
+                                {#                                            <td class="progress_time">#}
+                                {#                                                2022-04-08#}
+                                {#                                            </td>#}
+                                {#                                        </tr>#}
+                                {#                                        <tr>#}
+                                {#                                            <td rowspan="2" class="progress_mark">#}
+                                {#                                                \/#}
+                                {#                                            </td>#}
+                                {#                                            <td class="progress_stage">#}
+                                {#                                                Finished#}
+                                {#                                            </td>#}
+                                {#                                        </tr>#}
+                                {#                                        <tr>#}
+                                {#                                            <td class="progress_time">#}
+                                {#                                                2022-04-08#}
+                                {#                                            </td>#}
+                                {#                                        </tr>#}
+                                {#                                    </table>#}
+                                {#                                </td>#}
                             </tr>
                         </table>
                     </div>

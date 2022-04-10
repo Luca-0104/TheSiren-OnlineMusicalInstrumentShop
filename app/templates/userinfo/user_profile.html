@@ -335,6 +335,28 @@
                                         </td>
                                     </tr>
                                 </table>
+                             <div class="email" id="info-box">
+                                                    <p id="email">
+                                                        {{ _('Email') }}: {{ user.email }}
+                                                    </p>
+                                                </div>
+
+                                                <div class="tag-info">
+                                                    {#                                <p class="tags">#}
+                                                    {#                                    {{ user.tag }}#}
+                                                    {#                                </p>#}
+                                                    {{ _('Bio') }}:
+                                                    {% if user.about_me == None or user.about_me == "" %}
+                                                        <p class="info-null" id="about">
+                                                            {{ _('Describe yourself...') }}
+                                                        </p>
+
+                                                    {% else %}
+                                                        <p class="info" id="about">
+                                                            {{ user.about_me }}
+                                                        </p>
+                                                    {% endif %}
+                                                </div>
 
 
                                 {#                    <div id="change_avatar_form" class="middle-floating bg-dark" style="display: none">#}
