@@ -1,7 +1,7 @@
 import os
 from urllib import parse
 
-from flask import request, redirect, url_for, flash, render_template, current_app
+from flask import request, redirect, url_for, flash, render_template, current_app, jsonify
 from flask_login import login_required, current_user
 from flask_babel import _
 
@@ -12,7 +12,7 @@ from app.payment import payment
 from alipay import AliPay, AliPayConfig
 
 
-@payment.route('/pay-for-order/instrument', methods=['POST'])
+@payment.route('/api/pay-for-order/instrument', methods=['POST'])
 @login_required
 def pay_for_order_instrument():
     """
@@ -24,7 +24,12 @@ def pay_for_order_instrument():
     if request.method == 'POST':
         """ get order """
         # get the order id
-        order_id = int(request.form.get('order_id'))
+        order_id = request.form.get('order_id')
+
+        if order_id is None:
+            current_app.logger.error("info are not gotten from Ajax")
+            return jsonify({"returnValue": 1})
+
         # get order obj from db
         order = Order.query.get(order_id)
 
@@ -47,16 +52,9 @@ def pay_for_order_instrument():
             flash(_("Order does not exist!"))
             return redirect(url_for('main.index'))
 
-        """ update order information """
-        order_type = request.form.get('order_type')
-        address_id = int(request.form.get('address_id'))
-        order.order_type = order_type
-        order.address_id = address_id
-        db.session.add(order)
-        db.session.commit()
-
-        """ call Alipay API """
-        pay_order(order_obj=order)
+        """ call Alipay API to get the payment_url """
+        payment_url = pay_order(order_obj=order)
+        return jsonify({"returnValue": 0, "paymentURL": payment_url})
 
 
 @payment.route('/pay-for-order/premium/<int:p_order_id>')
@@ -91,14 +89,16 @@ def pay_for_order_premium(p_order_id):
         flash(_("premiumOrder does not exist!"))
         return redirect(url_for('main.index'))
 
-    """ call Alipay API """
-    pay_order(order_obj=p_order)
+    """ call Alipay API to get the payment_url"""
+    payment_url = pay_order(order_obj=p_order)
+    return jsonify({"returnValue": 0, "paymentURL": payment_url})
 
 
 def pay_order(order_obj):
     """
-    This function calls the Alipay API, to finish the payment
+    This function calls the Alipay API, get a payment url (for going to alipay)
     :param order_obj: A obj of order from db
+    :return: a String of payment url (for going to alipay)
     """
 
     # create a alipay obj
@@ -136,7 +136,8 @@ def pay_order(order_obj):
     # redirect to the page of alipay
     payment_url = 'https://openapi.alipaydev.com/gateway.do?' + order_string
 
-    return redirect(payment_url)
+    # return redirect(payment_url)
+    return payment_url
 
 
 def get_alipay_instance():

@@ -1,0 +1,62 @@
+/*
+    ------------------------ recipient field ------------------------
+*/
+
+
+
+/*
+    ------------------------ address field ------------------------
+*/
+
+#address-field{
+    margin-bottom: 20px;
+}
+
+.address{
+    list-style: none;
+    border: red 1px solid;
+}
+
+/* THis class should be added to the selected address by js */
+.chosen-address{
+    background-color: #3A7734;
+}
+
+.hidden-field{
+    display: none;
+    transition: 2.0s;
+}
+
+/*
+    ------------------------ shipping method field ------------------------
+*/
+
+.shipping-method-list{
+    list-style: none;
+    background-color: #0B7FCE;
+}
+
+.shipping-method-list li{
+    float: left;
+    padding: 2% 6%;
+    border: 2px solid #0B7FCE;
+    font-size: 20px;
+}
+
+.shipping-method-list li:hover{
+    background-color: #8771ff;
+    cursor: pointer;
+}
+
+#method-delivery {
+    margin-right: 5%;
+}
+
+#method-self{
+
+}
+
+/* THis class should be added to the selected shipping method by js */
+.chosen-shipping-method{
+    background-color: #8771ff;
+}

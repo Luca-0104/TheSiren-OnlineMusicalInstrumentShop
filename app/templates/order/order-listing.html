@@ -21,10 +21,11 @@
         <link href="../../static/css/jacks-supercool-site-c6dd88.webflow.css" rel="stylesheet" type="text/css">
         <link href="../../static/css/order/order.css" rel="stylesheet" type="text/css">
 
-        <!-- [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif] -->
+        <!-- [if lt IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"
+                type="text/javascript"></script><![endif] -->
         <script type="text/javascript">
-            !function (o, c)
-            {
+            !function (o, c) {
                 var n = c.documentElement, t = " w-mod-";
                 n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
             }
@@ -36,14 +37,12 @@
         {# css for slide pictures #}
         <link rel="stylesheet" href="../../static/css/main/index_slide.css">
         <style>
-            body
-            {
+            body {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
             }
 
-            select, input, textarea
-            {
+            select, input, textarea {
                 -webkit-appearance: checkbox;
             }
         </style>
@@ -69,7 +68,8 @@
                 <div class="navbar-top">
                     <!-- Middel part -->
                     <a href="index.html" aria-current="page" class="w-inline-block w--current">
-                        <img src="../../static/images/Black-logo-no-background.svg" loading="eager" alt="" height="45px">
+                        <img src="../../static/images/Black-logo-no-background.svg" loading="eager" alt=""
+                             height="45px">
                     </a>
 
                     <!-- Right part -->
@@ -90,9 +90,11 @@
 
                     <!-- Left part -->
                     <!-- Search -->
-                    <form action="/search" id="w-node-dab1a8fd-38ef-ff9e-e737-a0bdf6abf40d-f6abf40a" class="nav-search-form w-form">
+                    <form action="/search" id="w-node-dab1a8fd-38ef-ff9e-e737-a0bdf6abf40d-f6abf40a"
+                          class="nav-search-form w-form">
                         <img src="images/icon-search.svg" loading="eager" alt="">
-                        <input type="search" class="search-form-input w-input" maxlength="256" name="query" placeholder="{{ _('Search here')}}" id="search-2" required="">
+                        <input type="search" class="search-form-input w-input" maxlength="256" name="query"
+                               placeholder="{{ _('Search here') }}" id="search-2" required="">
                         <input type="submit" value="Search" class="hide-button w-button">
                     </form>
                 </div>
@@ -102,7 +104,8 @@
         <!-- Lower Section of Top nav bar -->
         <div class="div-block">
             <div class="main-container">
-                <div data-collapse="small" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-nav">
+                <div data-collapse="small" data-animation="default" data-duration="400" data-easing="ease"
+                     data-easing2="ease" role="banner" class="navbar w-nav">
                     <div class="button bg-primary wide w-nav-button">
                         <div>{{ _('Menu') }}</div>
                     </div>
@@ -136,162 +139,309 @@
             </div>
         </div>
 
-        <!-- Recommendation Section -->
+        <!-- Order Section -->
         <div class="section wf-section">
             <div class="main-container">
-                <!-- Cart -->
+                <!-- Order -->
                 <div class="w-commerce-commercecartheader cart-header">
-                    <h4 class="w-commerce-commercecartheading">{{ _('Your Order')}}</h4>
-                    <a href="#" data-node-type="commerce-cart-close-link" class="w-commerce-commercecartcloselink close-cart-button w-inline-block">
+                    <h4 class="w-commerce-commercecartheading">{{ _('Your Order') }}</h4>
+                    <a href="#" data-node-type="commerce-cart-close-link"
+                       class="w-commerce-commercecartcloselink close-cart-button w-inline-block">
                         <img src="images/icon-cross-large.svg" loading="lazy" alt="">
                     </a>
                 </div>
                 <div class="w-commerce-commercecartheader cart-header">
-                    <h6 class="w-commerce-commercecartheading subSec clickable selectedOne" subAim="-1">{{ _('All') }}</h6>
-                    <h6 class="w-commerce-commercecartheading subSec clickable" subAim="0">{{ _('Unpaid') }}</h6>
-                    <h6 class="w-commerce-commercecartheading subSec clickable" subAim="2">{{ _('Delivering') }}</h6>
-                    <h6 class="w-commerce-commercecartheading subSec clickable" subAim="3">{{ _('Wait for Collection')}}</h6>
-                    <h6 class="w-commerce-commercecartheading subSec clickable" subAim="4">{{ _('Finished') }}</h6>
+                    <h6 class="w-commerce-commercecartheading subSec clickable selectedOne"
+                        subAim="-1">
+                        {{ _('All') }}
+                    </h6>
+                    <h6 class="w-commerce-commercecartheading subSec clickable"
+                        subAim="5">
+                        {{ _('Canceled') }}
+                    </h6>
+                    <h6 class="w-commerce-commercecartheading subSec clickable"
+                        subAim="0">
+                        {{ _('Unpaid') }}
+                    </h6>
+                    <h6 class="w-commerce-commercecartheading subSec clickable"
+                        subAim="2">
+                        {{ _('Delivering') }}
+                    </h6>
+                    <h6 class="w-commerce-commercecartheading subSec clickable"
+                        subAim="3">
+                        {{ _('Wait for Collection') }}
+                    </h6>
+                    <h6 class="w-commerce-commercecartheading subSec clickable"
+                        subAim="4">
+                        {{ _('Finished') }}
+                    </h6>
                 </div>
                 <div class="w-commerce-commercecartformwrapper">
-                    <!-- List of Cart -->
+                    <!-- List of Order -->
                     <div class="w-commerce-commercecartlist cart-list">
-                        <table border="1" style="border-collapse:separate; border-spacing:10px;">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        {{ _('Order') }}
-                                    </th>
-                                    <th>
-                                        {{ _('Models') }}
-                                    </th>
-                                    <th>
-                                        {{ _('Status') }}
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody id="order-listing-table">
-                                {% for order in order_lst %}
-                                    <tr>
-                                        <td href="#" onclick="window.open('/order-details/{{ order.id }}');">
-                                            <table border="1" width="100%" height="100%" class="clickable">
-                                                <tr>
-                                                    <td>
-                                                        {{ _('Recipient Name')}}
-                                                    </td>
-                                                    <td>
-                                                        {{ order.address.recipient_name }}
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        {{ _('Contact Phone')}}
-                                                    </td>
-                                                    <td>
-                                                        {{ order.address.phone }}
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        {{ _('Address') }}
-                                                    </td>
-                                                    <td>
-                                                        {{ order.address.country }} - {{ order.address.province_or_state }} - {{ order.address.city }} - {{ order.address.district }}
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        {{ _('Time Stamp')}}
-                                                    </td>
-                                                    <td>
-                                                        {{ order.timestamp }}
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td>
-                                            <table border="1" width="100%" height="100%">
-                                                {% for order_model in order.order_model_types.all() %}
-                                                    {% if loop.index <= 4 %}
-                                                        <td>
-                                                            <img src="../../static/images/example/yamaha_yep621s.jpg" loading="lazy" alt="" class="w-commerce-commercecartitemimage cart-item-image">
-                                                        </td>
-                                                        <!--<td>
-                                                            {{ order_model.model_type.name }}
-                                                        </td>
-                                                        <td>
-                                                            Comment
-                                                        </td>-->
-                                                    {% endif %}
-                                                {% endfor %}
-                                            </table>
-                                        </td>
-                                        <td>
-                                            <table id="status_table_{{ order.id }}" border="1" width="100%" height="100%">
+                        <table class="order_table" width="100%">
+                            {% for order in order_lst %}
+                                <tr id="order_row_{{ order.id }}" class="order_row"
+                                    current_status_code="{{ order.status_code }}">
+                                    <td>
+                                        <table class="single_order" width="100%">
+                                            <tr id="basic_info_row_{{ order.id }}">
+                                                <td colspan="3" class="basic_info_cell">
+                                                    <table id="basic_info_table_{{ order.id }}"
+                                                           class="basic_info_table">
+                                                        <tr>
+                                                            <td id="order_time_{{ order.id }}" class="order_time small-text">
+                                                                {{ order.timestamp }}
+                                                            </td>
+                                                            <td id="order_num_{{ order.id }}" class="order_num small-text">
+                                                                Trade No.{{ order.out_trade_no }}
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr id="status_{{ order.id }}">
                                                 {% if order.status_code == 0 %}
-                                                    <tr>
-                                                        <td>
-                                                            {{ _('Waiting for Payment')}}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <a href="#">{{ _('Pay') }}</a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <a href="#" onclick="changeStatusTo({{ order.id }}, 5)">{{ _('Cancel') }}</a>
-                                                        </td>
-                                                    </tr>
+                                                    <td colspan="3" class="status_col status_wp">
+                                                        Waiting for Payment
+                                                    </td>
                                                 {% elif order.status_code == 1 %}
-                                                    <tr>
-                                                        <td>
-                                                            {{ _('Preparing') }}
-                                                        </td>
-                                                    </tr>
+                                                    <td colspan="3" class="status_col status_p">
+                                                        Preparing
+                                                    </td>
                                                 {% elif order.status_code == 2 %}
-                                                    <tr>
-                                                        <td>
-                                                            {{ _('On Delivery')}}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <a href="#" onclick="changeStatusTo({{ order.id }}, 4)">{{ _('Comfirmed') }}</a>
-                                                        </td>
-                                                    </tr>
+                                                    <td colspan="3" class="status_col status_od">
+                                                        On Delivery
+                                                    </td>
                                                 {% elif order.status_code == 3 %}
-                                                    <tr>
-                                                        <td>
-                                                            {{ _('Waiting for Collection')}}
-                                                        </td>
-                                                    </tr>
+                                                    <td colspan="3" class="status_col status_wc">
+                                                        Waiting for Collection
+                                                    </td>
                                                 {% elif order.status_code == 4 %}
-                                                    <tr>
-                                                        <td>
-                                                            {{ _('Finished') }}
-                                                        </td>
-                                                    </tr>
+                                                    <td colspan="3" class="status_col status_f">
+                                                        Finished
+                                                    </td>
                                                 {% elif order.status_code == 5 %}
-                                                    <tr>
-                                                        <td>
-                                                            {{ _('Canceled') }}
-                                                        </td>
-                                                    </tr>
+                                                    <td colspan="3" class="status_col status_c">
+                                                        Canceled
+                                                    </td>
                                                 {% elif order.status_code == 6 %}
-                                                    <tr>
-                                                        <td>
-                                                            {{ _('Expired') }}
-                                                        </td>
-                                                    </tr>
+                                                    <td colspan="3" class="status_col status_e">
+                                                        Expired
+                                                    </td>
                                                 {% endif %}
-
-                                            </table>
-                                        </td>
-                                    </tr>
-                                {% endfor %}
-                            </tbody>
+                                            </tr>
+                                            <tr id="content_row_{{ order.id }}">
+                                                <td class="content_row_intendation"></td>
+                                                <td class="model_col">
+                                                    <table id="model_table_{{ order.id }}" class="model_listing_table" width="100%">
+                                                        {% for order_model in order.order_model_types %}
+                                                            {% if loop.index < 3 %}
+                                                                <tr id="model_row_{{ order_model.model_type.id }}"
+                                                                    order_id="{{ order.id }}">
+                                                                    <td class="model_img_col">
+                                                                        {% if order_model.model_type.pictures.first() == None %}
+                                                                            <img src="../../static/images/example/yamaha_yep621s.jpg"
+                                                                                 loading="lazy" alt=""
+                                                                                 class="model_thumbnail">
+                                                                        {% else %}
+                                                                            <img src="{{ url_for("static",filename=order_model.model_type.pictures.first().address) }}"
+                                                                                 loading="lazy" alt=""
+                                                                                 class="model_thumbnail">
+                                                                        {% endif %}
+                                                                    </td>
+                                                                    <td class="model_name_col">
+                                                                        {{ order_model.model_type.name }}
+                                                                    </td>
+                                                                    <td class="model_quantity_col">
+                                                                        &times; {{ order_model.count }}
+                                                                    </td>
+                                                                </tr>
+                                                            {% elif loop.index == 3 %}
+                                                                <tr>
+                                                                    <td class="clickable view_all button bg-primary" colspan="3" onclick="window.open('/order-details/{{ order.id }}');">
+                                                                        View All
+                                                                    </td>
+                                                                </tr>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </table>
+                                                </td>
+                                                <td>
+                                                    <table class="info_table" width="100%" height="100%">
+                                                        <tr>
+                                                            <td class="rn_col medium-heading">
+                                                                {% if order.order_type == "delivery" %}
+                                                                    {{ order.address.recipient.recipient_name }}
+                                                                {% elif order.order_type == "self-collection" %}
+                                                                    {{ order.recipient.recipient_name }}
+                                                                {% endif %}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="cost_col large-text">
+                                                                ${{ order.generate_gross_payment() }}
+                                                            </td>
+                                                        </tr>
+                                                        {% if order.order_type == "delivery" %}
+                                                            <tr>
+                                                                <td class="address_col large-text">
+                                                                    {{ order.address.country }} - {{ order.address.province_or_state }}
+                                                                    - {{ order.address.city }} - {{ order.address.district }}<br>
+                                                                    {{ order.address.details }}
+                                                                </td>
+                                                            </tr>
+                                                        {% endif %}
+                                                        <tr>
+                                                            <td class="action_col">
+                                                                <table id="action_table_{{ order.id }}" class="action_table"
+                                                                       width="100%">
+                                                                    {% if order.status_code == 0 %}
+                                                                        <tr>
+                                                                            <td class="clickable action_pay button"
+                                                                                onclick="">
+                                                                                Pay
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="clickable action_cancel button bg-white-faded"
+                                                                                onclick="changeStatusTo({{ order.id }}, 5);">
+                                                                                Cancel
+                                                                            </td>
+                                                                        </tr>
+                                                                    {% elif order.status_code == 1 %}
+                                                                        <tr>
+                                                                            <td class="clickable action_view button bg-primary"
+                                                                                onclick="window.open('/order-details/{{ order.id }}');">
+                                                                                View Progress
+                                                                            </td>
+                                                                        </tr>
+                                                                    {% elif order.status_code == 2 %}
+                                                                        <tr>
+                                                                            <td class="clickable action_view button bg-primary"
+                                                                                onclick="window.open('/order-details/{{ order.id }}');">
+                                                                                View Progress
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="clickable action_comfirm button"
+                                                                                onclick="changeStatusTo({{ order.id }}, 4);">
+                                                                                Comfirm
+                                                                            </td>
+                                                                        </tr>
+                                                                    {% elif order.status_code == 4 %}
+                                                                        <tr>
+                                                                            <td class="clickable action_service button"
+                                                                                onclick="">
+                                                                                After Sale Service
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="clickable action_Comment button"
+                                                                                onclick="">
+                                                                                Comment
+                                                                            </td>
+                                                                        </tr>
+                                                                    {% endif %}
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <!--<td class="rn_col">
+                                                    {% if order.order_type == "delivery" %}
+                                                        {{ order.address.recipient.recipient_name }}
+                                                    {% elif order.order_type == "self-collection" %}
+                                                        {{ order.recipient.recipient_name }}
+                                                    {% endif %}
+                                                </td>
+                                                <td class="cost_col">
+                                                    ${{ order.generate_gross_payment() }}
+                                                </td>
+                                                <td class="status_col">
+                                                    {% if order.status_code == 0 %}
+                                                        Waiting for Payment
+                                                    {% elif order.status_code == 1  %}
+                                                        Preparing
+                                                    {% elif order.status_code == 2  %}
+                                                        On Delivery
+                                                    {% elif order.status_code == 3  %}
+                                                        Waiting for Collection
+                                                    {% elif order.status_code == 4  %}
+                                                        Finished
+                                                    {% elif order.status_code == 5  %}
+                                                        Canceled
+                                                    {% elif order.status_code == 6  %}
+                                                        Expired
+                                                    {% endif %}
+                                                </td>
+                                                <td class="action_col">
+                                                    <table id="action_table_{{ order.id }}" border="1" width="100%">
+                                                        {% if order.status_code == 0 %}
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="#">Pay</a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="#" onclick="changeStatusTo({{ order.id }}, 5)">Cancel</a>
+                                                                </td>
+                                                            </tr>
+                                                        {% elif order.status_code == 1  %}
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="/order-details/{{ order.id }}">View Progress</a>
+                                                                </td>
+                                                            </tr>
+                                                        {% elif order.status_code == 2  %}
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="/order-details/{{ order.id }}">View Progress</a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="#" onclick="changeStatusTo({{ order.id }}, 4)">Comfirm</a>
+                                                                </td>
+                                                            </tr>
+                                                        {% elif order.status_code == 3  %}
+                                                            <tr>
+                                                                <td>
+                                                                    Waiting for Collection
+                                                                </td>
+                                                            </tr>
+                                                        {% elif order.status_code == 4  %}
+                                                            <tr>
+                                                                <td>
+                                                                    After Sale Service
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    Comment
+                                                                </td>
+                                                            </tr>
+                                                        {% elif order.status_code == 5  %}
+                                                            <tr>
+                                                                <td>
+                                                                    Canceled
+                                                                </td>
+                                                            </tr>
+                                                        {% elif order.status_code == 6  %}
+                                                            <tr>
+                                                                <td>
+                                                                    Expired
+                                                                </td>
+                                                            </tr>
+                                                        {% endif %}
+                                                    </table>
+                                                </td>-->
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            {% endfor %}
                         </table>
                     </div>
 
@@ -327,9 +477,10 @@
                     <div class="w-layout-grid footer-grid">
                         <div id="w-node-_3ee0633f-a568-72e0-ab7b-589be9d960ed-e9d960d8" class="footer-contact-details">
                             <a href="#" class="footer-logo-link w-inline-block">
-                                <img src="../../static/images/Black-logo-no-background.svg" loading="lazy" alt="" class="footer-logo">
+                                <img src="../../static/images/Black-logo-no-background.svg" loading="lazy" alt=""
+                                     class="footer-logo">
                             </a>
-                            <div>{{ _('34 Market Street, South Melbourne')}}<br>{{ _('Victoria 3009')}}</div>
+                            <div>{{ _('34 Market Street, South Melbourne') }}<br>{{ _('Victoria 3009') }}</div>
                             <div class="contact-links in-footer">
                                 <a href="#" class="small-text">contact@website.com</a>
                                 <a href="#" class="small-text">(03) 92337 4627</a>
@@ -346,7 +497,7 @@
                                         </div>
                                     </div>
                                     <div class="w-dyn-empty">
-                                        <div>{{ _('No items found.')}}</div>
+                                        <div>{{ _('No items found.') }}</div>
                                     </div>
                                 </div>
                             </div>
@@ -357,7 +508,7 @@
                                 <a href="about.html" class="list-link">{{ _('About') }}</a>
                                 <a href="journal.html" class="list-link">{{ _('Journal') }}</a>
                                 <a href="contact.html" class="list-link">{{ _('Contact') }}</a>
-                                <a href="refund-policy.html" class="list-link">{{ _('Refund Policy')}}</a>
+                                <a href="refund-policy.html" class="list-link">{{ _('Refund Policy') }}</a>
                             </div>
                         </div>
                         <div>
@@ -373,7 +524,8 @@
                     </div>
                     <div class="footer-fine-print">
                         <div class="fine-print-text">© Copyright Company powered by <a href="https://www.webflow.com"
-                                                                                       target="_blank" class="underline-link">Webflow</a>
+                                                                                       target="_blank"
+                                                                                       class="underline-link">Webflow</a>
                         </div>
                         <div class="social-links">
                             <a href="https://webflow.com" target="_blank" class="social-link w-inline-block">
@@ -397,7 +549,9 @@
                 type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
                 crossorigin="anonymous"></script>
         <script src="../../static/js/webflow.js" type="text/javascript"></script>
-        <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+        <!-- [if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script>
+        <![endif] -->
     </body>
     <!-- the js for front end logic -->
     <script type="text/javascript" src="../../static/js/order/order.js"></script>

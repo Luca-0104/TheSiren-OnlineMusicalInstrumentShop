@@ -2877,28 +2877,39 @@ figcaption {
 }
 
 .bg-primary {
-    background-color: #662b2b;
+    background-color: #343434;
     color: #fff;
 }
 
 .bg-primary-dark {
-    background-color: #3D3430;
+    background-color: #292828;
     color: #fff;
 }
 
+.bg-primary-light {
+    background-color: #eeeeee;
+    color: #000;
+}
+
 .bg-dark {
-    background-color: #121212;
+    background-color: #000000;
     color: #fff;
 }
 
 .bg-white {
     background-color: #ffffff;
+    color: #000;
 }
 
 .bg-white.border {
     border-style: solid;
     border-width: 1px;
     border-color: #e0e0e0;
+}
+
+.bg-grey {
+    background-color: #c1bfbf;
+    color: #000;
 }
 
 .style-guide-section-contents {
@@ -2930,7 +2941,7 @@ figcaption {
 
 .button {
     padding: 11px 42px 14px;
-    background-color: #8F8063;
+    background-color: #8e8267;
     -webkit-transition: color 200ms ease, background-color 200ms ease;
     transition: color 200ms ease, background-color 200ms ease;
     color: #fff;
@@ -2952,22 +2963,24 @@ figcaption {
     line-height: 21px;
 }
 
-.button.bg-primary-dark {
-    background-color: #293336;
-    color: #fff;
-}
-
-.button.bg-primary-dark:hover {
-    background-color: #BD736E;
-}
-
 .button.bg-primary {
-    background-color: #662b2b;
+    background-color: #424244;
     color: #fff;
 }
 
 .button.bg-primary:hover {
-    background-color: #470101;
+    background-color: #9c8e77;
+    color: #fff;
+}
+
+.button.bg-primary-dark {
+    background-color: #242b32;
+    color: #fff;
+}
+
+.button.bg-primary-dark:hover {
+    background-color: #78726b;
+    color: #fff;
 }
 
 .button.bg-white {
@@ -2976,18 +2989,18 @@ figcaption {
 }
 
 .button.bg-white:hover {
-    background-color: #8F9FB3;
+    background-color: #e2c4a1;
     color: #343434;
 }
 
 .button.bg-white-faded {
-    background-color: #828F7C;
-    color: #fff;
+    background-color: #c7c6c3;
+    color: #000;
 }
 
 .button.bg-white-faded:hover {
-    background-color: #1c262d;
-    color: #fff;
+    background-color: #e2c4a1;
+    color: #343434;
 }
 
 .button.no-top-margin {
@@ -3009,9 +3022,11 @@ figcaption {
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
-    border-top: 1px solid #e0e0e0;
-    border-bottom: 1px solid #e0e0e0;
     background-color: transparent;
+}
+
+.navbar a{
+    color: #ffffff;
 }
 
 .form-block {
@@ -3208,14 +3223,6 @@ figcaption {
     line-height: 24px;
 }
 
-.bg-primary-light {
-    background-color: #AEABA8;
-}
-
-.bg-grey {
-    background-color: #E1DAD3;
-}
-
 .checkbox {
     width: 21px;
     height: 21px;
@@ -3380,7 +3387,7 @@ figcaption {
     -ms-flex-align: center;
     align-items: center;
     grid-auto-columns: 1fr;
-    grid-column-gap: 21px;
+    grid-column-gap: 50px;
     grid-row-gap: 21px;
     -ms-grid-columns: 1fr auto 1fr;
     grid-template-columns: 1fr auto 1fr;
@@ -3511,14 +3518,19 @@ figcaption {
     position: -webkit-sticky;
     position: sticky;
     top: 0px;
-    z-index: 10;
-    background-color: #fff;
+    z-index: 1000;
+    background-color: #292828;
+    border-bottom: 1px #000000 solid;
 }
 
 .top {
     position: absolute;
     top: 0px;
     height: 0px;
+}
+
+.footer a{
+    color: #fff;
 }
 
 .footer-subscribe-section {
@@ -4109,8 +4121,14 @@ figcaption {
     display: block;
     margin-bottom: 21px;
     border-style: solid;
-    /*border-width: 6px;*/
-    /*border-color: #3d343091;*/
+}
+
+.product-thumbnail.bottom-border{
+    border-bottom: 1px #c1bfbf solid;
+}
+
+.product-thumbnail.full-border{
+    border: 1px #c1bfbf solid;
 }
 
 .price-container {
@@ -4390,12 +4408,16 @@ figcaption {
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
-    grid-column-gap: 49px;
+    /* grid-column-gap: 49px; */
     grid-row-gap: 49px;
     -ms-grid-columns: 1fr 3fr;
     grid-template-columns: 1fr 3fr;
     -ms-grid-rows: auto;
     grid-template-rows: auto;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 25px;
+    padding-right: 30px;
 }
 
 .large-heading {
@@ -4624,11 +4646,15 @@ figcaption {
 }
 
 .body {
-    background-color: #eeeeee;
+    background-color: #fff;
 }
 
 .div-block-2 {
-    background-color: transparent;
+    background-color: #000000;
+}
+
+.large-heading.featured-items-heading {
+    padding-left: 15px;
 }
 
 @media screen and (max-width: 991px) {

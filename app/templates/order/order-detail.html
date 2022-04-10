@@ -19,12 +19,13 @@
         <link href="../../static/css/normalize.css" rel="stylesheet" type="text/css">
         <link href="../../static/css/webflow.css" rel="stylesheet" type="text/css">
         <link href="../../static/css/jacks-supercool-site-c6dd88.webflow.css" rel="stylesheet" type="text/css">
-        <link href="../../static/css/order/order.css" rel="stylesheet" type="text/css">
+        <link href="../../static/css/order/order-detail.css" rel="stylesheet" type="text/css">
 
-        <!-- [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif] -->
+        <!-- [if lt IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"
+                type="text/javascript"></script><![endif] -->
         <script type="text/javascript">
-            !function (o, c)
-            {
+            !function (o, c) {
                 var n = c.documentElement, t = " w-mod-";
                 n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
             }
@@ -36,14 +37,12 @@
         {# css for slide pictures #}
         <link rel="stylesheet" href="../../static/css/main/index_slide.css">
         <style>
-            body
-            {
+            body {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
             }
 
-            select, input, textarea
-            {
+            select, input, textarea {
                 -webkit-appearance: checkbox;
             }
         </style>
@@ -69,7 +68,8 @@
                 <div class="navbar-top">
                     <!-- Middel part -->
                     <a href="index.html" aria-current="page" class="w-inline-block w--current">
-                        <img src="../../static/images/Black-logo-no-background.svg" loading="eager" alt="" height="45px">
+                        <img src="../../static/images/Black-logo-no-background.svg" loading="eager" alt=""
+                             height="45px">
                     </a>
 
                     <!-- Right part -->
@@ -90,9 +90,11 @@
 
                     <!-- Left part -->
                     <!-- Search -->
-                    <form action="/search" id="w-node-dab1a8fd-38ef-ff9e-e737-a0bdf6abf40d-f6abf40a" class="nav-search-form w-form">
+                    <form action="/search" id="w-node-dab1a8fd-38ef-ff9e-e737-a0bdf6abf40d-f6abf40a"
+                          class="nav-search-form w-form">
                         <img src="images/icon-search.svg" loading="eager" alt="">
-                        <input type="search" class="search-form-input w-input" maxlength="256" name="query" placeholder="Search here" id="search-2" required="">
+                        <input type="search" class="search-form-input w-input" maxlength="256" name="query"
+                               placeholder="Search here" id="search-2" required="">
                         <input type="submit" value="Search" class="hide-button w-button">
                     </form>
                 </div>
@@ -102,7 +104,8 @@
         <!-- Lower Section of Top nav bar -->
         <div class="div-block">
             <div class="main-container">
-                <div data-collapse="small" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-nav">
+                <div data-collapse="small" data-animation="default" data-duration="400" data-easing="ease"
+                     data-easing2="ease" role="banner" class="navbar w-nav">
                     <div class="button bg-primary wide w-nav-button">
                         <div>{{ _('Menu') }}</div>
                     </div>
@@ -136,145 +139,194 @@
             </div>
         </div>
 
-        <!-- Recommendation Section -->
+        <!-- Order Detail Section -->
         <div class="section wf-section">
             <div class="main-container">
-                <!-- Cart -->
+                <!-- Order Detail -->
                 <div class="w-commerce-commercecartheader cart-header">
-                    <h4 class="w-commerce-commercecartheading">{{ _('Your Order')}}</h4>
-                    <a href="#" data-node-type="commerce-cart-close-link" class="w-commerce-commercecartcloselink close-cart-button w-inline-block">
+                    <h4 class="w-commerce-commercecartheading">{{ _('Your Order') }}</h4>
+                    <a href="#" data-node-type="commerce-cart-close-link"
+                       class="w-commerce-commercecartcloselink close-cart-button w-inline-block">
                         <img src="images/icon-cross-large.svg" loading="lazy" alt="">
                     </a>
                 </div>
                 <div class="w-commerce-commercecartformwrapper">
-                    <!-- List of Cart -->
                     <div class="w-commerce-commercecartlist cart-list">
-                        <table border="1" style="border-collapse:separate; border-spacing:10px;">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        {{ _('Order') }}
-                                    </th>
-                                    <th>
-                                        {{ _('Models') }}
-                                    </th>
-                                    <th>
-                                        {{ _('Status') }}
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                    <tr>
-                                        <td>
-                                            <table border="1" width="100%" height="100%">
-                                                <tr>
-                                                    <td>
-                                                        {{ _('Order ID')}}
-                                                    </td>
-                                                    <td>
-                                                        {{ order_obj.id }}
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        {{ _('Address') }}
-                                                    </td>
-                                                    <td>
-                                                        China Beijing
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        Time Stamp
-                                                    </td>
-                                                    <td>
-                                                        {{ order_obj.timestamp }}
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td>
-                                            <table border="1" width="100%" height="100%">
-                                                {% for order_model in order_obj.order_model_types.all() %}
+                        <table border="1">
+                            <tr>
+                                <td colspan="2">
+                                    <table border="1" width="100%">
+                                        <tr>
+                                            <td colspan="2">
+                                                Basic Information
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                --
+                                            </td>
+                                            <td>
+                                                <table border="1" width="100%">
                                                     <tr>
                                                         <td>
-                                                            <img src="../../static/images/example/yamaha_yep621s.jpg" loading="lazy" alt="" class="w-commerce-commercecartitemimage cart-item-image">
+                                                            {{ order.timestamp }}
                                                         </td>
                                                         <td>
-                                                            {{ order_model.model_type.name }}
-                                                        </td>
-                                                        <td>
-                                                            Comment
-                                                        </td>
-                                                    </tr>
-                                                {% endfor %}
-                                            </table>
-                                        </td>
-                                        <td>
-                                            <table id="status_table_{{ order_obj.id }}" border="1" width="100%" height="100%">
-                                                {% if order_obj.status_code == 0 %}
-                                                    <tr>
-                                                        <td>
-                                                            Waiting for Payment
+                                                            {% if order.status_code == 0 %}
+                                                                Waiting for Payment
+                                                            {% elif order.status_code == 1  %}
+                                                                Preparing
+                                                            {% elif order.status_code == 2  %}
+                                                                On Delivery
+                                                            {% elif order.status_code == 3  %}
+                                                                Waiting for Collection
+                                                            {% elif order.status_code == 4  %}
+                                                                Finished
+                                                            {% elif order.status_code == 5  %}
+                                                                Canceled
+                                                            {% elif order.status_code == 6  %}
+                                                                Expired
+                                                            {% endif %}
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td>
-                                                            <a href="#">Pay</a>
+                                                        <td colspan="2">
+                                                            Trade No.{{ order.out_trade_no }}
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td>
-                                                            <a href="#" onclick="changeStatusTo({{ order_obj.id }}, 5)">Cancel</a>
+                                                        <td colspan="2">
+                                                            Payment No.{{ order.trade_no }}
                                                         </td>
                                                     </tr>
-                                                {% elif order_obj.status_code == 1 %}
-                                                    <tr>
-                                                        <td>
-                                                            Preparing
-                                                        </td>
-                                                    </tr>
-                                                {% elif order_obj.status_code == 2 %}
-                                                    <tr>
-                                                        <td>
-                                                            On Delivery
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <a href="#" onclick="changeStatusTo({{ order_obj.id }}, 4)">Comfirmed</a>
-                                                        </td>
-                                                    </tr>
-                                                {% elif order_obj.status_code == 3 %}
-                                                    <tr>
-                                                        <td>
-                                                            Waiting for Collection
-                                                        </td>
-                                                    </tr>
-                                                {% elif order_obj.status_code == 4 %}
-                                                    <tr>
-                                                        <td>
-                                                            Finished
-                                                        </td>
-                                                    </tr>
-                                                {% elif order_obj.status_code == 5 %}
-                                                    <tr>
-                                                        <td>
-                                                            Canceled
-                                                        </td>
-                                                    </tr>
-                                                {% elif order_obj.status_code == 6 %}
-                                                    <tr>
-                                                        <td>
-                                                            Expired
-                                                        </td>
-                                                    </tr>
-                                                {% endif %}
-
-                                            </table>
-                                        </td>
-                                    </tr>
-                            </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                Address Information
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                --
+                                            </td>
+                                            <td>
+                                                <table border="1" width="100%">
+                                                    {% if order.order_type == "delivery" %}
+                                                        <tr>
+                                                            <td>
+                                                                {{ order.address.recipient.recipient_name }}
+                                                            </td>
+                                                            <td>
+                                                                {{ order.address.recipient.phone }}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2">
+                                                                {{ order.address.get_address() }}
+                                                            </td>
+                                                        </tr>
+                                                    {% elif order.order_type == "self-collection" %}
+                                                        <tr>
+                                                            <td>
+                                                                {{ order.recipient.recipient_name }}
+                                                            </td>
+                                                            <td>
+                                                                {{ order.recipient.phone }}
+                                                            </td>
+                                                        </tr>
+                                                    {% endif %}
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td id="model_table_col">
+                                    <table border="1" width="100%" class="model_table">
+                                        {% for order_model in order.order_model_types %}
+                                            <tr id="model_row_{{ order_model.model_type.id }}"
+                                                order_id="{{ order.id }}">
+                                                <td class="model_img_col">
+                                                    {% if order_model.model_type.pictures.first() == None %}
+                                                        <img src="../../static/images/example/yamaha_yep621s.jpg"
+                                                             loading="lazy" alt=""
+                                                             class="model_thumbnail">
+                                                    {% else %}
+                                                        <img src="{{ url_for("static",filename=order_model.model_type.pictures.first().address) }}"
+                                                             loading="lazy" alt=""
+                                                             class="model_thumbnail">
+                                                    {% endif %}
+                                                </td>
+                                                <td class="model_name_col">
+                                                    {{ order_model.model_type.name }}
+                                                </td>
+                                                <td class="model_quantity_col">
+                                                    X {{ order_model.count }}
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </table>
+                                </td>
+                                <td>
+                                    <table border="1" width="100%" class="progress_table">
+                                        <tr>
+                                            <td rowspan="2" class="progress_mark">
+                                                \/
+                                            </td>
+                                            <td class="progress_stage">
+                                                Orderd
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="progress_time">
+                                                2022-04-08
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td rowspan="2" class="progress_mark">
+                                                \/
+                                            </td>
+                                            <td class="progress_stage">
+                                                Preparing
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="progress_time">
+                                                2022-04-08
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td rowspan="2" class="progress_mark">
+                                                \/
+                                            </td>
+                                            <td class="progress_stage">
+                                                Delivering
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="progress_time">
+                                                2022-04-08
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td rowspan="2" class="progress_mark">
+                                                \/
+                                            </td>
+                                            <td class="progress_stage">
+                                                Finished
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="progress_time">
+                                                2022-04-08
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
                         </table>
                     </div>
 
@@ -310,7 +362,8 @@
                     <div class="w-layout-grid footer-grid">
                         <div id="w-node-_3ee0633f-a568-72e0-ab7b-589be9d960ed-e9d960d8" class="footer-contact-details">
                             <a href="#" class="footer-logo-link w-inline-block">
-                                <img src="../../static/images/Black-logo-no-background.svg" loading="lazy" alt="" class="footer-logo">
+                                <img src="../../static/images/Black-logo-no-background.svg" loading="lazy" alt=""
+                                     class="footer-logo">
                             </a>
                             <div>34 Market Street, South Melbourne<br>Victoria 3009</div>
                             <div class="contact-links in-footer">
@@ -356,7 +409,8 @@
                     </div>
                     <div class="footer-fine-print">
                         <div class="fine-print-text">© Copyright Company powered by <a href="https://www.webflow.com"
-                                                                                       target="_blank" class="underline-link">Webflow</a>
+                                                                                       target="_blank"
+                                                                                       class="underline-link">Webflow</a>
                         </div>
                         <div class="social-links">
                             <a href="https://webflow.com" target="_blank" class="social-link w-inline-block">
@@ -380,7 +434,9 @@
                 type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
                 crossorigin="anonymous"></script>
         <script src="../../static/js/webflow.js" type="text/javascript"></script>
-        <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+        <!-- [if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script>
+        <![endif] -->
 
     </body>
     <!-- the js for front end logic -->

@@ -32,6 +32,12 @@
 
 .content_section{
     text-align: left;
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+}
+
+.unclickable{
+    cursor: default;
 }
 
 .clickable{
@@ -59,7 +65,7 @@ h4.w-commerce-commercecartheading{
 }
 
 .topic_container{
-    /*text-align: center;*/
+    /* text-align: center; */
 }
 
 .text-middle{
@@ -68,8 +74,62 @@ h4.w-commerce-commercecartheading{
 
 #address_listing_table{
     width: 100%;
+    border-collapse: separate;
+    border-spacing: 20px 50px;
 }
 
-#address_listing_table td{
-    margin: 100px;
+.single_address {
+    border-collapse: separate;
+    border-spacing: 6px 10px;
+}
+
+#default_bar{
+    width: 100%;
+    height: 100%;
+}
+
+.default_one a{
+    color: #fff;
+}
+
+.not_default{
+    background-color: #e1d8d8;
+}
+
+.index_section{
+    width: 35px;
+    height: 35px;
+}
+
+.address_table td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.address_table {
+    border-collapse: separate;
+    border-spacing: 10px;
+}
+
+.extra_indent{
+    padding-left: 20px;
+}
+
+.empty_placeholder_cell{
+
+}
+
+.empty_placeholder{
+
+}
+
+.name_section{
+}
+
+.phone_section{
+    text-align: right;
+}
+
+.address_section{
+    border-top: 1px solid #e0e0e0;
 }

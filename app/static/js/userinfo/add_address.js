@@ -33,7 +33,6 @@ $("#close_edit_form_btn").on("click",function()
 
 function remove_address(address_id)
 {
-    console.log("remove #address_row_"+address_id);
     let targetRow = $("#address_row_"+address_id);
 
     $.post("/api/remove-address",
@@ -48,12 +47,23 @@ function remove_address(address_id)
                 {
                     //success
                     targetRow.remove();
+                    let newIndex = 1;
+                    $(".index_section").each(function()
+                    {
+                        $(this).text(newIndex);
+                        newIndex = newIndex + 1;
+                    });
                 }
                 else if(returnValue === 2)
                 {
                     targetRow.remove();
+                    let newIndex = 1;
+                    $(".index_section").each(function()
+                    {
+                        $(this).text(newIndex);
+                        newIndex = newIndex + 1;
+                    });
                     let new_id = response['new_id'];
-                    console.log("new id: " + new_id);
                     set_default(new_id);
                 }
                 else if(returnValue === 3)
@@ -65,14 +75,12 @@ function remove_address(address_id)
 
 function set_default(address_id)
 {
-    let targetRow = $("#address_row_"+address_id);
-    let targetTable = $("#address_table_"+address_id);
-    let targetDiv = $("#action_"+address_id);
-    let targetBtn = $("#default_btn_"+address_id);
+    let newDefaultRow = $("#default_bar_"+address_id)
+    let newDefaulta = $("#default_a_"+address_id);
 
-    let previousDefaultBar = $("#default_bar");
-    let previousID = previousDefaultBar.attr("address_id");
-    let previousDefaultDiv = $('[is_default=t]');
+    let previousDefaultRow = $(".default_one");
+    let previousID = previousDefaultRow.attr("address_id");
+    let previousDefaulta = $('#default_a_'+previousID);
 
     $.post("/api/change-default-address",
         {
@@ -85,17 +93,23 @@ function set_default(address_id)
                 if(returnValue === 0)
                 {
                     //success
-                    let newHtml = "<tr><td id=\"default_bar\" address_id=\"" + address_id + "\" class=\"bg-primary\" colspan=\"2\">Default</td></tr>";
-                    targetTable.prepend(newHtml);
-                    targetDiv.attr("is_default","t");
+                    //set previous default as normal
+                    previousDefaultRow.removeClass("bg-primary");
+                    previousDefaultRow.removeClass("default_one");
+                    previousDefaultRow.addClass("not_default");
+                    previousDefaulta.removeClass("unclickable");
+                    previousDefaulta.addClass("set_default_btn");
+                    previousDefaulta.attr("href", "javascript:set_default(" + previousID + ");");
+                    previousDefaulta.text('Set as Default');
 
-                    newHtml = "<td id=\"default_btn_" + previousID + "\" class=\"address_action_btn bg-grey\"><a class=\"set_default_btn\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"\" data-original-title=\"View\""+
-                       "href=\"javascript:set_default(" + previousID + ");\"><i class=\"ri-eye-line mr-0\">Set as Default</i></a></td>";
-                    previousDefaultDiv.prepend(newHtml);
-                    previousDefaultDiv.attr("is_default","f");
-
-                    previousDefaultBar.remove();
-                    targetBtn.remove();
+                    //set new default
+                    newDefaultRow.removeClass("not_default");
+                    newDefaultRow.addClass("bg-primary");
+                    newDefaultRow.addClass("default_one");
+                    newDefaulta.removeClass("set_default_btn");
+                    newDefaulta.addClass("unclickable");
+                    newDefaulta.attr("href", "");
+                    newDefaulta.text('Default');
                 }
             });
 }

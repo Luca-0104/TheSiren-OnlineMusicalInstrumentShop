@@ -300,8 +300,12 @@ class Order(BaseModel):
     @staticmethod
     def insert_orders(count):
         # a order for test
-        test_order = Order(status_code=0, user_id=1, gross_payment=100)
+        test_order = Order(status_code=0, user_id=1, order_type='self-collection')
+        # need recipient info
+        test_order.recipient_id = random.randint(1, Recipient.query.count())
         db.session.add(test_order)
+        db.session.commit()
+        test_order.generate_unique_out_trade_no()
 
         # create a faker instance
         faker = Faker()
@@ -315,7 +319,8 @@ class Order(BaseModel):
                 # need recipient info
                 new_order.recipient_id = random.randint(1, Recipient.query.count())
             db.session.add(new_order)
-        db.session.commit()
+            db.session.commit()
+            new_order.generate_unique_out_trade_no()
 
 
     def to_dict(self):
@@ -331,6 +336,9 @@ class Order(BaseModel):
         if self.address is not None:
             # add address to this dict
             result['address'] = self.address.to_dict()
+        if self.recipient is not None:
+            # add address to this dict
+            result['recipient'] = self.recipient.to_dict()
         return Tools.delete_instance_state(result)
 
     def get_status(self):
@@ -488,6 +496,9 @@ class OrderModelType(BaseModel):
             for mt in model_type_set:
                 new_omt = OrderModelType(order=order, model_type=mt, count=random.randint(1, 3), unit_pay=mt.price)
                 db.session.add(new_omt)
+            # update the payment of order
+            order.generate_delivery_fee()
+            order.generate_gross_payment()
         db.session.commit()
 
     # def to_dict(self):
@@ -757,6 +768,9 @@ class ModelType(BaseModel):
         Tools.add_relation_to_dict(result, self.carts.all(), "carts")
         # Tools.add_relation_to_dict(result, self.order_model_types.all(), "order_model_types")
 
+        # add brand name
+        result["brand_name"] = self.product.brand.name
+
         return Tools.delete_instance_state(result)
         # return result
 
@@ -938,6 +952,11 @@ class Recipient(BaseModel):
             new_recipient = Recipient(recipient_name=fake.name(), phone=fake.phone_number())
             db.session.add(new_recipient)
         db.session.commit()
+
+    def to_dict(self):
+        """ Map the object to dictionary data structure """
+        result = super(Recipient, self).to_dict()
+        return Tools.delete_instance_state(result)
 
 
 class Address(BaseModel):
