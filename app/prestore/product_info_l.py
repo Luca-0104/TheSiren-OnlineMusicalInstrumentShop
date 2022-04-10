@@ -690,8 +690,8 @@ pm_lst = [
             [
                 'SAKKUSU',          # model name
                 'model-description-test',   # m description
-                100,                        # m price
-                2,                          # kg
+                3201,                        # m price
+                4,                          # kg
                 [
                     'l-p20m1-1.png',
                     'l-p20m1-2.png',
@@ -709,22 +709,22 @@ pm_lst = [
 
 # product 0 ----------------------------------------------------
     [
-        "product-name-test",        # product name
-        1,                          # brand id
-        1,                          # cate id - C
-        7,                          # cate id - T
-        53,                         # cate id - A
+        "PRESTIGE 5613",        # product name
+        6,                          # brand id
+        2,                          # cate id - C
+        25,                          # cate id - T
+        56,                         # cate id - A
         [                           # model type list
             # model 1 ----------------------------------------------------------
             [
-                'model-name-test',          # model name
-                'model-description-test',   # m description
-                100,                        # m price
-                2,                          # kg
+                'PRESTIGE 5613',          # model name
+                'Based on the experience gathered since 1825, Buffet Crampon has developed a model for our times.',   # m description
+                16000,                        # m price
+                5,                          # kg
                 [
-                    'p1m1-1.png',
-                    'p1m1-2.png',
-                    'p1m1-3.png'
+                    'l-p21m1-1.png',
+                    'l-p21m1-2.png',
+                    'l-p21m1-3.png'
                 ]
             ],
             # model 2 ----------------------------------------------------------
