@@ -14,12 +14,19 @@
 
 .address{
     list-style: none;
-    border: red 1px solid;
+    border-bottom: gray 1px solid;
 }
 
+.address-list{
+    padding: 0px;
+}
+
+.address-gray{
+    color: #6f6f6f;
+}
 /* THis class should be added to the selected address by js */
 .chosen-address{
-    background-color: #3A7734;
+    background-color: #AEABA8;
 }
 
 .hidden-field{
@@ -60,3 +67,31 @@
 .chosen-shipping-method{
     background-color: #8771ff;
 }
+
+.scrollbar{
+    overflow-y: scroll;
+
+}
+
+.edit_style {
+    padding: 10px 35px 13px;
+    background-color: transparent;
+    -webkit-transition: color 200ms ease, background-color 200ms ease;
+    transition: color 200ms ease, background-color 200ms ease;
+    color: #fff;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.edit_style.bg-primary-dar {
+    border: 2px solid #293336;
+    color: #293336;
+}
+
+.edit_style.bg-primary-dar:hover{
+    border-color: #BD736E;
+    color: #BD736E;
+}
+

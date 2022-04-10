@@ -48,6 +48,22 @@
         select, input, textarea {
             -webkit-appearance: none;
         }
+
+
+        ::-webkit-scrollbar{
+            width: 10px;
+            border-width: 1px;
+            color: #7f8567;
+        }
+
+        ::-webkit-scrollbar-track{
+            border-width: 1px;
+            box-shadow: #AEABA8;
+        }
+
+        ::-webkit-scrollbar-thumb{
+            background-color: #7f8567;
+        }
     </style>
 </head>
 <body>
@@ -274,29 +290,62 @@
                 </div>
 
                     {# address section #}
-                    <div id="address-section">
+                    <div id="address-section" class="">
                         {# title header #}
                         <div class="w-commerce-commercecheckoutblockheader block-header">
                             <h4 class="checkout-heading">{{ _('Shipping Address') }}</h4>
                             <div class="fine-print-text">* {{ _('Required') }}</div>
                         </div>
                         <fieldset id="address-field" class="w-commerce-commercecheckoutblockcontent">
+                             <div style="overflow-y:scroll; width:inherit; height:inherit;">
                             {# the address list #}
                                 <ul class="address-list" order-id="{{ order.id }}">
                                     {% for address in order.user.addresses %}
                                         <li id="address-{{ address.id }}" class="address" address-id="{{ address.id }}">
-                                            <span class="checkbox-labels address large-heading">{{ address.id }}</span>
-                                            <br><br>
-                                            <span class="address-name">{{ address.recipient.recipient_name }}</span> <span class="address-address">{{ address.get_address() }}</span>
-                                            {% if address.is_default %}
-                                                <span id="address-default-sign">[default]</span>
-                                            {% endif %}
+                                            <div class="cart-container">
+                                                <div class="main-container">
+                                                    <span class="large-text address">{{ address.id }}</span>
+                                                    <div class=""></div>
+                                                </div>
+                                                <br><br>
+                                                <div class="main-container">
+                                                        <span class="fine-print-text">Recipient Name:</span>
+                                                        <br>
+                                                        <span class="address-name w-commerce-commerceboldtextblock">{{ address.recipient.recipient_name }}</span>
+                                                </div>
+                                                <br>
+                                                <div class="main-container">
+                                                    <span class="fine-print-text">Full Address:</span>
+                                                        <br>
+                                                        <span class="address-address address-gray">{{ address.get_address() }}</span>
+                                                        <span class="w-inline-block" style="margin-left:100%;"><button class="edit_style bg-primary-dar">Edit</button></span>
+                                                </div>
+                                                {% if address.is_default %}
+                                                    <span id="address-default-sign">[default]</span>
+                                                {% endif %}
+                                            </div>
                                         </li>
                                     {% endfor %}
                                 </ul>
+                             </div>
                         </fieldset>
+
                     </div>
 
+
+
+                         <form data-node-type="commerce-checkout-shipping-methods-wrapper"
+                          class="w-commerce-commercecheckoutshippingmethodswrapper">
+                            <div class="w-commerce-commercecheckoutblockheader block-header">
+                                <h4 class="checkout-heading">{{ _('Shipping Method') }}</h4>
+                            </div>
+                            <fieldset id="shipping-method-field" class="w-commerce-commercecheckoutblockcontent">
+                                <ul class="shipping-method-list">
+                                    <li id="method-delivery" class= "chosen-shipping-method">delivery</li>
+                                    <li id="method-self">self-collecting</li>
+                                </ul>
+                            </fieldset>
+                        </form>
 {#                <form data-node-type="commerce-checkout-shipping-address-wrapper"#}
 {#                      class="w-commerce-commercecheckoutshippingaddresswrapper">#}
 {#                    #}
@@ -584,18 +633,7 @@
 {#                </form>#}
 
                 {# shipping method section #}
-                <form data-node-type="commerce-checkout-shipping-methods-wrapper"
-                      class="w-commerce-commercecheckoutshippingmethodswrapper">
-                    <div class="w-commerce-commercecheckoutblockheader block-header">
-                        <h4 class="checkout-heading">{{ _('Shipping Method') }}</h4>
-                    </div>
-                    <fieldset id="shipping-method-field" class="w-commerce-commercecheckoutblockcontent">
-                        <ul class="shipping-method-list">
-                            <li id="method-delivery" class= "chosen-shipping-method">delivery</li>
-                            <li id="method-self">self-collecting</li>
-                        </ul>
-                    </fieldset>
-                </form>
+
                 {#                <div class="w-commerce-commercecheckoutpaymentinfowrapper">#}
                 {#                    <div class="w-commerce-commercecheckoutblockheader block-header">#}
                 {#                        <h4 class="checkout-heading">Payment Info</h4>#}
