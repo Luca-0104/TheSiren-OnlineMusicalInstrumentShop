@@ -110,7 +110,20 @@ select, input, textarea {
             </div>
           </div>
         </div>
-        <form action="/search" id="w-node-dab1a8fd-38ef-ff9e-e737-a0bdf6abf40d-f6abf40a" class="nav-search-form w-form"><img src="images/icon-search.svg" loading="eager" alt=""><input type="search" class="search-form-input w-input" maxlength="256" name="query" placeholder="Search here" id="search-2" required=""><input type="submit" value="Search" class="hide-button w-button"></form>
+{#        <form action="/search" id="w-node-dab1a8fd-38ef-ff9e-e737-a0bdf6abf40d-f6abf40a" class="nav-search-form w-form">#}
+{#            <img src="images/icon-search.svg" loading="eager" alt="">#}
+{#            <input type="search" class="search-form-input w-input" maxlength="256" name="query" placeholder="Search here" id="search-2" required="">#}
+{#            <input type="submit" value="Search" class="hide-button w-button">#}
+{#        </form>#}
+
+        <!-- Search -->
+        <form action="/search" method="POST" id="w-node-dab1a8fd-38ef-ff9e-e737-a0bdf6abf40d-f6abf40a" class="nav-search-form w-form">
+            <div class="w-inline-block">
+               <input type="image" src="../../static/images/icon-search.svg" value="Search" class="w-button" alt="submit">
+            </div>
+           <input id="search" type="search" class="search-form-input w-input" maxlength="256" name="key_word" placeholder="{{ _('Search here')}}" id="search-2" required="" value="{{ key_word }}">
+        </form>
+
       </div>
     </div>
   </div>
@@ -152,7 +165,7 @@ select, input, textarea {
           <div>
 
            <form id="category_checkbox">
-            <h4>By Category</h4>
+            <h4 class="">By Category</h4>
               <h5 style="color: #444444">Classification</h5>
 
             <div id="class_checkbox" class="checkbox-thirds-grid subscribe-form" >
@@ -452,25 +465,37 @@ select, input, textarea {
            </form>
           </div>
         </div>
+
+        {# The model list section #}
         <div class="w-dyn-list">
-          <div role="list" class="product-thirds-grid w-dyn-items">
-            <div role="listitem" class="w-dyn-item">
-              <div>
-                <a href="#" class="product-preview-link w-inline-block"><img src="" loading="lazy" alt="" class="product-thumbnail">
-                  <div class="uppercase-text brand"></div>
-                  <h5 class="no-bottom-margin"></h5>
-                  <div class="price-container">
-                    <div class="old-price"></div>
-                    <div></div>
-                    <div></div>
+          <div id="model-list" role="list" class="product-thirds-grid w-dyn-items">
+              {% for mt in mt_list %}
+                  {# This represent each model card #}
+                  <div role="listitem" class="w-dyn-item">
+                      <div>
+{#                          <a href="{{ url_for("main.model_type_details", mt_id=mt.id) }}" class="product-preview-link w-inline-block">#}
+                          <a href="/product-details/{{ mt.id }}" class="product-preview-link w-inline-block">
+{#                              <img src="{{ url_for("static",filename=mt.pictures.first().address) }}" loading="lazy" alt="" class="product-thumbnail">#}
+                              <img src="../../static/{{ mt.pictures.first().address }}" loading="lazy" alt="" class="product-thumbnail">
+                              <div class="uppercase-text brand">{{ mt.product.brand.name }}</div>
+                              <h5 class="no-bottom-margin">{{ mt.name }}</h5>
+                              <div class="price-container">
+                                  <div class="old-price"><span>$</span>{{ mt.price }}</div>
+                                  <div><span>$</span>{{ mt.price }}</div>
+                              </div>
+                          </a>
+                      </div>
                   </div>
-                </a>
-              </div>
-            </div>
+              {% endfor %}
           </div>
-          <div class="empty-state w-dyn-empty">
-            <div>There are no published Products yet.</div>
-          </div>
+
+            {# when there is no model found #}
+            {% if mt_list | length == 0 %}
+                <div class="empty-state w-dyn-empty">
+                    <div>There are no published Products yet.</div>
+                </div>
+            {% endif %}
+
           <div role="navigation" aria-label="List" class="w-pagination-wrapper pagination">
             <a href="#" aria-label="Previous Page" class="w-pagination-previous button small"><img src="images/icon-caret-right.svg" loading="lazy" alt="" class="pagination-arrow left">
               <div class="w-inline-block">Previous</div>
