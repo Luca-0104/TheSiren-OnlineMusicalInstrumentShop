@@ -68,7 +68,8 @@
                 <div class="navbar-top">
                     <!-- Middel part -->
                     <a href="index.html" aria-current="page" class="w-inline-block w--current">
-                        <img src="../../static/images/Black-logo-no-background.svg" loading="eager" alt="" height="45px">
+                        <img src="../../static/images/Black-logo-no-background.svg" loading="eager" alt=""
+                             height="45px">
                     </a>
 
                     <!-- Right part -->
@@ -85,8 +86,10 @@
                         {% endif %}
 
                         <!-- Cart -->
-                        <div data-node-type="commerce-cart-wrapper" data-open-product="" data-wf-cart-type="rightSidebar"
-                             data-wf-cart-query="" data-wf-page-link-href-prefix="" class="w-commerce-commercecartwrapper">
+                        <div data-node-type="commerce-cart-wrapper" data-open-product=""
+                             data-wf-cart-type="rightSidebar"
+                             data-wf-cart-query="" data-wf-page-link-href-prefix=""
+                             class="w-commerce-commercecartwrapper">
                             <a href="#" data-node-type="commerce-cart-open-link"
                                class="w-commerce-commercecartopenlink nav-cart-button w-inline-block"><img
                                     src="../../static/images/icon-shopping-bag.svg" loading="eager" alt="">
@@ -98,7 +101,8 @@
                                      class="w-commerce-commercecartcontainer cart-container">
                                     <div class="w-commerce-commercecartheader cart-header">
                                         <h4 class="w-commerce-commercecartheading">{{ _('Your Cart') }}</h4>
-                                        <a href="#" data-node-type="commerce-cart-close-link" class="w-commerce-commercecartcloselink close-cart-button w-inline-block">
+                                        <a href="#" data-node-type="commerce-cart-close-link"
+                                           class="w-commerce-commercecartcloselink close-cart-button w-inline-block">
                                             <img src="../../static/images/icon-cross-large.svg" loading="lazy" alt="">
                                         </a>
                                     </div>
@@ -157,13 +161,18 @@
                                                                 </g>
                                                             </svg>
                                                             <svg class="w-commerce-commercequickcheckoutmicrosofticon"
-                                                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                                 xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                 height="16"
                                                                  viewbox="0 0 16 16">
                                                                 <g fill="none" fill-rule="evenodd">
-                                                                    <polygon fill="#F05022" points="7 7 1 7 1 1 7 1"></polygon>
-                                                                    <polygon fill="#7DB902" points="15 7 9 7 9 1 15 1"></polygon>
-                                                                    <polygon fill="#00A4EE" points="7 15 1 15 1 9 7 9"></polygon>
-                                                                    <polygon fill="#FFB700" points="15 15 9 15 9 9 15 9"></polygon>
+                                                                    <polygon fill="#F05022"
+                                                                             points="7 7 1 7 1 1 7 1"></polygon>
+                                                                    <polygon fill="#7DB902"
+                                                                             points="15 7 9 7 9 1 15 1"></polygon>
+                                                                    <polygon fill="#00A4EE"
+                                                                             points="7 15 1 15 1 9 7 9"></polygon>
+                                                                    <polygon fill="#FFB700"
+                                                                             points="15 15 9 15 9 9 15 9"></polygon>
                                                                 </g>
                                                             </svg>
                                                             <div>{{ _('Pay with browser.') }}</div>
@@ -187,7 +196,7 @@
                                                  data-w-cart-checkout-error="Checkout is disabled on this site."
                                                  data-w-cart-cart_order_min-error="The order minimum was not met. Add more items to your cart to continue."
                                                  data-w-cart-subscription_error-error="Before you purchase, please use your email invite to verify your address so we can send order updates.">
-                                                {{ _('Product is not available in this quantity.')}}
+                                                {{ _('Product is not available in this quantity.') }}
                                             </div>
                                         </div>
                                     </div>
@@ -198,11 +207,14 @@
 
                     <!-- Left part -->
                     <!-- Search -->
-                    <form action="/search" method="POST" id="w-node-dab1a8fd-38ef-ff9e-e737-a0bdf6abf40d-f6abf40a" class="nav-search-form w-form">
+                    <form action="/search" method="POST" id="w-node-dab1a8fd-38ef-ff9e-e737-a0bdf6abf40d-f6abf40a"
+                          class="nav-search-form w-form">
                         <!--<div class="w-inline-block">-->
-                           <input type="image" src="../../static/images/icon-search.svg" value="Search" class="w-button" alt="submit">
+                        <input type="image" src="../../static/images/icon-search.svg" value="Search" class="w-button"
+                               alt="submit">
                         <!--</div>-->
-                           <input type="search" class="search-form-input w-input" maxlength="256" name="key_word" placeholder="{{ _('Search here')}}" id="search-2" required="">
+                        <input type="search" class="search-form-input w-input" maxlength="256" name="key_word"
+                               placeholder="{{ _('Search here') }}" id="search-2" required="">
                     </form>
                 </div>
             </div>
@@ -211,7 +223,8 @@
         <!-- Lower Section of Top nav bar -->
         <div class="div-block">
             <div class="main-container">
-                <div data-collapse="small" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-nav">
+                <div data-collapse="small" data-animation="default" data-duration="400" data-easing="ease"
+                     data-easing2="ease" role="banner" class="navbar w-nav">
                     <div class="button bg-primary wide w-nav-button">
                         <div>{{ _('Menu') }}</div>
                     </div>
@@ -279,7 +292,8 @@
                                     <a class="button nav nav-button w-inline-block">{{ _('Prime') }}</a>
                                 </li>
                                 <li class="nav-item hover-item clickable" id="Order_btn">
-                                    <a class="button nav nav-button w-inline-block" href="{{ url_for('order.my_orders') }}">{{ _('Order') }}</a>
+                                    <a class="button nav nav-button w-inline-block"
+                                       href="{{ url_for('order.my_orders') }}">{{ _('Order') }}</a>
                                 </li>
                             </ul>
                         </div>
@@ -394,37 +408,43 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="info-title da-title small-text">
-                                                Default Address
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="info-content da-content large-text">
-                                                {{ user.addresses.filter_by(is_default=true).first().recipient.phone }}
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="info-content da-content large-text">
-                                                {{ user.addresses.filter_by(is_default=true).first().country }} -
-                                                {{ user.addresses.filter_by(is_default=true).first().province_or_state }} -
-                                                {{ user.addresses.filter_by(is_default=true).first().city }} -
-                                                {{ user.addresses.filter_by(is_default=true).first().district }}
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="info-content da-content large-text">
-                                                {{ user.addresses.filter_by(is_default=true).first().details }}
-                                            </div>
-                                        </td>
-                                    </tr>
+
+                                    {% if user.addresses.filter_by(is_default=true).first() != None %}
+                                        <tr>
+                                            <td>
+                                                <div class="info-title da-title small-text">
+                                                    Default Address
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="info-content da-content large-text">
+                                                    {{ user.addresses.filter_by(is_default=true).first().recipient.phone }}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="info-content da-content large-text">
+                                                    {{ user.addresses.filter_by(is_default=true).first().country }} -
+                                                    {{ user.addresses.filter_by(is_default=true).first().province_or_state }}
+                                                    -
+                                                    {{ user.addresses.filter_by(is_default=true).first().city }} -
+                                                    {{ user.addresses.filter_by(is_default=true).first().district }}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="info-content da-content large-text">
+                                                    {{ user.addresses.filter_by(is_default=true).first().details }}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    {% endif %}
+
+
                                 </table>
 
                                 <div class="date-gender">
@@ -463,7 +483,8 @@
                                                             <td id="default_bar_{{ address.id }}"
                                                                 class="not_default"
                                                                 address_id="{{ address.id }}">
-                                                                <a id="default_a_{{ address.id }}" class="set_default_btn"
+                                                                <a id="default_a_{{ address.id }}"
+                                                                   class="set_default_btn"
                                                                    href="javascript:set_default({{ address.id }});">
                                                                     {{ _('Set as Default') }}
                                                                 </a>
@@ -497,7 +518,10 @@
                                                                         details="{{ address.details }}"
                                                                         class="content_section address_section large-text extra_indent"
                                                                         colspan="2">
-                                                                        {{ address.country }} - {{ address.province_or_state }} - {{ address.city }} - {{ address.district }}<br>
+                                                                        {{ address.country }}
+                                                                        - {{ address.province_or_state }}
+                                                                        - {{ address.city }}
+                                                                        - {{ address.district }}<br>
                                                                         {{ address.details }}
                                                                     </td>
                                                                 </tr>
@@ -578,7 +602,8 @@
                     <div class="w-layout-grid footer-grid">
                         <div id="w-node-_3ee0633f-a568-72e0-ab7b-589be9d960ed-e9d960d8" class="footer-contact-details">
                             <a href="#" class="footer-logo-link w-inline-block">
-                                <img src="../../static/images/Black-logo-no-background.svg" loading="lazy" alt="" class="footer-logo">
+                                <img src="../../static/images/Black-logo-no-background.svg" loading="lazy" alt=""
+                                     class="footer-logo">
                             </a>
                             <div>{{ _('34 Market Street, South Melbourne') }}<br>{{ _('Victoria 3009') }}</div>
                             <div class="contact-links in-footer">
@@ -597,7 +622,7 @@
                                         </div>
                                     </div>
                                     <div class="w-dyn-empty">
-                                        <div>{{ _('No items found.')}} </div>
+                                        <div>{{ _('No items found.') }} </div>
                                     </div>
                                 </div>
                             </div>
@@ -624,7 +649,8 @@
                     </div>
                     <div class="footer-fine-print">
                         <div class="fine-print-text">© Copyright Company powered by <a href="https://www.webflow.com"
-                                                                                       target="_blank" class="underline-link">Webflow</a>
+                                                                                       target="_blank"
+                                                                                       class="underline-link">Webflow</a>
                         </div>
                         <div class="social-links">
                             <a href="https://webflow.com" target="_blank" class="social-link w-inline-block">
@@ -692,7 +718,7 @@
                 &times;
             </div>
             <div id="form_top_bar" class="medium-heading">
-                {{ _('Edit profile')}}
+                {{ _('Edit profile') }}
             </div>
             <form method="post" class="action-table-form">
                 <table class="action_table">
@@ -779,7 +805,7 @@
                 &times;
             </div>
             <div id="form_top_bar" class="medium-heading">
-                {{ _('Add address')}}
+                {{ _('Add address') }}
             </div>
             <form method="post" class="action-table-form">
                 <table class="action_table">
@@ -914,7 +940,7 @@
                 &times;
             </div>
             <div id="form_top_bar" class="medium-heading">
-                {{ _('Edit address')}}
+                {{ _('Edit address') }}
             </div>
             <form method="post" class="action-table-form">
                 <table class="action_table">
