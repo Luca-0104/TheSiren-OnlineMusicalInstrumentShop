@@ -1,3 +1,24 @@
+.nav_option {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+}
+
+.nav_option a {
+    color: black;
+    padding-bottom: 12px;
+    padding-top: 8px;
+    display: block;
+}
+
+.nav_option a:hover {
+    background-color: #da8181
+}
+
+.nav_topic:hover .nav_option {
+    display: block;
+}
+
 .at_middle {
     text-align: center;
 }
@@ -61,9 +82,248 @@ max-width: 6px;min-width: 2px;}
 .cost_col {
 width: 15%;}
 
+/*.status_col {*/
+/*}*/
+
+.action_col {
+    width: 10%;
+}
+
+/*.body {*/
+/*    background-color: #fff;*/
+/*}*/
+
+/*table {*/
+/*    text-align: center;*/
+/*}*/
+
+.clickable {
+    cursor: pointer;
+}
+
+.selectedOne {
+    font-size: 16px;
+    color: #dd1e1e;
+    text-decoration: underline;
+}
+
+.content_row_intendation{
+    width: 2%;
+    max-width: 6px;
+    min-width: 2px;
+}
+
+.model_col {
+    width: 50%
+}
+
+.model_thumbnail {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    max-width: 150px;
+    width: 100%;
+}
+
+.order_table{
+    border-collapse: separate;
+    border-spacing: 2px 35px;
+}
+
+.single_order{
+
+}
+
+.basic_info_cell{
+    background-color: #f5f5f5;
+}
+
+.basic_info_table{
+    border-collapse: separate;
+    border-spacing: 25px 5px;
+    margin-left: -20px;
+}
+
+.order_time{
+}
+
+.order_num{
+    color: #9b9898;
+}
+
 .status_col {
+    font-size: 20px;
+    padding: 7px;
+}
+
+.status_wp{
+    background-color: #0B7FCE;
+    color: #fff;
+}
+
+.status_p{
+    background-color: #edcb79;
+    color: #343434;
+}
+
+.status_od{
+    background-color: #edcb79;
+    color: #343434;
+}
+
+.status_wc{
+    background-color: #edcb79;
+    color: #343434;
+}
+
+.status_f{
+    background-color: #8F8063;
+    color: #fff;
+}
+
+.status_c{
+    background-color: #767676;
+    color: #fff;
+}
+
+.status_e{
+    background-color: #767676;
+    color: #fff
+}
+
+.model_listing_table{
+    background-color: #eeeeee;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.model_img_col {
+    background-color: #fff;
+    width: 20%;
+    border-left: 10px solid #eeeeee;
+    text-align: center;
+}
+
+.model_name_col {
+    background-color: #fff;
+    width: 20%;
+    text-align: center;
+}
+.model_des_col {
+    background-color: #fff;
+    width: 45%;
+}
+
+.model_des_cell{
+    padding-bottom: 5px;
+}
+
+.model_quantity_col {
+    background-color: #fff;
+    border-right: 10px solid #eeeeee;
+    text-align: center;
+}
+
+.view_all{
+
+}
+
+.rn_col {
+    text-align: left;
+}
+
+.cost_col {
+    text-align: left;
+}
+
+.address_col{
+    text-align: left;
 }
 
 .action_col {
     width: 10%;
+}
+
+.model_rate_col{
+    padding-top: 5px;
+    background-color: #fff;
+}
+
+.info_table{
+    border-collapse: separate;
+    border-spacing: 60px 25px;
+}
+
+.action_table{
+    border-collapse: separate;
+    border-spacing: 0 5px;
+}
+
+.top-td{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    line-height: 200%;
+    /*border: solid;*/
+    border: 10px solid #eeeeee;
+}
+
+.name-box{
+    width: 25%;
+}
+
+.main-table{
+    border-collapse: separate;
+    border-spacing: 0px 20px;
+}
+
+.title_indentation{
+    border-left: 20px transparent solid;
+    border-bottom: 10px transparent solid;
+}
+
+.info_indentation{
+    border-left: 50px transparent solid;
+}
+
+.extra-top-indentation{
+    border-top: 15px transparent solid;
+}
+
+.left-cell{
+    width: 50%;
+}
+
+/*
+    rate star info
+*/
+.box-product-rate{
+    /* take up an entire row */
+    display: inline-block;
+}
+/* the star list */
+.box-product-rate .box-rate-stars{
+    float: left;
+    margin-bottom: 3px;
+    width: 230px;
+    padding-left: 0px;
+    margin-left: -5px;
+}
+/* all those five stars */
+.box-product-rate .box-rate-stars li{
+    float: left;
+    margin: 3px;
+    font-size: 22px;
+    list-style: none;
+}
+/* bright stars */
+.star-bright{
+    /*color: #ffec39;*/
+    color: #fcdb02;
+}
+/* dark stars */
+.star-dark{
+    color: #9c9c9c;
+}
+
+.no-bottom{
+    border-bottom: none;
 }

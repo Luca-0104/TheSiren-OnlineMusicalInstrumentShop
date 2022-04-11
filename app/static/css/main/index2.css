@@ -225,14 +225,14 @@
 }
 
 .show_brand_des {
-    width: 138px;
-    height: 138px;
+    width: 136px;
+    height: 136px;
     padding: 0 10px;
-    color: #662b2b;
+    color: #e2c4a1;
     position: absolute;
     top: -140px;
     left: -140px;
-    background-color: #fff;
+    background-color: #000;
 }
 
 .show_brand_des::before {
@@ -244,19 +244,19 @@
 }
 
 .show_brand_des p {
-    font: 18px/22px "΢���ź�";
+    font: 22px/22px "";
     text-align: center;
     display: inline-block;
     vertical-align: middle;
     width: 110px;
-    color: #662b2b;
+    color: #e2c4a1;
 }
 
 .show_brand_des p::after {
     content: "";
     width: 19px;
     height: 1px;
-    background-color: #662b2b;
+    background-color: #e2c4a1;
     display: block;
     margin: 12px auto 0;
 }
@@ -285,7 +285,7 @@
     left: 0;
     width: 1px;
     height: 0;
-    background-color: #662b2b;
+    background-color: #e2c4a1;
 }
 
 .aut_brand_list li .top {
@@ -295,7 +295,7 @@
     left: 0;
     width: 0;
     height: 1px;
-    background-color: #662b2b;
+    background-color: #e2c4a1;
 }
 
 .aut_brand_list li .right {
@@ -305,7 +305,7 @@
     right: 0;
     width: 1px;
     height: 0;
-    background-color: #662b2b;
+    background-color: #e2c4a1;
 }
 
 .aut_brand_list li .bottom {
@@ -315,7 +315,7 @@
     right: 0;
     width: 0;
     height: 1px;
-    background-color: #662b2b;
+    background-color: #e2c4a1;
 }
 
 /*�̶�����*/
