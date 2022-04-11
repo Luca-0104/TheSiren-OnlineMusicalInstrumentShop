@@ -1,7 +1,7 @@
 /* The entire box */
 .product-box{
-    height: 485px;
-    background-color: white;
+     background-color: #0000003b;
+     border: 2px solid #302e31;
 }
 
 .product-box:hover{
@@ -106,7 +106,7 @@
 }
 
 .new-price{
-    color: #a60101;
+    color: #f0f0f0;
     font-size: 24px;
     font-weight: bold;
 }
@@ -173,8 +173,13 @@
 /* bright stars */
 .star-bright{
     /*color: #ffec39;*/
-    color: #fcdb02;
+    color: #B3A549;
 }
+
+.star-bright:hover{
+    color: #ffee72;
+}
+
 /* dark stars */
 .star-dark{
     color: #9c9c9c;
