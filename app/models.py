@@ -12,6 +12,10 @@ from . import login_manager
 import random
 
 from .prestore.product_info import pm_lst
+from .prestore.index_slide_prestore import pm_lst as pm_lst_index
+from .prestore.product_info_g import pm_lst as pm_lst_g
+from .prestore.product_info_l import pm_lst as pm_lst_l
+from .prestore.product_info_t import pm_lst as pm_lst_t
 
 
 class Tools:
@@ -44,10 +48,94 @@ class Tools:
         ModelType.insert_model_types()  # the constant model types for testing
         # ------
         # Tools.insert_pm()   # pre-stored product and mt info
+        Tools.insert_pm_glt(pm_lst_g, 'g')
+        Tools.insert_pm_glt(pm_lst_l, 'l')
+        Tools.insert_pm_glt(pm_lst_t, 't')
+        Tools.insert_pm_glt(pm_lst_index, 'index_slide')  # That 5 products in the index slide window
         # ------
         Cart.insert_carts()
         Order.insert_orders(20)
         OrderModelType.insert_omts()
+
+    @staticmethod
+    def insert_pm_glt(pm_list, member_code):
+        """
+        Insert the pre-stored products and its models into the database.
+        :param pm_list: This parameter can be different pm_lst that created by different group member
+        :param member_code: The value can be "g", "l" or "t"
+        """
+        for p_info in pm_list:
+            # get product info
+            p_name = p_info[0]
+            brand_id = p_info[1]
+            cate_id_c = p_info[2]
+            cate_id_t = p_info[3]
+            cate_id_a = p_info[4]
+            mt_lst = p_info[5]
+
+            """ create the product first """
+            # create the serial_prefix
+            serial_prefix = "b{}-c{}-t{}-a{}".format(brand_id, cate_id_c, cate_id_t - 6, cate_id_a - 52)
+            # query for the serial_rank
+            serial_rank = 1 + Product.query.filter_by(serial_prefix=serial_prefix).count()
+            # create Product
+            new_product = Product(serial_prefix=serial_prefix,
+                                  serial_rank=serial_rank,
+                                  name=p_name,
+                                  brand_id=brand_id)
+            # add categories
+            cate_c = Category.query.get(cate_id_c)
+            cate_t = Category.query.get(cate_id_t)
+            cate_a = Category.query.get(cate_id_a)
+            new_product.categories.append(cate_c)
+            new_product.categories.append(cate_t)
+            new_product.categories.append(cate_a)
+            # add to db session
+            db.session.add(new_product)
+
+            """ create the model types """
+            for mt_info in mt_lst:
+                # get model type info
+                mt_name = mt_info[0]
+                description = mt_info[1]
+                price = mt_info[2]
+                weight = mt_info[3]
+                pic_lst = mt_info[4]
+                # generate some random info
+                stock = random.randint(100, 500)
+                sales = random.randint(0, 300)
+                views = random.randint(0, 50000)
+                serial_number = 'M{}'.format(ModelType.query.count()+1)
+                user_id = [3, 4][random.randint(0, 1)]
+                # create this model type object
+                new_mt = ModelType(name=mt_name,
+                                   description=description,
+                                   price=price,
+                                   weight=weight,
+                                   stock=stock,
+                                   sales=sales,
+                                   views=views,
+                                   serial_number=serial_number,
+                                   user_id=user_id,
+                                   product=new_product)
+                # add to db session
+                db.session.add(new_mt)
+
+                """ create picture objects for this mt """
+                for pic_name in pic_lst:
+                    # the pictures gathered by different member are stored in different dirs
+                    if member_code == 'g' or member_code == 'l' or member_code == 't' or member_code == 'index_slide':
+                        address = "upload/model_type/prestore_{}/{}".format(member_code, pic_name)
+                    else:
+                        address = "upload/model_type/default.jpg"
+                    # create the picture obj
+                    new_mtp = ModelTypePic(model_type=new_mt, address=address)
+                    # add to db session
+                    db.session.add(new_mtp)
+
+        # commit db session
+        db.session.commit()
+
 
     @staticmethod
     def insert_pm():
@@ -881,8 +969,8 @@ class BrowsingHistory(BaseModel):
     """
     __tablename__ = 'browsing_histories'
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False, primary_key=True)
-    model_type_id = db.Column(db.Integer, db.ForeignKey('model_types.id'), nullable=False, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    model_type_id = db.Column(db.Integer, db.ForeignKey('model_types.id'), nullable=False)
     timestamp = db.Column(db.DateTime(), default=datetime.utcnow)   # the last visit time
     count = db.Column(db.Integer, default=1)    # How many time the user viewed this model type
     is_deleted = db.Column(db.Boolean, default=False)
