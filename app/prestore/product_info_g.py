@@ -38,7 +38,7 @@ Category:
     A: id 53-56
 """
 
-pm_lst_g = [
+pm_lst = [
     # product 1 ----------------------------------------------------
     [
         "Stentor Amati model violin",  # product name
