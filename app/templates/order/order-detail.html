@@ -346,8 +346,12 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="title_indentation medium-heading">
-                                                Address Information
+                                            <td class="title_indentation medium-heading extra-top-indentation">
+                                                {% if order.order_type == "delivery" %}
+                                                    Address Information
+                                                {% elif order.order_type == "self-collection" %}
+                                                    Recipient Information
+                                                {% endif %}
                                             </td>
                                         </tr>
                                         <tr>

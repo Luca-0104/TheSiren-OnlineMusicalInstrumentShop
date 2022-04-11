@@ -276,11 +276,16 @@ width: 15%;}
 }
 
 .title_indentation{
-    border-left: 15px transparent solid;
+    border-left: 20px transparent solid;
+    border-bottom: 10px transparent solid;
 }
 
 .info_indentation{
     border-left: 50px transparent solid;
+}
+
+.extra-top-indentation{
+    border-top: 15px transparent solid;
 }
 
 .left-cell{
