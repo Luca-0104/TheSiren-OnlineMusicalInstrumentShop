@@ -33,11 +33,10 @@ $(document).ready(function () {
     initialize_checkbox("#check_brand_");
 
     $('.category').on("change", function () {
-        console.log($(this).attr('id'));
+        console.log("here change: " + $(this).attr("id"));
+        //for test
 
-        console.log($(this).attr("checked"));
         let p = $(this).attr('id').split('_').pop();
-        console.log(p);
 
         if (!$(this).prop('checked')) {
 
@@ -57,6 +56,9 @@ $(document).ready(function () {
             classification = checked_value[0];
             console.log($(this).attr("checked") + '2');
             console.log(checked_value);
+
+            //only show the "type" boxes of this class
+            update_type_boxes($(this).attr("id"));
         }
     });
 
@@ -86,7 +88,6 @@ $(document).ready(function () {
             console.log(checked_value);
         }
     });
-
 
     $('.add').on("change", function () {
         console.log($(this).attr('id'));
@@ -186,6 +187,87 @@ $(document).ready(function () {
     });
 
 });
+
+
+/**
+ *
+ * @param classID The HTML id of class_checkbox
+ */
+function update_type_boxes(classID){
+    //firstly, we recover all checkboxes
+    $("#type_checkbox label").removeClass("invisible-checkbox");
+
+    /* Then we make them display none */
+    if(classID === "check_class_1"){    //see all
+
+    }else if (classID === "check_class_2"){    //String
+        //(#check_type_14 ~ #check_type_48) are not "String"
+        for(let i = 14; i < 49; i++){
+            let id = "#check_type_" + i;
+            $(id).parent("label").addClass("invisible-checkbox");
+        }
+
+    }else if (classID === "check_class_3"){     //Woodwinds
+        //(#check_type_2 ~ #check_type_13) are not "Woodwinds"
+        //(#check_type_25 ~ #check_type_48) are not "Woodwinds"
+        for(let i = 2; i < 14; i++){
+            let id = "#check_type_" + i;
+            $(id).parent("label").addClass("invisible-checkbox");
+        }
+        for(let i = 25; i < 49; i++){
+            let id = "#check_type_" + i;
+            $(id).parent("label").addClass("invisible-checkbox");
+        }
+
+    }else if (classID === "check_class_4"){     //Brass
+        //(#check_type_2 ~ #check_type_24) are not "Brass"
+        //(#check_type_31 ~ #check_type_48) are not "Brass"
+        for(let i = 2; i < 25; i++){
+            let id = "#check_type_" + i;
+            $(id).parent("label").addClass("invisible-checkbox");
+        }
+        for(let i = 31; i < 49; i++){
+            let id = "#check_type_" + i;
+            $(id).parent("label").addClass("invisible-checkbox");
+        }
+
+    }else if (classID === "check_class_5"){     //Percussion
+        //(#check_type_2 ~ #check_type_30) are not "Percussion"
+        //(#check_type_42 ~ #check_type_48) are not "Percussion"
+        //(#check_type_35) is not "Percussion"
+        for(let i = 2; i < 31; i++){
+            let id = "#check_type_" + i;
+            $(id).parent("label").addClass("invisible-checkbox");
+        }
+        for(let i = 42; i < 49; i++){
+            let id = "#check_type_" + i;
+            $(id).parent("label").addClass("invisible-checkbox");
+        }
+        $("#check_type_35").parent("label").addClass("invisible-checkbox");
+
+    }else if (classID === "check_class_6"){     //Keyboard
+        //(#check_type_2 ~ #check_type_41) are not "Keyboard"
+        //(#check_type_45 ~ #check_type_48) are not "Keyboard"
+        for(let i = 2; i < 42; i++){
+            let id = "#check_type_" + i;
+            $(id).parent("label").addClass("invisible-checkbox");
+        }
+        for(let i = 45; i < 49; i++){
+            let id = "#check_type_" + i;
+            $(id).parent("label").addClass("invisible-checkbox");
+        }
+
+    }else if (classID === "check_class_7"){     //Accessories
+        //(#check_type_2 ~ #check_type_44) are not "Accessories"
+        //(#check_type_35) is "Percussion"
+        for(let i = 2; i < 44; i++){
+            let id = "#check_type_" + i;
+            $(id).parent("label").addClass("invisible-checkbox");
+        }
+        $("#check_type_35").parent("label").removeClass("invisible-checkbox");
+    }
+}
+
 
 /**
  * This function is for putting the model data on the product card in this page

@@ -1,0 +1,14 @@
+/* This should be add to checkbox containers using js */
+.invisible-checkbox{
+    display: none;
+}
+
+/* The left side category checkboxes */
+/*#category_checkbox {*/
+/*    overflow-y: scroll;*/
+/*    height: 28%;*/
+/*}*/
+.sidebar {
+    overflow-y: scroll;
+    height: 670px;
+}
