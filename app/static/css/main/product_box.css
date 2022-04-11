@@ -1,7 +1,7 @@
 /* The entire box */
 .product-box{
-    height: 485px;
-    background-color: white;
+     background-color: #0000003b;
+     border: 2px solid #302e31;
 }
 
 .product-box:hover{
@@ -21,6 +21,17 @@
     left: 0px;
     transition: 1.3s;
     background-image: linear-gradient(#fff0, #00000012);
+}
+
+.picture-panel-box-normal{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    transition: 1.3s;
+    background-color: transparent;
+    background-image: linear-gradient(to right, #00000096 , transparent 65%, #000000f0)
 }
 
 .product-box:hover .box-img-cover-normal{
@@ -106,7 +117,7 @@
 }
 
 .new-price{
-    color: #a60101;
+    color: #f0f0f0;
     font-size: 24px;
     font-weight: bold;
 }
@@ -173,8 +184,13 @@
 /* bright stars */
 .star-bright{
     /*color: #ffec39;*/
-    color: #fcdb02;
+    color: #B3A549;
 }
+
+.star-bright:hover{
+    color: #ffee72;
+}
+
 /* dark stars */
 .star-dark{
     color: #9c9c9c;
