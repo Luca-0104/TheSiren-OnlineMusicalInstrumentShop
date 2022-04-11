@@ -10,7 +10,7 @@ pm_lst = [
         [                           # model type list
             # model 1 ----------------------------------------------------------
             [
-                "THE LEO SCALA SUPER '58 FLYING Vs",          # model name
+                "Gibson THE LEO SCALA SUPER '58 FLYING Vs",          # model name
                 'model-description-test',   # m description
                 100,                        # m price
                 2,                          # kg
