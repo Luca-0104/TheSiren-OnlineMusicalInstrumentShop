@@ -1,4 +1,4 @@
-pm_lst_index = [
+pm_lst = [
     # product 1 ----------------------------------------------------
     [
         "Gibson THE LEO SCALA SUPER '58 FLYING Vs",  # product name

@@ -84,7 +84,7 @@ def generate_order_from_buy_now():
 
         # get model obj from db
         model = ModelType.query.get(model_id)
-        if model:
+        if model and model.is_deleted == False:
             # check stock number
             if count <= model.stock:
                 # generate the order obj
@@ -154,7 +154,6 @@ def get_order_payment():
         # get the payment and return it to front end
         return jsonify({"returnValue": 0, "payTotal": o.gross_payment, "deliveryFee": o.delivery_fee})
     return jsonify({"returnValue": 1})
-
 
 
 @order.route('/api/update-order-address', methods=['POST'])
