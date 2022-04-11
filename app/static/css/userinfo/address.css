@@ -65,7 +65,9 @@ h4.w-commerce-commercecartheading{
 }
 
 .topic_container{
-    /* text-align: center; */
+    padding: 10px;
+    position: relative;
+    min-height: 850px;
 }
 
 .text-middle{

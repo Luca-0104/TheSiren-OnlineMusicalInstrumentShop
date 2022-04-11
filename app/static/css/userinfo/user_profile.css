@@ -10,9 +10,26 @@
 /*    line-height: 57px; !* should same as the height of the parent *!*/
 /*}*/
 
+.nav_option {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+}
 
+.nav_option a {
+    color: black;
+    padding-bottom: 12px;
+    padding-top: 8px;
+    display: block;
+}
 
+.nav_option a:hover {
+    background-color: #da8181
+}
 
+.nav_topic:hover .nav_option {
+    display: block;
+}
 
 .button.nav {
     padding: 10px 2px 13px;
@@ -52,7 +69,10 @@
 .date-gender {
     /*margin-bottom: 50px;*/
     /*display: flex;*/
-    margin-top: 55%;
+    /*margin-top: 55%;*/
+    position:absolute;
+    right:0px;
+    bottom:0px;
 }
 
 .email {
@@ -63,6 +83,7 @@
     margin-right: 20px;
     padding-left: 8px;
     padding-right: 8px;
+    color: #c7c7c7;
 }
 
 .gender {
@@ -212,6 +233,7 @@
 
 .user-container {
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .left_col {
@@ -255,6 +277,7 @@
 
 #level_cell_left {
     width: 50%;
+    padding-bottom: 20px;
 }
 
 #left-level {
@@ -284,3 +307,21 @@
     height: 100%;
 }
 
+.info-table{
+    border-bottom: 1px #c1bfbf solid;
+}
+
+.info-table2{
+    margin-left: 40px;
+}
+
+.info-title{
+    padding-top: 15px;
+    color: #727272;
+}
+
+.info-content{
+    padding-left: 40px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}

@@ -199,11 +199,10 @@
                     <!-- Left part -->
                     <!-- Search -->
                     <form action="/search" method="POST" id="w-node-dab1a8fd-38ef-ff9e-e737-a0bdf6abf40d-f6abf40a" class="nav-search-form w-form">
-                        <div class="w-inline-block">
+                        <!--<div class="w-inline-block">-->
                            <input type="image" src="../../static/images/icon-search.svg" value="Search" class="w-button" alt="submit">
-                        </div>
-                           <input type="search" class="search-form-input w-input" maxlength="256" name="query" placeholder="{{ _('Search here')}}" id="search-2" required="">
-
+                        <!--</div>-->
+                           <input type="search" class="search-form-input w-input" maxlength="256" name="key_word" placeholder="{{ _('Search here')}}" id="search-2" required="">
                     </form>
                 </div>
             </div>
@@ -227,9 +226,19 @@
                                 <div role="list" class="navbar-categories w-dyn-items">
                                     <div role="listitem" class="w-dyn-item nav_topic">
                                         <a href="#" class="nav-link">{{ _('Gatagory') }}</a>
+                                        <div class="nav_option">
+                                            <a href="#" class="nav-link">Gatagory01</a>
+                                            <a href="#" class="nav-link">Gatagory02</a>
+                                            <a href="#" class="nav-link">Gatagory03</a>
+                                        </div>
                                     </div>
                                     <div role="listitem" class="w-dyn-item nav_topic">
                                         <a href="#" class="nav-link">{{ _('Brand') }}</a>
+                                        <div class="nav_option">
+                                            <a href="#" class="nav-link">Brand01</a>
+                                            <a href="#" class="nav-link">Brand02</a>
+                                            <a href="#" class="nav-link">Brand03</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -270,7 +279,7 @@
                                     <a class="button nav nav-button w-inline-block">{{ _('Prime') }}</a>
                                 </li>
                                 <li class="nav-item hover-item clickable" id="Order_btn">
-                                    <a class="button nav nav-button w-inline-block">{{ _('Order') }}</a>
+                                    <a class="button nav nav-button w-inline-block" href="{{ url_for('order.my_orders') }}">{{ _('Order') }}</a>
                                 </li>
                             </ul>
                         </div>
@@ -280,7 +289,7 @@
                         <div class="profile-box main_section" id="right-box">
                             <!-- 1. Information section -->
                             <div class="topic_container" id="info_container">
-                                <table>
+                                <table class="info-table" width="100%">
                                     <tr>
                                         <td id="avatar_cell" rowspan="3">
                                             <!-- the avatar box -->
@@ -335,103 +344,93 @@
                                         </td>
                                     </tr>
                                 </table>
-
-
-                                {#                    <div id="change_avatar_form" class="middle-floating bg-dark" style="display: none">#}
-                                {#                        <div id="close_triger" class="bg-primary">#}
-                                {#                            close#}
-                                {#                        </div>#}
-                                {#                        <form enctype="multipart/form-data" method="post" novalidate>#}
-                                {#                            {{ update_avatar_form.hidden_tag() }}#}
-                                {#                            {{ update_avatar_form.update_avatar.label }}#}
-                                {#                            {{ update_avatar_form.update_avatar() }}#}
-                                {#                            <br>#}
-                                {#                            {{ update_avatar_form.update_avatar_submit() }}#}
-                                {#                        </form>#}
-                                {#                    </div>#}
-
-                                <!--<div class="profile-info">
-                                    <ul class="profile-list">
-                                        <li class="profile-info">
-                                            {#                    the profile text information#}
-                                            <div class="profile-text">
-                                                <div class="top-box">
-                                                    <div class="username" id="info-box">
-                                                        <p id="username">
-                                                            {{ user.username }}
-                                                        </p>
-                                                    </div>
-                                                    <span>
-                                            {% if user.is_premium == true %}
-                                                <img id="prime-img" src="../../static/images/user/prime1.png">
-                                            {% else %}
-                                                <img id="prime-img" src="../../static/images/user/prime0.png">
-                                            {% endif %}
-                                        </span>
-                                                </div>
-                                                <div class="exp_bar">
-                                                    <div id="bottom-bar">
-                                                        <div id="top-bar"
-                                                             total_exp="{{ user.exp%100 }}">{{ user.exp%100 }}%
-                                                        </div>
-                                                    </div>
-                                                    {#                        {% if user.username == session.get("username") %}#}
-                                                    {#                    the edit button#}
-
-
-                                                    <a href="#" id="show_edit_info_form_btn"
-                                                       class="button small nav-button w-inline-block">
-                                                        <div>{{ _('Edit') }}</div>
-                                                    </a>
-                                                    {#                        {% endif %}#}
-                                                    <div id="level-box">
-                                                        <span id="left-level">
-                                                            Lv.{{ user.get_level() }}
-                                                        </span>
-                                                        <span id="right-level">
-                                                        Lv.{{ user.get_level() + 1 }}
-                                                        </span>
-                                                    </div>
-
-                                                    <div id="line"></div>
-
-                                                </div>
-
-                                                <div class="email" id="info-box">
-                                                    <p id="email">
-                                                        {{ _('Email') }}: {{ user.email }}
-                                                    </p>
-                                                </div>
-
-                                                <div class="tag-info">
-                                                    {#                                <p class="tags">#}
-                                                    {#                                    {{ user.tag }}#}
-                                                    {#                                </p>#}
-                                                    {{ _('Bio') }}:
-                                                    {% if user.about_me == None or user.about_me == "" %}
-                                                        <p class="info-null" id="about">
-                                                            {{ _('Describe yourself...') }}
-                                                        </p>
-
-                                                    {% else %}
-                                                        <p class="info" id="about">
-                                                            {{ user.about_me }}
-                                                        </p>
-                                                    {% endif %}
-                                                </div>
+                                <!-- other info -->
+                                <table class="info-table2">
+                                    <tr>
+                                        <td>
+                                            <div class="info-title email-title small-text">
+                                                {{ _('Email') }}
                                             </div>
-                                        </li>
-                                    </ul>
-                                </div>-->
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="info-content email-content large-text">
+                                                {{ user.email }}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% if user.gender != 'Unknown' %}
+                                        <tr>
+                                            <td>
+                                                <div class="info-title gender-title small-text">
+                                                    {{ _('Gender') }}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="info-content gender-content large-text">
+                                                    {{ user.gender }}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    {% endif %}
+                                    <tr>
+                                        <td>
+                                            <div class="info-title bio-title small-text">
+                                                {{ _('Bio') }}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="info-content bio-content large-text">
+                                                {% if user.about_me == None or user.about_me == "" %}
+                                                    {{ _('Describe yourself...') }}
+                                                {% else %}
+                                                    {{ user.about_me }}
+                                                {% endif %}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="info-title da-title small-text">
+                                                Default Address
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="info-content da-content large-text">
+                                                {{ user.addresses.filter_by(is_default=true).first().recipient.phone }}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="info-content da-content large-text">
+                                                {{ user.addresses.filter_by(is_default=true).first().country }} -
+                                                {{ user.addresses.filter_by(is_default=true).first().province_or_state }} -
+                                                {{ user.addresses.filter_by(is_default=true).first().city }} -
+                                                {{ user.addresses.filter_by(is_default=true).first().district }}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="info-content da-content large-text">
+                                                {{ user.addresses.filter_by(is_default=true).first().details }}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+
                                 <div class="date-gender">
                                     <div class="date" id="info-box">
-                                        <p id="date">
-                                            {{ _('Member since ') }} {{ user.start_datetime.date() }}
-                                        </p></div>
-                                    <div class="gender" id="info-box">
-                                        <p id="gender">
-                                            {{ _('Gender') }}: {{ user.gender }}
-                                        </p></div>
+                                        {{ _('Member since ') }} {{ user.start_datetime.date() }}
+                                    </div>
                                 </div>
                             </div>
 
@@ -573,7 +572,7 @@
         </div>
 
         <!-- Footer Section -->
-        <div class="footer wf-section">
+        <div class="footer bg-primary-dark wf-section">
             <div class="footer-details-section">
                 <div class="main-container">
                     <div class="w-layout-grid footer-grid">
