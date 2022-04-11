@@ -1,3 +1,24 @@
+.nav_option {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+}
+
+.nav_option a {
+    color: black;
+    padding-bottom: 12px;
+    padding-top: 8px;
+    display: block;
+}
+
+.nav_option a:hover {
+    background-color: #da8181
+}
+
+.nav_topic:hover .nav_option {
+    display: block;
+}
+
 .at_middle {
     text-align: center;
 }
@@ -177,22 +198,29 @@ width: 15%;}
 
 .model_img_col {
     background-color: #fff;
-    width: 38%;
+    width: 20%;
     border-left: 10px solid #eeeeee;
+    text-align: center;
 }
 
 .model_name_col {
     background-color: #fff;
-    width: 25%;
+    width: 20%;
+    text-align: center;
 }
-.model_price_col {
+.model_des_col {
     background-color: #fff;
-    width: 25%;
+    width: 45%;
+}
+
+.model_des_cell{
+    padding-bottom: 5px;
 }
 
 .model_quantity_col {
     background-color: #fff;
     border-right: 10px solid #eeeeee;
+    text-align: center;
 }
 
 .view_all{
@@ -215,6 +243,11 @@ width: 15%;}
     width: 10%;
 }
 
+.model_rate_col{
+    padding-top: 5px;
+    background-color: #fff;
+}
+
 .info_table{
     border-collapse: separate;
     border-spacing: 60px 25px;
@@ -235,4 +268,57 @@ width: 15%;}
 
 .name-box{
     width: 25%;
+}
+
+.main-table{
+    border-collapse: separate;
+    border-spacing: 0px 20px;
+}
+
+.title_indentation{
+    border-left: 15px transparent solid;
+}
+
+.info_indentation{
+    border-left: 50px transparent solid;
+}
+
+.left-cell{
+    width: 50%;
+}
+
+/*
+    rate star info
+*/
+.box-product-rate{
+    /* take up an entire row */
+    display: inline-block;
+}
+/* the star list */
+.box-product-rate .box-rate-stars{
+    float: left;
+    margin-bottom: 3px;
+    width: 230px;
+    padding-left: 0px;
+    margin-left: -5px;
+}
+/* all those five stars */
+.box-product-rate .box-rate-stars li{
+    float: left;
+    margin: 3px;
+    font-size: 22px;
+    list-style: none;
+}
+/* bright stars */
+.star-bright{
+    /*color: #ffec39;*/
+    color: #fcdb02;
+}
+/* dark stars */
+.star-dark{
+    color: #9c9c9c;
+}
+
+.no-bottom{
+    border-bottom: none;
 }
