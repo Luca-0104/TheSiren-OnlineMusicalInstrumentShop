@@ -3530,7 +3530,7 @@ figcaption {
 }
 
 .footer a{
-    color: #fff;
+    color: #dcdcdc;
 }
 
 .footer-subscribe-section {
@@ -5408,3 +5408,13 @@ figcaption {
     font-style: normal;
     font-display: swap;
 }
+
+/*new fonts here*/
+
+
+.montserrat{
+    font-family: 'Montseratt', SansSerif;
+    font-weight: lighter;
+    font-size: 20px;
+}
+
