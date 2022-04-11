@@ -58,16 +58,16 @@
     <body class="body">
 
     <!--loader-->
-{#    <div class="loader">#}
-{#        <div class="loader-center">#}
-{#          <span></span>#}
-{#          <span></span>#}
-{#          <span></span>#}
-{#          <span></span>#}
-{#          <span></span>#}
-{#          <span></span>#}
-{#        </div>#}
-{#    </div>#}
+    <div class="loader">
+        <div class="loader-center">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+    </div>
         <!-- Section of Announcement Bar -->
         <div class="announcement-bar">
             <div class="main-container">
@@ -332,28 +332,26 @@
                                 <img src="{{ url_for('static', filename='images/index_slide/pic35.png') }}" alt="product-picture1">
                             </a>
                         </li>
-{#                          <li class="pic">#}
-{#                            <a href="#">#}
-{#                                <img src="{{ url_for('static', filename='images/index_slide/pic15.png') }}" alt="product-picture1">#}
-{#                            </a>#}
-{#                        </li>#}
                     </ul>
 
-                    {# The mini dots in on the bottom of the slid window to show the current picture#}
+                    <!-- The mini dots in on the bottom of the slid window to show the current picture -->
                     <ul class="dot-group">
                         <li class="dot"></li>
                         <li class="dot"></li>
                         <li class="dot"></li>
                         <li class="dot"></li>
                         <li class="dot"></li>
-{#                        <li class="dot"></li>#}
                     </ul>
 
-            {# the btn container, wich contains the btn for next and last picture #}
-{#            <div class="btn">#}
-{#                <div class="btn-left"><</div>#}
-{#                <div class="btn-right">></div>#}
-{#            </div>#}
+                    <!-- the btn container, wich contains the btn for next and last picture -->
+                    <!--<div class="btn">
+                        <div class="btn-left"><</div>
+                        <div class="btn-right">></div>
+                    </div>-->
+
+                    <!-- The gray cover on the pic when not hovering -->
+                    <div class="picture-panel-box-normal"></div>
+
                 </div>
 
                 <div class="section">
@@ -759,7 +757,7 @@
                                     </div>
                                 </a>
 
-                                <div class="box-product-info-card">
+                                <div class="box-product-info-card main-container">
                                     {# product price #}
                                     <div class="price-container">
                                         <div class="new-price"><span>$</span><span>{{ rec_time_pro.price }}</span></div>

@@ -39,32 +39,32 @@ Category:
 """
 
 pm_lst = [
-    # product 0 ----------------------------------------------------
-    [
-        "product-name-test",        # product name
-        1,                          # brand id
-        1,                          # cate id - C
-        7,                          # cate id - T
-        53,                         # cate id - A
-        [                           # model type list
-            # model 1 ----------------------------------------------------------
-            [
-                'model-name-test',          # model name
-                'model-description-test',   # m description
-                100,                        # m price
-                2,                          # kg
-                [
-                    'p1m1-1.png',
-                    'p1m1-2.png',
-                    'p1m1-3.png'
-                ]
-            ],
-            # model 2 ----------------------------------------------------------
-            # [],
-            # model 3 ----------------------------------------------------------
-            # []
-        ]
-    ],
+    # # product 0 ----------------------------------------------------
+    # [
+    #     "product-name-test",        # product name
+    #     1,                          # brand id
+    #     1,                          # cate id - C
+    #     7,                          # cate id - T
+    #     53,                         # cate id - A
+    #     [                           # model type list
+    #         # model 1 ----------------------------------------------------------
+    #         [
+    #             'model-name-test',          # model name
+    #             'model-description-test',   # m description
+    #             100,                        # m price
+    #             2,                          # kg
+    #             [
+    #                 'p1m1-1.png',
+    #                 'p1m1-2.png',
+    #                 'p1m1-3.png'
+    #             ]
+    #         ],
+    #         # model 2 ----------------------------------------------------------
+    #         # [],
+    #         # model 3 ----------------------------------------------------------
+    #         # []
+    #     ]
+    # ],
 
     # product 1 ----------------------------------------------------
     [
@@ -72,7 +72,7 @@ pm_lst = [
         16,  # Yamaha
         2,  # cate id - C Woodwinds
         22,  # cate id - T
-        56,  # cate id - A
+        53,  # cate id - A
         [  # model type list
             # model 1 ----------------------------------------------------------
             [
@@ -105,7 +105,7 @@ pm_lst = [
         16,  # Yamaha
         2,  # cate id - C Woodwinds
         22,  # cate id - T
-        56,  # cate id - A
+        53,  # cate id - A
         [  # model type list
             # model 1 ----------------------------------------------------------
             [
@@ -130,7 +130,7 @@ pm_lst = [
         16,  # Yamaha
         2,  # cate id - C Woodwinds
         22,  # cate id - T
-        56,  # cate id - A
+        53,  # cate id - A
         [  # model type list
             # model 1 ----------------------------------------------------------
             [
@@ -155,7 +155,7 @@ pm_lst = [
         16,                          # brand id
         2,                          # cate id - C
         22,                          # cate id - T
-        56,                         # cate id - A
+        53,                         # cate id - A
         [                           # model type list
             # model 1 ----------------------------------------------------------
             [
@@ -180,7 +180,7 @@ pm_lst = [
         16,                          # brand id
         2,                          # cate id - C
         22,                          # cate id - T
-        56,                         # cate id - A
+        53,                         # cate id - A
         [                           # model type list
             # model 1 ----------------------------------------------------------
             [
@@ -205,7 +205,7 @@ pm_lst = [
         6,                          # brand id
         2,                          # cate id - C
         23,                          # cate id - T
-        56,                         # cate id - A
+        53,                         # cate id - A
         [                           # model type list
             # model 1 ----------------------------------------------------------
             [
@@ -230,7 +230,7 @@ pm_lst = [
         6,                          # brand id
         2,                          # cate id - C
         23,                          # cate id - T
-        56,                         # cate id - A
+        53,                         # cate id - A
         [                           # model type list
             # model 1 ----------------------------------------------------------
             [
@@ -258,7 +258,7 @@ pm_lst = [
         6,                          # brand id
         2,                          # cate id - C
         23,                          # cate id - T
-        56,                         # cate id - A
+        53,                         # cate id - A
         [                           # model type list
             # model 1 ----------------------------------------------------------
             [
@@ -283,7 +283,7 @@ pm_lst = [
         6,                          # brand id
         2,                          # cate id - C
         23,                          # cate id - T
-        56,                         # cate id - A
+        53,                         # cate id - A
         [                           # model type list
             # model 1 ----------------------------------------------------------
             [
@@ -308,7 +308,7 @@ pm_lst = [
         6,                          # brand id
         2,                          # cate id - C
         23,                          # cate id - T
-        56,                         # cate id - A
+        53,                         # cate id - A
         [                           # model type list
             # model 1 ----------------------------------------------------------
             [
@@ -333,7 +333,7 @@ pm_lst = [
         16,                          # brand id
         2,                          # cate id - C
         23,                          # cate id - T
-        56,                         # cate id - A
+        53,                         # cate id - A
         [                           # model type list
             # model 1 ----------------------------------------------------------
             [
@@ -358,7 +358,7 @@ pm_lst = [
         16,                          # brand id
         2,                          # cate id - C
         23,                          # cate id - T
-        56,                         # cate id - A
+        53,                         # cate id - A
         [                           # model type list
             # model 1 ----------------------------------------------------------
             [
@@ -383,7 +383,7 @@ pm_lst = [
         16,                          # brand id
         2,                          # cate id - C
         23,                          # cate id - T
-        56,                         # cate id - A
+        53,                         # cate id - A
         [                           # model type list
             # model 1 ----------------------------------------------------------
             [
@@ -419,7 +419,7 @@ pm_lst = [
         16,                          # brand id
         2,                          # cate id - C
         23,                          # cate id - T
-        56,                         # cate id - A
+        53,                         # cate id - A
         [                           # model type list
             # model 1 ----------------------------------------------------------
             [
@@ -462,7 +462,7 @@ pm_lst = [
         16,                          # brand id
         2,                          # cate id - C
         23,                          # cate id - T
-        56,                         # cate id - A
+        53,                         # cate id - A
         [                           # model type list
             # model 1 ----------------------------------------------------------
             [
@@ -484,7 +484,7 @@ pm_lst = [
         16,                          # brand id
         2,                          # cate id - C
         23,                          # cate id - T
-        56,                         # cate id - A
+        53,                         # cate id - A
         [                           # model type list
             # model 1 ----------------------------------------------------------
             [
@@ -535,7 +535,7 @@ pm_lst = [
         16,                          # brand id
         2,                          # cate id - C
         23,                          # cate id - T
-        56,                         # cate id - A
+        53,                         # cate id - A
         [                           # model type list
             # model 1 ----------------------------------------------------------
             [
@@ -586,7 +586,7 @@ pm_lst = [
         16,                          # brand id
         2,                          # cate id - C
         23,                          # cate id - T
-        56,                         # cate id - A
+        53,                         # cate id - A
         [                           # model type list
             # model 1 ----------------------------------------------------------
             [
@@ -611,7 +611,7 @@ pm_lst = [
         16,                          # brand id
         2,                          # cate id - C
         23,                          # cate id - T
-        56,                         # cate id - A
+        53,                         # cate id - A
         [                           # model type list
             # model 1 ----------------------------------------------------------
             [
@@ -644,7 +644,7 @@ pm_lst = [
         6,                          # brand id
         2,                          # cate id - C
         24,                          # cate id - T
-        56,                         # cate id - A
+        53,                         # cate id - A
         [                           # model type list
             # model 1 ----------------------------------------------------------
             [
@@ -678,13 +678,13 @@ pm_lst = [
         ]
     ],
 
-# product 0 ----------------------------------------------------
+    # product 20 ----------------------------------------------------
     [
         "SAKKUSU",        # product name
         11,                          # brand id
         2,                          # cate id - C
         23,                          # cate id - T
-        56,                         # cate id - A
+        53,                         # cate id - A
         [                           # model type list
             # model 1 ----------------------------------------------------------
             [
@@ -707,13 +707,13 @@ pm_lst = [
         ]
     ],
 
-# product 0 ----------------------------------------------------
+    # product 21 ----------------------------------------------------
     [
         "PRESTIGE 5613",        # product name
         6,                          # brand id
         2,                          # cate id - C
         25,                          # cate id - T
-        56,                         # cate id - A
+        53,                         # cate id - A
         [                           # model type list
             # model 1 ----------------------------------------------------------
             [
@@ -734,9 +734,9 @@ pm_lst = [
         ]
     ],
 
-# product 0 ----------------------------------------------------
+    # product 22 ----------------------------------------------------
     [
-        "product-name-test",        # product name
+        "SELMER PARIS REFERENCE 54 ALTO SAXOPHONE",        # product name
         1,                          # brand id
         1,                          # cate id - C
         7,                          # cate id - T
@@ -744,26 +744,34 @@ pm_lst = [
         [                           # model type list
             # model 1 ----------------------------------------------------------
             [
-                'model-name-test',          # model name
-                'model-description-test',   # m description
-                100,                        # m price
-                2,                          # kg
+                'SELMER PARIS REFERENCE 54 ALTO SAXOPHONE - HONEY GOLD LACQUER',          # model name
+                'The Reference Series is Selmer’s nod towards their hugely popular saxophones of the past, encapsulating the spirit of these fantastic instruments into a newly refined design.',   # m description
+                44699,                        # m price
+                4,                          # kg
                 [
-                    'p1m1-1.png',
-                    'p1m1-2.png',
-                    'p1m1-3.png'
+                    'l-p22m1-1.png'
                 ]
             ],
             # model 2 ----------------------------------------------------------
-            # [],
+            [
+                'SELMER PARIS REFERENCE 54 ALTO SAXOPHONE - VINTAGE FINISH',  # model name
+                'The Reference Series is Selmer’s nod towards their hugely popular saxophones of the past, encapsulating the spirit of these fantastic instruments into a newly refined design.',  # m description
+                44699,  # m price
+                4,  # kg
+                [
+                    'l-p22m2-1.png',
+                    'l-p22m2-2.png',
+                    'l-p22m2-3.png'
+                ]
+            ],
             # model 3 ----------------------------------------------------------
             # []
         ]
     ],
 
-# product 0 ----------------------------------------------------
+    # product 23 ----------------------------------------------------
     [
-        "product-name-test",        # product name
+        "SELMER PARIS SA80 SERIES II SOPRANO SAXOPHONE",        # product name
         1,                          # brand id
         1,                          # cate id - C
         7,                          # cate id - T
@@ -771,238 +779,269 @@ pm_lst = [
         [                           # model type list
             # model 1 ----------------------------------------------------------
             [
-                'model-name-test',          # model name
-                'model-description-test',   # m description
-                100,                        # m price
-                2,                          # kg
+                'SELMER PARIS SA80 SERIES II SOPRANO SAXOPHONE - JUBILEE - GOLD LACQUER',          # model name
+                "The Super Action Series II is Selmer's most traditional saxophone with a more laid back feel. It is a little more resistant with a tone that does not dominate, allowing the player to tailor his own sound.",   # m description
+                39238,                        # m price
+                5,                          # kg
                 [
-                    'p1m1-1.png',
-                    'p1m1-2.png',
-                    'p1m1-3.png'
+                    'l-p23m1-1.png',
+                    'l-p23m1-2.png',
+                    'l-p23m1-3.png'
                 ]
             ],
             # model 2 ----------------------------------------------------------
-            # [],
+            [
+                'SELMER PARIS SA80 SERIES II SOPRANO SAXOPHONE - JUBILEE - MATT GOLD',  # model name
+                "The Super Action Series II is Selmer's most traditional saxophone with a more laid-back feel. It is a little more resistant with a tone that does not dominate, allowing the player to tailor his own sound.",  # m description
+                43397,  # m price
+                4,  # kg
+                [
+                    'l-p23m2-1.png',
+                    'l-p23m2-2.png'
+                ]
+            ],
             # model 3 ----------------------------------------------------------
-            # []
+            [
+                'SELMER PARIS SA80 SERIES II SOPRANO SAXOPHONE - JUBILEE - BLACK LACQUER',  # model name
+                "The Super Action Series II is Selmer's most traditional saxophone with a more laid back feel. It is a little more resistant with a tone that does not dominate, allowing the player to tailor his own sound.",  # m description
+                43397,  # m price
+                4,  # kg
+                [
+                    'l-p23m3-1.png',
+                    'l-p23m3-2.png',
+                    'l-p23m3-3.png'
+                ]
+            ],
+            # model 4 ----------------------------------------------------------
+            [
+                'SELMER PARIS SA80 SERIES II SOPRANO SAXOPHONE - JUBILEE - SILVER PLATED',  # model name
+                "The Super Action Series II is Selmer's most traditional saxophone with a more laid back feel. It is a little more resistant with a tone that does not dominate, allowing the player to tailor his own sound.",  # m description
+                43397,  # m price
+                4,  # kg
+                [
+                    'l-p23m4-1.png',
+                    'l-p23m4-2.png',
+                    'l-p23m4-3.png'
+                ]
+            ],
         ]
     ],
 
-# product 0 ----------------------------------------------------
-    [
-        "product-name-test",        # product name
-        1,                          # brand id
-        1,                          # cate id - C
-        7,                          # cate id - T
-        53,                         # cate id - A
-        [                           # model type list
-            # model 1 ----------------------------------------------------------
-            [
-                'model-name-test',          # model name
-                'model-description-test',   # m description
-                100,                        # m price
-                2,                          # kg
-                [
-                    'p1m1-1.png',
-                    'p1m1-2.png',
-                    'p1m1-3.png'
-                ]
-            ],
-            # model 2 ----------------------------------------------------------
-            # [],
-            # model 3 ----------------------------------------------------------
-            # []
-        ]
-    ],
-
-# product 0 ----------------------------------------------------
-    [
-        "product-name-test",        # product name
-        1,                          # brand id
-        1,                          # cate id - C
-        7,                          # cate id - T
-        53,                         # cate id - A
-        [                           # model type list
-            # model 1 ----------------------------------------------------------
-            [
-                'model-name-test',          # model name
-                'model-description-test',   # m description
-                100,                        # m price
-                2,                          # kg
-                [
-                    'p1m1-1.png',
-                    'p1m1-2.png',
-                    'p1m1-3.png'
-                ]
-            ],
-            # model 2 ----------------------------------------------------------
-            # [],
-            # model 3 ----------------------------------------------------------
-            # []
-        ]
-    ],
-
-# product 0 ----------------------------------------------------
-    [
-        "product-name-test",        # product name
-        1,                          # brand id
-        1,                          # cate id - C
-        7,                          # cate id - T
-        53,                         # cate id - A
-        [                           # model type list
-            # model 1 ----------------------------------------------------------
-            [
-                'model-name-test',          # model name
-                'model-description-test',   # m description
-                100,                        # m price
-                2,                          # kg
-                [
-                    'p1m1-1.png',
-                    'p1m1-2.png',
-                    'p1m1-3.png'
-                ]
-            ],
-            # model 2 ----------------------------------------------------------
-            # [],
-            # model 3 ----------------------------------------------------------
-            # []
-        ]
-    ],
-
-# product 0 ----------------------------------------------------
-    [
-        "product-name-test",        # product name
-        1,                          # brand id
-        1,                          # cate id - C
-        7,                          # cate id - T
-        53,                         # cate id - A
-        [                           # model type list
-            # model 1 ----------------------------------------------------------
-            [
-                'model-name-test',          # model name
-                'model-description-test',   # m description
-                100,                        # m price
-                2,                          # kg
-                [
-                    'p1m1-1.png',
-                    'p1m1-2.png',
-                    'p1m1-3.png'
-                ]
-            ],
-            # model 2 ----------------------------------------------------------
-            # [],
-            # model 3 ----------------------------------------------------------
-            # []
-        ]
-    ],
-
-# product 0 ----------------------------------------------------
-    [
-        "product-name-test",        # product name
-        1,                          # brand id
-        1,                          # cate id - C
-        7,                          # cate id - T
-        53,                         # cate id - A
-        [                           # model type list
-            # model 1 ----------------------------------------------------------
-            [
-                'model-name-test',          # model name
-                'model-description-test',   # m description
-                100,                        # m price
-                2,                          # kg
-                [
-                    'p1m1-1.png',
-                    'p1m1-2.png',
-                    'p1m1-3.png'
-                ]
-            ],
-            # model 2 ----------------------------------------------------------
-            # [],
-            # model 3 ----------------------------------------------------------
-            # []
-        ]
-    ],
-
-# product 0 ----------------------------------------------------
-    [
-        "product-name-test",        # product name
-        1,                          # brand id
-        1,                          # cate id - C
-        7,                          # cate id - T
-        53,                         # cate id - A
-        [                           # model type list
-            # model 1 ----------------------------------------------------------
-            [
-                'model-name-test',          # model name
-                'model-description-test',   # m description
-                100,                        # m price
-                2,                          # kg
-                [
-                    'p1m1-1.png',
-                    'p1m1-2.png',
-                    'p1m1-3.png'
-                ]
-            ],
-            # model 2 ----------------------------------------------------------
-            # [],
-            # model 3 ----------------------------------------------------------
-            # []
-        ]
-    ],
-
-# product 0 ----------------------------------------------------
-    [
-        "product-name-test",        # product name
-        1,                          # brand id
-        1,                          # cate id - C
-        7,                          # cate id - T
-        53,                         # cate id - A
-        [                           # model type list
-            # model 1 ----------------------------------------------------------
-            [
-                'model-name-test',          # model name
-                'model-description-test',   # m description
-                100,                        # m price
-                2,                          # kg
-                [
-                    'p1m1-1.png',
-                    'p1m1-2.png',
-                    'p1m1-3.png'
-                ]
-            ],
-            # model 2 ----------------------------------------------------------
-            # [],
-            # model 3 ----------------------------------------------------------
-            # []
-        ]
-    ],
-
-# product 0 ----------------------------------------------------
-    [
-        "product-name-test",        # product name
-        1,                          # brand id
-        1,                          # cate id - C
-        7,                          # cate id - T
-        53,                         # cate id - A
-        [                           # model type list
-            # model 1 ----------------------------------------------------------
-            [
-                'model-name-test',          # model name
-                'model-description-test',   # m description
-                100,                        # m price
-                2,                          # kg
-                [
-                    'p1m1-1.png',
-                    'p1m1-2.png',
-                    'p1m1-3.png'
-                ]
-            ],
-            # model 2 ----------------------------------------------------------
-            # [],
-            # model 3 ----------------------------------------------------------
-            # []
-        ]
-    ],
+# # product 0 ----------------------------------------------------
+#     [
+#         "product-name-test",        # product name
+#         1,                          # brand id
+#         1,                          # cate id - C
+#         7,                          # cate id - T
+#         53,                         # cate id - A
+#         [                           # model type list
+#             # model 1 ----------------------------------------------------------
+#             [
+#                 'model-name-test',          # model name
+#                 'model-description-test',   # m description
+#                 100,                        # m price
+#                 2,                          # kg
+#                 [
+#                     'p1m1-1.png',
+#                     'p1m1-2.png',
+#                     'p1m1-3.png'
+#                 ]
+#             ],
+#             # model 2 ----------------------------------------------------------
+#             # [],
+#             # model 3 ----------------------------------------------------------
+#             # []
+#         ]
+#     ],
+#
+# # product 0 ----------------------------------------------------
+#     [
+#         "product-name-test",        # product name
+#         1,                          # brand id
+#         1,                          # cate id - C
+#         7,                          # cate id - T
+#         53,                         # cate id - A
+#         [                           # model type list
+#             # model 1 ----------------------------------------------------------
+#             [
+#                 'model-name-test',          # model name
+#                 'model-description-test',   # m description
+#                 100,                        # m price
+#                 2,                          # kg
+#                 [
+#                     'p1m1-1.png',
+#                     'p1m1-2.png',
+#                     'p1m1-3.png'
+#                 ]
+#             ],
+#             # model 2 ----------------------------------------------------------
+#             # [],
+#             # model 3 ----------------------------------------------------------
+#             # []
+#         ]
+#     ],
+#
+# # product 0 ----------------------------------------------------
+#     [
+#         "product-name-test",        # product name
+#         1,                          # brand id
+#         1,                          # cate id - C
+#         7,                          # cate id - T
+#         53,                         # cate id - A
+#         [                           # model type list
+#             # model 1 ----------------------------------------------------------
+#             [
+#                 'model-name-test',          # model name
+#                 'model-description-test',   # m description
+#                 100,                        # m price
+#                 2,                          # kg
+#                 [
+#                     'p1m1-1.png',
+#                     'p1m1-2.png',
+#                     'p1m1-3.png'
+#                 ]
+#             ],
+#             # model 2 ----------------------------------------------------------
+#             # [],
+#             # model 3 ----------------------------------------------------------
+#             # []
+#         ]
+#     ],
+#
+# # product 0 ----------------------------------------------------
+#     [
+#         "product-name-test",        # product name
+#         1,                          # brand id
+#         1,                          # cate id - C
+#         7,                          # cate id - T
+#         53,                         # cate id - A
+#         [                           # model type list
+#             # model 1 ----------------------------------------------------------
+#             [
+#                 'model-name-test',          # model name
+#                 'model-description-test',   # m description
+#                 100,                        # m price
+#                 2,                          # kg
+#                 [
+#                     'p1m1-1.png',
+#                     'p1m1-2.png',
+#                     'p1m1-3.png'
+#                 ]
+#             ],
+#             # model 2 ----------------------------------------------------------
+#             # [],
+#             # model 3 ----------------------------------------------------------
+#             # []
+#         ]
+#     ],
+#
+# # product 0 ----------------------------------------------------
+#     [
+#         "product-name-test",        # product name
+#         1,                          # brand id
+#         1,                          # cate id - C
+#         7,                          # cate id - T
+#         53,                         # cate id - A
+#         [                           # model type list
+#             # model 1 ----------------------------------------------------------
+#             [
+#                 'model-name-test',          # model name
+#                 'model-description-test',   # m description
+#                 100,                        # m price
+#                 2,                          # kg
+#                 [
+#                     'p1m1-1.png',
+#                     'p1m1-2.png',
+#                     'p1m1-3.png'
+#                 ]
+#             ],
+#             # model 2 ----------------------------------------------------------
+#             # [],
+#             # model 3 ----------------------------------------------------------
+#             # []
+#         ]
+#     ],
+#
+# # product 0 ----------------------------------------------------
+#     [
+#         "product-name-test",        # product name
+#         1,                          # brand id
+#         1,                          # cate id - C
+#         7,                          # cate id - T
+#         53,                         # cate id - A
+#         [                           # model type list
+#             # model 1 ----------------------------------------------------------
+#             [
+#                 'model-name-test',          # model name
+#                 'model-description-test',   # m description
+#                 100,                        # m price
+#                 2,                          # kg
+#                 [
+#                     'p1m1-1.png',
+#                     'p1m1-2.png',
+#                     'p1m1-3.png'
+#                 ]
+#             ],
+#             # model 2 ----------------------------------------------------------
+#             # [],
+#             # model 3 ----------------------------------------------------------
+#             # []
+#         ]
+#     ],
+#
+# # product 0 ----------------------------------------------------
+#     [
+#         "product-name-test",        # product name
+#         1,                          # brand id
+#         1,                          # cate id - C
+#         7,                          # cate id - T
+#         53,                         # cate id - A
+#         [                           # model type list
+#             # model 1 ----------------------------------------------------------
+#             [
+#                 'model-name-test',          # model name
+#                 'model-description-test',   # m description
+#                 100,                        # m price
+#                 2,                          # kg
+#                 [
+#                     'p1m1-1.png',
+#                     'p1m1-2.png',
+#                     'p1m1-3.png'
+#                 ]
+#             ],
+#             # model 2 ----------------------------------------------------------
+#             # [],
+#             # model 3 ----------------------------------------------------------
+#             # []
+#         ]
+#     ],
+#
+# # product 0 ----------------------------------------------------
+#     [
+#         "product-name-test",        # product name
+#         1,                          # brand id
+#         1,                          # cate id - C
+#         7,                          # cate id - T
+#         53,                         # cate id - A
+#         [                           # model type list
+#             # model 1 ----------------------------------------------------------
+#             [
+#                 'model-name-test',          # model name
+#                 'model-description-test',   # m description
+#                 100,                        # m price
+#                 2,                          # kg
+#                 [
+#                     'p1m1-1.png',
+#                     'p1m1-2.png',
+#                     'p1m1-3.png'
+#                 ]
+#             ],
+#             # model 2 ----------------------------------------------------------
+#             # [],
+#             # model 3 ----------------------------------------------------------
+#             # []
+#         ]
+#     ],
 ]
 
 

@@ -23,6 +23,17 @@
     background-image: linear-gradient(#fff0, #00000012);
 }
 
+.picture-panel-box-normal{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    transition: 1.3s;
+    background-color: transparent;
+    background-image: linear-gradient(to right, #00000096 , transparent 65%, #000000f0)
+}
+
 .product-box:hover .box-img-cover-normal{
     opacity: 1;
     height: 100%;
@@ -123,6 +134,7 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     overflow: hidden;
+    color: #000;
 }
 
 /* description of the model type */
@@ -142,6 +154,7 @@
 /* comment number info */
 .box-product-cmt{
     margin-bottom: -7px;
+    color: #000;
 }
 
 .box-product-cmt a:hover{

@@ -233,28 +233,36 @@
                                 {{ form.hidden_tag() }}
 
                                 {{ form.username.label(class="label-input-blank label-input-blank-username") }}
-                                {{ form.username(size=32, class=("input-blank")) }}
+                                {{ form.username(size=32, class=("input-blank form-control")) }}
+                                {#        adding validation messages #}
+                                {% for error in form.username.errors %}
+                                    <div class="error-message error-message-username">[{{ error }}]</div>
+                                {% endfor %}
 
                                 {#    email #}
                                 {{ form.email.label(class='hint-label hint-label-email') }}
                                 {{ form.email(size=32, class='input-blank') }}
                                 {#        adding validation messages #}
-                                {#                    {% for error in form.email.errors %}#}
-                                {#                        <div class="error-message error-message-email">[{{ error }}]</div>#}
-                                {#                    {% endfor %}#}
+                                {% for error in form.email.errors %}
+                                    <div class="error-message error-message-email">[{{ error }}]</div>
+                                {% endfor %}
 
-                                {#    password
+                                {#    password #}
                                 {{ form.password1.label(class="label-input-blank label-input-blank-password1") }}
                                 {{ form.password1(size=32, class="input-blank") }}
+
+                                {% for error in form.password1.errors %}
+                                    <div class="error-message error-message-password">[{{ error }}]</div>
+                                {% endfor %}
 
                                 {{ form.password2.label(class="label-input-blank label-input-blank-password2") }}
                                 {{ form.password2(size=32, class="input-blank") }}
 
 
                                 {#         adding validation messages#}
-                                {#                    {% for error in form.password.errors %}#}
-                                {#                        <div class="error-message error-message-password">[{{ error }}]</div>#}
-                                {#                    {% endfor %}#}
+                                {% for error in form.password2.errors %}
+                                    <div class="error-message error-message-password">[{{ error }}]</div>
+                                {% endfor %}
 
 
                                 <br>

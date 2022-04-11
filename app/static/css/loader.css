@@ -2,7 +2,7 @@ body {
   background:#151719;
 }
 .loader{
-  background-color: #fff;
+  background-color: #000000;
     height: 100%;
     width: 100%;
     position: fixed;
@@ -27,7 +27,7 @@ body {
 .loader span {
   width:10px;
   height:60px;
-  background:white;
+  background: #000000;
   margin:0px 1px;
   animation:loading 800ms ease-in-out infinite;
 }
