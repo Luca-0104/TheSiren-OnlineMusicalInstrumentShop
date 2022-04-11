@@ -41,10 +41,10 @@ class RegisterForm(FlaskForm):
     """
         The Form class for register
     """
-    username = StringField(_l('Username'), validators=[DataRequired(), Length(1, 64), Regexp('^[0-9a-zA-Z_.]{1,}$', 0, "Username must contain only letters, numbers, dots or underscores")])
+    username = StringField(_l('Username'), validators=[DataRequired(), Length(1, 64), Regexp('^[0-9a-zA-Z_.]{1,}$', 0, message="Username must contain only letters, numbers, dots or underscores")])
     email = StringField(_l('Email'), validators=[DataRequired(), Length(1, 64), Email()])
-    password1: PasswordField = PasswordField(_l('Password'), validators=[DataRequired(), EqualTo('password2', message='Passwords must match!')])
-    password2 = PasswordField(_l('Confirm your password'), validators=[DataRequired()])
+    password1: PasswordField = PasswordField(_l('Password'), validators=[DataRequired()])
+    password2 = PasswordField(_l('Confirm your password'), validators=[DataRequired(), EqualTo('password1', message='Passwords must match!')])
     submit = SubmitField(_l('Register'))
 
     def validate_email(self, field):

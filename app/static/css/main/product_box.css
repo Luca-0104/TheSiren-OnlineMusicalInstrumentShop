@@ -134,6 +134,7 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     overflow: hidden;
+    color: #000;
 }
 
 /* description of the model type */
@@ -153,6 +154,7 @@
 /* comment number info */
 .box-product-cmt{
     margin-bottom: -7px;
+    color: #000;
 }
 
 .box-product-cmt a:hover{

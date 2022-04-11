@@ -41,9 +41,10 @@ def register():
     current_app.logger.info("come in /register")
 
     form = RegisterForm()
-
+    print("test")
     # when the form is submitted legally (POST method)
     if form.validate_on_submit():
+        print("entered");
         # create a new user object
         user = User(email=form.email.data, username=form.username.data, password=form.password1.data,
                     role_id=1)
