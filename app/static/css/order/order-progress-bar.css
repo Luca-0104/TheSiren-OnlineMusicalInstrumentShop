@@ -34,22 +34,22 @@
     color: #333;
     margin-top: 3px;
 }
-ul{
+.ul-1{
     display: flex;
     margin-top: 80px;
 }
-ul li{
+.ul-1 li{
     list-style: none;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-ul li .icon{
+.ul-1 li .icon{
     font-size: 35px;
     color: #ff4732;
     margin: 0 60px;
 }
-ul li .text{
+.ul-1 li .text{
     font-size: 14px;
     font-weight: 600;
     color: #ff4732;
@@ -57,7 +57,7 @@ ul li .text{
 
 /* Progress Div Css  */
 
-ul li .progress{
+.ul-1 li .progress{
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -81,27 +81,27 @@ ul li .progress{
     width: 0;
     height: 0;
 }
-ul li .progress .uil{
+.ul-1 li .progress .uil{
     display: none;
 }
-ul li .progress p{
+.ul-1 li .progress p{
     font-size: 13px;
 }
 
 /* Active Css  */
 
-ul li .active{
+.ul-1 li .active{
     background-color: #ff4732;
     display: grid;
     place-items: center;
 }
-li .active::after{
+.ul-1 li .active::after{
     background-color: #ff4732;
 }
-ul li .active p{
+.ul-1 li .active p{
     display: none;
 }
-ul li .active .uil{
+.ul-1 li .active .uil{
     font-size: 20px;
     display: flex;
 }

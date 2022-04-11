@@ -46,7 +46,11 @@ function goNext() {
  */
 function refreshIntro(index){
     if (index === 0){
-            slideText.innerHTML = 'This is the introduction of the slide pic1'
+            slideText.innerHTML = 'This is the introduction of the slide pic1' +
+                                  'This is the introduction of the slide pic1' +
+                                  'This is the introduction of the slide pic1' +
+                                  'This is the introduction of the slide pic1' +
+                                  'This is the introduction of the slide pic1'
 
         }else if (index === 1){
             slideText.innerHTML = 'This is the introduction of the slide pic2'
