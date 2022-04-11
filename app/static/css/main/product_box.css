@@ -1,7 +1,7 @@
 /* The entire box */
 .product-box{
-     background-color: #0000003b;
-     border: 2px solid #302e31;
+    height: 485px;
+    background-color: white;
 }
 
 .product-box:hover{
@@ -117,7 +117,7 @@
 }
 
 .new-price{
-    color: #f0f0f0;
+    color: #a60101;
     font-size: 24px;
     font-weight: bold;
 }
@@ -134,6 +134,7 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     overflow: hidden;
+    color: #000;
 }
 
 /* description of the model type */
@@ -153,6 +154,7 @@
 /* comment number info */
 .box-product-cmt{
     margin-bottom: -7px;
+    color: #000;
 }
 
 .box-product-cmt a:hover{
@@ -184,13 +186,8 @@
 /* bright stars */
 .star-bright{
     /*color: #ffec39;*/
-    color: #B3A549;
+    color: #fcdb02;
 }
-
-.star-bright:hover{
-    color: #ffee72;
-}
-
 /* dark stars */
 .star-dark{
     color: #9c9c9c;
