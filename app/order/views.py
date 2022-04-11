@@ -127,6 +127,15 @@ def order_confirm(order_id):
         return redirect(url_for('main.index'))
 
 
+@order.route('/order-confirm-premium', methods=['GET', 'POST'])
+@login_required
+def order_confirm_premium():
+    """
+        This function is for rendering the page of premium membership order confirmation.
+    """
+    return render_template("order/order-confirm-premium.html")
+
+
 # -------------------------------------- Ajax in order confirm page --------------------------------------
 
 @order.route('/api/get-order-payment', methods=['POST'])
