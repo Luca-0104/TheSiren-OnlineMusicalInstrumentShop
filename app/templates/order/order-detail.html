@@ -20,6 +20,7 @@
         <link href="../../static/css/webflow.css" rel="stylesheet" type="text/css">
         <link href="../../static/css/jacks-supercool-site-c6dd88.webflow.css" rel="stylesheet" type="text/css">
         <link href="../../static/css/order/order-detail.css" rel="stylesheet" type="text/css">
+        <link href="../../static/css/order/order-progress-bar.css" rel="stylesheet" type="text/css">
         {#        <link href="../../static/css/order/order.css" rel="stylesheet" type="text/css">#}
 
         <!-- [if lt IE 9]>
@@ -255,6 +256,58 @@
                 </div>
             </div>
         </div>
+
+         <div class="main">
+
+            <div class="head">
+                <p class="head_1">Animated Step <span>Progress Bar</span></p>
+                <p class="head_2">Using Html, Css & JavaScript</p>
+            </div>
+
+            <ul>
+                <li>
+                    <i class="icon uil uil-capture"></i>
+                    <div class="progress one">
+                        <p>1</p>
+                        <i class="uil uil-check"></i>
+                    </div>
+                    <p class="text">Add To Cart</p>
+                </li>
+                <li>
+                    <i class="icon uil uil-clipboard-notes"></i>
+                    <div class="progress two">
+                        <p>2</p>
+                        <i class="uil uil-check"></i>
+                    </div>
+                    <p class="text">Fill Details</p>
+                </li>
+                <li>
+                    <i class="icon uil uil-credit-card"></i>
+                    <div class="progress three">
+                        <p>3</p>
+                        <i class="uil uil-check"></i>
+                    </div>
+                    <p class="text">Make Payment</p>
+                </li>
+                <li>
+                    <i class="icon uil uil-exchange"></i>
+                    <div class="progress four">
+                        <p>4</p>
+                        <i class="uil uil-check"></i>
+                    </div>
+                    <p class="text">Order in Progress</p>
+                </li>
+                <li>
+                    <i class="icon uil uil-map-marker"></i>
+                    <div class="progress five">
+                        <p>5</p>
+                        <i class="uil uil-check"></i>
+                    </div>
+                    <p class="text">Order Arrived</p>
+                </li>
+            </ul>
+         </div>
+
 
         <!-- Order Detail Section -->
         <div class="section wf-section">
@@ -634,6 +687,7 @@
         <!-- [if lte IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script>
         <![endif] -->
+        <script src="../../static/js/order/order-progress-bar.js"></script>
 
     </body>
     <!-- the js for front end logic -->

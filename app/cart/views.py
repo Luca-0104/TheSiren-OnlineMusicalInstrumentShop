@@ -1,4 +1,4 @@
-from flask import request, jsonify, render_template
+from flask import request, jsonify, render_template, current_app
 from flask_login import current_user, login_required
 import json
 
@@ -22,10 +22,48 @@ def show_my_cart():
 # ------------------------------ BACK-END Server (using Ajax) ----------------------------------
 
 
+@cart.route('/api/cart/add-to-cart', methods=['POST'])
+@login_required
+def add_to_cart():
+    """
+    (Using Ajax)
+    This function adds the model into the cart with specific count
+    """
+    if request.method == 'POST':
+        model_id = request.form.get("model_id")
+        count = request.form.get("count")
+
+        if count is None or model_id is None:
+            current_app.logger.error("info not gotten from Ajax")
+            return jsonify({'returnValue': 1})
+
+        try:
+            count = int(count)
+        except Exception as e:
+            current_app.logger.error(e)
+            return jsonify({'returnValue': 1})
+
+        # get model obj from db
+        model = ModelType.query.get(model_id)
+        if model and model.is_deleted == False:
+            # check stock number
+            if count <= model.stock:
+                # create a new cart relation
+                new_cart = Cart(user=current_user, model_type_id=model_id, count=count)
+                db.session.add(new_cart)
+                db.session.commit()
+
+                return jsonify({"returnValue": 0})
+
+    return jsonify({"returnValue": 1})
+
+
+
 @cart.route('/api/cart/update-cart-count', methods=['POST'])
 @login_required
 def update_cart_count():
     """
+        (Using Ajax)
         update the model account of a specific cart relation, which is about
         current user and the given product
     """
@@ -58,6 +96,7 @@ def update_cart_count():
 @login_required
 def remove_cart_relation():
     """
+        (Using Ajax)
         remove a specific cart relation according to the cart_id
         (remove a product from shopping cart)
     """

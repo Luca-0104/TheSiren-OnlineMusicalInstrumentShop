@@ -1,0 +1,100 @@
+.cleared {
+    padding: 0;
+    margin:0;
+}
+
+#img1{
+    background-image: url('../../images/premium/01.png');
+}
+
+#img2{
+    background-image: url('../../images/premium/02.jpg');
+}
+
+#img3{
+    background-image: url('../../images/premium/03.jpg');
+}
+
+#img4{
+    background-image: url('../../images/premium/04.jpg');
+}
+
+.shell{
+    height: 100vh;
+    /* overflow-x 属性规定是否对内容的左/右边缘进行裁剪 - 如果溢出元素内容区域的话。即，隐藏横向滚动条 */
+    overflow-x: hidden;
+    /* perspective 属性定义 3D 元素距视图的距离，其子元素会获得透视效果，而不是元素本身。*/
+    perspective: 3px;
+}
+
+.shell div{
+    /* 生成相对定位的元素，相对于其正常位置进行定位。因此，"left:20" 会向元素的 LEFT 位置添加 20 像素。 */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-style: 30px;
+    letter-spacing: 2px;
+}
+
+.image{
+    /* 在3D空间沿Z轴后退一个像素，再放大1.6倍 */
+    transform: translateZ(-1px) scale(1.6);
+    background-size: cover;
+    height: 100vh;
+    /* z-index 属性设置元素的堆叠顺序。拥有更高堆叠顺序的元素总是会处于堆叠顺序较低的元素的前面。 */
+    /* Z-index 仅能在定位元素上奏效（例如 position:absolute;） */
+    z-index: -1;
+}
+
+.text{
+    height: 50vh;
+    background-color: #fff;
+}
+
+.text2{
+	height: 25vh;
+	background-color: #343434;
+}
+
+.text h1{
+    color: #000;
+
+}
+
+.heading{
+    z-index: -1;
+    transform: translateY(-30vh) translateZ(1px);
+    color: #fff;
+    font-size: 30px;
+}
+
+.heading-text{
+    font-size: 50px;
+    font-weight: bold;
+    -webkit-text-stroke: 1px black;
+}
+
+.final-heading-text{
+    font-size: 60px;
+    font-weight: bold;
+    -webkit-text-stroke: 2px black;
+}
+
+.premium-button{
+    padding: 20px;
+    font-size: 30px;
+}
+
+.close-button{
+    float: right;
+    cursor: pointer;
+    font-size: 80px;
+    color: #000;
+    transition: color 200ms ease
+}
+
+.close-button:hover{
+    color: #e2c4a1;
+    -webkit-text-stroke: 2px black;
+}
