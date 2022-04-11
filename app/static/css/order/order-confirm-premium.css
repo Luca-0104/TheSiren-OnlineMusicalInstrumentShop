@@ -1,0 +1,26 @@
+
+/*
+    ------------------------ premium plan choosing field ------------------------
+*/
+.premium-plan-list{
+    list-style: none;
+    background-color: #0B7FCE;
+}
+
+.premium-plan-list li{
+    float: left;
+    padding: 2% 6%;
+    border: 2px solid #0B7FCE;
+    font-size: 20px;
+    margin: 1%;
+}
+
+.premium-plan-list li:hover{
+    background-color: #8771ff;
+    cursor: pointer;
+}
+
+/* THis class should be added to the selected premium plan by js */
+.chosen-plan{
+    background-color: #8771ff;
+}

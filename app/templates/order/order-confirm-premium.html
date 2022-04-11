@@ -21,7 +21,7 @@
     <link href="../../static/css/normalize.css" rel="stylesheet" type="text/css">
     <link href="../../static/css/webflow.css" rel="stylesheet" type="text/css">
     <link href="../../static/css/jacks-supercool-site-c6dd88.webflow.css" rel="stylesheet" type="text/css">
-    <link href="../../static/css/order/order-confirm.css" rel="stylesheet" type="text/css">
+    <link href="../../static/css/order/order-confirm-premium.css" rel="stylesheet" type="text/css">
 
 
     <!-- [if lt IE 9]>
@@ -274,14 +274,14 @@
                 {# chooes number of days #}
                 <form data-node-type="commerce-checkout-shipping-methods-wrapper" class="w-commerce-commercecheckoutshippingmethodswrapper">
                     <div class="w-commerce-commercecheckoutblockheader block-header">
-                        <h4 class="checkout-heading">{{ _('Shipping Method') }}</h4>
+                        <h4 class="checkout-heading">{{ _('Choose Your Premium Plan') }}</h4>
                     </div>
-                    <fieldset id="shipping-method-field" class="w-commerce-commercecheckoutblockcontent">
-                        <ul class="shipping-method-list">
-                            <li id="day-30" class="chosen-day">30days</li>
-                            <li id="day-90">90days</li>
-                            <li id="day-180">180day</li>
-                            <li id="day-360">360day</li>
+                    <fieldset id="premium-plan-field" class="w-commerce-commercecheckoutblockcontent">
+                        <ul class="premium-plan-list">
+                            <li id="plan-30" class="chosen-plan">30days</li>
+                            <li id="plan-90">90days</li>
+                            <li id="plan-180">180day</li>
+                            <li id="plan-360">360day</li>
                         </ul>
                     </fieldset>
                 </form>
@@ -417,5 +417,5 @@
 <script src="../../static/js/webflow.js" type="text/javascript"></script>
 <!-- [if lte IE 9]>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
-<script src="../../static/js/order/order-confirm.js" type="text/javascript"></script>
+<script src="../../static/js/order/order-confirm-premium.js" type="text/javascript"></script>
 </body>

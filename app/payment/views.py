@@ -57,41 +57,54 @@ def pay_for_order_instrument():
         return jsonify({"returnValue": 0, "paymentURL": payment_url})
 
 
-@payment.route('/pay-for-order/premium/<int:p_order_id>')
+@payment.route('/api/pay-for-order/premium', methods=['POST'])
 @login_required
-def pay_for_order_premium(p_order_id):
+def pay_for_order_premium():
     """
+        (Using Ajax)
         Pay for the order of premium membership.
         No need to update any info here.
-        :param p_order_id: The db id of the PremiumOrder that should be paid
     """
+    if request.method == 'POST':
+        p_order_id = request.form.get('p_order_id')
 
-    """ get order """
-    # get premiumOrder obj from db
-    p_order = PremiumOrder.query.get(p_order_id)
+        if p_order_id is None:
+            current_app.logger.error("p_order_id is not gotten from Ajax")
+            return jsonify({"returnValue": 1})
 
-    """ order validations """
-    # check if the p_order exists
-    if p_order is not None:
-        # check the status of this order (only "waiting for payment" is acceptable)
-        if p_order.is_paid:
-            current_app.logger.warning('Attempt to double pay!')
-            flash(_("You cannot pay for the same order second time!"))
+        try:
+            p_order_id = int(p_order_id)
+        except Exception as e:
+            current_app.logger.error(e)
+            return jsonify({"returnValue": 1})
+
+        """ get order """
+        # get premiumOrder obj from db
+        p_order = PremiumOrder.query.get(p_order_id)
+
+        """ order validations """
+        # check if the p_order exists
+        if p_order is not None:
+            # check the status of this order (only "waiting for payment" is acceptable)
+            if p_order.is_paid:
+                current_app.logger.warning('Attempt to double pay!')
+                flash(_("You cannot pay for the same order second time!"))
+                return redirect(url_for('main.index'))
+
+            # check is that order belongs to current user
+            if p_order.user_id != current_user.id:
+                current_app.logger.warning('Attempt to pay for others premiumOder!')
+                flash(_("This is not your premiumOrder, you cannot pay for it!"))
+                return redirect(url_for('main.index'))
+        else:
+            current_app.logger.warning('premiumOrder does not exist!')
+            flash(_("premiumOrder does not exist!"))
             return redirect(url_for('main.index'))
 
-        # check is that order belongs to current user
-        if p_order.user_id != current_user.id:
-            current_app.logger.warning('Attempt to pay for others premiumOder!')
-            flash(_("This is not your premiumOrder, you cannot pay for it!"))
-            return redirect(url_for('main.index'))
-    else:
-        current_app.logger.warning('premiumOrder does not exist!')
-        flash(_("premiumOrder does not exist!"))
-        return redirect(url_for('main.index'))
-
-    """ call Alipay API to get the payment_url"""
-    payment_url = pay_order(order_obj=p_order)
-    return jsonify({"returnValue": 0, "paymentURL": payment_url})
+        """ call Alipay API to get the payment_url"""
+        payment_url = pay_order(order_obj=p_order)
+        return jsonify({"returnValue": 0, "paymentURL": payment_url})
+    return jsonify({"returnValue": 1})
 
 
 def pay_order(order_obj):
@@ -265,10 +278,12 @@ def payment_notify():
                     user.is_premium = True
                     user.premium_left_days += p_order.duration
                     db.session.add(user)
-                    db.session.commt()
+                    db.session.commit()
                 except Exception as e:
                     current_app.logger.error(e)
                     db.session.rollback()
+
+                return 'success'
 
             else:
                 current_app.logger.error('no such type of payment!')
