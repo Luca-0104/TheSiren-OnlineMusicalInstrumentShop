@@ -317,13 +317,18 @@
                                                 <div class="main-container">
                                                     <span class="fine-print-text">Full Address:</span>
                                                         <br>
-                                                        <span class="address-address address-gray">{{ address.get_address() }}</span>
-                                                        <span class="w-inline-block" style="margin-left:100%;"><button class="edit_style bg-primary-dar">Edit</button></span>
+                                                        <span class="address-address address-gray" style="display:flex;">{{ address.get_address() }}</span>
+
                                                 </div>
                                                 {% if address.is_default %}
                                                     <span id="address-default-sign">[default]</span>
                                                 {% endif %}
                                             </div>
+                                            <span class="w-inline-block" style="display:flex; flex-direction: row-reverse; align-self:flex-end; margin:5%;">
+                                                <button class="edit_style bg-primary-dar" style="justify-content:flex-start;">Delete</button>
+
+                                                <button class="edit_style bg-primary-dar">Edit</button>
+                                            </span>
                                         </li>
                                     {% endfor %}
                                 </ul>
