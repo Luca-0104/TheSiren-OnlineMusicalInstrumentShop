@@ -58,39 +58,54 @@ def generate_order_from_cart():
     # return redirect(url_for('main.index'))
 
 
-@order.route('/generate-order-from-buy-now/<int:model_id>/<int:count>', methods=['GET'])
+@order.route('/generate-order-from-buy-now', methods=['POST'])
 @login_required
-def generate_order_from_buy_now(model_id, count):
+def generate_order_from_buy_now():
     """
+    (Using Ajax)
     Get the id of model type, get the count of this model.
     Generate a order obj and its OrderModelType obj
     :param model_id: which model type
     :param count: how many
     """
-    # get model obj from db
-    model = ModelType.query.get(model_id)
-    if model:
-        # check stock number
-        if count <= model.stock:
-            # generate the order obj
-            new_order = Order(status_code=0, user_id=current_user.id)
-            db.session.add(new_order)
-            db.session.commit()
+    if request.method == 'POST':
+        model_id = request.form.get("model_id")
+        count = request.form.get("count")
 
-            # add this model in to this order
-            new_omt = OrderModelType(order=new_order, model_type=model, count=count, unit_pay=model.price)
-            db.session.add(new_omt)
-            db.session.commit()
+        if count is None or model_id is None:
+            current_app.logger.error("info not gotten from Ajax")
+            return jsonify({'returnValue': 1})
 
-            # generate related payment amount
-            new_order.generate_delivery_fee()
-            new_order.generate_gross_payment()
-            # generate out_trade_no for this order, as it is created
-            new_order.generate_unique_out_trade_no()
+        try:
+            count = int(count)
+        except Exception as e:
+            current_app.logger.error(e)
+            return jsonify({'returnValue': 1})
 
-            flash(_('Order created!'))
-            return jsonify({'returnValue': 0, 'order_id': new_order.id})
-            # return redirect(url_for('order.order_confirm', order_id=new_order.id))
+        # get model obj from db
+        model = ModelType.query.get(model_id)
+        if model:
+            # check stock number
+            if count <= model.stock:
+                # generate the order obj
+                new_order = Order(status_code=0, user_id=current_user.id)
+                db.session.add(new_order)
+                db.session.commit()
+
+                # add this model in to this order
+                new_omt = OrderModelType(order=new_order, model_type=model, count=count, unit_pay=model.price)
+                db.session.add(new_omt)
+                db.session.commit()
+
+                # generate related payment amount
+                new_order.generate_delivery_fee()
+                new_order.generate_gross_payment()
+                # generate out_trade_no for this order, as it is created
+                new_order.generate_unique_out_trade_no()
+
+                flash(_('Order created!'))
+                return jsonify({'returnValue': 0, 'order_id': new_order.id})
+                # return redirect(url_for('order.order_confirm', order_id=new_order.id))
 
     # flash('Order generation failed!')
     # return redirect(url_for('main.index'))

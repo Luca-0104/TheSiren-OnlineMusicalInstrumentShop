@@ -325,11 +325,11 @@ $("#checkout-a").on("click",function()
             {
                 // get from server (backend)
                 let returnValue = response['returnValue'];
-                let order_id = response['order_id'];
 
                 if(returnValue === 0)
                 {
                     //success
+                    let order_id = response['order_id'];
                     window.location.href="/order-confirm/"+order_id;
                 }
                 else if(returnValue === 1)
