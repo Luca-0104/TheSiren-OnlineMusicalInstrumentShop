@@ -113,7 +113,7 @@ def login():
                 return redirect(next)
             else:
                 # if this is a staff account
-                return redirect(url_for("product.show_page_stock_management"))
+                return redirect(url_for("product.show_page_staff_index"))
 
 
         # logger
