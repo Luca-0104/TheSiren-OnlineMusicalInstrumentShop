@@ -48,12 +48,22 @@ def add_to_cart():
         if model and model.is_deleted == False:
             # check stock number
             if count <= model.stock:
-                # create a new cart relation
-                new_cart = Cart(user=current_user, model_type_id=model_id, count=count)
-                db.session.add(new_cart)
-                db.session.commit()
+                # check if (this model + this user) already in database
+                exist_cart = Cart.query.filter_by(model_type=model, user=current_user).first()
+                if exist_cart:
+                    # update the count
+                    exist_cart.count += count
+                    db.session.add(exist_cart)
+                    db.session.commit()
+                    response_cart_id = exist_cart.id
+                else:
+                    # create a new cart relation
+                    new_cart = Cart(user=current_user, model_type_id=model_id, count=count)
+                    db.session.add(new_cart)
+                    db.session.commit()
+                    response_cart_id = new_cart.id
 
-                return jsonify({"returnValue": 0})
+                return jsonify({"returnValue": 0, "cartID": response_cart_id})
 
     return jsonify({"returnValue": 1})
 

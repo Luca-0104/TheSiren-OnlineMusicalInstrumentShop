@@ -10,12 +10,12 @@ $(document).ready(function (){
             cart_errupter.prop('style','opacity: 1; transition: opacity 300ms ease 0s;');
             sidebar_cart.attr('open_',"opened");
         }
-    })
+    });
 
     side_bar_close.on('click',function (){
         cart_errupter.prop('style', 'display:none;');
         sidebar_cart.attr('open_','not');
-    })
+    });
 
     /* Update the display of total payment */
     update_payment_display();

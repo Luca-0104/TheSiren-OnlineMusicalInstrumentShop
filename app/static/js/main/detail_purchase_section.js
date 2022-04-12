@@ -51,8 +51,25 @@ function add_to_cart(modelID, count){
         // get from server (backend)
         let returnValue = response['returnValue'];
 
-        if (returnValue === 0) {
-            //success
+        if (returnValue === 0) { //success
+            /* update the display in the sidebar cart */
+            //get the cardID from server response
+            let cartID = response['cartID'];
+
+            //concatenate the db id with prefix to get the HTML id of this cart item
+            let id = "#cart-item-" + cartID
+
+            //update the count
+            $(id + " input").attr("value", parseInt($(id + " input").attr("value")) + parseInt(count));
+
+            //open the sidebar cart
+            let sidebar_cart = $('#sidebar_cart');
+            let cart_errupter = $('#cart_errupter');
+            let side_bar_close = $('#close_cart');
+            if (sidebar_cart.attr('open_') === 'not'){
+                cart_errupter.prop('style','opacity: 1; transition: opacity 300ms ease 0s;');
+                sidebar_cart.attr('open_',"opened");
+            }
 
         }
 
