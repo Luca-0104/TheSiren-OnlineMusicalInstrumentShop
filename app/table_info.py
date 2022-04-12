@@ -5,10 +5,10 @@ Those information should be stored in this file
 
 # users
 user_list = [
-    ['Customer1@163.com', 'Customer1', '123', 1],
-    ['Customer2@163.com', 'Customer2', '123', 1],
-    ['Staff1@163.com', 'Staff1', '123', 2],
-    ['Staff2@163.com', 'staff2', '123', 2]
+    ['Customer1@163.com', 'Customer1', '12345678', 1],
+    ['Customer2@163.com', 'Customer2', '12345678', 1],
+    ['Staff1@163.com', 'Staff1', '12345678', 2],
+    ['Staff2@163.com', 'staff2', '12345678', 2]
 ]
 
 # products
