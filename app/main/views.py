@@ -353,7 +353,7 @@ def change_language():
         elif session["language"] == 'en':
             session["language"] = 'zh'
 
-    return render_template('main/index_new.html')
+    return redirect(url_for("main.index"))
 
 
 # ------------------------------ BACK-END Server (using Ajax) ----------------------------------

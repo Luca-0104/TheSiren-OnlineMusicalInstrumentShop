@@ -15,6 +15,13 @@
     position: relative;
 }
 
+.w-commerce-commerceuserwrapper {
+    display: inline-block;
+    position: relative;
+    height: 10%;
+    width: 10%;
+}
+
 .w-commerce-commercecartopenlink {
     background-color: #3898ec;
     border-bottom-left-radius: 0px;
