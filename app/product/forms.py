@@ -11,8 +11,8 @@ class ProductModifyForm(FlaskForm):
     """
     name = StringField(_l('Name'), validators=[DataRequired(), Length(1, 128)],
                        render_kw={"data-errors": 'Please Enter Name.'})
-    serial_number = StringField(_l('Serial Number'), validators=[DataRequired(), Length(1, 128)],
-                                render_kw={"data-errors": 'Please Enter Serial Number.'})
+    # serial_number = StringField(_l('Serial Number'), validators=[DataRequired(), Length(1, 128)],
+    #                             render_kw={"data-errors": 'Please Enter Serial Number.'})
     # choices should be defined in views.py
     brand_id = SelectField(_l('Brand'), validators=[DataRequired()], coerce=int, render_kw={"data-style": 'py-0'})
     submit = SubmitField(_l('Add Product'))
