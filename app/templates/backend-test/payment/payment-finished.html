@@ -84,7 +84,7 @@
                                  data-wf-cart-type="rightSidebar"
                                  data-wf-cart-query="" data-wf-page-link-href-prefix=""
                                  class="w-commerce-commerceuserwrapper">
-                                <a href="/user_profile/{{ current_user.id }}"
+                               <a href="{% if current_user.role_id == 1 %} /user_profile/{{ current_user.id }} {% else %} {{ url_for("product.show_page_staff_index") }} {% endif %}"
                                    class="w-commerce-commercecartopenlink nav-cart-button w-inline-block"><img
                                         src="../../static/images/icon-user.png" loading="eager" alt="">
                                 </a>
