@@ -1056,20 +1056,20 @@
                         {# payment -- subtotal #}
                         <div class="w-commerce-commercecheckoutsummarylineitem">
                             <div>{{ _('Subtotal (without delivery fee)') }}</div>
-                            <div id="pay-subtotal"></div>
+                            <div><span>$</span> <span id="pay-subtotal"></span> <span>USD</span></div>
                         </div>
                         <div class="w-commerce-commercecheckoutordersummaryextraitemslist"
                              data-wf-collection="database.commerceOrder.extraItems"
                              data-wf-template-id="wf-template-619d8e8b85c224cbfbc36b420000000000a0">
                             <div class="w-commerce-commercecheckoutordersummaryextraitemslistitem">
                                 <div>Delivery Fee</div>
-                                <div id="pay-delivery"></div>
+                                <div><span>$</span> <span id="pay-delivery"></span> <span>USD</span></div>
                             </div>
                         </div>
                         {# payment -- total #}
                         <div class="w-commerce-commercecheckoutsummarylineitem">
                             <div>{{ _('Total') }}</div>
-                            <div id="pay-total" class="w-commerce-commercecheckoutsummarytotal"></div>
+                            <div class="w-commerce-commercecheckoutsummarytotal"><span>$</span> <span id="pay-total"></span> <span>USD</span></div>
                         </div>
                     </fieldset>
                 </div>

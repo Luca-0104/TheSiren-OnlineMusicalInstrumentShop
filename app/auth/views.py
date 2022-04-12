@@ -107,8 +107,14 @@ def login():
             # logger
             current_app.logger.info("a user logs in successfully: @" + user.username)
 
-            # redirect back to the original url or the index page
-            return redirect(next)
+            if user.role_id == 1:
+                # if the account is a customer account
+                # redirect back to the original url or the index page
+                return redirect(next)
+            else:
+                # if this is a staff account
+                return redirect(url_for("product.show_page_stock_management"))
+
 
         # logger
         current_app.logger.info("a user logs in failed")
