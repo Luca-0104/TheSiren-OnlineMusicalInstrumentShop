@@ -104,7 +104,7 @@ class Tools:
                 video_address = ""
                 # if there is a video
                 if len(mt_info) == 6:
-                    video_address = mt_info[5]
+                    video_address = 'upload/model_type/videos/{}'.format(mt_info[5])
                 # generate some random info
                 stock = random.randint(100, 500)
                 sales = random.randint(0, 300)
@@ -832,6 +832,7 @@ class ModelType(BaseModel):
     serial_number = db.Column(db.String(128), nullable=False)
     release_time = db.Column(db.DateTime(), index=True, default=datetime.utcnow)
     video_address = db.Column(db.String)    # video
+    # 1 model -> n addresses, 1 address -> 1 model
     audio_address = db.Column(db.String)    # audio
     is_deleted = db.Column(db.Boolean, default=False)
     # 1 user(staff) --> n model type
@@ -912,6 +913,13 @@ class ModelType(BaseModel):
                 new_mt_pic = ModelTypePic(model_type=new_mt)
                 db.session.add(new_mt_pic)
         db.session.commit()
+
+
+class Audio(BaseModel):
+    __tablename__ = 'audios'
+    id = db.Column(db.Integer, primary_key=True)
+    address = db.Column(db.String, nullable=False)
+    model_type_id = db.Column(db.Integer, db.ForeignKey('model_types.id'))
 
 
 class Category(BaseModel):

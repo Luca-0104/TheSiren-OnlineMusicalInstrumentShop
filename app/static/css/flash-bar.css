@@ -1,0 +1,19 @@
+.fade-away {
+    opacity: 0;
+    transition: all 0.25s;
+}
+
+.aabar{
+    transition: 2s;
+}
+
+.aabar:hover{
+    height: 0px;
+}
+
+.closed{
+    height: 0px;
+    /*-moz-transition: all 2s; !* Firefox 4 *!*/
+    /*-webkit-transition: all 2s; !* Safari 和 Chrome *!*/
+    /*-o-transition: all 2s; !* Opera *!*/
+}

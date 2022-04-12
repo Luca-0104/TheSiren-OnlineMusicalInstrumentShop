@@ -3127,6 +3127,19 @@ figcaption {
     background-color: #eff1e5;
 }
 
+.flash-bar{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: #eff1e5;
+}
+
 .announcement-cross {
     position: absolute;
     right: 28px;
@@ -3136,7 +3149,21 @@ figcaption {
     cursor: pointer;
 }
 
+.flash-cross{
+    position: absolute;
+    right: 28px;
+    display: block;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+}
+
 .announcement-contents {
+    font-size: 14px;
+    line-height: 21px;
+}
+
+.flash-contents{
     font-size: 14px;
     line-height: 21px;
 }
@@ -3276,6 +3303,12 @@ figcaption {
 }
 
 .announcement-text {
+    padding-top: 14px;
+    padding-bottom: 14px;
+    text-align: center;
+}
+
+.flash-text{
     padding-top: 14px;
     padding-bottom: 14px;
     text-align: center;
@@ -4953,6 +4986,11 @@ figcaption {
     }
 
     .announcement-text {
+        padding-right: 56px;
+        text-align: left;
+    }
+
+    .flash-text{
         padding-right: 56px;
         text-align: left;
     }
