@@ -28,11 +28,24 @@
         <link href="https://fonts.font.im/css?family=Montserrat" rel="stylesheet">
 
         <link rel="stylesheet" href="../../static/css/main/premium.css">
+        <link href="../../static/css/loader.css" rel="stylesheet" type="text/css">
 
         <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
         <link href="images/webclip.png" rel="apple-touch-icon">
     </head>
     <body class="cleared">
+        <!--loader-->
+        <div class="loader">
+            <div class="loader-center">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+        </div>
+
         <!-- Premium Section -->
         <div class="cleared shell">
             <div class="cleared close-button">&times;</div>
@@ -65,7 +78,7 @@
                 <h1 class="cleared final-heading-text">START YOUR PREMIUM JOURNEY.</h1>
             </div>
             <div class="cleared text2 bg-primary-dark">
-                <a href="#" class="button w-inline-block">
+                <a href="{{ url_for("order.order_confirm_premium") }}" class="button w-inline-block">
                     <div class="premium-button">Go Premium</div>
                 </a>
             </div>

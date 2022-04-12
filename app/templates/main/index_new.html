@@ -127,9 +127,12 @@
                                               class="w-commerce-commercecartform">
                                             <script type="text/x-wf-template"
                                                     id="wf-template-dab1a8fd-38ef-ff9e-e737-a0bdf6abf424"></script>
+
+                                            {# The outer container of the cart items #}
                                             <div class="w-commerce-commercecartlist cart-list"
                                                  data-wf-collection="database.commerceOrder.userItems"
                                                  data-wf-template-id="wf-template-dab1a8fd-38ef-ff9e-e737-a0bdf6abf424"></div>
+
                                             <div class="w-commerce-commercecartfooter cart-footer">
                                                 <div class="w-commerce-commercecartlineitem">
                                                     <div>{{ _('Subtotal') }}</div>
@@ -895,7 +898,7 @@
                             and only for members.
                         </div>
                         <div class="button-row">
-                            <a href="contact.html" class="button bg-white-faded w-inline-block">
+                            <a href="{{ url_for("main.premium_intro") }}" class="button bg-white-faded w-inline-block">
                                 <div>{{ _('Go Premium')}}</div>
                             </a>
                         </div>
