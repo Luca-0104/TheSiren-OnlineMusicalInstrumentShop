@@ -46,13 +46,13 @@
 }
 .ul-1 li .icon{
     font-size: 35px;
-    color: #ff4732;
+    color: #d0d0d0;
     margin: 0 60px;
 }
 .ul-1 li .text{
     font-size: 14px;
     font-weight: 600;
-    color: #ff4732;
+    color: #8e8267;
 }
 
 /* Progress Div Css  */
@@ -91,12 +91,12 @@
 /* Active Css  */
 
 .ul-1 li .active{
-    background-color: #ff4732;
+    background-color: #8e8267;
     display: grid;
     place-items: center;
 }
 .ul-1 li .active::after{
-    background-color: #ff4732;
+    background-color: #8e8267;
 }
 .ul-1 li .active p{
     display: none;
@@ -109,13 +109,13 @@
 /* Responsive Css  */
 
 @media (max-width: 980px) {
-    ul{
+    .ul-1{
         flex-direction: column;
     }
-    ul li{
-        flex-direction: row;
+    .ul-1 li{
+        flex-direction: column;
     }
-    ul li .progress{
+    .ul-1 li .progress{
         margin: 0 30px;
     }
     .progress::after{
@@ -129,7 +129,7 @@
     .one::after{
         height: 0;
     }
-    ul li .icon{
+    .ul-1 li .icon{
         margin: 15px 0;
     }
 }

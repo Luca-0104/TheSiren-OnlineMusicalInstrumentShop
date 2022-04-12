@@ -106,19 +106,19 @@
 
                         <!-- Cart -->
                         <div data-node-type="commerce-cart-wrapper" data-open-product="" data-wf-cart-type="rightSidebar"
-                             data-wf-cart-query="" data-wf-page-link-href-prefix="" class="w-commerce-commercecartwrapper">
-                            <a href="#" data-node-type="commerce-cart-open-link"
-                               class="w-commerce-commercecartopenlink nav-cart-button w-inline-block"><img
+                             data-wf-cart-query="" data-wf-page-link-href-prefix="" class="w-commerce-commercecartwrapper" >
+                            <a id="sidebar_cart" href="#" data-node-type="commerce-cart-open-link"
+                               class="w-commerce-commercecartopenlink nav-cart-button w-inline-block" open_="not"><img
                                     src="../../static/images/icon-shopping-bag.svg" loading="eager" alt="">
                                 <div class="w-commerce-commercecartopenlinkcount cart-quantity">0</div>
                             </a>
-                            <div data-node-type="commerce-cart-container-wrapper" style="display:none"
+                            <div id="cart_errupter" data-node-type="commerce-cart-container-wrapper" style="display:none"
                                  class="w-commerce-commercecartcontainerwrapper w-commerce-commercecartcontainerwrapper--cartType-rightSidebar">
                                 <div data-node-type="commerce-cart-container"
                                      class="w-commerce-commercecartcontainer cart-container">
                                     <div class="w-commerce-commercecartheader cart-header">
                                         <h4 class="w-commerce-commercecartheading">{{ _('Your Cart') }}</h4>
-                                        <a href="#" data-node-type="commerce-cart-close-link" class="w-commerce-commercecartcloselink close-cart-button w-inline-block">
+                                        <a id="close_cart" href="#" data-node-type="commerce-cart-close-link" class="w-commerce-commercecartcloselink close-cart-button w-inline-block">
                                             <img src="../../static/images/icon-cross-large.svg" loading="lazy" alt="">
                                         </a>
                                     </div>
@@ -1429,6 +1429,9 @@
     </body>
     <!-- the js for slide pictures (this should be after </body> ) -->
     <script type="text/javascript" src="../../static/js/main/index_slide.js"></script>
+
+    <script type="text/javascript" src="../../static/js/cart/sidebar_cart.js"></script>
+    <script type="text/javascript" src="../../static/js/webflow.js"></script>
     <!--this is the control for loader-->
     <script>
         $(window).on('load',function(){
