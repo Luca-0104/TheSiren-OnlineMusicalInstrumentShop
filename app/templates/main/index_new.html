@@ -720,10 +720,10 @@
                          ../../static/images/index/about_us.png 1080w" alt="">
                     <div class="section-beside-image bg-primary-light">
                         <div class="container">
-                            <h3>About Us</h3>
+                            <h3>{{ _('About Us')}}</h3>
                             <div class="large-text">
-                                Siren is an online instrument e-commerce website. We provide up-to-date services for
-                                modern performers, numerous renowned brands are currently in cooperation.
+                                {{ _('Siren is an online instrument e-commerce website. We provide up-to-date services for
+                                        modern performers, numerous renowned brands are currently in cooperation.')}}
                             </div>
                             <div class="button-row">
                                 <a href="{{ url_for("main.about_us") }}" class="button bg-primary-dark w-inline-block">
@@ -902,9 +902,9 @@
                 <div class="container justify-content-between">
                     <h3>{{ _('Join') }}</h3>
                     <div>
-                        <div class="large-text">Join Us with the least cost while receiving
-                            great benefits. Regular sales and exclusive limited editions will be available
-                            and only for members.
+                        <div class="large-text">{{ _('Join Us with the least cost while receiving
+                                great benefits. Regular sales and exclusive limited editions will be available
+                                and only for members.')}}
                         </div>
                         <div class="button-row">
                             <a href="{{ url_for("main.premium_intro") }}" class="button bg-white-faded w-inline-block">

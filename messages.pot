@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-04-12 18:57+0800\n"
+"POT-Creation-Date: 2022-04-12 19:13+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -418,7 +418,7 @@ msgstr ""
 #: app/templates/main/404.html:194 app/templates/main/about.html:212
 #: app/templates/main/brand_intro/lowden.html:226
 #: app/templates/main/brand_intro/steinway.html:227
-#: app/templates/main/index_new.html:253 app/templates/main/index_new.html:1304
+#: app/templates/main/index_new.html:253 app/templates/main/index_new.html:1305
 #: app/templates/main/page-commodity-details.html:210
 #: app/templates/main/page_all_commodities.html:195
 #: app/templates/order/order-confirm-premium.html:199
@@ -457,7 +457,7 @@ msgstr ""
 #: app/templates/main/404.html:214 app/templates/main/about.html:232
 #: app/templates/main/brand_intro/lowden.html:246
 #: app/templates/main/brand_intro/steinway.html:247
-#: app/templates/main/index_new.html:273 app/templates/main/index_new.html:1317
+#: app/templates/main/index_new.html:273 app/templates/main/index_new.html:1318
 #: app/templates/main/page-commodity-details.html:230
 #: app/templates/main/page_all_commodities.html:215
 #: app/templates/order/order-confirm-premium.html:211
@@ -482,7 +482,7 @@ msgstr ""
 #: app/templates/main/404.html:215 app/templates/main/about.html:233
 #: app/templates/main/brand_intro/lowden.html:247
 #: app/templates/main/brand_intro/steinway.html:248
-#: app/templates/main/index_new.html:274 app/templates/main/index_new.html:1319
+#: app/templates/main/index_new.html:274 app/templates/main/index_new.html:1320
 #: app/templates/main/page-commodity-details.html:231
 #: app/templates/main/page_all_commodities.html:216
 #: app/templates/order/order-confirm-premium.html:213
@@ -522,7 +522,7 @@ msgstr ""
 
 #: app/templates/auth/login_new.html:317
 #: app/templates/auth/register_new.html:327
-#: app/templates/cart/page-cart.html:383 app/templates/main/index_new.html:1295
+#: app/templates/cart/page-cart.html:383 app/templates/main/index_new.html:1296
 #: app/templates/order/order-confirm-premium.html:354
 #: app/templates/order/order-confirm.html:1126
 #: app/templates/order/order-detail.html:626
@@ -534,7 +534,7 @@ msgstr ""
 
 #: app/templates/auth/login_new.html:317
 #: app/templates/auth/register_new.html:327
-#: app/templates/cart/page-cart.html:383 app/templates/main/index_new.html:1295
+#: app/templates/cart/page-cart.html:383 app/templates/main/index_new.html:1296
 #: app/templates/order/order-confirm-premium.html:354
 #: app/templates/order/order-confirm.html:1126
 #: app/templates/order/order-detail.html:626
@@ -554,7 +554,7 @@ msgstr ""
 
 #: app/templates/auth/login_new.html:324
 #: app/templates/auth/register_new.html:334
-#: app/templates/cart/page-cart.html:390 app/templates/main/index_new.html:1302
+#: app/templates/cart/page-cart.html:390 app/templates/main/index_new.html:1303
 #: app/templates/order/order-confirm-premium.html:361
 #: app/templates/order/order-confirm.html:1133
 #: app/templates/order/order-detail.html:633
@@ -566,7 +566,7 @@ msgstr ""
 
 #: app/templates/auth/login_new.html:340
 #: app/templates/auth/register_new.html:350
-#: app/templates/cart/page-cart.html:406 app/templates/main/index_new.html:1315
+#: app/templates/cart/page-cart.html:406 app/templates/main/index_new.html:1316
 #: app/templates/order/order-confirm-premium.html:377
 #: app/templates/order/order-confirm.html:1149
 #: app/templates/order/order-detail.html:649
@@ -578,7 +578,7 @@ msgstr ""
 
 #: app/templates/auth/login_new.html:343
 #: app/templates/auth/register_new.html:353
-#: app/templates/cart/page-cart.html:409 app/templates/main/index_new.html:1318
+#: app/templates/cart/page-cart.html:409 app/templates/main/index_new.html:1319
 #: app/templates/order/order-confirm-premium.html:212
 #: app/templates/order/order-confirm-premium.html:380
 #: app/templates/order/order-confirm.html:1152
@@ -591,7 +591,7 @@ msgstr ""
 
 #: app/templates/auth/login_new.html:345
 #: app/templates/auth/register_new.html:355
-#: app/templates/cart/page-cart.html:411 app/templates/main/index_new.html:1320
+#: app/templates/cart/page-cart.html:411 app/templates/main/index_new.html:1321
 #: app/templates/order/order-confirm-premium.html:382
 #: app/templates/order/order-confirm.html:1154
 #: app/templates/order/order-detail.html:654
@@ -674,12 +674,12 @@ msgid "Start Browsing"
 msgstr ""
 
 #: app/templates/main/index_new.html:439 app/templates/main/index_new.html:591
-#: app/templates/main/index_new.html:759
+#: app/templates/main/index_new.html:760
 msgid "Click for Details"
 msgstr ""
 
 #: app/templates/main/index_new.html:458 app/templates/main/index_new.html:610
-#: app/templates/main/index_new.html:778
+#: app/templates/main/index_new.html:779
 msgid "comments"
 msgstr ""
 
@@ -691,37 +691,53 @@ msgstr ""
 msgid "Interests"
 msgstr ""
 
-#: app/templates/main/index_new.html:729
+#: app/templates/main/index_new.html:723 app/templates/main/index_new.html:730
 msgid "About Us"
 msgstr ""
 
-#: app/templates/main/index_new.html:741
+#: app/templates/main/index_new.html:725
+msgid ""
+"Siren is an online instrument e-commerce website. We provide up-to-date "
+"services for\n"
+"                                        modern performers, numerous "
+"renowned brands are currently in cooperation."
+msgstr ""
+
+#: app/templates/main/index_new.html:742
 msgid "Just Arrived"
 msgstr ""
 
-#: app/templates/main/index_new.html:902
+#: app/templates/main/index_new.html:903
 msgid "Join"
 msgstr ""
 
-#: app/templates/main/index_new.html:910
+#: app/templates/main/index_new.html:905
+msgid ""
+"Join Us with the least cost while receiving\n"
+"                                great benefits. Regular sales and "
+"exclusive limited editions will be available\n"
+"                                and only for members."
+msgstr ""
+
+#: app/templates/main/index_new.html:911
 #: app/templates/staff/backup-staff-modify.html:584
 #: app/templates/staff/page-list-product.html:722
 msgid "Go Premium"
 msgstr ""
 
-#: app/templates/main/index_new.html:1274
+#: app/templates/main/index_new.html:1275
 msgid "Music should strike fire from the heart of man."
 msgstr ""
 
-#: app/templates/main/index_new.html:1275
+#: app/templates/main/index_new.html:1276
 msgid "Beethoven"
 msgstr ""
 
-#: app/templates/main/index_new.html:1278
+#: app/templates/main/index_new.html:1279
 msgid "Start Voyage"
 msgstr ""
 
-#: app/templates/main/index_new.html:1308
+#: app/templates/main/index_new.html:1309
 #: app/templates/order/payment-success.html:279
 msgid "Brands"
 msgstr ""
