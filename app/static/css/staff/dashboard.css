@@ -1,0 +1,9 @@
+.slick-slide img {
+    display: block;
+    width: 150px;
+}
+
+.card-item-right img {
+    padding: 14px;
+    width: 100px;
+}
