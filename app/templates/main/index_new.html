@@ -2,20 +2,8 @@
 
 <html data-wf-page="6221c36b59f1982c475ac5f9" data-wf-site="6221c36b59f1986aa65ac5f0">
     <head>
-        <meta charset="utf-8">
-        <title>Verse - Webflow Ecommerce Website Template</title>
-        <meta content="An E-Commerce template for brand curators. Create beautiful, minimal online retail stores in almost any category: homewares, furniture, beauty, fashion and more."
-              name="description">
-        <meta content="Verse - Webflow Ecommerce Website Template" property="og:title">
-        <meta content="An E-Commerce template for brand curators. Create beautiful, minimal online retail stores in almost any category: homewares, furniture, beauty, fashion and more."
-              property="og:description">
-        <meta content="Verse - Webflow Ecommerce Website Template" property="twitter:title">
-        <meta content="An E-Commerce template for brand curators. Create beautiful, minimal online retail stores in almost any category: homewares, furniture, beauty, fashion and more."
-              property="twitter:description">
-        <meta property="og:type" content="website">
-        <meta content="summary_large_image" name="twitter:card">
-        <meta content="width=device-width, initial-scale=1" name="viewport">
-        <meta content="Webflow" name="generator">
+        <title>Siren</title>
+        <link rel="icon" href="../../static/images/half-logo.png">
 
         <link href="../../static/css/normalize.css" rel="stylesheet" type="text/css">
         <link href="../../static/css/webflow.css" rel="stylesheet" type="text/css">
@@ -23,6 +11,7 @@
         <link href="../../static/css/main/index.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="../../static/css/main/reset.css">
         <link id ="index" rel="stylesheet" href="../../static/css/main/index2.css">
+        <link id ="index" rel="stylesheet" href="../../static/css/flash-bar.css">
         <link href="../../static/css/loader.css" rel="stylesheet" type="text/css">
         <link href="../../static/css/main/main_animations.css" type="text/css">
         <link href="https://fonts.font.im/css?family=Montserrat" rel="stylesheet">
@@ -57,23 +46,38 @@
     </head>
     <body class="body">
 
-    <!--loader-->
-    <div class="loader">
-        <div class="loader-center">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
+        <!--loader-->
+        <div class="loader">
+            <div class="loader-center">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
         </div>
-    </div>
+
+        <!-- Section of Flash Bar -->
+        <!--<div class="aabar">
+            <div class="main-container">
+                <div class="flash-contents">
+                    <div class="flash-text">
+                        Test flash
+                        <a href="{{ url_for('main.go_all') }}" target="_blank">View instruments here</a>
+                    </div>
+                </div>
+            </div>
+            <img src="../../static/images/icon-cross.svg" loading="lazy" alt="" class="flash-cross">
+        </div>-->
+
         <!-- Section of Announcement Bar -->
         <div class="announcement-bar">
             <div class="main-container">
                 <div class="announcement-contents">
-                    <div class="announcement-text">Welcome to Verse – An E-Commerce template for brand curators.
-                        <a href="https://mmra.re/portfolio" target="_blank">View all templates here</a>
+                    <div class="announcement-text">
+                        Welcome to Siren – Selects online music instrument shop for you.
+                        <a href="{{ url_for('main.go_all') }}" target="_blank">View instruments here</a>
                     </div>
                 </div>
             </div>
@@ -87,7 +91,7 @@
             <div class="main-container">
                 <div class="navbar-top">
                     <!-- Middel part -->
-                    <a href="index.html" aria-current="page" class="w-inline-block w--current">
+                    <a href="{{ url_for('main.index') }}" aria-current="page" class="w-inline-block w--current">
                         <img src="../../static/images/White-logo-no-background.svg" loading="eager" alt="" height="45px">
                     </a>
 
@@ -719,8 +723,8 @@
                          ../../static/images/index/about_us.png 800w,
                          ../../static/images/index/about_us.png 1080w" alt="">
                     <div class="section-beside-image bg-primary-light">
-                        <div class="container">
-                            <h3>{{ _('About Us')}}</h3>
+                        <div class="container justify-content-between">
+                            <h3>{{ _('About Us') }}</h3>
                             <div class="large-text">
                                 {{ _('Siren is an online instrument e-commerce website. We provide up-to-date services for
                                         modern performers, numerous renowned brands are currently in cooperation.')}}
@@ -1290,12 +1294,12 @@
                 <div class="main-container">
                     <div class="w-layout-grid footer-grid">
                         <div id="w-node-_3ee0633f-a568-72e0-ab7b-589be9d960ed-e9d960d8" class="footer-contact-details">
-                            <a href="#" class="footer-logo-link w-inline-block">
+                            <a href="{{ url_for('main.index') }}" class="footer-logo-link w-inline-block">
                                 <img src="../../static/images/White-logo-no-background.svg" loading="lazy" alt="" class="footer-logo">
                             </a>
-                            <div>{{ _('34 Market Street, South Melbourne') }}<br>{{ _('Victoria 3009') }}</div>
+                            <div>China Beijing Chaoyang Distinct Pingleyuan No.100<br>Beijing University of Technology</div>
                             <div class="contact-links in-footer">
-                                <a href="#" class="small-text">contact@website.com</a>
+                                <a href="#" class="small-text">group9@ucdconnect.ie</a>
                                 <a href="#" class="small-text">(03) 92337 4627</a>
                             </div>
                         </div>
@@ -1310,43 +1314,45 @@
                                         </div>
                                     </div>
                                 </div>
+                                <a href="contact.html" class="list-link">Catagory</a>
                             </div>
                         </div>
                         <div>
                             <div class="uppercase-text links-grid-title">{{ _('Company') }}</div>
                             <div class="links-grid">
-                                <a href="about.html" class="list-link">{{ _('About') }}</a>
-                                <a href="journal.html" class="list-link">{{ _('Journal') }}</a>
-                                <a href="contact.html" class="list-link">{{ _('Contact') }}</a>
-                                <a href="refund-policy.html" class="list-link">{{ _('Refund Policy') }}</a>
+                                <a href="about.html" class="list-link">{{ _('About us')}}</a>
+                                <a href="contact.html" class="list-link">{{ _('Contect us')}}</a>
+                                <a href="refund-policy.html" class="list-link">{{ _('Premium') }}</a>
                             </div>
                         </div>
                         <div>
-                            <div class="uppercase-text links-grid-title">Template</div>
+                            <div class="uppercase-text links-grid-title">Franchising Brand</div>
                             <div class="links-grid">
-                                <a href="template/style-guide.html" class="list-link">Style Guide</a>
-                                <a href="template/changelog.html" class="list-link">Changelog</a>
-                                <a href="template/getting-started.html" class="list-link">Getting Started</a>
-                                <a href="template/licensing.html" class="list-link">Licenses</a>
-                                <a href="https://mmra.re/portfolio" target="_blank" class="list-link">More Templates</a>
+                                <a href="about.html" class="list-link">Lowden</a>
+                                <a href="about.html" class="list-link">Gibson</a>
+                                <a href="about.html" class="list-link">YAMAHA</a>
+                                <a href="about.html" class="list-link">Stentor</a>
+                                <a href="about.html" class="list-link">Martin</a>
+                                <a href="about.html" class="list-link">Steinway</a>
+                                <a href="about.html" class="list-link">Fender</a>
                             </div>
                         </div>
                     </div>
                     <div class="footer-fine-print">
-                        <div class="fine-print-text">© Copyright Company powered by <a href="https://www.webflow.com"
-                                                                                       target="_blank" class="underline-link">Webflow</a>
+                        <div class="fine-print-text">© Copyright Company powered by
+                            <a href="{{ url_for('main.index') }}" target="_blank" class="underline-link">Siren</a>
                         </div>
                         <div class="social-links">
-                            <a href="https://webflow.com" target="_blank" class="social-link w-inline-block">
+                            <a href="#" target="_blank" class="social-link w-inline-block">
                                 <img src="../../static/images/icon-Instagram.svg" loading="lazy" alt="">
                             </a>
-                            <a href="https://webflow.com" target="_blank" class="social-link w-inline-block">
+                            <a href="#" target="_blank" class="social-link w-inline-block">
                                 <img src="../../static/images/icon-LinkedIn.svg" loading="lazy" alt="">
                             </a>
-                            <a href="https://webflow.com" target="_blank" class="social-link w-inline-block">
+                            <a href="#" target="_blank" class="social-link w-inline-block">
                                 <img src="../../static/images/icon-Google.svg" loading="lazy" alt="">
                             </a>
-                            <a href="https://webflow.com" target="_blank" class="social-link w-inline-block">
+                            <a href="#" target="_blank" class="social-link w-inline-block">
                                 <img src="../../static/images/icon-Pinterest.svg" loading="lazy" alt="">
                             </a>
                         </div>
@@ -1443,6 +1449,7 @@
     <script type="text/javascript" src="../../static/js/main/index_slide.js"></script>
 
     <script type="text/javascript" src="../../static/js/cart/sidebar_cart.js"></script>
+    <script type="text/javascript" src="../../static/js/flash-bar.js"></script>
     <script type="text/javascript" src="../../static/js/webflow.js"></script>
     <!--this is the control for loader-->
     <script>

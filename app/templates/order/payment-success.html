@@ -2,12 +2,9 @@
 <!--  Last Published: Thu Mar 10 2022 01:58:46 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="6221c36b59f19804945ac5ff" data-wf-site="6221c36b59f1986aa65ac5f0">
     <head>
-        <meta charset="utf-8">
         <title>Not Found</title>
-        <meta content="Not Found" property="og:title">
-        <meta content="Not Found" property="twitter:title">
-        <meta content="width=device-width, initial-scale=1" name="viewport">
-        <meta content="Webflow" name="generator">
+        <link rel="icon" href="../../static/images/half-logo.png">
+
         <link href="../../static/css/normalize.css" rel="stylesheet" type="text/css">
         <link href="../../static/css/webflow.css" rel="stylesheet" type="text/css">
         <link href="../../static/css/jacks-supercool-site-c6dd88.webflow.css" rel="stylesheet" type="text/css">
@@ -247,8 +244,8 @@
                 <h2>Payment Finished</h2>
                 <div>Your payment is successfully finished. Please click the button below to go back to home page.</div>
                 <div class="button-row justify-content-center">
-                    <a href="{{ url_for(main.index) }}" class="button w-inline-block">
-                        <div>Back to Home</div>
+                    <a href="{{ url_for('order.my_orders') }}" class="button w-inline-block">
+                        <div>Check Orders</div>
                     </a>
                 </div>
             </div>
@@ -331,5 +328,20 @@
         <script src="../../static/js/webflow.js" type="text/javascript"></script>
         <!-- [if lte IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+        <script type="text/javascript">
+            $(document).ready(function () {
+                // get the notification data from alipay
+                // everytime after paying, there is a GET request sent by Alipay carrying the notification data to the 'return_url'
+                let alipayNotificationData = document.location.href;
+
+                console.log(alipayNotificationData);
+
+                // send data back to the backend
+                // no call back function needed here
+                $.post('/api/payment-notify', {
+                    "notify_data": alipayNotificationData
+                })
+            });
+        </script>
     </body>
 </html>

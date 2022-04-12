@@ -968,7 +968,7 @@ pm_lst = [
                     'l-p29m1-1.png'
                 ],
                 # video address
-                "https://upos-sz-mirrorcos.bilivideo.com/upgcxcode/33/63/198446333/198446333-1-16.mp4?e=ig8euxZM2rNcNbRVhwdVhwdlhWdVhwdVhoNvNC8BqJIzNbfq9rVEuxTEnE8L5F6VnEsSTx0vkX8fqJeYTj_lta53NCM=&uipk=5&nbs=1&deadline=1649762864&gen=playurlv2&os=kodobv&oi=1730664658&trid=8e3904a8ad024231af671b2d2424ebe2h&platform=html5&upsig=568107b21d57130aa12b62ea198ae7a5&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,platform&mid=0&bvc=vod&nettype=0&bw=44994&logo=80000000#vp",
+                "l-p29m1-1.mp4"
 
             ],
             # model 2 ----------------------------------------------------------
