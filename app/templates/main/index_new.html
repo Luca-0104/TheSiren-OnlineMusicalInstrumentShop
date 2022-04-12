@@ -125,7 +125,7 @@
                                  data-wf-cart-type="rightSidebar"
                                  data-wf-cart-query="" data-wf-page-link-href-prefix=""
                                  class="w-commerce-commerceuserwrapper">
-                                <a href="/user_profile/{{ current_user.id }}"
+                                <a href="{% if current_user.role_id == 1 %} /user_profile/{{ current_user.id }} {% else %} {{ url_for("product.show_page_stock_management") }} {% endif %}"
                                    class="w-commerce-commercecartopenlink nav-cart-button w-inline-block"><img
                                         src="../../static/images/icon-user.png" loading="eager" alt="">
                                 </a>
@@ -429,7 +429,7 @@
                             font-weight: lighter; margin-top: 10%;" id="slide-text"></div>
                             <div class="button-row justify-content-center">
                                 <a id="slide-start-browsing" href="#" class="button bg-white-faded w-inline-block">
-                                    <div>{{ _('Start Browsing')}}</div>
+                                    <div>{{ _('Start Browsing') }}</div>
                                 </a>
                             </div>
                         </div>
@@ -798,7 +798,7 @@
                             <h3>{{ _('About Us') }}</h3>
                             <div class="large-text">
                                 {{ _('Siren is an online instrument e-commerce website. We provide up-to-date services for
-                                        modern performers, numerous renowned brands are currently in cooperation.')}}
+                                        modern performers, numerous renowned brands are currently in cooperation.') }}
                             </div>
                             <div class="button-row">
                                 <a href="{{ url_for("main.about_us") }}" class="button bg-primary-dark w-inline-block">
@@ -984,7 +984,7 @@
                     <div>
                         <div class="large-text">{{ _('Join Us with the least cost while receiving
                                 great benefits. Regular sales and exclusive limited editions will be available
-                                and only for members.')}}
+                                and only for members.') }}
                         </div>
                         <div class="button-row">
                             <a href="{{ url_for("main.premium_intro") }}" class="button bg-white-faded w-inline-block">
@@ -1399,8 +1399,8 @@
                         <div>
                             <div class="uppercase-text links-grid-title">{{ _('Company') }}</div>
                             <div class="links-grid">
-                                <a href="about.html" class="list-link">{{ _('About us')}}</a>
-                                <a href="contact.html" class="list-link">{{ _('Contect us')}}</a>
+                                <a href="about.html" class="list-link">{{ _('About us') }}</a>
+                                <a href="contact.html" class="list-link">{{ _('Contect us') }}</a>
                                 <a href="refund-policy.html" class="list-link">{{ _('Premium') }}</a>
                             </div>
                         </div>
