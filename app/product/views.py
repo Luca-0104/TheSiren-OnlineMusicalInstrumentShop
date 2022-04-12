@@ -17,9 +17,14 @@ from ..public_tools import upload_picture
 
 
 # ------------------------------------------------ render the page  of stock management ------------------------------------------------
-
+@product.route('/staff-index')
+@login_required
+def show_page_staff_index():
+    """This is a fully static page !!!!!!!"""
+    return render_template('staff/staff-index.html')
 
 @product.route('/stock-management', methods=['GET', 'POST'])
+@login_required
 def show_page_stock_management():
     """
     This function has integrated the function of searching and rendering the stock management page
