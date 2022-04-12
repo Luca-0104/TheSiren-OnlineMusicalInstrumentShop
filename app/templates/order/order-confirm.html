@@ -991,61 +991,61 @@
                 {#              </select>#}
                 {#            </fieldset>#}
                 {#          </form>#}
-                <div class="w-commerce-commercecheckoutorderitemswrapper">
-                    <div class="w-commerce-commercecheckoutsummaryblockheader block-header">
-                        <h4 class="checkout-heading">{{ _('Items in Order') }}</h4>
-                    </div>
-                    <fieldset class="w-commerce-commercecheckoutblockcontent">
-                        <script type="text/x-wf-template"
-                                id="wf-template-619d8e8b85c224cbfbc36b42000000000086"></script>
-                        <div class="w-commerce-commercecheckoutorderitemslist"
-                             data-wf-collection="database.commerceOrder.userItems"
-                             data-wf-template-id="wf-template-619d8e8b85c224cbfbc36b42000000000086"></div>
-                        <div>
-                            <table border="1" id="cart_table" total_row="{{ length }}">
-                                <tr>
-
-                                    <th colspan="2">
-                                        {{ _('Model Info') }}
-                                    </th>
-                                    <th>
-                                        {{ _('Quantity') }}
-                                    </th>
-                                    <th>
-                                        {{ _('Price') }}
-                                    </th>
-                                    <th></th>
-                                </tr>
-                                {% for order in order_relation_lst %}
-                                    <tr rowID="{{ loop.index }}" id="row_{{ loop.index }}" orderid="{{ order.id }}"
-                                        modelid="{{ order.model_type.id }}" single_price="{{ order.model_type.price }}">
-
-                                        <td>
-                                            <img src="../../static/images/example/yamaha_yep621s.jpg" alt=""
-                                                 class="w-commerce-commercecartitemimage cart-item-image"/>
-                                        </td>
-                                        <td>
-                                            <div class="w-commerce-commercecartproductname">
-                                                {{ order.model_type.name }}
-                                            </div>
-                                        </td>
-                                        <td>
-                                           <div >{{ order.count }}</div>
-                                        </td>
-                                        <td>
-                                            <div class="fine-print-text">
-                                                <span>$</span>
-                                                <span focusID="{{ loop.index }}"
-                                                      id="price_{{ loop.index }}">{{ order.model_type.price }}</span>
-                                                <span>USD</span>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                {% endfor %}
-                            </table>
-                        </div>
-                    </fieldset>
-                </div>
+{#                <div class="w-commerce-commercecheckoutorderitemswrapper">#}
+{#                    <div class="w-commerce-commercecheckoutsummaryblockheader block-header">#}
+{#                        <h4 class="checkout-heading">{{ _('Items in Order') }}</h4>#}
+{#                    </div>#}
+{#                    <fieldset class="w-commerce-commercecheckoutblockcontent">#}
+{#                        <script type="text/x-wf-template"#}
+{#                                id="wf-template-619d8e8b85c224cbfbc36b42000000000086"></script>#}
+{#                        <div class="w-commerce-commercecheckoutorderitemslist"#}
+{#                             data-wf-collection="database.commerceOrder.userItems"#}
+{#                             data-wf-template-id="wf-template-619d8e8b85c224cbfbc36b42000000000086"></div>#}
+{#                        <div>#}
+{#                            <table border="1" id="cart_table" total_row="{{ length }}">#}
+{#                                <tr>#}
+{##}
+{#                                    <th colspan="2">#}
+{#                                        {{ _('Model Info') }}#}
+{#                                    </th>#}
+{#                                    <th>#}
+{#                                        {{ _('Quantity') }}#}
+{#                                    </th>#}
+{#                                    <th>#}
+{#                                        {{ _('Price') }}#}
+{#                                    </th>#}
+{#                                    <th></th>#}
+{#                                </tr>#}
+{#                                {% for order in order_relation_lst %}#}
+{#                                    <tr rowID="{{ loop.index }}" id="row_{{ loop.index }}" orderid="{{ order.id }}"#}
+{#                                        modelid="{{ order.model_type.id }}" single_price="{{ order.model_type.price }}">#}
+{##}
+{#                                        <td>#}
+{#                                            <img src="../../static/images/example/yamaha_yep621s.jpg" alt=""#}
+{#                                                 class="w-commerce-commercecartitemimage cart-item-image"/>#}
+{#                                        </td>#}
+{#                                        <td>#}
+{#                                            <div class="w-commerce-commercecartproductname">#}
+{#                                                {{ order.model_type.name }}#}
+{#                                            </div>#}
+{#                                        </td>#}
+{#                                        <td>#}
+{#                                           <div >{{ order.count }}</div>#}
+{#                                        </td>#}
+{#                                        <td>#}
+{#                                            <div class="fine-print-text">#}
+{#                                                <span>$</span>#}
+{#                                                <span focusID="{{ loop.index }}"#}
+{#                                                      id="price_{{ loop.index }}">{{ order.model_type.price }}</span>#}
+{#                                                <span>USD</span>#}
+{#                                            </div>#}
+{#                                        </td>#}
+{#                                    </tr>#}
+{#                                {% endfor %}#}
+{#                            </table>#}
+{#                        </div>#}
+{#                    </fieldset>#}
+{#                </div>#}
             </div>
             <div class="w-commerce-commercelayoutsidebar checkout-sidebar">
                 <div class="w-commerce-commercecheckoutordersummarywrapper">
