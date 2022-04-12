@@ -44,15 +44,15 @@ class Tools:
         Brand.insert_brands()  # the product brands
         Product.insert_products()  # the constant products for show
         # ProductPic.insert_pictures()  # the pictures of the constant products
-        # # products(100)  # 100 fake products
-        ModelType.insert_model_types()  # the constant model types for testing
         # ------
         # Tools.insert_pm()   # pre-stored product and mt info
+        Tools.insert_pm_glt(pm_lst_index, 'index_slide')  # (!!! This must be the first of all fake models !!! ) That 5 products in the index slide window
         Tools.insert_pm_glt(pm_lst_g, 'g')
         Tools.insert_pm_glt(pm_lst_l, 'l')
         Tools.insert_pm_glt(pm_lst_t, 't')
-        Tools.insert_pm_glt(pm_lst_index, 'index_slide')  # That 5 products in the index slide window
         # ------
+        # # products(100)  # 100 fake products
+        ModelType.insert_model_types()  # the constant model types for testing
         Cart.insert_carts()
         Order.insert_orders(20)
         OrderModelType.insert_omts()
