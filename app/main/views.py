@@ -144,7 +144,7 @@ def about_us():
     """
     This function renders the page of "about us"
     """
-    return render_template('main/about.html')
+    return render_template('main/about_siren.html')
 
 
 @main.route('/all-models')
