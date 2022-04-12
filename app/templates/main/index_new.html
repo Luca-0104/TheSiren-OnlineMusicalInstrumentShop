@@ -147,7 +147,7 @@
                                    class="w-commerce-commercecartopenlink nav-cart-button w-inline-block"
                                    open_="not"><img
                                         src="../../static/images/icon-shopping-bag.svg" loading="eager" alt="">
-                                    <div class="w-commerce-commercecartopenlinkcount cart-quantity">0</div>
+                                    <div class="w-commerce-commercecartopenlinkcount cart-quantity">{{ current_user.carts.count() }}</div>
                                 </a>
                                 <div id="cart_errupter" data-node-type="commerce-cart-container-wrapper"
                                      style="display:none"
