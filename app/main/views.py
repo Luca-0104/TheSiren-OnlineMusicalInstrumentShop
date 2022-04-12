@@ -127,6 +127,26 @@ def premium_intro():
     return render_template('main/premium.html')
 
 
+@main.route('/brand-intro/<int:brand_id>')
+def brand_intro(brand_id):
+    """
+    This function renders the introduction page of the specific brand
+    """
+    # get the brand obj
+    brand = Brand.query.get(brand_id)
+    # concatenate the prefix with brand name to get the template name
+    template_name = "main/brand_intro/{}.html".format(brand.name)
+    return render_template(template_name)
+
+
+@main.route('/about-us')
+def about_us():
+    """
+    This function renders the page of "about us"
+    """
+    return render_template('main/about.html')
+
+
 @main.route('/all-models')
 def go_all():
     """
