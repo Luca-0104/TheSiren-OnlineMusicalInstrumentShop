@@ -73,7 +73,7 @@
                              data-wf-cart-type="rightSidebar"
                              data-wf-cart-query="" data-wf-page-link-href-prefix=""
                              class="w-commerce-commerceuserwrapper">
-                            <a href="{{ url_for("main.change_language") }}"
+                            <a href="{{ url_for("main.change_language", next=request.args.next) }}"
                                class="w-commerce-commercecartopenlink nav-cart-button w-inline-block"><img
                                     src="../../static/images/icon-language.png" loading="eager" alt="">
                             </a>
