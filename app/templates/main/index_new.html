@@ -2,20 +2,8 @@
 
 <html data-wf-page="6221c36b59f1982c475ac5f9" data-wf-site="6221c36b59f1986aa65ac5f0">
     <head>
-        <meta charset="utf-8">
         <title>Siren</title>
-        <meta content="An E-Commerce template for brand curators. Create beautiful, minimal online retail stores in almost any category: homewares, furniture, beauty, fashion and more."
-              name="description">
-        <meta content="Verse - Webflow Ecommerce Website Template" property="og:title">
-        <meta content="An E-Commerce template for brand curators. Create beautiful, minimal online retail stores in almost any category: homewares, furniture, beauty, fashion and more."
-              property="og:description">
-        <meta content="Verse - Webflow Ecommerce Website Template" property="twitter:title">
-        <meta content="An E-Commerce template for brand curators. Create beautiful, minimal online retail stores in almost any category: homewares, furniture, beauty, fashion and more."
-              property="twitter:description">
-        <meta property="og:type" content="website">
-        <meta content="summary_large_image" name="twitter:card">
-        <meta content="width=device-width, initial-scale=1" name="viewport">
-        <meta content="Webflow" name="generator">
+        <link rel="icon" href="../../static/images/half-logo.png">
 
         <link href="../../static/css/normalize.css" rel="stylesheet" type="text/css">
         <link href="../../static/css/webflow.css" rel="stylesheet" type="text/css">
@@ -378,7 +366,7 @@
                         <div class="container align-center one animate fadeUp">
                             <h1 id="slide-product-name"></h1>
 
-                            <div style="font-family: 'Montseratt',SansSerif; font-size: 14px;
+                            <div style="font-family: 'Montseratt',SansSerif; font-size: 17px; font-weight: lighter; margin-top: 10%; line-height: 27px;;
                             font-weight: lighter; margin-top: 10%;" id="slide-text"></div>
                             <div class="button-row justify-content-center">
                                 <a id="slide-start-browsing" href="#" class="button bg-white-faded w-inline-block">
@@ -429,7 +417,7 @@
                 <div class="w-layout-grid featured-products-grid  bg-primary-dark">
                     <!-- Left text -->
                     <div class="featured-items-title fade-in-text">
-                        <h3 class="large-heading featured-items- ">Featured<br>Collection</h3>
+                        <h3 class="large-heading featured-items- ">{{ _('Featured') }}<br>{{ _('Collection') }}</h3>
                     </div>
                     <!-- Right listing -->
                     <div class="w-dyn-list">
@@ -738,8 +726,8 @@
                         <div class="container justify-content-between">
                             <h3>{{ _('About Us') }}</h3>
                             <div class="large-text">
-                                Siren is an online instrument e-commerce website. We provide up-to-date services for
-                                modern performers, numerous renowned brands are currently in cooperation.
+                                {{ _('Siren is an online instrument e-commerce website. We provide up-to-date services for
+                                        modern performers, numerous renowned brands are currently in cooperation.')}}
                             </div>
                             <div class="button-row">
                                 <a href="{{ url_for("main.about_us") }}" class="button bg-primary-dark w-inline-block">
@@ -918,9 +906,9 @@
                 <div class="container justify-content-between">
                     <h3>{{ _('Join') }}</h3>
                     <div>
-                        <div class="large-text">Join Us with the least cost while receiving
-                            great benefits. Regular sales and exclusive limited editions will be available
-                            and only for members.
+                        <div class="large-text">{{ _('Join Us with the least cost while receiving
+                                great benefits. Regular sales and exclusive limited editions will be available
+                                and only for members.')}}
                         </div>
                         <div class="button-row">
                             <a href="{{ url_for("main.premium_intro") }}" class="button bg-white-faded w-inline-block">
@@ -1332,9 +1320,9 @@
                         <div>
                             <div class="uppercase-text links-grid-title">{{ _('Company') }}</div>
                             <div class="links-grid">
-                                <a href="about.html" class="list-link">About us</a>
-                                <a href="contact.html" class="list-link">Contect us</a>
-                                <a href="refund-policy.html" class="list-link">Premium</a>
+                                <a href="about.html" class="list-link">{{ _('About us')}}</a>
+                                <a href="contact.html" class="list-link">{{ _('Contect us')}}</a>
+                                <a href="refund-policy.html" class="list-link">{{ _('Premium') }}</a>
                             </div>
                         </div>
                         <div>
