@@ -102,7 +102,11 @@ def remove_cart_relation():
     """
     if request.method == 'POST':
         # get the if of the cart relation that we want to remove
-        cart_id = request.form['cart_id']
+        cart_id = request.form.get("cart_id")
+
+        if cart_id is None:
+            current_app.logger.error("info not gotten from Ajax")
+            return jsonify({"returnValue": 1})
 
         # query the cart relation from database
         cart_relation = Cart.query.get(cart_id)

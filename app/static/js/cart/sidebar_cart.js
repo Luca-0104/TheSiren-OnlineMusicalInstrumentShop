@@ -16,4 +16,56 @@ $(document).ready(function (){
         cart_errupter.prop('style', 'display:none;');
         sidebar_cart.attr('open_','not');
     })
+
+    /* Update the display of total payment */
+    update_payment_display();
+
+    /* When the remove btn is clicked */
+    $(".cart-item-remove-btn").on("click", function (){
+        //get the db id of this item
+        let cartID = $(this).attr("cart-id");
+        //send Ajax request to server to remove this cart relation
+        remove_cart_relation(cartID);
+    });
 });
+
+/**
+ * This function updates the display of the total payment
+ */
+function update_payment_display(){
+    /* calculate the total payment of the items in this cart */
+    let totalPayment = 0;
+    $(".cart-item-price").each(function (){
+        totalPayment +=  parseFloat($(this).html()) * parseFloat($(this).attr("item-count"));
+    });
+    //set the payment display
+    $("#number-subtotal").text(totalPayment);
+}
+
+/*
+    ------------------------------ functions using Ajax ------------------------------
+ */
+
+/**
+ * This function sends Ajax request to server to remove the specific cart relation
+ * @param cartID The db id of the cart relation that we wanna remove
+ */
+function remove_cart_relation(cartID){
+    $.post("/api/cart/remove-cart-relation", {
+        "cart_id": cartID
+
+    }).done(function (response){
+        // get from server (backend)
+        let returnValue = response['returnValue'];
+
+        if (returnValue === 0) {    //success
+            /* delete the displaying of this cart item */
+            //concatenate the db id with prefix to get the HTML id of this cart item
+            let id = "#cart-item-" + cartID
+            $(id).remove();
+
+            /* update the total payment */
+            update_payment_display();
+        }
+    });
+}
