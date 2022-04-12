@@ -655,24 +655,23 @@ pm_lst = [
                 [
                     'l-p19m1-1.png',
                     'l-p19m1-2.png',
-                    'l-p19m1-3.png',
-                    'l-p19m1-4.png'
+                    'l-p19m1-3.png'
                 ]
             ],
             # model 2 ----------------------------------------------------------
-            [
-                'PRESTIGE 4713R',  # model name
-                "The spirit of the Buffet Crampon english horn is the spitting image of that of the brand’s oboes: its acoustic qualities and precision of intonation fit the requirements of both orchestral and chamber music.",
-                # m description
-                27500,  # m price
-                4,  # kg
-                [
-                    'l-p19m1-1.png',
-                    'l-p19m1-2.png',
-                    'l-p19m1-3.png',
-                    'l-p19m2-1.png'
-                ]
-            ],
+            # [
+            #     'PRESTIGE 4713R',  # model name
+            #     "The spirit of the Buffet Crampon english horn is the spitting image of that of the brand’s oboes: its acoustic qualities and precision of intonation fit the requirements of both orchestral and chamber music.",
+            #     # m description
+            #     27500,  # m price
+            #     4,  # kg
+            #     [
+            #         'l-p19m1-1.png',
+            #         'l-p19m1-2.png',
+            #         'l-p19m1-3.png',
+            #         'l-p19m2-1.png'
+            #     ]
+            # ],
             # model 3 ----------------------------------------------------------
             # []
         ]
@@ -696,8 +695,7 @@ pm_lst = [
                     'l-p20m1-1.png',
                     'l-p20m1-2.png',
                     'l-p20m1-3.png',
-                    'l-p20m1-4.png',
-                    'l-p20m1-5.png'
+                    'l-p20m1-4.png'
                 ]
             ],
             # model 2 ----------------------------------------------------------
@@ -737,9 +735,9 @@ pm_lst = [
     # product 22 ----------------------------------------------------
     [
         "SELMER PARIS REFERENCE 54 ALTO SAXOPHONE",        # product name
-        1,                          # brand id
-        1,                          # cate id - C
-        7,                          # cate id - T
+        11,                          # brand id
+        2,                          # cate id - C
+        23,                          # cate id - T
         53,                         # cate id - A
         [                           # model type list
             # model 1 ----------------------------------------------------------
@@ -772,9 +770,9 @@ pm_lst = [
     # product 23 ----------------------------------------------------
     [
         "SELMER PARIS SA80 SERIES II SOPRANO SAXOPHONE",        # product name
-        1,                          # brand id
-        1,                          # cate id - C
-        7,                          # cate id - T
+        11,                          # brand id
+        2,                          # cate id - C
+        23,                          # cate id - T
         53,                         # cate id - A
         [                           # model type list
             # model 1 ----------------------------------------------------------
