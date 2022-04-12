@@ -16,4 +16,4 @@ $(document).ready(function (){
         cart_errupter.prop('style', 'display:none;');
         sidebar_cart.attr('open_','not');
     })
-})
+});
