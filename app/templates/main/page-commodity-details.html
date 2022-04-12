@@ -368,6 +368,8 @@
                 {# The video (right) #}
                 <video controls>
                     <source src="{{ model.video_address }}" type="video/mp4">
+                    <source src="{{ model.video_address }}" type="video/ogg">
+                    <source src="{{ model.video_address }}" type="video/webm">
                 </video>
             </div>
           </div>
@@ -377,6 +379,10 @@
       <br><br>
   {% endif %}
 
+  {# radio section about this model #}
+  {% if model.radio_address != None and model.radio_address != "" %}
+
+  {% endif %}
 
   {# about this brand #}
   <div class="section bg-primary-dark wf-section">
