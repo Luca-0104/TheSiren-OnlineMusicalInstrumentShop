@@ -104,7 +104,7 @@ class Tools:
                 video_address = ""
                 # if there is a video
                 if len(mt_info) == 6:
-                    video_address = mt_info[5]
+                    video_address = 'upload/model_type/videos/{}'.format(mt_info[5])
                 # generate some random info
                 stock = random.randint(100, 500)
                 sales = random.randint(0, 300)

@@ -367,9 +367,7 @@
             <div class="container">
                 {# The video (right) #}
                 <video controls>
-                    <source src="{{ model.video_address }}" type="video/mp4">
-                    <source src="{{ model.video_address }}" type="video/ogg">
-                    <source src="{{ model.video_address }}" type="video/webm">
+                    <source src="{{ url_for("static", filename=model.video_address) }}" type="video/mp4">
                 </video>
             </div>
           </div>
