@@ -44,15 +44,15 @@ class Tools:
         Brand.insert_brands()  # the product brands
         Product.insert_products()  # the constant products for show
         # ProductPic.insert_pictures()  # the pictures of the constant products
-        # # products(100)  # 100 fake products
-        ModelType.insert_model_types()  # the constant model types for testing
         # ------
         # Tools.insert_pm()   # pre-stored product and mt info
+        Tools.insert_pm_glt(pm_lst_index, 'index_slide')  # (!!! This must be the first of all fake models !!! ) That 5 products in the index slide window
         Tools.insert_pm_glt(pm_lst_g, 'g')
         Tools.insert_pm_glt(pm_lst_l, 'l')
         Tools.insert_pm_glt(pm_lst_t, 't')
-        Tools.insert_pm_glt(pm_lst_index, 'index_slide')  # That 5 products in the index slide window
         # ------
+        # # products(100)  # 100 fake products
+        ModelType.insert_model_types()  # the constant model types for testing
         Cart.insert_carts()
         Order.insert_orders(20)
         OrderModelType.insert_omts()
@@ -102,9 +102,10 @@ class Tools:
                 weight = mt_info[3]
                 pic_lst = mt_info[4]
                 video_address = ""
-                # if there is a video
+                # if there is a video (no audio)
                 if len(mt_info) == 6:
-                    video_address = mt_info[5]
+                    video_address = 'upload/model_type/videos/{}'.format(mt_info[5])
+
                 # generate some random info
                 stock = random.randint(100, 500)
                 sales = random.randint(0, 300)
@@ -125,6 +126,18 @@ class Tools:
                                    video_address=video_address)
                 # add to db session
                 db.session.add(new_mt)
+
+                """ add audio relation if there has some """
+                # if there is a list of audio (may be no video, but at least the video section should be "")
+                if len(mt_info) == 7:
+                    # read the audio addresses
+                    audio_name_lst = mt_info[6]
+                    for audio_name in audio_name_lst:
+                        audio_address = 'upload/model_type/audios/{}'.format(audio_name)
+                        # create a new Audio obj
+                        new_audio = Audio(address=audio_address, model_type=new_mt)
+                        db.session.add(new_audio)
+                    db.session.commit()
 
                 """ create picture objects for this mt """
                 for pic_name in pic_lst:
@@ -833,7 +846,7 @@ class ModelType(BaseModel):
     release_time = db.Column(db.DateTime(), index=True, default=datetime.utcnow)
     video_address = db.Column(db.String)    # video
     # 1 model -> n addresses, 1 address -> 1 model
-    audio_address = db.Column(db.String)    # audio
+    audio_addresses = db.relationship('Audio', backref='model_type', lazy='dynamic')    # audio
     is_deleted = db.Column(db.Boolean, default=False)
     # 1 user(staff) --> n model type
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))

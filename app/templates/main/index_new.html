@@ -2,34 +2,24 @@
 
 <html data-wf-page="6221c36b59f1982c475ac5f9" data-wf-site="6221c36b59f1986aa65ac5f0">
     <head>
-        <meta charset="utf-8">
-        <title>Verse - Webflow Ecommerce Website Template</title>
-        <meta content="An E-Commerce template for brand curators. Create beautiful, minimal online retail stores in almost any category: homewares, furniture, beauty, fashion and more."
-              name="description">
-        <meta content="Verse - Webflow Ecommerce Website Template" property="og:title">
-        <meta content="An E-Commerce template for brand curators. Create beautiful, minimal online retail stores in almost any category: homewares, furniture, beauty, fashion and more."
-              property="og:description">
-        <meta content="Verse - Webflow Ecommerce Website Template" property="twitter:title">
-        <meta content="An E-Commerce template for brand curators. Create beautiful, minimal online retail stores in almost any category: homewares, furniture, beauty, fashion and more."
-              property="twitter:description">
-        <meta property="og:type" content="website">
-        <meta content="summary_large_image" name="twitter:card">
-        <meta content="width=device-width, initial-scale=1" name="viewport">
-        <meta content="Webflow" name="generator">
+        <title>Siren</title>
+        <link rel="icon" href="../../static/images/half-logo.png">
 
         <link href="../../static/css/normalize.css" rel="stylesheet" type="text/css">
         <link href="../../static/css/webflow.css" rel="stylesheet" type="text/css">
         <link href="../../static/css/jacks-supercool-site-c6dd88.webflow.css" rel="stylesheet" type="text/css">
         <link href="../../static/css/main/index.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="../../static/css/main/reset.css">
-        <link id ="index" rel="stylesheet" href="../../static/css/main/index2.css">
+        <link id="index" rel="stylesheet" href="../../static/css/main/index2.css">
+        <link id="index" rel="stylesheet" href="../../static/css/flash-bar.css">
         <link href="../../static/css/loader.css" rel="stylesheet" type="text/css">
         <link href="../../static/css/main/main_animations.css" type="text/css">
         <link href="https://fonts.font.im/css?family=Montserrat" rel="stylesheet">
-        <!-- [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif] -->
+        <!-- [if lt IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"
+                type="text/javascript"></script><![endif] -->
         <script type="text/javascript">
-            !function (o, c)
-            {
+            !function (o, c) {
                 var n = c.documentElement, t = " w-mod-";
                 n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
             }
@@ -43,37 +33,50 @@
         {# css for product box #}
         <link rel="stylesheet" href="../../static/css/main/product_box.css">
         <style>
-            body
-            {
+            body {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
             }
 
-            select, input, textarea
-            {
+            select, input, textarea {
                 -webkit-appearance: none;
             }
         </style>
     </head>
     <body class="body">
 
-    <!--loader-->
-    <div class="loader">
-        <div class="loader-center">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
+        <!--loader-->
+        <div class="loader">
+            <div class="loader-center">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-    </div>
+
+        <!-- Section of Flash Bar -->
+        <!--<div class="aabar">
+            <div class="main-container">
+                <div class="flash-contents">
+                    <div class="flash-text">
+                        Test flash
+                        <a href="{{ url_for('main.go_all') }}" target="_blank">View instruments here</a>
+                    </div>
+                </div>
+            </div>
+            <img src="../../static/images/icon-cross.svg" loading="lazy" alt="" class="flash-cross">
+        </div>-->
+
         <!-- Section of Announcement Bar -->
         <div class="announcement-bar">
             <div class="main-container">
                 <div class="announcement-contents">
-                    <div class="announcement-text">Welcome to Verse – An E-Commerce template for brand curators.
-                        <a href="https://mmra.re/portfolio" target="_blank">View all templates here</a>
+                    <div class="announcement-text">
+                        Welcome to Siren – Selects online music instrument shop for you.
+                        <a href="{{ url_for('main.go_all') }}" target="_blank">View instruments here</a>
                     </div>
                 </div>
             </div>
@@ -87,8 +90,9 @@
             <div class="main-container">
                 <div class="navbar-top">
                     <!-- Middel part -->
-                    <a href="index.html" aria-current="page" class="w-inline-block w--current">
-                        <img src="../../static/images/White-logo-no-background.svg" loading="eager" alt="" height="45px">
+                    <a href="{{ url_for('main.index') }}" aria-current="page" class="w-inline-block w--current">
+                        <img src="../../static/images/White-logo-no-background.svg" loading="eager" alt=""
+                             height="45px">
                     </a>
 
                     <!-- Right part -->
@@ -104,136 +108,189 @@
                             </a>
                         {% endif %}
 
+                        <!-- change language-->
+                        <div data-node-type="commerce-cart-wrapper" data-open-product=""
+                             data-wf-cart-type="rightSidebar"
+                             data-wf-cart-query="" data-wf-page-link-href-prefix=""
+                             class="w-commerce-commerceuserwrapper">
+                            <a href="{{ url_for("main.change_language") }}"
+                               class="w-commerce-commercecartopenlink nav-cart-button w-inline-block"><img
+                                    src="../../static/images/icon-language.png" loading="eager" alt="">
+                            </a>
+                        </div>
+
+                        <!-- user profile button-->
+                        {% if current_user.is_authenticated %}
+                            <div data-node-type="commerce-cart-wrapper" data-open-product=""
+                                 data-wf-cart-type="rightSidebar"
+                                 data-wf-cart-query="" data-wf-page-link-href-prefix=""
+                                 class="w-commerce-commerceuserwrapper">
+                                <a href="/user_profile/{{ current_user.id }}"
+                                   class="w-commerce-commercecartopenlink nav-cart-button w-inline-block"><img
+                                        src="../../static/images/icon-user.png" loading="eager" alt="">
+                                </a>
+                            </div>
+                        {% endif %}
+
+
                         <!-- Cart -->
                         {% if current_user.is_authenticated %}
-                            <div data-node-type="commerce-cart-wrapper" data-open-product="" data-wf-cart-type="rightSidebar"
-                             data-wf-cart-query="" data-wf-page-link-href-prefix="" class="w-commerce-commercecartwrapper" >
+                            <div data-node-type="commerce-cart-wrapper" data-open-product=""
+                                 data-wf-cart-type="rightSidebar"
+                                 data-wf-cart-query="" data-wf-page-link-href-prefix=""
+                                 class="w-commerce-commercecartwrapper">
 
-                            {# cart btn on the nav bar #}
-                            <a id="sidebar_cart" href="{% if current_user.is_authenticated %} # {% else %} {{ url_for("auth.login") }} {% endif %}" data-node-type="commerce-cart-open-link"
-                               class="w-commerce-commercecartopenlink nav-cart-button w-inline-block" open_="not"><img
-                                    src="../../static/images/icon-shopping-bag.svg" loading="eager" alt="">
-                                <div class="w-commerce-commercecartopenlinkcount cart-quantity">0</div>
-                            </a>
-                            <div id="cart_errupter" data-node-type="commerce-cart-container-wrapper" style="display:none"
-                                 class="w-commerce-commercecartcontainerwrapper w-commerce-commercecartcontainerwrapper--cartType-rightSidebar">
-                                <div data-node-type="commerce-cart-container"
-                                     class="w-commerce-commercecartcontainer cart-container">
-                                    <div class="w-commerce-commercecartheader cart-header">
-                                        <h4 class="w-commerce-commercecartheading">{{ _('Your Cart') }}</h4>
-                                        <a id="close_cart" href="#" data-node-type="commerce-cart-close-link" class="w-commerce-commercecartcloselink close-cart-button w-inline-block">
-                                            <img src="../../static/images/icon-cross-large.svg" loading="lazy" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="w-commerce-commercecartformwrapper">
-                                        {# The outer container of the cart items #}
-                                        {% if current_user.carts.count() != 0 %}
-                                            <form data-node-type="commerce-cart-form" class="w-commerce-commercecartform">
-                                                <script type="text/x-wf-template" id="wf-template-dab1a8fd-38ef-ff9e-e737-a0bdf6abf424"></script>
+                                {# cart btn on the nav bar #}
+                                <a id="sidebar_cart"
+                                   href="{% if current_user.is_authenticated %} # {% else %} {{ url_for("auth.login") }} {% endif %}"
+                                   data-node-type="commerce-cart-open-link"
+                                   class="w-commerce-commercecartopenlink nav-cart-button w-inline-block"
+                                   open_="not"><img
+                                        src="../../static/images/icon-shopping-bag.svg" loading="eager" alt="">
+                                    <div class="w-commerce-commercecartopenlinkcount cart-quantity">0</div>
+                                </a>
+                                <div id="cart_errupter" data-node-type="commerce-cart-container-wrapper"
+                                     style="display:none"
+                                     class="w-commerce-commercecartcontainerwrapper w-commerce-commercecartcontainerwrapper--cartType-rightSidebar">
+                                    <div data-node-type="commerce-cart-container"
+                                         class="w-commerce-commercecartcontainer cart-container">
+                                        <div class="w-commerce-commercecartheader cart-header">
+                                            <h4 class="w-commerce-commercecartheading">{{ _('Your Cart') }}</h4>
+                                            <a id="close_cart" href="#" data-node-type="commerce-cart-close-link"
+                                               class="w-commerce-commercecartcloselink close-cart-button w-inline-block">
+                                                <img src="../../static/images/icon-cross-large.svg" loading="lazy"
+                                                     alt="">
+                                            </a>
+                                        </div>
+                                        <div class="w-commerce-commercecartformwrapper">
+                                            {# The outer container of the cart items #}
+                                            {% if current_user.carts.count() != 0 %}
+                                                <form data-node-type="commerce-cart-form"
+                                                      class="w-commerce-commercecartform">
+                                                    <script type="text/x-wf-template"
+                                                            id="wf-template-dab1a8fd-38ef-ff9e-e737-a0bdf6abf424"></script>
 
-                                                <div class="w-commerce-commercecartlist cart-list"
-                                                     data-wf-collection="database.commerceOrder.userItems"
-                                                     data-wf-template-id="wf-template-dab1a8fd-38ef-ff9e-e737-a0bdf6abf424">
+                                                    <div class="w-commerce-commercecartlist cart-list"
+                                                         data-wf-collection="database.commerceOrder.userItems"
+                                                         data-wf-template-id="wf-template-dab1a8fd-38ef-ff9e-e737-a0bdf6abf424">
 
-                                                    {# each cart item in the cart of this user #}
-                                                    {% for cart_item in current_user.carts %}
-                                                        <div id="cart-item-{{ cart_item.id }}" class="w-commerce-commercecartitem cart-item">
-                                                            {# model image (left part) #}
-                                                            <img
-                                                                data-wf-bindings="%5B%7B%22src%22%3A%7B%22type%22%3A%22ImageRef%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.sku.f_main_image_4dr%22%7D%7D%5D"
-                                                                src="{{ url_for('static', filename=cart_item.model_type.pictures[0].address) }}"
-                                                                alt="" class="w-commerce-commercecartitemimage cart-item-image">
+                                                        {# each cart item in the cart of this user #}
+                                                        {% for cart_item in current_user.carts %}
+                                                            <div id="cart-item-{{ cart_item.id }}"
+                                                                 class="w-commerce-commercecartitem cart-item">
+                                                                {# model image (left part) #}
+                                                                <img
+                                                                        data-wf-bindings="%5B%7B%22src%22%3A%7B%22type%22%3A%22ImageRef%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.sku.f_main_image_4dr%22%7D%7D%5D"
+                                                                        src="{{ url_for('static', filename=cart_item.model_type.pictures[0].address) }}"
+                                                                        alt=""
+                                                                        class="w-commerce-commercecartitemimage cart-item-image">
 
-                                                            {# model info (middle part) #}
-                                                            <div class="w-commerce-commercecartiteminfo cart-item-details">
-                                                                {# model name #}
-                                                                <div data-wf-bindings="%5B%7B%22innerHTML%22%3A%7B%22type%22%3A%22PlainText%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.product.f_name_%22%7D%7D%5D" class="w-commerce-commercecartproductname">
-                                                                    {{ cart_item.model_type.name }}
+                                                                {# model info (middle part) #}
+                                                                <div class="w-commerce-commercecartiteminfo cart-item-details">
+                                                                    {# model name #}
+                                                                    <div data-wf-bindings="%5B%7B%22innerHTML%22%3A%7B%22type%22%3A%22PlainText%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.product.f_name_%22%7D%7D%5D"
+                                                                         class="w-commerce-commercecartproductname">
+                                                                        {{ cart_item.model_type.name }}
+                                                                    </div>
+
+                                                                    {# model price #}
+                                                                    <div data-wf-bindings="%5B%7B%22innerHTML%22%3A%7B%22type%22%3A%22CommercePrice%22%2C%22filter%22%3A%7B%22type%22%3A%22price%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.price%22%7D%7D%5D"
+                                                                         class="fine-print-text">
+                                                                        $&nbsp;<span class="cart-item-price"
+                                                                                     item-count="{{ cart_item.count }}">{{ cart_item.model_type.price }}</span>&nbsp;USD
+                                                                    </div>
+
+                                                                    <script type="text/x-wf-template"
+                                                                            id="wf-template-dab1a8fd-38ef-ff9e-e737-a0bdf6abf42a">%3Cli%3E%3Cspan%20data-wf-bindings%3D%22%255B%257B%2522innerHTML%2522%253A%257B%2522type%2522%253A%2522PlainText%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems.0.product.f_sku_properties_3dr%255B%255D.name%2522%257D%257D%255D%22%20class%3D%22w-dyn-bind-empty%22%3E%3C%2Fspan%3E%3Cspan%3E%3A%20%3C%2Fspan%3E%3Cspan%20data-wf-bindings%3D%22%255B%257B%2522innerHTML%2522%253A%257B%2522type%2522%253A%2522CommercePropValues%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems.0.product.f_sku_properties_3dr%255B%255D%2522%257D%257D%255D%22%20class%3D%22w-dyn-bind-empty%22%3E%3C%2Fspan%3E%3C%2Fli%3E</script>
+                                                                    <ul data-wf-bindings="%5B%7B%22optionSets%22%3A%7B%22type%22%3A%22CommercePropTable%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.product.f_sku_properties_3dr[]%22%7D%7D%2C%7B%22optionValues%22%3A%7B%22type%22%3A%22CommercePropValues%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.sku.f_sku_values_3dr%22%7D%7D%5D"
+                                                                        class="w-commerce-commercecartoptionlist"
+                                                                        data-wf-collection="database.commerceOrder.userItems.0.product.f_sku_properties_3dr"
+                                                                        data-wf-template-id="wf-template-dab1a8fd-38ef-ff9e-e737-a0bdf6abf42a"></ul>
+
+                                                                    {# remove btn #}
+                                                                    <a href="#"
+                                                                       data-wf-bindings="%5B%7B%22data-commerce-sku-id%22%3A%7B%22type%22%3A%22ItemRef%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.sku.id%22%7D%7D%5D"
+                                                                       class="w-inline-block cart-item-remove-btn"
+                                                                       data-wf-cart-action="remove-item"
+                                                                       data-commerce-sku-id="61a56467407a5a926e9ea7a7"
+                                                                       cart-id="{{ cart_item.id }}">
+                                                                        <div class="fine-print-text remove-link">
+                                                                            Remove
+                                                                        </div>
+                                                                    </a>
                                                                 </div>
 
-                                                                {# model price #}
-                                                                <div data-wf-bindings="%5B%7B%22innerHTML%22%3A%7B%22type%22%3A%22CommercePrice%22%2C%22filter%22%3A%7B%22type%22%3A%22price%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.price%22%7D%7D%5D" class="fine-print-text">
-                                                                    $&nbsp;<span class="cart-item-price" item-count="{{ cart_item.count }}">{{ cart_item.model_type.price }}</span>&nbsp;USD
-                                                                </div>
-
-                                                                <script type="text/x-wf-template" id="wf-template-dab1a8fd-38ef-ff9e-e737-a0bdf6abf42a">%3Cli%3E%3Cspan%20data-wf-bindings%3D%22%255B%257B%2522innerHTML%2522%253A%257B%2522type%2522%253A%2522PlainText%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems.0.product.f_sku_properties_3dr%255B%255D.name%2522%257D%257D%255D%22%20class%3D%22w-dyn-bind-empty%22%3E%3C%2Fspan%3E%3Cspan%3E%3A%20%3C%2Fspan%3E%3Cspan%20data-wf-bindings%3D%22%255B%257B%2522innerHTML%2522%253A%257B%2522type%2522%253A%2522CommercePropValues%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems.0.product.f_sku_properties_3dr%255B%255D%2522%257D%257D%255D%22%20class%3D%22w-dyn-bind-empty%22%3E%3C%2Fspan%3E%3C%2Fli%3E</script>
-                                                                <ul data-wf-bindings="%5B%7B%22optionSets%22%3A%7B%22type%22%3A%22CommercePropTable%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.product.f_sku_properties_3dr[]%22%7D%7D%2C%7B%22optionValues%22%3A%7B%22type%22%3A%22CommercePropValues%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.sku.f_sku_values_3dr%22%7D%7D%5D"
-                                                                    class="w-commerce-commercecartoptionlist"
-                                                                    data-wf-collection="database.commerceOrder.userItems.0.product.f_sku_properties_3dr"
-                                                                    data-wf-template-id="wf-template-dab1a8fd-38ef-ff9e-e737-a0bdf6abf42a"></ul>
-
-                                                                {# remove btn #}
-                                                                <a href="#"
-                                                                   data-wf-bindings="%5B%7B%22data-commerce-sku-id%22%3A%7B%22type%22%3A%22ItemRef%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.sku.id%22%7D%7D%5D"
-                                                                   class="w-inline-block cart-item-remove-btn" data-wf-cart-action="remove-item"
-                                                                   data-commerce-sku-id="61a56467407a5a926e9ea7a7" cart-id="{{ cart_item.id }}">
-                                                                    <div class="fine-print-text remove-link">Remove</div>
-                                                                </a>
+                                                                {# count number (right part) #}
+                                                                <input type="text" required="" pattern="^[0-9]+$"
+                                                                       inputmode="numeric"
+                                                                       data-wf-bindings="%5B%7B%22value%22%3A%7B%22type%22%3A%22Number%22%2C%22filter%22%3A%7B%22type%22%3A%22numberPrecision%22%2C%22params%22%3A%5B%220%22%2C%22numberPrecision%22%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.count%22%7D%7D%2C%7B%22data-commerce-sku-id%22%3A%7B%22type%22%3A%22ItemRef%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.sku.id%22%7D%7D%5D"
+                                                                       data-wf-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22product%3Aec-product-type%22%3A%7B%22ne%22%3A%22e348fd487d0102946c9179d2a94bb613%22%2C%22type%22%3A%22Option%22%7D%7D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0%22%7D"
+                                                                       class="w-commerce-commercecartquantity"
+                                                                       name="quantity"
+                                                                       data-wf-cart-action="update-item-quantity"
+                                                                       data-commerce-sku-id="61a56467407a5a926e9ea7a7"
+                                                                       value="{{ cart_item.count }}">
                                                             </div>
+                                                        {% endfor %}
 
-                                                            {# count number (right part) #}
-                                                            <input type="text" required="" pattern="^[0-9]+$"
-                                                                   inputmode="numeric"
-                                                                   data-wf-bindings="%5B%7B%22value%22%3A%7B%22type%22%3A%22Number%22%2C%22filter%22%3A%7B%22type%22%3A%22numberPrecision%22%2C%22params%22%3A%5B%220%22%2C%22numberPrecision%22%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.count%22%7D%7D%2C%7B%22data-commerce-sku-id%22%3A%7B%22type%22%3A%22ItemRef%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.sku.id%22%7D%7D%5D"
-                                                                   data-wf-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22product%3Aec-product-type%22%3A%7B%22ne%22%3A%22e348fd487d0102946c9179d2a94bb613%22%2C%22type%22%3A%22Option%22%7D%7D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0%22%7D"
-                                                                   class="w-commerce-commercecartquantity" name="quantity"
-                                                                   data-wf-cart-action="update-item-quantity"
-                                                                   data-commerce-sku-id="61a56467407a5a926e9ea7a7" value="{{ cart_item.count }}">
+                                                    </div>
+
+                                                    <div class="w-commerce-commercecartfooter cart-footer">
+                                                        {# The total payemnt #}
+                                                        <div class="w-commerce-commercecartlineitem">
+                                                            <div>{{ _('Subtotal') }}</div>
+                                                            <div class="w-commerce-commercecartordervalue">
+                                                                <span>$ </span><span id="number-subtotal"></span><span> USD</span>
+                                                            </div>
                                                         </div>
-                                                    {% endfor %}
-
-                                                </div>
-
-                                                <div class="w-commerce-commercecartfooter cart-footer">
-                                                    {# The total payemnt #}
-                                                    <div class="w-commerce-commercecartlineitem">
-                                                        <div>{{ _('Subtotal') }}</div>
-                                                        <div class="w-commerce-commercecartordervalue"><span>$ </span><span id="number-subtotal"></span><span> USD</span></div>
+                                                        {# The go to cart btn #}
+                                                        <div>
+                                                            <a href="{{ url_for("cart.show_my_cart") }}"
+                                                               value="Go to my cart"
+                                                               data-node-type="cart-checkout-button"
+                                                               class="w-commerce-commercecartcheckoutbutton button bg-primary-dark"
+                                                               data-loading-text="Hang Tight...">{{ _('Go to my cart') }}</a>
+                                                        </div>
                                                     </div>
-                                                    {# The go to cart btn #}
-                                                    <div>
-                                                        <a href="{{ url_for("cart.show_my_cart") }}" value="Go to my cart"
-                                                           data-node-type="cart-checkout-button"
-                                                           class="w-commerce-commercecartcheckoutbutton button bg-primary-dark"
-                                                           data-loading-text="Hang Tight...">{{ _('Go to my cart') }}</a>
-                                                    </div>
+                                                </form>
+
+
+                                                {# No item indication #}
+                                            {% else %}
+                                                <div class="w-commerce-commercecartemptystate">
+                                                    <div>{{ _('No items found.') }}</div>
                                                 </div>
-                                            </form>
+                                            {% endif %}
 
-
-                                        {# No item indication #}
-                                        {% else %}
-                                            <div class="w-commerce-commercecartemptystate">
-                                                <div>{{ _('No items found.') }}</div>
-                                            </div>
-                                        {% endif %}
-
-                                        <div style="display:none" data-node-type="commerce-cart-error"
-                                             class="w-commerce-commercecarterrorstate">
-                                            <div class="w-cart-error-msg"
-                                                 data-w-cart-quantity-error="Product is not available in this quantity."
-                                                 data-w-cart-general-error="Something went wrong when adding this item to the cart."
-                                                 data-w-cart-checkout-error="Checkout is disabled on this site."
-                                                 data-w-cart-cart_order_min-error="The order minimum was not met. Add more items to your cart to continue."
-                                                 data-w-cart-subscription_error-error="Before you purchase, please use your email invite to verify your address so we can send order updates.">
-                                                {{ _('Product is not available in this quantity.')}}
+                                            <div style="display:none" data-node-type="commerce-cart-error"
+                                                 class="w-commerce-commercecarterrorstate">
+                                                <div class="w-cart-error-msg"
+                                                     data-w-cart-quantity-error="Product is not available in this quantity."
+                                                     data-w-cart-general-error="Something went wrong when adding this item to the cart."
+                                                     data-w-cart-checkout-error="Checkout is disabled on this site."
+                                                     data-w-cart-cart_order_min-error="The order minimum was not met. Add more items to your cart to continue."
+                                                     data-w-cart-subscription_error-error="Before you purchase, please use your email invite to verify your address so we can send order updates.">
+                                                    {{ _('Product is not available in this quantity.') }}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         {% endif %}
 
                     </div>
 
                     <!-- Left part -->
                     <!-- Search -->
-                    <form action="/search" method="POST" id="w-node-dab1a8fd-38ef-ff9e-e737-a0bdf6abf40d-f6abf40a" class="nav-search-form w-form">
+                    <form action="/search" method="POST" id="w-node-dab1a8fd-38ef-ff9e-e737-a0bdf6abf40d-f6abf40a"
+                          class="nav-search-form w-form">
                         <!--<div class="w-inline-block">-->
-                           <input type="image" src="../../static/images/icon-search.svg" value="Search" class="w-button" alt="submit">
+                        <input type="image" src="../../static/images/icon-search.svg" value="Search" class="w-button"
+                               alt="submit">
                         <!--</div>-->
-                           <input type="search" class="search-form-input w-input" maxlength="256" name="key_word" placeholder="{{ _('Search here')}}" id="search-2" required="">
+                        <input type="search" class="search-form-input w-input" maxlength="256" name="key_word"
+                               placeholder="{{ _('Search here') }}" id="search-2" required="">
                     </form>
                 </div>
             </div>
@@ -242,7 +299,8 @@
         <!-- Lower Section of Top nav bar -->
         <div class="div-block">
             <div class="main-container">
-                <div data-collapse="small" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-nav">
+                <div data-collapse="small" data-animation="default" data-duration="400" data-easing="ease"
+                     data-easing2="ease" role="banner" class="navbar w-nav">
                     <div class="button bg-primary wide w-nav-button">
                         <div>{{ _('Menu') }}</div>
                     </div>
@@ -282,57 +340,62 @@
         <div class="bg-dark">
             {# slide pics in the index page #}
             <div class="grid-halves-section wf-section">
-{#                <img src="images/square-01.jpg" loading="lazy" sizes="100vw" srcset="images/square-01-p-500.jpeg 500w, images/square-01-p-800.jpeg 800w, images/square-01-p-1080.jpeg 1080w, images/square-01.jpg 1200w" alt="" class="grid-halves-image">#}
+                {#                <img src="images/square-01.jpg" loading="lazy" sizes="100vw" srcset="images/square-01-p-500.jpeg 500w, images/square-01-p-800.jpeg 800w, images/square-01-p-1080.jpeg 1080w, images/square-01.jpg 1200w" alt="" class="grid-halves-image">#}
                 <!-- the slideshow of the main categories of products -->
-{#                <div class="picture-panel-box">#}
-            {#    The big pictures in the slideshow#}
-{#            <ul class="pic-container">#}
+                {#                <div class="picture-panel-box">#}
+                {#    The big pictures in the slideshow#}
+                {#            <ul class="pic-container">#}
                 {#               clicking on each picture can goes into the page of products in corresponding category #}
-{#                <li class="pic"><a href="{{ url_for('main.products_in_category', category_name='digital') }}"></a></li>#}
-{#                <li class="pic"><a href="{{ url_for('main.products_in_category', category_name='instruments') }}"></a></li>#}
-{#                <li class="pic"><a href="{{ url_for('main.products_in_category', category_name='luxury') }}"></a></li>#}
-{#                <li class="pic"><a href="{{ url_for('main.products_in_category', category_name='sports') }}"></a></li>#}
-{#                <li class="pic"><a href="{{ url_for('main.products_in_category', category_name='digital') }}"></a></li>#}
-{#            </ul>#}
-{##}
-            {#        The mini dots in on the bottom of the slid window to show the current picture#}
-{#            <ul class="dot-group">#}
-{#                <li class="dot"></li>#}
-{#                <li class="dot"></li>#}
-{#                <li class="dot"></li>#}
-{#                <li class="dot"></li>#}
-{#                <li class="dot"></li>#}
-{#            </ul>#}
-{#        </div>#}
+                {#                <li class="pic"><a href="{{ url_for('main.products_in_category', category_name='digital') }}"></a></li>#}
+                {#                <li class="pic"><a href="{{ url_for('main.products_in_category', category_name='instruments') }}"></a></li>#}
+                {#                <li class="pic"><a href="{{ url_for('main.products_in_category', category_name='luxury') }}"></a></li>#}
+                {#                <li class="pic"><a href="{{ url_for('main.products_in_category', category_name='sports') }}"></a></li>#}
+                {#                <li class="pic"><a href="{{ url_for('main.products_in_category', category_name='digital') }}"></a></li>#}
+                {#            </ul>#}
+                {##}
+                {#        The mini dots in on the bottom of the slid window to show the current picture#}
+                {#            <ul class="dot-group">#}
+                {#                <li class="dot"></li>#}
+                {#                <li class="dot"></li>#}
+                {#                <li class="dot"></li>#}
+                {#                <li class="dot"></li>#}
+                {#                <li class="dot"></li>#}
+                {#            </ul>#}
+                {#        </div>#}
 
-        {#        product picture slide #}
-        {#            the outer box contains the picture list and picture selecting button #}
+                {#        product picture slide #}
+                {#            the outer box contains the picture list and picture selecting button #}
                 <div class="picture-panel-box">
                     <ul class="pic-container">
-                    {# loop through all the pictures to make each of them in an list item #}
+                        {# loop through all the pictures to make each of them in an list item #}
                         <li class="pic">
                             <a href="#">
-                                <img src="{{ url_for('static', filename='images/index_slide/pic36.png') }}" alt="product-picture1">
+                                <img src="{{ url_for('static', filename='images/index_slide/pic36.png') }}"
+                                     alt="product-picture1">
                             </a>
                         </li>
                         <li class="pic">
                             <a href="#">
-                                <img src="{{ url_for('static', filename='images/index_slide/pic12.jpg') }}" alt="product-picture1">
+                                <img src="{{ url_for('static', filename='images/index_slide/pic12.jpg') }}"
+                                     alt="product-picture1">
                             </a>
                         </li>
                         <li class="pic">
                             <a href="#">
-                                <img src="{{ url_for('static', filename='images/index_slide/pic24.jpg') }}" alt="product-picture1">
+                                <img src="{{ url_for('static', filename='images/index_slide/pic24.jpg') }}"
+                                     alt="product-picture1">
                             </a>
                         </li>
                         <li class="pic">
                             <a href="#">
-                                <img src="{{ url_for('static', filename='images/index_slide/pic17.jpg') }}" alt="product-picture1">
+                                <img src="{{ url_for('static', filename='images/index_slide/pic17.jpg') }}"
+                                     alt="product-picture1">
                             </a>
                         </li>
                         <li class="pic">
                             <a href="#">
-                                <img src="{{ url_for('static', filename='images/index_slide/pic35.png') }}" alt="product-picture1">
+                                <img src="{{ url_for('static', filename='images/index_slide/pic35.png') }}"
+                                     alt="product-picture1">
                             </a>
                         </li>
                     </ul>
@@ -360,12 +423,12 @@
                 <div class="section">
                     <div class="main-container">
                         <div class="container align-center one animate fadeUp">
-                            <h1>The New Home Collection</h1>
+                            <h1 id="slide-product-name"></h1>
 
-                            <div style="font-family: 'Montseratt',SansSerif; font-size: 14px;
+                            <div style="font-family: 'Montseratt',SansSerif; font-size: 17px; font-weight: lighter; margin-top: 10%; line-height: 27px;;
                             font-weight: lighter; margin-top: 10%;" id="slide-text"></div>
                             <div class="button-row justify-content-center">
-                                <a href="shop.html" class="button bg-white-faded w-inline-block">
+                                <a id="slide-start-browsing" href="#" class="button bg-white-faded w-inline-block">
                                     <div>{{ _('Start Browsing')}}</div>
                                 </a>
                             </div>
@@ -378,31 +441,31 @@
         <!-- Marquee Section -->
         <div class="marquee-section wf-section">
             <div class="marquee-contents">
-                <div class="uppercase-text marquee-text">Free shipping on orders over $1,000</div>
+                <div class="uppercase-text marquee-text">Free Shipping for Premium Member</div>
                 <img src="images/decorative-icon-furniture.svg" loading="lazy" alt="" class="marquee-icon">
-                <div class="uppercase-text marquee-text">Free shipping on orders over $1,000</div>
+                <div class="uppercase-text marquee-text">Selected Music Instrument</div>
                 <img src="images/decorative-icon-successful-delivery.svg" loading="lazy" alt="" class="marquee-icon">
-                <div class="uppercase-text marquee-text">Free shipping on orders over $1,000</div>
+                <div class="uppercase-text marquee-text">Professional Customer Service</div>
                 <img src="images/decorative-icon-truck.svg" loading="lazy" alt="" class="marquee-icon">
-                <div class="uppercase-text marquee-text">Free shipping on orders over $1,000</div>
+                <div class="uppercase-text marquee-text">Free Shipping for Premium Member</div>
                 <img src="images/decorative-icon-furniture.svg" loading="lazy" alt="" class="marquee-icon">
-                <div class="uppercase-text marquee-text">Free shipping on orders over $1,000</div>
+                <div class="uppercase-text marquee-text">Selected Music Instrument</div>
                 <img src="images/decorative-icon-successful-delivery.svg" loading="lazy" alt="" class="marquee-icon">
-                <div class="uppercase-text marquee-text">Free shipping on orders over $1,000</div>
+                <div class="uppercase-text marquee-text">Professional Customer Service</div>
                 <img src="images/decorative-icon-truck.svg" loading="lazy" alt="" class="marquee-icon">
-                <div class="uppercase-text marquee-text">Free shipping on orders over $1,000</div>
+                <div class="uppercase-text marquee-text">Free Shipping for Premium Member</div>
                 <img src="images/decorative-icon-furniture.svg" loading="lazy" alt="" class="marquee-icon">
-                <div class="uppercase-text marquee-text">Free shipping on orders over $1,000</div>
+                <div class="uppercase-text marquee-text">Selected Music Instrument</div>
                 <img src="images/decorative-icon-successful-delivery.svg" loading="lazy" alt="" class="marquee-icon">
-                <div class="uppercase-text marquee-text">Free shipping on orders over $1,000</div>
+                <div class="uppercase-text marquee-text">Professional Customer Service</div>
                 <img src="images/decorative-icon-truck.svg" loading="lazy" alt="" class="marquee-icon">
-                <div class="uppercase-text marquee-text">Free shipping on orders over $1,000</div>
+                <div class="uppercase-text marquee-text">Free Shipping for Premium Member</div>
                 <img src="images/decorative-icon-furniture.svg" loading="lazy" alt="" class="marquee-icon">
-                <div class="uppercase-text marquee-text">Free shipping on orders over $1,000</div>
+                <div class="uppercase-text marquee-text">Selected Music Instrument</div>
                 <img src="images/decorative-icon-successful-delivery.svg" loading="lazy" alt="" class="marquee-icon">
-                <div class="uppercase-text marquee-text">Free shipping on orders over $1,000</div>
+                <div class="uppercase-text marquee-text">Professional Customer Service</div>
                 <img src="images/decorative-icon-truck.svg" loading="lazy" alt="" class="marquee-icon">
-                <div class="uppercase-text marquee-text">Free shipping on orders over $1,000</div>
+                <div class="uppercase-text marquee-text">Free Shipping for Premium Member</div>
             </div>
         </div>
 
@@ -413,14 +476,15 @@
                 <div class="w-layout-grid featured-products-grid  bg-primary-dark">
                     <!-- Left text -->
                     <div class="featured-items-title fade-in-text">
-                        <h3 class="large-heading featured-items- ">Featured<br>Collection</h3>
+                        <h3 class="large-heading featured-items- ">{{ _('Featured') }}<br>{{ _('Collection') }}</h3>
                     </div>
                     <!-- Right listing -->
                     <div class="w-dyn-list">
                         <div role="list" class="product-thirds-grid featured-products w-dyn-items">
                             {% for rec_view_pro in rec_views %}
                                 <div role="listitem" class="w-dyn-item product-box" style="padding: 10">
-                                    <a href="{{ url_for('main.model_type_details', mt_id=rec_view_pro.id) }}" class="product-preview-link w-inline-block">
+                                    <a href="{{ url_for('main.model_type_details', mt_id=rec_view_pro.id) }}"
+                                       class="product-preview-link w-inline-block">
                                         <div class="list_img_container">
                                             <!-- product picture -->
                                             {% if rec_view_pro.pictures.first() == None %}
@@ -443,19 +507,23 @@
                                     <div class="box-product-info-card">
                                         {# product price #}
                                         <div class="price-container">
-                                            <div class="new-price"><span>$</span><span>{{ rec_view_pro.price }}</span></div>
-                                            <div class="old-price"><span>$</span><span>{{ rec_view_pro.price }}</span></div>
+                                            <div class="new-price"><span>$</span><span>{{ rec_view_pro.price }}</span>
+                                            </div>
+                                            <div class="old-price"><span>$</span><span>{{ rec_view_pro.price }}</span>
+                                            </div>
                                         </div>
 
                                         {# product name #}
                                         <div class="no-bottom-margin box-product-name">{{ rec_view_pro.name }}</div>
 
                                         {# product description #}
-                                        <div class="no-bottom-margin box-product-description"><p>{{ rec_view_pro.description }}</p></div>
+                                        <div class="no-bottom-margin box-product-description">
+                                            <p>{{ rec_view_pro.description }}</p></div>
 
                                         <!-- number of comments (clickable) -->
                                         <div class="no-bottom-margin box-product-cmt">
-                                            <a href="#">{{ rec_view_pro.comments.count() }}</a> <span>{{ _('comments') }}</span>
+                                            <a href="#">{{ rec_view_pro.comments.count() }}</a>
+                                            <span>{{ _('comments') }}</span>
                                         </div>
 
                                         <!-- rating stars of this product -->
@@ -509,52 +577,52 @@
 
                                 </div>
                             {% endfor %}
-{#                            <div role="listitem" class="w-dyn-item" style="padding: 10">#}
-{#                                <div>#}
-{#                                    <a href="#" class="product-preview-link w-inline-block">#}
-{#                                        <img src="../../static/images/example/gibson_sj200.jpg" loading="lazy" alt="" class="product-thumbnail">#}
-{#                                        <div class="uppercase-text brand">Gibson</div>#}
-{#                                        <h5 class="no-bottom-margin">SJ 200</h5>#}
-{#                                        <div class="price-container">#}
-{#                                            <div class="old-price">$4,999.00</div>#}
-{#                                            <div>$4,800.00</div>#}
-{#                                            <div></div>#}
-{#                                        </div>#}
-{#                                    </a>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                            <div role="listitem" class="w-dyn-item" style="padding: 10">#}
-{#                                <div>#}
-{#                                    <a href="#" class="product-preview-link w-inline-block">#}
-{#                                        <img src="../../static/images/example/steinway_modelD.jpg" loading="lazy" alt="" class="product-thumbnail">#}
-{#                                        <div class="uppercase-text brand">Steinway & Son.</div>#}
-{#                                        <h5 class="no-bottom-margin">Steinway Model D Concert Grand</h5>#}
-{#                                        <div class="price-container">#}
-{#                                            <div>$100000.00</div>#}
-{#                                            <div></div>#}
-{#                                            <div></div>#}
-{#                                        </div>#}
-{#                                    </a>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                            <div role="listitem" class="w-dyn-item" style="padding: 10">#}
-{#                                <div>#}
-{#                                    <a href="#" class="product-preview-link w-inline-block">#}
-{#                                        <img src="../../static/images/example/gibson_Les_Paul_Standard.jpg" loading="lazy" alt="" class="product-thumbnail">#}
-{#                                        <div class="uppercase-text brand">Gibson</div>#}
-{#                                        <h5 class="no-bottom-margin">Les Paul Standard</h5>#}
-{#                                        <div class="price-container">#}
-{#                                            <div>$2,699.00</div>#}
-{#                                            <div></div>#}
-{#                                            <div></div>#}
-{#                                        </div>#}
-{#                                    </a>#}
-{#                                </div>#}
-{#                            </div>#}
+                            {#                            <div role="listitem" class="w-dyn-item" style="padding: 10">#}
+                            {#                                <div>#}
+                            {#                                    <a href="#" class="product-preview-link w-inline-block">#}
+                            {#                                        <img src="../../static/images/example/gibson_sj200.jpg" loading="lazy" alt="" class="product-thumbnail">#}
+                            {#                                        <div class="uppercase-text brand">Gibson</div>#}
+                            {#                                        <h5 class="no-bottom-margin">SJ 200</h5>#}
+                            {#                                        <div class="price-container">#}
+                            {#                                            <div class="old-price">$4,999.00</div>#}
+                            {#                                            <div>$4,800.00</div>#}
+                            {#                                            <div></div>#}
+                            {#                                        </div>#}
+                            {#                                    </a>#}
+                            {#                                </div>#}
+                            {#                            </div>#}
+                            {#                            <div role="listitem" class="w-dyn-item" style="padding: 10">#}
+                            {#                                <div>#}
+                            {#                                    <a href="#" class="product-preview-link w-inline-block">#}
+                            {#                                        <img src="../../static/images/example/steinway_modelD.jpg" loading="lazy" alt="" class="product-thumbnail">#}
+                            {#                                        <div class="uppercase-text brand">Steinway & Son.</div>#}
+                            {#                                        <h5 class="no-bottom-margin">Steinway Model D Concert Grand</h5>#}
+                            {#                                        <div class="price-container">#}
+                            {#                                            <div>$100000.00</div>#}
+                            {#                                            <div></div>#}
+                            {#                                            <div></div>#}
+                            {#                                        </div>#}
+                            {#                                    </a>#}
+                            {#                                </div>#}
+                            {#                            </div>#}
+                            {#                            <div role="listitem" class="w-dyn-item" style="padding: 10">#}
+                            {#                                <div>#}
+                            {#                                    <a href="#" class="product-preview-link w-inline-block">#}
+                            {#                                        <img src="../../static/images/example/gibson_Les_Paul_Standard.jpg" loading="lazy" alt="" class="product-thumbnail">#}
+                            {#                                        <div class="uppercase-text brand">Gibson</div>#}
+                            {#                                        <h5 class="no-bottom-margin">Les Paul Standard</h5>#}
+                            {#                                        <div class="price-container">#}
+                            {#                                            <div>$2,699.00</div>#}
+                            {#                                            <div></div>#}
+                            {#                                            <div></div>#}
+                            {#                                        </div>#}
+                            {#                                    </a>#}
+                            {#                                </div>#}
+                            {#                            </div>#}
                         </div>
-{#                        <div class="empty-state w-dyn-empty">#}
-{#                            <div>There are no Products set to featured.</div>#}
-{#                        </div>#}
+                        {#                        <div class="empty-state w-dyn-empty">#}
+                        {#                            <div>There are no Products set to featured.</div>#}
+                        {#                        </div>#}
                     </div>
                 </div>
                 <br>
@@ -566,14 +634,16 @@
                     <div class="w-layout-grid featured-products-grid  bg-primary-dark">
                         <!-- Left text -->
                         <div class="featured-items-title">
-                            <h3 class="large-heading featured-items-heading">{{ _('Your') }}<br>{{ _('Interests') }}</h3>
+                            <h3 class="large-heading featured-items-heading">{{ _('Your') }}<br>{{ _('Interests') }}
+                            </h3>
                         </div>
                         <!-- Right listing -->
                         <div class="w-dyn-list">
                             <div role="list" class="product-thirds-grid featured-products w-dyn-items">
                                 {% for rec_preference_pro in rec_preference %}
                                     <div role="listitem" class="w-dyn-item product-box" style="padding: 10">
-                                        <a href="{{ url_for('main.model_type_details', mt_id=rec_preference_pro.id) }}" class="product-preview-link w-inline-block">
+                                        <a href="{{ url_for('main.model_type_details', mt_id=rec_preference_pro.id) }}"
+                                           class="product-preview-link w-inline-block">
                                             <div class="list_img_container">
                                                 <!-- product picture -->
                                                 {% if rec_preference_pro.pictures.first() == None %}
@@ -595,19 +665,23 @@
                                         <div class="box-product-info-card">
                                             {# product price #}
                                             <div class="price-container">
-                                                <div class="new-price"><span>$</span><span>{{ rec_preference_pro.price }}</span></div>
-                                                <div class="old-price"><span>$</span><span>{{ rec_preference_pro.price }}</span></div>
+                                                <div class="new-price">
+                                                    <span>$</span><span>{{ rec_preference_pro.price }}</span></div>
+                                                <div class="old-price">
+                                                    <span>$</span><span>{{ rec_preference_pro.price }}</span></div>
                                             </div>
 
                                             {# product name #}
                                             <div class="no-bottom-margin box-product-name">{{ rec_preference_pro.name }}</div>
 
                                             {# product description #}
-                                            <div class="no-bottom-margin box-product-description"><p>{{ rec_preference_pro.description }}</p></div>
+                                            <div class="no-bottom-margin box-product-description">
+                                                <p>{{ rec_preference_pro.description }}</p></div>
 
                                             <!-- number of comments (clickable) -->
                                             <div class="no-bottom-margin box-product-cmt">
-                                                <a href="#">{{ rec_preference_pro.comments.count() }}</a> <span>{{ _('comments') }}</span>
+                                                <a href="#">{{ rec_preference_pro.comments.count() }}</a>
+                                                <span>{{ _('comments') }}</span>
                                             </div>
 
                                             <!-- rating stars of this product -->
@@ -655,54 +729,55 @@
 
                                             {# product brand #}
                                             <div class="box-brand">
-                                                <i><a href="#"><p>{{ rec_preference_pro.product.brand.name }}</p></a></i>
+                                                <i><a href="#"><p>{{ rec_preference_pro.product.brand.name }}</p>
+                                                </a></i>
                                             </div>
                                         </div>
 
                                     </div>
                                 {% endfor %}
-    {#                            <div role="listitem" class="w-dyn-item">#}
-    {#                                <div>#}
-    {#                                    <a href="#" class="product-preview-link w-inline-block">#}
-    {#                                        <img src="../../static/images/example/yamaha_yep621s.jpg" loading="lazy" alt="" class="product-thumbnail">#}
-    {#                                        <div class="uppercase-text brand">Yamaha</div>#}
-    {#                                        <h5 class="no-bottom-margin">YEP 621 S</h5>#}
-    {#                                        <div class="price-container">#}
-    {#                                            <div class="old-price">$6075.35</div>#}
-    {#                                            <div>$6000.00</div>#}
-    {#                                            <div></div>#}
-    {#                                        </div>#}
-    {#                                    </a>#}
-    {#                                </div>#}
-    {#                            </div>#}
-    {#                            <div role="listitem" class="w-dyn-item">#}
-    {#                                <div>#}
-    {#                                    <a href="#" class="product-preview-link w-inline-block">#}
-    {#                                        <img src="../../static/images/example/TP-6300R_large_3000x1038_a5b9f19690cd9d6d8fb42266e19ce78e.jpg" loading="lazy" alt="" class="product-thumbnail">#}
-    {#                                        <div class="uppercase-text brand">Yamaha</div>#}
-    {#                                        <h5 class="no-bottom-margin">TP 6300R</h5>#}
-    {#                                        <div class="price-container">#}
-    {#                                            <div class="old-price">$9419.15</div>#}
-    {#                                            <div>$9419.00</div>#}
-    {#                                            <div></div>#}
-    {#                                        </div>#}
-    {#                                    </a>#}
-    {#                                </div>#}
-    {#                            </div>#}
-    {#                            <div role="listitem" class="w-dyn-item">#}
-    {#                                <div>#}
-    {#                                    <a href="#" class="product-preview-link w-inline-block">#}
-    {#                                        <img src="../../static/images/example/hohner_super64.jpg" loading="lazy" alt="" class="product-thumbnail">#}
-    {#                                        <div class="uppercase-text brand">HOHNER</div>#}
-    {#                                        <h5 class="no-bottom-margin">HOHNER Super 64</h5>#}
-    {#                                        <div class="price-container">#}
-    {#                                            <div>$500</div>#}
-    {#                                            <div></div>#}
-    {#                                            <div></div>#}
-    {#                                        </div>#}
-    {#                                    </a>#}
-    {#                                </div>#}
-    {#                            </div>#}
+                                {#                            <div role="listitem" class="w-dyn-item">#}
+                                {#                                <div>#}
+                                {#                                    <a href="#" class="product-preview-link w-inline-block">#}
+                                {#                                        <img src="../../static/images/example/yamaha_yep621s.jpg" loading="lazy" alt="" class="product-thumbnail">#}
+                                {#                                        <div class="uppercase-text brand">Yamaha</div>#}
+                                {#                                        <h5 class="no-bottom-margin">YEP 621 S</h5>#}
+                                {#                                        <div class="price-container">#}
+                                {#                                            <div class="old-price">$6075.35</div>#}
+                                {#                                            <div>$6000.00</div>#}
+                                {#                                            <div></div>#}
+                                {#                                        </div>#}
+                                {#                                    </a>#}
+                                {#                                </div>#}
+                                {#                            </div>#}
+                                {#                            <div role="listitem" class="w-dyn-item">#}
+                                {#                                <div>#}
+                                {#                                    <a href="#" class="product-preview-link w-inline-block">#}
+                                {#                                        <img src="../../static/images/example/TP-6300R_large_3000x1038_a5b9f19690cd9d6d8fb42266e19ce78e.jpg" loading="lazy" alt="" class="product-thumbnail">#}
+                                {#                                        <div class="uppercase-text brand">Yamaha</div>#}
+                                {#                                        <h5 class="no-bottom-margin">TP 6300R</h5>#}
+                                {#                                        <div class="price-container">#}
+                                {#                                            <div class="old-price">$9419.15</div>#}
+                                {#                                            <div>$9419.00</div>#}
+                                {#                                            <div></div>#}
+                                {#                                        </div>#}
+                                {#                                    </a>#}
+                                {#                                </div>#}
+                                {#                            </div>#}
+                                {#                            <div role="listitem" class="w-dyn-item">#}
+                                {#                                <div>#}
+                                {#                                    <a href="#" class="product-preview-link w-inline-block">#}
+                                {#                                        <img src="../../static/images/example/hohner_super64.jpg" loading="lazy" alt="" class="product-thumbnail">#}
+                                {#                                        <div class="uppercase-text brand">HOHNER</div>#}
+                                {#                                        <h5 class="no-bottom-margin">HOHNER Super 64</h5>#}
+                                {#                                        <div class="price-container">#}
+                                {#                                            <div>$500</div>#}
+                                {#                                            <div></div>#}
+                                {#                                            <div></div>#}
+                                {#                                        </div>#}
+                                {#                                    </a>#}
+                                {#                                </div>#}
+                                {#                            </div>#}
                             </div>
                         </div>
                     </div>
@@ -722,8 +797,8 @@
                         <div class="container justify-content-between">
                             <h3>{{ _('About Us') }}</h3>
                             <div class="large-text">
-                                Siren is an online instrument e-commerce website. We provide up-to-date services for
-                                modern performers, numerous renowned brands are currently in cooperation.
+                                {{ _('Siren is an online instrument e-commerce website. We provide up-to-date services for
+                                        modern performers, numerous renowned brands are currently in cooperation.')}}
                             </div>
                             <div class="button-row">
                                 <a href="{{ url_for("main.about_us") }}" class="button bg-primary-dark w-inline-block">
@@ -739,18 +814,21 @@
         <!-- Just Arrive Section -->
         <div class="section bg-primary-light wf-section">
             <div class="main-container">
-                <h3 class="section-title">{{ _('Just Arrived')}}</h3>
+                <h3 class="section-title">{{ _('Just Arrived') }}</h3>
                 <div class="w-dyn-list">
                     <div role="list" class="product-quarters-grid w-dyn-items">
                         {% for rec_time_pro in rec_time %}
                             <div role="listitem" class="w-dyn-item product-box" style="padding: 10">
-                                <a href="{{ url_for('main.model_type_details', mt_id=rec_time_pro.id) }}" class="product-preview-link w-inline-block">
+                                <a href="{{ url_for('main.model_type_details', mt_id=rec_time_pro.id) }}"
+                                   class="product-preview-link w-inline-block">
                                     <div class="list_img_container">
                                         <!-- product picture -->
                                         {% if rec_time_pro.pictures.first() == None %}
-                                            <img src="../../static/images/example/yamaha_yep621s.jpg" loading="lazy" alt="" class="product-thumbnail full-border">
+                                            <img src="../../static/images/example/yamaha_yep621s.jpg" loading="lazy"
+                                                 alt="" class="product-thumbnail full-border">
                                         {% else %}
-                                            <img src="{{ url_for("static",filename=rec_time_pro.pictures.first().address) }}" loading="lazy" alt="" class="product-thumbnail full-border">
+                                            <img src="{{ url_for("static",filename=rec_time_pro.pictures.first().address) }}"
+                                                 loading="lazy" alt="" class="product-thumbnail full-border">
                                         {% endif %}
 
                                         <!-- The gray cover on the pic when not hovering -->
@@ -772,11 +850,13 @@
                                     <div class="no-bottom-margin box-product-name">{{ rec_time_pro.name }}</div>
 
                                     {# product description #}
-                                    <div class="no-bottom-margin box-product-description"><p>{{ rec_time_pro.description }}</p></div>
+                                    <div class="no-bottom-margin box-product-description">
+                                        <p>{{ rec_time_pro.description }}</p></div>
 
                                     <!-- number of comments (clickable) -->
                                     <div class="no-bottom-margin box-product-cmt">
-                                        <a href="#">{{ rec_time_pro.comments.count() }}</a> <span>{{ _('comments') }}</span>
+                                        <a href="#">{{ rec_time_pro.comments.count() }}</a>
+                                        <span>{{ _('comments') }}</span>
                                     </div>
 
                                     <!-- rating stars of this product -->
@@ -830,62 +910,62 @@
 
                             </div>
                         {% endfor %}
-{#                        <div role="listitem" class="w-dyn-item">#}
-{#                            <div>#}
-{#                                <a href="#" class="product-preview-link w-inline-block">#}
-{#                                    <img src="../../static/images/example/example_product_04.jpg" loading="lazy" alt="" class="product-thumbnail">#}
-{#                                    <div class="uppercase-text brand">Brand</div>#}
-{#                                    <h5 class="no-bottom-margin">Product 1</h5>#}
-{#                                    <div class="price-container">#}
-{#                                        <div class="old-price">100.00</div>#}
-{#                                        <div></div>#}
-{#                                        <div></div>#}
-{#                                    </div>#}
-{#                                </a>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div role="listitem" class="w-dyn-item">#}
-{#                            <div>#}
-{#                                <a href="#" class="product-preview-link w-inline-block">#}
-{#                                    <img src="../../static/images/example/yamaha_yep621s.jpg" loading="lazy" alt="" class="product-thumbnail">#}
-{#                                    <div class="uppercase-text brand">Yamaha</div>#}
-{#                                    <h5 class="no-bottom-margin">YEP 621 S</h5>#}
-{#                                    <div class="price-container">#}
-{#                                        <div class="old-price">$6075.35</div>#}
-{#                                        <div>$6000.00</div>#}
-{#                                        <div></div>#}
-{#                                    </div>#}
-{#                                </a>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div role="listitem" class="w-dyn-item">#}
-{#                            <div>#}
-{#                                <a href="#" class="product-preview-link w-inline-block">#}
-{#                                    <img src="../../static/images/example/example_product_06.jpg" loading="lazy" alt="" class="product-thumbnail">#}
-{#                                    <div class="uppercase-text brand">Brand</div>#}
-{#                                    <h5 class="no-bottom-margin">Product 3</h5>#}
-{#                                    <div class="price-container">#}
-{#                                        <div class="old-price">100.00</div>#}
-{#                                        <div></div>#}
-{#                                        <div></div>#}
-{#                                    </div>#}
-{#                                </a>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div role="listitem" class="w-dyn-item">#}
-{#                            <div>#}
-{#                                <a href="#" class="product-preview-link w-inline-block">#}
-{#                                    <img src="../../static/images/example/example_product_07.jpg" loading="lazy" alt="" class="product-thumbnail">#}
-{#                                    <div class="uppercase-text brand">Brand</div>#}
-{#                                    <h5 class="no-bottom-margin">Product 4</h5>#}
-{#                                    <div class="price-container">#}
-{#                                        <div class="old-price">100.00</div>#}
-{#                                        <div></div>#}
-{#                                        <div></div>#}
-{#                                    </div>#}
-{#                                </a>#}
-{#                            </div>#}
-{#                        </div>#}
+                        {#                        <div role="listitem" class="w-dyn-item">#}
+                        {#                            <div>#}
+                        {#                                <a href="#" class="product-preview-link w-inline-block">#}
+                        {#                                    <img src="../../static/images/example/example_product_04.jpg" loading="lazy" alt="" class="product-thumbnail">#}
+                        {#                                    <div class="uppercase-text brand">Brand</div>#}
+                        {#                                    <h5 class="no-bottom-margin">Product 1</h5>#}
+                        {#                                    <div class="price-container">#}
+                        {#                                        <div class="old-price">100.00</div>#}
+                        {#                                        <div></div>#}
+                        {#                                        <div></div>#}
+                        {#                                    </div>#}
+                        {#                                </a>#}
+                        {#                            </div>#}
+                        {#                        </div>#}
+                        {#                        <div role="listitem" class="w-dyn-item">#}
+                        {#                            <div>#}
+                        {#                                <a href="#" class="product-preview-link w-inline-block">#}
+                        {#                                    <img src="../../static/images/example/yamaha_yep621s.jpg" loading="lazy" alt="" class="product-thumbnail">#}
+                        {#                                    <div class="uppercase-text brand">Yamaha</div>#}
+                        {#                                    <h5 class="no-bottom-margin">YEP 621 S</h5>#}
+                        {#                                    <div class="price-container">#}
+                        {#                                        <div class="old-price">$6075.35</div>#}
+                        {#                                        <div>$6000.00</div>#}
+                        {#                                        <div></div>#}
+                        {#                                    </div>#}
+                        {#                                </a>#}
+                        {#                            </div>#}
+                        {#                        </div>#}
+                        {#                        <div role="listitem" class="w-dyn-item">#}
+                        {#                            <div>#}
+                        {#                                <a href="#" class="product-preview-link w-inline-block">#}
+                        {#                                    <img src="../../static/images/example/example_product_06.jpg" loading="lazy" alt="" class="product-thumbnail">#}
+                        {#                                    <div class="uppercase-text brand">Brand</div>#}
+                        {#                                    <h5 class="no-bottom-margin">Product 3</h5>#}
+                        {#                                    <div class="price-container">#}
+                        {#                                        <div class="old-price">100.00</div>#}
+                        {#                                        <div></div>#}
+                        {#                                        <div></div>#}
+                        {#                                    </div>#}
+                        {#                                </a>#}
+                        {#                            </div>#}
+                        {#                        </div>#}
+                        {#                        <div role="listitem" class="w-dyn-item">#}
+                        {#                            <div>#}
+                        {#                                <a href="#" class="product-preview-link w-inline-block">#}
+                        {#                                    <img src="../../static/images/example/example_product_07.jpg" loading="lazy" alt="" class="product-thumbnail">#}
+                        {#                                    <div class="uppercase-text brand">Brand</div>#}
+                        {#                                    <h5 class="no-bottom-margin">Product 4</h5>#}
+                        {#                                    <div class="price-container">#}
+                        {#                                        <div class="old-price">100.00</div>#}
+                        {#                                        <div></div>#}
+                        {#                                        <div></div>#}
+                        {#                                    </div>#}
+                        {#                                </a>#}
+                        {#                            </div>#}
+                        {#                        </div>#}
                     </div>
                 </div>
             </div>
@@ -902,13 +982,13 @@
                 <div class="container justify-content-between">
                     <h3>{{ _('Join') }}</h3>
                     <div>
-                        <div class="large-text">Join Us with the least cost while receiving
-                            great benefits. Regular sales and exclusive limited editions will be available
-                            and only for members.
+                        <div class="large-text">{{ _('Join Us with the least cost while receiving
+                                great benefits. Regular sales and exclusive limited editions will be available
+                                and only for members.')}}
                         </div>
                         <div class="button-row">
                             <a href="{{ url_for("main.premium_intro") }}" class="button bg-white-faded w-inline-block">
-                                <div>{{ _('Go Premium')}}</div>
+                                <div>{{ _('Go Premium') }}</div>
                             </a>
                         </div>
                     </div>
@@ -918,13 +998,13 @@
 
         <!-- Brands Section -->
         <div class="aut_brand">
-			<div class="center_1200 clearfix">
-				<div class="aut_brand_right">
-					<ul class="aut_brand_list clearfix">
-						<li>
+            <div class="center_1200 clearfix">
+                <div class="aut_brand_right">
+                    <ul class="aut_brand_list clearfix">
+                        <li>
                             <a target="_blank" href="{{ url_for("main.brand_intro", brand_id=1) }}">
                                 <div class="img_wrap">
-                                    <img src="../../static/images/brand_logo/001.jpg" />
+                                    <img src="../../static/images/brand_logo/001.jpg"/>
                                 </div>
                                 <div class="show_brand_des">
                                     <p>Lowden</p>
@@ -935,10 +1015,10 @@
                                 <span class="bottom"></span>
                             </a>
                         </li>
-						<li>
+                        <li>
                             <a target="_blank" href="#">
                                 <div class="img_wrap">
-                                    <img src="../../static/images/brand_logo/002.svg" />
+                                    <img src="../../static/images/brand_logo/002.svg"/>
                                 </div>
                                 <div class="show_brand_des">
                                     <p>Gibson</p>
@@ -949,10 +1029,10 @@
                                 <span class="bottom"></span>
                             </a>
                         </li>
-						<li>
+                        <li>
                             <a target="_blank" href="#">
                                 <div class="img_wrap">
-                                    <img src="../../static/images/brand_logo/003.jpg" />
+                                    <img src="../../static/images/brand_logo/003.jpg"/>
                                 </div>
                                 <div class="show_brand_des">
                                     <p>Orange</p>
@@ -963,10 +1043,10 @@
                                 <span class="bottom"></span>
                             </a>
                         </li>
-						<li>
+                        <li>
                             <a target="_blank" href="#">
                                 <div class="img_wrap">
-                                    <img src="../../static/images/brand_logo/004.png" />
+                                    <img src="../../static/images/brand_logo/004.png"/>
                                 </div>
                                 <div class="show_brand_des">
                                     <p>Stentor</p>
@@ -977,10 +1057,10 @@
                                 <span class="bottom"></span>
                             </a>
                         </li>
-						<li>
-                                <a target="_blank" href="#">
+                        <li>
+                            <a target="_blank" href="#">
                                 <div class="img_wrap">
-                                    <img src="../../static/images/brand_logo/005.png" />
+                                    <img src="../../static/images/brand_logo/005.png"/>
                                 </div>
                                 <div class="show_brand_des">
                                     <p>Martin</p>
@@ -991,10 +1071,10 @@
                                 <span class="bottom"></span>
                             </a>
                         </li>
-						<li>
+                        <li>
                             <a target="_blank" href="#">
                                 <div class="img_wrap">
-                                    <img src="../../static/images/brand_logo/006.png" />
+                                    <img src="../../static/images/brand_logo/006.png"/>
                                 </div>
                                 <div class="show_brand_des">
                                     <p>Buffet Crampon</p>
@@ -1005,10 +1085,10 @@
                                 <span class="bottom"></span>
                             </a>
                         </li>
-						<li>
+                        <li>
                             <a target="_blank" href="#">
                                 <div class="img_wrap">
-                                    <img src="../../static/images/brand_logo/007.jpg" />
+                                    <img src="../../static/images/brand_logo/007.jpg"/>
                                 </div>
                                 <div class="show_brand_des">
                                     <p>Besson London</p>
@@ -1019,10 +1099,10 @@
                                 <span class="bottom"></span>
                             </a>
                         </li>
-						<li>
+                        <li>
                             <a target="_blank" href="#">
                                 <div class="img_wrap">
-                                    <img src="../../static/images/brand_logo/008.png" />
+                                    <img src="../../static/images/brand_logo/008.png"/>
                                 </div>
                                 <div class="show_brand_des">
                                     <p>HOHNER</p>
@@ -1033,10 +1113,10 @@
                                 <span class="bottom"></span>
                             </a>
                         </li>
-						<li>
+                        <li>
                             <a target="_blank" href="#">
                                 <div class="img_wrap">
-                                    <img src="../../static/images/brand_logo/009.png" />
+                                    <img src="../../static/images/brand_logo/009.png"/>
                                 </div>
                                 <div class="show_brand_des">
                                     <p>Marshall</p>
@@ -1047,10 +1127,10 @@
                                 <span class="bottom"></span>
                             </a>
                         </li>
-						<li>
+                        <li>
                             <a target="_blank" href="#">
                                 <div class="img_wrap">
-                                    <img src="../../static/images/brand_logo/010.jpg" />
+                                    <img src="../../static/images/brand_logo/010.jpg"/>
                                 </div>
                                 <div class="show_brand_des">
                                     <p>Meinl</p>
@@ -1061,10 +1141,10 @@
                                 <span class="bottom"></span>
                             </a>
                         </li>
-						<li>
+                        <li>
                             <a target="_blank" href="#">
                                 <div class="img_wrap">
-                                    <img src="../../static/images/brand_logo/011.jpg" />
+                                    <img src="../../static/images/brand_logo/011.jpg"/>
                                 </div>
                                 <div class="show_brand_des">
                                     <p>Henri Selmer Paris</p>
@@ -1075,10 +1155,10 @@
                                 <span class="bottom"></span>
                             </a>
                         </li>
-						<li>
+                        <li>
                             <a target="_blank" href="#">
                                 <div class="img_wrap">
-                                    <img src="../../static/images/brand_logo/012.jpg" />
+                                    <img src="../../static/images/brand_logo/012.jpg"/>
                                 </div>
                                 <div class="show_brand_des">
                                     <p>Steinway</p>
@@ -1089,10 +1169,10 @@
                                 <span class="bottom"></span>
                             </a>
                         </li>
-						<li>
+                        <li>
                             <a target="_blank" href="#">
                                 <div class="img_wrap">
-                                    <img src="../../static/images/brand_logo/013.jpg" />
+                                    <img src="../../static/images/brand_logo/013.jpg"/>
                                 </div>
                                 <div class="show_brand_des">
                                     <p>Boss</p>
@@ -1103,10 +1183,10 @@
                                 <span class="bottom"></span>
                             </a>
                         </li>
-						<li>
+                        <li>
                             <a target="_blank" href="#">
                                 <div class="img_wrap">
-                                    <img src="../../static/images/brand_logo/014.png" />
+                                    <img src="../../static/images/brand_logo/014.png"/>
                                 </div>
                                 <div class="show_brand_des">
                                     <p>Fender</p>
@@ -1117,10 +1197,10 @@
                                 <span class="bottom"></span>
                             </a>
                         </li>
-						<li>
+                        <li>
                             <a target="_blank" href="#">
                                 <div class="img_wrap">
-                                    <img src="../../static/images/brand_logo/015.svg" />
+                                    <img src="../../static/images/brand_logo/015.svg"/>
                                 </div>
                                 <div class="show_brand_des">
                                     <p>Taylor</p>
@@ -1131,10 +1211,10 @@
                                 <span class="bottom"></span>
                             </a>
                         </li>
-						<li>
+                        <li>
                             <a target="_blank" href="#">
                                 <div class="img_wrap">
-                                    <img src="../../static/images/brand_logo/016.svg" />
+                                    <img src="../../static/images/brand_logo/016.svg"/>
                                 </div>
                                 <div class="show_brand_des">
                                     <p>YAMAHA</p>
@@ -1145,122 +1225,122 @@
                                 <span class="bottom"></span>
                             </a>
                         </li>
-{#						<li>#}
-{#                            <a target="_blank" href="#">#}
-{#                                <div class="img_wrap">#}
-{#                                    <img src="../../static/images/brand_logo/017.png" />#}
-{#                                </div>#}
-{#                                <div class="show_brand_des">#}
-{#                                    <p>Coach</p>#}
-{#                                </div>#}
-{#                                <span class="left"></span>#}
-{#                                <span class="top"></span>#}
-{#                                <span class="right"></span>#}
-{#                                <span class="bottom"></span>#}
-{#                            </a>#}
-{#                        </li>#}
-{#						<li>#}
-{#                            <a target="_blank" href="#">#}
-{#                                <div class="img_wrap">#}
-{#                                    <img src="../../static/images/brand_logo/018.png" />#}
-{#                                </div>#}
-{#                                <div class="show_brand_des">#}
-{#                                    <p>LOUIS VUITTON</p>#}
-{#                                </div>#}
-{#                                <span class="left"></span>#}
-{#                                <span class="top"></span>#}
-{#                                <span class="right"></span>#}
-{#                                <span class="bottom"></span>#}
-{#                            </a>#}
-{#                        </li>#}
-{#						<li>#}
-{#                            <a target="_blank" href="#">#}
-{#                                <div class="img_wrap">#}
-{#                                    <img src="../../static/images/brand_logo/019.png" />#}
-{#                                </div>#}
-{#                                <div class="show_brand_des">#}
-{#                                    <p>NINTENDO SWITCH</p>#}
-{#                                </div>#}
-{#                                <span class="left"></span>#}
-{#                                <span class="top"></span>#}
-{#                                <span class="right"></span>#}
-{#                                <span class="bottom"></span>#}
-{#                            </a>#}
-{#                        </li>#}
-{#						<li>#}
-{#                            <a target="_blank" href="#">#}
-{#                                <div class="img_wrap">#}
-{#                                    <img src="../../static/images/brand_logo/020.png" />#}
-{#                                </div>#}
-{#                                <div class="show_brand_des">#}
-{#                                    <p>Adidas</p>#}
-{#                                </div>#}
-{#                                <span class="left"></span>#}
-{#                                <span class="top"></span>#}
-{#                                <span class="right"></span>#}
-{#                                <span class="bottom"></span>#}
-{#                            </a>#}
-{#                        </li>#}
-{#						<li>#}
-{#                            <a target="_blank" href="#">#}
-{#                                <div class="img_wrap">#}
-{#                                    <img src="../../static/images/brand_logo/021.png" />#}
-{#                                </div>#}
-{#                                <div class="show_brand_des">#}
-{#                                    <p>Dell</p>#}
-{#                                </div>#}
-{#                                <span class="left"></span>#}
-{#                                <span class="top"></span>#}
-{#                                <span class="right"></span>#}
-{#                                <span class="bottom"></span>#}
-{#                            </a>#}
-{#                        </li>#}
-{#						<li>#}
-{#                            <a target="_blank" href="#">#}
-{#                                <div class="img_wrap">#}
-{#                                    <img src="../../static/images/brand_logo/022.png" />#}
-{#                                </div>#}
-{#                                <div class="show_brand_des">#}
-{#                                    <p>HUAWEI</p>#}
-{#                                </div>#}
-{#                                <span class="left"></span>#}
-{#                                <span class="top"></span>#}
-{#                                <span class="right"></span>#}
-{#                                <span class="bottom"></span>#}
-{#                            </a>#}
-{#                        </li>#}
-{#						<li>#}
-{#                            <a target="_blank" href="#">#}
-{#                                <div class="img_wrap">#}
-{#                                    <img src="../../static/images/brand_logo/023.png" />#}
-{#                                </div>#}
-{#                                <div class="show_brand_des">#}
-{#                                    <p>QUAKER</p>#}
-{#                                </div>#}
-{#                                <span class="left"></span>#}
-{#                                <span class="top"></span>#}
-{#                                <span class="right"></span>#}
-{#                                <span class="bottom"></span>#}
-{#                            </a>#}
-{#                        </li>#}
-{#						<li>#}
-{#                            <a target="_blank" href="#">#}
-{#                                <div class="img_wrap">#}
-{#                                    <img src="../../static/images/brand_logo/024.png" />#}
-{#                                </div>#}
-{#                                <div class="show_brand_des">#}
-{#                                    <p>HERMES</p>#}
-{#                                </div>#}
-{#                                <span class="left"></span>#}
-{#                                <span class="top"></span>#}
-{#                                <span class="right"></span>#}
-{#                                <span class="bottom"></span>#}
-{#                            </a>#}
-{#                        </li>#}
-					</ul>
-				</div>
-			</div>
-		</div>
+                        {#						<li>#}
+                        {#                            <a target="_blank" href="#">#}
+                        {#                                <div class="img_wrap">#}
+                        {#                                    <img src="../../static/images/brand_logo/017.png" />#}
+                        {#                                </div>#}
+                        {#                                <div class="show_brand_des">#}
+                        {#                                    <p>Coach</p>#}
+                        {#                                </div>#}
+                        {#                                <span class="left"></span>#}
+                        {#                                <span class="top"></span>#}
+                        {#                                <span class="right"></span>#}
+                        {#                                <span class="bottom"></span>#}
+                        {#                            </a>#}
+                        {#                        </li>#}
+                        {#						<li>#}
+                        {#                            <a target="_blank" href="#">#}
+                        {#                                <div class="img_wrap">#}
+                        {#                                    <img src="../../static/images/brand_logo/018.png" />#}
+                        {#                                </div>#}
+                        {#                                <div class="show_brand_des">#}
+                        {#                                    <p>LOUIS VUITTON</p>#}
+                        {#                                </div>#}
+                        {#                                <span class="left"></span>#}
+                        {#                                <span class="top"></span>#}
+                        {#                                <span class="right"></span>#}
+                        {#                                <span class="bottom"></span>#}
+                        {#                            </a>#}
+                        {#                        </li>#}
+                        {#						<li>#}
+                        {#                            <a target="_blank" href="#">#}
+                        {#                                <div class="img_wrap">#}
+                        {#                                    <img src="../../static/images/brand_logo/019.png" />#}
+                        {#                                </div>#}
+                        {#                                <div class="show_brand_des">#}
+                        {#                                    <p>NINTENDO SWITCH</p>#}
+                        {#                                </div>#}
+                        {#                                <span class="left"></span>#}
+                        {#                                <span class="top"></span>#}
+                        {#                                <span class="right"></span>#}
+                        {#                                <span class="bottom"></span>#}
+                        {#                            </a>#}
+                        {#                        </li>#}
+                        {#						<li>#}
+                        {#                            <a target="_blank" href="#">#}
+                        {#                                <div class="img_wrap">#}
+                        {#                                    <img src="../../static/images/brand_logo/020.png" />#}
+                        {#                                </div>#}
+                        {#                                <div class="show_brand_des">#}
+                        {#                                    <p>Adidas</p>#}
+                        {#                                </div>#}
+                        {#                                <span class="left"></span>#}
+                        {#                                <span class="top"></span>#}
+                        {#                                <span class="right"></span>#}
+                        {#                                <span class="bottom"></span>#}
+                        {#                            </a>#}
+                        {#                        </li>#}
+                        {#						<li>#}
+                        {#                            <a target="_blank" href="#">#}
+                        {#                                <div class="img_wrap">#}
+                        {#                                    <img src="../../static/images/brand_logo/021.png" />#}
+                        {#                                </div>#}
+                        {#                                <div class="show_brand_des">#}
+                        {#                                    <p>Dell</p>#}
+                        {#                                </div>#}
+                        {#                                <span class="left"></span>#}
+                        {#                                <span class="top"></span>#}
+                        {#                                <span class="right"></span>#}
+                        {#                                <span class="bottom"></span>#}
+                        {#                            </a>#}
+                        {#                        </li>#}
+                        {#						<li>#}
+                        {#                            <a target="_blank" href="#">#}
+                        {#                                <div class="img_wrap">#}
+                        {#                                    <img src="../../static/images/brand_logo/022.png" />#}
+                        {#                                </div>#}
+                        {#                                <div class="show_brand_des">#}
+                        {#                                    <p>HUAWEI</p>#}
+                        {#                                </div>#}
+                        {#                                <span class="left"></span>#}
+                        {#                                <span class="top"></span>#}
+                        {#                                <span class="right"></span>#}
+                        {#                                <span class="bottom"></span>#}
+                        {#                            </a>#}
+                        {#                        </li>#}
+                        {#						<li>#}
+                        {#                            <a target="_blank" href="#">#}
+                        {#                                <div class="img_wrap">#}
+                        {#                                    <img src="../../static/images/brand_logo/023.png" />#}
+                        {#                                </div>#}
+                        {#                                <div class="show_brand_des">#}
+                        {#                                    <p>QUAKER</p>#}
+                        {#                                </div>#}
+                        {#                                <span class="left"></span>#}
+                        {#                                <span class="top"></span>#}
+                        {#                                <span class="right"></span>#}
+                        {#                                <span class="bottom"></span>#}
+                        {#                            </a>#}
+                        {#                        </li>#}
+                        {#						<li>#}
+                        {#                            <a target="_blank" href="#">#}
+                        {#                                <div class="img_wrap">#}
+                        {#                                    <img src="../../static/images/brand_logo/024.png" />#}
+                        {#                                </div>#}
+                        {#                                <div class="show_brand_des">#}
+                        {#                                    <p>HERMES</p>#}
+                        {#                                </div>#}
+                        {#                                <span class="left"></span>#}
+                        {#                                <span class="top"></span>#}
+                        {#                                <span class="right"></span>#}
+                        {#                                <span class="bottom"></span>#}
+                        {#                            </a>#}
+                        {#                        </li>#}
+                    </ul>
+                </div>
+            </div>
+        </div>
 
         <!-- Subscribe Section -->
         <div class="section bg-dark wf-section">
@@ -1272,11 +1352,12 @@
                         <img src="../../static/images/index/keyboard.jpg" loading="lazy" alt="">
                     </div>
                     <div class="text-center">
-                        <h4 class="medium-heading slogan">{{ _('Music should strike fire from the heart of man.')}}</h4>
+                        <h4 class="medium-heading slogan">{{ _('Music should strike fire from the heart of man.') }}</h4>
                         <h6 class="small-heading slogan_name">{{ _('Beethoven') }}</h6>
                         <div class="button-row justify-content-center">
-                            <a href="{{ url_for('auth.register') }}" target="_blank" class="button bg-white-faded w-inline-block">
-                                <div>{{ _('Start Voyage')}}</div>
+                            <a href="{{ url_for('auth.register') }}" target="_blank"
+                               class="button bg-white-faded w-inline-block">
+                                <div>{{ _('Start Voyage') }}</div>
                             </a>
                         </div>
                     </div>
@@ -1290,12 +1371,14 @@
                 <div class="main-container">
                     <div class="w-layout-grid footer-grid">
                         <div id="w-node-_3ee0633f-a568-72e0-ab7b-589be9d960ed-e9d960d8" class="footer-contact-details">
-                            <a href="#" class="footer-logo-link w-inline-block">
-                                <img src="../../static/images/White-logo-no-background.svg" loading="lazy" alt="" class="footer-logo">
+                            <a href="{{ url_for('main.index') }}" class="footer-logo-link w-inline-block">
+                                <img src="../../static/images/White-logo-no-background.svg" loading="lazy" alt=""
+                                     class="footer-logo">
                             </a>
-                            <div>{{ _('34 Market Street, South Melbourne') }}<br>{{ _('Victoria 3009') }}</div>
+                            <div>China Beijing Chaoyang Distinct Pingleyuan No.100<br>Beijing University of Technology
+                            </div>
                             <div class="contact-links in-footer">
-                                <a href="#" class="small-text">contact@website.com</a>
+                                <a href="#" class="small-text">group9@ucdconnect.ie</a>
                                 <a href="#" class="small-text">(03) 92337 4627</a>
                             </div>
                         </div>
@@ -1306,47 +1389,49 @@
                                 <div class="w-dyn-list">
                                     <div role="list" class="links-grid w-dyn-items">
                                         <div role="listitem" class="w-dyn-item">
-                                            <a href="#" class="list-link">{{ _('Brands')}}</a>
+                                            <a href="#" class="list-link">{{ _('Brands') }}</a>
                                         </div>
                                     </div>
                                 </div>
+                                <a href="contact.html" class="list-link">Catagory</a>
                             </div>
                         </div>
                         <div>
                             <div class="uppercase-text links-grid-title">{{ _('Company') }}</div>
                             <div class="links-grid">
-                                <a href="about.html" class="list-link">{{ _('About') }}</a>
-                                <a href="journal.html" class="list-link">{{ _('Journal') }}</a>
-                                <a href="contact.html" class="list-link">{{ _('Contact') }}</a>
-                                <a href="refund-policy.html" class="list-link">{{ _('Refund Policy') }}</a>
+                                <a href="about.html" class="list-link">{{ _('About us')}}</a>
+                                <a href="contact.html" class="list-link">{{ _('Contect us')}}</a>
+                                <a href="refund-policy.html" class="list-link">{{ _('Premium') }}</a>
                             </div>
                         </div>
                         <div>
-                            <div class="uppercase-text links-grid-title">Template</div>
+                            <div class="uppercase-text links-grid-title">Franchising Brand</div>
                             <div class="links-grid">
-                                <a href="template/style-guide.html" class="list-link">Style Guide</a>
-                                <a href="template/changelog.html" class="list-link">Changelog</a>
-                                <a href="template/getting-started.html" class="list-link">Getting Started</a>
-                                <a href="template/licensing.html" class="list-link">Licenses</a>
-                                <a href="https://mmra.re/portfolio" target="_blank" class="list-link">More Templates</a>
+                                <a href="about.html" class="list-link">Lowden</a>
+                                <a href="about.html" class="list-link">Gibson</a>
+                                <a href="about.html" class="list-link">YAMAHA</a>
+                                <a href="about.html" class="list-link">Stentor</a>
+                                <a href="about.html" class="list-link">Martin</a>
+                                <a href="about.html" class="list-link">Steinway</a>
+                                <a href="about.html" class="list-link">Fender</a>
                             </div>
                         </div>
                     </div>
                     <div class="footer-fine-print">
-                        <div class="fine-print-text">© Copyright Company powered by <a href="https://www.webflow.com"
-                                                                                       target="_blank" class="underline-link">Webflow</a>
+                        <div class="fine-print-text">© Copyright Company powered by
+                            <a href="{{ url_for('main.index') }}" target="_blank" class="underline-link">Siren</a>
                         </div>
                         <div class="social-links">
-                            <a href="https://webflow.com" target="_blank" class="social-link w-inline-block">
+                            <a href="#" target="_blank" class="social-link w-inline-block">
                                 <img src="../../static/images/icon-Instagram.svg" loading="lazy" alt="">
                             </a>
-                            <a href="https://webflow.com" target="_blank" class="social-link w-inline-block">
+                            <a href="#" target="_blank" class="social-link w-inline-block">
                                 <img src="../../static/images/icon-LinkedIn.svg" loading="lazy" alt="">
                             </a>
-                            <a href="https://webflow.com" target="_blank" class="social-link w-inline-block">
+                            <a href="#" target="_blank" class="social-link w-inline-block">
                                 <img src="../../static/images/icon-Google.svg" loading="lazy" alt="">
                             </a>
-                            <a href="https://webflow.com" target="_blank" class="social-link w-inline-block">
+                            <a href="#" target="_blank" class="social-link w-inline-block">
                                 <img src="../../static/images/icon-Pinterest.svg" loading="lazy" alt="">
                             </a>
                         </div>
@@ -1359,13 +1444,15 @@
                 type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
                 crossorigin="anonymous"></script>
         <script src="../../static/js/webflow.js" type="text/javascript"></script>
-        <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+        <!-- [if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script>
+        <![endif] -->
         <script src="../../static/js/jquery.lazyload.min.js"></script>
 
         <script src="../../static/js/index.js"></script>
         <script src="../../static/js/base.js"></script>
         <script>
-            $('.fixRecruiting button').click(function(event) {
+            $('.fixRecruiting button').click(function (event) {
                 $(this).parent('.fixRecruiting').css('display', 'none');
             });
             $(function () {
@@ -1375,13 +1462,13 @@
                         var key = value.replace(/</g, "").replace(/>/g, "");
                         goSearch($(this));
 
-                    }
-                    catch (e) {
+                    } catch (e) {
 
                     }
                 });
             });
             var solr_pecialchar_and = "specialchar_insteadof_andchar";
+
             function goSearch($this) {
                 var key = $(".SearchBttonValue").val();
                 var url = $(this).data("url");
@@ -1402,21 +1489,20 @@
                 var $this = $(this);
                 var $item = $(this).find(".show_brand_des");
                 console.log(moveForward($this, e))
-                $item.css(moveForward($this, e)).stop(true, true).animate({"left":"0px", "top": "0px"});
+                $item.css(moveForward($this, e)).stop(true, true).animate({"left": "0px", "top": "0px"});
             });
             $(".aut_brand_list").on("mouseleave", "li", function (e) {
                 var $this = $(this);
                 var $item = $(this).find(".show_brand_des");
                 $item.stop(true, true).animate(moveForward($this, e));
             });
-            var moveForward = function(elem, e){
-                var w = elem.width(), h = elem.height(), direction=0, cssprop={};
+            var moveForward = function (elem, e) {
+                var w = elem.width(), h = elem.height(), direction = 0, cssprop = {};
                 var x = (e.pageX - elem.offset().left - (w / 2)) * (w > h ? (h / w) : 1);
                 var y = (e.pageY - elem.offset().top - (h / 2)) * (h > w ? (w / h) : 1);
 
                 direction = Math.round((((Math.atan2(y, x) * (180 / Math.PI)) + 180) / 90) + 3) % 4;
-                switch(direction)
-                {
+                switch (direction) {
                     case 0://from top
                         cssprop.left = 0;
                         cssprop.top = "-100%";
@@ -1443,17 +1529,18 @@
     <script type="text/javascript" src="../../static/js/main/index_slide.js"></script>
 
     <script type="text/javascript" src="../../static/js/cart/sidebar_cart.js"></script>
+    <script type="text/javascript" src="../../static/js/flash-bar.js"></script>
     <script type="text/javascript" src="../../static/js/webflow.js"></script>
     <!--this is the control for loader-->
     <script>
-        $(window).on('load',function(){
-        $(".loader").fadeOut(1000);
-        $(".loader-center").fadeOut(1000);
-        $(".l1").fadeOut(1000);
-        $(".l2").fadeOut(1000);
-        $(".l3").fadeOut(1000);
-        $(".l4").fadeOut(1000);
-        $(".content").fadeIn(2000);
-    });
+        $(window).on('load', function () {
+            $(".loader").fadeOut(1000);
+            $(".loader-center").fadeOut(1000);
+            $(".l1").fadeOut(1000);
+            $(".l2").fadeOut(1000);
+            $(".l3").fadeOut(1000);
+            $(".l4").fadeOut(1000);
+            $(".content").fadeIn(2000);
+        });
     </script>
 </html>

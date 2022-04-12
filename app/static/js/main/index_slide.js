@@ -2,10 +2,20 @@
 let dot = document.querySelectorAll(".dot")
 // the whole picture list
 let picContainer = document.querySelector(".pic-container")
-// the text at right side of the slide pic
+// the text at right side of the slide pic (product intro)
 let slideText = document.getElementById('slide-text')
-// initialize the text with the introduction of the first product
-slideText.innerHTML = 'This is the introduction of the slide pic1'
+// the text at right side of the slide pic (product name)
+let slideProductName = document.getElementById("slide-product-name")
+// the start browsing btn in the slide window
+let slideBtn = document.getElementById("slide-start-browsing")
+
+/*
+    initialize the first slide (product name + intro + btn)
+ */
+slideText.innerHTML = 'Solid Korina Body and Long Neck Tenon. Brazilian Rosewood Fingerboard. Hand Lacquered and Aged by the Artisan. Custom Wound “Retrophonic’Humbucker Pickup. Tune-O-Matic Bridge with 1.5" Brass Studs.';
+slideProductName.innerHTML = "Gibson THE LEO SCALA SUPER '58";
+slideBtn.href = "/product-details/1";
+
 
 /*
     The index of the picture that is being shown in the slide panel.
@@ -45,24 +55,20 @@ function goNext() {
  * of the pictures in the slide window
  */
 function refreshIntro(index){
-    if (index === 0){
-            slideText.innerHTML = 'This is the introduction of the slide pic1' +
-                                  'This is the introduction of the slide pic1' +
-                                  'This is the introduction of the slide pic1' +
-                                  'This is the introduction of the slide pic1' +
-                                  'This is the introduction of the slide pic1'
+        if (index === 0){
+            slideText.innerHTML = 'Solid Korina Body and Long Neck Tenon. Brazilian Rosewood Fingerboard. Hand Lacquered and Aged by the Artisan. Custom Wound “Retrophonic’Humbucker Pickup. Tune-O-Matic Bridge with 1.5" Brass Studs.'
 
         }else if (index === 1){
-            slideText.innerHTML = 'This is the introduction of the slide pic2'
+            slideText.innerHTML = 'Since its release in 1981, the workhorse SD-1 Super Overdrive has been the core gain pedal for generations of players across every musical genre. Based around the revolutionary asymmetrical clipping circuit from ...'
 
         }else if (index === 2){
-            slideText.innerHTML = 'This is the introduction of the slide pic3'
+            slideText.innerHTML = 'The GL-10 was first introduced back in 2018 and embodies the classic Lowden character, drawing from over 40 years of guitar making heritage to invite the player to explore new tonal possibilities that await.'
 
         }else if (index === 3){
-            slideText.innerHTML = 'This is the introduction of the slide pic4'
+            slideText.innerHTML = 'The mid-level TD-27KV delivers the immersive sound and response that you only get with V-Drums. At its heart is the powerful new TD-27 sound engine, filled with premium-grade, fully-customizable drum and cymbal sounds.'
 
         }else if (index === 4){
-            slideText.innerHTML = 'This is the introduction of the slide pic5'
+            slideText.innerHTML = 'The latest in our long line of professional MIDI controllers, the Roland A-88MKII is supremely playable, with onboard creative tools for today\'s musicians and producers. Our acclaimed hammer-action keyboard and built-to-last quality ...'
 
         }
 }
@@ -74,7 +80,45 @@ function refreshIntro(index){
  * detail page of the product, which is being shown in the slide window.
  */
 function refreshButtonLink(index){
+        if (index === 0){
+            slideBtn.href = "/product-details/1";
 
+        }else if (index === 1){
+            slideBtn.href = "/product-details/4";
+
+        }else if (index === 2){
+            slideBtn.href = "/product-details/6";
+
+        }else if (index === 3){
+            slideBtn.href = "/product-details/9";
+
+        }else if (index === 4){
+            slideBtn.href = "/product-details/10";
+
+        }
+}
+
+/**
+ * THis function refresh the product name on the slide window
+ * @param index
+ */
+function refresh_product_name(index){
+        if (index === 0){
+            slideProductName.innerHTML = "Gibson THE LEO SCALA SUPER '58"
+
+        }else if (index === 1){
+            slideProductName.innerHTML = "BOSS’s Overdrive Sound Effectors"
+
+        }else if (index === 2){
+            slideProductName.innerHTML = "Lowden GL10 Guitar"
+
+        }else if (index === 3){
+            slideProductName.innerHTML = "Roland TD-27KV V-Drums"
+
+        }else if (index === 4){
+            slideProductName.innerHTML = "Roland A-88MKII MIDI Keyboard Controller"
+
+        }
 }
 
 /**
@@ -97,6 +141,8 @@ function timer(){
         $(dot[index]).prevAll().removeClass('current-dot')
         $(dot[index]).nextAll().removeClass('current-dot')
 
+        // refresh the product name
+        refresh_product_name(index)
         // refresh the introduction text beside the slide window as the changing of slides
         refreshIntro(index);
         // refresh the link of the button
@@ -124,6 +170,8 @@ for (let i = 0; i < dot.length; i++) {
 
         refreshPosition()
 
+        // refresh the product name
+        refresh_product_name(index)
         // refresh the introduction text beside the slide window as the dots being clicked
         refreshIntro(index);
         // refresh the link of the button

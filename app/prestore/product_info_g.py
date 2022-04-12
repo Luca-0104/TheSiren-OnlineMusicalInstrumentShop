@@ -133,8 +133,8 @@ pm_lst = [
                 35900,  # m price
                 5.5,  # kg
                 [
-                    'g-p4m1-1.png',
-                    'g-p4m1-2.png'
+                    'g-p4m1-1.jpg',
+                    'g-p4m1-2.jpg'
                 ]
             ],
             # model 2 ----------------------------------------------------------
@@ -391,32 +391,30 @@ pm_lst = [
         ]
     ],
 
-    # product 10 ----------------------------------------------------
-    # [
-    #     "product-name-test",  # product name
-    #     1,  # brand id
-    #     1,  # cate id - C
-    #     7,  # cate id - T
-    #     53,  # cate id - A
-    #     [  # model type list
-    #         # model 1 ----------------------------------------------------------
-    #         [
-    #             'model-name-test',  # model name
-    #             'model-description-test',  # m description
-    #             100,  # m price
-    #             2,  # kg
-    #             [
-    #                 'p1m1-1.png',
-    #                 'p1m1-2.png',
-    #                 'p1m1-3.png'
-    #             ]
-    #         ],
-    #         # model 2 ----------------------------------------------------------
-    #         # [],
-    #         # model 3 ----------------------------------------------------------
-    #         # []
-    #     ]
-    # ],
+    # product 11 ----------------------------------------------------
+    [
+        "Yamaha TRBX305 Bass",  # product name
+        16,  # brand id
+        1,  # cate id - C
+        12,  # cate id - T
+        54,  # cate id - A
+        [  # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'Yamaha TRBX305 Bass',  # model name
+                '5 strings version of TRBX300 series Solid mahogany construction Maple / Mahogany 5-Piece Neck Slim 43mm nut width 2-band active EQ with 5-way Performance EQ preset switch',  # m description
+                999,  # m price
+                2,  # kg
+                [
+                    'g-p11m1-1.jpg'
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
     #
     # # product 10 ----------------------------------------------------
     # [
