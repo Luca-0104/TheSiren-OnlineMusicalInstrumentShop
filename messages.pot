@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-04-12 19:13+0800\n"
+"POT-Creation-Date: 2022-04-12 21:13+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,7 +39,7 @@ msgstr ""
 #: app/templates/main/brand_intro/lowden.html:74
 #: app/templates/main/brand_intro/steinway.html:74
 #: app/templates/main/index_new.html:103
-#: app/templates/main/page-commodity-details.html:61
+#: app/templates/main/page-commodity-details.html:62
 #: app/templates/main/page_all_commodities.html:56
 #: app/templates/order/order-confirm.html:101
 #: app/templates/order/order-detail.html:86
@@ -92,7 +92,7 @@ msgstr ""
 msgid "Login success!"
 msgstr ""
 
-#: app/auth/views.py:117
+#: app/auth/views.py:123
 msgid "Login Failed! Check your username or password."
 msgstr ""
 
@@ -166,7 +166,7 @@ msgstr ""
 #: app/templates/main/brand_intro/lowden.html:236
 #: app/templates/main/brand_intro/steinway.html:237
 #: app/templates/main/index_new.html:263
-#: app/templates/main/page-commodity-details.html:220
+#: app/templates/main/page-commodity-details.html:221
 #: app/templates/main/page_all_commodities.html:205
 #: app/templates/order/order-confirm.html:250
 #: app/templates/order/order-detail.html:234
@@ -262,7 +262,7 @@ msgstr ""
 #: app/templates/main/brand_intro/lowden.html:70
 #: app/templates/main/brand_intro/steinway.html:70
 #: app/templates/main/index_new.html:99
-#: app/templates/main/page-commodity-details.html:57
+#: app/templates/main/page-commodity-details.html:58
 #: app/templates/main/page_all_commodities.html:52
 #: app/templates/order/order-confirm.html:97
 #: app/templates/order/order-detail.html:82
@@ -278,7 +278,7 @@ msgstr ""
 #: app/templates/main/brand_intro/lowden.html:94
 #: app/templates/main/brand_intro/steinway.html:94
 #: app/templates/main/index_new.html:123
-#: app/templates/main/page-commodity-details.html:81
+#: app/templates/main/page-commodity-details.html:82
 #: app/templates/main/page_all_commodities.html:73
 #: app/templates/order/order-confirm-premium.html:101
 #: app/templates/order/order-confirm.html:118
@@ -295,7 +295,7 @@ msgstr ""
 #: app/templates/main/brand_intro/lowden.html:110
 #: app/templates/main/brand_intro/steinway.html:111
 #: app/templates/main/index_new.html:190
-#: app/templates/main/page-commodity-details.html:148
+#: app/templates/main/page-commodity-details.html:149
 #: app/templates/main/page_all_commodities.html:88
 #: app/templates/order/order-confirm-premium.html:116
 #: app/templates/order/order-confirm.html:133
@@ -344,7 +344,7 @@ msgstr ""
 #: app/templates/main/brand_intro/lowden.html:180
 #: app/templates/main/brand_intro/steinway.html:181
 #: app/templates/main/index_new.html:207
-#: app/templates/main/page-commodity-details.html:165
+#: app/templates/main/page-commodity-details.html:166
 #: app/templates/main/page_all_commodities.html:153
 #: app/templates/order/order-confirm-premium.html:164
 #: app/templates/order/order-confirm-premium.html:371
@@ -366,7 +366,7 @@ msgstr ""
 #: app/templates/main/brand_intro/lowden.html:190
 #: app/templates/main/brand_intro/steinway.html:191
 #: app/templates/main/index_new.html:219
-#: app/templates/main/page-commodity-details.html:177
+#: app/templates/main/page-commodity-details.html:178
 #: app/templates/main/page_all_commodities.html:163
 #: app/templates/order/order-confirm-premium.html:174
 #: app/templates/order/order-confirm.html:208
@@ -383,7 +383,7 @@ msgstr ""
 #: app/templates/main/brand_intro/lowden.html:208
 #: app/templates/main/brand_intro/steinway.html:209
 #: app/templates/main/index_new.html:236
-#: app/templates/main/page-commodity-details.html:193
+#: app/templates/main/page-commodity-details.html:194
 #: app/templates/main/page_all_commodities.html:178
 #: app/templates/order/order-confirm.html:223
 #: app/templates/order/order-detail.html:208
@@ -400,7 +400,7 @@ msgstr ""
 #: app/templates/main/brand_intro/lowden.html:220
 #: app/templates/main/brand_intro/steinway.html:221
 #: app/templates/main/index_new.html:247
-#: app/templates/main/page-commodity-details.html:204
+#: app/templates/main/page-commodity-details.html:205
 #: app/templates/main/page_all_commodities.html:189
 #: app/templates/order/order-confirm-premium.html:195
 #: app/templates/order/order-confirm.html:234
@@ -419,7 +419,7 @@ msgstr ""
 #: app/templates/main/brand_intro/lowden.html:226
 #: app/templates/main/brand_intro/steinway.html:227
 #: app/templates/main/index_new.html:253 app/templates/main/index_new.html:1305
-#: app/templates/main/page-commodity-details.html:210
+#: app/templates/main/page-commodity-details.html:211
 #: app/templates/main/page_all_commodities.html:195
 #: app/templates/order/order-confirm-premium.html:199
 #: app/templates/order/order-confirm-premium.html:363
@@ -443,7 +443,7 @@ msgstr ""
 #: app/templates/main/about.html:218
 #: app/templates/main/brand_intro/lowden.html:232
 #: app/templates/main/brand_intro/steinway.html:233
-#: app/templates/main/page-commodity-details.html:216
+#: app/templates/main/page-commodity-details.html:217
 #: app/templates/main/page_all_commodities.html:201
 #: app/templates/order/order-confirm.html:246
 #: app/templates/order/order-detail.html:231
@@ -458,7 +458,7 @@ msgstr ""
 #: app/templates/main/brand_intro/lowden.html:246
 #: app/templates/main/brand_intro/steinway.html:247
 #: app/templates/main/index_new.html:273 app/templates/main/index_new.html:1318
-#: app/templates/main/page-commodity-details.html:230
+#: app/templates/main/page-commodity-details.html:231
 #: app/templates/main/page_all_commodities.html:215
 #: app/templates/order/order-confirm-premium.html:211
 #: app/templates/order/order-confirm-premium.html:379
@@ -483,7 +483,7 @@ msgstr ""
 #: app/templates/main/brand_intro/lowden.html:247
 #: app/templates/main/brand_intro/steinway.html:248
 #: app/templates/main/index_new.html:274 app/templates/main/index_new.html:1320
-#: app/templates/main/page-commodity-details.html:231
+#: app/templates/main/page-commodity-details.html:232
 #: app/templates/main/page_all_commodities.html:216
 #: app/templates/order/order-confirm-premium.html:213
 #: app/templates/order/order-confirm-premium.html:381
@@ -659,7 +659,7 @@ msgid "Total Cost"
 msgstr ""
 
 #: app/templates/main/index_new.html:198
-#: app/templates/main/page-commodity-details.html:156
+#: app/templates/main/page-commodity-details.html:157
 msgid "Go to my cart"
 msgstr ""
 
@@ -671,6 +671,14 @@ msgstr ""
 
 #: app/templates/main/index_new.html:369
 msgid "Start Browsing"
+msgstr ""
+
+#: app/templates/main/index_new.html:416
+msgid "Featured"
+msgstr ""
+
+#: app/templates/main/index_new.html:416
+msgid "Collection"
 msgstr ""
 
 #: app/templates/main/index_new.html:439 app/templates/main/index_new.html:591
