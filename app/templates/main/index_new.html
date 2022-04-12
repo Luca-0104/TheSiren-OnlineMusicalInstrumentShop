@@ -103,7 +103,7 @@
             <div class="main-container">
                 <div class="navbar-top">
                     <!-- Middel part -->
-                    <a href="index.html" aria-current="page" class="w-inline-block w--current">
+                    <a href="{{ url_for('main.index') }}" aria-current="page" class="w-inline-block w--current">
                         <img src="../../static/images/White-logo-no-background.svg" loading="eager" alt="" height="45px">
                     </a>
 
@@ -1305,7 +1305,7 @@
                 <div class="main-container">
                     <div class="w-layout-grid footer-grid">
                         <div id="w-node-_3ee0633f-a568-72e0-ab7b-589be9d960ed-e9d960d8" class="footer-contact-details">
-                            <a href="#" class="footer-logo-link w-inline-block">
+                            <a href="{{ url_for('main.index') }}" class="footer-logo-link w-inline-block">
                                 <img src="../../static/images/White-logo-no-background.svg" loading="lazy" alt="" class="footer-logo">
                             </a>
                             <div>China Beijing Chaoyang Distinct Pingleyuan No.100<br>Beijing University of Technology</div>
@@ -1325,6 +1325,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <a href="contact.html" class="list-link">Catagory</a>
                             </div>
                         </div>
                         <div>
@@ -1335,22 +1336,34 @@
                                 <a href="refund-policy.html" class="list-link">Premium</a>
                             </div>
                         </div>
+                        <div>
+                            <div class="uppercase-text links-grid-title">Franchising Brand</div>
+                            <div class="links-grid">
+                                <a href="about.html" class="list-link">Lowden</a>
+                                <a href="about.html" class="list-link">Gibson</a>
+                                <a href="about.html" class="list-link">YAMAHA</a>
+                                <a href="about.html" class="list-link">Stentor</a>
+                                <a href="about.html" class="list-link">Martin</a>
+                                <a href="about.html" class="list-link">Steinway</a>
+                                <a href="about.html" class="list-link">Fender</a>
+                            </div>
+                        </div>
                     </div>
                     <div class="footer-fine-print">
-                        <div class="fine-print-text">© Copyright Company powered by <a href="https://www.webflow.com"
-                                                                                       target="_blank" class="underline-link">Webflow</a>
+                        <div class="fine-print-text">© Copyright Company powered by
+                            <a href="{{ url_for('main.index') }}" target="_blank" class="underline-link">Siren</a>
                         </div>
                         <div class="social-links">
-                            <a href="https://webflow.com" target="_blank" class="social-link w-inline-block">
+                            <a href="#" target="_blank" class="social-link w-inline-block">
                                 <img src="../../static/images/icon-Instagram.svg" loading="lazy" alt="">
                             </a>
-                            <a href="https://webflow.com" target="_blank" class="social-link w-inline-block">
+                            <a href="#" target="_blank" class="social-link w-inline-block">
                                 <img src="../../static/images/icon-LinkedIn.svg" loading="lazy" alt="">
                             </a>
-                            <a href="https://webflow.com" target="_blank" class="social-link w-inline-block">
+                            <a href="#" target="_blank" class="social-link w-inline-block">
                                 <img src="../../static/images/icon-Google.svg" loading="lazy" alt="">
                             </a>
-                            <a href="https://webflow.com" target="_blank" class="social-link w-inline-block">
+                            <a href="#" target="_blank" class="social-link w-inline-block">
                                 <img src="../../static/images/icon-Pinterest.svg" loading="lazy" alt="">
                             </a>
                         </div>
