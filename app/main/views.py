@@ -119,6 +119,14 @@ def index_test():
     return render_template('main/index_test.html')
 
 
+@main.route('/premium-intro')
+def premium_intro():
+    """
+    This function renders the page of the advertisement of premium membership
+    """
+    return render_template('main/premium.html')
+
+
 @main.route('/all-models')
 def go_all():
     """

@@ -127,6 +127,15 @@ def order_confirm(order_id):
         return redirect(url_for('main.index'))
 
 
+@order.route('/order-confirm-premium', methods=['GET', 'POST'])
+@login_required
+def order_confirm_premium():
+    """
+        This function is for rendering the page of premium membership order confirmation.
+    """
+    return render_template("order/order-confirm-premium.html")
+
+
 # -------------------------------------- Ajax in order confirm page --------------------------------------
 
 @order.route('/api/get-order-payment', methods=['POST'])
@@ -438,11 +447,11 @@ def generate_premium_order():
             except Exception as e:
                 current_app.logger.error(e)
                 flash(_("Error in Duration info!"))
-                return redirect(url_for('main.index'))
+                return jsonify({"returnValue": 1})
         else:
             current_app.logger.warning('Duration is None!')
             flash(_("No duration info!"))
-            return redirect(url_for('main.index'))
+            return jsonify({"returnValue": 1})
 
         if payment:
             try:
@@ -450,16 +459,22 @@ def generate_premium_order():
             except Exception as e:
                 current_app.logger.error(e)
                 flash(_("Error in payment info!"))
-                return redirect(url_for('main.index'))
+                return jsonify({"returnValue": 1})
         else:
             current_app.logger.warning('Payment is None!')
             flash(_("No payment info!"))
-            return redirect(url_for('main.index'))
+            return jsonify({"returnValue": 1})
 
         # create a new premium order
         new_p_order = PremiumOrder(user=current_user, duration=duration, payment=payment)
+        # generate the out_trade_no as the premium order is created
         db.session.add(new_p_order)
         db.session.commit()
+        new_p_order.generate_unique_out_trade_no()
 
         # start process of Alipay
-        return redirect(url_for('payment.pay_for_order_premium', p_order_id=new_p_order.id))
+        # return redirect(url_for('payment.pay_for_order_premium', p_order_id=new_p_order.id))
+        return jsonify({"returnValue": 0, "p_order_id": new_p_order.id})
+
+    return jsonify({"returnValue": 1})
+
