@@ -22,6 +22,16 @@
     width: 10%;
 }
 
+.w-commerce-commercelanguagewrapper {
+    display: inline-block;
+    position: relative;
+    height: 20%;
+    width: 20%;
+    float: right;
+    margin-right: 10px;
+}
+
+
 .w-commerce-commercecartopenlink {
     background-color: #3898ec;
     border-bottom-left-radius: 0px;
