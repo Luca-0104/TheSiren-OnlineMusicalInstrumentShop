@@ -20,8 +20,13 @@ from ..public_tools import upload_picture
 @product.route('/staff-index')
 @login_required
 def show_page_staff_index():
-    """This is a fully static page !!!!!!!"""
-    return render_template('staff/staff-index.html')
+    """
+        This function renders the page of DashBoard
+    """
+    # get the best selling (top 6) model types
+    best_sell_mt_lst = ModelType.query.filter_by(is_deleted=False).order_by(ModelType.sales.desc()).all()
+    return render_template('staff/staff-index.html', best_sell_mt_lst=best_sell_mt_lst)
+
 
 @product.route('/stock-management', methods=['GET', 'POST'])
 @login_required
