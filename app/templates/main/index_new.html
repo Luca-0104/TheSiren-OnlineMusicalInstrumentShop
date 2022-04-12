@@ -322,7 +322,7 @@
                             <div class="nav-menu-divider"></div>
 
                             <!-- Right side -->
-                            <a href="about.html" class="nav-link">{{ _('About') }}</a>
+                            <a href="{{ url_for("main.about_us") }}" class="nav-link">{{ _('About') }}</a>
                             <a href="contact.html" class="nav-link">{{ _('Contact') }}</a>
                         </div>
                     </nav>
@@ -777,7 +777,7 @@
                                 explore your range of products. Don’t forget to mention the unique selling point of the brand.
                             </div>
                             <div class="button-row">
-                                <a href="about.html" class="button bg-primary-dark w-inline-block">
+                                <a href="{{ url_for("main.about_us") }}" class="button bg-primary-dark w-inline-block">
                                     <div>{{ _('About Us') }}</div>
                                 </a>
                             </div>
@@ -973,7 +973,7 @@
 				<div class="aut_brand_right">
 					<ul class="aut_brand_list clearfix">
 						<li>
-                            <a target="_blank" href="#">
+                            <a target="_blank" href="{{ url_for("main.brand_intro", brand_id=1) }}">
                                 <div class="img_wrap">
                                     <img src="../../static/images/brand_logo/001.jpg" />
                                 </div>
