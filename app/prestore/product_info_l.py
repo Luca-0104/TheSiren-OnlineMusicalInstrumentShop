@@ -688,7 +688,7 @@ pm_lst = [
             # model 1 ----------------------------------------------------------
             [
                 'SAKKUSU',          # model name
-                'model-description-test',   # m description
+                'Completing the Sakkusu range in the most dramatic of styles are these extraordinary Straight Saxophones. It is a rarity to be able to find a modern-production straight tenor sax these days, let alone an affordable one, and so we took the opportunity to fill this gap in the market!',   # m description
                 3201,                        # m price
                 4,                          # kg
                 [
@@ -825,168 +825,156 @@ pm_lst = [
         ]
     ],
 
-# # product 0 ----------------------------------------------------
-#     [
-#         "product-name-test",        # product name
-#         1,                          # brand id
-#         1,                          # cate id - C
-#         7,                          # cate id - T
-#         53,                         # cate id - A
-#         [                           # model type list
-#             # model 1 ----------------------------------------------------------
-#             [
-#                 'model-name-test',          # model name
-#                 'model-description-test',   # m description
-#                 100,                        # m price
-#                 2,                          # kg
-#                 [
-#                     'p1m1-1.png',
-#                     'p1m1-2.png',
-#                     'p1m1-3.png'
-#                 ]
-#             ],
-#             # model 2 ----------------------------------------------------------
-#             # [],
-#             # model 3 ----------------------------------------------------------
-#             # []
-#         ]
-#     ],
-#
-# # product 0 ----------------------------------------------------
-#     [
-#         "product-name-test",        # product name
-#         1,                          # brand id
-#         1,                          # cate id - C
-#         7,                          # cate id - T
-#         53,                         # cate id - A
-#         [                           # model type list
-#             # model 1 ----------------------------------------------------------
-#             [
-#                 'model-name-test',          # model name
-#                 'model-description-test',   # m description
-#                 100,                        # m price
-#                 2,                          # kg
-#                 [
-#                     'p1m1-1.png',
-#                     'p1m1-2.png',
-#                     'p1m1-3.png'
-#                 ]
-#             ],
-#             # model 2 ----------------------------------------------------------
-#             # [],
-#             # model 3 ----------------------------------------------------------
-#             # []
-#         ]
-#     ],
-#
-# # product 0 ----------------------------------------------------
-#     [
-#         "product-name-test",        # product name
-#         1,                          # brand id
-#         1,                          # cate id - C
-#         7,                          # cate id - T
-#         53,                         # cate id - A
-#         [                           # model type list
-#             # model 1 ----------------------------------------------------------
-#             [
-#                 'model-name-test',          # model name
-#                 'model-description-test',   # m description
-#                 100,                        # m price
-#                 2,                          # kg
-#                 [
-#                     'p1m1-1.png',
-#                     'p1m1-2.png',
-#                     'p1m1-3.png'
-#                 ]
-#             ],
-#             # model 2 ----------------------------------------------------------
-#             # [],
-#             # model 3 ----------------------------------------------------------
-#             # []
-#         ]
-#     ],
-#
-# # product 0 ----------------------------------------------------
-#     [
-#         "product-name-test",        # product name
-#         1,                          # brand id
-#         1,                          # cate id - C
-#         7,                          # cate id - T
-#         53,                         # cate id - A
-#         [                           # model type list
-#             # model 1 ----------------------------------------------------------
-#             [
-#                 'model-name-test',          # model name
-#                 'model-description-test',   # m description
-#                 100,                        # m price
-#                 2,                          # kg
-#                 [
-#                     'p1m1-1.png',
-#                     'p1m1-2.png',
-#                     'p1m1-3.png'
-#                 ]
-#             ],
-#             # model 2 ----------------------------------------------------------
-#             # [],
-#             # model 3 ----------------------------------------------------------
-#             # []
-#         ]
-#     ],
-#
-# # product 0 ----------------------------------------------------
-#     [
-#         "product-name-test",        # product name
-#         1,                          # brand id
-#         1,                          # cate id - C
-#         7,                          # cate id - T
-#         53,                         # cate id - A
-#         [                           # model type list
-#             # model 1 ----------------------------------------------------------
-#             [
-#                 'model-name-test',          # model name
-#                 'model-description-test',   # m description
-#                 100,                        # m price
-#                 2,                          # kg
-#                 [
-#                     'p1m1-1.png',
-#                     'p1m1-2.png',
-#                     'p1m1-3.png'
-#                 ]
-#             ],
-#             # model 2 ----------------------------------------------------------
-#             # [],
-#             # model 3 ----------------------------------------------------------
-#             # []
-#         ]
-#     ],
-#
-# # product 0 ----------------------------------------------------
-#     [
-#         "product-name-test",        # product name
-#         1,                          # brand id
-#         1,                          # cate id - C
-#         7,                          # cate id - T
-#         53,                         # cate id - A
-#         [                           # model type list
-#             # model 1 ----------------------------------------------------------
-#             [
-#                 'model-name-test',          # model name
-#                 'model-description-test',   # m description
-#                 100,                        # m price
-#                 2,                          # kg
-#                 [
-#                     'p1m1-1.png',
-#                     'p1m1-2.png',
-#                     'p1m1-3.png'
-#                 ]
-#             ],
-#             # model 2 ----------------------------------------------------------
-#             # [],
-#             # model 3 ----------------------------------------------------------
-#             # []
-#         ]
-#     ],
-#
+    # product 24 ----------------------------------------------------
+    [
+        "YFG-811",        # product name
+        16,                          # brand id
+        2,                          # cate id - C
+        25,                          # cate id - T
+        53,                         # cate id - A
+        [                           # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'YFG-811',          # model name
+                "This custom bassoon made with fine craftsmanship features an excellent response as well as a wide expressiveness in response to the varied demands of artists. This model has long been a favorite of prominent orchestras in Europe and elsewhere.",   # m description
+                14500,                        # m price
+                4,                          # kg
+                [
+                    'l-p24m1-1.png'
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 25 ----------------------------------------------------
+    [
+        "HOHNER STRAIGHT RECORDER",        # product name
+        8,                          # brand id
+        2,                          # cate id - C
+        26,                          # cate id - T
+        53,                         # cate id - A
+        [                           # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'HOHNER STRAIGHT RECORDER',          # model name
+                'It can be blown with the force of natural breathing, so that people can easily get beautiful music from the beginning of learning.',   # m description
+                500,                        # m price
+                0.5,                          # kg
+                [
+                    'l-p25m1-1.png'
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 26 ----------------------------------------------------
+    [
+        "Hohner Pearwood Soprano Recorder",        # product name
+        8,                          # brand id
+        2,                          # cate id - C
+        26,                          # cate id - T
+        53,                         # cate id - A
+        [                           # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'Hohner Pearwood Soprano Recorder',          # model name
+                'It can be blown with the force of natural breathing, so that people can easily get beautiful music from the beginning of learning.',   # m description
+                560,                        # m price
+                0.5,                          # kg
+                [
+                    'l-p26m1-1.png'
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 27 ----------------------------------------------------
+    [
+        "Hohner Pearwood Soprano Recorder",        # product name
+        8,                          # brand id
+        2,                          # cate id - C
+        26,                          # cate id - T
+        53,                         # cate id - A
+        [                           # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'Hohner Pearwood Soprano Recorder',          # model name
+                'It can be blown with the force of natural breathing, so that people can easily get beautiful music from the beginning of learning.',   # m description
+                165,                        # m price
+                2,                          # kg
+                [
+                    'l-p27m1-1.png'
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 28 ----------------------------------------------------
+    [
+        "YRA28B Alto",        # product name
+        16,                          # brand id
+        2,                          # cate id - C
+        26,                          # cate id - T
+        53,                         # cate id - A
+        [                           # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'YRA28B Alto',          # model name
+                'This is an easy to play alto with accurate intonation and a warm rich sound which will enhance any recorder ensemble. ',   # m description
+                140,                        # m price
+                0.5,                          # kg
+                [
+                    'l-p28m1-1.png'
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 29 ----------------------------------------------------
+    [
+        "YTR-8330EM",        # product name
+        16,                          # brand id
+        3,                          # cate id - C
+        30,                          # cate id - T
+        53,                         # cate id - A
+        [                           # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'YTR-8330EM',          # model name
+                "Developed under the direction of internationally renowned trumpet artist Eric Miyashiro, the brand new 'EM' trumpet series is also an upgraded version of the model released 17 years ago. The power and responsiveness of the original trumpet has been retained, and the piston cylinder, which is at the heart of the instrument, has been upgraded. Every part has been carefully re-examined and optimized as needed to improve playability and overall control in the upper register. The EM trumpet continues to evolve to meet the ever-changing needs of the world's leading players.",   # m description
+                38000,                        # m price
+                2.5,                          # kg
+                [
+                    'l-p29m1-1.png'
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
 # # product 0 ----------------------------------------------------
 #     [
 #         "product-name-test",        # product name
