@@ -63,13 +63,13 @@ function add_to_cart(modelID, count){
             $(id + " input").attr("value", parseInt($(id + " input").attr("value")) + parseInt(count));
 
             //open the sidebar cart
-            let sidebar_cart = $('#sidebar_cart');
-            let cart_errupter = $('#cart_errupter');
-            let side_bar_close = $('#close_cart');
-            if (sidebar_cart.attr('open_') === 'not'){
-                cart_errupter.prop('style','opacity: 1; transition: opacity 300ms ease 0s;');
-                sidebar_cart.attr('open_',"opened");
-            }
+            // let sidebar_cart = $('#sidebar_cart');
+            // let cart_errupter = $('#cart_errupter');
+            // let side_bar_close = $('#close_cart');
+            // if (sidebar_cart.attr('open_') === 'not'){
+            //     cart_errupter.prop('style','opacity: 1; transition: opacity 300ms ease 0s;');
+            //     sidebar_cart.attr('open_',"opened");
+            // }
 
         }
 
