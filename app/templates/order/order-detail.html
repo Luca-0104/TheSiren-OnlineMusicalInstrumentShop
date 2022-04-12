@@ -21,6 +21,7 @@
         <link href="../../static/css/jacks-supercool-site-c6dd88.webflow.css" rel="stylesheet" type="text/css">
         <link href="../../static/css/order/order-detail.css" rel="stylesheet" type="text/css">
         <link href="../../static/css/order/order-progress-bar.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
         {#        <link href="../../static/css/order/order.css" rel="stylesheet" type="text/css">#}
 
         <!-- [if lt IE 9]>
@@ -227,20 +228,10 @@
                             <div class="w-dyn-list">
                                 <div role="list" class="navbar-categories w-dyn-items">
                                     <div role="listitem" class="w-dyn-item nav_topic">
-                                        <a href="#" class="nav-link">{{ _('Gatagory') }}</a>
-                                        <div class="nav_option">
-                                            <a href="#" class="nav-link">Gatagory01</a>
-                                            <a href="#" class="nav-link">Gatagory02</a>
-                                            <a href="#" class="nav-link">Gatagory03</a>
-                                        </div>
+                                        <a href="#" class="nav-link">{{ _('Catagory') }}</a>
                                     </div>
                                     <div role="listitem" class="w-dyn-item nav_topic">
                                         <a href="#" class="nav-link">{{ _('Brand') }}</a>
-                                        <div class="nav_option">
-                                            <a href="#" class="nav-link">Brand01</a>
-                                            <a href="#" class="nav-link">Brand02</a>
-                                            <a href="#" class="nav-link">Brand03</a>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -257,60 +248,76 @@
             </div>
         </div>
 
-         <div class="main">
+         <div class="main" style="">
 
             <div class="head">
-                <p class="head_1">Animated Step <span>Progress Bar</span></p>
-                <p class="head_2">Using Html, Css & JavaScript</p>
+                <p class="large-heading">Progress<span> Bar</span></p>
+
             </div>
 
-            <ul>
+            <ul class="ul-1">
                 <li>
-                    <i class="icon uil uil-capture"></i>
+                    <i class="icon uil uil-credit-card" style="color: #8e8267;"></i>
                     <div class="progress one">
                         <p>1</p>
-                        <i class="uil uil-check"></i>
+                        <i class="uil uil-check" style="color: #e2e1dc;"></i>
                     </div>
-                    <p class="text">Add To Cart</p>
+                    <p class="text">Payment</p>
                 </li>
                 <li>
-                    <i class="icon uil uil-clipboard-notes"></i>
+                    <i class="icon uil uil-truck-loading" style="color: #8e8267;"></i>
                     <div class="progress two">
                         <p>2</p>
-                        <i class="uil uil-check"></i>
+                        <i class="uil uil-check" style="color: #e2e1dc;"></i>
                     </div>
-                    <p class="text">Fill Details</p>
+                    <p class="text">Preparing</p>
                 </li>
                 <li>
-                    <i class="icon uil uil-credit-card"></i>
+                    <i class="icon uil uil-truck" style="color: #8e8267;"></i>
                     <div class="progress three">
                         <p>3</p>
-                        <i class="uil uil-check"></i>
+                        <i class="uil uil-check" style="color: #e2e1dc;"></i>
                     </div>
-                    <p class="text">Make Payment</p>
+                    <p class="text">On Delivery</p>
                 </li>
                 <li>
-                    <i class="icon uil uil-exchange"></i>
+                    <i class="icon uil uil-clock-nine" style="color: #8e8267;"></i>
                     <div class="progress four">
                         <p>4</p>
-                        <i class="uil uil-check"></i>
+                        <i class="uil uil-check" style="color: #e2e1dc;"></i>
                     </div>
-                    <p class="text">Order in Progress</p>
+                    <p class="text">Waiting For Collection</p>
                 </li>
                 <li>
-                    <i class="icon uil uil-map-marker"></i>
+                    <i class="icon uil uil-map-marker" style="color: #8e8267;"></i>
                     <div class="progress five">
                         <p>5</p>
-                        <i class="uil uil-check"></i>
+                        <i class="uil uil-check" style="color: #e2e1dc;"></i>
                     </div>
-                    <p class="text">Order Arrived</p>
+                    <p class="text">Finished</p>
                 </li>
+{#                <li>#}
+{#                    <i class="icon uil uil-map-marker"></i>#}
+{#                    <div class="progress six">#}
+{#                        <p>5</p>#}
+{#                        <i class="uil uil-check"></i>#}
+{#                    </div>#}
+{#                    <p class="text">Canceled</p>#}
+{#                </li>#}
+{#                <li>#}
+{#                    <i class="icon uil uil-map-marker"></i>#}
+{#                    <div class="progress seven">#}
+{#                        <p>5</p>#}
+{#                        <i class="uil uil-check"></i>#}
+{#                    </div>#}
+{#                    <p class="text">Canceled</p>#}
+{#                </li>#}
             </ul>
          </div>
 
 
         <!-- Order Detail Section -->
-        <div class="section wf-section">
+        <div class="section wf-section" style="padding-top: 0px">
             <div class="main-container">
                 <!-- Order Detail -->
                 <div class="w-commerce-commercecartheader cart-header">
