@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html data-wf-page="6221c36b59f198bf8d5ac611" data-wf-site="6221c36b59f1986aa65ac5f0" xmlns="http://www.w3.org/1999/html">
+<html data-wf-page="6221c36b59f198bf8d5ac611" data-wf-site="6221c36b59f1986aa65ac5f0"
+      xmlns="http://www.w3.org/1999/html">
     <head>
         <title>Siren - Commodities</title>
         <link rel="icon" href="../../static/images/half-logo.png">
@@ -50,7 +51,8 @@
                 <div class="navbar-top">
                     <!-- Middel part -->
                     <a href="{{ url_for('main.index') }}" aria-current="page" class="w-inline-block w--current">
-                        <img src="../../static/images/White-logo-no-background.svg" loading="eager" alt="" height="45px">
+                        <img src="../../static/images/White-logo-no-background.svg" loading="eager" alt=""
+                             height="45px">
                     </a>
 
                     <!-- Right part -->
@@ -66,136 +68,187 @@
                             </a>
                         {% endif %}
 
+                        <!-- change language-->
+                        <div data-node-type="commerce-cart-wrapper" data-open-product=""
+                             data-wf-cart-type="rightSidebar"
+                             data-wf-cart-query="" data-wf-page-link-href-prefix=""
+                             class="w-commerce-commerceuserwrapper">
+                            <a href="{{ url_for("main.change_language") }}"
+                               class="w-commerce-commercecartopenlink nav-cart-button w-inline-block"><img
+                                    src="../../static/images/icon-language.png" loading="eager" alt="">
+                            </a>
+                        </div>
+                        <!-- user profile button-->
+                        {% if current_user.is_authenticated %}
+                            <div data-node-type="commerce-cart-wrapper" data-open-product=""
+                                 data-wf-cart-type="rightSidebar"
+                                 data-wf-cart-query="" data-wf-page-link-href-prefix=""
+                                 class="w-commerce-commerceuserwrapper">
+                                <a href="/user_profile/{{ current_user.id }}"
+                                   class="w-commerce-commercecartopenlink nav-cart-button w-inline-block"><img
+                                        src="../../static/images/icon-user.png" loading="eager" alt="">
+                                </a>
+                            </div>
+                        {% endif %}
+
                         <!-- Cart -->
                         {% if current_user.is_authenticated %}
-                            <div data-node-type="commerce-cart-wrapper" data-open-product="" data-wf-cart-type="rightSidebar"
-                             data-wf-cart-query="" data-wf-page-link-href-prefix="" class="w-commerce-commercecartwrapper" >
+                            <div data-node-type="commerce-cart-wrapper" data-open-product=""
+                                 data-wf-cart-type="rightSidebar"
+                                 data-wf-cart-query="" data-wf-page-link-href-prefix=""
+                                 class="w-commerce-commercecartwrapper">
 
-                            {# cart btn on the nav bar #}
-                            <a id="sidebar_cart" href="{% if current_user.is_authenticated %} # {% else %} {{ url_for("auth.login") }} {% endif %}" data-node-type="commerce-cart-open-link"
-                               class="w-commerce-commercecartopenlink nav-cart-button w-inline-block" open_="not"><img
-                                    src="../../static/images/icon-shopping-bag.svg" loading="eager" alt="">
-                                <div class="w-commerce-commercecartopenlinkcount cart-quantity">0</div>
-                            </a>
-                            <div id="cart_errupter" data-node-type="commerce-cart-container-wrapper" style="display:none"
-                                 class="w-commerce-commercecartcontainerwrapper w-commerce-commercecartcontainerwrapper--cartType-rightSidebar">
-                                <div data-node-type="commerce-cart-container"
-                                     class="w-commerce-commercecartcontainer cart-container">
-                                    <div class="w-commerce-commercecartheader cart-header">
-                                        <h4 class="w-commerce-commercecartheading">{{ _('Your Cart') }}</h4>
-                                        <a id="close_cart" href="#" data-node-type="commerce-cart-close-link" class="w-commerce-commercecartcloselink close-cart-button w-inline-block">
-                                            <img src="../../static/images/icon-cross-large.svg" loading="lazy" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="w-commerce-commercecartformwrapper">
-                                        {# The outer container of the cart items #}
-                                        {% if current_user.carts.count() != 0 %}
-                                            <form data-node-type="commerce-cart-form" class="w-commerce-commercecartform">
-                                                <script type="text/x-wf-template" id="wf-template-dab1a8fd-38ef-ff9e-e737-a0bdf6abf424"></script>
+                                {# cart btn on the nav bar #}
+                                <a id="sidebar_cart"
+                                   href="{% if current_user.is_authenticated %} # {% else %} {{ url_for("auth.login") }} {% endif %}"
+                                   data-node-type="commerce-cart-open-link"
+                                   class="w-commerce-commercecartopenlink nav-cart-button w-inline-block"
+                                   open_="not"><img
+                                        src="../../static/images/icon-shopping-bag.svg" loading="eager" alt="">
+                                    <div class="w-commerce-commercecartopenlinkcount cart-quantity">0</div>
+                                </a>
+                                <div id="cart_errupter" data-node-type="commerce-cart-container-wrapper"
+                                     style="display:none"
+                                     class="w-commerce-commercecartcontainerwrapper w-commerce-commercecartcontainerwrapper--cartType-rightSidebar">
+                                    <div data-node-type="commerce-cart-container"
+                                         class="w-commerce-commercecartcontainer cart-container">
+                                        <div class="w-commerce-commercecartheader cart-header">
+                                            <h4 class="w-commerce-commercecartheading">{{ _('Your Cart') }}</h4>
+                                            <a id="close_cart" href="#" data-node-type="commerce-cart-close-link"
+                                               class="w-commerce-commercecartcloselink close-cart-button w-inline-block">
+                                                <img src="../../static/images/icon-cross-large.svg" loading="lazy"
+                                                     alt="">
+                                            </a>
+                                        </div>
+                                        <div class="w-commerce-commercecartformwrapper">
+                                            {# The outer container of the cart items #}
+                                            {% if current_user.carts.count() != 0 %}
+                                                <form data-node-type="commerce-cart-form"
+                                                      class="w-commerce-commercecartform">
+                                                    <script type="text/x-wf-template"
+                                                            id="wf-template-dab1a8fd-38ef-ff9e-e737-a0bdf6abf424"></script>
 
-                                                <div class="w-commerce-commercecartlist cart-list"
-                                                     data-wf-collection="database.commerceOrder.userItems"
-                                                     data-wf-template-id="wf-template-dab1a8fd-38ef-ff9e-e737-a0bdf6abf424">
+                                                    <div class="w-commerce-commercecartlist cart-list"
+                                                         data-wf-collection="database.commerceOrder.userItems"
+                                                         data-wf-template-id="wf-template-dab1a8fd-38ef-ff9e-e737-a0bdf6abf424">
 
-                                                    {# each cart item in the cart of this user #}
-                                                    {% for cart_item in current_user.carts %}
-                                                        <div id="cart-item-{{ cart_item.id }}" class="w-commerce-commercecartitem cart-item">
-                                                            {# model image (left part) #}
-                                                            <img
-                                                                data-wf-bindings="%5B%7B%22src%22%3A%7B%22type%22%3A%22ImageRef%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.sku.f_main_image_4dr%22%7D%7D%5D"
-                                                                src="{{ url_for('static', filename=cart_item.model_type.pictures[0].address) }}"
-                                                                alt="" class="w-commerce-commercecartitemimage cart-item-image">
+                                                        {# each cart item in the cart of this user #}
+                                                        {% for cart_item in current_user.carts %}
+                                                            <div id="cart-item-{{ cart_item.id }}"
+                                                                 class="w-commerce-commercecartitem cart-item">
+                                                                {# model image (left part) #}
+                                                                <img
+                                                                        data-wf-bindings="%5B%7B%22src%22%3A%7B%22type%22%3A%22ImageRef%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.sku.f_main_image_4dr%22%7D%7D%5D"
+                                                                        src="{{ url_for('static', filename=cart_item.model_type.pictures[0].address) }}"
+                                                                        alt=""
+                                                                        class="w-commerce-commercecartitemimage cart-item-image">
 
-                                                            {# model info (middle part) #}
-                                                            <div class="w-commerce-commercecartiteminfo cart-item-details">
-                                                                {# model name #}
-                                                                <div data-wf-bindings="%5B%7B%22innerHTML%22%3A%7B%22type%22%3A%22PlainText%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.product.f_name_%22%7D%7D%5D" class="w-commerce-commercecartproductname">
-                                                                    {{ cart_item.model_type.name }}
+                                                                {# model info (middle part) #}
+                                                                <div class="w-commerce-commercecartiteminfo cart-item-details">
+                                                                    {# model name #}
+                                                                    <div data-wf-bindings="%5B%7B%22innerHTML%22%3A%7B%22type%22%3A%22PlainText%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.product.f_name_%22%7D%7D%5D"
+                                                                         class="w-commerce-commercecartproductname">
+                                                                        {{ cart_item.model_type.name }}
+                                                                    </div>
+
+                                                                    {# model price #}
+                                                                    <div data-wf-bindings="%5B%7B%22innerHTML%22%3A%7B%22type%22%3A%22CommercePrice%22%2C%22filter%22%3A%7B%22type%22%3A%22price%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.price%22%7D%7D%5D"
+                                                                         class="fine-print-text">
+                                                                        $&nbsp;<span class="cart-item-price"
+                                                                                     item-count="{{ cart_item.count }}">{{ cart_item.model_type.price }}</span>&nbsp;USD
+                                                                    </div>
+
+                                                                    <script type="text/x-wf-template"
+                                                                            id="wf-template-dab1a8fd-38ef-ff9e-e737-a0bdf6abf42a">%3Cli%3E%3Cspan%20data-wf-bindings%3D%22%255B%257B%2522innerHTML%2522%253A%257B%2522type%2522%253A%2522PlainText%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems.0.product.f_sku_properties_3dr%255B%255D.name%2522%257D%257D%255D%22%20class%3D%22w-dyn-bind-empty%22%3E%3C%2Fspan%3E%3Cspan%3E%3A%20%3C%2Fspan%3E%3Cspan%20data-wf-bindings%3D%22%255B%257B%2522innerHTML%2522%253A%257B%2522type%2522%253A%2522CommercePropValues%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems.0.product.f_sku_properties_3dr%255B%255D%2522%257D%257D%255D%22%20class%3D%22w-dyn-bind-empty%22%3E%3C%2Fspan%3E%3C%2Fli%3E</script>
+                                                                    <ul data-wf-bindings="%5B%7B%22optionSets%22%3A%7B%22type%22%3A%22CommercePropTable%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.product.f_sku_properties_3dr[]%22%7D%7D%2C%7B%22optionValues%22%3A%7B%22type%22%3A%22CommercePropValues%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.sku.f_sku_values_3dr%22%7D%7D%5D"
+                                                                        class="w-commerce-commercecartoptionlist"
+                                                                        data-wf-collection="database.commerceOrder.userItems.0.product.f_sku_properties_3dr"
+                                                                        data-wf-template-id="wf-template-dab1a8fd-38ef-ff9e-e737-a0bdf6abf42a"></ul>
+
+                                                                    {# remove btn #}
+                                                                    <a href="#"
+                                                                       data-wf-bindings="%5B%7B%22data-commerce-sku-id%22%3A%7B%22type%22%3A%22ItemRef%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.sku.id%22%7D%7D%5D"
+                                                                       class="w-inline-block cart-item-remove-btn"
+                                                                       data-wf-cart-action="remove-item"
+                                                                       data-commerce-sku-id="61a56467407a5a926e9ea7a7"
+                                                                       cart-id="{{ cart_item.id }}">
+                                                                        <div class="fine-print-text remove-link">
+                                                                            Remove
+                                                                        </div>
+                                                                    </a>
                                                                 </div>
 
-                                                                {# model price #}
-                                                                <div data-wf-bindings="%5B%7B%22innerHTML%22%3A%7B%22type%22%3A%22CommercePrice%22%2C%22filter%22%3A%7B%22type%22%3A%22price%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.price%22%7D%7D%5D" class="fine-print-text">
-                                                                    $&nbsp;<span class="cart-item-price" item-count="{{ cart_item.count }}">{{ cart_item.model_type.price }}</span>&nbsp;USD
-                                                                </div>
-
-                                                                <script type="text/x-wf-template" id="wf-template-dab1a8fd-38ef-ff9e-e737-a0bdf6abf42a">%3Cli%3E%3Cspan%20data-wf-bindings%3D%22%255B%257B%2522innerHTML%2522%253A%257B%2522type%2522%253A%2522PlainText%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems.0.product.f_sku_properties_3dr%255B%255D.name%2522%257D%257D%255D%22%20class%3D%22w-dyn-bind-empty%22%3E%3C%2Fspan%3E%3Cspan%3E%3A%20%3C%2Fspan%3E%3Cspan%20data-wf-bindings%3D%22%255B%257B%2522innerHTML%2522%253A%257B%2522type%2522%253A%2522CommercePropValues%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems.0.product.f_sku_properties_3dr%255B%255D%2522%257D%257D%255D%22%20class%3D%22w-dyn-bind-empty%22%3E%3C%2Fspan%3E%3C%2Fli%3E</script>
-                                                                <ul data-wf-bindings="%5B%7B%22optionSets%22%3A%7B%22type%22%3A%22CommercePropTable%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.product.f_sku_properties_3dr[]%22%7D%7D%2C%7B%22optionValues%22%3A%7B%22type%22%3A%22CommercePropValues%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.sku.f_sku_values_3dr%22%7D%7D%5D"
-                                                                    class="w-commerce-commercecartoptionlist"
-                                                                    data-wf-collection="database.commerceOrder.userItems.0.product.f_sku_properties_3dr"
-                                                                    data-wf-template-id="wf-template-dab1a8fd-38ef-ff9e-e737-a0bdf6abf42a"></ul>
-
-                                                                {# remove btn #}
-                                                                <a href="#"
-                                                                   data-wf-bindings="%5B%7B%22data-commerce-sku-id%22%3A%7B%22type%22%3A%22ItemRef%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.sku.id%22%7D%7D%5D"
-                                                                   class="w-inline-block cart-item-remove-btn" data-wf-cart-action="remove-item"
-                                                                   data-commerce-sku-id="61a56467407a5a926e9ea7a7" cart-id="{{ cart_item.id }}">
-                                                                    <div class="fine-print-text remove-link">Remove</div>
-                                                                </a>
+                                                                {# count number (right part) #}
+                                                                <input type="text" required="" pattern="^[0-9]+$"
+                                                                       inputmode="numeric"
+                                                                       data-wf-bindings="%5B%7B%22value%22%3A%7B%22type%22%3A%22Number%22%2C%22filter%22%3A%7B%22type%22%3A%22numberPrecision%22%2C%22params%22%3A%5B%220%22%2C%22numberPrecision%22%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.count%22%7D%7D%2C%7B%22data-commerce-sku-id%22%3A%7B%22type%22%3A%22ItemRef%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.sku.id%22%7D%7D%5D"
+                                                                       data-wf-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22product%3Aec-product-type%22%3A%7B%22ne%22%3A%22e348fd487d0102946c9179d2a94bb613%22%2C%22type%22%3A%22Option%22%7D%7D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0%22%7D"
+                                                                       class="w-commerce-commercecartquantity"
+                                                                       name="quantity"
+                                                                       data-wf-cart-action="update-item-quantity"
+                                                                       data-commerce-sku-id="61a56467407a5a926e9ea7a7"
+                                                                       value="{{ cart_item.count }}">
                                                             </div>
+                                                        {% endfor %}
 
-                                                            {# count number (right part) #}
-                                                            <input type="text" required="" pattern="^[0-9]+$"
-                                                                   inputmode="numeric"
-                                                                   data-wf-bindings="%5B%7B%22value%22%3A%7B%22type%22%3A%22Number%22%2C%22filter%22%3A%7B%22type%22%3A%22numberPrecision%22%2C%22params%22%3A%5B%220%22%2C%22numberPrecision%22%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.count%22%7D%7D%2C%7B%22data-commerce-sku-id%22%3A%7B%22type%22%3A%22ItemRef%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.sku.id%22%7D%7D%5D"
-                                                                   data-wf-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22product%3Aec-product-type%22%3A%7B%22ne%22%3A%22e348fd487d0102946c9179d2a94bb613%22%2C%22type%22%3A%22Option%22%7D%7D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0%22%7D"
-                                                                   class="w-commerce-commercecartquantity" name="quantity"
-                                                                   data-wf-cart-action="update-item-quantity"
-                                                                   data-commerce-sku-id="61a56467407a5a926e9ea7a7" value="{{ cart_item.count }}">
+                                                    </div>
+
+                                                    <div class="w-commerce-commercecartfooter cart-footer">
+                                                        {# The total payemnt #}
+                                                        <div class="w-commerce-commercecartlineitem">
+                                                            <div>{{ _('Subtotal') }}</div>
+                                                            <div class="w-commerce-commercecartordervalue">
+                                                                <span>$ </span><span id="number-subtotal"></span><span> USD</span>
+                                                            </div>
                                                         </div>
-                                                    {% endfor %}
-
-                                                </div>
-
-                                                <div class="w-commerce-commercecartfooter cart-footer">
-                                                    {# The total payemnt #}
-                                                    <div class="w-commerce-commercecartlineitem">
-                                                        <div>{{ _('Subtotal') }}</div>
-                                                        <div class="w-commerce-commercecartordervalue"><span>$ </span><span id="number-subtotal"></span><span> USD</span></div>
+                                                        {# The go to cart btn #}
+                                                        <div>
+                                                            <a href="{{ url_for("cart.show_my_cart") }}"
+                                                               value="Go to my cart"
+                                                               data-node-type="cart-checkout-button"
+                                                               class="w-commerce-commercecartcheckoutbutton button bg-primary-dark"
+                                                               data-loading-text="Hang Tight...">{{ _('Go to my cart') }}</a>
+                                                        </div>
                                                     </div>
-                                                    {# The go to cart btn #}
-                                                    <div>
-                                                        <a href="{{ url_for("cart.show_my_cart") }}" value="Go to my cart"
-                                                           data-node-type="cart-checkout-button"
-                                                           class="w-commerce-commercecartcheckoutbutton button bg-primary-dark"
-                                                           data-loading-text="Hang Tight...">{{ _('Go to my cart') }}</a>
-                                                    </div>
+                                                </form>
+
+
+                                                {# No item indication #}
+                                            {% else %}
+                                                <div class="w-commerce-commercecartemptystate">
+                                                    <div>{{ _('No items found.') }}</div>
                                                 </div>
-                                            </form>
+                                            {% endif %}
 
-
-                                        {# No item indication #}
-                                        {% else %}
-                                            <div class="w-commerce-commercecartemptystate">
-                                                <div>{{ _('No items found.') }}</div>
-                                            </div>
-                                        {% endif %}
-
-                                        <div style="display:none" data-node-type="commerce-cart-error"
-                                             class="w-commerce-commercecarterrorstate">
-                                            <div class="w-cart-error-msg"
-                                                 data-w-cart-quantity-error="Product is not available in this quantity."
-                                                 data-w-cart-general-error="Something went wrong when adding this item to the cart."
-                                                 data-w-cart-checkout-error="Checkout is disabled on this site."
-                                                 data-w-cart-cart_order_min-error="The order minimum was not met. Add more items to your cart to continue."
-                                                 data-w-cart-subscription_error-error="Before you purchase, please use your email invite to verify your address so we can send order updates.">
-                                                {{ _('Product is not available in this quantity.')}}
+                                            <div style="display:none" data-node-type="commerce-cart-error"
+                                                 class="w-commerce-commercecarterrorstate">
+                                                <div class="w-cart-error-msg"
+                                                     data-w-cart-quantity-error="Product is not available in this quantity."
+                                                     data-w-cart-general-error="Something went wrong when adding this item to the cart."
+                                                     data-w-cart-checkout-error="Checkout is disabled on this site."
+                                                     data-w-cart-cart_order_min-error="The order minimum was not met. Add more items to your cart to continue."
+                                                     data-w-cart-subscription_error-error="Before you purchase, please use your email invite to verify your address so we can send order updates.">
+                                                    {{ _('Product is not available in this quantity.') }}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         {% endif %}
 
                     </div>
 
                     <!-- Left part -->
                     <!-- Search -->
-                    <form action="/search" method="POST" id="w-node-dab1a8fd-38ef-ff9e-e737-a0bdf6abf40d-f6abf40a" class="nav-search-form w-form">
+                    <form action="/search" method="POST" id="w-node-dab1a8fd-38ef-ff9e-e737-a0bdf6abf40d-f6abf40a"
+                          class="nav-search-form w-form">
                         <!--<div class="w-inline-block">-->
-                           <input type="image" src="../../static/images/icon-search.svg" value="Search" class="w-button" alt="submit">
+                        <input type="image" src="../../static/images/icon-search.svg" value="Search" class="w-button"
+                               alt="submit">
                         <!--</div>-->
-                           <input type="search" class="search-form-input w-input" maxlength="256" name="key_word" placeholder="{{ _('Search here')}}" id="search-2" required="">
+                        <input type="search" class="search-form-input w-input" maxlength="256" name="key_word"
+                               placeholder="{{ _('Search here') }}" id="search-2" required="">
                     </form>
                 </div>
             </div>
@@ -204,7 +257,8 @@
         <!-- Lower Section of Top nav bar -->
         <div class="div-block">
             <div class="main-container">
-                <div data-collapse="small" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-nav">
+                <div data-collapse="small" data-animation="default" data-duration="400" data-easing="ease"
+                     data-easing2="ease" role="banner" class="navbar w-nav">
                     <div class="button bg-primary wide w-nav-button">
                         <div>{{ _('Menu') }}</div>
                     </div>
@@ -660,11 +714,12 @@
                         <img src="../../static/images/index/keyboard.jpg" loading="lazy" alt="">
                     </div>
                     <div class="text-center">
-                        <h4 class="medium-heading slogan">{{ _('Music should strike fire from the heart of man.')}}</h4>
+                        <h4 class="medium-heading slogan">{{ _('Music should strike fire from the heart of man.') }}</h4>
                         <h6 class="small-heading slogan_name">{{ _('Beethoven') }}</h6>
                         <div class="button-row justify-content-center">
-                            <a href="{{ url_for('auth.register') }}" target="_blank" class="button bg-white-faded w-inline-block">
-                                <div>{{ _('Start Voyage')}}</div>
+                            <a href="{{ url_for('auth.register') }}" target="_blank"
+                               class="button bg-white-faded w-inline-block">
+                                <div>{{ _('Start Voyage') }}</div>
                             </a>
                         </div>
                     </div>
@@ -679,9 +734,11 @@
                     <div class="w-layout-grid footer-grid">
                         <div id="w-node-_3ee0633f-a568-72e0-ab7b-589be9d960ed-e9d960d8" class="footer-contact-details">
                             <a href="{{ url_for('main.index') }}" class="footer-logo-link w-inline-block">
-                                <img src="../../static/images/White-logo-no-background.svg" loading="lazy" alt="" class="footer-logo">
+                                <img src="../../static/images/White-logo-no-background.svg" loading="lazy" alt=""
+                                     class="footer-logo">
                             </a>
-                            <div>China Beijing Chaoyang Distinct Pingleyuan No.100<br>Beijing University of Technology</div>
+                            <div>China Beijing Chaoyang Distinct Pingleyuan No.100<br>Beijing University of Technology
+                            </div>
                             <div class="contact-links in-footer">
                                 <a href="#" class="small-text">group9@ucdconnect.ie</a>
                                 <a href="#" class="small-text">(03) 92337 4627</a>
@@ -694,7 +751,7 @@
                                 <div class="w-dyn-list">
                                     <div role="list" class="links-grid w-dyn-items">
                                         <div role="listitem" class="w-dyn-item">
-                                            <a href="#" class="list-link">{{ _('Brands')}}</a>
+                                            <a href="#" class="list-link">{{ _('Brands') }}</a>
                                         </div>
                                     </div>
                                 </div>
