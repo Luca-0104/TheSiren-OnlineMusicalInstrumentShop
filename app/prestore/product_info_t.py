@@ -155,6 +155,12 @@ pm_lst = [
                 9.8,                          # kg
                 [
                     't-p4m1-1.jpg'
+                ],
+                "",                         # video
+                [                           # audio list
+                    "LHS1455 Hight Tuning.mp3",
+                    "LHS1455 Low Tuning.mp3",
+                    "LHS1455 Mid Tuning.mp3"
                 ]
             ],
 
@@ -166,6 +172,12 @@ pm_lst = [
                 9.8,                          # kg
                 [
                     't-p4m2-1.jpg'
+                ],
+                "",                         # video
+                [                           # audio list
+                    "LHS1455 Hight Tuning.mp3",
+                    "LHS1455 Low Tuning.mp3",
+                    "LHS1455 Mid Tuning.mp3"
                 ]
             ],
 
@@ -177,6 +189,12 @@ pm_lst = [
                 9.8,                          # kg
                 [
                     't-p4m3-1.jpg'
+                ],
+                "",                         # video
+                [                           # audio list
+                    "LHS1455 Hight Tuning.mp3",
+                    "LHS1455 Low Tuning.mp3",
+                    "LHS1455 Mid Tuning.mp3"
                 ]
             ],
 
@@ -188,6 +206,12 @@ pm_lst = [
                 9.8,                          # kg
                 [
                     't-p4m4-1.jpg'
+                ],
+                "",                         # video
+                [                           # audio list
+                    "LHS1455 Hight Tuning.mp3",
+                    "LHS1455 Low Tuning.mp3",
+                    "LHS1455 Mid Tuning.mp3"
                 ]
             ],
 
@@ -199,6 +223,12 @@ pm_lst = [
                 9.8,                          # kg
                 [
                     't-p4m5-1.jpg'
+                ],
+                "",                         # video
+                [                           # audio list
+                    "LHS1455 Hight Tuning.mp3",
+                    "LHS1455 Low Tuning.mp3",
+                    "LHS1455 Mid Tuning.mp3"
                 ]
             ],
         ]

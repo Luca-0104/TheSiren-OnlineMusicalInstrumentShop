@@ -395,33 +395,54 @@
             </div>
         </div>
 
-  {# video section about this model #}
-  {% if model.video_address != None and model.video_address != "" %}
-        <div class="section bg-primary-dark wf-section">
-        <div class="main-container">
-          <div class="video-and-title-box">
-              {# the title (left) #}
-            <div class="container video-title">
-              <h6 class="uppercase-text large-heading">Video for showing</h6>
-              <h3 class="medium-heading"></h3>
-              <div class="large-text"></div>
-            </div>
-            <div class="container">
-                {# The video (right) #}
-                <video controls>
-                    <source src="{{ url_for("static", filename=model.video_address) }}" type="video/mp4">
-                </video>
+      {# video section about this model #}
+      {% if model.video_address != None and model.video_address != "" %}
+            <div class="section bg-primary-dark wf-section">
+            <div class="main-container">
+              <div class="video-and-title-box">
+                  {# the title (left) #}
+                <div class="container video-title">
+                  <h6 class="uppercase-text large-heading">Video for showing</h6>
+                  <h3 class="medium-heading"></h3>
+                  <div class="large-text"></div>
+                </div>
+                <div class="container">
+                    {# The video (right) #}
+                    <video controls>
+                        <source src="{{ url_for("static", filename=model.video_address) }}" type="video/mp4">
+                    </video>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
 
             <br><br>
         {% endif %}
 
   {# radio section about this model #}
-  {% if model.radio_address != None and model.radio_address != "" %}
+  {% if model.audio_addresses.count() != 0 %}
+    <div class="section bg-primary-dark wf-section">
+            <div class="main-container">
+              <div class="video-and-title-box">
+                  {# the title (left) #}
+                <div class="container video-title">
+                  <h6 class="uppercase-text large-heading">Audio Samples</h6>
+                  <h3 class="medium-heading"></h3>
+                  <div class="large-text"></div>
+                </div>
+                <div class="container">
+                    {# The audio list (right) #}
+                    {% for au in model.audio_addresses %}
+                        <audio controls>
+                          <source src="{{ url_for("static", filename=au.address) }}" type="audio/mpeg">
+                        </audio>
+                    {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
 
+            <br><br>
   {% endif %}
 
         {# about this brand #}
