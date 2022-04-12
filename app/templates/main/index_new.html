@@ -23,6 +23,7 @@
         <link href="../../static/css/main/index.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="../../static/css/main/reset.css">
         <link id ="index" rel="stylesheet" href="../../static/css/main/index2.css">
+        <link id ="index" rel="stylesheet" href="../../static/css/flash-bar.css">
         <link href="../../static/css/loader.css" rel="stylesheet" type="text/css">
         <link href="../../static/css/main/main_animations.css" type="text/css">
         <link href="https://fonts.font.im/css?family=Montserrat" rel="stylesheet">
@@ -57,23 +58,38 @@
     </head>
     <body class="body">
 
-    <!--loader-->
-    <div class="loader">
-        <div class="loader-center">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
+        <!--loader-->
+        <div class="loader">
+            <div class="loader-center">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
         </div>
-    </div>
+
+        <!-- Section of Flash Bar -->
+        <!--<div class="aabar">
+            <div class="main-container">
+                <div class="flash-contents">
+                    <div class="flash-text">
+                        Test flash
+                        <a href="{{ url_for('main.go_all') }}" target="_blank">View instruments here</a>
+                    </div>
+                </div>
+            </div>
+            <img src="../../static/images/icon-cross.svg" loading="lazy" alt="" class="flash-cross">
+        </div>-->
+
         <!-- Section of Announcement Bar -->
         <div class="announcement-bar">
             <div class="main-container">
                 <div class="announcement-contents">
-                    <div class="announcement-text">Welcome to Verse – An E-Commerce template for brand curators.
-                        <a href="https://mmra.re/portfolio" target="_blank">View all templates here</a>
+                    <div class="announcement-text">
+                        Welcome to Siren – Selects online music instrument shop for you.
+                        <a href="{{ url_for('main.go_all') }}" target="_blank">View instruments here</a>
                     </div>
                 </div>
             </div>
@@ -1284,9 +1300,9 @@
                             <a href="#" class="footer-logo-link w-inline-block">
                                 <img src="../../static/images/White-logo-no-background.svg" loading="lazy" alt="" class="footer-logo">
                             </a>
-                            <div>{{ _('34 Market Street, South Melbourne') }}<br>{{ _('Victoria 3009') }}</div>
+                            <div>China Beijing Chaoyang Distinct Pingleyuan No.100<br>Beijing University of Technology</div>
                             <div class="contact-links in-footer">
-                                <a href="#" class="small-text">contact@website.com</a>
+                                <a href="#" class="small-text">group9@ucdconnect.ie</a>
                                 <a href="#" class="small-text">(03) 92337 4627</a>
                             </div>
                         </div>
@@ -1306,20 +1322,9 @@
                         <div>
                             <div class="uppercase-text links-grid-title">{{ _('Company') }}</div>
                             <div class="links-grid">
-                                <a href="about.html" class="list-link">{{ _('About') }}</a>
-                                <a href="journal.html" class="list-link">{{ _('Journal') }}</a>
-                                <a href="contact.html" class="list-link">{{ _('Contact') }}</a>
-                                <a href="refund-policy.html" class="list-link">{{ _('Refund Policy') }}</a>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="uppercase-text links-grid-title">Template</div>
-                            <div class="links-grid">
-                                <a href="template/style-guide.html" class="list-link">Style Guide</a>
-                                <a href="template/changelog.html" class="list-link">Changelog</a>
-                                <a href="template/getting-started.html" class="list-link">Getting Started</a>
-                                <a href="template/licensing.html" class="list-link">Licenses</a>
-                                <a href="https://mmra.re/portfolio" target="_blank" class="list-link">More Templates</a>
+                                <a href="about.html" class="list-link">About us</a>
+                                <a href="contact.html" class="list-link">Contect us</a>
+                                <a href="refund-policy.html" class="list-link">Premium</a>
                             </div>
                         </div>
                     </div>
@@ -1434,6 +1439,7 @@
     <script type="text/javascript" src="../../static/js/main/index_slide.js"></script>
 
     <script type="text/javascript" src="../../static/js/cart/sidebar_cart.js"></script>
+    <script type="text/javascript" src="../../static/js/flash-bar.js"></script>
     <script type="text/javascript" src="../../static/js/webflow.js"></script>
     <!--this is the control for loader-->
     <script>
