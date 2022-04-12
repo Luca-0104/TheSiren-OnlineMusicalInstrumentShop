@@ -242,6 +242,10 @@ def payment_notify():
                     order.out_trade_no = out_trade_no
                     order.trade_no = trade_no
                     order.status_code = 1
+                    # user
+                    user = order.user
+                    user.exp += 60
+                    db.session.add(user)
                     db.session.add(order)
                     db.session.commit()
 
@@ -277,6 +281,7 @@ def payment_notify():
                     user = p_order.user
                     user.is_premium = True
                     user.premium_left_days += p_order.duration
+                    user.exp += 230
                     db.session.add(user)
                     db.session.commit()
                 except Exception as e:

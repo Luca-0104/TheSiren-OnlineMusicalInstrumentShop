@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-04-12 18:57+0800\n"
+"POT-Creation-Date: 2022-04-12 21:13+0800\n"
 "PO-Revision-Date: 2022-03-23 16:06+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
@@ -40,7 +40,7 @@ msgstr "保持登录"
 #: app/templates/main/brand_intro/lowden.html:74
 #: app/templates/main/brand_intro/steinway.html:74
 #: app/templates/main/index_new.html:103
-#: app/templates/main/page-commodity-details.html:61
+#: app/templates/main/page-commodity-details.html:62
 #: app/templates/main/page_all_commodities.html:56
 #: app/templates/order/order-confirm.html:101
 #: app/templates/order/order-detail.html:86
@@ -93,7 +93,7 @@ msgstr "注册成功！您现在可以登录了！"
 msgid "Login success!"
 msgstr "登录成功！"
 
-#: app/auth/views.py:117
+#: app/auth/views.py:123
 msgid "Login Failed! Check your username or password."
 msgstr "登录失败！检查您的用户名或密码！"
 
@@ -151,7 +151,6 @@ msgstr "会员订单不存在！"
 
 #: app/product/forms.py:12 app/product/forms.py:40 app/product/forms.py:97
 #: app/templates/staff/page-list-product.html:1149
-#, fuzzy
 msgid "Name"
 msgstr "用户名"
 
@@ -168,7 +167,7 @@ msgstr "商品序列号"
 #: app/templates/main/brand_intro/lowden.html:236
 #: app/templates/main/brand_intro/steinway.html:237
 #: app/templates/main/index_new.html:263
-#: app/templates/main/page-commodity-details.html:220
+#: app/templates/main/page-commodity-details.html:221
 #: app/templates/main/page_all_commodities.html:205
 #: app/templates/order/order-confirm.html:250
 #: app/templates/order/order-detail.html:234
@@ -264,7 +263,7 @@ msgstr "浏览所有模版"
 #: app/templates/main/brand_intro/lowden.html:70
 #: app/templates/main/brand_intro/steinway.html:70
 #: app/templates/main/index_new.html:99
-#: app/templates/main/page-commodity-details.html:57
+#: app/templates/main/page-commodity-details.html:58
 #: app/templates/main/page_all_commodities.html:52
 #: app/templates/order/order-confirm.html:97
 #: app/templates/order/order-detail.html:82
@@ -280,7 +279,7 @@ msgstr "退出登录"
 #: app/templates/main/brand_intro/lowden.html:94
 #: app/templates/main/brand_intro/steinway.html:94
 #: app/templates/main/index_new.html:123
-#: app/templates/main/page-commodity-details.html:81
+#: app/templates/main/page-commodity-details.html:82
 #: app/templates/main/page_all_commodities.html:73
 #: app/templates/order/order-confirm-premium.html:101
 #: app/templates/order/order-confirm.html:118
@@ -297,7 +296,7 @@ msgstr "您的购物车"
 #: app/templates/main/brand_intro/lowden.html:110
 #: app/templates/main/brand_intro/steinway.html:111
 #: app/templates/main/index_new.html:190
-#: app/templates/main/page-commodity-details.html:148
+#: app/templates/main/page-commodity-details.html:149
 #: app/templates/main/page_all_commodities.html:88
 #: app/templates/order/order-confirm-premium.html:116
 #: app/templates/order/order-confirm.html:133
@@ -346,7 +345,7 @@ msgstr "继续支付"
 #: app/templates/main/brand_intro/lowden.html:180
 #: app/templates/main/brand_intro/steinway.html:181
 #: app/templates/main/index_new.html:207
-#: app/templates/main/page-commodity-details.html:165
+#: app/templates/main/page-commodity-details.html:166
 #: app/templates/main/page_all_commodities.html:153
 #: app/templates/order/order-confirm-premium.html:164
 #: app/templates/order/order-confirm-premium.html:371
@@ -368,7 +367,7 @@ msgstr "没有找到商品。"
 #: app/templates/main/brand_intro/lowden.html:190
 #: app/templates/main/brand_intro/steinway.html:191
 #: app/templates/main/index_new.html:219
-#: app/templates/main/page-commodity-details.html:177
+#: app/templates/main/page-commodity-details.html:178
 #: app/templates/main/page_all_commodities.html:163
 #: app/templates/order/order-confirm-premium.html:174
 #: app/templates/order/order-confirm.html:208
@@ -385,7 +384,7 @@ msgstr "产品数量不足！"
 #: app/templates/main/brand_intro/lowden.html:208
 #: app/templates/main/brand_intro/steinway.html:209
 #: app/templates/main/index_new.html:236
-#: app/templates/main/page-commodity-details.html:193
+#: app/templates/main/page-commodity-details.html:194
 #: app/templates/main/page_all_commodities.html:178
 #: app/templates/order/order-confirm.html:223
 #: app/templates/order/order-detail.html:208
@@ -402,7 +401,7 @@ msgstr "搜索"
 #: app/templates/main/brand_intro/lowden.html:220
 #: app/templates/main/brand_intro/steinway.html:221
 #: app/templates/main/index_new.html:247
-#: app/templates/main/page-commodity-details.html:204
+#: app/templates/main/page-commodity-details.html:205
 #: app/templates/main/page_all_commodities.html:189
 #: app/templates/order/order-confirm-premium.html:195
 #: app/templates/order/order-confirm.html:234
@@ -420,8 +419,8 @@ msgstr "菜单"
 #: app/templates/main/404.html:194 app/templates/main/about.html:212
 #: app/templates/main/brand_intro/lowden.html:226
 #: app/templates/main/brand_intro/steinway.html:227
-#: app/templates/main/index_new.html:253 app/templates/main/index_new.html:1304
-#: app/templates/main/page-commodity-details.html:210
+#: app/templates/main/index_new.html:253 app/templates/main/index_new.html:1305
+#: app/templates/main/page-commodity-details.html:211
 #: app/templates/main/page_all_commodities.html:195
 #: app/templates/order/order-confirm-premium.html:199
 #: app/templates/order/order-confirm-premium.html:363
@@ -445,11 +444,10 @@ msgstr "全部"
 #: app/templates/main/about.html:218
 #: app/templates/main/brand_intro/lowden.html:232
 #: app/templates/main/brand_intro/steinway.html:233
-#: app/templates/main/page-commodity-details.html:216
+#: app/templates/main/page-commodity-details.html:217
 #: app/templates/main/page_all_commodities.html:201
 #: app/templates/order/order-confirm.html:246
 #: app/templates/order/order-detail.html:231
-#, fuzzy
 msgid "Catagory"
 msgstr "分类"
 
@@ -460,8 +458,8 @@ msgstr "分类"
 #: app/templates/main/404.html:214 app/templates/main/about.html:232
 #: app/templates/main/brand_intro/lowden.html:246
 #: app/templates/main/brand_intro/steinway.html:247
-#: app/templates/main/index_new.html:273 app/templates/main/index_new.html:1317
-#: app/templates/main/page-commodity-details.html:230
+#: app/templates/main/index_new.html:273 app/templates/main/index_new.html:1318
+#: app/templates/main/page-commodity-details.html:231
 #: app/templates/main/page_all_commodities.html:215
 #: app/templates/order/order-confirm-premium.html:211
 #: app/templates/order/order-confirm-premium.html:379
@@ -485,8 +483,8 @@ msgstr "关于"
 #: app/templates/main/404.html:215 app/templates/main/about.html:233
 #: app/templates/main/brand_intro/lowden.html:247
 #: app/templates/main/brand_intro/steinway.html:248
-#: app/templates/main/index_new.html:274 app/templates/main/index_new.html:1319
-#: app/templates/main/page-commodity-details.html:231
+#: app/templates/main/index_new.html:274 app/templates/main/index_new.html:1320
+#: app/templates/main/page-commodity-details.html:232
 #: app/templates/main/page_all_commodities.html:216
 #: app/templates/order/order-confirm-premium.html:213
 #: app/templates/order/order-confirm-premium.html:381
@@ -525,7 +523,7 @@ msgstr "我们将保证您的隐私安全并不会与任何第三方共享您的
 
 #: app/templates/auth/login_new.html:317
 #: app/templates/auth/register_new.html:327
-#: app/templates/cart/page-cart.html:383 app/templates/main/index_new.html:1295
+#: app/templates/cart/page-cart.html:383 app/templates/main/index_new.html:1296
 #: app/templates/order/order-confirm-premium.html:354
 #: app/templates/order/order-confirm.html:1126
 #: app/templates/order/order-detail.html:626
@@ -537,7 +535,7 @@ msgstr "商店街34号，南墨尔本"
 
 #: app/templates/auth/login_new.html:317
 #: app/templates/auth/register_new.html:327
-#: app/templates/cart/page-cart.html:383 app/templates/main/index_new.html:1295
+#: app/templates/cart/page-cart.html:383 app/templates/main/index_new.html:1296
 #: app/templates/order/order-confirm-premium.html:354
 #: app/templates/order/order-confirm.html:1126
 #: app/templates/order/order-detail.html:626
@@ -557,7 +555,7 @@ msgstr ""
 
 #: app/templates/auth/login_new.html:324
 #: app/templates/auth/register_new.html:334
-#: app/templates/cart/page-cart.html:390 app/templates/main/index_new.html:1302
+#: app/templates/cart/page-cart.html:390 app/templates/main/index_new.html:1303
 #: app/templates/order/order-confirm-premium.html:361
 #: app/templates/order/order-confirm.html:1133
 #: app/templates/order/order-detail.html:633
@@ -569,7 +567,7 @@ msgstr "商店"
 
 #: app/templates/auth/login_new.html:340
 #: app/templates/auth/register_new.html:350
-#: app/templates/cart/page-cart.html:406 app/templates/main/index_new.html:1315
+#: app/templates/cart/page-cart.html:406 app/templates/main/index_new.html:1316
 #: app/templates/order/order-confirm-premium.html:377
 #: app/templates/order/order-confirm.html:1149
 #: app/templates/order/order-detail.html:649
@@ -581,7 +579,7 @@ msgstr "公司"
 
 #: app/templates/auth/login_new.html:343
 #: app/templates/auth/register_new.html:353
-#: app/templates/cart/page-cart.html:409 app/templates/main/index_new.html:1318
+#: app/templates/cart/page-cart.html:409 app/templates/main/index_new.html:1319
 #: app/templates/order/order-confirm-premium.html:212
 #: app/templates/order/order-confirm-premium.html:380
 #: app/templates/order/order-confirm.html:1152
@@ -594,7 +592,7 @@ msgstr "账目"
 
 #: app/templates/auth/login_new.html:345
 #: app/templates/auth/register_new.html:355
-#: app/templates/cart/page-cart.html:411 app/templates/main/index_new.html:1320
+#: app/templates/cart/page-cart.html:411 app/templates/main/index_new.html:1321
 #: app/templates/order/order-confirm-premium.html:382
 #: app/templates/order/order-confirm.html:1154
 #: app/templates/order/order-detail.html:654
@@ -662,7 +660,7 @@ msgid "Total Cost"
 msgstr "总计"
 
 #: app/templates/main/index_new.html:198
-#: app/templates/main/page-commodity-details.html:156
+#: app/templates/main/page-commodity-details.html:157
 msgid "Go to my cart"
 msgstr "我的购物车"
 
@@ -676,14 +674,21 @@ msgstr "分类"
 msgid "Start Browsing"
 msgstr "开始浏览"
 
+#: app/templates/main/index_new.html:416
+msgid "Featured"
+msgstr "热销"
+
+#: app/templates/main/index_new.html:416
+msgid "Collection"
+msgstr "产品"
+
 #: app/templates/main/index_new.html:439 app/templates/main/index_new.html:591
-#: app/templates/main/index_new.html:759
+#: app/templates/main/index_new.html:760
 msgid "Click for Details"
-msgstr "点击以获取更多信息"
+msgstr "点击获取更多信息"
 
 #: app/templates/main/index_new.html:458 app/templates/main/index_new.html:610
-#: app/templates/main/index_new.html:778
-#, fuzzy
+#: app/templates/main/index_new.html:779
 msgid "comments"
 msgstr "评论"
 
@@ -695,41 +700,54 @@ msgstr "猜"
 msgid "Interests"
 msgstr "您喜欢"
 
-#: app/templates/main/index_new.html:729
-#, fuzzy
+#: app/templates/main/index_new.html:723 app/templates/main/index_new.html:730
 msgid "About Us"
 msgstr "关于我们"
 
-#: app/templates/main/index_new.html:741
+#: app/templates/main/index_new.html:725
+msgid ""
+"Siren is an online instrument e-commerce website. We provide up-to-date "
+"services for\n"
+"                                        modern performers, numerous "
+"renowned brands are currently in cooperation."
+msgstr "Siren是一个在线乐器商务网站。我们为现代的表演者提供最新的服务目前有众多知名品牌正在合作"
+
+#: app/templates/main/index_new.html:742
 msgid "Just Arrived"
-msgstr "已送达"
+msgstr "最新到货"
 
-#: app/templates/main/index_new.html:902
-#, fuzzy
+#: app/templates/main/index_new.html:903
 msgid "Join"
-msgstr "加入"
+msgstr "成为会员"
 
-#: app/templates/main/index_new.html:910
+#: app/templates/main/index_new.html:905
+msgid ""
+"Join Us with the least cost while receiving\n"
+"                                great benefits. Regular sales and "
+"exclusive limited editions will be available\n"
+"                                and only for members."
+msgstr "加入我们以获取更多优惠。定期销售和独家限量版将仅限适用于会员"
+
+#: app/templates/main/index_new.html:911
 #: app/templates/staff/backup-staff-modify.html:584
 #: app/templates/staff/page-list-product.html:722
 msgid "Go Premium"
 msgstr "成为会员"
 
-#: app/templates/main/index_new.html:1274
+#: app/templates/main/index_new.html:1275
 msgid "Music should strike fire from the heart of man."
 msgstr "音乐的魔力使人们激情燃烧"
 
-#: app/templates/main/index_new.html:1275
+#: app/templates/main/index_new.html:1276
 msgid "Beethoven"
 msgstr "贝多芬"
 
-#: app/templates/main/index_new.html:1278
+#: app/templates/main/index_new.html:1279
 msgid "Start Voyage"
 msgstr "开始徜徉在音乐的海洋"
 
-#: app/templates/main/index_new.html:1308
+#: app/templates/main/index_new.html:1309
 #: app/templates/order/payment-success.html:279
-#, fuzzy
 msgid "Brands"
 msgstr "品牌"
 
@@ -739,7 +757,7 @@ msgstr "现在购买"
 
 #: app/templates/order/order-confirm-premium.html:277
 msgid "Choose Your Premium Plan"
-msgstr ""
+msgstr "选择您的会员计划"
 
 #: app/templates/order/order-confirm-premium.html:294
 #: app/templates/order/order-confirm.html:1053
@@ -747,7 +765,6 @@ msgid "Order Summary"
 msgstr "订单综述"
 
 #: app/templates/order/order-confirm-premium.html:299
-#, fuzzy
 msgid "Total Payment"
 msgstr "没有支付信息！"
 
@@ -781,7 +798,6 @@ msgid "Subtotal (without delivery fee)"
 msgstr "小计（不包含运费）"
 
 #: app/templates/order/order-confirm.html:1071
-#, fuzzy
 msgid "Total"
 msgstr "小计"
 
@@ -1073,7 +1089,6 @@ msgstr "媒体"
 #: app/templates/staff/backup-staff-modify.html:345
 #: app/templates/staff/page-add-product.html:341
 #: app/templates/staff/page-list-product.html:420
-#, fuzzy
 msgid "Modal"
 msgstr "模式"
 
@@ -1137,7 +1152,6 @@ msgstr "鉴定"
 #: app/templates/staff/backup-staff-modify.html:413
 #: app/templates/staff/page-add-product.html:409
 #: app/templates/staff/page-list-product.html:499
-#, fuzzy
 msgid "Recover Password"
 msgstr "密码错误！"
 
@@ -1352,19 +1366,16 @@ msgid "Terms of Use"
 msgstr "使用术语"
 
 #: app/templates/staff/page-add-product.html:74
-#, fuzzy
 msgid "Categories"
 msgstr "分类"
 
 #: app/templates/staff/page-add-product.html:143
 #: app/templates/staff/page-list-product.html:182
-#, fuzzy
 msgid "Returns"
 msgstr "返回列表"
 
 #: app/templates/staff/page-add-product.html:477
 #: app/templates/staff/page-list-product.html:581
-#, fuzzy
 msgid "Table"
 msgstr "表格"
 
@@ -1372,7 +1383,6 @@ msgstr "表格"
 #: app/templates/staff/page-list-product.html:754
 #: app/templates/staff/page-list-product.html:756
 #: app/templates/staff/page-modify-product.html:604
-#, fuzzy
 msgid "Search here..."
 msgstr "搜索"
 
@@ -1384,7 +1394,6 @@ msgid "View All"
 msgstr "显示更多"
 
 #: app/templates/staff/page-add-product.html:843
-#, fuzzy
 msgid "Profile"
 msgstr "修改个人主页"
 
@@ -1398,13 +1407,11 @@ msgid "Enter Name or Email"
 msgstr "请输入姓名或邮箱"
 
 #: app/templates/staff/page-add-product.html:897
-#, fuzzy
 msgid "Product Name"
 msgstr "产品名"
 
 #: app/templates/staff/page-add-product.html:898
 #: app/templates/staff/page-add-product.html:1044
-#, fuzzy
 msgid "Enter Name"
 msgstr "请输入用户名"
 
@@ -1422,12 +1429,10 @@ msgid "Product Initial ModelType(s)"
 msgstr "产品初始型号"
 
 #: app/templates/staff/page-add-product.html:1043
-#, fuzzy
 msgid "Model Name"
 msgstr "型号名称"
 
 #: app/templates/staff/page-add-product.html:1054
-#, fuzzy
 msgid "Enter Serial Number"
 msgstr "输入商品序列号"
 
@@ -1444,7 +1449,6 @@ msgid "Please Enter Price."
 msgstr "请输入价格"
 
 #: app/templates/staff/page-add-product.html:1073
-#, fuzzy
 msgid "Enter Stock"
 msgstr "请输入库存数量"
 
@@ -1457,22 +1461,19 @@ msgid "Thumbnail"
 msgstr "商品序列图"
 
 #: app/templates/staff/page-add-product.html:1089
-#, fuzzy
 msgid "Product Pictures"
-msgstr "介绍图片"
+msgstr "产品图片"
 
 #: app/templates/staff/page-add-product.html:1106
 msgid "Add Model Type"
 msgstr "添加商品型号"
 
 #: app/templates/staff/page-list-product.html:1067
-#, fuzzy
 msgid "Product List"
 msgstr "产品列表"
 
 #: app/templates/staff/page-list-product.html:1080
 #: app/templates/staff/page-list-product.html:1214
-#, fuzzy
 msgid "Product"
 msgstr "产品"
 
@@ -1498,7 +1499,6 @@ msgid "Save"
 msgstr "保存"
 
 #: app/templates/staff/page-modify-modeltype.html:863
-#, fuzzy
 msgid "Modify Model"
 msgstr "修改商品"
 
@@ -1560,7 +1560,6 @@ msgid "Order"
 msgstr "订单"
 
 #: app/templates/userinfo/user_profile.html:381
-#, fuzzy
 msgid "Gender"
 msgstr "性别："
 
@@ -1577,7 +1576,6 @@ msgid "Member since "
 msgstr "注册于"
 
 #: app/templates/userinfo/user_profile.html:460
-#, fuzzy
 msgid "Your Address"
 msgstr "收货地址"
 
@@ -1594,7 +1592,6 @@ msgid "Brand section"
 msgstr "品牌专区"
 
 #: app/templates/userinfo/user_profile.html:576
-#, fuzzy
 msgid "Category section"
 msgstr "分类专区"
 
@@ -1603,22 +1600,18 @@ msgid "Prime section"
 msgstr "会员专区"
 
 #: app/templates/userinfo/user_profile.html:586
-#, fuzzy
 msgid "Order section"
 msgstr "订单专区"
 
 #: app/templates/userinfo/user_profile.html:721
-#, fuzzy
 msgid "Edit profile"
 msgstr "修改用户主页"
 
 #: app/templates/userinfo/user_profile.html:808
-#, fuzzy
 msgid "Add address"
 msgstr "添加地址"
 
 #: app/templates/userinfo/user_profile.html:943
-#, fuzzy
 msgid "Edit address"
 msgstr "修改地址"
 
@@ -1647,7 +1640,6 @@ msgid "District: "
 msgstr "区"
 
 #: app/userinfo/forms.py:18 app/userinfo/forms.py:30
-#, fuzzy
 msgid "Details: "
 msgstr "用户详情"
 
@@ -1660,12 +1652,10 @@ msgid "Update Address"
 msgstr "修改地址"
 
 #: app/userinfo/forms.py:35
-#, fuzzy
 msgid "Email: "
 msgstr "邮件"
 
 #: app/userinfo/forms.py:36
-#, fuzzy
 msgid "Username: "
 msgstr "用户名"
 
@@ -1678,12 +1668,10 @@ msgid "Gender: "
 msgstr "性别："
 
 #: app/userinfo/forms.py:41 app/userinfo/forms.py:44
-#, fuzzy
 msgid "Male"
 msgstr "男"
 
 #: app/userinfo/forms.py:41 app/userinfo/forms.py:44
-#, fuzzy
 msgid "Female"
 msgstr "女"
 

@@ -364,13 +364,13 @@
                 <div class="section">
                     <div class="main-container">
                         <div class="container align-center one animate fadeUp">
-                            <h1>The New Home Collection</h1>
-                            <div style="font-family: 'Montseratt',SansSerif; font-size: 17px; font-weight: lighter; margin-top: 10%; line-height: 27px;"
-                                 id="slide-text">
-                            </div>
+                            <h1 id="slide-product-name"></h1>
+
+                            <div style="font-family: 'Montseratt',SansSerif; font-size: 17px; font-weight: lighter; margin-top: 10%; line-height: 27px;;
+                            font-weight: lighter; margin-top: 10%;" id="slide-text"></div>
                             <div class="button-row justify-content-center">
-                                <a href="shop.html" class="button bg-white-faded w-inline-block">
-                                    <div>{{ _('Start Browsing') }}</div>
+                                <a id="slide-start-browsing" href="#" class="button bg-white-faded w-inline-block">
+                                    <div>{{ _('Start Browsing')}}</div>
                                 </a>
                             </div>
                         </div>
@@ -417,7 +417,7 @@
                 <div class="w-layout-grid featured-products-grid  bg-primary-dark">
                     <!-- Left text -->
                     <div class="featured-items-title fade-in-text">
-                        <h3 class="large-heading featured-items- ">Featured<br>Collection</h3>
+                        <h3 class="large-heading featured-items- ">{{ _('Featured') }}<br>{{ _('Collection') }}</h3>
                     </div>
                     <!-- Right listing -->
                     <div class="w-dyn-list">
@@ -726,8 +726,8 @@
                         <div class="container justify-content-between">
                             <h3>{{ _('About Us') }}</h3>
                             <div class="large-text">
-                                Siren is an online instrument e-commerce website. We provide up-to-date services for
-                                modern performers, numerous renowned brands are currently in cooperation.
+                                {{ _('Siren is an online instrument e-commerce website. We provide up-to-date services for
+                                        modern performers, numerous renowned brands are currently in cooperation.')}}
                             </div>
                             <div class="button-row">
                                 <a href="{{ url_for("main.about_us") }}" class="button bg-primary-dark w-inline-block">
@@ -906,9 +906,9 @@
                 <div class="container justify-content-between">
                     <h3>{{ _('Join') }}</h3>
                     <div>
-                        <div class="large-text">Join Us with the least cost while receiving
-                            great benefits. Regular sales and exclusive limited editions will be available
-                            and only for members.
+                        <div class="large-text">{{ _('Join Us with the least cost while receiving
+                                great benefits. Regular sales and exclusive limited editions will be available
+                                and only for members.')}}
                         </div>
                         <div class="button-row">
                             <a href="{{ url_for("main.premium_intro") }}" class="button bg-white-faded w-inline-block">
@@ -1320,9 +1320,9 @@
                         <div>
                             <div class="uppercase-text links-grid-title">{{ _('Company') }}</div>
                             <div class="links-grid">
-                                <a href="about.html" class="list-link">About us</a>
-                                <a href="contact.html" class="list-link">Contect us</a>
-                                <a href="refund-policy.html" class="list-link">Premium</a>
+                                <a href="about.html" class="list-link">{{ _('About us')}}</a>
+                                <a href="contact.html" class="list-link">{{ _('Contect us')}}</a>
+                                <a href="refund-policy.html" class="list-link">{{ _('Premium') }}</a>
                             </div>
                         </div>
                         <div>
