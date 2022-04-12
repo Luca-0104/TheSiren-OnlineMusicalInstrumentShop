@@ -50,32 +50,47 @@
             </div>
             <img src="images/icon-cross.svg" loading="lazy" alt="" class="announcement-cross">
         </div>
+        <!-- Upper Section of Top nav bar -->
         <div class="div-block-2">
-            <div id="Top" class="top"></div>
+            <div id="Top" class="top">
+            </div>
             <div class="main-container">
                 <div class="navbar-top">
-                    <a href="index.html" class="w-inline-block"><img src="images/Verse.svg" loading="eager" alt=""></a>
+                    <!-- Middel part -->
+                    <a href="index.html" aria-current="page" class="w-inline-block w--current">
+                        <img src="../../static/images/White-logo-no-background.svg" loading="eager" alt="" height="45px">
+                    </a>
+
+                    <!-- Right part -->
                     <div id="w-node-dab1a8fd-38ef-ff9e-e737-a0bdf6abf413-f6abf40a" class="navbar-right-contents">
-                        <a href="https://mmra.re/purchaseverse" class="button small nav-button w-inline-block">
-                            <div>Buy Now</div>
-                        </a>
-                        <div data-node-type="commerce-cart-wrapper" data-open-product=""
-                             data-wf-cart-type="rightSidebar" data-wf-cart-query="" data-wf-page-link-href-prefix=""
-                             class="w-commerce-commercecartwrapper">
-                            <a href="#" data-node-type="commerce-cart-open-link"
-                               class="w-commerce-commercecartopenlink nav-cart-button w-inline-block"><img
-                                    src="images/icon-shopping-bag.svg" loading="eager" alt="">
+                        <!-- Auth -->
+                        {% if session.get('username') %}
+                            <a href="{{ url_for('auth.logout') }}" class="button small nav-button w-inline-block">
+                                <div>{{ _('Logout') }}</div>
+                            </a>
+                        {% else %}
+                            <a href="{{ url_for('auth.login') }}" class="button small nav-button w-inline-block">
+                                <div>{{ _('Login') }}</div>
+                            </a>
+                        {% endif %}
+
+                        <!-- Cart -->
+                        <div data-node-type="commerce-cart-wrapper" data-open-product="" data-wf-cart-type="rightSidebar"
+                             data-wf-cart-query="" data-wf-page-link-href-prefix="" class="w-commerce-commercecartwrapper" >
+                            <a id="sidebar_cart" href="#" data-node-type="commerce-cart-open-link"
+                               class="w-commerce-commercecartopenlink nav-cart-button w-inline-block" open_="not"><img
+                                    src="../../static/images/icon-shopping-bag.svg" loading="eager" alt="">
                                 <div class="w-commerce-commercecartopenlinkcount cart-quantity">0</div>
                             </a>
-                            <div data-node-type="commerce-cart-container-wrapper" style="display:none"
+                            <div id="cart_errupter" data-node-type="commerce-cart-container-wrapper" style="display:none"
                                  class="w-commerce-commercecartcontainerwrapper w-commerce-commercecartcontainerwrapper--cartType-rightSidebar">
                                 <div data-node-type="commerce-cart-container"
                                      class="w-commerce-commercecartcontainer cart-container">
                                     <div class="w-commerce-commercecartheader cart-header">
-                                        <h4 class="w-commerce-commercecartheading">Your Cart</h4>
-                                        <a href="#" data-node-type="commerce-cart-close-link"
-                                           class="w-commerce-commercecartcloselink close-cart-button w-inline-block"><img
-                                                src="images/icon-cross-large.svg" loading="lazy" alt=""></a>
+                                        <h4 class="w-commerce-commercecartheading">{{ _('Your Cart') }}</h4>
+                                        <a id="close_cart" href="#" data-node-type="commerce-cart-close-link" class="w-commerce-commercecartcloselink close-cart-button w-inline-block">
+                                            <img src="../../static/images/icon-cross-large.svg" loading="lazy" alt="">
+                                        </a>
                                     </div>
                                     <div class="w-commerce-commercecartformwrapper">
                                         <form data-node-type="commerce-cart-form" style="display:none"
@@ -87,7 +102,7 @@
                                                  data-wf-template-id="wf-template-dab1a8fd-38ef-ff9e-e737-a0bdf6abf424"></div>
                                             <div class="w-commerce-commercecartfooter cart-footer">
                                                 <div class="w-commerce-commercecartlineitem">
-                                                    <div>Subtotal</div>
+                                                    <div>{{ _('Subtotal') }}</div>
                                                     <div class="w-commerce-commercecartordervalue"></div>
                                                 </div>
                                                 <div>
@@ -132,31 +147,27 @@
                                                                 </g>
                                                             </svg>
                                                             <svg class="w-commerce-commercequickcheckoutmicrosofticon"
-                                                                 xmlns="http://www.w3.org/2000/svg" width="16"
-                                                                 height="16" viewbox="0 0 16 16">
+                                                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                                 viewbox="0 0 16 16">
                                                                 <g fill="none" fill-rule="evenodd">
-                                                                    <polygon fill="#F05022"
-                                                                             points="7 7 1 7 1 1 7 1"></polygon>
-                                                                    <polygon fill="#7DB902"
-                                                                             points="15 7 9 7 9 1 15 1"></polygon>
-                                                                    <polygon fill="#00A4EE"
-                                                                             points="7 15 1 15 1 9 7 9"></polygon>
-                                                                    <polygon fill="#FFB700"
-                                                                             points="15 15 9 15 9 9 15 9"></polygon>
+                                                                    <polygon fill="#F05022" points="7 7 1 7 1 1 7 1"></polygon>
+                                                                    <polygon fill="#7DB902" points="15 7 9 7 9 1 15 1"></polygon>
+                                                                    <polygon fill="#00A4EE" points="7 15 1 15 1 9 7 9"></polygon>
+                                                                    <polygon fill="#FFB700" points="15 15 9 15 9 9 15 9"></polygon>
                                                                 </g>
                                                             </svg>
-                                                            <div>Pay with browser.</div>
+                                                            <div>{{ _('Pay with browser.') }}</div>
                                                         </a>
                                                     </div>
                                                     <a href="checkout.html" value="Continue to Checkout"
                                                        data-node-type="cart-checkout-button"
                                                        class="w-commerce-commercecartcheckoutbutton button bg-primary-dark"
-                                                       data-loading-text="Hang Tight...">Continue to Checkout</a>
+                                                       data-loading-text="Hang Tight...">{{ _('Continue to Checkout') }}</a>
                                                 </div>
                                             </div>
                                         </form>
                                         <div class="w-commerce-commercecartemptystate">
-                                            <div>No items found.</div>
+                                            <div>{{ _('No items found.') }}</div>
                                         </div>
                                         <div style="display:none" data-node-type="commerce-cart-error"
                                              class="w-commerce-commercecarterrorstate">
@@ -166,7 +177,7 @@
                                                  data-w-cart-checkout-error="Checkout is disabled on this site."
                                                  data-w-cart-cart_order_min-error="The order minimum was not met. Add more items to your cart to continue."
                                                  data-w-cart-subscription_error-error="Before you purchase, please use your email invite to verify your address so we can send order updates.">
-                                                Product is not available in this quantity.
+                                                {{ _('Product is not available in this quantity.')}}
                                             </div>
                                         </div>
                                     </div>
@@ -174,15 +185,58 @@
                             </div>
                         </div>
                     </div>
-                    <form action="/search" id="w-node-dab1a8fd-38ef-ff9e-e737-a0bdf6abf40d-f6abf40a"
-                          class="nav-search-form w-form"><img src="images/icon-search.svg" loading="eager" alt=""><input
-                            type="search" class="search-form-input w-input" maxlength="256" name="query"
-                            placeholder="Search here" id="search-2" required=""><input type="submit" value="Search"
-                                                                                       class="hide-button w-button">
+
+                    <!-- Left part -->
+                    <!-- Search -->
+                    <form action="/search" method="POST" id="w-node-dab1a8fd-38ef-ff9e-e737-a0bdf6abf40d-f6abf40a" class="nav-search-form w-form">
+                        <!--<div class="w-inline-block">-->
+                           <input type="image" src="../../static/images/icon-search.svg" value="Search" class="w-button" alt="submit">
+                        <!--</div>-->
+                           <input type="search" class="search-form-input w-input" maxlength="256" name="key_word" placeholder="{{ _('Search here')}}" id="search-2" required="">
                     </form>
                 </div>
             </div>
         </div>
+
+        <!-- Lower Section of Top nav bar -->
+        <div class="div-block">
+            <div class="main-container">
+                <div data-collapse="small" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-nav">
+                    <div class="button bg-primary wide w-nav-button">
+                        <div>{{ _('Menu') }}</div>
+                    </div>
+                    <nav role="navigation" class="w-nav-menu">
+                        <div class="nav-menu-row">
+                            <!-- Left side -->
+                            <!-- All product -->
+                            <a href="{{ url_for("main.go_all") }}" class="nav-link">{{ _('All') }}</a>
+
+                            <!-- Specific -->
+                            <div class="w-dyn-list">
+                                <div role="list" class="navbar-categories w-dyn-items">
+                                    <div role="listitem" class="w-dyn-item nav_topic">
+                                        <a href="#" class="nav-link">{{ _('Catagory') }}</a>
+
+                                    </div>
+                                    <div role="listitem" class="w-dyn-item nav_topic">
+                                        <a href="#" class="nav-link">{{ _('Brand') }}</a>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Divider line -->
+                            <div class="nav-menu-divider"></div>
+
+                            <!-- Right side -->
+                            <a href="about.html" class="nav-link">{{ _('About') }}</a>
+                            <a href="contact.html" class="nav-link">{{ _('Contact') }}</a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
         <div class="div-block">
             <div class="main-container">
                 <div data-collapse="small" data-animation="default" data-duration="400" data-easing="ease"
