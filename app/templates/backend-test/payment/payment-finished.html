@@ -99,7 +99,7 @@
                             <a href="#" data-node-type="commerce-cart-open-link"
                                class="w-commerce-commercecartopenlink nav-cart-button w-inline-block"><img
                                     src="../../static/images/icon-shopping-bag.svg" loading="eager" alt="">
-                                <div class="w-commerce-commercecartopenlinkcount cart-quantity">0</div>
+                                <div class="w-commerce-commercecartopenlinkcount cart-quantity">{{ current_user.carts.count() }}</div>
                             </a>
                             <div data-node-type="commerce-cart-container-wrapper" style="display:none"
                                  class="w-commerce-commercecartcontainerwrapper w-commerce-commercecartcontainerwrapper--cartType-rightSidebar">
