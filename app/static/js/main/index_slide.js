@@ -12,8 +12,8 @@ let slideBtn = document.getElementById("slide-start-browsing")
 /*
     initialize the first slide (product name + intro + btn)
  */
-slideText.innerHTML = 'Solid Korina Body and Long Neck Tenon. Brazilian Rosewood Fingerboard. Hand Lacquered and Aged by the Artisan. Custom Wound “Retrophonic’Humbucker Pickup. Tune-O-Matic Bridge with 1.5" Brass Studs.  50s Wiring with Master Volume and Master Tone. Custom Bumblebee Capacitors. Custom Dogear Pickup Rings.';
-slideProductName.innerHTML = "Gibson THE LEO SCALA SUPER '58 FLYING Vs";
+slideText.innerHTML = 'Solid Korina Body and Long Neck Tenon. Brazilian Rosewood Fingerboard. Hand Lacquered and Aged by the Artisan. Custom Wound “Retrophonic’Humbucker Pickup. Tune-O-Matic Bridge with 1.5" Brass Studs.';
+slideProductName.innerHTML = "Gibson THE LEO SCALA SUPER '58";
 slideBtn.href = "/product-details/1";
 
 
@@ -56,19 +56,19 @@ function goNext() {
  */
 function refreshIntro(index){
         if (index === 0){
-            slideText.innerHTML = 'Solid Korina Body and Long Neck Tenon. Brazilian Rosewood Fingerboard. Hand Lacquered and Aged by the Artisan. Custom Wound “Retrophonic’Humbucker Pickup. Tune-O-Matic Bridge with 1.5" Brass Studs.  50s Wiring with Master Volume and Master Tone. Custom Bumblebee Capacitors. Custom Dogear Pickup Rings.'
+            slideText.innerHTML = 'Solid Korina Body and Long Neck Tenon. Brazilian Rosewood Fingerboard. Hand Lacquered and Aged by the Artisan. Custom Wound “Retrophonic’Humbucker Pickup. Tune-O-Matic Bridge with 1.5" Brass Studs.'
 
         }else if (index === 1){
-            slideText.innerHTML = 'Since its release in 1981, the workhorse SD-1 Super Overdrive has been the core gain pedal for generations of players across every musical genre. Based around the revolutionary asymmetrical clipping circuit from the OD-1 Overdrive—one of the three original BOSS compact pedals from 1977—the SD-1 delivers rich, smooth, and highly musical overdrive tones that continue to inspire guitarists everywhere.'
+            slideText.innerHTML = 'Since its release in 1981, the workhorse SD-1 Super Overdrive has been the core gain pedal for generations of players across every musical genre. Based around the revolutionary asymmetrical clipping circuit from ...'
 
         }else if (index === 2){
             slideText.innerHTML = 'The GL-10 was first introduced back in 2018 and embodies the classic Lowden character, drawing from over 40 years of guitar making heritage to invite the player to explore new tonal possibilities that await.'
 
         }else if (index === 3){
-            slideText.innerHTML = 'The mid-level TD-27KV delivers the immersive sound and response that you only get with V-Drums. At its heart is the powerful new TD-27 sound engine, filled with premium-grade, fully-customizable drum and cymbal sounds. Advanced digital trigger technology detects every playing nuance in ultra-high definition, while large-diameter drum and cymbal pads offer exceptional feel, presented in a spacious acoustic-style layout.'
+            slideText.innerHTML = 'The mid-level TD-27KV delivers the immersive sound and response that you only get with V-Drums. At its heart is the powerful new TD-27 sound engine, filled with premium-grade, fully-customizable drum and cymbal sounds.'
 
         }else if (index === 4){
-            slideText.innerHTML = 'The latest in our long line of professional MIDI controllers, the Roland A-88MKII is supremely playable, with onboard creative tools for today\'s musicians and producers. Our acclaimed hammer-action keyboard and built-to-last quality combine with modern features like USB-C connectivity, RGB-lit controls, and MIDI 2.0 (coming soon) for the best performance in its class.'
+            slideText.innerHTML = 'The latest in our long line of professional MIDI controllers, the Roland A-88MKII is supremely playable, with onboard creative tools for today\'s musicians and producers. Our acclaimed hammer-action keyboard and built-to-last quality ...'
 
         }
 }
@@ -104,10 +104,10 @@ function refreshButtonLink(index){
  */
 function refresh_product_name(index){
         if (index === 0){
-            slideProductName.innerHTML = "Gibson THE LEO SCALA SUPER '58 FLYING Vs"
+            slideProductName.innerHTML = "Gibson THE LEO SCALA SUPER '58"
 
         }else if (index === 1){
-            slideProductName.innerHTML = "BOSS’s Legendary Super Overdrive Sound Effectors"
+            slideProductName.innerHTML = "BOSS’s Overdrive Sound Effectors"
 
         }else if (index === 2){
             slideProductName.innerHTML = "Lowden GL10 Guitar"
