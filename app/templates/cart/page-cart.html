@@ -62,7 +62,6 @@
         </div>
 
         <!-- Upper Section of Top nav bar -->
-        <!-- Upper Section of Top nav bar -->
         <div class="div-block-2">
             <div id="Top" class="top">
             </div>
@@ -282,10 +281,11 @@
                                 {% for cart in cart_relation_lst %}
                                     <tr rowID="{{ loop.index }}" id="row_{{ loop.index }}" row_disable="false" class="cart_row" cartid="{{ cart.id }}" modelid="{{ cart.model_type.id }}" single_price="{{ cart.model_type.price }}">
                                         <td class="buttom-border">
-                                            <input focusID="{{ loop.index }}" id="select_{{ loop.index }}" type="checkbox" name="selected" value="true">
-                                        </td>
-                                        <td class="buttom-border">
-                                            <img src="../../static/images/example/yamaha_yep621s.jpg" alt="" class="w-commerce-commercecartitemimage cart-item-image"/>
+                                            {% if cart.model_type.pictures.first() == None %}
+                                                <img src="../../static/images/example/yamaha_yep621s.jpg" loading="lazy" alt="" class="w-commerce-commercecartitemimage cart-item-image">
+                                            {% else %}
+                                                <img src="{{ url_for("static",filename=cart.model_type.pictures.first().address) }}" loading="lazy" alt="" class="w-commerce-commercecartitemimage cart-item-image">
+                                            {% endif %}
                                         </td>
                                         <td class="buttom-border">
                                             <div class="w-commerce-commercecartproductname">
