@@ -101,6 +101,10 @@ class Tools:
                 price = mt_info[2]
                 weight = mt_info[3]
                 pic_lst = mt_info[4]
+                video_address = ""
+                # if there is a video
+                if len(mt_info) == 6:
+                    video_address = mt_info[5]
                 # generate some random info
                 stock = random.randint(100, 500)
                 sales = random.randint(0, 300)
@@ -117,7 +121,8 @@ class Tools:
                                    views=views,
                                    serial_number=serial_number,
                                    user_id=user_id,
-                                   product=new_product)
+                                   product=new_product,
+                                   video_address=video_address)
                 # add to db session
                 db.session.add(new_mt)
 
@@ -826,6 +831,8 @@ class ModelType(BaseModel):
     views = db.Column(db.Integer, default=0)    # how many times its details page has been viewed
     serial_number = db.Column(db.String(128), nullable=False)
     release_time = db.Column(db.DateTime(), index=True, default=datetime.utcnow)
+    video_address = db.Column(db.String)    # video
+    audio_address = db.Column(db.String)    # audio
     is_deleted = db.Column(db.Boolean, default=False)
     # 1 user(staff) --> n model type
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))

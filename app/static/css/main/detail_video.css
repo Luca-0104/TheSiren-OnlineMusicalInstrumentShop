@@ -1,0 +1,12 @@
+.video-and-title-box{
+    margin: -4% 0;
+}
+
+.video-and-title-box .container{
+    display: inline-block;
+}
+
+.video-and-title-box video{
+    width: 160%;
+    height: 100%;
+}
