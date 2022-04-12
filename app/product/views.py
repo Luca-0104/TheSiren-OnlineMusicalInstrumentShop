@@ -346,7 +346,7 @@ def modify_product(product_id):
 
         # update values in this product (except the cate)
         p.name = form.name.data
-        p.serial_number = form.serial_number.data
+        # p.serial_number = form.serial_number.data
         p.brand_id = form.brand_id.data
 
         # update the categories of this product
@@ -368,7 +368,7 @@ def modify_product(product_id):
 
     # before submit, fill the table with former values
     form.name.data = p.name
-    form.serial_number.data = p.serial_number
+    # form.serial_number.data = p.serial_number
     form.brand_id.data = p.brand_id
     # the product modify page
     return render_template('staff/page-modify-product.html', form=form, all_cate_list=all_cate_list)
@@ -462,7 +462,7 @@ def upload_model_type(product_id):
 
         # back to the stock management page
         # return redirect(url_for('product.show_page_stock_management'))
-        return redirect(url_for('main.index'))
+        return redirect(url_for('product.show_page_stock_management'))
 
     # render the page of upload form
     return render_template('staff/page-upload-modeltype.html', form=form)
