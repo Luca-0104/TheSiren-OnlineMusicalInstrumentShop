@@ -26,7 +26,7 @@
 }
 /* THis class should be added to the selected address by js */
 .chosen-address{
-    background-color: #eff8fa;
+    background-color: #f2f0e3;
 }
 
 .hidden-field{
@@ -91,7 +91,7 @@
 }
 
 .edit_style.bg-primary-dar:hover{
-    border-color: #BD736E;
-    color: #BD736E;
+    border-color: #a58460;
+    color: #bd936e;
 }
 
