@@ -386,16 +386,25 @@ def filter_model_types():
     """
     if request.method == 'POST':
         # get the filter elements (c, t, a, b)
-        filter_c = request.form.get("c", default="")    # e.g. c1, c2, c3, ...
-        filter_t = request.form.get("t", default="")
-        filter_a = request.form.get("a", default="")
-        filter_b = request.form.get("b", default="")
+        filter_c = request.form.get("c", default="%")    # e.g. c1, c2, c3, ...
+        filter_t = request.form.get("t", default="%")
+        filter_a = request.form.get("a", default="%")
+        filter_b = request.form.get("b", default="%")
         # get search content, if it is "", we will get all the models
         search_content = request.form.get('search_content', default="")
 
+        if filter_c == "":
+            filter_c = "%"
+        if filter_t == "":
+            filter_t = "%"
+        if filter_a == "":
+            filter_a = "%"
+        if filter_b == "":
+            filter_b = "%"
+
         print("c: ", filter_c)
         print("t: ", filter_t)
-        print("a:", filter_a)
+        print("a: ", filter_a)
         print("b: ", filter_b)
         print("search_count: ", search_content)
 
@@ -404,11 +413,11 @@ def filter_model_types():
             # search a BaseQuery obj that contains a list of model types
             mt_bq_lst = search_models_by_keyword(keyword=search_content)
             # (serial_prefix e.g. b1-c1-t1-a1)
-            mt_lst = mt_bq_lst.join(Product).filter(Product.serial_prefix.like("%{}%{}%{}%{}%".format(filter_b, filter_c, filter_t, filter_a))).all()
+            mt_lst = mt_bq_lst.join(Product).filter(Product.serial_prefix.like("{}-{}-{}-{}".format(filter_b, filter_c, filter_t, filter_a))).all()
 
         else:
             # filter all the models according to the filters(check box)
-            mt_lst = db.session.query(ModelType).join(Product).filter(Product.serial_prefix.like("%{}%{}%{}%{}%".format(filter_b, filter_c, filter_t, filter_a))).all()
+            mt_lst = db.session.query(ModelType).join(Product).filter(Product.serial_prefix.like("{}-{}-{}-{}".format(filter_b, filter_c, filter_t, filter_a))).all()
 
         # print(mt_lst)
 
