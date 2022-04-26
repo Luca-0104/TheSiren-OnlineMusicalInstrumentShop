@@ -417,13 +417,15 @@ class Order(BaseModel):
         faker = Faker()
         # create some new orders into db
         for i in range(count):
-            new_order = Order(timestamp=faker.past_datetime(), status_code=random.randint(0, 6), user_id=1, order_type=["delivery", "self-collection"][random.randint(0, 1)])
+            new_order = Order(timestamp=faker.past_datetime(), user_id=1, order_type=["delivery", "self-collection"][random.randint(0, 1)])
             if new_order.order_type == "delivery":
                 # need address(contains recipient info)
                 new_order.address_id = random.randint(1, Address.query.count())
+                new_order.status_code = [0, 1, 2, 4, 5, 6][random.randint(0, 5)]
             elif new_order.order_type == "self-collection":
                 # need recipient info
                 new_order.recipient_id = random.randint(1, Recipient.query.count())
+                new_order.status_code = [0, 1, 3, 4, 5, 6][random.randint(0, 5)]
             db.session.add(new_order)
             db.session.commit()
             new_order.generate_unique_out_trade_no()

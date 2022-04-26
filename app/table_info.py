@@ -105,6 +105,7 @@ Category
     - Synthesizer 合成器
     - Microphone 麦克风
     - Monitor Headphone 监听耳机
+    
 * Extra Requirement 其他需求
     - Acoustic Only 仅支持原声
     - Electricity Required 需接电

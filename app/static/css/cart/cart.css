@@ -72,3 +72,11 @@ table tr:hover{
     padding-left: 10px;
     padding-right: 10px;
 }
+
+.select-head{
+    width: 10%;
+}
+
+.model-head{
+    width: 50%;
+}

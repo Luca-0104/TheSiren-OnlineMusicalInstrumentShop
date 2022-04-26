@@ -1,7 +1,7 @@
 """
     Here are the functions for product management (for staff user to use)
 """
-from flask import jsonify, request, flash, render_template, redirect, url_for, json
+from flask import jsonify, request, flash, render_template, redirect, url_for, json, current_app
 from flask_login import login_required
 from flask_babel import _
 from sqlalchemy import and_
@@ -70,7 +70,7 @@ def show_page_stock_management():
                     model_dict[mt.product] = [mt]
 
     else:
-        """ if the this is the init access of this page (no search now) """
+        """ if the this is the initial access of this page (no search now) """
         is_search = False
         previous_key = None
 
@@ -79,10 +79,9 @@ def show_page_stock_management():
         # turn product list into a model_dict
         model_dict = {p: p.model_types.all() for p in product_list}
 
-    print(is_search)
-
     # render this page
-    return render_template('staff/page-list-product.html', model_dict=model_dict, is_search=is_search, previous_key=previous_key)
+    return render_template('staff/page-list-product.html', model_dict=model_dict, is_search=is_search,
+                           previous_key=previous_key)
 
 
 # ------------------------------------------------ Search functions for staffs to manage the stock ------------------------------------------------
@@ -125,6 +124,7 @@ def search_stock(key_word, search_type):
     """ render the page """
     return render_template('', model_dict=model_dict)
 '''
+
 
 # ------------------------------------------------ CUD operations on 'product' ------------------------------------------------
 
@@ -206,7 +206,8 @@ def upload_product():
             # print('m_pics_intro_lst', m_pics_intro_lst)
 
             # create an obj of this new model type
-            new_model_type = ModelType(name=m_name, description=m_description, price=m_price, stock=m_stock, serial_number=m_serial_number, product=new_product)
+            new_model_type = ModelType(name=m_name, description=m_description, price=m_price, stock=m_stock,
+                                       serial_number=m_serial_number, product=new_product)
             db.session.add(new_model_type)
             db.session.commit()
 
@@ -269,7 +270,8 @@ def validate_product_serial():
         # get serial prefix
         serial_prefix = request.form["serial_prefix"]
         # get a list of product with this serial prefix
-        p_list = Product.query.filter_by(serial_prefix=serial_prefix, is_deleted=False).order_by(Product.serial_rank.desc()).all()
+        p_list = Product.query.filter_by(serial_prefix=serial_prefix, is_deleted=False).order_by(
+            Product.serial_rank.desc()).all()
         # if no product in list, the rank should be 1
         if len(p_list) == 0:
             rank = 1
@@ -590,3 +592,125 @@ def modify_model_type(model_id):
     form.stock.data = model.stock
     form.serial_number.data = model.serial_number
     return render_template('staff/page-modify-modeltype.html', form=form)
+
+
+# ------------------------------------------------ operations on 'categories' ------------------------------------------------
+# ------------------------------------------- may NOT be adopted! ------------------------------------------------------------------------------
+
+@product.route('/api/stock-management/add-category', methods=['POST'])
+@login_required
+def add_category():
+    """
+    (Using Ajax)
+    Add and new category into the system
+    """
+    if request.method == 'POST':
+        cate_name = request.form.get('cate_name')
+
+        if cate_name is None:
+            current_app.logger.error("info are not gotten from Ajax")
+            return jsonify({'returnValue': 1})
+
+        # check if the category already exist
+        cate_found = Category.query.filter_by(name=cate_name).first()
+        if cate_found is not None:
+            current_app.logger.info("A staff attempt to add an existing category")
+            return jsonify({'returnValue': 2, 'msg': 'This category already exists.'})
+
+        # create a new category
+        new_cate = Category(name=cate_name)
+        db.session.add(new_cate)
+        db.session.commit()
+
+        return jsonify({'returnValue': 0})
+    return jsonify({'returnValue': 1})
+
+
+@product.route('/api/stock-management/remove-category', methods=['POST'])
+@login_required
+def remove_category():
+    """
+    (Using Ajax)
+    Remove a category in this system.
+    The products under this category should be assigned to 'others'
+    """
+    pass
+
+
+# ------------------------------------------------ operations on 'brands' ------------------------------------------------
+
+@product.route('/api/stock-management/add-brand', methods=['POST'])
+@login_required
+def add_brand():
+    """
+    (Using Ajax)
+    Add and new brand into the system
+    """
+    if request.method == 'POST':
+        brand_name = request.form.get('brand_name')
+
+        if brand_name is None:
+            current_app.logger.error("info are not gotten from Ajax")
+            return jsonify({'returnValue': 1})
+
+        # check if the brand already exist
+        brand_found = Brand.query.filter_by(name=brand_name).first()
+        if brand_found is not None:
+            current_app.logger.info("A staff attempt to add an existing brand")
+            return jsonify({'returnValue': 2, 'msg': 'This brand already exists.'})
+
+        # create a new brand
+        new_brand = Brand(name=brand_name)
+        db.session.add(new_brand)
+        db.session.commit()
+
+        return jsonify({'returnValue': 0})
+    return jsonify({'returnValue': 1})
+
+
+@product.route('/api/stock-management/remove-brand', methods=['POST'])
+@login_required
+def remove_brand():
+    """
+    (Using Ajax)
+    Remove a brand in this system.
+    Only the brand id >= 18 can be removed
+    The products under this brand should be assigned to 'others'
+    """
+    if request.method == 'POST':
+        brand_id = request.form.get('brand_id')
+
+        if brand_id is None:
+            current_app.logger.error("info are not gotten from Ajax")
+            return jsonify({'returnValue': 1})
+
+        # parse id to int
+        try:
+            brand_id = int(brand_id)
+        except Exception as e:
+            current_app.logger.error(e)
+            return jsonify({'returnValue': 1})
+
+        # check if the brand is the pre-stored brand (id<18)
+        if brand_id < 18:
+            current_app.logger.info('A staff attempt to delete a pre-stored brand')
+            return jsonify({'returnValue': 2, 'msg': 'The pre-stored brand can not be deleted'})
+
+        # check if the brand exists
+        brand = Brand.query.get(brand_id)
+        if brand is None:
+            current_app.logger.error("The brand does not exist")
+            return jsonify({'returnValue': 1})
+
+        # now we can delete this brand
+        # first, we need to assign all the products under this brand to 'other' brand
+        for p in brand.products:
+            p.brand_id = 17
+            db.session.add(p)
+        db.session.commit()
+        # then, delete the brand from db
+        db.session.delete(brand)
+        db.session.commit()
+
+        return jsonify({'returnValue': 0})
+    return jsonify({'returnValue': 1})
