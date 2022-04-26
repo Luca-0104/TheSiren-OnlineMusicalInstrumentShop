@@ -45,7 +45,7 @@ def generate_order_from_cart():
 
                 # generate related payment amount
                 new_order.generate_delivery_fee()
-                new_order.generate_gross_payment()
+                new_order.generate_payment()
                 # generate out_trade_no for this order, as it is created
                 new_order.generate_unique_out_trade_no()
 
@@ -99,7 +99,7 @@ def generate_order_from_buy_now():
 
                 # generate related payment amount
                 new_order.generate_delivery_fee()
-                new_order.generate_gross_payment()
+                new_order.generate_payment()
                 # generate out_trade_no for this order, as it is created
                 new_order.generate_unique_out_trade_no()
 
@@ -161,7 +161,7 @@ def get_order_payment():
             return jsonify({"returnValue": 1})
 
         # get the payment and return it to front end
-        return jsonify({"returnValue": 0, "payTotal": o.gross_payment, "deliveryFee": o.delivery_fee})
+        return jsonify({"returnValue": 0, "payTotal": o.gross_payment, "deliveryFee": o.delivery_fee, "paidPayment": o.paid_payment})
     return jsonify({"returnValue": 1})
 
 
@@ -240,19 +240,19 @@ def update_order_shipping():
         else:
             o.generate_delivery_fee()
         # update gross payment
-        o.generate_gross_payment()
+        o.generate_payment()
 
         # if the type is changed to "delivery", default address should be assigned
         if shipping_method == "self-collection":
             o.address_id = None
         else:
-            default_address = current_user.get_default_address
+            default_address = current_user.get_default_address()
             o.address_id = default_address.id
 
         db.session.add(o)
         db.session.commit()
 
-        return jsonify({"returnValue": 0, "payTotal": o.gross_payment, "deliveryFee": o.delivery_fee})
+        return jsonify({"returnValue": 0, "payTotal": o.gross_payment, "deliveryFee": o.delivery_fee, "paidPayment": o.paid_payment})
     return jsonify({"returnValue": 1})
 
 

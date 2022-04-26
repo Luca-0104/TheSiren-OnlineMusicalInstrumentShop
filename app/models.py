@@ -387,7 +387,8 @@ class Order(BaseModel):
     timestamp = db.Column(db.DateTime(), index=True, default=datetime.utcnow)
     order_type = db.Column(db.String(20), default='delivery')   # 'delivery' or 'self-collection'
     delivery_fee = db.Column(db.Integer, default=9)  # if the order_type is 'self-collection', delivery fee should be 0
-    gross_payment = db.Column(db.Float)     # only 2 digits in decimal e.g. 10.xx
+    gross_payment = db.Column(db.Float)     # total amount without discount (delivery_fee + items) # only 2 digits in decimal e.g. 10.xx
+    paid_payment = db.Column(db.Float)      # real amount need to pay (delivery_fee + items*discount) # only 2 digits in decimal e.g. 10.xx
     status_code = db.Column(db.Integer, default=0)  # the status code of this order
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))  # the uid of the customer who owns this order
     timestamp_1 = db.Column(db.DateTime(), index=True)  # time record of status changing to 'preparing'
@@ -469,7 +470,6 @@ class Order(BaseModel):
         elif self.status_code == 6:
             return 'expired'
 
-
     def generate_delivery_fee(self):
         """
         Premium members can enjoy delivery for free.
@@ -509,36 +509,41 @@ class Order(BaseModel):
 
         return fee
 
-    def generate_gross_payment(self):
+    def generate_payment(self):
         """
-        This function calculates the gross payment of this order (delivery + commodities)
+        This function calculates the "gross payment" of this order (delivery + commodities)
+        This function also calculates the "paid payment" of this order (delivery + commodities*discount)
         Then the field 'gross_payment' will be filled.
+        Then the field 'paid_payment' will be filled.
         :return: gross_payment
         """
-        gross = 0
+        payment = 0
 
         # add delivery fee
         if self.order_type == 'delivery':
-            gross += self.delivery_fee
+            payment += self.delivery_fee
 
         # calculate and add fee for commodities
         payment_commodity = 0
         for omt in self.order_model_types:
             payment_commodity += (omt.model_type.price * omt.count)
+
+        # record the total payment
+        gross_payment = payment + payment_commodity
+        gross_payment = round(gross_payment, 2)     # remain 2 digits in decimal place
+        self.gross_payment = gross_payment
+
+        # record the real amount should be paid
         # check the premium discount
         if self.user.is_premium:
             payment_commodity *= 0.95
-        gross += payment_commodity
+        paid_payment = payment + payment_commodity
+        paid_payment = round(paid_payment, 2)       # remain 2 digits in decimal place
+        self.paid_payment = paid_payment
 
-        # remain 2 digits in decimal place
-        gross = round(gross, 2)
-
-        # write gross in to db
-        self.gross_payment = gross
+        # commit to db
         db.session.add(self)
         db.session.commit()
-
-        return gross
 
     def generate_unique_out_trade_no(self):
         """
@@ -606,7 +611,7 @@ class OrderModelType(BaseModel):
                 db.session.add(new_omt)
             # update the payment of order
             order.generate_delivery_fee()
-            order.generate_gross_payment()
+            order.generate_payment()
         db.session.commit()
 
     # def to_dict(self):

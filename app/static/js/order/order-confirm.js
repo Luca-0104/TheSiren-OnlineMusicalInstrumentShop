@@ -9,7 +9,6 @@ $(document).ready(function (){
     // set the default address as selected
     let defaultSign = $("#address-default-sign")
     let defaultAddressId = defaultSign.parent().parent().attr("address-id")
-    console.log("default address id: " + defaultAddressId)
     defaultSign.parent(".address").addClass("chosen-address");
     update_order_address(orderId, defaultAddressId)
 
@@ -86,10 +85,13 @@ function update_payment_info(orderId){
             let payTotal = response['payTotal']
             let deliveryFee = response['deliveryFee']
             let subTotal = payTotal - deliveryFee
+            let shouldPay = response['paidPayment']
+            console.log("should: " + shouldPay)
             //update the display of payment
             $("#pay-subtotal").text(subTotal)
             $("#pay-total").text(payTotal)
             $("#pay-delivery").text(deliveryFee)
+            $("#pay-should").text(shouldPay)
         }
     });
 }
@@ -180,7 +182,6 @@ function update_order_recipient(orderId, recipientName, recipientPhone){
         let returnValue = response['returnValue'];
 
         if (returnValue === 0) { //success
-            console.log("recipient updated")
             //if success, we can send another Ajax for paying
             pay_for_order(orderId);
         }
