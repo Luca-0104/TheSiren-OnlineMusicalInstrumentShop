@@ -38,9 +38,6 @@ class EditProfileForm(FlaskForm):
                                                                              "Username must contain only letters, numbers, dots or underscores")])
     # new_password = PasswordField('Password: ', validators=[DataRequired()])
     edit_profile_about_me = StringField(_l('About Me: '), validators=[Length(0, 300)])
-    edit_profile_gender = RadioField(_l('Gender: '), choices=[(0, _l('Male')), (1, _l('Female')), (2, _l('Unknown'))], coerce=int,
-                                     validators=[DataRequired()])
-    edit_profile_about_me = StringField(_l('About Me: '), validators=[Length(0, 300)])
     edit_profile_gender = SelectField(_l('Gender: '), choices=[(0, _l('Male')), (1, _l('Female')), (2, _l('Unknown'))], coerce=int, validators=[DataRequired()])
     edit_profile_submit = SubmitField(_l('Update Profile'))
 
