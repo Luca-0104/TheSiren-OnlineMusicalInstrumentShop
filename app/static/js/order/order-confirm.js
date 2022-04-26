@@ -63,6 +63,23 @@ $(document).ready(function (){
         }
     });
 
+    /* When delete address is clicked */
+    $(".btn-address-delete").on("click", function(){
+        //count how many addresses left
+        let addressCount = $(".address-list").children("li").length;
+        //if this is the last one, we won't let user to delete it
+        if(addressCount <= 1){
+            window.alert("You cannot delete the last address");
+        }else{
+            //if this is not the last one, we will send Ajax request to delete it
+            //get the address id
+            let addressID = $(this).parent().parent().attr("address-id");
+            console.log("address id: " + addressID);
+            //send Ajax request
+            delete_address(orderId, addressID);
+        }
+    });
+
 });
 
 /*
@@ -205,6 +222,27 @@ function pay_for_order(orderId){
             // get payment URL then redirect to that URL
             let paymentURL = response['paymentURL']
             location.href = paymentURL;
+        }
+    });
+}
+
+/**
+ * This function sends Ajax request to delete the given address
+ * @param orderID The id of this order
+ * @param addressId The id of the address needs to be deleted
+ */
+function delete_address(orderID, addressId){
+    $.post("/api/remove-address", {
+        "address_id": addressId
+
+    }).done(function(response){
+        //get response from server
+        let returnValue = response['returnValue'];
+
+        if (returnValue === 0) { //success
+            // refresh this page
+            let url = "/order-confirm/" + orderID;
+            location.href = url;
         }
     });
 }

@@ -322,7 +322,7 @@ def remove_address():
         if address.is_default is True:
             # whether this is the only address of this user
             if current_user.addresses.count() == 1 and current_user.addresses.first() == address:
-                # if this is the only one, we can just delte it
+                # if this is the only one, we can just delete it
                 db.session.delete(address)
                 db.session.commit()
                 flash(_('Address has been deleted!'))
