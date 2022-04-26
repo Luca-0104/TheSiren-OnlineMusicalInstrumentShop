@@ -793,10 +793,10 @@
                                     <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." required>-->
                                     {{ edit_profile_form.edit_profile_gender.label }}
                                     {{ edit_profile_form.edit_profile_gender(id='profile_form_gender', class="form-control") }}
-                                    {#                    {% for error in edit_profile_form.edit_.errors %}#}
-                                    {#                        <span>{{ error }}</span>#}
-                                    {#                    {% endfor %}#}
-                                    {#                    <div class="help-block with-errors"></div>#}
+                                                        {% for error in edit_profile_form.edit_profile_gender.errors %}
+                                                            <span>{{ error }}</span>
+                                                        {% endfor %}
+                                                        <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                         </td>
