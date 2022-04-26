@@ -410,11 +410,10 @@
                                     {# the address list #}
                                     <ul class="address-list" order-id="{{ order.id }}">
                                         {% for address in order.user.addresses %}
-                                            <li id="address-{{ address.id }}" class="address"
-                                                address-id="{{ address.id }}">
+                                            <li id="address-{{ address.id }}" class="address" address-id="{{ address.id }}">
                                                 <div class="cart-container">
                                                     <div class="main-container">
-                                                        <span class="large-text address">{{ address.id }}</span>
+                                                        <span class="large-text address address-number"></span>
                                                         <div class=""></div>
                                                     </div>
                                                     <br><br>

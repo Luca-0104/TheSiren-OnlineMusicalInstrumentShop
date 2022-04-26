@@ -15,6 +15,12 @@ $(document).ready(function (){
     //update the display of payment
     update_payment_info(orderId);
 
+    //update all the address sequence number
+    $(".address-number").each(function (){
+        let addressNumber = 1 + $(this).parent().parent().parent().index();
+        $(this).text(addressNumber);
+    });
+
     /* when an address is clicked */
     $(".address").on("click", function(){
         // get address id of this address
@@ -239,7 +245,7 @@ function delete_address(orderID, addressId){
         //get response from server
         let returnValue = response['returnValue'];
 
-        if (returnValue === 0) { //success
+        if (returnValue === 0 || returnValue === 3 || returnValue === 2) { //success
             // refresh this page
             let url = "/order-confirm/" + orderID;
             location.href = url;
