@@ -242,6 +242,13 @@ def update_order_shipping():
         # update gross payment
         o.generate_gross_payment()
 
+        # if the type is changed to "delivery", default address should be assigned
+        if shipping_method == "self-collection":
+            o.address_id = None
+        else:
+            default_address = current_user.get_default_address
+            o.address_id = default_address.id
+
         db.session.add(o)
         db.session.commit()
 
