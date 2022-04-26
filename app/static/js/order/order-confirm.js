@@ -8,7 +8,8 @@ $(document).ready(function (){
 
     // set the default address as selected
     let defaultSign = $("#address-default-sign")
-    let defaultAddressId = defaultSign.parent(".address").attr("address-id")
+    let defaultAddressId = defaultSign.parent().parent().attr("address-id")
+    console.log("default address id: " + defaultAddressId)
     defaultSign.parent(".address").addClass("chosen-address");
     update_order_address(orderId, defaultAddressId)
 
@@ -109,6 +110,7 @@ function update_order_address(orderId, addressId){
         let returnValue = response['returnValue'];
 
         if (returnValue === 0) { //success
+            console.log("address updated!")
             //only let the selected one have the style of "chosen-class"
             $(".address").removeClass("chosen-address");
             let id = "#address-" + addressId
