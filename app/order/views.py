@@ -190,6 +190,16 @@ def update_order_address():
             current_app.logger.error("No order or address with this id")
             return jsonify({"returnValue": 1})
 
+        # check order type (only 'delivery' is available)
+        if o.order_type != 'delivery':
+            current_app.logger.error("An no-delivery-type order address is going to be changed")
+            return jsonify({"returnValue": 1})
+
+        # check status of the order (only 0 and 1 are available)
+        if o.status_code not in [0, 1]:
+            current_app.logger.error("An order address is going to be changed after preparing phase.")
+            return jsonify({"returnValue": 1})
+
         o.address = address
         db.session.add(o)
         db.session.commit()
