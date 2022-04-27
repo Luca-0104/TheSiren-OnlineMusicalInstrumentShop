@@ -124,7 +124,7 @@ def pay_order(order_obj):
         # For sandbox environment (development): https://openapi.alipaydev.com/gateway.do? + order_string
         order_string = alipay.api_alipay_trade_page_pay(
             out_trade_no=order_obj.out_trade_no,    # trade number, which should be unique inside a same retailer
-            total_amount=order_obj.gross_payment,  # total amount of the order (unit:'yuan (RMB)')
+            total_amount=order_obj.paid_payment,    # total amount of the order should pay (unit:'yuan (RMB)')
             subject=subject,    # subject of this order
             return_url=url_for('payment.payment_finished', _external=True),   # where to go after the payment
             notify_url=None  # not usable, so I used another method to replace this
