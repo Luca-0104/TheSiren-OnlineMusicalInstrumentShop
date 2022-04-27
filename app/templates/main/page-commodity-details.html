@@ -394,30 +394,39 @@
                             <div>
 
                                 {% if model.is_deleted == False %}
-                                    <form data-node-type="commerce-add-to-cart-form"
+
+                                    {% if model.stock > 0 %}
+                                        <form data-node-type="commerce-add-to-cart-form"
                                           class="w-commerce-commerceaddtocartform cart-default-state">
-                                        <div class="add-to-cart-form">
-                                            <div class="quantity-wrapper"><label
-                                                    for="quantity-6194caf15498d8612861f033e8278855"
-                                                    class="quantity-label">Quantity:</label><input type="number"
-                                                                                                   pattern="^[0-9]+$"
-                                                                                                   inputmode="numeric"
-                                                                                                   id="quantity-6194caf15498d8612861f033e8278855"
-                                                                                                   name="commerce-add-to-cart-quantity-input"
-                                                                                                   min="1"
-                                                                                                   class="w-commerce-commerceaddtocartquantityinput quantity-input"
-                                                                                                   value="1"></div>
-                                            <input id="btn-add-to-cart" type="submit"
-                                                   data-node-type="commerce-add-to-cart-button"
-                                                   data-loading-text="Adding to cart..." value="Add to Cart"
-                                                   class="w-commerce-commerceaddtocartbutton button small">
+                                            <div class="add-to-cart-form">
+                                                <div class="quantity-wrapper"><label
+                                                        for="quantity-6194caf15498d8612861f033e8278855"
+                                                        class="quantity-label">Quantity:</label><input type="number"
+                                                                                                       pattern="^[0-9]+$"
+                                                                                                       inputmode="numeric"
+                                                                                                       id="quantity-6194caf15498d8612861f033e8278855"
+                                                                                                       name="commerce-add-to-cart-quantity-input"
+                                                                                                       min="1"
+                                                                                                       class="w-commerce-commerceaddtocartquantityinput quantity-input"
+                                                                                                       value="1"></div>
+                                                <input id="btn-add-to-cart" type="submit"
+                                                       data-node-type="commerce-add-to-cart-button"
+                                                       data-loading-text="Adding to cart..." value="Add to Cart"
+                                                       class="w-commerce-commerceaddtocartbutton button small">
+                                            </div>
+                                            <a id="btn-buy-now" model_id="{{ model.id }}" href="#"
+                                               data-node-type="commerce-buy-now-button" data-default-text="Buy It Now"
+                                               data-subscription-text="Subscribe now"
+                                               class="w-commerce-commercebuynowbutton button no-top-margin bg-primary">Buy
+                                                It Now</a>
+                                        </form>
+                                    {% else %}
+                                        <div>
+                                            <h6 class="uppercase-text product-details-heading" style="color: darkred">This
+                                                item is out of stock.</h6>
                                         </div>
-                                        <a id="btn-buy-now" model_id="{{ model.id }}" href="#"
-                                           data-node-type="commerce-buy-now-button" data-default-text="Buy It Now"
-                                           data-subscription-text="Subscribe now"
-                                           class="w-commerce-commercebuynowbutton button no-top-margin bg-primary">Buy
-                                            It Now</a>
-                                    </form>
+                                    {% endif %}
+
                                 {% else %}
                                     <div>
                                         <h6 class="uppercase-text product-details-heading" style="color: darkred">This
