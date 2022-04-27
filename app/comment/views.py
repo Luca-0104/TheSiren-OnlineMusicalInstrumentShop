@@ -7,7 +7,7 @@ from . import comment
 from config import Config
 from ..public_tools import generate_safe_pic_name, upload_picture
 from ..comment.forms import AForm, BForm, CommentForm
-from ..models import User, Address, Comment
+from ..models import User, Address, Comment, ModelType
 from .. import db
 
 
@@ -33,6 +33,13 @@ def upload_comment(model_type_id):
     :param model_type_id: the id of the model type that is being commented
     """
     form = CommentForm()
+
+    # get the model by id
+    model_type = ModelType.query.get(model_type_id)
+    if model_type is None:
+        flash("The model does not exist!")
+        return redirect(url_for("order.my_orders"))
+
     if form.validate_on_submit():
         content = form.content.data
         rate = form.rate.data
@@ -40,10 +47,22 @@ def upload_comment(model_type_id):
         # create a new comment
         new_comment = Comment(content=content, star_num=rate, model_type_id=model_type_id, auth_id=current_user.id)
         db.session.add(new_comment)
+
+        """
+            deal with the rate number
+        """
+        # cast the rate from str to float, so that it can be calculated
+        rate = float(rate)
+        # calculate the average rate,
+        # (current total rate + this rate) / (current rate times + 1)
+        model_type.rate = ((model_type.rate * model_type.rate_count) + rate) / (model_type.rate_count + 1)
+        model_type.rate_count += 1
+
+        db.session.add(model_type)
         db.session.commit()
 
         """
-           dealing with the uploaded pictures
+           deal with the uploaded pictures
         """
         # get a list of file objects from the user upload
         picture_list = form.pictures.data

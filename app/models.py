@@ -846,6 +846,7 @@ class ModelType(BaseModel):
     price = db.Column(db.Float)
     weight = db.Column(db.Float)    # kg
     rate = db.Column(db.Float, default=3)   # the star rating
+    rate_count = db.Column(db.Integer, default=0)   # how many time this model is rated
     stock = db.Column(db.Integer, default=0)
     sales = db.Column(db.Integer, default=0)    # how many this models have been sold out
     views = db.Column(db.Integer, default=0)    # how many times its details page has been viewed
