@@ -327,3 +327,22 @@ width: 15%;}
 .no-bottom{
     border-bottom: none;
 }
+
+.border-1{
+    border-bottom: 1px solid #c1bfbf;
+    padding-bottom: 5px;
+}
+
+.border-2{
+    border-bottom: 1px solid #c1bfbf;
+    border-right: 30px solid transparent;
+    padding-bottom: 5px;
+}
+
+.modify-section{
+    text-align: right;
+}
+
+.top-indentation{
+    padding-top: 10px;
+}

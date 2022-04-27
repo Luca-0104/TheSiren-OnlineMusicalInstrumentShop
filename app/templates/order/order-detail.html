@@ -304,131 +304,7 @@
             </div>
         </div>
 
-        {% if order.status_code >=0 and order.status_code <= 4 %}
-            <div class="main" style="">
-                <div class="head">
-                    <p class="large-heading">Progress<span> Bar</span></p>
-                </div>
-                <ul class="ul-1">
-                    <li>
-                        <i class="icon uil uil-credit-card" style="color: #8e8267;"></i>
-                        {% if order.status_code > 0 %}
-                            <div class="progress one active">
-                                <p>1</p>
-                                <i class="uil uil-check" style="color: #e2e1dc;"></i>
-                            </div>
-                            <p class="text">Payment</p>
-                        {% else %}
-                            <div class="progress one">
-                                <p>1</p>
-                                <i class="uil uil-check" style="color: #e2e1dc;"></i>
-                            </div>
-                            <p class="text">Payment</p>
-                        {% endif %}
-                    </li>
-                    {% if order.order_type == 'delivery' %}
-                        <li>
-                            <i class="icon uil uil-truck-loading" style="color: #8e8267;"></i>
-                            {% if order.status_code > 1 %}
-                                <div class="progress two active">
-                                    <p>2</p>
-                                    <i class="uil uil-check" style="color: #e2e1dc;"></i>
-                                </div>
-                                <p class="text">Preparing</p>
-                            {% else %}
-                                <div class="progress two">
-                                    <p>2</p>
-                                    <i class="uil uil-check" style="color: #e2e1dc;"></i>
-                                </div>
-                                <p class="text">Preparing</p>
-                            {% endif %}
-                        </li>
-                        <li>
-                            <i class="icon uil uil-truck" style="color: #8e8267;"></i>
-                            {% if order.status_code > 2 %}
-                                <div class="progress three active">
-                                    <p>3</p>
-                                    <i class="uil uil-check" style="color: #e2e1dc;"></i>
-                                </div>
-                                <p class="text">On Delivery</p>
-                            {% else %}
-                                <div class="progress three">
-                                    <p>3</p>
-                                    <i class="uil uil-check" style="color: #e2e1dc;"></i>
-                                </div>
-                                <p class="text">On Delivery</p>
-                            {% endif %}
-                        </li>
-                        <li>
-                            <i class="icon uil uil-map-marker" style="color: #8e8267;"></i>
-                            {% if order.status_code == 4 %}
-                                <div class="progress four active">
-                                    <p>4</p>
-                                    <i class="uil uil-check" style="color: #e2e1dc;"></i>
-                                </div>
-                                <p class="text">Finished</p>
-                            {% else %}
-                                <div class="progress four">
-                                    <p>4</p>
-                                    <i class="uil uil-check" style="color: #e2e1dc;"></i>
-                                </div>
-                                <p class="text">Finished</p>
-                            {% endif %}
-                        </li>
-                    {% elif order.order_type == 'self-collection' %}
-                        <li>
-                            <i class="icon uil uil-clock-nine" style="color: #8e8267;"></i>
-                            {% if order.status_code >= 4 %}
-                                <div class="progress two active">
-                                    <p>2</p>
-                                    <i class="uil uil-check" style="color: #e2e1dc;"></i>
-                                </div>
-                                <p class="text">Waiting For Collection</p>
-                            {% else %}
-                                <div class="progress two">
-                                    <p>2</p>
-                                    <i class="uil uil-check" style="color: #e2e1dc;"></i>
-                                </div>
-                                <p class="text">Waiting For Collection</p>
-                            {% endif %}
-                        </li>
-                        <li>
-                            <i class="icon uil uil-map-marker" style="color: #8e8267;"></i>
-                            {% if order.status_code == 4 %}
-                                <div class="progress three active">
-                                    <p>3</p>
-                                    <i class="uil uil-check" style="color: #e2e1dc;"></i>
-                                </div>
-                                <p class="text">Finished</p>
-                            {% else %}
-                                <div class="progress three">
-                                    <p>3</p>
-                                    <i class="uil uil-check" style="color: #e2e1dc;"></i>
-                                </div>
-                                <p class="text">Finished</p>
-                            {% endif %}
-                        </li>
-                    {% endif %}
 
-                    {#                <li>#}
-                    {#                    <i class="icon uil uil-map-marker"></i>#}
-                    {#                    <div class="progress six">#}
-                    {#                        <p>5</p>#}
-                    {#                        <i class="uil uil-check"></i>#}
-                    {#                    </div>#}
-                    {#                    <p class="text">Canceled</p>#}
-                    {#                </li>#}
-                    {#                <li>#}
-                    {#                    <i class="icon uil uil-map-marker"></i>#}
-                    {#                    <div class="progress seven">#}
-                    {#                        <p>5</p>#}
-                    {#                        <i class="uil uil-check"></i>#}
-                    {#                    </div>#}
-                    {#                    <p class="text">Canceled</p>#}
-                    {#                </li>#}
-                </ul>
-            </div>
-        {% endif %}
 
 
         <!-- Order Detail Section -->
@@ -447,6 +323,7 @@
                     <div class="w-commerce-commercecartlist cart-list main-container">
 
                         <table class="main-table">
+                            <!-- Status -->
                             <tr id="status_{{ order.id }}" style="text-align: center">
                                 {% if order.status_code == 0 %}
                                     <td colspan="3" class="status_col status_wp">
@@ -478,16 +355,23 @@
                                     </td>
                                 {% endif %}
                             </tr>
+
+                            <!-- Information -->
                             <tr>
                                 <td colspan="2" class="top-td">
                                     <table width="100%">
                                         <tr>
-                                            <td class="title_indentation medium-heading">
+                                            <td class="title_indentation medium-heading border-1">
                                                 Basic Information
+                                            </td>
+                                            <td class="border-2 modify-section">
+                                                <a href="#" class="button small nav-button w-inline-block">
+                                                    <div>Modify Type</div>
+                                                </a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>
+                                            <td colspan="2">
                                                 <table class="info_indentation" width="100%">
                                                     <tr>
                                                         <td colspan="2" class="order_num">
@@ -514,23 +398,34 @@
                                                     </tr>
                                                     <tr>
                                                         <td colspan="2">
-                                                            Total Cost: ${{ order.generate_gross_payment() }}
+                                                            Total Cost: ${{ order.generate_payment() }}
                                                         </td>
                                                     </tr>
                                                 </table>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="title_indentation medium-heading extra-top-indentation">
+                                            <td class="title_indentation top-indentation medium-heading extra-top-indentation border-1">
                                                 {% if order.order_type == "delivery" %}
                                                     Address Information
                                                 {% elif order.order_type == "self-collection" %}
                                                     Recipient Information
                                                 {% endif %}
                                             </td>
+                                            <td class="border-2 top-indentation modify-section">
+                                                {% if order.order_type == "delivery" %}
+                                                    <a href="#" class="button small nav-button w-inline-block">
+                                                        <div>Modify Address</div>
+                                                    </a>
+                                                {% elif order.order_type == "self-collection" %}
+                                                    <a href="#" class="button small nav-button w-inline-block">
+                                                        <div>Modify Recipient</div>
+                                                    </a>
+                                                {% endif %}
+                                            </td>
                                         </tr>
                                         <tr>
-                                            <td>
+                                            <td colspan="2">
                                                 <table class="info_indentation" width="100%">
                                                     {% if order.order_type == "delivery" %}
                                                         <tr>
@@ -566,9 +461,144 @@
                                     </table>
                                 </td>
                             </tr>
+
+                            <!-- Progress bar -->
+                            <tr>
+                                <td>
+                                    {% if order.status_code >=0 and order.status_code <= 4 %}
+                                        <div class="progress-bar-container">
+                                            <!--<div class="head">
+                                                <p class="large-heading">
+                                                    Progress<span> Bar</span>
+                                                </p>
+                                            </div>-->
+                                            <ul class="ul-1">
+                                                <li>
+                                                    <i class="icon uil uil-credit-card" style="color: #8e8267;"></i>
+                                                    {% if order.status_code > 0 %}
+                                                        <div class="progress one active">
+                                                            <p>1</p>
+                                                            <i class="uil uil-check" style="color: #e2e1dc;"></i>
+                                                        </div>
+                                                        <p class="text">Payment</p>
+                                                    {% else %}
+                                                        <div class="progress one">
+                                                            <p>1</p>
+                                                            <i class="uil uil-check" style="color: #e2e1dc;"></i>
+                                                        </div>
+                                                        <p class="text">Payment</p>
+                                                    {% endif %}
+                                                </li>
+                                                {% if order.order_type == 'delivery' %}
+                                                    <li>
+                                                        <i class="icon uil uil-truck-loading" style="color: #8e8267;"></i>
+                                                        {% if order.status_code > 1 %}
+                                                            <div class="progress two active">
+                                                                <p>2</p>
+                                                                <i class="uil uil-check" style="color: #e2e1dc;"></i>
+                                                            </div>
+                                                            <p class="text">Preparing</p>
+                                                        {% else %}
+                                                            <div class="progress two">
+                                                                <p>2</p>
+                                                                <i class="uil uil-check" style="color: #e2e1dc;"></i>
+                                                            </div>
+                                                            <p class="text">Preparing</p>
+                                                        {% endif %}
+                                                    </li>
+                                                    <li>
+                                                        <i class="icon uil uil-truck" style="color: #8e8267;"></i>
+                                                        {% if order.status_code > 2 %}
+                                                            <div class="progress three active">
+                                                                <p>3</p>
+                                                                <i class="uil uil-check" style="color: #e2e1dc;"></i>
+                                                            </div>
+                                                            <p class="text">On Delivery</p>
+                                                        {% else %}
+                                                            <div class="progress three">
+                                                                <p>3</p>
+                                                                <i class="uil uil-check" style="color: #e2e1dc;"></i>
+                                                            </div>
+                                                            <p class="text">On Delivery</p>
+                                                        {% endif %}
+                                                    </li>
+                                                    <li>
+                                                        <i class="icon uil uil-map-marker" style="color: #8e8267;"></i>
+                                                        {% if order.status_code == 4 %}
+                                                            <div class="progress four active">
+                                                                <p>4</p>
+                                                                <i class="uil uil-check" style="color: #e2e1dc;"></i>
+                                                            </div>
+                                                            <p class="text">Finished</p>
+                                                        {% else %}
+                                                            <div class="progress four">
+                                                                <p>4</p>
+                                                                <i class="uil uil-check" style="color: #e2e1dc;"></i>
+                                                            </div>
+                                                            <p class="text">Finished</p>
+                                                        {% endif %}
+                                                    </li>
+                                                {% elif order.order_type == 'self-collection' %}
+                                                    <li>
+                                                        <i class="icon uil uil-clock-nine" style="color: #8e8267;"></i>
+                                                        {% if order.status_code >= 4 %}
+                                                            <div class="progress two active">
+                                                                <p>2</p>
+                                                                <i class="uil uil-check" style="color: #e2e1dc;"></i>
+                                                            </div>
+                                                            <p class="text">Waiting For Collection</p>
+                                                        {% else %}
+                                                            <div class="progress two">
+                                                                <p>2</p>
+                                                                <i class="uil uil-check" style="color: #e2e1dc;"></i>
+                                                            </div>
+                                                            <p class="text">Waiting For Collection</p>
+                                                        {% endif %}
+                                                    </li>
+                                                    <li>
+                                                        <i class="icon uil uil-map-marker" style="color: #8e8267;"></i>
+                                                        {% if order.status_code == 4 %}
+                                                            <div class="progress three active">
+                                                                <p>3</p>
+                                                                <i class="uil uil-check" style="color: #e2e1dc;"></i>
+                                                            </div>
+                                                            <p class="text">Finished</p>
+                                                        {% else %}
+                                                            <div class="progress three">
+                                                                <p>3</p>
+                                                                <i class="uil uil-check" style="color: #e2e1dc;"></i>
+                                                            </div>
+                                                            <p class="text">Finished</p>
+                                                        {% endif %}
+                                                    </li>
+                                                {% endif %}
+
+                                                {#                <li>#}
+                                                {#                    <i class="icon uil uil-map-marker"></i>#}
+                                                {#                    <div class="progress six">#}
+                                                {#                        <p>5</p>#}
+                                                {#                        <i class="uil uil-check"></i>#}
+                                                {#                    </div>#}
+                                                {#                    <p class="text">Canceled</p>#}
+                                                {#                </li>#}
+                                                {#                <li>#}
+                                                {#                    <i class="icon uil uil-map-marker"></i>#}
+                                                {#                    <div class="progress seven">#}
+                                                {#                        <p>5</p>#}
+                                                {#                        <i class="uil uil-check"></i>#}
+                                                {#                    </div>#}
+                                                {#                    <p class="text">Canceled</p>#}
+                                                {#                </li>#}
+                                            </ul>
+                                        </div>
+                                    {% endif %}
+                                </td>
+                            </tr>
+
+                            <!-- Models -->
                             <tr>
                                 <td id="model_table_col">
-                                    <table width="100%" class="model_listing_table">
+                                    <table border="1" width="100%" class="model_listing_table">
                                         {% for order_model in order.order_model_types %}
                                             <tr id="model_row_{{ order_model.model_type.id }}"
                                                 order_id="{{ order.id }}">
@@ -587,7 +617,7 @@
                                                     {{ order_model.model_type.name }}
                                                 </td>
                                                 <td class="model_des_col">
-                                                    <table>
+                                                    <table border="1">
                                                         <tr>
                                                             <td class="model_des_cell">
                                                                 {{ order_model.model_type.description }}
