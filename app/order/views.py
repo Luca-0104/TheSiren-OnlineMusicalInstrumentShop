@@ -110,6 +110,10 @@ def generate_order_from_buy_now():
                 return jsonify({'returnValue': 0, 'order_id': new_order.id})
                 # return redirect(url_for('order.order_confirm', order_id=new_order.id))
 
+            else:
+                # out of the stock!
+                return jsonify({'returnValue': 3})  # 3 means out of the stock
+
     # flash('Order generation failed!')
     # return redirect(url_for('main.index'))
     return jsonify({'returnValue': 1})
