@@ -5,6 +5,7 @@ $(document).ready(function(){
         //get modelID and count
         let modelID = $("#btn-buy-now").attr("model_id");
         let count = $("#quantity-6194caf15498d8612861f033e8278855").val();
+        console.log("count: " + count);
         //send Ajax request
         buy_now(modelID, count);
     });
@@ -17,6 +18,9 @@ $(document).ready(function(){
         //send Ajax request
         add_to_cart(modelID, count);
     });
+
+    /* when changing the quantity */
+
 
 });
 
@@ -37,6 +41,11 @@ function buy_now(modelID, count){
             //success
             let order_id = response['order_id'];
             window.location.href = "/order-confirm/" + order_id;
+
+        }else if (returnValue === 2){
+            // returnValue=2 means the user does not login
+            // we redirect them to the login page
+            window.location.href = "/login"
         }
 
     });
