@@ -1,5 +1,5 @@
 from flask_login import login_required, current_user
-from flask import render_template, redirect, url_for, request, json, flash, jsonify, current_app
+from flask import render_template, redirect, url_for, request, json, flash, jsonify, current_app, session
 from flask_babel import _
 
 from app import db
@@ -59,7 +59,6 @@ def generate_order_from_cart():
 
 
 @order.route('/generate-order-from-buy-now', methods=['POST'])
-@login_required
 def generate_order_from_buy_now():
     """
     (Using Ajax)
@@ -69,6 +68,10 @@ def generate_order_from_buy_now():
     :param count: how many
     """
     if request.method == 'POST':
+        # if the user has not logged in
+        if session.get("uid") is None:
+            return jsonify({'returnValue': 2})  # returnValue=2 means the user does not login
+
         model_id = request.form.get("model_id")
         count = request.form.get("count")
 
@@ -106,6 +109,10 @@ def generate_order_from_buy_now():
                 flash(_('Order created!'))
                 return jsonify({'returnValue': 0, 'order_id': new_order.id})
                 # return redirect(url_for('order.order_confirm', order_id=new_order.id))
+
+            else:
+                # out of the stock!
+                return jsonify({'returnValue': 3})  # 3 means out of the stock
 
     # flash('Order generation failed!')
     # return redirect(url_for('main.index'))

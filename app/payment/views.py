@@ -236,18 +236,21 @@ def payment_notify():
                     current_app.logger.error(e)
                     return 'failure'
 
-                # update the order
+                # update the info
                 try:
+                    # order
                     order = Order.query.get(order_id)
                     order.out_trade_no = out_trade_no
                     order.trade_no = trade_no
                     order.status_code = 1
+                    db.session.add(order)
                     # user
                     user = order.user
                     user.exp += 60
                     db.session.add(user)
-                    db.session.add(order)
                     db.session.commit()
+                    # update the info of models in this order (stock, sales ... )
+                    order.update_model_info()
 
                 except Exception as e:
                     # record error into log file

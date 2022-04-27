@@ -569,6 +569,23 @@ class Order(BaseModel):
 
         return out_trade_no
 
+    def update_model_info(self):
+        """
+        This function is used to update the
+            stock number
+        AND sale number
+        of each model type in this order.
+        The stock of these model types will be decreased by the count of it in this order.
+        """
+        for omt in self.order_model_types:
+            # get the model type
+            mt = omt.model_type
+            # update the stock of this model type
+            mt.stock = mt.stock - omt.count
+            mt.sales = mt.sales + omt.count
+            db.session.add(mt)
+        db.session.commit()
+
 
 class OrderModelType(BaseModel):
     """
@@ -583,6 +600,7 @@ class OrderModelType(BaseModel):
     model_type_id = db.Column(db.Integer, db.ForeignKey('model_types.id'))
     count = db.Column(db.Integer, default=1)  # how many this model type the user bought in this order
     unit_pay = db.Column(db.Float, nullable=False)  # how much the user really paid for each of this model (unit_pay*count=total payment of this model)
+    is_commented = db.Column(db.Boolean, default=False)  # is this model in this order is already commented
     # refund record (this can be none)
     refunds = db.relationship('Refund', backref='order_model_type', lazy='dynamic')
 
@@ -846,6 +864,7 @@ class ModelType(BaseModel):
     price = db.Column(db.Float)
     weight = db.Column(db.Float)    # kg
     rate = db.Column(db.Float, default=3)   # the star rating
+    rate_count = db.Column(db.Integer, default=0)   # how many time this model is rated
     stock = db.Column(db.Integer, default=0)
     sales = db.Column(db.Integer, default=0)    # how many this models have been sold out
     views = db.Column(db.Integer, default=0)    # how many times its details page has been viewed

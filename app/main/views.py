@@ -615,20 +615,36 @@ def validate_model_count():
     """
     if request.method == 'POST':
         # get the info from Ajax
-        model_id = int(request.form['model_id'])
-        new_count = int(request.form['new_count'])
+        model_id = request.form.get('model_id')
+        new_count = request.form.get('new_count')
+
+        if model_id is None or new_count is None:
+            current_app.logger.error("info are not gotten from Ajax")
+            return jsonify({'returnValue': 1})
+
+        model = ModelType.query.get(model_id)
+        if model is None:
+            current_app.logger.error("No such model with this id")
+            return jsonify({'returnValue': 1})
+
+        # check if the model runs out of the stock
+        if model.stock <= 1:
+            return jsonify({'returnValue': 4, 'countStatus': 'run out of the stock'})
+
+        try:
+            new_count = int(new_count)
+        except Exception as e:
+            current_app.logger.error(e)
+            return jsonify({'returnValue': 1})
 
         # new_count should larger than 0
         if new_count > 0:
-            # get the model obj form db
-            model = ModelType.query.get(model_id)
 
-            if model:
-                if new_count < model.stock:
-                    return jsonify({'returnValue': 0, 'countStatus': 'less'})
-                elif new_count == model.stock:
-                    return jsonify({'returnValue': 0, 'countStatus': 'equal'})
-                elif new_count > model.stock:
-                    return jsonify({'returnValue': 0, 'countStatus': 'exceed'})
+            if new_count < model.stock:
+                return jsonify({'returnValue': 0, 'countStatus': 'less'})
+            elif new_count == model.stock:
+                return jsonify({'returnValue': 2, 'countStatus': 'equal'})
+            elif new_count > model.stock:
+                return jsonify({'returnValue': 3, 'countStatus': 'exceed'})
 
     return jsonify({'returnValue': 1})
