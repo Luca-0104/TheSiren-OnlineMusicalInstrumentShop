@@ -6,6 +6,7 @@ from sqlalchemy import and_
 from . import main
 from .. import db
 from ..models import Product, ModelType, Category, Brand, BrowsingHistory
+from ..public_tools import get_unique_shop_instance
 
 import random
 from datetime import datetime
@@ -646,5 +647,40 @@ def validate_model_count():
                 return jsonify({'returnValue': 2, 'countStatus': 'equal'})
             elif new_count > model.stock:
                 return jsonify({'returnValue': 3, 'countStatus': 'exceed'})
+
+    return jsonify({'returnValue': 1})
+
+
+@main.route('/api/the-siren/switch-epidemic-mode', methods=['POST'])
+@login_required
+def switch_epidemic_mode():
+    """
+    (Using Ajax)
+    This functions is for staffs to switch on or off the epidemic mode
+    """
+    if request.method == "POST":
+
+        # check if the user has logged in
+        if not current_user.is_authenticated:
+            current_app.logger.warning("Someone attempt to switch the epidemic mode before login")
+            return jsonify({'returnValue': 1})
+
+        # check if the user is an staff
+        if current_user.role_id == 1:
+            current_app.logger.warning("Someone (Customer) attempt to switch the epidemic mode without Permission!")
+            return jsonify({'returnValue': 1})
+
+        # get the unique instance of this shop
+        siren = get_unique_shop_instance()
+
+        # reverse the current switch of epidemic_mode_on
+        if siren.epidemic_mode_on:
+            siren.epidemic_mode_on = False
+        else:
+            siren.epidemic_mode_on = True
+
+        db.session.add(siren)
+        db.session.commit()
+        return jsonify({'returnValue': 0})
 
     return jsonify({'returnValue': 1})
