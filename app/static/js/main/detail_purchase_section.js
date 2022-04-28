@@ -58,6 +58,12 @@ function buy_now(modelID, count){
             // returnValue=2 means the user does not login
             // we redirect them to the login page
             window.location.href = "/login"
+
+        }else if (returnValue === 3){
+            // returnValue=3 means out of stock
+            //we can refresh this page, the "out of stock" statement would be shown
+            let url = "/product-details/" + modelID;
+            location.href = url;
         }
 
     });
