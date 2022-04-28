@@ -5,7 +5,7 @@ from datetime import datetime
 from werkzeug.utils import secure_filename
 
 from app import db
-from app.models import User, ModelTypePic, ModelType, Comment, ModelTypeIntroPic, CommentPic
+from app.models import User, ModelTypePic, ModelType, Comment, ModelTypeIntroPic, CommentPic, TheSiren
 from config import Config
 
 
@@ -128,6 +128,15 @@ def upload_picture(picture_list, host_id, pic_type):
         return 0, 'All pictures uploaded successfully!'
     else:
         return 2, failed_list
+
+
+def get_unique_shop_instance():
+    """
+    This functions is used to get the unique instance of this musical shop
+    :return: A instance of TheSiren
+    """
+    unique_instance = TheSiren.query.get(1)
+    return unique_instance
 
 
 def get_user_by_name(username):

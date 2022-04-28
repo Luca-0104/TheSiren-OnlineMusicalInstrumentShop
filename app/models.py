@@ -35,6 +35,7 @@ class Tools:
         Fill all the tables in an specific order.
         This should be used in the console only a single time.
         """
+        TheSiren.create_unique_instance()   # Create the global unique instance of this musical shop
         Role.insert_roles()  # roles of users
         User.insert_users()  # the constant user accounts for test
         Recipient.insert_recipients(100)  # the recipient info
@@ -268,6 +269,23 @@ class BaseModel(db.Model):
         # turn columns into items in dictionary
         result = self.__dict__.copy()
         return result
+
+
+class TheSiren(BaseModel):
+    """
+        This table stores only a single instance of this musical shop.
+        There should be a single global instance of this row of table.
+    """
+    __tablename__ = 'the_siren'
+    id = db.Column(db.Integer, primary_key=True)
+    epidemic_mode_on = db.Column(db.Boolean, default=False)  # whether the shop owner turns on the "epidemic mode"
+
+    @staticmethod
+    def create_unique_instance():
+        if TheSiren.query.count() == 0:
+            unique_instance = TheSiren()
+            db.session.add(unique_instance)
+            db.session.commit()
 
 
 class Refund(BaseModel):

@@ -50,7 +50,7 @@
     font-size: 20px;
 }
 
-.shipping-method-list li:hover{
+.shipping-method-list .shipping-method:hover{
     background-color: #8771ff;
     cursor: pointer;
 }
@@ -67,6 +67,16 @@
 .chosen-shipping-method{
     background-color: #8771ff;
 }
+
+/* If the shop is in epidemic mode, we should disable the self-collection */
+.epidemic-ban{
+    background-color: #777777;
+}
+
+.epidemic-ban:hover{
+    background-color: #777777;
+}
+
 
 .scrollbar{
     overflow-y: scroll;
@@ -94,4 +104,3 @@
     border-color: #a58460;
     color: #bd936e;
 }
-

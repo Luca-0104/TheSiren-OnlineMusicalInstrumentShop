@@ -226,6 +226,59 @@ pm_lst = [
         ]
     ],
 
+    # product 5
+    [
+        "SNARECRAFT SERIES CAJONS",        # product name
+        10,                          # brand id
+        4,                          # cate id - C
+        39,                          # cate id - T
+        53,                         # cate id - A
+        [                           # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'SC100BW',          # model name
+                'MEINL Snarecraft cajons combine articulate rhythmic punctuation with a warm tonal quality to give players a focused sound and wide dynamic range.  Made of Baltic birch wood, MEINL Snarecraft cajons respond with a punchy low end thud and crisp slap tones.  The highly expressive snare sounds come from dual internal sets of snare wires that are fixed against the frontplate.  Rounded corners on the playing surface offer total comfort while maximizing your touch.',   # m description
+                9000,                        # m price
+                4.5,                          # kg
+                [
+                    't-p5m1-1.jpg',
+                    't-p5m1-2.jpg',
+                    't-p5m1-3.jpg',
+                    't-p5m1-4.jpg',
+                ]
+            ],
+
+        ]
+    ],
+
+    # product 6
+    [
+        "JAM SERIES CAJON",        # product name
+        10,                          # brand id
+        4,                          # cate id - C
+        39,                          # cate id - T
+        53,                         # cate id - A
+        [                           # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'JC50HA',          # model name
+                'The MEINL Jam Cajon with fixed internal snares is perfect for playing on the go. Its compact design is lightweight and easy to carry to drum circles or acoustic gigs. Crafted in Europe from Baltic birch wood, the Jam Cajon has great low end punch when played near the center and dishes out snare drum "slap" sounds when striking the top corners of the playing surface. The dual internal snares are fitted to rest against the inside of the frontplate for a sensitive response. These sounds are perfect for providing the rhythmic foundation for acoustic music.',   # m description
+                9000,                        # m price
+                3,                          # kg
+                [
+                    't-p6m1-1.jpg',
+                    't-p6m1-2.jpg',
+                    't-p6m1-3.jpg',
+                    't-p6m1-4.jpg',
+                    't-p6m1-5.jpg',
+                ]
+            ],
+
+        ]
+    ],
+
+    # didn't find soundbox & tam-tam
+
     # product 1 ----------------------------------------------------
     # []
 ]
