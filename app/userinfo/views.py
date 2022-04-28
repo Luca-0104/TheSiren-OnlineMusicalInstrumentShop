@@ -20,9 +20,19 @@ def user_profile(uid):
     add_address_form = AddAddressForm()
     edit_address_form = EditAddressForm()
 
+    print('edit_profile_form.edit_profile_submit.data: ', edit_profile_form.edit_profile_submit.data)
+    print('edit_profile_form.validate(): ', edit_profile_form.validate())
+
+    print('gender: ', user.gender)
+
+    print('edit_profile_form.edit_profile_username.data: ', edit_profile_form.edit_profile_username.data)
+    print('edit_profile_form.edit_profile_email.data: ', edit_profile_form.edit_profile_email.data)
+    print('edit_profile_form.edit_profile_about_me.data: ', edit_profile_form.edit_profile_about_me.data)
+    print('edit_profile_form.edit_profile_gender.data: ', edit_profile_form.edit_profile_gender.data)
+
     # user submit the edit profile form
     if edit_profile_form.edit_profile_submit.data and edit_profile_form.validate():
-
+        print('get into profile')
         user.username = edit_profile_form.edit_profile_username.data
         user.email = edit_profile_form.edit_profile_email.data
         user.about_me = edit_profile_form.edit_profile_about_me.data
