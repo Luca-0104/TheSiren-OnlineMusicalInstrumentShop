@@ -8,12 +8,18 @@ $(document).ready(function (){
 
     // set the default address as selected
     let defaultSign = $("#address-default-sign")
-    let defaultAddressId = defaultSign.parent(".address").attr("address-id")
+    let defaultAddressId = defaultSign.parent().parent().attr("address-id")
     defaultSign.parent(".address").addClass("chosen-address");
     update_order_address(orderId, defaultAddressId)
 
     //update the display of payment
     update_payment_info(orderId);
+
+    //update all the address sequence number
+    $(".address-number").each(function (){
+        let addressNumber = 1 + $(this).parent().parent().parent().index();
+        $(this).text(addressNumber);
+    });
 
     /* when an address is clicked */
     $(".address").on("click", function(){
@@ -63,6 +69,23 @@ $(document).ready(function (){
         }
     });
 
+    /* When delete address is clicked */
+    $(".btn-address-delete").on("click", function(){
+        //count how many addresses left
+        let addressCount = $(".address-list").children("li").length;
+        //if this is the last one, we won't let user to delete it
+        if(addressCount <= 1){
+            window.alert("You cannot delete the last address");
+        }else{
+            //if this is not the last one, we will send Ajax request to delete it
+            //get the address id
+            let addressID = $(this).parent().parent().attr("address-id");
+            console.log("address id: " + addressID);
+            //send Ajax request
+            delete_address(orderId, addressID);
+        }
+    });
+
 });
 
 /*
@@ -85,10 +108,13 @@ function update_payment_info(orderId){
             let payTotal = response['payTotal']
             let deliveryFee = response['deliveryFee']
             let subTotal = payTotal - deliveryFee
+            let shouldPay = response['paidPayment']
+            console.log("should: " + shouldPay)
             //update the display of payment
             $("#pay-subtotal").text(subTotal)
             $("#pay-total").text(payTotal)
             $("#pay-delivery").text(deliveryFee)
+            $("#pay-should").text(shouldPay)
         }
     });
 }
@@ -109,6 +135,7 @@ function update_order_address(orderId, addressId){
         let returnValue = response['returnValue'];
 
         if (returnValue === 0) { //success
+            console.log("address updated!")
             //only let the selected one have the style of "chosen-class"
             $(".address").removeClass("chosen-address");
             let id = "#address-" + addressId
@@ -178,7 +205,6 @@ function update_order_recipient(orderId, recipientName, recipientPhone){
         let returnValue = response['returnValue'];
 
         if (returnValue === 0) { //success
-            console.log("recipient updated")
             //if success, we can send another Ajax for paying
             pay_for_order(orderId);
         }
@@ -202,6 +228,27 @@ function pay_for_order(orderId){
             // get payment URL then redirect to that URL
             let paymentURL = response['paymentURL']
             location.href = paymentURL;
+        }
+    });
+}
+
+/**
+ * This function sends Ajax request to delete the given address
+ * @param orderID The id of this order
+ * @param addressId The id of the address needs to be deleted
+ */
+function delete_address(orderID, addressId){
+    $.post("/api/remove-address", {
+        "address_id": addressId
+
+    }).done(function(response){
+        //get response from server
+        let returnValue = response['returnValue'];
+
+        if (returnValue === 0 || returnValue === 3 || returnValue === 2) { //success
+            // refresh this page
+            let url = "/order-confirm/" + orderID;
+            location.href = url;
         }
     });
 }

@@ -387,7 +387,8 @@ class Order(BaseModel):
     timestamp = db.Column(db.DateTime(), index=True, default=datetime.utcnow)
     order_type = db.Column(db.String(20), default='delivery')   # 'delivery' or 'self-collection'
     delivery_fee = db.Column(db.Integer, default=9)  # if the order_type is 'self-collection', delivery fee should be 0
-    gross_payment = db.Column(db.Float)     # only 2 digits in decimal e.g. 10.xx
+    gross_payment = db.Column(db.Float)     # total amount without discount (delivery_fee + items) # only 2 digits in decimal e.g. 10.xx
+    paid_payment = db.Column(db.Float)      # real amount need to pay (delivery_fee + items*discount) # only 2 digits in decimal e.g. 10.xx
     status_code = db.Column(db.Integer, default=0)  # the status code of this order
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))  # the uid of the customer who owns this order
     timestamp_1 = db.Column(db.DateTime(), index=True)  # time record of status changing to 'preparing'
@@ -417,13 +418,15 @@ class Order(BaseModel):
         faker = Faker()
         # create some new orders into db
         for i in range(count):
-            new_order = Order(timestamp=faker.past_datetime(), status_code=random.randint(0, 6), user_id=1, order_type=["delivery", "self-collection"][random.randint(0, 1)])
+            new_order = Order(timestamp=faker.past_datetime(), user_id=1, order_type=["delivery", "self-collection"][random.randint(0, 1)])
             if new_order.order_type == "delivery":
                 # need address(contains recipient info)
                 new_order.address_id = random.randint(1, Address.query.count())
+                new_order.status_code = [0, 1, 2, 4, 5, 6][random.randint(0, 5)]
             elif new_order.order_type == "self-collection":
                 # need recipient info
                 new_order.recipient_id = random.randint(1, Recipient.query.count())
+                new_order.status_code = [0, 1, 3, 4, 5, 6][random.randint(0, 5)]
             db.session.add(new_order)
             db.session.commit()
             new_order.generate_unique_out_trade_no()
@@ -467,7 +470,6 @@ class Order(BaseModel):
         elif self.status_code == 6:
             return 'expired'
 
-
     def generate_delivery_fee(self):
         """
         Premium members can enjoy delivery for free.
@@ -507,36 +509,41 @@ class Order(BaseModel):
 
         return fee
 
-    def generate_gross_payment(self):
+    def generate_payment(self):
         """
-        This function calculates the gross payment of this order (delivery + commodities)
+        This function calculates the "gross payment" of this order (delivery + commodities)
+        This function also calculates the "paid payment" of this order (delivery + commodities*discount)
         Then the field 'gross_payment' will be filled.
+        Then the field 'paid_payment' will be filled.
         :return: gross_payment
         """
-        gross = 0
+        payment = 0
 
         # add delivery fee
         if self.order_type == 'delivery':
-            gross += self.delivery_fee
+            payment += self.delivery_fee
 
         # calculate and add fee for commodities
         payment_commodity = 0
         for omt in self.order_model_types:
             payment_commodity += (omt.model_type.price * omt.count)
+
+        # record the total payment
+        gross_payment = payment + payment_commodity
+        gross_payment = round(gross_payment, 2)     # remain 2 digits in decimal place
+        self.gross_payment = gross_payment
+
+        # record the real amount should be paid
         # check the premium discount
         if self.user.is_premium:
             payment_commodity *= 0.95
-        gross += payment_commodity
+        paid_payment = payment + payment_commodity
+        paid_payment = round(paid_payment, 2)       # remain 2 digits in decimal place
+        self.paid_payment = paid_payment
 
-        # remain 2 digits in decimal place
-        gross = round(gross, 2)
-
-        # write gross in to db
-        self.gross_payment = gross
+        # commit to db
         db.session.add(self)
         db.session.commit()
-
-        return gross
 
     def generate_unique_out_trade_no(self):
         """
@@ -562,6 +569,23 @@ class Order(BaseModel):
 
         return out_trade_no
 
+    def update_model_info(self):
+        """
+        This function is used to update the
+            stock number
+        AND sale number
+        of each model type in this order.
+        The stock of these model types will be decreased by the count of it in this order.
+        """
+        for omt in self.order_model_types:
+            # get the model type
+            mt = omt.model_type
+            # update the stock of this model type
+            mt.stock = mt.stock - omt.count
+            mt.sales = mt.sales + omt.count
+            db.session.add(mt)
+        db.session.commit()
+
 
 class OrderModelType(BaseModel):
     """
@@ -576,6 +600,7 @@ class OrderModelType(BaseModel):
     model_type_id = db.Column(db.Integer, db.ForeignKey('model_types.id'))
     count = db.Column(db.Integer, default=1)  # how many this model type the user bought in this order
     unit_pay = db.Column(db.Float, nullable=False)  # how much the user really paid for each of this model (unit_pay*count=total payment of this model)
+    is_commented = db.Column(db.Boolean, default=False)  # is this model in this order is already commented
     # refund record (this can be none)
     refunds = db.relationship('Refund', backref='order_model_type', lazy='dynamic')
 
@@ -604,7 +629,7 @@ class OrderModelType(BaseModel):
                 db.session.add(new_omt)
             # update the payment of order
             order.generate_delivery_fee()
-            order.generate_gross_payment()
+            order.generate_payment()
         db.session.commit()
 
     # def to_dict(self):
@@ -839,6 +864,7 @@ class ModelType(BaseModel):
     price = db.Column(db.Float)
     weight = db.Column(db.Float)    # kg
     rate = db.Column(db.Float, default=3)   # the star rating
+    rate_count = db.Column(db.Integer, default=0)   # how many time this model is rated
     stock = db.Column(db.Integer, default=0)
     sales = db.Column(db.Integer, default=0)    # how many this models have been sold out
     views = db.Column(db.Integer, default=0)    # how many times its details page has been viewed

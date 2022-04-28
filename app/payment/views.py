@@ -124,7 +124,7 @@ def pay_order(order_obj):
         # For sandbox environment (development): https://openapi.alipaydev.com/gateway.do? + order_string
         order_string = alipay.api_alipay_trade_page_pay(
             out_trade_no=order_obj.out_trade_no,    # trade number, which should be unique inside a same retailer
-            total_amount=order_obj.gross_payment,  # total amount of the order (unit:'yuan (RMB)')
+            total_amount=order_obj.paid_payment,    # total amount of the order should pay (unit:'yuan (RMB)')
             subject=subject,    # subject of this order
             return_url=url_for('payment.payment_finished', _external=True),   # where to go after the payment
             notify_url=None  # not usable, so I used another method to replace this
@@ -236,18 +236,21 @@ def payment_notify():
                     current_app.logger.error(e)
                     return 'failure'
 
-                # update the order
+                # update the info
                 try:
+                    # order
                     order = Order.query.get(order_id)
                     order.out_trade_no = out_trade_no
                     order.trade_no = trade_no
                     order.status_code = 1
+                    db.session.add(order)
                     # user
                     user = order.user
                     user.exp += 60
                     db.session.add(user)
-                    db.session.add(order)
                     db.session.commit()
+                    # update the info of models in this order (stock, sales ... )
+                    order.update_model_info()
 
                 except Exception as e:
                     # record error into log file

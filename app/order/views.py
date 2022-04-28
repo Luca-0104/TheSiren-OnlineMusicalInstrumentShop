@@ -1,5 +1,5 @@
 from flask_login import login_required, current_user
-from flask import render_template, redirect, url_for, request, json, flash, jsonify, current_app
+from flask import render_template, redirect, url_for, request, json, flash, jsonify, current_app, session
 from flask_babel import _
 
 from app import db
@@ -45,7 +45,7 @@ def generate_order_from_cart():
 
                 # generate related payment amount
                 new_order.generate_delivery_fee()
-                new_order.generate_gross_payment()
+                new_order.generate_payment()
                 # generate out_trade_no for this order, as it is created
                 new_order.generate_unique_out_trade_no()
 
@@ -59,7 +59,6 @@ def generate_order_from_cart():
 
 
 @order.route('/generate-order-from-buy-now', methods=['POST'])
-@login_required
 def generate_order_from_buy_now():
     """
     (Using Ajax)
@@ -69,6 +68,10 @@ def generate_order_from_buy_now():
     :param count: how many
     """
     if request.method == 'POST':
+        # if the user has not logged in
+        if session.get("uid") is None:
+            return jsonify({'returnValue': 2})  # returnValue=2 means the user does not login
+
         model_id = request.form.get("model_id")
         count = request.form.get("count")
 
@@ -99,13 +102,17 @@ def generate_order_from_buy_now():
 
                 # generate related payment amount
                 new_order.generate_delivery_fee()
-                new_order.generate_gross_payment()
+                new_order.generate_payment()
                 # generate out_trade_no for this order, as it is created
                 new_order.generate_unique_out_trade_no()
 
                 flash(_('Order created!'))
                 return jsonify({'returnValue': 0, 'order_id': new_order.id})
                 # return redirect(url_for('order.order_confirm', order_id=new_order.id))
+
+            else:
+                # out of the stock!
+                return jsonify({'returnValue': 3})  # 3 means out of the stock
 
     # flash('Order generation failed!')
     # return redirect(url_for('main.index'))
@@ -161,7 +168,7 @@ def get_order_payment():
             return jsonify({"returnValue": 1})
 
         # get the payment and return it to front end
-        return jsonify({"returnValue": 0, "payTotal": o.gross_payment, "deliveryFee": o.delivery_fee})
+        return jsonify({"returnValue": 0, "payTotal": o.gross_payment, "deliveryFee": o.delivery_fee, "paidPayment": o.paid_payment})
     return jsonify({"returnValue": 1})
 
 
@@ -188,6 +195,16 @@ def update_order_address():
 
         if o is None or address is None:
             current_app.logger.error("No order or address with this id")
+            return jsonify({"returnValue": 1})
+
+        # check order type (only 'delivery' is available)
+        if o.order_type != 'delivery':
+            current_app.logger.error("An no-delivery-type order address is going to be changed")
+            return jsonify({"returnValue": 1})
+
+        # check status of the order (only 0 and 1 are available)
+        if o.status_code not in [0, 1]:
+            current_app.logger.error("An order address is going to be changed after preparing phase.")
             return jsonify({"returnValue": 1})
 
         o.address = address
@@ -230,12 +247,19 @@ def update_order_shipping():
         else:
             o.generate_delivery_fee()
         # update gross payment
-        o.generate_gross_payment()
+        o.generate_payment()
+
+        # if the type is changed to "delivery", default address should be assigned
+        if shipping_method == "self-collection":
+            o.address_id = None
+        else:
+            default_address = current_user.get_default_address()
+            o.address_id = default_address.id
 
         db.session.add(o)
         db.session.commit()
 
-        return jsonify({"returnValue": 0, "payTotal": o.gross_payment, "deliveryFee": o.delivery_fee})
+        return jsonify({"returnValue": 0, "payTotal": o.gross_payment, "deliveryFee": o.delivery_fee, "paidPayment": o.paid_payment})
     return jsonify({"returnValue": 1})
 
 

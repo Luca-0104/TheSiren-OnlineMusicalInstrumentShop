@@ -410,11 +410,10 @@
                                     {# the address list #}
                                     <ul class="address-list" order-id="{{ order.id }}">
                                         {% for address in order.user.addresses %}
-                                            <li id="address-{{ address.id }}" class="address"
-                                                address-id="{{ address.id }}">
+                                            <li id="address-{{ address.id }}" class="address" address-id="{{ address.id }}">
                                                 <div class="cart-container">
                                                     <div class="main-container">
-                                                        <span class="large-text address">{{ address.id }}</span>
+                                                        <span class="large-text address address-number"></span>
                                                         <div class=""></div>
                                                     </div>
                                                     <br><br>
@@ -437,8 +436,7 @@
                                                 </div>
                                                 <span class="w-inline-block"
                                                       style="display:flex; flex-direction: row-reverse; align-self:flex-end; margin:5%; margin-top:0%;">
-                                                <button class="edit_style bg-primary-dar"
-                                                        style="justify-content:flex-start;">Delete</button>
+                                                <button class="edit_style bg-primary-dar btn-address-delete" style="justify-content:flex-start;">Delete</button>
                                                 &nbsp;&nbsp;
                                                 <button class="edit_style bg-primary-dar">Edit</button>
                                             </span>
@@ -475,6 +473,7 @@
                                     <div>{{ _('Subtotal (without delivery fee)') }}</div>
                                     <div><span>$</span> <span id="pay-subtotal"></span> <span>USD</span></div>
                                 </div>
+                                {# payment -- dilivery fee #}
                                 <div class="w-commerce-commercecheckoutordersummaryextraitemslist"
                                      data-wf-collection="database.commerceOrder.extraItems"
                                      data-wf-template-id="wf-template-619d8e8b85c224cbfbc36b420000000000a0">
@@ -486,8 +485,12 @@
                                 {# payment -- total #}
                                 <div class="w-commerce-commercecheckoutsummarylineitem">
                                     <div>{{ _('Total') }}</div>
-                                    <div class="w-commerce-commercecheckoutsummarytotal"><span>$</span> <span
-                                            id="pay-total"></span> <span>USD</span></div>
+                                    <div class="w-commerce-commercecheckoutsummarytotal"><span>$</span> <span id="pay-total"></span> <span>USD</span></div>
+                                </div>
+                                {# payment -- should pay #}
+                                <div class="w-commerce-commercecheckoutsummarylineitem">
+                                    <div>Payment (after discount)</div>
+                                    <div class="w-commerce-commercecheckoutsummarytotal"><span>$</span> <span id="pay-should"></span> <span>USD</span></div>
                                 </div>
                             </fieldset>
                         </div>
