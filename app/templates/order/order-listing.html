@@ -500,11 +500,24 @@
                                                                 {% endif %}
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td class="cost_col large-text">
-                                                                ${{ order.generate_payment() }}
-                                                            </td>
-                                                        </tr>
+                                                        {% if order.gross_payment == order.paid_payment %}
+                                                            <tr>
+                                                                <td class="cost_col large-text">
+                                                                    ${{ order.paid_payment }}
+                                                                </td>
+                                                            </tr>
+                                                        {% else %}
+                                                            <tr>
+                                                                <td class="cost_col large-text">
+                                                                    <div class="old-price">
+                                                                        <span>${{ order.gross_payment }}</span>
+                                                                    </div>
+                                                                    <div>
+                                                                        ${{ order.paid_payment }}
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        {% endif %}
                                                         {% if order.order_type == "delivery" %}
                                                             <tr>
                                                                 <td class="address_col large-text">
