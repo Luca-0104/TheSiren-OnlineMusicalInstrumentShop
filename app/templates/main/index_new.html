@@ -179,20 +179,22 @@
                                                             <div id="cart-item-{{ cart_item.id }}"
                                                                  class="w-commerce-commercecartitem cart-item">
                                                                 {# model image (left part) #}
-                                                                <img
-                                                                        data-wf-bindings="%5B%7B%22src%22%3A%7B%22type%22%3A%22ImageRef%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.sku.f_main_image_4dr%22%7D%7D%5D"
-                                                                        src="{{ url_for('static', filename=cart_item.model_type.pictures[0].address) }}"
-                                                                        alt=""
-                                                                        class="w-commerce-commercecartitemimage cart-item-image">
-
+                                                                <a href="{{ url_for("main.model_type_details", mt_id=cart_item.model_type.id) }}">
+                                                                    <img
+                                                                            data-wf-bindings="%5B%7B%22src%22%3A%7B%22type%22%3A%22ImageRef%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.sku.f_main_image_4dr%22%7D%7D%5D"
+                                                                            src="{{ url_for('static', filename=cart_item.model_type.pictures[0].address) }}"
+                                                                            alt=""
+                                                                            class="w-commerce-commercecartitemimage cart-item-image">
+                                                                </a>
                                                                 {# model info (middle part) #}
                                                                 <div class="w-commerce-commercecartiteminfo cart-item-details">
                                                                     {# model name #}
-                                                                    <div data-wf-bindings="%5B%7B%22innerHTML%22%3A%7B%22type%22%3A%22PlainText%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.product.f_name_%22%7D%7D%5D"
-                                                                         class="w-commerce-commercecartproductname">
-                                                                        {{ cart_item.model_type.name }}
-                                                                    </div>
-
+                                                                    <a href="{{ url_for("main.model_type_details", mt_id=cart_item.model_type.id) }}">
+                                                                        <div data-wf-bindings="%5B%7B%22innerHTML%22%3A%7B%22type%22%3A%22PlainText%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.product.f_name_%22%7D%7D%5D"
+                                                                             class="w-commerce-commercecartproductname">
+                                                                            {{ cart_item.model_type.name }}
+                                                                        </div>
+                                                                    </a>
                                                                     {# model price #}
                                                                     <div data-wf-bindings="%5B%7B%22innerHTML%22%3A%7B%22type%22%3A%22CommercePrice%22%2C%22filter%22%3A%7B%22type%22%3A%22price%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.price%22%7D%7D%5D"
                                                                          class="fine-print-text">
