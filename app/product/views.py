@@ -13,7 +13,7 @@ from .forms import ModelUploadForm, ModelModifyForm, ProductModifyForm
 from .. import db
 
 from ..models import Product, ModelType, Category, Brand
-from ..public_tools import upload_picture
+from ..public_tools import upload_picture, get_unique_shop_instance, get_epidemic_mode_status
 
 
 # ------------------------------------------------ render the page  of stock management ------------------------------------------------
@@ -38,6 +38,7 @@ def show_page_stock_management():
         key_word: the string in the searching blank
         search_type: 1: by name; 2: by serial_number
     """
+    epidemic_mode_on = get_epidemic_mode_status()
 
     """ if the search form is submitted """
     if request.method == 'POST':
@@ -81,7 +82,7 @@ def show_page_stock_management():
 
     # render this page
     return render_template('staff/page-list-product.html', model_dict=model_dict, is_search=is_search,
-                           previous_key=previous_key)
+                           previous_key=previous_key, epidemic_mode_on=epidemic_mode_on)
 
 
 # ------------------------------------------------ Search functions for staffs to manage the stock ------------------------------------------------
@@ -135,6 +136,9 @@ def upload_product():
     """
         This method uses the frontend form
     """
+    # get whether the epidemic mode is turned on currently
+    epidemic_mode_on = get_epidemic_mode_status()
+
     # if the form is submitted
     if request.method == 'POST':
         p_name = request.form.get('product_name')
@@ -255,7 +259,7 @@ def upload_product():
             flash(_('New product and its models are uploaded successfully!'))
             return redirect(url_for('product.show_page_stock_management'))
 
-    return render_template('staff/page-add-product.html')
+    return render_template('staff/page-add-product.html', epidemic_mode_on=epidemic_mode_on)
 
 
 @product.route('/api/stock-management/upload-product/validate-serial-p', methods=['POST'])
@@ -346,6 +350,9 @@ def modify_product(product_id):
     """
         (Backend forms needed, 'categories' are not in backend form)
     """
+    # get whether the epidemic mode is turned on currently
+    epidemic_mode_on = get_epidemic_mode_status()
+
     form = ProductModifyForm(product_id)
     form.brand_id.choices = [(b.id, b.name) for b in Brand.query.all()]  # initialize the choices of the SelectField
     # get the product object by id
@@ -383,7 +390,7 @@ def modify_product(product_id):
     # form.serial_number.data = p.serial_number
     form.brand_id.data = p.brand_id
     # the product modify page
-    return render_template('staff/page-modify-product.html', form=form, all_cate_list=all_cate_list)
+    return render_template('staff/page-modify-product.html', form=form, all_cate_list=all_cate_list, epidemic_mode_on=epidemic_mode_on)
 
 
 # ------------------------------------------------ CUD operations on 'model_type' ------------------------------------------------
@@ -396,6 +403,9 @@ def upload_model_type(product_id):
         (Backend forms needed)
         :param product_id: Which product this model belongs to
     """
+    # get whether the epidemic mode is turned on currently
+    epidemic_mode_on = get_epidemic_mode_status()
+
     form = ModelUploadForm(product_id)
     if form.validate_on_submit():
         """
@@ -477,7 +487,7 @@ def upload_model_type(product_id):
         return redirect(url_for('product.show_page_stock_management'))
 
     # render the page of upload form
-    return render_template('staff/page-upload-modeltype.html', form=form)
+    return render_template('staff/page-upload-modeltype.html', form=form, epidemic_mode_on=epidemic_mode_on)
 
 
 @product.route('/api/stock-management/remove-model-type', methods=['POST'])
@@ -517,6 +527,9 @@ def modify_model_type(model_id):
         (This modification does not include modifying pictures)
         :param model_id: The id of the model type that should be modified
     """
+    # get whether the epidemic mode is turned on currently
+    epidemic_mode_on = get_epidemic_mode_status()
+
     # get the instance of the model by id
     model = ModelType.query.get(model_id)
     form = ModelModifyForm(model_id)
@@ -591,7 +604,7 @@ def modify_model_type(model_id):
     form.price.data = model.price
     form.stock.data = model.stock
     form.serial_number.data = model.serial_number
-    return render_template('staff/page-modify-modeltype.html', form=form)
+    return render_template('staff/page-modify-modeltype.html', form=form, epidemic_mode_on=epidemic_mode_on)
 
 
 # ------------------------------------------------ operations on 'categories' ------------------------------------------------

@@ -7,9 +7,11 @@ from app.models import Cart, Order, OrderModelType, ModelType, PremiumOrder, Add
 from app.order import order
 
 from datetime import datetime
+from ..public_tools import get_unique_shop_instance
 
 
 # -------------------------------------- generate orders --------------------------------------
+
 
 @order.route('/generate-order-from-cart', methods=['GET', 'POST'])
 @login_required
@@ -128,7 +130,9 @@ def order_confirm(order_id):
     o = Order.query.get(order_id)
     # check if that order belong to current user
     if o in current_user.orders:
-        return render_template('order/order-confirm.html', order=o)
+        # get the instance of the shop and check the epidemic mode
+        siren = get_unique_shop_instance()
+        return render_template('order/order-confirm.html', order=o, epidemic_mode_on=siren.epidemic_mode_on)
     else:
         flash(_('Permission denied!'))
         return redirect(url_for('main.index'))
@@ -168,7 +172,8 @@ def get_order_payment():
             return jsonify({"returnValue": 1})
 
         # get the payment and return it to front end
-        return jsonify({"returnValue": 0, "payTotal": o.gross_payment, "deliveryFee": o.delivery_fee, "paidPayment": o.paid_payment})
+        return jsonify({"returnValue": 0, "payTotal": o.gross_payment, "deliveryFee": o.delivery_fee,
+                        "paidPayment": o.paid_payment})
     return jsonify({"returnValue": 1})
 
 
@@ -259,7 +264,8 @@ def update_order_shipping():
         db.session.add(o)
         db.session.commit()
 
-        return jsonify({"returnValue": 0, "payTotal": o.gross_payment, "deliveryFee": o.delivery_fee, "paidPayment": o.paid_payment})
+        return jsonify({"returnValue": 0, "payTotal": o.gross_payment, "deliveryFee": o.delivery_fee,
+                        "paidPayment": o.paid_payment})
     return jsonify({"returnValue": 1})
 
 
@@ -298,6 +304,96 @@ def update_order_recipient():
         db.session.commit()
 
         return jsonify({"returnValue": 0})
+    return jsonify({"returnValue": 1})
+
+
+# -------------------------------------- Ajax in order modify page --------------------------------------
+
+
+@order.route('/api/cus-modify-order/change-order-to-delivery', methods=['POST'])
+@login_required
+def change_order_to_delivery():
+    """
+    This function is for customer to modify the order type of their order,
+    when the type is going to be changed to "delivery".
+    Both the type and address will be updated.
+    :return:
+    """
+    if request.method == 'POST':
+        # get data from Ajax
+        order_id = request.form.get("order_id")
+        address_id = request.form.get("address_id")
+
+        if order_id is None or address_id is None:
+            current_app.logger.error("info are not gotten from Ajax")
+            return jsonify({"returnValue": 1})
+
+        # query objs from db
+        o = Order.query.get(order_id)
+        address = Address.query.get(address_id)
+
+        if o is None or address is None:
+            current_app.logger.error("No such order or address with the given id")
+            return jsonify({"returnValue": 1})
+
+        # update the order
+        o.recipient_id = None
+        o.address_id = address_id
+        o.order_type = 'delivery'
+        db.session.add(o)
+        db.session.commit()
+
+        return jsonify({'returnValue': 0})
+    return jsonify({"returnValue": 1})
+
+
+@order.route('/api/cus-modify-order/change-order-to-collection', methods=['POST'])
+@login_required
+def change_order_to_collection():
+    """
+    This function is for customer to modify the order type of their order,
+    when the type is going to be changed to "self-collection".
+    Both the type and recipient will be updated.
+    :return:
+    """
+    if request.method == 'POST':
+        # get data from Ajax
+        order_id = request.form.get("order_id")
+        recipient_name = request.form.get("recipient_name")
+        recipient_phone = request.form.get("recipient_phone")
+
+        if order_id is None or recipient_name is None or recipient_phone is None:
+            current_app.logger.error("info are not gotten from Ajax")
+            return jsonify({"returnValue": 1})
+
+        # validate the length of name and phone "returnValue": 2 means the length of input exceeds the max len
+        if len(recipient_name) > 64:
+            current_app.logger.error("recipient_name length > 64")
+            return jsonify({"returnValue": 2, "msg": "Recipient name should shorter than 64 chars!"})
+        if len(recipient_phone) > 24:
+            current_app.logger.error("recipient_name length > 24")
+            return jsonify({"returnValue": 2, "msg": "Recipient phone should shorter than 24 chars!"})
+
+        # query objs from db
+        o = Order.query.get(order_id)
+
+        if o is None:
+            current_app.logger.error("No such order or address with the given id")
+            return jsonify({"returnValue": 1})
+
+        # create a new recipient obj for this order
+        new_recipient = Recipient(recipient_name=recipient_name, phone=recipient_phone)
+        db.session.add(new_recipient)
+
+        # update the order
+        o.address_id = None
+        o.order_type = 'self-collection'
+        o.recipient = new_recipient
+        db.session.add(o)
+        db.session.commit()
+
+        return jsonify({"returnValue": 0})
+
     return jsonify({"returnValue": 1})
 
 
@@ -501,4 +597,3 @@ def generate_premium_order():
         return jsonify({"returnValue": 0, "p_order_id": new_p_order.id})
 
     return jsonify({"returnValue": 1})
-

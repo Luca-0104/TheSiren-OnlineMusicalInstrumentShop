@@ -12,7 +12,9 @@
         <link rel="stylesheet" href="../../static/css/remixicon.css">
         <link href="../../static/css/webflow.css" rel="stylesheet" type="text/css">
         <link href="../../static/css/jacks-supercool-site-c6dd88.webflow.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+        <link rel="stylesheet" href="../../static/css/staff/stock-management.css">
+        <link rel="stylesheet"
+              href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     </head>
 
     <body class="  ">
@@ -732,18 +734,18 @@
                             </li>
                         </ul>
                     </nav>
-{#                    <div id="sidebar-bottom" class="position-relative sidebar-bottom">#}
-{#                        <div class="card border-none">#}
-{#                            <div class="card-body p-0">#}
-{#                                <div class="sidebarbottom-content">#}
-{#                                    <div class="image"><img src="../assets/images/layouts/side-bkg.png"#}
-{#                                                            class="img-fluid" alt="side-bkg"></div>#}
-{#                                    <h6 class="mt-4 px-4 body-title">Get More Feature by Upgrading</h6>#}
-{#                                    <button type="button" class="btn sidebar-bottom-btn mt-4">Go Premium</button>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
+                    {#                    <div id="sidebar-bottom" class="position-relative sidebar-bottom">#}
+                    {#                        <div class="card border-none">#}
+                    {#                            <div class="card-body p-0">#}
+                    {#                                <div class="sidebarbottom-content">#}
+                    {#                                    <div class="image"><img src="../assets/images/layouts/side-bkg.png"#}
+                    {#                                                            class="img-fluid" alt="side-bkg"></div>#}
+                    {#                                    <h6 class="mt-4 px-4 body-title">Get More Feature by Upgrading</h6>#}
+                    {#                                    <button type="button" class="btn sidebar-bottom-btn mt-4">Go Premium</button>#}
+                    {#                                </div>#}
+                    {#                            </div>#}
+                    {#                        </div>#}
+                    {#                    </div>#}
                     <div class="p-3"></div>
                 </div>
             </div>
@@ -808,6 +810,21 @@
                                     {#                                            <i class="las la-plus mr-2"></i>NewOrder#}
                                     {#                                        </a>#}
                                     {#                                    </li>#}
+
+                                    <li class="nav-item nav-icon dropdown">
+                                        <div data-node-type="commerce-cart-wrapper" data-open-product=""
+                                             data-wf-cart-type="rightSidebar"
+                                             data-wf-cart-query="" data-wf-page-link-href-prefix=""
+                                             class="w-commerce-commercelanguagewrapper" id="epidemic-box">
+                                            <span>Epidemic Mode:</span>
+                                            {% if epidemic_mode_on %}
+                                                <input id="switch-epidemic" type="checkbox" class="switch"
+                                                       checked="checked">
+                                            {% else %}
+                                                <input id="switch-epidemic" type="checkbox" class="switch">
+                                            {% endif %}
+                                        </div>
+                                    </li>
 
                                     <li class="nav-item nav-icon dropdown">
                                         <div data-node-type="commerce-cart-wrapper" data-open-product=""
@@ -1221,5 +1238,7 @@
         <script async src="../../static/js/chart-custom.js"></script>
         <!-- app JavaScript -->
         <script src="../../static/js/app.js"></script>
+        <!-- ajax JavaScript -->
+        <script src="../../static/js/staff/epidemic-switch.js"></script>
     </body>
 </html>
