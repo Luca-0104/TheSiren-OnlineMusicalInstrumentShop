@@ -80,17 +80,39 @@ $(".address-1").on("click", function()
 
 $(".address-2").on("click", function()
 {
+    console.log(".address-2 clicked");
     let fieldId = 2;
     let orderId = $(this).parent().attr("order-id");
     let addressId = $(this).attr("address-id");
-    console.log('clicked');
+
     $(".address-"+fieldId).removeClass("chosen-address");
     let id = "#address-" + fieldId + "-" + addressId;
     $(id).addClass("chosen-address");
-    // update_order_address(1, orderId, addressId);
+
+    $("#modify_ar_form").attr("addressId", addressId);
 });
 
-function update_order_address(fieldId, orderId, addressId)
+$("#update-ar-btn").on("click", function()
+{
+    console.log("#modify-ar-btn clicked");
+    let current_type = $("#modify_ar_form").attr("current-type");
+    let orderId = $("#modify_ar_form").attr("orderId");
+    if(current_type==="delivery")
+    {
+        console.log("type delivery");
+        let addressId = $("#modify_ar_form").attr("addressId");
+        update_order_address(orderId, addressId);
+    }
+    else if(current_type==="self-collection")
+    {
+        console.log("type self-Collection");
+        let recipient_field_2_name = $("#recipient-field-2-name").val();
+        let recipient_field_2_phone = $("#recipient-field-2-phone").val();
+        update_order_recipient(orderId, recipient_field_2_name, recipient_field_2_phone)
+    }
+});
+
+function update_order_address(orderId, addressId)
 {
     $.post("/api/update-order-address",
         {
@@ -106,11 +128,28 @@ function update_order_address(fieldId, orderId, addressId)
             {
                 console.log('successed');
                 //success
-                console.log("address updated!")
-                //only let the selected one have the style of "chosen-class"
-                $(".address-"+fieldId).removeClass("chosen-address");
-                let id = "#address-" + fieldId + "-" + addressId;
-                $(id).addClass("chosen-address");
+                location.reload();
+            }
+        });
+}
+
+function update_order_recipient(orderId, recipientName, recipientPhone)
+{
+    $.post("/api/update-order-recipient",
+        {
+            "order_id": orderId,
+            "recipient_name": recipientName,
+            "recipient_phone": recipientPhone
+        }).done(function (response)
+        {
+            //get response from server
+            let returnValue = response['returnValue'];
+
+            if (returnValue === 0)
+            {
+                console.log('successed');
+                //success
+                location.reload();
             }
         });
 }
