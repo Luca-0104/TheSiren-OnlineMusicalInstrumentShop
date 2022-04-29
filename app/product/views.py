@@ -13,7 +13,7 @@ from .forms import ModelUploadForm, ModelModifyForm, ProductModifyForm
 from .. import db
 
 from ..models import Product, ModelType, Category, Brand
-from ..public_tools import upload_picture
+from ..public_tools import upload_picture, get_unique_shop_instance
 
 
 # ------------------------------------------------ render the page  of stock management ------------------------------------------------
@@ -38,6 +38,13 @@ def show_page_stock_management():
         key_word: the string in the searching blank
         search_type: 1: by name; 2: by serial_number
     """
+    # get the status of epidemic mode
+    siren = get_unique_shop_instance()
+    if siren:
+        epidemic_mode_on = siren.epidemic_mode_on
+    else:
+        current_app.logger.error("Siren instance not found!")
+        epidemic_mode_on = False
 
     """ if the search form is submitted """
     if request.method == 'POST':
@@ -81,7 +88,7 @@ def show_page_stock_management():
 
     # render this page
     return render_template('staff/page-list-product.html', model_dict=model_dict, is_search=is_search,
-                           previous_key=previous_key)
+                           previous_key=previous_key, epidemic_mode_on=epidemic_mode_on)
 
 
 # ------------------------------------------------ Search functions for staffs to manage the stock ------------------------------------------------

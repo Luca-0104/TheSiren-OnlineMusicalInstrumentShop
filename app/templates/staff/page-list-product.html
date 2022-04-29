@@ -883,7 +883,11 @@
                                              data-wf-cart-query="" data-wf-page-link-href-prefix=""
                                              class="w-commerce-commercelanguagewrapper" id="epidemic-box">
                                              <span>Epidemic Mode:</span>
-                                            <input type="checkbox" class="switch" checked="checked">
+                                             {% if epidemic_mode_on %}
+                                                  <input id="switch-epidemic" type="checkbox" class="switch" checked="checked">
+                                             {% else %}
+                                                 <input id="switch-epidemic" type="checkbox" class="switch">
+                                             {% endif %}
                                         </div>
                                     </li>
                                     <li class="nav-item nav-icon dropdown">
@@ -1392,5 +1396,8 @@
 
         <!-- ajax JavaScript -->
         <script src="../../static/js/stock-management.js"></script>
+
+        <!-- ajax JavaScript -->
+        <script src="../../static/js/staff/epidemic-switch.js"></script>
     </body>
 </html>

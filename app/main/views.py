@@ -670,14 +670,24 @@ def switch_epidemic_mode():
             current_app.logger.warning("Someone (Customer) attempt to switch the epidemic mode without Permission!")
             return jsonify({'returnValue': 1})
 
+        # get "switch_to" status from Ajax (0 for false, 1 for true)
+        switch_to = request.form.get("switch_to")
+
+        if switch_to is None:
+            current_app.logger.error("info are not gotten from Ajax")
+            return jsonify({'returnValue': 1})
+
         # get the unique instance of this shop
         siren = get_unique_shop_instance()
 
         # reverse the current switch of epidemic_mode_on
-        if siren.epidemic_mode_on:
+        if switch_to == '0':
             siren.epidemic_mode_on = False
-        else:
+        elif switch_to == '1':
             siren.epidemic_mode_on = True
+        else:
+            current_app.logger.error("wrong value of 'switch_to' from Ajax")
+            return jsonify({'returnValue': 1})
 
         db.session.add(siren)
         db.session.commit()
