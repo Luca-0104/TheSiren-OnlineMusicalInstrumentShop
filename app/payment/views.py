@@ -186,7 +186,7 @@ def payment_finished():
     Render the page of 'payment finished',
     everytime the payment finished, user will be redirected to there.
     """
-    return render_template('backend-test/payment/payment-finished.html')
+    return render_template('order/payment-success.html')
 
 
 @payment.route('/api/payment-notify', methods=['POST'])
