@@ -29,8 +29,8 @@ $(document).ready(function (){
         update_order_address(orderId, addressId);
     });
 
-    /* when a shipping address is clicked */
-    $(".shipping-method-list li").on("click", function(){
+    /* when a shipping method is clicked */
+    $(".shipping-method-list .shipping-method").on("click", function(){
         //get the id of the selected method
         let methodId = $(this).attr("id")
 

@@ -7,9 +7,11 @@ from app.models import Cart, Order, OrderModelType, ModelType, PremiumOrder, Add
 from app.order import order
 
 from datetime import datetime
+from ..public_tools import get_unique_shop_instance
 
 
 # -------------------------------------- generate orders --------------------------------------
+
 
 @order.route('/generate-order-from-cart', methods=['GET', 'POST'])
 @login_required
@@ -128,7 +130,9 @@ def order_confirm(order_id):
     o = Order.query.get(order_id)
     # check if that order belong to current user
     if o in current_user.orders:
-        return render_template('order/order-confirm.html', order=o)
+        # get the instance of the shop and check the epidemic mode
+        siren = get_unique_shop_instance()
+        return render_template('order/order-confirm.html', order=o, epidemic_mode_on=siren.epidemic_mode_on)
     else:
         flash(_('Permission denied!'))
         return redirect(url_for('main.index'))

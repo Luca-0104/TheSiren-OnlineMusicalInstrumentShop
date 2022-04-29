@@ -453,11 +453,18 @@
                               class="w-commerce-commercecheckoutshippingmethodswrapper">
                             <div class="w-commerce-commercecheckoutblockheader block-header">
                                 <h4 class="checkout-heading">{{ _('Shipping Method') }}</h4>
+                                {# The notice of epidemic mode #}
+                                {% if epidemic_mode_on %}<span>NOTICE: The self-collection is not available during epidemic time</span>{% endif %}
                             </div>
                             <fieldset id="shipping-method-field" class="w-commerce-commercecheckoutblockcontent">
                                 <ul class="shipping-method-list">
-                                    <li id="method-delivery" class="chosen-shipping-method">delivery</li>
-                                    <li id="method-self">self-collecting</li>
+                                    <li id="method-delivery" class="chosen-shipping-method shipping-method">delivery</li>
+
+                                    {% if epidemic_mode_on %}
+                                        <li class="epidemic-ban">self-collecting</li>
+                                    {% else %}
+                                        <li id="method-self" class="shipping-method">self-collecting</li>
+                                    {% endif %}
                                 </ul>
                             </fieldset>
                         </form>
