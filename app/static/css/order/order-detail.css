@@ -4,6 +4,10 @@
     background-color: #f9f9f9;
 }
 
+.cart-header{
+    margin-top: 25px;
+}
+
 .nav_option a {
     color: black;
     padding-bottom: 12px;
@@ -207,6 +211,7 @@ width: 15%;}
     background-color: #fff;
     width: 20%;
     text-align: center;
+    padding: 10px;
 }
 .model_des_col {
     background-color: #fff;
@@ -214,7 +219,9 @@ width: 15%;}
 }
 
 .model_des_cell{
+    text-align: justify;
     padding-bottom: 5px;
+    padding-top: 10px;
 }
 
 .model_quantity_col {
@@ -246,6 +253,10 @@ width: 15%;}
 .model_rate_col{
     padding-top: 5px;
     background-color: #fff;
+}
+
+.model_comment_col{
+    padding-bottom: 10px;
 }
 
 .info_table{
@@ -326,4 +337,42 @@ width: 15%;}
 
 .no-bottom{
     border-bottom: none;
+}
+
+.border-1{
+    border-bottom: 1px solid #c1bfbf;
+    padding-bottom: 5px;
+}
+
+.border-2{
+    border-bottom: 1px solid #c1bfbf;
+    border-right: 30px solid transparent;
+    padding-bottom: 5px;
+}
+
+.modify-section{
+    text-align: right;
+}
+
+.top-indentation{
+    padding-top: 10px;
+}
+
+.remove-link{
+    font-size: 17px;
+}
+
+.commented-mark{
+    font-size: 17px;
+    color: #bbbbbb;
+}
+
+.action_area{
+    z-index: 101;
+    width: 45%;
+    height: 60%;
+}
+
+.select-wrapper{
+    background-color: #fff;
 }

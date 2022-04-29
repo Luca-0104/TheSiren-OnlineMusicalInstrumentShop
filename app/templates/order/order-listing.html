@@ -397,43 +397,98 @@
                                             </tr>
                                             <tr id="content_row_{{ order.id }}">
                                                 <td class="content_row_intendation"></td>
+                                                <!-- Listing models -->
                                                 <td class="model_col">
                                                     <table id="model_table_{{ order.id }}" class="model_listing_table"
                                                            width="100%">
                                                         {% for order_model in order.order_model_types %}
-                                                            {% if loop.index < 3 %}
-                                                                <tr id="model_row_{{ order_model.model_type.id }}"
-                                                                    order_id="{{ order.id }}">
-                                                                    <td class="model_img_col">
-                                                                        {% if order_model.model_type.pictures.first() == None %}
-                                                                            <img src="../../static/images/example/yamaha_yep621s.jpg"
-                                                                                 loading="lazy" alt=""
-                                                                                 class="model_thumbnail">
-                                                                        {% else %}
-                                                                            <img src="{{ url_for("static",filename=order_model.model_type.pictures.first().address) }}"
-                                                                                 loading="lazy" alt=""
-                                                                                 class="model_thumbnail">
-                                                                        {% endif %}
-                                                                    </td>
-                                                                    <td class="model_name_col">
-                                                                        {{ order_model.model_type.name }}
-                                                                    </td>
-                                                                    <td class="model_quantity_col">
-                                                                        &times; {{ order_model.count }}
-                                                                    </td>
-                                                                </tr>
-                                                            {% elif loop.index == 3 %}
-                                                                <tr>
-                                                                    <td class="clickable view_all button bg-primary"
-                                                                        colspan="3"
-                                                                        onclick="window.open('/order-details/{{ order.id }}');">
-                                                                        View All
-                                                                    </td>
-                                                                </tr>
+                                                            {% if loop.length >= 3 %}
+                                                                {% if loop.index < 3 %}
+                                                                    <tr id="model_row_{{ order_model.model_type.id }}"
+                                                                        order_id="{{ order.id }}">
+                                                                        <td class="model_img_col">
+                                                                            {% if order_model.model_type.pictures.first() == None %}
+                                                                                <img src="../../static/images/example/yamaha_yep621s.jpg"
+                                                                                     loading="lazy" alt=""
+                                                                                     class="model_thumbnail">
+                                                                            {% else %}
+                                                                                <img src="{{ url_for("static",filename=order_model.model_type.pictures.first().address) }}"
+                                                                                     loading="lazy" alt=""
+                                                                                     class="model_thumbnail">
+                                                                            {% endif %}
+                                                                        </td>
+                                                                        <td class="model_name_col">
+                                                                            {{ order_model.model_type.name }}
+                                                                        </td>
+                                                                        <td class="model_quantity_col">
+                                                                            &times; {{ order_model.count }}
+                                                                        </td>
+                                                                    </tr>
+                                                                {% elif loop.index == 3 %}
+                                                                    <tr>
+                                                                        <td class="clickable view_all button bg-primary"
+                                                                            colspan="3"
+                                                                            onclick="window.open('/order-details/{{ order.id }}');">
+                                                                            View All & Details
+                                                                        </td>
+                                                                    </tr>
+                                                                {% endif %}
+                                                            {% else %}
+                                                                {% if not loop.last %}
+                                                                    <tr id="model_row_{{ order_model.model_type.id }}"
+                                                                        order_id="{{ order.id }}">
+                                                                        <td class="model_img_col">
+                                                                            {% if order_model.model_type.pictures.first() == None %}
+                                                                                <img src="../../static/images/example/yamaha_yep621s.jpg"
+                                                                                     loading="lazy" alt=""
+                                                                                     class="model_thumbnail">
+                                                                            {% else %}
+                                                                                <img src="{{ url_for("static",filename=order_model.model_type.pictures.first().address) }}"
+                                                                                     loading="lazy" alt=""
+                                                                                     class="model_thumbnail">
+                                                                            {% endif %}
+                                                                        </td>
+                                                                        <td class="model_name_col">
+                                                                            {{ order_model.model_type.name }} {{ loop.length }}
+                                                                        </td>
+                                                                        <td class="model_quantity_col">
+                                                                            &times; {{ order_model.count }}
+                                                                        </td>
+                                                                    </tr>
+                                                                {% else %}
+                                                                    <tr id="model_row_{{ order_model.model_type.id }}"
+                                                                        order_id="{{ order.id }}">
+                                                                        <td class="model_img_col">
+                                                                            {% if order_model.model_type.pictures.first() == None %}
+                                                                                <img src="../../static/images/example/yamaha_yep621s.jpg"
+                                                                                     loading="lazy" alt=""
+                                                                                     class="model_thumbnail">
+                                                                            {% else %}
+                                                                                <img src="{{ url_for("static",filename=order_model.model_type.pictures.first().address) }}"
+                                                                                     loading="lazy" alt=""
+                                                                                     class="model_thumbnail">
+                                                                            {% endif %}
+                                                                        </td>
+                                                                        <td class="model_name_col">
+                                                                            {{ order_model.model_type.name }} {{ loop.length }}
+                                                                        </td>
+                                                                        <td class="model_quantity_col">
+                                                                            &times; {{ order_model.count }}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="clickable view_all button bg-primary"
+                                                                            colspan="3"
+                                                                            onclick="window.open('/order-details/{{ order.id }}');">
+                                                                            View Details
+                                                                        </td>
+                                                                    </tr>
+                                                                {% endif %}
                                                             {% endif %}
                                                         {% endfor %}
                                                     </table>
                                                 </td>
+
                                                 <td>
                                                     <table class="info_table" width="100%" height="100%">
                                                         <tr>
@@ -445,11 +500,24 @@
                                                                 {% endif %}
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td class="cost_col large-text">
-                                                                ${{ order.generate_gross_payment() }}
-                                                            </td>
-                                                        </tr>
+                                                        {% if order.gross_payment == order.paid_payment %}
+                                                            <tr>
+                                                                <td class="cost_col large-text">
+                                                                    ${{ order.paid_payment }}
+                                                                </td>
+                                                            </tr>
+                                                        {% else %}
+                                                            <tr>
+                                                                <td class="cost_col large-text">
+                                                                    <div class="old-price">
+                                                                        <span>${{ order.gross_payment }}</span>
+                                                                    </div>
+                                                                    <div>
+                                                                        ${{ order.paid_payment }}
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        {% endif %}
                                                         {% if order.order_type == "delivery" %}
                                                             <tr>
                                                                 <td class="address_col large-text">
@@ -526,7 +594,7 @@
                                                     {% endif %}
                                                 </td>
                                                 <td class="cost_col">
-                                                    ${{ order.generate_gross_payment() }}
+                                                    ${{ order.generate_payment() }}
                                                 </td>
                                                 <td class="status_col">
                                                     {% if order.status_code == 0 %}
