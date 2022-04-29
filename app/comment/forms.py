@@ -5,16 +5,6 @@ from wtforms.validators import DataRequired, Length
 from app.models import User
 
 
-class AForm(FlaskForm):
-    texta = StringField()
-    submita = SubmitField()
-
-
-class BForm(FlaskForm):
-    textb = StringField()
-    submitb = SubmitField()
-
-
 class CommentForm(FlaskForm):
     """
         The form to upload comment for a product

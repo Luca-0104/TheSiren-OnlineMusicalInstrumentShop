@@ -6,23 +6,9 @@ from flask_login import login_required, current_user
 from . import comment
 from config import Config
 from ..public_tools import generate_safe_pic_name, upload_picture
-from ..comment.forms import AForm, BForm, CommentForm
+from ..comment.forms import CommentForm
 from ..models import User, Address, Comment, ModelType, OrderModelType
 from .. import db
-
-
-@comment.route('/00', methods=['GET', 'POST'])
-def testPip():
-    print("test")
-    aForm = AForm()
-    bForm = BForm()
-    if aForm.submita.data and aForm.validate():
-        print("a")
-        print(aForm.texta.data)
-    if bForm.submitb.data and bForm.validate():
-        print("b")
-        print(bForm.textb.data)
-    return render_template('main/testPip.html', aForm=aForm, bForm=bForm)
 
 
 @comment.route('/upload-comment/<int:omt_id>', methods=['GET', 'POST'])
