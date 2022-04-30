@@ -324,6 +324,9 @@ def change_order_to_delivery():
         order_id = request.form.get("order_id")
         address_id = request.form.get("address_id")
 
+        print(order_id)
+        print(address_id)
+
         if order_id is None or address_id is None:
             current_app.logger.error("info are not gotten from Ajax")
             return jsonify({"returnValue": 1})
