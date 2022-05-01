@@ -88,10 +88,12 @@
                                                     <td>
                                                         <input focusID="{{ loop.index }}" id="quantity_{{ loop.index }}"
                                                                type="text" required="" pattern="^[0-9]+$"
-                                                               inputMode="numeric"
-                                                               class="w-commerce-commercecartquantity"
+                                                               inputmode="numeric"
+                                                               class="w-commerce-commercecartquantity cart-item-quantity"
                                                                data-wf-cart-action="update-item-quantity"
-                                                               data-commerce-sku-id="" value="{{ cart.count }}"/>
+                                                               data-commerce-sku-id=""
+                                                               oninput="value=value.replace(/[^\d]/g,'')"
+                                                               value="{{ cart.count }}"/>
                                                     </td>
                                                     <td>
                                                         <a focusID="{{ loop.index }}" id="reduce_{{ loop.index }}"
