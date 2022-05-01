@@ -64,8 +64,14 @@ $(document).ready(function (){
             }
 
         }else if (shippingMethod === "delivery"){
-            //send Ajax request for paying directly
-            pay_for_order(orderId)
+            //check if there is any address selected
+            if ($(".chosen-address").length === 0){
+                // notify the user
+                window.alert("You should define an address for this delivery order!");
+            }else{
+                //send Ajax request for paying directly
+                pay_for_order(orderId)
+            }
         }
     });
 
