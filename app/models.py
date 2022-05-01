@@ -416,11 +416,14 @@ class Order(BaseModel):
     timestamp_5 = db.Column(db.DateTime(), index=True)  # time record of status changing to 'canceled'
     timestamp_6 = db.Column(db.DateTime(), index=True)  # time record of status changing to 'expired'
     # 1 order -> 1 Addresses; 1 Address -> n order
-    address_id = db.Column(db.Integer, db.ForeignKey('addresses.id'))
+    # address_id = db.Column(db.Integer, db.ForeignKey('addresses.id'))
     # 1 order (self-collection) -> 1 recipient
     recipient_id = db.Column(db.Integer, db.ForeignKey('recipients.id'))
     # 1 order -> n OrderModelType; 1 OrderModelType -> 1 order
     order_model_types = db.relationship('OrderModelType', backref='order', lazy='dynamic')
+    # record the detailed address as an string
+    address_text = db.Column(db.String)
+
 
     @staticmethod
     def insert_orders(count):
@@ -438,8 +441,11 @@ class Order(BaseModel):
         for i in range(count):
             new_order = Order(timestamp=faker.past_datetime(), user_id=1, order_type=["delivery", "self-collection"][random.randint(0, 1)])
             if new_order.order_type == "delivery":
-                # need address(contains recipient info)
-                new_order.address_id = random.randint(1, Address.query.count())
+                # need address and recipient info
+                address_id = random.randint(1, Address.query.count())
+                address = Address.query.get(address_id)
+                new_order.address_text = address.get_address()
+                new_order.recipient_id = address.recipient.id
                 new_order.status_code = [0, 1, 2, 4, 5, 6][random.randint(0, 5)]
             elif new_order.order_type == "self-collection":
                 # need recipient info
@@ -1138,7 +1144,7 @@ class Address(BaseModel):
     # 1 address -> 1 user (customer)
     customer_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     # 1 address -> n orders
-    orders = db.relationship('Order', backref='address', lazy='dynamic')
+    # orders = db.relationship('Order', backref='address', lazy='dynamic')
 
     @staticmethod
     def insert_address():
@@ -1151,7 +1157,7 @@ class Address(BaseModel):
         # add a default address for this customer
         new_address = Address(is_default=True, customer_id=1, recipient_id=1,
                               country=fake.country(), province_or_state='Province{}'.format(11), city=fake.city(),
-                              district='District{}'.format(11), details="A test detailed address")
+                              district='District{}'.format(11), details="pingleyuan 100 BJUT (fake address for test)")
         db.session.add(new_address)
         db.session.commit()
 

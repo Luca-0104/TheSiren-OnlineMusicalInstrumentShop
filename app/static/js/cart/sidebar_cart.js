@@ -27,6 +27,15 @@ $(document).ready(function (){
         //send Ajax request to server to remove this cart relation
         remove_cart_relation(cartID);
     });
+
+    /* When quantity is changed */
+    $(".side-cart-quantity").on("change", function (){
+        //get model id and new quantity
+        let newCount = $(this).val()
+        let modelID = $(this).attr('model-id');
+        //This will also validate the count with stock
+        update_item_count(modelID, newCount, $(this));
+    });
 });
 
 /**
@@ -66,6 +75,38 @@ function remove_cart_relation(cartID){
 
             /* update the total payment */
             update_payment_display();
+        }
+    });
+}
+
+
+function update_item_count(modelID, newCount, quantityInput){
+    $.post("/api/cart/update-cart-count", {
+        "model_id": modelID,
+        "new_count": newCount
+
+    }).done(function (response){
+        // get from server (backend)
+        let returnValue = response['returnValue'];
+
+        if (returnValue === 0) {    //success
+
+        }else if (returnValue === 2){  // exceed stock
+            //notify the user
+            let msg = response['msg'];
+            window.alert(msg);
+
+            //set the quantity back to one
+            quantityInput.val(1);
+            update_item_count(modelID, 1, quantityInput);
+
+        }else if (returnValue === 3){   // this item run out of the stock
+            //notify the user
+            let msg = response['msg'];
+            window.alert(msg);
+
+            // refresh
+
         }
     });
 }

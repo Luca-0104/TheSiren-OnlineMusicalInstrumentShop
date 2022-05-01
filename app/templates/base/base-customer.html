@@ -194,16 +194,22 @@
                                                                     </a>
                                                                 </div>
 
-                                                                {# count number (right part) #}
-                                                                <input type="text" required="" pattern="^[0-9]+$"
-                                                                       inputmode="numeric"
-                                                                       data-wf-bindings="%5B%7B%22value%22%3A%7B%22type%22%3A%22Number%22%2C%22filter%22%3A%7B%22type%22%3A%22numberPrecision%22%2C%22params%22%3A%5B%220%22%2C%22numberPrecision%22%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.count%22%7D%7D%2C%7B%22data-commerce-sku-id%22%3A%7B%22type%22%3A%22ItemRef%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.sku.id%22%7D%7D%5D"
-                                                                       data-wf-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22product%3Aec-product-type%22%3A%7B%22ne%22%3A%22e348fd487d0102946c9179d2a94bb613%22%2C%22type%22%3A%22Option%22%7D%7D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0%22%7D"
-                                                                       class="w-commerce-commercecartquantity"
-                                                                       name="quantity"
-                                                                       data-wf-cart-action="update-item-quantity"
-                                                                       data-commerce-sku-id="61a56467407a5a926e9ea7a7"
-                                                                       value="{{ cart_item.count }}">
+                                                                {% if cart_item.model_type.stock > 0 %}
+                                                                    {# count number (right part) #}
+                                                                    <input type="text" required="" pattern="^[0-9]+$"
+                                                                           inputmode="numeric"
+                                                                           data-wf-bindings="%5B%7B%22value%22%3A%7B%22type%22%3A%22Number%22%2C%22filter%22%3A%7B%22type%22%3A%22numberPrecision%22%2C%22params%22%3A%5B%220%22%2C%22numberPrecision%22%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.count%22%7D%7D%2C%7B%22data-commerce-sku-id%22%3A%7B%22type%22%3A%22ItemRef%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.sku.id%22%7D%7D%5D"
+                                                                           data-wf-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22product%3Aec-product-type%22%3A%7B%22ne%22%3A%22e348fd487d0102946c9179d2a94bb613%22%2C%22type%22%3A%22Option%22%7D%7D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0%22%7D"
+                                                                           class="w-commerce-commercecartquantity side-cart-quantity"
+                                                                           name="quantity"
+                                                                           data-wf-cart-action="update-item-quantity"
+                                                                           data-commerce-sku-id="61a56467407a5a926e9ea7a7"
+                                                                           model-id="{{ cart_item.model_type.id }}"
+                                                                           oninput="value=value.replace(/[^\d]/g,'')"
+                                                                           value="{{ cart_item.count }}">
+                                                                {% else %}
+                                                                    <span style="color: red">Out Of Stock</span>
+                                                                {% endif %}
                                                             </div>
                                                         {% endfor %}
 
@@ -264,7 +270,7 @@
                                alt="submit">
                         <!--</div>-->
                         <input type="search" class="search-form-input w-input" maxlength="256" name="key_word"
-                               placeholder="{{ _('Search here') }}" id="search-2" required="">
+                               placeholder="{{ _('Search here') }}" id="search" required="" {% if key_word %}value="{{ key_word }}"{% endif %}>
                     </form>
                 </div>
             </div>

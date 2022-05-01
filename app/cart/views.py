@@ -91,13 +91,18 @@ def update_cart_count():
             if cart_relation:
                 # check if the stock is enough
                 model = ModelType.query.get(model_id)
+
+                # if run out of the stock
+                if model.stock < 1:
+                    return jsonify({'returnValue': 3, 'msg': 'This item is out of stock now!'})
+
                 if new_count <= model.stock:
                     cart_relation.count = new_count
                     db.session.commit()
                     return jsonify({'returnValue': 0})
                 else:
                     # the new count exceeds the maximum of the stock!
-                    return jsonify({'returnValue': 2, 'msg': 'exceed maximum'})
+                    return jsonify({'returnValue': 2, 'msg': 'exceed maximum stock'})
 
     return jsonify({'returnValue': 1})
 

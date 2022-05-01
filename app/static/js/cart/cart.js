@@ -93,7 +93,7 @@ function setable(rowID)
 
 // change quantity by input a number
 // this will automatically activate on every change of the input box
-$("input").on("input",function()
+$(".cart-item-quantity").on("input",function()
 {
     let focusID = $(this).attr("focusID");
 
