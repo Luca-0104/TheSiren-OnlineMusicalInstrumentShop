@@ -212,7 +212,8 @@ def update_order_address():
             current_app.logger.error("An order address is going to be changed after preparing phase.")
             return jsonify({"returnValue": 1})
 
-        o.address = address
+        o.address_text = address.get_address()
+        o.recipient_id = address.recipient_id
         db.session.add(o)
         db.session.commit()
 
@@ -254,12 +255,20 @@ def update_order_shipping():
         # update gross payment
         o.generate_payment()
 
+        print("----------------------", o.paid_payment)
+
         # if the type is changed to "delivery", default address should be assigned
         if shipping_method == "self-collection":
-            o.address_id = None
+            pass
         else:
             default_address = current_user.get_default_address()
-            o.address_id = default_address.id
+            if default_address is not None:
+                o.address_text = default_address.get_address()
+                o.recipient_id = default_address.recipient_id
+            else:
+                db.session.rollback()
+                current_app.logger.error("No default address here!")
+                return jsonify({"returnValue": 1})
 
         db.session.add(o)
         db.session.commit()
@@ -324,9 +333,6 @@ def change_order_to_delivery():
         order_id = request.form.get("order_id")
         address_id = request.form.get("address_id")
 
-        print(order_id)
-        print(address_id)
-
         if order_id is None or address_id is None:
             current_app.logger.error("info are not gotten from Ajax")
             return jsonify({"returnValue": 1})
@@ -340,8 +346,8 @@ def change_order_to_delivery():
             return jsonify({"returnValue": 1})
 
         # update the order
-        o.recipient_id = None
-        o.address_id = address_id
+        o.address_text = address.get_address()
+        o.recipient_id = address.recipient_id
         o.order_type = 'delivery'
         db.session.add(o)
         db.session.commit()
@@ -389,7 +395,6 @@ def change_order_to_collection():
         db.session.add(new_recipient)
 
         # update the order
-        o.address_id = None
         o.order_type = 'self-collection'
         o.recipient = new_recipient
         db.session.add(o)
@@ -435,10 +440,8 @@ def filter_orders():
     return them in the form of JSON dict
     """
     if request.method == 'POST':
-        print("here")
         # get status code from Ajax
         status_code = int(request.form.get('status_code'))
-        print(status_code)
 
         if status_code == -1:
             # query all the orders of current user
@@ -449,8 +452,6 @@ def filter_orders():
 
         # turn objects into a list of dicts
         data = [o.to_dict() for o in order_lst]
-
-        print(data)
 
         return jsonify({'returnValue': 0, 'data': data})
 

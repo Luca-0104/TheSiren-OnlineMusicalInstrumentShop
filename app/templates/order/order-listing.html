@@ -493,11 +493,12 @@
                                                     <table class="info_table" width="100%" height="100%">
                                                         <tr>
                                                             <td class="rn_col medium-heading">
-                                                                {% if order.order_type == "delivery" %}
-                                                                    {{ order.address.recipient.recipient_name }}
-                                                                {% elif order.order_type == "self-collection" %}
-                                                                    {{ order.recipient.recipient_name }}
-                                                                {% endif %}
+                                                                {{ order.recipient.recipient_name }}
+{#                                                                {% if order.order_type == "delivery" %}#}
+{#                                                                    {{ order.address.recipient.recipient_name }}#}
+{#                                                                {% elif order.order_type == "self-collection" %}#}
+{#                                                                    {{ order.recipient.recipient_name }}#}
+{#                                                                {% endif %}#}
                                                             </td>
                                                         </tr>
                                                         {% if order.gross_payment == order.paid_payment %}
@@ -521,11 +522,12 @@
                                                         {% if order.order_type == "delivery" %}
                                                             <tr>
                                                                 <td class="address_col large-text">
-                                                                    {{ order.address.country }}
-                                                                    - {{ order.address.province_or_state }}
-                                                                    - {{ order.address.city }}
-                                                                    - {{ order.address.district }}<br>
-                                                                    {{ order.address.details }}
+{#                                                                    {{ order.address.country }}#}
+{#                                                                    - {{ order.address.province_or_state }}#}
+{#                                                                    - {{ order.address.city }}#}
+{#                                                                    - {{ order.address.district }}<br>#}
+{#                                                                    {{ order.address.details }}#}
+                                                                    {{ order.address_text }}
                                                                 </td>
                                                             </tr>
                                                         {% endif %}
@@ -587,11 +589,12 @@
                                                     </table>
                                                 </td>
                                                 <!--<td class="rn_col">
-                                                    {% if order.order_type == "delivery" %}
-                                                        {{ order.address.recipient.recipient_name }}
-                                                    {% elif order.order_type == "self-collection" %}
-                                                        {{ order.recipient.recipient_name }}
-                                                    {% endif %}
+                                                    {{ order.recipient.recipient_name }}
+{#                                                    {% if order.order_type == "delivery" %}#}
+{#                                                        {{ order.address.recipient.recipient_name }}#}
+{#                                                    {% elif order.order_type == "self-collection" %}#}
+{#                                                        {{ order.recipient.recipient_name }}#}
+{#                                                    {% endif %}#}
                                                 </td>
                                                 <td class="cost_col">
                                                     ${{ order.generate_payment() }}

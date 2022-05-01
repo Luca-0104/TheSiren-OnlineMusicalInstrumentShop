@@ -158,14 +158,8 @@ function update_order_shipping(orderId, shippingMethod){
         let returnValue = response['returnValue'];
 
         if (returnValue === 0) { //success
-            //get the payment info from response
-            let payTotal = response['payTotal']
-            let deliveryFee = response['deliveryFee']
-            let subTotal = payTotal - deliveryFee
-            //update the display of payment
-            $("#pay-subtotal").text(subTotal)
-            $("#pay-total").text(payTotal)
-            $("#pay-delivery").text(deliveryFee)
+            //update payment info display
+            update_payment_info(orderId);
 
             //only let the selected one have the style of "chosen-shipping-method"
             $(".shipping-method-list li").removeClass("chosen-shipping-method");

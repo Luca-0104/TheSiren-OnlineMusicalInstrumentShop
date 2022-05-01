@@ -434,19 +434,20 @@
                                                     {% if order.order_type == "delivery" %}
                                                         <tr>
                                                             <td class="left-cell">
-                                                                {{ order.address.recipient.recipient_name }}
+                                                                {{ order.recipient.recipient_name }}
                                                             </td>
                                                             <td>
-                                                                {{ order.address.recipient.phone }}
+                                                                {{ order.recipient.phone }}
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td colspan="2">
-                                                                {{ order.address.country }}
-                                                                - {{ order.address.province_or_state }}
-                                                                - {{ order.address.city }}
-                                                                - {{ order.address.district }}<br>
-                                                                {{ order.address.details }}
+                                                                {{ order.address_text }}
+{#                                                                {{ order.address.country }}#}
+{#                                                                - {{ order.address.province_or_state }}#}
+{#                                                                - {{ order.address.city }}#}
+{#                                                                - {{ order.address.district }}<br>#}
+{#                                                                {{ order.address.details }}#}
                                                             </td>
                                                         </tr>
                                                     {% elif order.order_type == "self-collection" %}
