@@ -23,9 +23,12 @@ def show_page_staff_index():
     """
         This function renders the page of DashBoard
     """
+    # get whether the epidemic mode has been turned on
+    epidemic_mode_on = get_epidemic_mode_status()
+
     # get the best selling (top 6) model types
     best_sell_mt_lst = ModelType.query.filter_by(is_deleted=False).order_by(ModelType.sales.desc()).limit(6).all()
-    return render_template('staff/staff-index.html', best_sell_mt_lst=best_sell_mt_lst)
+    return render_template('staff/staff-index.html', best_sell_mt_lst=best_sell_mt_lst, epidemic_mode_on=epidemic_mode_on)
 
 
 @product.route('/stock-management', methods=['GET', 'POST'])
