@@ -17,10 +17,10 @@
     height: 90px;
     line-height: 60px;
     text-align: center;
-    background: #424242;
+    background: #42424238;
     padding: 15px;
-    color: #929292;
-    /*text-shadow: 0 1px 4px rgb(0 0 0 / 50%);*/
+    color: #8b8b8b;
+    /* text-shadow: 0 1px 4px rgb(0 0 0 / 50%); */
     /* border-radius: 8px; */
     font-size: 16px;
     transition: 0.5s;
@@ -28,26 +28,16 @@
     overflow: hidden;
 }
 
-/*.tag-label .tagSpace:before {*/
-/*    content: '';*/
-/*    !*position: absolute;*!*/
-/*    top: 0;*/
-/*    left: 0;*/
-/*    width: 100%;*/
-/*    height: 50%;*/
-/*    background: rgba(255, 255, 255, .1);*/
-/*}*/
-
 .followed {
-    background: #1e80e9;
-    color: #fff;
-    box-shadow: 0 2px 20px #1e80e9;
+    background-color: #edcb79;
+    color: #343434;
+    box-shadow: 2px 2px 1px #34343433;
 }
 
 .tagName {
     display: inline-block;
     vertical-align: middle;
-    line-height: 25px;
+    line-height: 20px;
 }
 
 .tag_table {
