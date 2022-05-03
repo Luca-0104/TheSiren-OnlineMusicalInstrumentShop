@@ -8,7 +8,7 @@ from config import Config
 from . import userinfo
 from ..public_tools import generate_safe_pic_name
 from ..userinfo.forms import EditProfileForm, AddAddressForm, EditAddressForm, UpdateAvatarForm
-from ..models import User, Address, Recipient
+from ..models import User, Address, Recipient, Brand
 from .. import db
 
 
@@ -125,9 +125,12 @@ def user_profile(uid):
 
         return redirect(url_for("userinfo.user_profile", uid=current_user.id))
 
+    all_brands = Brand.query.all()
+
     return render_template('userinfo/user_profile.html', user=user, update_avatar_form=update_avatar_form,
                            add_address_form=add_address_form, edit_address_form=edit_address_form,
-                           edit_profile_form=edit_profile_form)
+                           edit_profile_form=edit_profile_form,
+                           all_brands=all_brands)
 
 
 # @userinfo.route('/01')
