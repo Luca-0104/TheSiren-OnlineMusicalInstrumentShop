@@ -1,6 +1,6 @@
 import os
 
-from flask import render_template, request, jsonify, flash, redirect, url_for
+from flask import render_template, request, jsonify, flash, redirect, url_for, current_app
 from flask_login import login_required, current_user
 from flask_babel import _
 
@@ -8,7 +8,7 @@ from config import Config
 from . import userinfo
 from ..public_tools import generate_safe_pic_name
 from ..userinfo.forms import EditProfileForm, AddAddressForm, EditAddressForm, UpdateAvatarForm
-from ..models import User, Address, Recipient, Brand
+from ..models import User, Address, Recipient, Brand, Category
 from .. import db
 
 
@@ -410,3 +410,150 @@ def address_prepare_for_json(address_obj):
                'city': address_obj.city,
                'district': address_obj.district, 'is_default': address_obj.district}
     return address
+
+
+# ---------------------------------------- Brand section ----------------------------------------
+
+@userinfo.route('/api/userinfo/brand-section/follow-brand', methods=['POST'])
+@login_required
+def follow_brand():
+    """
+        (Using Ajax)
+        This is a function for a customer to follow a brand
+    """
+    if request.method == 'POST':
+        # get info from Ajax
+        brand_id = request.form.get("brand_id")
+
+        if brand_id is None:
+            current_app.logger.error("Info not gotten from Ajax")
+            return jsonify({'returnValue': 1})
+
+        # query Brand instance from db
+        brand = Brand.query.get(brand_id)
+
+        if brand is None:
+            current_app.logger.error("No such brand with this id")
+            return jsonify({'returnValue': 1})
+
+        # add this brand to the followed_brands of current user
+        current_user.followed_brands.append(brand)
+
+        db.session.add(current_user)
+        db.session.commit()
+
+        return jsonify({'returnValue': 0})
+
+    return jsonify({'returnValue': 1})
+
+
+@userinfo.route('/api/userinfo/brand-section/unfollow-brand', methods=['POST'])
+@login_required
+def unfollow_brand():
+    """
+        (Using Ajax)
+        This is a function for a customer to unfollow a brand
+    """
+    if request.method == 'POST':
+        # get info from Ajax
+        brand_id = request.form.get("brand_id")
+
+        if brand_id is None:
+            current_app.logger.error("Info not gotten from Ajax")
+            return jsonify({'returnValue': 1})
+
+        # query Brand instance from db
+        brand = Brand.query.get(brand_id)
+
+        if brand is None:
+            current_app.logger.error("No such brand with this id")
+            return jsonify({'returnValue': 1})
+
+        # validate whether the user followed this brand (If do not do this, there might be an error)
+        if brand not in current_user.followed_brands:
+            current_app.logger.error("A user wants to unfollow a brand even he/she has not followed it!")
+            return jsonify({'returnValue': 1})
+
+        # add this brand to the followed_brands of current user
+        current_user.followed_brands.remove(brand)
+
+        db.session.add(current_user)
+        db.session.commit()
+
+        return jsonify({'returnValue': 0})
+
+    return jsonify({'returnValue': 1})
+
+
+# ---------------------------------------- Category section ----------------------------------------
+
+
+@userinfo.route('/api/userinfo/category-section/follow-category', methods=['POST'])
+@login_required
+def follow_category():
+    """
+        (Using Ajax)
+        This is a function for a customer to follow a category
+    """
+    if request.method == 'POST':
+        # get info from Ajax
+        category_id = request.form.get("category_id")
+
+        if category_id is None:
+            current_app.logger.error("Info not gotten from Ajax")
+            return jsonify({'returnValue': 1})
+
+        # query Category instance from db
+        category = Category.query.get(category_id)
+
+        if category is None:
+            current_app.logger.error("No such category with this id")
+            return jsonify({'returnValue': 1})
+
+        # add this category to the followed_categories of current user
+        current_user.followed_categories.append(category)
+
+        db.session.add(current_user)
+        db.session.commit()
+
+        return jsonify({'returnValue': 0})
+
+    return jsonify({'returnValue': 1})
+
+
+@userinfo.route('/api/userinfo/brand-section/unfollow-category', methods=['POST'])
+@login_required
+def unfollow_category():
+    """
+        (Using Ajax)
+        This is a function for a customer to unfollow a category
+    """
+    if request.method == 'POST':
+        # get info from Ajax
+        category_id = request.form.get("category_id")
+
+        if category_id is None:
+            current_app.logger.error("Info not gotten from Ajax")
+            return jsonify({'returnValue': 1})
+
+        # query Category instance from db
+        category = Category.query.get(category_id)
+
+        if category is None:
+            current_app.logger.error("No such category with this id")
+            return jsonify({'returnValue': 1})
+
+        # validate whether the user followed this category (If do not do this, there might be an error)
+        if category not in current_user.followed_categories:
+            current_app.logger.error("A user wants to unfollow a category even he/she has not followed it!")
+            return jsonify({'returnValue': 1})
+
+        # add this brand to the followed_categories of current user
+        current_user.followed_categories.remove(category)
+
+        db.session.add(current_user)
+        db.session.commit()
+
+        return jsonify({'returnValue': 0})
+
+    return jsonify({'returnValue': 1})
