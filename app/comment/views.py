@@ -40,13 +40,9 @@ def upload_comment(omt_id):
         current_app.logger.error("No model with is order!")
         return redirect(url_for("order.my_orders"))
 
-    print("here")
     if form.validate_on_submit():
         content = form.content.data
         rate = form.rate.data
-
-        print(content)
-        print(rate)
 
         # create a new comment
         new_comment = Comment(content=content, star_num=rate, model_type_id=mt_id, auth_id=current_user.id)
@@ -76,10 +72,6 @@ def upload_comment(omt_id):
         """
         # get a list of file objects from the user upload
         picture_list = form.pictures.data
-        print("type lst: ", type(picture_list))
-        print("type li: ", type(picture_list[0]))
-        print("first item: ", picture_list[0])
-        print("filename: ", picture_list[0].filename)
         result = upload_picture(picture_list, new_comment.id, Config.PIC_TYPE_COMMENT)
         status = result[0]
         if status != 0:
