@@ -126,11 +126,12 @@ def user_profile(uid):
         return redirect(url_for("userinfo.user_profile", uid=current_user.id))
 
     all_brands = Brand.query.all()
+    all_categories = Category.query.all()
 
-    return render_template('userinfo/user_profile.html', user=user, update_avatar_form=update_avatar_form,
+    return render_template('userinfo/user_profile.html', user=user, all_brands=all_brands, all_categories=all_categories,
+                           update_avatar_form=update_avatar_form,
                            add_address_form=add_address_form, edit_address_form=edit_address_form,
-                           edit_profile_form=edit_profile_form,
-                           all_brands=all_brands)
+                           edit_profile_form=edit_profile_form)
 
 
 # @userinfo.route('/01')
