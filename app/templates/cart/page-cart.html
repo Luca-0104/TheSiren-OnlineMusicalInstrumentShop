@@ -55,6 +55,7 @@
                                 </tr>
                                 {% for cart in cart_relation_lst %}
                                     <tr rowID="{{ loop.index }}" id="row_{{ loop.index }}" row_disable="false"
+                                        {% if cart.model_type.stock > 0 %} empty_stock="false" {% endif %}
                                         class="cart_row" cartid="{{ cart.id }}" modelid="{{ cart.model_type.id }}"
                                         single_price="{{ cart.model_type.price }}">
                                         <td class="buttom-border">
@@ -66,7 +67,8 @@
 
                                             {% if cart.model_type.pictures.first() == None %}
                                                 <img src="../../static/images/example/yamaha_yep621s.jpg" loading="lazy"
-                                                     alt="" class="w-commerce-commercecartitemimage cart-item-image product-thumbnail">
+                                                     alt=""
+                                                     class="w-commerce-commercecartitemimage cart-item-image product-thumbnail">
                                             {% else %}
                                                 <img src="{{ url_for("static",filename=cart.model_type.pictures.first().address) }}"
                                                      loading="lazy" alt=""
@@ -78,39 +80,48 @@
                                                 {{ cart.model_type.name }}
                                             </div>
                                         </td>
-                                        <td class="buttom-border">
-                                            <table class="quantity_table">
-                                                <tr>
-                                                    <td>
-                                                        <a focusID="{{ loop.index }}" id="add_{{ loop.index }}" href="#"
-                                                           class="w-commerce-commercecartquantity add-a">+</a>
-                                                    </td>
-                                                    <td>
-                                                        <input focusID="{{ loop.index }}" id="quantity_{{ loop.index }}"
-                                                               type="text" required="" pattern="^[0-9]+$"
-                                                               inputmode="numeric"
-                                                               class="w-commerce-commercecartquantity cart-item-quantity"
-                                                               data-wf-cart-action="update-item-quantity"
-                                                               data-commerce-sku-id=""
-                                                               oninput="value=value.replace(/[^\d]/g,'')"
-                                                               value="{{ cart.count }}"/>
-                                                    </td>
-                                                    <td>
-                                                        <a focusID="{{ loop.index }}" id="reduce_{{ loop.index }}"
-                                                           href="#"
-                                                           class="w-commerce-commercecartquantity reduce-a">-</a>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td class="buttom-border">
-                                            <div class="fine-print-text">
-                                                <span>$</span>
-                                                <span focusID="{{ loop.index }}"
-                                                      id="price_{{ loop.index }}">{{ cart.model_type.price }}</span>
-                                                <span>USD</span>
-                                            </div>
-                                        </td>
+                                        {% if cart.model_type.stock > 0 %}
+                                            <td class="buttom-border">
+                                                <table class="quantity_table">
+                                                    <tr>
+                                                        <td>
+                                                            <a focusID="{{ loop.index }}" id="add_{{ loop.index }}"
+                                                               href="#"
+                                                               class="w-commerce-commercecartquantity add-a">+</a>
+                                                        </td>
+                                                        <td>
+                                                            <input focusID="{{ loop.index }}"
+                                                                   id="quantity_{{ loop.index }}"
+                                                                   type="text" required="" pattern="^[0-9]+$"
+                                                                   inputmode="numeric"
+                                                                   class="w-commerce-commercecartquantity cart-item-quantity"
+                                                                   data-wf-cart-action="update-item-quantity"
+                                                                   data-commerce-sku-id=""
+                                                                   oninput="value=value.replace(/[^\d]/g,'')"
+                                                                   value="{{ cart.count }}"/>
+                                                        </td>
+                                                        <td>
+                                                            <a focusID="{{ loop.index }}" id="reduce_{{ loop.index }}"
+                                                               href="#"
+                                                               class="w-commerce-commercecartquantity reduce-a">-</a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td class="buttom-border">
+                                                <div class="fine-print-text">
+                                                    <span>$</span>
+                                                    <span focusID="{{ loop.index }}"
+                                                          id="price_{{ loop.index }}">{{ cart.model_type.price }}</span>
+                                                    <span>USD</span>
+                                                </div>
+                                            </td>
+                                        {% else %}
+                                            <td colspan="2" class="buttom-border">
+                                                <span style="color: red">Out Of Stock</span>
+                                            </td>
+                                        {% endif %}
+
                                         <td class="buttom-border">
                                             <a focusID="{{ loop.index }}" id="remove_{{ loop.index }}" href="#"
                                                class="w-inline-block remove-a" data-wf-cart-action="remove-item"
