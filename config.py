@@ -17,6 +17,15 @@ class Config:
     PIC_TYPE_MODEL_INTRO = 'ModelTypeIntroPic'
     PIC_TYPE_COMMENT = 'CommentPic'
 
+    """ video uploading """
+    ALLOWED_VIDEO_SUFFIXES = {'mp4'}
+
+    """ audio uploading """
+    ALLOWED_AUDIO_SUFFIXES = {'mp3'}
+
+    """ 3D Model file uploading """
+    ALLOWED_3D_MODEL_SUFFIXES = {'fbx', 'obj'}
+
     """ Following define the directories used in this project """
     app_dir = os.path.join(basedir, 'app')
     static_dir = os.path.join(app_dir, 'static')

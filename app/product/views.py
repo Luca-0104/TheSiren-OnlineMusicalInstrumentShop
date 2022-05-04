@@ -1,6 +1,8 @@
 """
     Here are the functions for product management (for staff user to use)
 """
+import os
+
 from flask import jsonify, request, flash, render_template, redirect, url_for, json, current_app
 from flask_login import login_required
 from flask_babel import _
@@ -13,7 +15,7 @@ from .forms import ModelUploadForm, ModelModifyForm, ProductModifyForm
 from .. import db
 
 from ..models import Product, ModelType, Category, Brand
-from ..public_tools import upload_picture, get_unique_shop_instance, get_epidemic_mode_status
+from ..public_tools import upload_picture, get_unique_shop_instance, get_epidemic_mode_status, generate_safe_pic_name
 
 
 # ------------------------------------------------ render the page  of stock management ------------------------------------------------
@@ -28,7 +30,8 @@ def show_page_staff_index():
 
     # get the best selling (top 6) model types
     best_sell_mt_lst = ModelType.query.filter_by(is_deleted=False).order_by(ModelType.sales.desc()).limit(6).all()
-    return render_template('staff/staff-index.html', best_sell_mt_lst=best_sell_mt_lst, epidemic_mode_on=epidemic_mode_on)
+    return render_template('staff/staff-index.html', best_sell_mt_lst=best_sell_mt_lst,
+                           epidemic_mode_on=epidemic_mode_on)
 
 
 @product.route('/stock-management', methods=['GET', 'POST'])
@@ -393,7 +396,8 @@ def modify_product(product_id):
     # form.serial_number.data = p.serial_number
     form.brand_id.data = p.brand_id
     # the product modify page
-    return render_template('staff/page-modify-product.html', form=form, all_cate_list=all_cate_list, epidemic_mode_on=epidemic_mode_on)
+    return render_template('staff/page-modify-product.html', form=form, all_cate_list=all_cate_list,
+                           epidemic_mode_on=epidemic_mode_on)
 
 
 # ------------------------------------------------ CUD operations on 'model_type' ------------------------------------------------
@@ -608,6 +612,61 @@ def modify_model_type(model_id):
     form.stock.data = model.stock
     form.serial_number.data = model.serial_number
     return render_template('staff/page-modify-modeltype.html', form=form, epidemic_mode_on=epidemic_mode_on)
+
+
+# ------------------------------------------------ Upload Media Files for Model Types  ------------------------------------------------
+
+@product.route('/stock-management/upload-video/<int:mt_id>', methods=['GET', 'POST'])
+@login_required
+def upload_video(mt_id):
+    """
+    This is a function for staffs uploading video file for a specific model type
+    :param mt_id: The id of the corresponding model type
+    """
+    if request.method == 'POST':
+        # check the model type
+        mt = ModelType.query.get(mt_id)
+
+        if mt is None:
+            current_app.logger.error("This model type does not exist!")
+            return redirect(url_for('product.show_page_stock_management'))
+
+        if mt.is_deleted:
+            flash("You cannot upload video for a deleted model type.")
+            current_app.logger.error("This model type has been deleted!")
+            return redirect(url_for('product.show_page_stock_management'))
+
+        # get video file from the form
+        video = request.files.get("video_file")
+
+        if video is None:
+            current_app.logger.error("video not gotten from the request")
+            return redirect(url_for('product.show_page_stock_management'))
+
+        filename = video.filename
+        suffix = filename.rsplit('.')[-1]
+
+        # check the file type
+        if suffix not in Config.ALLOWED_VIDEO_SUFFIXES:
+            flash("You should upload .mp4 video only.")
+            current_app.logger.error("video file type error!")
+            return redirect(url_for('product.show_page_stock_management'))
+
+        # make sure the name of video is safe
+        filename = generate_safe_pic_name(filename)
+
+        # save video in local directory
+        file_path = os.path.join(Config.video_dir, filename).replace('\\', '/')
+        video.save(file_path)
+
+        # save the reference in database
+        path = 'upload/model_type/videos'
+        ref_address = os.path.join(path, filename).replace('\\', '/')
+        mt.video_address = ref_address
+        db.session.add(mt)
+        db.session.commit()
+
+    return redirect(url_for('product.show_page_stock_management'))
 
 
 # ------------------------------------------------ operations on 'categories' ------------------------------------------------

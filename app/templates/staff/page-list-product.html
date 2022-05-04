@@ -1299,13 +1299,210 @@
                                                                             {# the button for upload media files #}
                                                                             <div class="mr-2"
                                                                                  data-toggle="modal"
-                                                                                 data-target="#modal-media">
+                                                                                 data-target="#modal-media-{{ model.id }}">
                                                                                 <a class="badge bg-gradient-blue"
                                                                                    data-toggle="tooltip"
                                                                                    data-placement="top" title=""
                                                                                    data-original-title="Media Files">
                                                                                     <i class="ri-airplay-line mr-0"></i>
                                                                                 </a>
+                                                                            </div>
+
+                                                                            {# ----------------------------------------------------------------------------------------------- #}
+                                                                            {# ---------------------------------------- Modal windows ---------------------------------------- #}
+                                                                            {# ----------------------------------------------------------------------------------------------- #}
+
+                                                                            <!-- Modal window for three buttons (video, audio, 3d-file) -->
+                                                                            <div class="modal fade" id="modal-media-{{ model.id }}" tabindex="-1" role="dialog" aria-hidden="true">
+                                                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                                    <div class="modal-content">
+                                                                                        <div class="modal-body">
+                                                                                            <div class="popup text-left">
+                                                                                                <div class="media align-items-top justify-content-between">
+                                                                                                    <h3 class="mb-3">Which kind of media to upload</h3>
+                                                                                                    <div class="btn-cancel p-0" data-dismiss="modal"><i class="las la-times"></i>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="content edit-notes">
+                                                                                                    <div class="card card-transparent card-block card-stretch event-note mb-0">
+                                                                                                        <div class="card-body px-0 bukmark">
+                                                                                                            <div class="d-flex align-items-center justify-content-between pb-2 mb-3 border-bottom">
+                                                                                                                <div class="quill-tool">
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div id="quill-toolbar1">
+
+                                                                                                                {# the button for upload video #}
+                                                                                                                <a data-toggle="modal" data-target="#modal-media-video-{{ model.id }}">
+                                                                                                                    <div class="btn btn-primary mr-3" data-dismiss="modal">
+                                                                                                                        Upload Video
+                                                                                                                    </div>
+                                                                                                                </a>
+
+                                                                                                                {# the button for upload Audio #}
+                                                                                                                <a data-toggle="modal" data-target="#modal-media-audio-{{ model.id }}">
+                                                                                                                    <div class="btn btn-primary mr-3" data-dismiss="modal">
+                                                                                                                        Upload Audio
+                                                                                                                    </div>
+                                                                                                                </a>
+
+                                                                                                                {# the button for upload 3D Model File #}
+                                                                                                                <a data-toggle="modal" data-target="#modal-media-3d-file-{{ model.id }}">
+                                                                                                                    <div class="btn btn-primary mr-3" data-dismiss="modal">
+                                                                                                                        Upload 3D Model
+                                                                                                                    </div>
+                                                                                                                </a>
+
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="card-footer border-0">
+                                                                                                            <div class="d-flex flex-wrap align-items-ceter justify-content-end">
+                                                                                                                <div class="btn btn-light mr-3"
+                                                                                                                     data-dismiss="modal">{{ _('Cancel') }}</div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+
+                                                                            <!-- Modal window for uploading Video -->
+                                                                            <div class="modal fade" id="modal-media-video-{{ model.id }}" tabindex="-1" role="dialog" aria-hidden="true">
+                                                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                                    <div class="modal-content">
+                                                                                        <div class="modal-body">
+                                                                                            <div class="popup text-left">
+                                                                                                <div class="media align-items-top justify-content-between">
+                                                                                                    <h3 class="mb-3">Upload a Video File</h3>
+                                                                                                    <div class="btn-cancel p-0" data-dismiss="modal"><i class="las la-times"></i>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="content edit-notes">
+                                                                                                    <div class="card card-transparent card-block card-stretch event-note mb-0">
+
+                                                                                                        {# upload form (file+submit) #}
+                                                                                                        <form action="{{ url_for("product.upload_video", mt_id=model.id) }}" method="post" enctype="multipart/form-data">
+                                                                                                            <div class="card-body px-0 bukmark">
+                                                                                                                <div class="d-flex align-items-center justify-content-between pb-2 mb-3 border-bottom">
+                                                                                                                    <div class="quill-tool">
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                {# form - file input #}
+                                                                                                                <div id="quill-toolbar1">
+                                                                                                                    <div class="input-group mb-3">
+                                                                                                                        <div class="custom-file">
+                                                                                                                            <input type="file"
+                                                                                                                                   accept="video/mp4"
+                                                                                                                                   name="video_file"
+                                                                                                                                   class="custom-file-input"
+                                                                                                                                   id="input-upload-model-type-video"
+                                                                                                                                   aria-describedby="inputGroupFileAddon01"
+                                                                                                                                   required="required">
+                                                                                                                            <label class="custom-file-label"
+                                                                                                                                   for="input-upload-model-type-video">Choose file (MP4 Only)</label><br>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div class="card-footer border-0">
+                                                                                                                <div class="d-flex flex-wrap align-items-ceter justify-content-end">
+                                                                                                                    <div class="btn btn-outline-light mr-3" data-dismiss="modal">{{ _('Cancel') }}</div>
+                                                                                                                    {# form - submit #}
+                                                                                                                    <input type="submit" class="btn btn-primary" value="Upload">
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </form>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+
+                                                                            <!-- Modal window for uploading Audio -->
+                                                                            <div class="modal fade" id="modal-media-audio-{{ model.id }}" tabindex="-1" role="dialog" aria-hidden="true">
+                                                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                                    <div class="modal-content">
+                                                                                        <div class="modal-body">
+                                                                                            <div class="popup text-left">
+                                                                                                <div class="media align-items-top justify-content-between">
+                                                                                                    <h3 class="mb-3">Which kind of media to upload</h3>
+                                                                                                    <div class="btn-cancel p-0" data-dismiss="modal"><i class="las la-times"></i>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="content edit-notes">
+                                                                                                    <div class="card card-transparent card-block card-stretch event-note mb-0">
+                                                                                                        <div class="card-body px-0 bukmark">
+                                                                                                            <div class="d-flex align-items-center justify-content-between pb-2 mb-3 border-bottom">
+                                                                                                                <div class="quill-tool">
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div id="quill-toolbar1">
+
+                                                                                                                <p>Audio Modal</p>
+
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="card-footer border-0">
+                                                                                                            <div class="d-flex flex-wrap align-items-ceter justify-content-end">
+                                                                                                                <div class="btn btn-primary mr-3"
+                                                                                                                     data-dismiss="modal">{{ _('Cancel') }}</div>
+                                                                                                                <div class="btn btn-outline-primary"
+                                                                                                                     data-dismiss="modal">{{ _('Save') }}</div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <!-- Modal window for uploading 3D Model File -->
+                                                                            <div class="modal fade" id="modal-media-3d-file-{{ model.id }}" tabindex="-1" role="dialog" aria-hidden="true">
+                                                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                                    <div class="modal-content">
+                                                                                        <div class="modal-body">
+                                                                                            <div class="popup text-left">
+                                                                                                <div class="media align-items-top justify-content-between">
+                                                                                                    <h3 class="mb-3">Which kind of media to upload</h3>
+                                                                                                    <div class="btn-cancel p-0" data-dismiss="modal"><i class="las la-times"></i>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="content edit-notes">
+                                                                                                    <div class="card card-transparent card-block card-stretch event-note mb-0">
+                                                                                                        <div class="card-body px-0 bukmark">
+                                                                                                            <div class="d-flex align-items-center justify-content-between pb-2 mb-3 border-bottom">
+                                                                                                                <div class="quill-tool">
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div id="quill-toolbar1">
+
+                                                                                                                <p>3D File Modal</p>
+
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="card-footer border-0">
+                                                                                                            <div class="d-flex flex-wrap align-items-ceter justify-content-end">
+                                                                                                                <div class="btn btn-primary mr-3"
+                                                                                                                     data-dismiss="modal">{{ _('Cancel') }}</div>
+                                                                                                                <div class="btn btn-outline-primary"
+                                                                                                                     data-dismiss="modal">{{ _('Save') }}</div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
 
                                                                         </div>
@@ -1325,200 +1522,7 @@
                     <!-- Page end  -->
                 </div>
 
-                {# -------------------- Modal windows -------------------- #}
 
-                <!-- Modal window for three buttons (video, audio, 3d-file) -->
-                <div class="modal fade" id="modal-media" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div class="popup text-left">
-                                    <div class="media align-items-top justify-content-between">
-                                        <h3 class="mb-3">Which kind of media to upload</h3>
-                                        <div class="btn-cancel p-0" data-dismiss="modal"><i class="las la-times"></i>
-                                        </div>
-                                    </div>
-                                    <div class="content edit-notes">
-                                        <div class="card card-transparent card-block card-stretch event-note mb-0">
-                                            <div class="card-body px-0 bukmark">
-                                                <div class="d-flex align-items-center justify-content-between pb-2 mb-3 border-bottom">
-                                                    <div class="quill-tool">
-                                                    </div>
-                                                </div>
-                                                <div id="quill-toolbar1">
-
-                                                    {# the button for upload video #}
-                                                    <a data-toggle="modal" data-target="#modal-media-video">
-                                                        <div class="btn btn-primary mr-3" data-dismiss="modal">
-                                                            Upload Video
-                                                        </div>
-                                                    </a>
-
-                                                    {# the button for upload Audio #}
-                                                    <a data-toggle="modal" data-target="#modal-media-audio">
-                                                        <div class="btn btn-primary mr-3" data-dismiss="modal">
-                                                            Upload Audio
-                                                        </div>
-                                                    </a>
-
-                                                    {# the button for upload 3D Model File #}
-                                                    <a data-toggle="modal" data-target="#modal-media-3d-file">
-                                                        <div class="btn btn-primary mr-3" data-dismiss="modal">
-                                                            Upload 3D Model
-                                                        </div>
-                                                    </a>
-
-                                                </div>
-                                            </div>
-                                            <div class="card-footer border-0">
-                                                <div class="d-flex flex-wrap align-items-ceter justify-content-end">
-                                                    <div class="btn btn-light mr-3"
-                                                         data-dismiss="modal">{{ _('Cancel') }}</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- Modal window for uploading Video -->
-                <div class="modal fade" id="modal-media-video" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div class="popup text-left">
-                                    <div class="media align-items-top justify-content-between">
-                                        <h3 class="mb-3">Upload a Video File</h3>
-                                        <div class="btn-cancel p-0" data-dismiss="modal"><i class="las la-times"></i>
-                                        </div>
-                                    </div>
-                                    <div class="content edit-notes">
-                                        <div class="card card-transparent card-block card-stretch event-note mb-0">
-
-                                            {# upload form (file+submit) #}
-                                            <form action="" method="post" enctype="multipart/form-data">
-                                                <div class="card-body px-0 bukmark">
-                                                    <div class="d-flex align-items-center justify-content-between pb-2 mb-3 border-bottom">
-                                                        <div class="quill-tool">
-                                                        </div>
-                                                    </div>
-                                                    {# form - file input #}
-                                                    <div id="quill-toolbar1">
-                                                        <div class="input-group mb-3">
-                                                            <div class="custom-file">
-                                                                <input type="file"
-                                                                       accept="video/mp4"
-                                                                       name="video_file"
-                                                                       class="custom-file-input"
-                                                                       id="input-upload-model-type-video"
-                                                                       aria-describedby="inputGroupFileAddon01"
-                                                                       required="required">
-                                                                <label class="custom-file-label"
-                                                                       for="input-upload-model-type-video">Choose file (MP4 Only)</label><br>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card-footer border-0">
-                                                    <div class="d-flex flex-wrap align-items-ceter justify-content-end">
-                                                        <div class="btn btn-outline-light mr-3" data-dismiss="modal">{{ _('Cancel') }}</div>
-                                                        {# form - submit #}
-                                                        <input type="submit" class="btn btn-primary" data-dismiss="modal" value="Upload">
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- Modal window for uploading Audio -->
-                <div class="modal fade" id="modal-media-audio" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div class="popup text-left">
-                                    <div class="media align-items-top justify-content-between">
-                                        <h3 class="mb-3">Which kind of media to upload</h3>
-                                        <div class="btn-cancel p-0" data-dismiss="modal"><i class="las la-times"></i>
-                                        </div>
-                                    </div>
-                                    <div class="content edit-notes">
-                                        <div class="card card-transparent card-block card-stretch event-note mb-0">
-                                            <div class="card-body px-0 bukmark">
-                                                <div class="d-flex align-items-center justify-content-between pb-2 mb-3 border-bottom">
-                                                    <div class="quill-tool">
-                                                    </div>
-                                                </div>
-                                                <div id="quill-toolbar1">
-
-                                                    <p>Audio Modal</p>
-
-                                                </div>
-                                            </div>
-                                            <div class="card-footer border-0">
-                                                <div class="d-flex flex-wrap align-items-ceter justify-content-end">
-                                                    <div class="btn btn-primary mr-3"
-                                                         data-dismiss="modal">{{ _('Cancel') }}</div>
-                                                    <div class="btn btn-outline-primary"
-                                                         data-dismiss="modal">{{ _('Save') }}</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            <!-- Modal window for uploading 3D Model File -->
-                <div class="modal fade" id="modal-media-3d-file" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div class="popup text-left">
-                                    <div class="media align-items-top justify-content-between">
-                                        <h3 class="mb-3">Which kind of media to upload</h3>
-                                        <div class="btn-cancel p-0" data-dismiss="modal"><i class="las la-times"></i>
-                                        </div>
-                                    </div>
-                                    <div class="content edit-notes">
-                                        <div class="card card-transparent card-block card-stretch event-note mb-0">
-                                            <div class="card-body px-0 bukmark">
-                                                <div class="d-flex align-items-center justify-content-between pb-2 mb-3 border-bottom">
-                                                    <div class="quill-tool">
-                                                    </div>
-                                                </div>
-                                                <div id="quill-toolbar1">
-
-                                                    <p>3D File Modal</p>
-
-                                                </div>
-                                            </div>
-                                            <div class="card-footer border-0">
-                                                <div class="d-flex flex-wrap align-items-ceter justify-content-end">
-                                                    <div class="btn btn-primary mr-3"
-                                                         data-dismiss="modal">{{ _('Cancel') }}</div>
-                                                    <div class="btn btn-outline-primary"
-                                                         data-dismiss="modal">{{ _('Save') }}</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
 
             </div>
