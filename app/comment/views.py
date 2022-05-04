@@ -82,9 +82,3 @@ def upload_comment(omt_id):
         return redirect(url_for("order.my_orders"))
 
     return render_template('comment/comment.html', order_model=omt, form=form)
-
-@comment.route('/order-listing', methods=['GET', 'POST'])
-@login_required
-def order_listing():
-    orders = Order.query.all()
-    return render_template('staff/page-list-orders.html', orders=orders)

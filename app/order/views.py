@@ -615,4 +615,4 @@ def order_management():
     # get all orders sorted by created timestamp
     order_lst = Order.query.order_by(Order.timestamp.desc())
 
-    return render_template('staff/page-list-orders.html', order_lst=order_lst, epidemic_mode_on=epidemic_mode_on)
+    return render_template('staff/page-list-orders.html', orders=order_lst, epidemic_mode_on=epidemic_mode_on)
