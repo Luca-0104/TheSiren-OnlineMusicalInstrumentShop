@@ -93,7 +93,7 @@ def message(data):
 @socketio.on('join')
 def join(data):
     join_room(data['room'])
-    room = ChatRoom.query.filter_by(data['room']).first()
+    room = ChatRoom.query.filter_by(id=data['room']).first()
     past_messages = Message.query.filter_by(id=data['room']).all()
     for past_message in past_messages:
         if past_message.author_type == 'customer':
