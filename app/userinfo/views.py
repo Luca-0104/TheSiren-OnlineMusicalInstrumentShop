@@ -22,7 +22,7 @@ def user_profile(uid):
 
     # user submit the edit profile form
     if edit_profile_form.edit_profile_submit.data and edit_profile_form.validate():
-
+        print('get into profile')
         user.username = edit_profile_form.edit_profile_username.data
         user.email = edit_profile_form.edit_profile_email.data
         user.about_me = edit_profile_form.edit_profile_about_me.data
