@@ -19,7 +19,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"
                 type="text/javascript"></script><![endif] -->
         <script type="text/javascript">
-            !function (o, c) {
+            !function (o, c)
+            {
                 var n = c.documentElement, t = " w-mod-";
                 n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
             }
@@ -363,10 +364,14 @@
                                                 Basic Information
                                             </td>
                                             <td class="border-2 modify-section">
-                                                <a href="#" id="modify-type-btn"
-                                                   class="button small nav-button w-inline-block">
-                                                    <div>Modify Type</div>
-                                                </a>
+                                                {% if current_user.is_premium %}
+                                                    {% if order.status_code == 0 or order.status_code == 1 or order.status_code == 3 %}
+                                                        <a href="#" id="modify-type-btn"
+                                                           class="button small nav-button w-inline-block">
+                                                            <div>Modify Type</div>
+                                                        </a>
+                                                    {% endif %}
+                                                {% endif %}
                                             </td>
                                         </tr>
                                         <tr>
@@ -415,16 +420,18 @@
                                                 {% endif %}
                                             </td>
                                             <td class="border-2 top-indentation modify-section">
-                                                {% if order.order_type == "delivery" %}
-                                                    <a href="#" id="modify-ar-btn"
-                                                       class="button small nav-button w-inline-block">
-                                                        <div>Modify Address</div>
-                                                    </a>
-                                                {% elif order.order_type == "self-collection" %}
-                                                    <a href="#" id="modify-ar-btn"
-                                                       class="button small nav-button w-inline-block">
-                                                        <div>Modify Recipient</div>
-                                                    </a>
+                                                {% if order.status_code == 0 or order.status_code == 1 or order.status_code == 3 %}
+                                                    {% if order.order_type == "delivery" %}
+                                                        <a href="#" id="modify-ar-btn"
+                                                           class="button small nav-button w-inline-block">
+                                                            <div>Modify Address</div>
+                                                        </a>
+                                                    {% elif order.order_type == "self-collection" %}
+                                                        <a href="#" id="modify-ar-btn"
+                                                           class="button small nav-button w-inline-block">
+                                                            <div>Modify Recipient</div>
+                                                        </a>
+                                                    {% endif %}
                                                 {% endif %}
                                             </td>
                                         </tr>
@@ -443,11 +450,11 @@
                                                         <tr>
                                                             <td colspan="2">
                                                                 {{ order.address_text }}
-{#                                                                {{ order.address.country }}#}
-{#                                                                - {{ order.address.province_or_state }}#}
-{#                                                                - {{ order.address.city }}#}
-{#                                                                - {{ order.address.district }}<br>#}
-{#                                                                {{ order.address.details }}#}
+                                                                {#                                                                {{ order.address.country }}#}
+                                                                {#                                                                - {{ order.address.province_or_state }}#}
+                                                                {#                                                                - {{ order.address.city }}#}
+                                                                {#                                                                - {{ order.address.district }}<br>#}
+                                                                {#                                                                {{ order.address.details }}#}
                                                             </td>
                                                         </tr>
                                                     {% elif order.order_type == "self-collection" %}
