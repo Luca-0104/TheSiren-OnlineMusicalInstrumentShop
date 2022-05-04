@@ -12,6 +12,7 @@
     <link href="../../static/css/userinfo/user_profile.css" rel="stylesheet" type="text/css">
     <link href="../../static/css/userinfo/action_area.css" rel="stylesheet" type="text/css">
     <link href="../../static/css/userinfo/address.css" rel="stylesheet" type="text/css">
+    <link href="../../static/css/userinfo/tag_field.css" rel="stylesheet" type="text/css">
 
     <!-- [if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"
@@ -59,7 +60,7 @@
                                         <a class="button nav nav-button w-inline-block">{{ _('Followed Category') }}</a>
                                     </li>
                                     <li class="nav-item hover-item clickable" id="prime_btn">
-                                        <a class="button nav nav-button w-inline-block">{{ _('Premium') }}</a>
+                                        <a class="button nav nav-button w-inline-block">Premium</a>
                                     </li>
                                     <li class="nav-item hover-item clickable" id="Order_btn">
                                         <a class="button nav nav-button w-inline-block"
@@ -343,17 +344,65 @@
 
                                 <!-- 3. Brand section -->
                                 <div class="topic_container" id="brand_container" style="display: none">
-                                    3. {{ _('Brand section') }}
+                                    <div class="cart-header text-middle">
+                                        <h4 class="w-commerce-commercecartheading">Brands</h4>
+                                    </div>
+                                    <table class="tag_table">
+                                        {% for i in range(0, 4) %}
+                                            <tr>
+                                                {% for j in range(0, 4) %}
+                                                    <td>
+                                                        <label class="tag-label">
+                                                            <input type="checkbox" class="expand-btn brand-btn"
+                                                                   id="brand_{{ all_brands[i*4+j].id }}" name="brand-tag"
+                                                                   brand_id="{{ all_brands[i*4+j].id }}"
+                                                                   style="display: none;">
+                                                            <span id="brandSpace_{{ all_brands[i*4+j].id }}"
+                                                                  class="tagSpace {% if current_user.followed_brands.filter_by(id=all_brands[i*4+j].id).first()!=None %}followed{% endif %}">
+                                                                <span class="tagName">
+                                                                    {{ all_brands[i*4+j].name }}
+                                                                </span>
+                                                            </span>
+                                                        </label>
+                                                    </td>
+                                                {% endfor %}
+                                            </tr>
+                                        {% endfor %}
+                                    </table>
                                 </div>
 
                                 <!-- 4. Category section -->
                                 <div class="topic_container" id="category_container" style="display: none">
-                                    4. {{ _('Category section') }}
+                                    <div class="cart-header text-middle">
+                                        <h4 class="w-commerce-commercecartheading">Categories</h4>
+                                    </div>
+                                    <table class="tag_table">
+                                        {% for i in range(0, 14) %}
+                                            <tr>
+                                                {% for j in range(0, 4) %}
+                                                    <td>
+                                                        <label class="tag-label">
+                                                            <input type="checkbox" class="expand-btn category-btn"
+                                                                   id="category_{{ all_categories[i*4+j].id }}" name="category-tag"
+                                                                   category_id="{{ all_categories[i*4+j].id }}"
+                                                                   style="display: none;">
+                                                            <span id="categorySpace_{{ all_categories[i*4+j].id }}"
+                                                                  class="tagSpace {% if current_user.followed_categories.filter_by(id=all_categories[i*4+j].id).first()!=None %}followed{% endif %}">
+                                                                <span class="tagName">
+                                                                    {{ all_categories[i*4+j].name }}
+                                                                </span>
+                                                            </span>
+                                                        </label>
+                                                    </td>
+                                                {% endfor %}
+                                            </tr>
+                                        {% endfor %}
+                                    </table>
                                 </div>
 
                                 <!-- 5. Prime section -->
                                 <div class="topic_container" id="prime_container" style="display: none">
-                                    5. {{ _('Premium section') }}
+                                    5. {{ _('Prime section') }}
                                 </div>
 
                                 <!-- 6. Order section -->
@@ -776,6 +825,8 @@
             <script src="../../static/js/webflow.js" type="text/javascript"></script>
             <script type="text/javascript" src="../../static/js/userinfo/change_avatar.js"></script>
             <script type="text/javascript" src="../../static/js/userinfo/edit_profile.js"></script>
+            <script type="text/javascript" src="../../static/js/userinfo/brand.js"></script>
+            <script type="text/javascript" src="../../static/js/userinfo/category.js"></script>
 
             <!-- [if lte IE 9]>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script>
