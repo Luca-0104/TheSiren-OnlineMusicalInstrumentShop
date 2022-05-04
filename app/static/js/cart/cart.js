@@ -282,7 +282,7 @@ $(":checkbox").on("click",function()
 $(".cart_row").on("click",function()
 {
     console.log($(this).attr("rowID"));
-    if($("#row_"+$(this).attr("rowID")).attr("row_disable")=="false")
+    if( ($("#row_"+$(this).attr("rowID")).attr("row_disable")=="false") && ($("#row_"+$(this).attr("rowID")).attr("empty_stock")=="false"))
     {
         let cb = $("#select_"+$(this).attr("rowID"));
         if (cb.prop("checked"))

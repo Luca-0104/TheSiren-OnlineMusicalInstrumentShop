@@ -76,8 +76,9 @@ def upload_comment(omt_id):
         status = result[0]
         if status != 0:
             flash("Picture upload failed!")
+        else:
+            current_app.logger.error(status)
 
         return redirect(url_for("order.my_orders"))
 
-    return render_template('', form=form)
-
+    return render_template('comment/comment.html', order_model=omt, form=form)

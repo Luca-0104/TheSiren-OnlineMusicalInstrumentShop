@@ -5,6 +5,7 @@ $(document).ready(function (){
 
     //shipping method of this order, default value is "delivery"
     let shippingMethod = "delivery"
+    update_order_shipping(orderId, shippingMethod);
 
     // set the default address as selected
     let defaultSign = $("#address-default-sign")

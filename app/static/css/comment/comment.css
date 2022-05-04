@@ -1,0 +1,76 @@
+.commenting_structure_table {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.model_listing_table {
+    background-color: #eeeeee;
+    border-collapse: separate;
+    border-spacing: 0px 1px;
+}
+
+.model_heading_col {
+    background-color: #fff;
+    border-left: 10px solid #eeeeee;
+    border-right: 10px solid #eeeeee;
+    border-top: 10px solid #eeeeee;
+    padding: 10px;
+}
+
+.model_img_col {
+    border-bottom: 10px solid #eeeeee;
+}
+
+.model_name_col {
+    border-bottom: 10px solid #eeeeee;
+}
+
+.model_des_col {
+    border-bottom: 10px solid #eeeeee;
+}
+
+.model_quantity_col {
+    border-bottom: 10px solid #eeeeee;
+}
+
+.commenting_table {
+    background-color: #eeeeee;
+}
+
+.main_heading {
+    background-color: #fff;
+    border-left: 10px solid #eeeeee;
+    border-right: 10px solid #eeeeee;
+    border-top: 10px solid #eeeeee;
+    border-bottom: 1px solid #eeeeee;
+    padding: 10px;
+}
+
+.lable-text-col {
+    background-color: #fff;
+    border-left: 10px solid #eeeeee;
+    border-right: 10px solid #eeeeee;
+    padding-left: 20px;
+}
+
+.form-col {
+    background-color: #fff;
+    border-left: 10px solid #eeeeee;
+    border-right: 10px solid #eeeeee;
+    padding-left: 60px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.comment-content{
+    max-width: 1150px;
+}
+
+.form-submit-col {
+    background-color: #fff;
+    border-left: 10px solid #eeeeee;
+    border-right: 10px solid #eeeeee;
+    border-bottom: 10px solid #eeeeee;
+    text-align: center;
+    padding: 8px;
+}

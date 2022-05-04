@@ -1,0 +1,61 @@
+.container table tr {
+    margin: 10px;
+}
+
+.tag-label {
+    cursor: pointer;
+}
+
+.tag-label input[type="checkbox"] {
+    /*display: none;*/
+}
+
+.tagSpace {
+    position: relative;
+    display: inline-block;
+    width: 140px;
+    height: 90px;
+    line-height: 60px;
+    text-align: center;
+    background: #42424238;
+    padding: 15px;
+    color: #8b8b8b;
+    /* text-shadow: 0 1px 4px rgb(0 0 0 / 50%); */
+    /* border-radius: 8px; */
+    font-size: 16px;
+    transition: 0.5s;
+    user-select: none;
+    overflow: hidden;
+}
+
+.followed {
+    background-color: #edcb79;
+    color: #343434;
+    box-shadow: 2px 2px 1px #34343433;
+}
+
+.tagName {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 20px;
+}
+
+.tag_table {
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    /*border-collapse: separate;*/
+    /*border-spacing: 5px;*/
+}
+
+.tag_table td {
+    padding: 5px;
+}
+
+.tag_table tr {
+    padding: 5px;
+}
+
+.btn_location {
+    margin-top: 50px;
+}
