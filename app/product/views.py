@@ -14,7 +14,7 @@ from . import product
 from .forms import ModelUploadForm, ModelModifyForm, ProductModifyForm
 from .. import db
 
-from ..models import Product, ModelType, Category, Brand
+from ..models import Product, ModelType, Category, Brand, Audio
 from ..public_tools import upload_picture, get_unique_shop_instance, get_epidemic_mode_status, generate_safe_pic_name
 
 
@@ -665,6 +665,63 @@ def upload_video(mt_id):
         mt.video_address = ref_address
         db.session.add(mt)
         db.session.commit()
+
+        flash("Video uploaded successfully!")
+
+    return redirect(url_for('product.show_page_stock_management'))
+
+
+@product.route('/stock-management/upload-audio/<int:mt_id>', methods=['GET', 'POST'])
+@login_required
+def upload_audio(mt_id):
+    """
+    This is a function for staffs uploading audio file for a specific model type
+    :param mt_id: The id of the corresponding model type
+    """
+    if request.method == 'POST':
+        # check the model type
+        mt = ModelType.query.get(mt_id)
+
+        if mt is None:
+            current_app.logger.error("This model type does not exist!")
+            return redirect(url_for('product.show_page_stock_management'))
+
+        if mt.is_deleted:
+            flash("You cannot upload video for a deleted model type.")
+            current_app.logger.error("This model type has been deleted!")
+            return redirect(url_for('product.show_page_stock_management'))
+
+        # get audio file from the form
+        audio = request.files.get("audio_file")
+
+        if audio is None:
+            current_app.logger.error("audio not gotten from the request")
+            return redirect(url_for('product.show_page_stock_management'))
+
+        filename = audio.filename
+        suffix = filename.rsplit('.')[-1]
+
+        # check the file type
+        if suffix not in Config.ALLOWED_AUDIO_SUFFIXES:
+            flash("You should upload .mp3 audio only.")
+            current_app.logger.error("audio file type error!")
+            return redirect(url_for('product.show_page_stock_management'))
+
+        # make sure the name of audio is safe
+        filename = generate_safe_pic_name(filename)
+
+        # save audio in local directory
+        file_path = os.path.join(Config.audios_dir, filename).replace('\\', '/')
+        audio.save(file_path)
+
+        # save the reference in database
+        path = 'upload/model_type/audios'
+        ref_address = os.path.join(path, filename).replace('\\', '/')
+        new_audio = Audio(address=ref_address, model_type_id=mt_id)
+        db.session.add(new_audio)
+        db.session.commit()
+
+        flash("Audio uploaded successfully!")
 
     return redirect(url_for('product.show_page_stock_management'))
 

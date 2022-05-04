@@ -1416,6 +1416,7 @@
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         </form>
+
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </div>
@@ -1432,31 +1433,46 @@
                                                                                         <div class="modal-body">
                                                                                             <div class="popup text-left">
                                                                                                 <div class="media align-items-top justify-content-between">
-                                                                                                    <h3 class="mb-3">Which kind of media to upload</h3>
+                                                                                                    <h3 class="mb-3">Upload a Audio File</h3>
                                                                                                     <div class="btn-cancel p-0" data-dismiss="modal"><i class="las la-times"></i>
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="content edit-notes">
                                                                                                     <div class="card card-transparent card-block card-stretch event-note mb-0">
-                                                                                                        <div class="card-body px-0 bukmark">
-                                                                                                            <div class="d-flex align-items-center justify-content-between pb-2 mb-3 border-bottom">
-                                                                                                                <div class="quill-tool">
+
+                                                                                                        {# upload form (file+submit) #}
+                                                                                                        <form action="{{ url_for("product.upload_audio", mt_id=model.id) }}" method="post" enctype="multipart/form-data">
+                                                                                                            <div class="card-body px-0 bukmark">
+                                                                                                                <div class="d-flex align-items-center justify-content-between pb-2 mb-3 border-bottom">
+                                                                                                                    <div class="quill-tool">
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                {# form - file input #}
+                                                                                                                <div id="quill-toolbar1">
+                                                                                                                    <div class="input-group mb-3">
+                                                                                                                        <div class="custom-file">
+                                                                                                                            <input type="file"
+                                                                                                                                   accept="audio/mpeg"
+                                                                                                                                   name="audio_file"
+                                                                                                                                   class="custom-file-input"
+                                                                                                                                   id="input-upload-model-type-audio-{{ model.id }}"
+                                                                                                                                   aria-describedby="inputGroupFileAddon01"
+                                                                                                                                   required="required">
+                                                                                                                            <label class="custom-file-label"
+                                                                                                                                   for="input-upload-model-type-audio-{{ model.id }}">Choose file (MP3 Only)</label><br>
+                                                                                                                        </div>
+                                                                                                                    </div>
                                                                                                                 </div>
                                                                                                             </div>
-                                                                                                            <div id="quill-toolbar1">
-
-                                                                                                                <p>Audio Modal</p>
-
+                                                                                                            <div class="card-footer border-0">
+                                                                                                                <div class="d-flex flex-wrap align-items-ceter justify-content-end">
+                                                                                                                    <div class="btn btn-outline-light mr-3" data-dismiss="modal">{{ _('Cancel') }}</div>
+                                                                                                                    {# form - submit #}
+                                                                                                                    <input type="submit" class="btn btn-primary" value="Upload">
+                                                                                                                </div>
                                                                                                             </div>
-                                                                                                        </div>
-                                                                                                        <div class="card-footer border-0">
-                                                                                                            <div class="d-flex flex-wrap align-items-ceter justify-content-end">
-                                                                                                                <div class="btn btn-primary mr-3"
-                                                                                                                     data-dismiss="modal">{{ _('Cancel') }}</div>
-                                                                                                                <div class="btn btn-outline-primary"
-                                                                                                                     data-dismiss="modal">{{ _('Save') }}</div>
-                                                                                                            </div>
-                                                                                                        </div>
+                                                                                                        </form>
+
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </div>
