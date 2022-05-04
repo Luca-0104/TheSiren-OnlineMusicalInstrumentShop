@@ -1,0 +1,30 @@
+.clickable {
+    cursor: pointer;
+}
+
+.priority-option{
+    background-color: #fff;
+    color: #000;
+}
+
+.modal-form{
+    width: 100%;
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 20px;
+}
+
+.modal-label{
+    text-align: left;
+}
+
+.address-list{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.address{
+    list-style: none;
+    border-bottom: gray 1px solid;
+}

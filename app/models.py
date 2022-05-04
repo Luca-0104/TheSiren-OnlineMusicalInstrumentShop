@@ -898,6 +898,7 @@ class ModelType(BaseModel):
     serial_number = db.Column(db.String(128), nullable=False)
     release_time = db.Column(db.DateTime(), index=True, default=datetime.utcnow)
     video_address = db.Column(db.String)  # video
+    three_d_model_address = db.Column(db.String)    # 3d model file
     # 1 model -> n addresses, 1 address -> 1 model
     audio_addresses = db.relationship('Audio', backref='model_type', lazy='dynamic')  # audio
     is_deleted = db.Column(db.Boolean, default=False)

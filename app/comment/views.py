@@ -7,7 +7,7 @@ from . import comment
 from config import Config
 from ..public_tools import generate_safe_pic_name, upload_picture
 from ..comment.forms import CommentForm
-from ..models import User, Address, Comment, ModelType, OrderModelType
+from ..models import User, Address, Comment, ModelType, OrderModelType, Order
 from .. import db
 
 
