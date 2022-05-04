@@ -7,7 +7,7 @@ from app.models import Cart, Order, OrderModelType, ModelType, PremiumOrder, Add
 from app.order import order
 
 from datetime import datetime
-from ..public_tools import get_unique_shop_instance
+from ..public_tools import get_unique_shop_instance, get_epidemic_mode_status
 
 
 # -------------------------------------- generate orders --------------------------------------
@@ -254,8 +254,6 @@ def update_order_shipping():
             o.generate_delivery_fee()
         # update gross payment
         o.generate_payment()
-
-        print("----------------------", o.paid_payment)
 
         # if the type is changed to "delivery", default address should be assigned
         if shipping_method == "self-collection":
@@ -601,3 +599,20 @@ def generate_premium_order():
         return jsonify({"returnValue": 0, "p_order_id": new_p_order.id})
 
     return jsonify({"returnValue": 1})
+
+
+# -------------------------------------------- staff order management --------------------------------------------
+
+@order.route('/order-management')
+@login_required
+def order_management():
+    """
+        This function renders the page of "staff order management"
+    """
+    # get whether the epidemic mode is turned on currently
+    epidemic_mode_on = get_epidemic_mode_status()
+
+    # get all orders sorted by created timestamp
+    order_lst = Order.query.order_by(Order.timestamp.desc())
+
+    return render_template('', order_lst=order_lst, epidemic_mode_on=epidemic_mode_on)

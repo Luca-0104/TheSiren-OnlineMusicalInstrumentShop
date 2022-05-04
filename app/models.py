@@ -410,6 +410,7 @@ class Order(BaseModel):
     paid_payment = db.Column(
         db.Float)  # real amount need to pay (delivery_fee + items*discount) # only 2 digits in decimal e.g. 10.xx
     status_code = db.Column(db.Integer, default=0)  # the status code of this order
+    priority = db.Column(db.Integer, default=1)     # 1, 2, 3
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))  # the uid of the customer who owns this order
     timestamp_1 = db.Column(db.DateTime(), index=True)  # time record of status changing to 'preparing'
     timestamp_2 = db.Column(db.DateTime(), index=True)  # time record of status changing to 'on delivery'
