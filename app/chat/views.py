@@ -4,7 +4,7 @@ from time import strftime, localtime
 
 from . import chat
 from .. import db
-from flask import render_template, redirect, url_for, flash, request, session
+from flask import render_template, redirect, url_for, flash, request, session, jsonify
 from flask_login import current_user, login_required
 from app import socketio
 from flask_socketio import emit, send, join_room, leave_room
@@ -93,8 +93,16 @@ def message(data):
 @socketio.on('join')
 def join(data):
     join_room(data['room'])
-    send({'msg': data['username'] + " has joined the " + data['room'] + " room."},
-         room=data['room'])
+    room = ChatRoom.query.filter_by(data['room']).first()
+    past_messages = Message.query.filter_by(id=data['room']).all()
+    for past_message in past_messages:
+        if past_message.author_type == 'customer':
+            send({'msg': past_message.content, 'username': room.customer.username, 'time_stamp': past_message.timestamp}
+                 , room=data['room'])
+
+        if past_message.author_type == 'staff':
+            send({'msg': past_message.content, 'username': 'staff', 'time_stamp': past_message.timestamp}
+                 , room=data['room'])
 
 
 @socketio.on('leave')
