@@ -441,7 +441,7 @@
                                     <div class="form-group">
                                         {{ update_avatar_form.hidden_tag() }}
                                         {{ update_avatar_form.update_avatar.label }}
-                                        {{ update_avatar_form.update_avatar() }}
+                                        {{ update_avatar_form.update_avatar(accept="image/*") }}
                                         {% for error in update_avatar_form.update_avatar().errors %}
                                             <div class="error-message">[{{ error }}]</div>
                                         {% endfor %}
