@@ -1306,8 +1306,7 @@
                                                                     class="ri-close-circle-line mr-0"></i></a>
                                                         {% endif %}
 
-                                                        <!-- Modal Section -->
-                                                        <!-- Type Modal -->
+                                                        <!-- Modify Modal Section -->
                                                         <!-- Order Details Modal -->
                                                         <div class="modal fade" id="detail-modal-{{ order.id }}"
                                                              tabindex="-1" role="dialog"
@@ -1325,69 +1324,165 @@
 
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                        <table>
+                                                                        <table class="main-table">
+                                                                            <!-- Status -->
+                                                                            <tr id="status_{{ order.id }}" style="text-align: center">
+                                                                                {% if order.status_code == 0 %}
+                                                                                    <td colspan="3" class="status_col status_wp">
+                                                                                        Waiting for Payment
+                                                                                    </td>
+                                                                                {% elif order.status_code == 1 %}
+                                                                                    <td colspan="3" class="status_col status_p">
+                                                                                        Preparing
+                                                                                    </td>
+                                                                                {% elif order.status_code == 2 %}
+                                                                                    <td colspan="3" class="status_col status_od">
+                                                                                        On Delivery
+                                                                                    </td>
+                                                                                {% elif order.status_code == 3 %}
+                                                                                    <td colspan="3" class="status_col status_wc">
+                                                                                        Waiting for Collection
+                                                                                    </td>
+                                                                                {% elif order.status_code == 4 %}
+                                                                                    <td colspan="3" class="status_col status_f">
+                                                                                        Finished
+                                                                                    </td>
+                                                                                {% elif order.status_code == 5 %}
+                                                                                    <td colspan="3" class="status_col status_c">
+                                                                                        Canceled
+                                                                                    </td>
+                                                                                {% elif order.status_code == 6 %}
+                                                                                    <td colspan="3" class="status_col status_e">
+                                                                                        Expired
+                                                                                    </td>
+                                                                                {% endif %}
+                                                                            </tr>
+
+                                                                            <!-- Information -->
                                                                             <tr>
-                                                                                <!-- Date -->
-                                                                                <td>
-                                                                                    {{ order.timestamp }}
-                                                                                </td>
-                                                                                <!-- Customer -->
-                                                                                <td>
-                                                                                    {{ order.recipient.recipient_name }}
-                                                                                </td>
-                                                                                <!-- Total -->
-                                                                                <td>
-                                                                                    ${{ order.gross_payment }}
-                                                                                </td>
-                                                                                <!-- Paid -->
-                                                                                <td>
-                                                                                    ${{ order.paid_payment }}
+                                                                                <td colspan="2" class="top-td">
+                                                                                    <table width="100%">
+                                                                                        <tr>
+                                                                                            <td class="title_indentation medium-heading border-1">
+                                                                                                Basic Information
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <table class="info_indentation" width="100%">
+                                                                                                    <tr>
+                                                                                                        <td colspan="2" class="order_num">
+                                                                                                            Trade No.<br>
+                                                                                                            {{ order.out_trade_no }}
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td colspan="2" class="order_num">
+                                                                                                            Payment No.<br>
+                                                                                                            {{ order.trade_no }}
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td colspan="2">
+                                                                                                            {{ order.timestamp }}
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td class="left-cell">
+                                                                                                            Order Type: <br>
+                                                                                                            {{ order.order_type }}
+                                                                                                        </td>
+                                                                                                        <td>
+                                                                                                            Delivery Cost: <br>
+                                                                                                            ${{ order.delivery_fee }}
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td class="left-cell">
+                                                                                                            Total Cost: <br>
+                                                                                                            ${{ order.gross_payment }}
+                                                                                                        </td>
+                                                                                                        <td class="left-cell">
+                                                                                                            Actual Paid: <br>
+                                                                                                            ${{ order.paid_payment }}
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </table>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td class="title_indentation top-indentation medium-heading extra-top-indentation border-1">
+                                                                                                {% if order.order_type == "delivery" %}
+                                                                                                    Address Information
+                                                                                                {% elif order.order_type == "self-collection" %}
+                                                                                                    Recipient Information
+                                                                                                {% endif %}
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <table class="info_indentation" width="100%">
+                                                                                                    {% if order.order_type == "delivery" %}
+                                                                                                        <tr>
+                                                                                                            <td class="left-cell">
+                                                                                                                {{ order.recipient.recipient_name }}
+                                                                                                            </td>
+                                                                                                            <td>
+                                                                                                                {{ order.recipient.phone }}
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td colspan="2">
+                                                                                                                {{ order.address_text }}
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                    {% elif order.order_type == "self-collection" %}
+                                                                                                        <tr>
+                                                                                                            <td class="name-box">
+                                                                                                                {{ order.recipient.recipient_name }}
+                                                                                                            </td>
+                                                                                                            <td>
+                                                                                                                {{ order.recipient.phone }}
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                    {% endif %}
+                                                                                                </table>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </table>
                                                                                 </td>
                                                                             </tr>
+
+                                                                            <!-- Models -->
                                                                             <tr>
-                                                                                <!-- Status -->
-                                                                                <td>
-                                                                                    {% if order.status_code == 0 %}
-                                                                                        <div class="badge badge-skyblue">
-                                                                                            Unpaid
-                                                                                        </div>
-                                                                                    {% elif order.status_code == 1 %}
-                                                                                        <div class="badge badge-orange">
-                                                                                            Preparing
-                                                                                        </div>
-                                                                                    {% elif order.status_code == 2 %}
-                                                                                        <div class="badge badge-purple">
-                                                                                            Delivering
-                                                                                        </div>
-                                                                                    {% elif order.status_code == 3 %}
-                                                                                        <div class="badge badge-purple">
-                                                                                            Waiting<br>Collection
-                                                                                        </div>
-                                                                                    {% elif order.status_code == 4 %}
-                                                                                        <div class="badge badge-success">
-                                                                                            Finished
-                                                                                        </div>
-                                                                                    {% elif order.status_code == 5 %}
-                                                                                        <div class="badge badge-light">
-                                                                                            Canceled
-                                                                                        </div>
-                                                                                    {% elif order.status_code == 6 %}
-                                                                                        <div class="badge badge-light">
-                                                                                            Expired
-                                                                                        </div>
-                                                                                    {% endif %}
-                                                                                </td>
-                                                                                <!-- Type -->
-                                                                                <td>
-                                                                                    {% if order.order_type == "delivery" %}
-                                                                                        Delivery
-                                                                                    {% else %}
-                                                                                        Self-Collection
-                                                                                    {% endif %}
-                                                                                </td>
-                                                                                <!-- Priority -->
-                                                                                <td>
-                                                                                    1
+                                                                                <td id="model_table_col">
+                                                                                    <table width="100%" class="model_listing_table">
+                                                                                        {% for order_model in order.order_model_types %}
+                                                                                            <tr id="model_row_{{ order_model.model_type.id }}"
+                                                                                                order_id="{{ order.id }}">
+                                                                                                <!-- Model Pic -->
+                                                                                                <td class="model_img_col">
+                                                                                                    {% if order_model.model_type.pictures.first() == None %}
+                                                                                                        <img src="../../static/images/example/yamaha_yep621s.jpg"
+                                                                                                             loading="lazy" alt=""
+                                                                                                             class="model_thumbnail">
+                                                                                                    {% else %}
+                                                                                                        <img src="{{ url_for("static",filename=order_model.model_type.pictures.first().address) }}"
+                                                                                                             loading="lazy" alt=""
+                                                                                                             class="model_thumbnail">
+                                                                                                    {% endif %}
+                                                                                                </td>
+                                                                                                <!-- Model Name -->
+                                                                                                <td class="model_name_col">
+                                                                                                    {{ order_model.model_type.name }}
+                                                                                                </td>
+                                                                                                <!-- quantity of this model in this order -->
+                                                                                                <td class="model_quantity_col">
+                                                                                                    &times; {{ order_model.count }}
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        {% endfor %}
+                                                                                    </table>
                                                                                 </td>
                                                                             </tr>
                                                                         </table>
@@ -1401,25 +1496,24 @@
                                                             </div><!-- /.modal -->
                                                         </div>
 
-                                                        <!-- Order Modify Modal -->
+                                                        <!-- Type Modal -->
                                                         <div class="modal fade" id="modify-modal-{{ order.id }}"
                                                              tabindex="-1" role="dialog"
                                                              aria-labelledby="myModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog">
                                                                 <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h4 class="modal-title" id="myModalLabel"
-                                                                            style="float: left;">Details</h4>
-
-                                                                        <button type="button" class="close"
-                                                                                data-dismiss="modal" aria-hidden="true">
-                                                                            &times;
-                                                                        </button>
-
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <div class="row">
-                                                                            <form class="modal-form">
+                                                                    <form class="modal-form">
+                                                                        <div class="modal-header">
+                                                                            <h4 class="modal-title" id="myModalLabel" style="float: left;">
+                                                                                Details
+                                                                            </h4>
+                                                                            <button type="button" class="close"
+                                                                                    data-dismiss="modal" aria-hidden="true">
+                                                                                &times;
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <div class="row">
                                                                                 <!-- Type section -->
                                                                                 <div class="col-md-12">
                                                                                     <div class="form-group">
@@ -1441,11 +1535,13 @@
                                                                                      style="display: none" {% endif %}>
                                                                                     <div class="form-group">
                                                                                         <label class="modal-label">Address *</label>
-                                                                                        <ul class="address-list"
+                                                                                        <ul id="addresses-1-{{ order.id }}"
+                                                                                            class="address-list"
                                                                                             order-id="{{ order.id }}">
                                                                                             {% for address in order.user.addresses %}
-                                                                                                <li id="address-2-{{ address.id }}"
-                                                                                                    class="address address-2 clickable {% if address.is_default %} chosen-address {% endif %}"
+                                                                                                <li id="address-1-{{ order.id }}-{{ address.id }}"
+                                                                                                    class="address address-1 address-1-{{ order.id }} clickable"
+                                                                                                    orderId="{{ order.id }}"
                                                                                                     address-id="{{ address.id }}">
                                                                                                     <div class="cart-container">
                                                                                                         <div class="main-container">
@@ -1480,47 +1576,39 @@
                                                                                 <div id="type-name-section-{{ order.id }}" class="col-md-12" {% if order.order_type == "self-collection" %}
                                                                                      style="display: none" {% endif %}>
                                                                                     <div class="form-group">
-                                                                                        <label class="modal-label">Recipient
-                                                                                            Name *</label>
-                                                                                        <input type="text"
-                                                                                               class="form-control"
-                                                                                               placeholder="Enter Name"
-                                                                                               data-errors="Please Enter Recipient Name."
-                                                                                               required>
+                                                                                        <label class="modal-label">Recipient Name *</label>
+                                                                                        <input id="recipient-name-1-{{ order.id }}"
+                                                                                                   type="text"
+                                                                                                   class="form-control"
+                                                                                                   placeholder="Enter Name"
+                                                                                                   data-errors="Please Enter Recipient Name.">
                                                                                         <div class="help-block with-errors"></div>
                                                                                     </div>
                                                                                 </div>
 
                                                                                 <!-- Phone section -->
-                                                                                <div iid="type-phone-section-{{ order.id }}" class="col-md-12" {% if order.order_type == "self-collection" %}
+                                                                                <div id="type-phone-section-{{ order.id }}" class="col-md-12" {% if order.order_type == "self-collection" %}
                                                                                      style="display: none" {% endif %}>
                                                                                     <div class="form-group">
-                                                                                        <label class="modal-label">Recipient
-                                                                                            Phone *</label>
-                                                                                        <input type="text"
-                                                                                               class="form-control"
-                                                                                               placeholder="Enter Serial Number"
-                                                                                               data-errors="Please Enter Recipient Phone."
-                                                                                               required>
+                                                                                        <label class="modal-label">Recipient Phone *</label>
+                                                                                        <input id="recipient-phone-1-{{ order.id }}"
+                                                                                                   type="text"
+                                                                                                   class="form-control"
+                                                                                                   placeholder="Enter Serial Number"
+                                                                                                   data-errors="Please Enter Recipient Phone.">
                                                                                         <div class="help-block with-errors"></div>
                                                                                     </div>
                                                                                 </div>
+                                                                            </div>
 
-                                                                                <!-- Buttons -->
-                                                                                <div class="col-md-12">
-                                                                                    <button id="type-btn-{{ order.id }}" type="submit" class="btn btn-primary mr-2">
-                                                                                        Update
-                                                                                    </button>
-                                                                                </div>
-                                                                            </form>
                                                                         </div>
-
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">
-                                                                            Close
-                                                                        </button>
-                                                                    </div>
+                                                                        <div class="modal-footer">
+                                                                            <button id="type-btn-{{ order.id }}" orderId="{{ order.id }}"
+                                                                                    type="button" class="btn btn-primary mr-2 type-btn">
+                                                                                Update
+                                                                            </button>
+                                                                        </div>
+                                                                    </form>
                                                                 </div><!-- /.modal-content -->
                                                             </div><!-- /.modal -->
                                                         </div>
@@ -1533,29 +1621,31 @@
                                                                  aria-labelledby="myModalLabel" aria-hidden="true">
                                                                 <div class="modal-dialog">
                                                                     <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <h4 class="modal-title" id="myModalLabel"
-                                                                                style="float: left;">Change Address</h4>
-                                                                            <table class="table-borderless">
+                                                                        <form class="modal-form">
+                                                                            <div class="modal-header">
+                                                                                <h4 class="modal-title" id="myModalLabel"
+                                                                                    style="float: left;">Change Address</h4>
+                                                                                <table class="table-borderless">
 
-                                                                            </table>
-                                                                            <button type="button" class="close"
-                                                                                    data-dismiss="modal"
-                                                                                    aria-hidden="true">
-                                                                                &times;
-                                                                            </button>
+                                                                                </table>
+                                                                                <button type="button" class="close"
+                                                                                        data-dismiss="modal"
+                                                                                        aria-hidden="true">
+                                                                                    &times;
+                                                                                </button>
 
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            <div class="row">
-                                                                                <form class="modal-form">
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <div class="row">
                                                                                     <div class="col-md-12">
                                                                                         <div class="form-group">
-                                                                                            <ul class="address-list"
+                                                                                            <ul id="addresses-2-{{ order.id }}"
+                                                                                                class="address-list"
                                                                                                 order-id="{{ order.id }}">
                                                                                                 {% for address in order.user.addresses %}
-                                                                                                    <li id="address-2-{{ address.id }}"
-                                                                                                        class="address address-2 clickable {% if address.is_default %} chosen-address {% endif %}"
+                                                                                                    <li id="address-2-{{ order.id }}-{{ address.id }}"
+                                                                                                        class="address address-2 address-2-{{ order.id }} clickable"
+                                                                                                        orderId="{{ order.id }}"
                                                                                                         address-id="{{ address.id }}">
                                                                                                         <div class="cart-container">
                                                                                                             <div class="main-container">
@@ -1585,23 +1675,15 @@
                                                                                             </ul>
                                                                                         </div>
                                                                                     </div>
-
-                                                                                    <!-- Buttons -->
-                                                                                    <div class="col-md-12">
-                                                                                        <button id="address-btn-{{ order.id }}" type="submit" class="btn btn-primary mr-2">
-                                                                                            Update
-                                                                                        </button>
-                                                                                    </div>
-                                                                                </form>
+                                                                                </div>
                                                                             </div>
-
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button"
-                                                                                    class="btn btn-default"
-                                                                                    data-dismiss="modal">Close
-                                                                            </button>
-                                                                        </div>
+                                                                            <div class="modal-footer">
+                                                                                <button id="address-btn-{{ order.id }}" orderId="{{ order.id }}"
+                                                                                        type="button" class="btn btn-primary mr-2 address-btn">
+                                                                                    Update
+                                                                                </button>
+                                                                            </div>
+                                                                        </form>
                                                                     </div><!-- /.modal-content -->
                                                                 </div><!-- /.modal -->
                                                             </div>
@@ -1613,29 +1695,30 @@
                                                                  aria-labelledby="myModalLabel" aria-hidden="true">
                                                                 <div class="modal-dialog">
                                                                     <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <h4 class="modal-title" id="myModalLabel"
-                                                                                style="float: left;">Change
-                                                                                Recipient</h4>
-                                                                            <table class="table-borderless">
+                                                                        <form class="modal-form">
+                                                                            <div class="modal-header">
+                                                                                <h4 class="modal-title" id="myModalLabel"
+                                                                                    style="float: left;">Change
+                                                                                    Recipient</h4>
+                                                                                <table class="table-borderless">
 
-                                                                            </table>
-                                                                            <button type="button" class="close"
-                                                                                    data-dismiss="modal"
-                                                                                    aria-hidden="true">
-                                                                                &times;
-                                                                            </button>
+                                                                                </table>
+                                                                                <button type="button" class="close"
+                                                                                        data-dismiss="modal"
+                                                                                        aria-hidden="true">
+                                                                                    &times;
+                                                                                </button>
 
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            <div class="row">
-                                                                                <form class="modal-form">
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <div class="row">
                                                                                     <!-- Name section -->
                                                                                     <div class="col-md-12">
                                                                                         <div class="form-group">
                                                                                             <label class="modal-label">Recipient
                                                                                                 Name *</label>
-                                                                                            <input type="text"
+                                                                                            <input id="recipient-name-2-{{ order.id }}"
+                                                                                                   type="text"
                                                                                                    class="form-control"
                                                                                                    placeholder="Enter Name"
                                                                                                    data-errors="Please Enter Recipient Name."
@@ -1649,7 +1732,8 @@
                                                                                         <div class="form-group">
                                                                                             <label class="modal-label">Recipient
                                                                                                 Phone *</label>
-                                                                                            <input type="text"
+                                                                                            <input id="recipient-phone-2-{{ order.id }}"
+                                                                                                   type="text"
                                                                                                    class="form-control"
                                                                                                    placeholder="Enter Serial Number"
                                                                                                    data-errors="Please Enter Recipient Phone."
@@ -1657,27 +1741,18 @@
                                                                                             <div class="help-block with-errors"></div>
                                                                                         </div>
                                                                                     </div>
-
-                                                                                    <!-- Buttons -->
-                                                                                    <div class="col-md-12">
-                                                                                        <button id="recipient-btn-{{ order.id }}" type="submit" class="btn btn-primary mr-2">
-                                                                                            Update
-                                                                                        </button>
-                                                                                        <button type="reset" class="btn btn-danger">
-                                                                                            {{ _('Reset') }}
-                                                                                        </button>
-                                                                                    </div>
-                                                                                </form>
+                                                                                </div>
                                                                             </div>
-
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button"
-                                                                                    class="btn btn-default"
-                                                                                    data-dismiss="modal">Close
-                                                                            </button>
-                                                                        </div>
-
+                                                                            <div class="modal-footer">
+                                                                                <button id="recipient-btn-2-{{ order.id }}" orderId="{{ order.id }}"
+                                                                                        type="button" class="btn btn-primary mr-2 recipient-btn-2">
+                                                                                    Update
+                                                                                </button>
+                                                                                <button type="reset" class="btn btn-danger">
+                                                                                    {{ _('Reset') }}
+                                                                                </button>
+                                                                            </div>
+                                                                        </form>
                                                                     </div><!-- /.modal-content -->
                                                                 </div><!-- /.modal -->
                                                             </div>
