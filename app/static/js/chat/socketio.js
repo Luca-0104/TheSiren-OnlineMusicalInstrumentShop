@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // let room = "Chat";
     // let room = "Chat";
-    joinRoom(chatroom_id);
+    joinRoom(1);
     console.log('cawcwcw');
 
     // Display incoming message
