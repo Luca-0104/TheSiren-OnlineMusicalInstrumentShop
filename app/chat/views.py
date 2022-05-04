@@ -14,7 +14,6 @@ from ..models import ChatRoom, Message, User
 @chat.route('/chat_room', methods=['GET', 'POST'])
 # @login_required
 def chat_room():
-
     if session.get('username') is not None:
         if session["role_id"] == 1:
             rooms = ChatRoom.query.filter_by(customer_id=session['uid']).all()
@@ -40,20 +39,18 @@ def chat_room():
                     db.session.add(rooms[0])
                     db.session.commit()
 
-
-
-            return render_template('chat/chat_page.html', role_id=session['role_id'], rooms=rooms)
+            return redirect(url_for('chat_for_customer', rooms=rooms))
 
             # current user is staff
         elif session["role_id"] == 2:
             rooms = ChatRoom.query.filter_by(staff_id=session['uid']).all()
-            return render_template('chat/chat_page.html', role_id=session['role_id'], rooms=rooms)
+            return render_template('chat/chat_staff.html', rooms=rooms)
 
     return render_template('main/index_new.html')
 
 
 # this route is used by staff account
-@chat.route('/chat/<chat_room_id>', methods=['GET', 'POST'])
+@chat.route('/chat_staff/<chat_room_id>', methods=['GET', 'POST'])
 # @login_required
 def chat_for_staff(chat_room_id):
     # gain the chat data
@@ -63,7 +60,7 @@ def chat_for_staff(chat_room_id):
     chat_partner_id = chat_room.customer_id
     chat_partner = User.query.filter_by(id=chat_partner_id).first()
     chat_partner_name = chat_partner.username
-    return render_template("chat/chatroom.html", username="staff", room=chat_room_id,
+    return render_template("chat/chat_staff.html", username="staff", room=chat_room_id,
                            messages=messages, role_id=session['role_id'], chat_partner_name=chat_partner_name)
 
 
@@ -73,7 +70,7 @@ def chat_for_staff(chat_room_id):
 def chat_for_customer():
     # gain the chat data
     messages = Message.query.filter_by(chat_room_id=session['uid']).all()
-    return render_template("chat/chatroom.html", username=session['username'], room=session['uid'],
+    return render_template("chat/chat_customer.html", username=session['username'], room=session['uid'],
                            messages=messages, role_id=session['role_id'])
 
 
@@ -91,7 +88,6 @@ def message(data):
     db.session.add(new_message)
     db.session.commit()
     # 2021-2-21 18:46:23
-
 
 
 @socketio.on('join')

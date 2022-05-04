@@ -278,6 +278,7 @@ pm_lst = [
     ],
 
     # didn't find soundbox & tam-tam
+    # search Tambourine on Meinl
 
     # product 1 ----------------------------------------------------
     # []
