@@ -615,4 +615,56 @@ def order_management():
     # get all orders sorted by created timestamp
     order_lst = Order.query.order_by(Order.timestamp.desc())
 
-    return render_template('staff/page-list-orders.html', orders=order_lst, epidemic_mode_on=epidemic_mode_on)
+    return render_template('staff/page-list-orders.html', order_lst=order_lst, epidemic_mode_on=epidemic_mode_on)
+
+
+@order.route('/api/order-management/update-priority', methods=['POST'])
+@login_required
+def update_priority():
+    """
+    (Using Ajax)
+    This function is for staff to update the priority of a specific order.
+    """
+    if request.method == 'POST':
+
+        # validate the user role
+        if current_user.role_id == 1:
+            current_app.logger.error("A customer want to change the order priority!")
+            return jsonify({"returnValue": 1})
+
+        # get info from Ajax
+        order_id = request.form.get('order_id')
+        new_priority = request.form.get('new_priority')
+
+        if order_id is None or new_priority is None:
+            current_app.logger.error("info are not gotten from Ajax")
+            return jsonify({"returnValue": 1})
+
+        # parse parameters to int
+        try:
+            order_id = int(order_id)
+            new_priority = int(new_priority)
+        except Exception as e:
+            current_app.logger.error(e)
+            return jsonify({"returnValue": 1})
+
+        # validate the range of priority (1-3)
+        if new_priority not in {1, 2, 3}:
+            current_app.logger.error("Invalid new priority!")
+            return jsonify({"returnValue": 1})
+
+        # query the order from db
+        o = Order.query.get(order_id)
+
+        if o is None:
+            current_app.logger.error("No such order with this id!")
+            return jsonify({"returnValue": 1})
+
+        # change the priority of this order
+        o.priority = new_priority
+        db.session.add(o)
+        db.session.commit()
+
+        return jsonify({"returnValue": 0})
+
+    return jsonify({"returnValue": 1})
