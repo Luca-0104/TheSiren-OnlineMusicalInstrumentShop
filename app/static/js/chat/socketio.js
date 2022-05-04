@@ -3,8 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // let room = "Chat";
     // let room = "Chat";
-    joinRoom(chatroom_id);
+    console.log(id);
+    joinRoom(id);
     console.log('cawcwcw');
+    console.log(chatroom_id);
+    console.log(username);
 
     // Display incoming message
     socket.on('message', data => {
@@ -53,6 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'username': username, 'room': chatroom_id });
         // Clear input area
         document.querySelector('#user_message').value = '';
+        console.log(chatroom_id);
+        console.log(username);
     }
 
     // Room selection

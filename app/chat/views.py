@@ -78,6 +78,7 @@ def chat_for_customer():
 def message(data):
     send({'msg': data['msg'], 'username': data['username'], 'time_stamp': strftime('%Y-%m-%d %H:%M:%S', localtime())}
          , room=data['room'])
+    print("message" + data['msg'])
     # check the identity of the current user
     if session["role_id"] == 1:
         author = 'customer'
@@ -97,11 +98,12 @@ def join(data):
     past_messages = Message.query.filter_by(id=data['room']).all()
     for past_message in past_messages:
         if past_message.author_type == 'customer':
-            send({'msg': past_message.content, 'username': room.customer.username, 'time_stamp': past_message.timestamp}
+            # past_message.timestamp
+            send({'msg': past_message.content, 'username': room.customer.username, 'time_stamp': 0}
                  , room=data['room'])
 
         if past_message.author_type == 'staff':
-            send({'msg': past_message.content, 'username': 'staff', 'time_stamp': past_message.timestamp}
+            send({'msg': past_message.content, 'username': 'staff', 'time_stamp': 0}
                  , room=data['room'])
 
 
