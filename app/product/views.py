@@ -726,6 +726,60 @@ def upload_audio(mt_id):
     return redirect(url_for('product.show_page_stock_management'))
 
 
+@product.route('/stock-management/upload-3d-file/<int:mt_id>', methods=['GET', 'POST'])
+@login_required
+def upload_3d_file(mt_id):
+    """
+    This is a function for staffs uploading 3D model file for a specific model type
+    :param mt_id: The id of the corresponding model type
+    """
+    if request.method == 'POST':
+        # check the model type
+        mt = ModelType.query.get(mt_id)
+
+        if mt is None:
+            current_app.logger.error("This model type does not exist!")
+            return redirect(url_for('product.show_page_stock_management'))
+
+        if mt.is_deleted:
+            flash("You cannot upload video for a deleted model type.")
+            current_app.logger.error("This model type has been deleted!")
+            return redirect(url_for('product.show_page_stock_management'))
+
+        # get 3d file from the form
+        three_d_file = request.files.get("three_d_file")
+
+        if three_d_file is None:
+            current_app.logger.error("3d file not gotten from the request")
+            return redirect(url_for('product.show_page_stock_management'))
+
+        filename = three_d_file.filename
+        suffix = filename.rsplit('.')[-1]
+
+        # check the file type
+        if suffix not in Config.ALLOWED_3D_MODEL_SUFFIXES:
+            flash("You should upload .fbx/.obj file only.")
+            current_app.logger.error("3d file type error!")
+            return redirect(url_for('product.show_page_stock_management'))
+
+        # make sure the name of 3d file is safe
+        filename = generate_safe_pic_name(filename)
+
+        # save 3d file in local directory
+        file_path = os.path.join(Config.threeD_dir, filename).replace('\\', '/')
+        three_d_file.save(file_path)
+
+        # save the reference in database
+        path = 'upload/model_type/3d-model-files'
+        ref_address = os.path.join(path, filename).replace('\\', '/')
+        mt.three_d_model_address = ref_address
+        db.session.add(mt)
+        db.session.commit()
+
+        flash("3D file uploaded successfully!")
+
+    return redirect(url_for('product.show_page_stock_management'))
+
 # ------------------------------------------------ operations on 'categories' ------------------------------------------------
 # ------------------------------------------- may NOT be adopted! ------------------------------------------------------------------------------
 
