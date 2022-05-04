@@ -1,3 +1,5 @@
+console.log("js order-listing");
+
 $(".priority-select").change(function () {
     let orderId = $(this).attr("orderId");
     let checkValue = $(this).val();
@@ -48,16 +50,12 @@ function changeStatusTo(order_id, new_code) {
         let returnValue = response['returnValue'];
 
         if (returnValue === 0) {
-            /success
+            //success
             location.reload();
         }
     });
 }
 
-$("#select-type-7").change(function () {
+$(".type-select").change(function () {
     console.log("here");
-    //使用refresh方法更新UI以匹配新状态
-    $('.selectpicker').selectpicker('refresh');
-//render方法强制重新渲染引导程序
-    $('.selectpicker').selectpicker('render');
 });
