@@ -13,7 +13,8 @@
         <link href="../../static/css/webflow.css" rel="stylesheet" type="text/css">
         <link href="../../static/css/jacks-supercool-site-c6dd88.webflow.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="../../static/css/staff/stock-management.css">
-        <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+        <link rel="stylesheet"
+              href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
         <link href="../../static/css/staff/order-listing.css" rel="stylesheet" type="text/css">
 
 
@@ -1204,20 +1205,24 @@
                                                 </td>
                                                 <!-- Priority -->
                                                 <td>
-                                                    <span id="priority-sort-{{ order.id }}" style="display: none">{{ order.priority }}</span>
+                                                    <span id="priority-sort-{{ order.id }}"
+                                                          style="display: none">{{ order.priority }}</span>
                                                     <select id="priority-select-{{ order.id }}" data-style="py-0"
                                                             class="btn priority-select {% if order.priority == 1 %}btn-light{% elif order.priority == 2 %}btn-info{% elif order.priority == 3 %}btn-secondary{% endif %}"
                                                             orderId="{{ order.id }}">
                                                         <option class="priority-option" pvalue="1"
-                                                                {% if order.priority == 1 %} selected="selected" {% endif %}>
+                                                                {% if order.priority == 1 %}
+                                                                selected="selected" {% endif %}>
                                                             Normal
                                                         </option>
                                                         <option class="priority-option" pvalue="2"
-                                                                {% if order.priority == 2 %} selected="selected" {% endif %}>
+                                                                {% if order.priority == 2 %}
+                                                                selected="selected" {% endif %}>
                                                             Important
                                                         </option>
                                                         <option class="priority-option" pvalue="3"
-                                                                {% if order.priority == 3 %} selected="selected" {% endif %}>
+                                                                {% if order.priority == 3 %}
+                                                                selected="selected" {% endif %}>
                                                             Significant
                                                         </option>
                                                     </select>
@@ -1226,58 +1231,79 @@
                                                 <td>
                                                     <div class="d-flex align-items-center list-action">
                                                         <!-- Action Section -->
-                                                        <a class="badge bg-info mr-2" data-toggle="modal"
-                                                           data-target="#detail-modal-{{ order.id }}" title=""
-                                                           data-original-title="View"
-                                                           href="#"><i class="ri-eye-line mr-0"></i></a>
-                                                        <a class="badge bg-success mr-2" data-toggle="modal"
-                                                           data-target="#modify-modal-{{ order.id }}" title=""
-                                                           data-original-title="Edit"
-                                                           href="#"><i class="ri-pencil-line mr-0"></i></a>
+                                                        <div class="mr-2" data-toggle="modal"
+                                                             data-target="#detail-modal-{{ order.id }}">
+                                                            <a class="badge bg-info" data-toggle="tooltip"
+                                                               data-original-title="view" title=""
+                                                               href="#"><i class="ri-eye-line mr-0"></i></a>
+                                                        </div>
+                                                        <div class="mr-2" data-toggle="modal"
+                                                             data-target="#modify-modal-{{ order.id }}">
+                                                            <a class="badge bg-success" data-toggle="tooltip"
+                                                               data-original-title="Eidt" title=""
+                                                               href="#"><i class="ri-pencil-line mr-0"></i></a>
+                                                        </div>
                                                         {% if order.order_type == "delivery" %}
-                                                            <a class="badge bg-success mr-2" data-toggle="modal"
-                                                               data-target="#address-modal-{{ order.id }}" title=""
-                                                               data-original-title="Edit"
-                                                               href="#"><i class="ri-home-4-line mr-0"></i></a>
+                                                            <div class="mr-2" data-toggle="modal"
+                                                                 data-target="#address-modal-{{ order.id }}">
+                                                                <a class="badge bg-success" data-toggle="tooltip"
+                                                                   data-original-title="Eidt" title=""
+                                                                   href="#"><i class="ri-home-4-line mr-0"></i></a>
+                                                            </div>
                                                         {% else %}
-                                                            <a class="badge bg-success mr-2" data-toggle="modal"
-                                                               data-target="#recipient-modal-{{ order.id }}" title=""
-                                                               data-original-title="Edit"
-                                                               href="#"><i class="ri-user-3-fill mr-0"></i></a>
+                                                            <div class="mr-2" data-toggle="modal"
+                                                                 data-target="#recipient-modal-{{ order.id }}">
+                                                                <a class="badge bg-success" data-toggle="tooltip"
+                                                                   data-original-title="Eidt"
+                                                                   title=""
+                                                                   href="#"><i class="ri-user-3-fill mr-0"></i></a>
+                                                            </div>
                                                         {% endif %}
 
                                                         {% if order.status_code == 0 %}
                                                             <a class="badge bg-dark mr-2" data-toggle="tooltip"
                                                                data-placement="top" title=""
                                                                data-original-title="Cancel"
-                                                               href="#"><i class="ri-close-circle-line mr-0"></i></a>
+                                                               href="#" onclick="changeStatusTo({{ order.id }}, 5);"><i
+                                                                    class="ri-close-circle-line mr-0"></i></a>
                                                         {% elif order.status_code == 1 %}
                                                             {% if order.order_type == "delivery" %}
                                                                 <a class="badge bg-warning mr-2" data-toggle="tooltip"
                                                                    data-placement="top" title=""
                                                                    data-original-title="on deli"
-                                                                   href="#"><i class="ri-truck-fill mr-0"></i></a>
+                                                                   href="#"
+                                                                   onclick="changeStatusTo({{ order.id }}, 2);"><i
+                                                                        class="ri-truck-fill mr-0"></i></a>
                                                             {% else %}
                                                                 <a class="badge bg-warning mr-2" data-toggle="tooltip"
                                                                    data-placement="top" title=""
                                                                    data-original-title="wait"
-                                                                   href="#"><i
+                                                                   href="#"
+                                                                   onclick="changeStatusTo({{ order.id }}, 3);"><i
                                                                         class="ri-share-forward-box-line mr-0"></i></a>
                                                             {% endif %}
+                                                            <a class="badge bg-dark mr-2" data-toggle="tooltip"
+                                                               data-placement="top" title=""
+                                                               data-original-title="Cancel"
+                                                               href="#" onclick="changeStatusTo({{ order.id }}, 5);"><i
+                                                                    class="ri-close-circle-line mr-0"></i></a>
                                                         {% elif order.status_code == 2 %}
                                                             <a class="badge bg-danger mr-2" data-toggle="tooltip"
                                                                data-placement="top" title=""
                                                                data-original-title="Finish"
-                                                               href="#"><i class="ri-check-fill mr-0"></i></a>
+                                                               href="#" onclick="changeStatusTo({{ order.id }}, 4);"><i
+                                                                    class="ri-check-fill mr-0"></i></a>
                                                         {% elif order.status_code == 3 %}
                                                             <a class="badge bg-danger mr-2" data-toggle="tooltip"
                                                                data-placement="top" title=""
                                                                data-original-title="Finish"
-                                                               href="#"><i class="ri-check-fill mr-0"></i></a>
+                                                               href="#" onclick="changeStatusTo({{ order.id }}, 4);"><i
+                                                                    class="ri-check-fill mr-0"></i></a>
                                                             <a class="badge bg-dark mr-2" data-toggle="tooltip"
                                                                data-placement="top" title=""
                                                                data-original-title="Cancel"
-                                                               href="#"><i class="ri-close-circle-line mr-0"></i></a>
+                                                               href="#" onclick="changeStatusTo({{ order.id }}, 5);"><i
+                                                                    class="ri-close-circle-line mr-0"></i></a>
                                                         {% endif %}
 
                                                         <!-- Modal Section -->
@@ -1392,15 +1418,104 @@
 
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                        {% if order.order_type == "delivery" %}
-                                                                            is delivery
-                                                                        {% else %}
-                                                                            is self-collection
-                                                                        {% endif %}
+                                                                        <div class="row">
+                                                                            <form class="modal-form">
+                                                                                <!-- Type section -->
+                                                                                <div class="col-md-12">
+                                                                                    <div class="form-group">
+                                                                                        <label class="modal-label">Type *</label>
+                                                                                        <select id="select-type-{{ order.id }}" name="select-type"
+                                                                                                orderId="{{ order.id }}"
+                                                                                                class="selectpicker form-control type-select" data-style="py-0">
+                                                                                            <option sn="b1" {% if order.order_type == "self-collection" %} selected="selected" {% endif %}>
+                                                                                                Delivery
+                                                                                            </option>
+                                                                                            <option sn="b2" {% if order.order_type == "delivery" %} selected="selected" {% endif %}>
+                                                                                                Self-Collection
+                                                                                            </option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!-- Address section -->
+                                                                                <div id="type-address-section-{{ order.id }}" class="col-md-12" {% if order.order_type == "delivery" %} style="display: none" {% endif %}>
+                                                                                    <div class="form-group">
+                                                                                    <label class="modal-label">Address *</label>
+                                                                                        <ul class="address-list"
+                                                                                            order-id="{{ order.id }}">
+                                                                                            {% for address in order.user.addresses %}
+                                                                                                <li id="address-2-{{ address.id }}"
+                                                                                                    class="address address-2 clickable {% if address.is_default %} chosen-address {% endif %}"
+                                                                                                    address-id="{{ address.id }}">
+                                                                                                    <div class="cart-container">
+                                                                                                        <div class="main-container">
+                                                                                                            <span class="large-text address address-number"></span>
+                                                                                                            <div class=""></div>
+                                                                                                        </div>
+                                                                                                        <br><br>
+                                                                                                        <div class="main-container">
+                                                                                                            <span class="fine-print-text">Recipient Name:</span>
+                                                                                                            <br>
+                                                                                                            <span class="address-name w-commerce-commerceboldtextblock">{{ address.recipient.recipient_name }}</span>
+                                                                                                        </div>
+                                                                                                        <br>
+                                                                                                        <div class="main-container">
+                                                                                                            <span class="fine-print-text">Full Address:</span>
+                                                                                                            <br>
+                                                                                                            <span class="address-address address-gray"
+                                                                                                                  style="display:flex;">{{ address.get_address() }}</span>
+
+                                                                                                        </div>
+                                                                                                        {% if address.is_default %}
+                                                                                                            <span id="address-default-sign">[default]</span>
+                                                                                                        {% endif %}
+                                                                                                    </div>
+                                                                                                </li>
+                                                                                            {% endfor %}
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <!-- Name section -->
+                                                                                <div id="type-name-section-{{ order.id }}" class="col-md-12" {% if order.order_type == "self-collection" %} style="display: none" {% endif %}>
+                                                                                    <div class="form-group">
+                                                                                        <label class="modal-label">Recipient
+                                                                                            Name *</label>
+                                                                                        <input type="text"
+                                                                                               class="form-control"
+                                                                                               placeholder="Enter Name"
+                                                                                               data-errors="Please Enter Recipient Name."
+                                                                                               required>
+                                                                                        <div class="help-block with-errors"></div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <!-- Phone section -->
+                                                                                <div iid="type-phone-section-{{ order.id }}" class="col-md-12" {% if order.order_type == "self-collection" %} style="display: none" {% endif %}>
+                                                                                    <div class="form-group">
+                                                                                        <label class="modal-label">Recipient
+                                                                                            Phone *</label>
+                                                                                        <input type="text"
+                                                                                               class="form-control"
+                                                                                               placeholder="Enter Serial Number"
+                                                                                               data-errors="Please Enter Recipient Phone."
+                                                                                               required>
+                                                                                        <div class="help-block with-errors"></div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <!-- Buttons -->
+                                                                                <div class="col-md-12">
+                                                                                    <button id="type-btn-{{ order.id }}" type="submit" class="btn btn-primary mr-2">
+                                                                                        Update
+                                                                                    </button>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+
                                                                     </div>
                                                                     <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-default"
-                                                                                data-dismiss="modal">Close
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                                            Close
                                                                         </button>
                                                                     </div>
                                                                 </div><!-- /.modal-content -->
@@ -1429,9 +1544,54 @@
 
                                                                         </div>
                                                                         <div class="modal-body">
-                                                                            Address 1<br>
-                                                                            Address 2<br>
-                                                                            Address 3
+                                                                            <div class="row">
+                                                                                <form class="modal-form">
+                                                                                    <div class="col-md-12">
+                                                                                        <div class="form-group">
+                                                                                            <ul class="address-list"
+                                                                                                order-id="{{ order.id }}">
+                                                                                                {% for address in order.user.addresses %}
+                                                                                                    <li id="address-2-{{ address.id }}"
+                                                                                                        class="address address-2 clickable {% if address.is_default %} chosen-address {% endif %}"
+                                                                                                        address-id="{{ address.id }}">
+                                                                                                        <div class="cart-container">
+                                                                                                            <div class="main-container">
+                                                                                                                <span class="large-text address address-number"></span>
+                                                                                                                <div class=""></div>
+                                                                                                            </div>
+                                                                                                            <br><br>
+                                                                                                            <div class="main-container">
+                                                                                                                <span class="fine-print-text">Recipient Name:</span>
+                                                                                                                <br>
+                                                                                                                <span class="address-name w-commerce-commerceboldtextblock">{{ address.recipient.recipient_name }}</span>
+                                                                                                            </div>
+                                                                                                            <br>
+                                                                                                            <div class="main-container">
+                                                                                                                <span class="fine-print-text">Full Address:</span>
+                                                                                                                <br>
+                                                                                                                <span class="address-address address-gray"
+                                                                                                                      style="display:flex;">{{ address.get_address() }}</span>
+
+                                                                                                            </div>
+                                                                                                            {% if address.is_default %}
+                                                                                                                <span id="address-default-sign">[default]</span>
+                                                                                                            {% endif %}
+                                                                                                        </div>
+                                                                                                    </li>
+                                                                                                {% endfor %}
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <!-- Buttons -->
+                                                                                    <div class="col-md-12">
+                                                                                        <button id="address-btn-{{ order.id }}" type="submit" class="btn btn-primary mr-2">
+                                                                                            Update
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </form>
+                                                                            </div>
+
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button"
@@ -1465,8 +1625,48 @@
 
                                                                         </div>
                                                                         <div class="modal-body">
-                                                                            Recipient Name
-                                                                            Recipient Phone
+                                                                            <div class="row">
+                                                                                <form class="modal-form">
+                                                                                    <!-- Name section -->
+                                                                                    <div class="col-md-12">
+                                                                                        <div class="form-group">
+                                                                                            <label class="modal-label">Recipient
+                                                                                                Name *</label>
+                                                                                            <input type="text"
+                                                                                                   class="form-control"
+                                                                                                   placeholder="Enter Name"
+                                                                                                   data-errors="Please Enter Recipient Name."
+                                                                                                   required>
+                                                                                            <div class="help-block with-errors"></div>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <!-- Phone section -->
+                                                                                    <div class="col-md-12">
+                                                                                        <div class="form-group">
+                                                                                            <label class="modal-label">Recipient
+                                                                                                Phone *</label>
+                                                                                            <input type="text"
+                                                                                                   class="form-control"
+                                                                                                   placeholder="Enter Serial Number"
+                                                                                                   data-errors="Please Enter Recipient Phone."
+                                                                                                   required>
+                                                                                            <div class="help-block with-errors"></div>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <!-- Buttons -->
+                                                                                    <div class="col-md-12">
+                                                                                        <button id="recipient-btn-{{ order.id }}" type="submit" class="btn btn-primary mr-2">
+                                                                                            Update
+                                                                                        </button>
+                                                                                        <button type="reset" class="btn btn-danger">
+                                                                                            {{ _('Reset') }}
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </form>
+                                                                            </div>
+
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button"
@@ -1474,6 +1674,7 @@
                                                                                     data-dismiss="modal">Close
                                                                             </button>
                                                                         </div>
+
                                                                     </div><!-- /.modal-content -->
                                                                 </div><!-- /.modal -->
                                                             </div>
