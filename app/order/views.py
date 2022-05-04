@@ -472,7 +472,7 @@ def change_status():
 
         --- permission ---
         customers -> {(2->)4, 5}
-        staff     -> {2, 3, (3->)4, 5}
+        staff     -> {2, 3, (2, 3->)4, 5}
     """
     if request.method == 'POST':
         # get data from Ajax
@@ -522,8 +522,8 @@ def change_status():
         elif current_user.role_id == 2:
             # check the permission
             if new_code in perm_staff:
-                # staff can only change the status to 'finished' when it is 'waiting for collection'
-                if new_code == 4 and current_code != 3:
+                # staff can only change the status to 'finished' when it is 'delivery' or 'waiting for collection'
+                if new_code == 4 and (current_code != 2 or current_code != 3):
                     return jsonify({'returnValue': 2, 'msg': 'Permission denied!'})
                 # update status
                 o.status_code = new_code
