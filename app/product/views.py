@@ -632,7 +632,7 @@ def upload_video(mt_id):
             return redirect(url_for('product.show_page_stock_management'))
 
         if mt.is_deleted:
-            flash("You cannot upload video for a deleted model type.")
+            flash("Failed! You cannot upload video for a deleted model type.")
             current_app.logger.error("This model type has been deleted!")
             return redirect(url_for('product.show_page_stock_management'))
 
@@ -648,7 +648,7 @@ def upload_video(mt_id):
 
         # check the file type
         if suffix not in Config.ALLOWED_VIDEO_SUFFIXES:
-            flash("You should upload .mp4 video only.")
+            flash("Failed! You should upload .mp4 video only.")
             current_app.logger.error("video file type error!")
             return redirect(url_for('product.show_page_stock_management'))
 
@@ -687,7 +687,7 @@ def upload_audio(mt_id):
             return redirect(url_for('product.show_page_stock_management'))
 
         if mt.is_deleted:
-            flash("You cannot upload video for a deleted model type.")
+            flash("Failed! You cannot upload video for a deleted model type.")
             current_app.logger.error("This model type has been deleted!")
             return redirect(url_for('product.show_page_stock_management'))
 
@@ -703,7 +703,7 @@ def upload_audio(mt_id):
 
         # check the file type
         if suffix not in Config.ALLOWED_AUDIO_SUFFIXES:
-            flash("You should upload .mp3 audio only.")
+            flash("Failed! You should upload .mp3 audio only.")
             current_app.logger.error("audio file type error!")
             return redirect(url_for('product.show_page_stock_management'))
 
@@ -742,7 +742,7 @@ def upload_3d_file(mt_id):
             return redirect(url_for('product.show_page_stock_management'))
 
         if mt.is_deleted:
-            flash("You cannot upload video for a deleted model type.")
+            flash("Failed! You cannot upload video for a deleted model type.")
             current_app.logger.error("This model type has been deleted!")
             return redirect(url_for('product.show_page_stock_management'))
 
@@ -758,7 +758,7 @@ def upload_3d_file(mt_id):
 
         # check the file type
         if suffix not in Config.ALLOWED_3D_MODEL_SUFFIXES:
-            flash("You should upload .fbx/.obj file only.")
+            flash("Failed! You should upload .fbx/.obj file only.")
             current_app.logger.error("3d file type error!")
             return redirect(url_for('product.show_page_stock_management'))
 
