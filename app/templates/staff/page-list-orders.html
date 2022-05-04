@@ -15,6 +15,8 @@
         <link rel="stylesheet" href="../../static/css/staff/stock-management.css">
         <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
         <link href="../../static/css/staff/order-listing.css" rel="stylesheet" type="text/css">
+
+        <script id="backend-bundle" src="../../static/js/backend-bundle.min.js"></script>
     </head>
     <body class="  ">
         <!-- loader Start -->
@@ -1135,7 +1137,7 @@
                                         </tr>
                                     </thead>
                                     <tbody class="ligth-body">
-                                        {% for order in orders %}
+                                        {% for order in order_lst %}
                                             <tr>
                                                 <!-- Date -->
                                                 <td>
@@ -1550,21 +1552,22 @@
             </div>
         </footer>
 
-        <!-- Backend Bundle JavaScript -->
-        <script src="../../static/js/backend-bundle.min.js"></script>
+        <div id="script-box">
+            <!-- Backend Bundle JavaScript -->
 
-        <script src="../../static/js/staff/order-listing.js"></script>
+            <script src="../../static/js/staff/order-listing.js"></script>
 
-        <!-- Table Treeview JavaScript -->
-        <script src="../../static/js/table-treeview.js"></script>
+            <!-- Table Treeview JavaScript -->
+            <script src="../../static/js/table-treeview.js"></script>
 
-        <!-- Chart Custom JavaScript -->
-        <script src="../../static/js/customizer.js"></script>
+            <!-- Chart Custom JavaScript -->
+            <script src="../../static/js/customizer.js"></script>
 
-        <!-- Chart Custom JavaScript -->
-        <script async src="../../static/js/chart-custom.js"></script>
+            <!-- Chart Custom JavaScript -->
+            <script async src="../../static/js/chart-custom.js"></script>
 
-        <!-- app JavaScript -->
-        <script src="../../static/js/app.js"></script>
+            <!-- app JavaScript -->
+            <script src="../../static/js/app.js"></script>
+        </div>
     </body>
 </html>
