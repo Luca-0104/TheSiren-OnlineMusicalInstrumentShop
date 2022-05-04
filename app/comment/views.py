@@ -7,7 +7,7 @@ from . import comment
 from config import Config
 from ..public_tools import generate_safe_pic_name, upload_picture
 from ..comment.forms import CommentForm
-from ..models import User, Address, Comment, ModelType, OrderModelType
+from ..models import User, Address, Comment, ModelType, OrderModelType, Order
 from .. import db
 
 
@@ -82,3 +82,9 @@ def upload_comment(omt_id):
         return redirect(url_for("order.my_orders"))
 
     return render_template('comment/comment.html', order_model=omt, form=form)
+
+@comment.route('/order-listing', methods=['GET', 'POST'])
+@login_required
+def order_listing():
+    orders = Order.query.all()
+    return render_template('staff/page-list-orders.html', orders=orders)
