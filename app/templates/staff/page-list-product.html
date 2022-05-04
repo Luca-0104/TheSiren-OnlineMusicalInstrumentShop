@@ -1230,7 +1230,7 @@
                                                                        data-placement="top" title=""
                                                                        data-original-title="Upload New Modeltype"
                                                                        href="/upload-model-type/{{ product.id }}"><i
-                                                                            class="ri-pencil-line mr-0"></i></a>
+                                                                            class="ri-add-line mr-0"></i></a>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -1281,18 +1281,33 @@
                                                                                data-original-title="View"
                                                                                href="{{ url_for("main.model_type_details", mt_id=model.id) }}"><i
                                                                                     class="ri-eye-line mr-0"></i></a>
+
                                                                             <a class="badge bg-success mr-2"
                                                                                data-toggle="tooltip"
                                                                                data-placement="top" title=""
                                                                                data-original-title="Edit"
                                                                                href="/modify-model-type/{{ model.id }}"><i
                                                                                     class="ri-pencil-line mr-0"></i></a>
+
                                                                             <a class="badge bg-warning mr-2"
                                                                                data-toggle="tooltip"
                                                                                data-placement="top" title=""
                                                                                data-original-title="Delete"
                                                                                href="javascript:remove_model_type({{ model.id }}, {{ product.id }});"><i
                                                                                     class="ri-delete-bin-line mr-0"></i></a>
+
+                                                                            {# the button for upload media files #}
+                                                                            <div class="mr-2"
+                                                                                 data-toggle="modal"
+                                                                                 data-target="#edit-note">
+                                                                                <a class="badge bg-gradient-blue"
+                                                                                   data-toggle="tooltip"
+                                                                                   data-placement="top" title=""
+                                                                                   data-original-title="Media Files">
+                                                                                    <i class="ri-airplay-line mr-0"></i>
+                                                                                </a>
+                                                                            </div>
+
                                                                         </div>
                                                                     </td>
                                                                 </tr>
