@@ -270,6 +270,17 @@ class BaseModel(db.Model):
         return result
 
 
+class Journal(BaseModel):
+    """
+        The journal that staff can upload
+    """
+    __tablename_ = 'journals'
+    id = db.Column(db.Integer, primary_key=True)
+    text = db.Column(db.Text, nullable=False)
+    timestamp = db.Column(db.DateTime(), index=True, default=datetime.utcnow)
+    author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+
 class TheSiren(BaseModel):
     """
         This table stores only a single instance of this musical shop.
@@ -1346,6 +1357,8 @@ class User(UserMixin, BaseModel):
     premium_orders = db.relationship('PremiumOrder', backref='user', lazy='dynamic')
     # 1 user --> n B_histories
     browsing_histories = db.relationship('BrowsingHistory', backref='user', lazy='dynamic')
+    # 1 staff --> n journals
+    journals = db.relationship('Journal', backref='author', lazy='dynamic')
 
     def __repr__(self):
         return '<User %r>' % self.username
