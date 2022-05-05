@@ -29,7 +29,7 @@
           <div class="list-group rounded-0">
 
            {% for room in rooms %}
-                <a id="{{ room.id }}" class="list-group-item list-group-item-action active text-white rounded-0">
+                <a id="{{ room.id }}" sn="{{ room.staff.username }}" class="list-group-item list-group-item-action active text-white rounded-0">
                   <div class="media"><img src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg" alt="user" width="50" class="rounded-circle">
                     <div class="media-body ml-4">
                       <div class="d-flex align-items-center justify-content-between mb-1">
@@ -41,90 +41,13 @@
                 </a>
            {% endfor %}
 
-            <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-0">
-              <div class="media"><img src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg" alt="user" width="50" class="rounded-circle">
-                <div class="media-body ml-4">
-                  <div class="d-flex align-items-center justify-content-between mb-1">
-                    <h6 class="mb-0">Jason Doe</h6><small class="small font-weight-bold">14 Dec</small>
-                  </div>
-                  <p class="font-italic text-muted mb-0 text-small">Lorem ipsum dolor sit amet, consectetur. incididunt ut labore.</p>
-                </div>
-              </div>
-            </a>
-
-            <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-0">
-              <div class="media"><img src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg" alt="user" width="50" class="rounded-circle">
-                <div class="media-body ml-4">
-                  <div class="d-flex align-items-center justify-content-between mb-1">
-                    <h6 class="mb-0">Jason Doe</h6><small class="small font-weight-bold">9 Nov</small>
-                  </div>
-                  <p class="font-italic text-muted mb-0 text-small">consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                </div>
-              </div>
-            </a>
-
-            <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-0">
-              <div class="media"><img src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg" alt="user" width="50" class="rounded-circle">
-                <div class="media-body ml-4">
-                  <div class="d-flex align-items-center justify-content-between mb-1">
-                    <h6 class="mb-0">Jason Doe</h6><small class="small font-weight-bold">18 Oct</small>
-                  </div>
-                  <p class="font-italic text-muted mb-0 text-small">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                </div>
-              </div>
-            </a>
-
-            <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-0">
-              <div class="media"><img src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg" alt="user" width="50" class="rounded-circle">
-                <div class="media-body ml-4">
-                  <div class="d-flex align-items-center justify-content-between mb-1">
-                    <h6 class="mb-0">Jason Doe</h6><small class="small font-weight-bold">17 Oct</small>
-                  </div>
-                  <p class="font-italic text-muted mb-0 text-small">consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                </div>
-              </div>
-            </a>
-
-            <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-0">
-              <div class="media"><img src="../../static/images/popo.jpg" alt="user" width="50" class="rounded-circle">
-                <div class="media-body ml-4">
-                  <div class="d-flex align-items-center justify-content-between mb-1">
-                    <h6 class="mb-0">popo</h6><small class="small font-weight-bold">2 Sep</small>
-                  </div>
-                  <p class="font-italic text-muted mb-0 text-small">I know my rights! I need yogurt every day!!</p>
-                </div>
-              </div>
-            </a>
-
-            <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-0">
-              <div class="media"><img src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg" alt="user" width="50" class="rounded-circle">
-                <div class="media-body ml-4">
-                  <div class="d-flex align-items-center justify-content-between mb-1">
-                    <h6 class="mb-0">Jason Doe</h6><small class="small font-weight-bold">30 Aug</small>
-                  </div>
-                  <p class="font-italic text-muted mb-0 text-small">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                </div>
-              </div>
-            </a>
-
-            <a href="#" class="list-group-item list-group-item-action list-group-item-light rounded-0">
-              <div class="media"><img src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg" alt="user" width="50" class="rounded-circle">
-                <div class="media-body ml-4">
-                  <div class="d-flex align-items-center justify-content-between mb-3">
-                    <h6 class="mb-0">Jason Doe</h6><small class="small font-weight-bold">21 Aug</small>
-                  </div>
-                  <p class="font-italic text-muted mb-0 text-small">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                </div>
-              </div>
-            </a>
-
           </div>
         </div>
       </div>
     </div>
     <!-- Chat Box-->
     <div class="col-7 px-0">
-      <div class="px-4 py-5 chat-box bg-white">
+      <div id="chatbox" class="px-4 py-5 chat-box bg-white">
           {% for message in messages %}
                {% if message.author_type == "customer" and role_id == 1 %}
                     <!-- Sender Message-->
@@ -251,11 +174,7 @@
         </div>
     </div>
 
-    <!-- Get username -->
-    <script type="text/javascript">
-        const username = `{{ username }}`;
-        const room = `{{ room }}`;
-    </script>
+
 
     <!-- Custom chat JS -->
     <script src="{{ url_for('static', filename='js/chat/chat_page.js') }}">
@@ -267,7 +186,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
 
     <!-- Custom SocketIO JS -->
-    <script src="{{ url_for('static', filename='js/chat/socketio.js') }}">
+    <script src="{{ url_for('static', filename='js/chat/socketio.js') }}"></script>
+
+
+    <script src="../../static/js/jquery-3.4.1.js"></script>
+
+    <script src="../../static/js/chat/chat_staff.js"></script>
+
+
+    <!-- Get username -->
+    <script type="text/javascript">
+        const id = 1;
+        let chatroom_id;
+        let username;
+        $('.list-group-item').on("click", function(){
+             chatroom_id = $(this).attr('id');
+             username = $(this).attr('sn');
+             console.log(chatroom_id);
+             console.log(username);
+        })
 
     </script>
 </div>

@@ -3,8 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // let room = "Chat";
     // let room = "Chat";
-    joinRoom(room);
-
+    console.log(id);
+    joinRoom(id);
+    console.log('cawcwcw');
+    console.log(chatroom_id);
+    console.log(username);
 
     // Display incoming message
     socket.on('message', data => {
@@ -14,9 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const span_timestamp = document.createElement('span')
         const br = document.createElement('br');
 
-        if (data.username == username){
+        if (data.username === username){
             p.setAttribute("class", "my-msg");
-
+            console.log("aaaaa");
             span_username.setAttribute("class", "my-username");
             span_username.innerHTML = data.username;
 
@@ -27,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             + span_timestamp.outerHTML;
             // p.innerHTML = data;
             document.querySelector('#display-message-section').append(p);
-        } else if (data.username != username && typeof data.username !== 'undefined') {
+        } else if (data.username !== username && typeof data.username !== 'undefined') {
             p.setAttribute("class", "others-msg");
 
             span_username.setAttribute("class", "other-username");
@@ -50,9 +53,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Send message
     document.querySelector('#send_message').onclick = () => {
         socket.send({'msg': document.querySelector('#user_message').value,
-        'username': username, 'room': room });
+        'username': username, 'room': chatroom_id });
         // Clear input area
         document.querySelector('#user_message').value = '';
+        console.log(chatroom_id);
+        console.log(username);
     }
 
     // Room selection
@@ -71,14 +76,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // });
 
     // Leave room
-    function leaveRoom(room) {
-        socket.emit('leave', {'username' : username, 'room' : room});
+    function leaveRoom(chatroom_id) {
+        socket.emit('leave', {'username' : username, 'room' : chatroom_id});
     }
 
     // Join room
     // joinRoom(room, chat_id)    'room':room+chat_id
-    function joinRoom(room) {
-        socket.emit('join', {'username': username, 'room': room});
+    function joinRoom(chatroom_id) {
+        socket.emit('join', {'username': username, 'room': chatroom_id});
         // Clear message area
         // document.querySelector('#display-message-section').innerHTML = ''
         // Autofocus on text box

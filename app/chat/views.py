@@ -1,6 +1,9 @@
 import datetime
 import random
-from time import strftime, localtime
+import time
+# from time import strftime, localtime, time
+from dateutil import tz
+import pytz
 
 from . import chat
 from .. import db
@@ -76,8 +79,9 @@ def chat_for_customer():
 
 @socketio.on('message')
 def message(data):
-    send({'msg': data['msg'], 'username': data['username'], 'time_stamp': strftime('%Y-%m-%d %H:%M:%S', localtime())}
+    send({'msg': data['msg'], 'username': data['username'], 'time_stamp': time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())}
          , room=data['room'])
+    # print("message" + data['msg'])
     # check the identity of the current user
     if session["role_id"] == 1:
         author = 'customer'
@@ -95,13 +99,22 @@ def join(data):
     join_room(data['room'])
     room = ChatRoom.query.filter_by(id=data['room']).first()
     past_messages = Message.query.filter_by(id=data['room']).all()
+
+    # get local timezone
+    utc_zone = tz.tzutc()
+    local_zone = tz.tzlocal()
+
     for past_message in past_messages:
         if past_message.author_type == 'customer':
-            send({'msg': past_message.content, 'username': room.customer.username, 'time_stamp': past_message.timestamp}
+            local_dt = past_message.timestamp.replace(tzinfo=local_zone)
+            utc_time = local_dt.astimezone(utc_zone)
+            send({'msg': past_message.content, 'username': room.customer.username, 'time_stamp': utc_time.strftime('%Y-%m-%d %H:%M:%S')}
                  , room=data['room'])
 
         if past_message.author_type == 'staff':
-            send({'msg': past_message.content, 'username': 'staff', 'time_stamp': past_message.timestamp}
+            local_dt = past_message.timestamp.replace(tzinfo=local_zone)
+            utc_time = local_dt.astimezone(utc_zone)
+            send({'msg': past_message.content, 'username': 'staff', 'time_stamp': utc_time.strftime('%Y-%m-%d %H:%M:%S')}
                  , room=data['room'])
 
 
