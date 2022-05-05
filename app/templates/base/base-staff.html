@@ -766,7 +766,27 @@
                         </div>
 
                         <!-- Search section on nav bar -->
-                        {% block nav_search %}{% endblock %}
+                        {% block nav_search %}
+                            {# the default search block is the one for "stock management" #}
+                            <div class="iq-search-bar device-search">
+                                <form action="/stock-management" class="searchbox" method="post"
+                                      id="stock_management_search">
+                                    <a class="search-link" onclick="document:stock_management_search.submit()"><i
+                                            class="ri-search-line"></i></a>
+                                    {% if is_search %}
+                                        <input type="text" name="key_word" class="text search-input"
+                                               placeholder="{{ _('Search here...') }}" value="{{ previous_key }}">
+                                    {% else %}
+                                        <input type="text" name="key_word" class="text search-input"
+                                               placeholder="{{ _('Search here...') }}">
+                                    {% endif %}
+                                    <select name="search_type" class="" data-style="py-0">
+                                        <option value="1">Model Name</option>
+                                        <option value="2">Serial Number</option>
+                                    </select>
+                                </form>
+                            </div>
+                        {% endblock %}
 
                         <!-- Right part of the nav bar -->
                         <div class="d-flex align-items-center">
