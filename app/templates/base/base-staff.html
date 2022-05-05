@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
 
+    {# blocks for 'meta' tags #}
+    {% block meta %}{% endblock %}
+
     <title>{% block title %}The Siren{% endblock %}</title>
 
 
@@ -31,7 +34,7 @@
         <div class="wrapper">
 
             <!-- Side nav bar -->
-            <div class="iq-sidebar  sidebar-default ">
+            <div class="iq-sidebar  sidebar-default">
                 <div class="iq-sidebar-logo d-flex align-items-center justify-content-between"
                      style="flex-direction: column;">
                     <a href="{{ url_for('main.index') }}" class="header-logo">
