@@ -37,7 +37,7 @@
             <div class="iq-sidebar  sidebar-default">
                 <div class="iq-sidebar-logo d-flex align-items-center justify-content-between"
                      style="flex-direction: column;">
-                    <a href="{{ url_for('main.index') }}" class="header-logo">
+                    <a href="{{ url_for('product.show_page_staff_index') }}" class="header-logo">
                         <img src="../../static/images/Black-logo-no-background.svg"
                              class="img-fluid rounded-normal light-logo" alt="logo">
                     </a>
@@ -82,7 +82,7 @@
                                     </svg>
                                 </a>
                                 <ul id="product" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                                    <li class="active">
+                                    <li class="">
                                         <a href="{{ url_for("product.show_page_stock_management") }}">
                                             <i class="las la-minus"></i><span>{{ _('List Product') }}</span>
                                         </a>
@@ -126,7 +126,7 @@
                                 </ul>
                             </li>
                             <li class=" ">
-                                <a href="#sale" class="collapsed" data-toggle="collapse" aria-expanded="false">
+                                <a href="#order" class="collapsed" data-toggle="collapse" aria-expanded="false">
                                     <svg class="svg-icon" id="p-dash4" width="20" height="20"
                                          xmlns="http://www.w3.org/2000/svg"
                                          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -134,7 +134,7 @@
                                         <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
                                         <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
                                     </svg>
-                                    <span class="ml-4">Sale</span>
+                                    <span class="ml-4">Orders</span>
                                     <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20"
                                          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                          stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -143,15 +143,10 @@
                                         <path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
                                     </svg>
                                 </a>
-                                <ul id="sale" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                                <ul id="order" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                                     <li class="">
-                                        <a href="../backend/page-list-sale.html">
-                                            <i class="las la-minus"></i><span>{{ _('List Sale') }}</span>
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a href="../backend/page-add-sale.html">
-                                            <i class="las la-minus"></i><span>{{ _('Add Sale') }}</span>
+                                        <a href="{{ url_for('order.order_management') }}">
+                                            <i class="las la-minus"></i><span>{{ _('List Orders') }}</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -1130,6 +1125,8 @@
     {# for the children templates to define the javascript statements at the end of the 'body' tag #}
     {% block scripts_end_body %}{% endblock %}
 
+    {# handel the problem of activation of items in side nav bar #}
+    <script src="../../static/js/staff/base-sidebar.js"></script>
 
 </body>
 
