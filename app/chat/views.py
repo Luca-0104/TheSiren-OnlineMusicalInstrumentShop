@@ -97,25 +97,6 @@ def message(data):
 @socketio.on('join')
 def join(data):
     join_room(data['room'])
-    room = ChatRoom.query.filter_by(id=data['room']).first()
-    past_messages = Message.query.filter_by(id=data['room']).all()
-
-    # get local timezone
-    utc_zone = tz.tzutc()
-    local_zone = tz.tzlocal()
-
-    for past_message in past_messages:
-        if past_message.author_type == 'customer':
-            local_dt = past_message.timestamp.replace(tzinfo=local_zone)
-            utc_time = local_dt.astimezone(utc_zone)
-            send({'msg': past_message.content, 'username': room.customer.username, 'time_stamp': utc_time.strftime('%Y-%m-%d %H:%M:%S')}
-                 , room=data['room'])
-
-        if past_message.author_type == 'staff':
-            local_dt = past_message.timestamp.replace(tzinfo=local_zone)
-            utc_time = local_dt.astimezone(utc_zone)
-            send({'msg': past_message.content, 'username': 'staff', 'time_stamp': utc_time.strftime('%Y-%m-%d %H:%M:%S')}
-                 , room=data['room'])
 
 
 @socketio.on('leave')
@@ -123,6 +104,34 @@ def leave(data):
     leave_room(data['room'])
     send({'msg': data['username'] + " has left the " + data['room'] + "room."},
          room=data['room'])
+
+
+@chat.route('/api/history', methods=['POST'])
+def chat_history():
+    chat_room_id = request.form['chatroom_id']
+    past_messages = Message.query.filter_by(id=chat_room_id).all()
+    chat_history = []
+    for past_message in past_messages:
+        dic = prepare_for_history_json(past_message, chat_room_id)
+        chat_history.append(dic)
+    return jsonify({"history": chat_history})
+
+
+def prepare_for_history_json(item, chat_id):
+    room = ChatRoom.query.filter_by(id=chat_id).first()
+    username = room.customer.username
+    # get local timezone
+    utc_zone = tz.tzutc()
+    local_zone = tz.tzlocal()
+    local_dt = item.timestamp.replace(tzinfo=local_zone)
+    utc_time = local_dt.astimezone(utc_zone)
+    if item.author_type == 'customer':
+        message = {'msg': item.content, 'username': username, 'time_stamp': utc_time.strftime('%Y-%m-%d %H:%M:%S')}
+
+    if item.author_type == 'staff':
+        message = {'msg': item.content, 'username': 'staff', 'time_stamp': utc_time.strftime('%Y-%m-%d %H:%M:%S')}
+
+    return message
 
 
 # customize jinja filter

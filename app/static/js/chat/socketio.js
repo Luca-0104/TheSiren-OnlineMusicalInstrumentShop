@@ -85,7 +85,17 @@ document.addEventListener('DOMContentLoaded', () => {
     function joinRoom(chatroom_id) {
         socket.emit('join', {'username': username, 'room': chatroom_id});
         // Clear message area
-        // document.querySelector('#display-message-section').innerHTML = ''
+        document.querySelector('#display-message-section').innerHTML = ''
+
+        $.post('/api/history', {
+            'chatroom_id': chatroom_id
+        }).done(function (response) {
+            let chat_history = response['history'];
+            for(let i = 0; i < chat_history.length; i++){
+
+            }
+        })
+
         // Autofocus on text box
         document.querySelector('#user_message').focus();
     }
