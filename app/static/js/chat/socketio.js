@@ -13,33 +13,41 @@ document.addEventListener('DOMContentLoaded', () => {
     socket.on('message', data => {
         // console.log(`Message received: ${data}`);
         const p = document.createElement('p');
-        const span_username = document.createElement('span')
-        const span_timestamp = document.createElement('span')
+
+        const div_chat = document.createElement('div');
+        const div_chat_user = document.createElement('div');
+        const div_username = document.createElement('div');
+        const div_chat_detail = document.createElement('div');
+        const div_chat_message = document.createElement('div');
+
+        const span_timestamp = document.createElement('span');
+
+        const a = document.createElement('a');
+        const img = document.createElement('img');
         const br = document.createElement('br');
 
         if (data.username === username){
-            p.setAttribute("class", "my-msg");
-            console.log("aaaaa");
-            span_username.setAttribute("class", "my-username");
-            span_username.innerHTML = data.username;
+            div_chat.setAttribute("class","chat");
+            div_username.setAttribute("class", "my-username");
+            div_username.innerHTML = data.username;
 
             span_timestamp.setAttribute("class", "timestamp");
             span_timestamp.innerHTML = data.time_stamp;
 
-            p.innerHTML = span_username.outerHTML + br.outerHTML + data.msg + br.outerHTML
+            p.innerHTML = div_username.outerHTML + br.outerHTML + data.msg + br.outerHTML
             + span_timestamp.outerHTML;
             // p.innerHTML = data;
             document.querySelector('#display-message-section').append(p);
         } else if (data.username !== username && typeof data.username !== 'undefined') {
             p.setAttribute("class", "others-msg");
 
-            span_username.setAttribute("class", "other-username");
-            span_username.innerHTML = data.username;
+            div_username.setAttribute("class", "other-username");
+            div_username.innerHTML = data.username;
 
             span_timestamp.setAttribute("class", "timestamp");
             span_timestamp.innerHTML = data.time_stamp;
 
-            p.innerHTML = span_username.outerHTML + br.outerHTML + data.msg + br.outerHTML
+            p.innerHTML = div_username.outerHTML + br.outerHTML + data.msg + br.outerHTML
             + span_timestamp.outerHTML;
             // p.innerHTML = data;
             document.querySelector('#display-message-section').append(p);
