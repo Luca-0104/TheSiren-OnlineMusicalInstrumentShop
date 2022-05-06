@@ -59,6 +59,11 @@ class Tools:
         Order.insert_orders(20)
         OrderModelType.insert_omts()
 
+        # chat message
+        Message.insert_messages(30)
+        # init chat room
+        ChatRoom.init_chat()
+
     @staticmethod
     def insert_pm_glt(pm_list, member_code):
         """
@@ -331,6 +336,14 @@ class ChatRoom(BaseModel):
     # messages in this chat room
     messages = db.relationship('Message', backref='chat_room', lazy='dynamic')
 
+    @staticmethod
+    def init_chat():
+        room1 = ChatRoom(customer_id=1, staff_id=3)
+        room2 = ChatRoom(customer_id=2, staff_id=4)
+        db.session.add(room1)
+        db.session.add(room2)
+        db.session.commit()
+
     def __repr__(self):
         return '<ChatRoom cus: %r - staff: %r>' % (self.customer_id, self.staff_id)
 
@@ -362,6 +375,18 @@ class Message(BaseModel):
 
     def __repr__(self):
         return '<Chat %r>' % self.content[:10]
+
+    @staticmethod
+    def insert_messages(count):
+        fake = Faker()
+        for i in range(count):
+            room_id = random.randint(1, 2)
+            author_type_list = ['customer', 'staff']
+            author_type = random.randint(0, 1)
+            new_message = Message(content=fake.text(), timestamp=fake.date_time_this_year(),
+                                  author_type=author_type_list[author_type], chat_room_id=room_id)
+            db.session.add(new_message)
+        db.session.commit()
 
     # def to_dict(self):
     #     """ Map the object to dictionary data structure """
