@@ -33,707 +33,769 @@
     <span id="sidebar-anchor" style="display: none" sidebar-anchor="List_Orders"></span>
     <!-- Order Listing Page -->
     <div class="content-page">
-                <div class="container-fluid">
-                    <div class="row">
+        <div class="container-fluid">
+            <div class="row">
 
-                        <!-- Intro Section -->
-                        <div class="col-lg-12">
-                            <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
-                                <div>
-                                    <h4 class="mb-3">{{ _('Sale List') }}</h4>
-                                    <p class="mb-0">Sales enables you to effectively control sales KPIs and monitor them
-                                        in one central<br>
-                                        place while helping teams to reach sales goals. </p>
-                                </div>
-                                <a href="page-add-sale.html" class="btn btn-primary add-list"><i
-                                        class="las la-plus mr-3"></i>Add Sale</a>
-                            </div>
+                <!-- Intro Section -->
+                <div class="col-lg-12">
+                    <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
+                        <div>
+                            <h4 class="mb-3">{{ _('Sale List') }}</h4>
+                            <p class="mb-0">Sales enables you to effectively control sales KPIs and monitor them
+                                in one central<br>
+                                place while helping teams to reach sales goals. </p>
                         </div>
+                        <a href="page-add-sale.html" class="btn btn-primary add-list"><i
+                                class="las la-plus mr-3"></i>Add Sale</a>
+                    </div>
+                </div>
 
-                        <!-- Listing Section -->
-                        <div class="col-lg-12">
-                            <div class="table-responsive rounded mb-3">
-                                <table class="data-table table mb-0 tbl-server-info">
-                                    <thead class="bg-white text-uppercase">
-                                        <tr class="ligth ligth-data">
-                                            <th>Date</th>
-                                            <th>Customer</th>
-                                            <th>Total</th>
-                                            <th>Paid</th>
-                                            <th>Status</th>
-                                            <th>Type</th>
-                                            <th>Priority</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="ligth-body">
-                                        {% for order in order_lst %}
-                                            <tr>
-                                                <!-- Date -->
-                                                <td>
-                                                    {{ order.timestamp }}
-                                                </td>
-                                                <!-- Customer -->
-                                                <td>
-                                                    {{ order.recipient.recipient_name }}
-                                                </td>
-                                                <!-- Total -->
-                                                <td>
-                                                    ${{ order.gross_payment }}
-                                                </td>
-                                                <!-- Paid -->
-                                                <td>
-                                                    ${{ order.paid_payment }}
-                                                </td>
-                                                <!-- Status -->
-                                                <td>
-                                                    {% if order.status_code == 0 %}
-                                                        <div class="badge badge-skyblue">
-                                                            <span style="display: none">0</span>
-                                                            Unpaid
-                                                        </div>
-                                                    {% elif order.status_code == 1 %}
-                                                        <div class="badge badge-orange">
-                                                            <span style="display: none">1</span>
-                                                            Preparing
-                                                        </div>
-                                                    {% elif order.status_code == 2 %}
-                                                        <div class="badge badge-purple">
-                                                            <span style="display: none">2</span>
-                                                            Delivering
-                                                        </div>
-                                                    {% elif order.status_code == 3 %}
-                                                        <div class="badge badge-purple">
-                                                            <span style="display: none">3</span>
-                                                            Waiting<br>Collection
-                                                        </div>
-                                                    {% elif order.status_code == 4 %}
-                                                        <div class="badge badge-success">
-                                                            <span style="display: none">4</span>
-                                                            Finished
-                                                        </div>
-                                                    {% elif order.status_code == 5 %}
-                                                        <div class="badge badge-light">
-                                                            <span style="display: none">5</span>
-                                                            Canceled
-                                                        </div>
-                                                    {% elif order.status_code == 6 %}
-                                                        <div class="badge badge-light">
-                                                            <span style="display: none">6</span>
-                                                            Expired
-                                                        </div>
-                                                    {% endif %}
-                                                </td>
-                                                <!-- Type -->
-                                                <td>
-                                                    {% if order.order_type == "delivery" %}
-                                                        Delivery
-                                                    {% else %}
-                                                        Self-Collection
-                                                    {% endif %}
-                                                </td>
-                                                <!-- Priority -->
-                                                <td>
+                <!-- Listing Section -->
+                <div class="col-lg-12">
+                    <div class="table-responsive rounded mb-3">
+                        <table class="data-table table mb-0 tbl-server-info">
+                            <thead class="bg-white text-uppercase">
+                                <tr class="ligth ligth-data">
+                                    <th>Date</th>
+                                    <th>Customer</th>
+                                    <th>Total</th>
+                                    <th>Paid</th>
+                                    <th>Status</th>
+                                    <th>Type</th>
+                                    <th>Priority</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="ligth-body">
+                                {% for order in order_lst %}
+                                    <tr>
+                                        <!-- Date -->
+                                        <td>
+                                            {{ order.timestamp }}
+                                        </td>
+                                        <!-- Customer -->
+                                        <td>
+                                            {{ order.recipient.recipient_name }}
+                                        </td>
+                                        <!-- Total -->
+                                        <td>
+                                            ${{ order.gross_payment }}
+                                        </td>
+                                        <!-- Paid -->
+                                        <td>
+                                            ${{ order.paid_payment }}
+                                        </td>
+                                        <!-- Status -->
+                                        <td>
+                                            {% if order.status_code == 0 %}
+                                                <div class="badge badge-skyblue">
+                                                    <span style="display: none">0</span>
+                                                    Unpaid
+                                                </div>
+                                            {% elif order.status_code == 1 %}
+                                                <div class="badge badge-orange">
+                                                    <span style="display: none">1</span>
+                                                    Preparing
+                                                </div>
+                                            {% elif order.status_code == 2 %}
+                                                <div class="badge badge-purple">
+                                                    <span style="display: none">2</span>
+                                                    Delivering
+                                                </div>
+                                            {% elif order.status_code == 3 %}
+                                                <div class="badge badge-purple">
+                                                    <span style="display: none">3</span>
+                                                    Waiting<br>Collection
+                                                </div>
+                                            {% elif order.status_code == 4 %}
+                                                <div class="badge badge-success">
+                                                    <span style="display: none">4</span>
+                                                    Finished
+                                                </div>
+                                            {% elif order.status_code == 5 %}
+                                                <div class="badge badge-light">
+                                                    <span style="display: none">5</span>
+                                                    Canceled
+                                                </div>
+                                            {% elif order.status_code == 6 %}
+                                                <div class="badge badge-light">
+                                                    <span style="display: none">6</span>
+                                                    Expired
+                                                </div>
+                                            {% endif %}
+                                        </td>
+                                        <!-- Type -->
+                                        <td>
+                                            {% if order.order_type == "delivery" %}
+                                                Delivery
+                                            {% else %}
+                                                Self-Collection
+                                            {% endif %}
+                                        </td>
+                                        <!-- Priority -->
+                                        <td>
                                                     <span id="priority-sort-{{ order.id }}"
                                                           style="display: none">{{ order.priority }}</span>
-                                                    <select id="priority-select-{{ order.id }}" data-style="py-0"
-                                                            class="btn priority-select {% if order.priority == 1 %}btn-light{% elif order.priority == 2 %}btn-info{% elif order.priority == 3 %}btn-secondary{% endif %}"
-                                                            orderId="{{ order.id }}">
-                                                        <option class="priority-option" pvalue="1"
-                                                                {% if order.priority == 1 %}
-                                                                selected="selected" {% endif %}>
-                                                            Normal
-                                                        </option>
-                                                        <option class="priority-option" pvalue="2"
-                                                                {% if order.priority == 2 %}
-                                                                selected="selected" {% endif %}>
-                                                            Important
-                                                        </option>
-                                                        <option class="priority-option" pvalue="3"
-                                                                {% if order.priority == 3 %}
-                                                                selected="selected" {% endif %}>
-                                                            Significant
-                                                        </option>
-                                                    </select>
-                                                </td>
-                                                <!-- Action & Modal -->
-                                                <td>
-                                                    <div class="d-flex align-items-center list-action">
-                                                        <!-- Action Section -->
-                                                        <div class="mr-2" data-toggle="modal"
-                                                             data-target="#detail-modal-{{ order.id }}">
-                                                            <a class="badge bg-info" data-toggle="tooltip"
-                                                               data-original-title="view" title=""
-                                                               href="#"><i class="ri-eye-line mr-0"></i></a>
-                                                        </div>
-                                                        <div class="mr-2" data-toggle="modal"
-                                                             data-target="#modify-modal-{{ order.id }}">
-                                                            <a class="badge bg-success" data-toggle="tooltip"
-                                                               data-original-title="Eidt" title=""
-                                                               href="#"><i class="ri-pencil-line mr-0"></i></a>
-                                                        </div>
-                                                        {% if order.order_type == "delivery" %}
-                                                            <div class="mr-2" data-toggle="modal"
-                                                                 data-target="#address-modal-{{ order.id }}">
-                                                                <a class="badge bg-success" data-toggle="tooltip"
-                                                                   data-original-title="Eidt" title=""
-                                                                   href="#"><i class="ri-home-4-line mr-0"></i></a>
+                                            <select id="priority-select-{{ order.id }}" data-style="py-0"
+                                                    class="btn priority-select {% if order.priority == 1 %}btn-light{% elif order.priority == 2 %}btn-info{% elif order.priority == 3 %}btn-secondary{% endif %}"
+                                                    orderId="{{ order.id }}">
+                                                <option class="priority-option" pvalue="1"
+                                                        {% if order.priority == 1 %}
+                                                        selected="selected" {% endif %}>
+                                                    Normal
+                                                </option>
+                                                <option class="priority-option" pvalue="2"
+                                                        {% if order.priority == 2 %}
+                                                        selected="selected" {% endif %}>
+                                                    Important
+                                                </option>
+                                                <option class="priority-option" pvalue="3"
+                                                        {% if order.priority == 3 %}
+                                                        selected="selected" {% endif %}>
+                                                    Significant
+                                                </option>
+                                            </select>
+                                        </td>
+                                        <!-- Action & Modal -->
+                                        <td>
+                                            <div class="d-flex align-items-center list-action">
+                                                <!-- Action Section -->
+                                                <div class="mr-2" data-toggle="modal"
+                                                     data-target="#detail-modal-{{ order.id }}">
+                                                    <a class="badge bg-info" data-toggle="tooltip"
+                                                       data-original-title="view" title=""
+                                                       href="#"><i class="ri-eye-line mr-0"></i></a>
+                                                </div>
+                                                <div class="mr-2" data-toggle="modal"
+                                                     data-target="#modify-modal-{{ order.id }}">
+                                                    <a class="badge bg-success" data-toggle="tooltip"
+                                                       data-original-title="Eidt" title=""
+                                                       href="#"><i class="ri-pencil-line mr-0"></i></a>
+                                                </div>
+                                                {% if order.order_type == "delivery" %}
+                                                    <div class="mr-2" data-toggle="modal"
+                                                         data-target="#address-modal-{{ order.id }}">
+                                                        <a class="badge bg-success" data-toggle="tooltip"
+                                                           data-original-title="Eidt" title=""
+                                                           href="#"><i class="ri-home-4-line mr-0"></i></a>
+                                                    </div>
+                                                {% else %}
+                                                    <div class="mr-2" data-toggle="modal"
+                                                         data-target="#recipient-modal-{{ order.id }}">
+                                                        <a class="badge bg-success" data-toggle="tooltip"
+                                                           data-original-title="Eidt"
+                                                           title=""
+                                                           href="#"><i class="ri-user-3-fill mr-0"></i></a>
+                                                    </div>
+                                                {% endif %}
+
+                                                {% if order.status_code == 0 %}
+                                                    <a class="badge bg-dark mr-2" data-toggle="tooltip"
+                                                       data-placement="top" title=""
+                                                       data-original-title="Cancel"
+                                                       href="#" onclick="changeStatusTo({{ order.id }}, 5);"><i
+                                                            class="ri-close-circle-line mr-0"></i></a>
+                                                {% elif order.status_code == 1 %}
+                                                    {% if order.order_type == "delivery" %}
+                                                        <a class="badge bg-warning mr-2" data-toggle="tooltip"
+                                                           data-placement="top" title=""
+                                                           data-original-title="on deli"
+                                                           href="#"
+                                                           onclick="changeStatusTo({{ order.id }}, 2);"><i
+                                                                class="ri-truck-fill mr-0"></i></a>
+                                                    {% else %}
+                                                        <a class="badge bg-warning mr-2" data-toggle="tooltip"
+                                                           data-placement="top" title=""
+                                                           data-original-title="wait"
+                                                           href="#"
+                                                           onclick="changeStatusTo({{ order.id }}, 3);"><i
+                                                                class="ri-share-forward-box-line mr-0"></i></a>
+                                                    {% endif %}
+                                                    <a class="badge bg-dark mr-2" data-toggle="tooltip"
+                                                       data-placement="top" title=""
+                                                       data-original-title="Cancel"
+                                                       href="#" onclick="changeStatusTo({{ order.id }}, 5);"><i
+                                                            class="ri-close-circle-line mr-0"></i></a>
+                                                {% elif order.status_code == 2 %}
+                                                    <a class="badge bg-danger mr-2" data-toggle="tooltip"
+                                                       data-placement="top" title=""
+                                                       data-original-title="Finish"
+                                                       href="#" onclick="changeStatusTo({{ order.id }}, 4);"><i
+                                                            class="ri-check-fill mr-0"></i></a>
+                                                {% elif order.status_code == 3 %}
+                                                    <a class="badge bg-danger mr-2" data-toggle="tooltip"
+                                                       data-placement="top" title=""
+                                                       data-original-title="Finish"
+                                                       href="#" onclick="changeStatusTo({{ order.id }}, 4);"><i
+                                                            class="ri-check-fill mr-0"></i></a>
+                                                    <a class="badge bg-dark mr-2" data-toggle="tooltip"
+                                                       data-placement="top" title=""
+                                                       data-original-title="Cancel"
+                                                       href="#" onclick="changeStatusTo({{ order.id }}, 5);"><i
+                                                            class="ri-close-circle-line mr-0"></i></a>
+                                                {% endif %}
+
+                                                <!-- Modify Modal Section -->
+                                                <!-- Order Details Modal -->
+                                                <div class="modal fade" id="detail-modal-{{ order.id }}"
+                                                     tabindex="-1" role="dialog"
+                                                     aria-labelledby="myModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title" id="myModalLabel"
+                                                                    style="float: left;">Order Details</h4>
+
+                                                                <button type="button" class="close"
+                                                                        data-dismiss="modal" aria-hidden="true">
+                                                                    &times;
+                                                                </button>
+
                                                             </div>
-                                                        {% else %}
-                                                            <div class="mr-2" data-toggle="modal"
-                                                                 data-target="#recipient-modal-{{ order.id }}">
-                                                                <a class="badge bg-success" data-toggle="tooltip"
-                                                                   data-original-title="Eidt"
-                                                                   title=""
-                                                                   href="#"><i class="ri-user-3-fill mr-0"></i></a>
-                                                            </div>
-                                                        {% endif %}
+                                                            <div class="modal-body">
+                                                                <table class="main-table">
+                                                                    <!-- Status -->
+                                                                    <tr id="status_{{ order.id }}" style="text-align: center">
+                                                                        {% if order.status_code == 0 %}
+                                                                            <td colspan="3" class="status_col status_wp">
+                                                                                Waiting for Payment
+                                                                            </td>
+                                                                        {% elif order.status_code == 1 %}
+                                                                            <td colspan="3" class="status_col status_p">
+                                                                                Preparing
+                                                                            </td>
+                                                                        {% elif order.status_code == 2 %}
+                                                                            <td colspan="3" class="status_col status_od">
+                                                                                On Delivery
+                                                                            </td>
+                                                                        {% elif order.status_code == 3 %}
+                                                                            <td colspan="3" class="status_col status_wc">
+                                                                                Waiting for Collection
+                                                                            </td>
+                                                                        {% elif order.status_code == 4 %}
+                                                                            <td colspan="3" class="status_col status_f">
+                                                                                Finished
+                                                                            </td>
+                                                                        {% elif order.status_code == 5 %}
+                                                                            <td colspan="3" class="status_col status_c">
+                                                                                Canceled
+                                                                            </td>
+                                                                        {% elif order.status_code == 6 %}
+                                                                            <td colspan="3" class="status_col status_e">
+                                                                                Expired
+                                                                            </td>
+                                                                        {% endif %}
+                                                                    </tr>
 
-                                                        {% if order.status_code == 0 %}
-                                                            <a class="badge bg-dark mr-2" data-toggle="tooltip"
-                                                               data-placement="top" title=""
-                                                               data-original-title="Cancel"
-                                                               href="#" onclick="changeStatusTo({{ order.id }}, 5);"><i
-                                                                    class="ri-close-circle-line mr-0"></i></a>
-                                                        {% elif order.status_code == 1 %}
-                                                            {% if order.order_type == "delivery" %}
-                                                                <a class="badge bg-warning mr-2" data-toggle="tooltip"
-                                                                   data-placement="top" title=""
-                                                                   data-original-title="on deli"
-                                                                   href="#"
-                                                                   onclick="changeStatusTo({{ order.id }}, 2);"><i
-                                                                        class="ri-truck-fill mr-0"></i></a>
-                                                            {% else %}
-                                                                <a class="badge bg-warning mr-2" data-toggle="tooltip"
-                                                                   data-placement="top" title=""
-                                                                   data-original-title="wait"
-                                                                   href="#"
-                                                                   onclick="changeStatusTo({{ order.id }}, 3);"><i
-                                                                        class="ri-share-forward-box-line mr-0"></i></a>
-                                                            {% endif %}
-                                                            <a class="badge bg-dark mr-2" data-toggle="tooltip"
-                                                               data-placement="top" title=""
-                                                               data-original-title="Cancel"
-                                                               href="#" onclick="changeStatusTo({{ order.id }}, 5);"><i
-                                                                    class="ri-close-circle-line mr-0"></i></a>
-                                                        {% elif order.status_code == 2 %}
-                                                            <a class="badge bg-danger mr-2" data-toggle="tooltip"
-                                                               data-placement="top" title=""
-                                                               data-original-title="Finish"
-                                                               href="#" onclick="changeStatusTo({{ order.id }}, 4);"><i
-                                                                    class="ri-check-fill mr-0"></i></a>
-                                                        {% elif order.status_code == 3 %}
-                                                            <a class="badge bg-danger mr-2" data-toggle="tooltip"
-                                                               data-placement="top" title=""
-                                                               data-original-title="Finish"
-                                                               href="#" onclick="changeStatusTo({{ order.id }}, 4);"><i
-                                                                    class="ri-check-fill mr-0"></i></a>
-                                                            <a class="badge bg-dark mr-2" data-toggle="tooltip"
-                                                               data-placement="top" title=""
-                                                               data-original-title="Cancel"
-                                                               href="#" onclick="changeStatusTo({{ order.id }}, 5);"><i
-                                                                    class="ri-close-circle-line mr-0"></i></a>
-                                                        {% endif %}
-
-                                                        <!-- Modify Modal Section -->
-                                                        <!-- Order Details Modal -->
-                                                        <div class="modal fade" id="detail-modal-{{ order.id }}"
-                                                             tabindex="-1" role="dialog"
-                                                             aria-labelledby="myModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h4 class="modal-title" id="myModalLabel"
-                                                                            style="float: left;">Order Details</h4>
-
-                                                                        <button type="button" class="close"
-                                                                                data-dismiss="modal" aria-hidden="true">
-                                                                            &times;
-                                                                        </button>
-
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <table class="main-table">
-                                                                            <!-- Status -->
-                                                                            <tr id="status_{{ order.id }}" style="text-align: center">
-                                                                                {% if order.status_code == 0 %}
-                                                                                    <td colspan="3" class="status_col status_wp">
-                                                                                        Waiting for Payment
+                                                                    <!-- Information -->
+                                                                    <tr>
+                                                                        <td colspan="2" class="top-td">
+                                                                            <table width="100%">
+                                                                                <tr>
+                                                                                    <td class="title_indentation medium-heading border-1">
+                                                                                        Basic Information
                                                                                     </td>
-                                                                                {% elif order.status_code == 1 %}
-                                                                                    <td colspan="3" class="status_col status_p">
-                                                                                        Preparing
-                                                                                    </td>
-                                                                                {% elif order.status_code == 2 %}
-                                                                                    <td colspan="3" class="status_col status_od">
-                                                                                        On Delivery
-                                                                                    </td>
-                                                                                {% elif order.status_code == 3 %}
-                                                                                    <td colspan="3" class="status_col status_wc">
-                                                                                        Waiting for Collection
-                                                                                    </td>
-                                                                                {% elif order.status_code == 4 %}
-                                                                                    <td colspan="3" class="status_col status_f">
-                                                                                        Finished
-                                                                                    </td>
-                                                                                {% elif order.status_code == 5 %}
-                                                                                    <td colspan="3" class="status_col status_c">
-                                                                                        Canceled
-                                                                                    </td>
-                                                                                {% elif order.status_code == 6 %}
-                                                                                    <td colspan="3" class="status_col status_e">
-                                                                                        Expired
-                                                                                    </td>
-                                                                                {% endif %}
-                                                                            </tr>
-
-                                                                            <!-- Information -->
-                                                                            <tr>
-                                                                                <td colspan="2" class="top-td">
-                                                                                    <table width="100%">
-                                                                                        <tr>
-                                                                                            <td class="title_indentation medium-heading border-1">
-                                                                                                Basic Information
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                        <tr>
-                                                                                            <td>
-                                                                                                <table class="info_indentation" width="100%">
-                                                                                                    <tr>
-                                                                                                        <td colspan="2" class="order_num">
-                                                                                                            Trade No.<br>
-                                                                                                            {{ order.out_trade_no }}
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td colspan="2" class="order_num">
-                                                                                                            Payment No.<br>
-                                                                                                            {{ order.trade_no }}
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td colspan="2">
-                                                                                                            {{ order.timestamp }}
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td class="left-cell">
-                                                                                                            Order Type: <br>
-                                                                                                            {{ order.order_type }}
-                                                                                                        </td>
-                                                                                                        <td>
-                                                                                                            Delivery Cost: <br>
-                                                                                                            ${{ order.delivery_fee }}
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td class="left-cell">
-                                                                                                            Total Cost: <br>
-                                                                                                            ${{ order.gross_payment }}
-                                                                                                        </td>
-                                                                                                        <td class="left-cell">
-                                                                                                            Actual Paid: <br>
-                                                                                                            ${{ order.paid_payment }}
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                </table>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                        <tr>
-                                                                                            <td class="title_indentation top-indentation medium-heading extra-top-indentation border-1">
-                                                                                                {% if order.order_type == "delivery" %}
-                                                                                                    Address Information
-                                                                                                {% elif order.order_type == "self-collection" %}
-                                                                                                    Recipient Information
-                                                                                                {% endif %}
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                        <tr>
-                                                                                            <td>
-                                                                                                <table class="info_indentation" width="100%">
-                                                                                                    {% if order.order_type == "delivery" %}
-                                                                                                        <tr>
-                                                                                                            <td class="left-cell">
-                                                                                                                {{ order.recipient.recipient_name }}
-                                                                                                            </td>
-                                                                                                            <td>
-                                                                                                                {{ order.recipient.phone }}
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                        <tr>
-                                                                                                            <td colspan="2">
-                                                                                                                {{ order.address_text }}
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                    {% elif order.order_type == "self-collection" %}
-                                                                                                        <tr>
-                                                                                                            <td class="name-box">
-                                                                                                                {{ order.recipient.recipient_name }}
-                                                                                                            </td>
-                                                                                                            <td>
-                                                                                                                {{ order.recipient.phone }}
-                                                                                                            </td>
-                                                                                                        </tr>
-                                                                                                    {% endif %}
-                                                                                                </table>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                    </table>
-                                                                                </td>
-                                                                            </tr>
-
-                                                                            <!-- Models -->
-                                                                            <tr>
-                                                                                <td id="model_table_col">
-                                                                                    <table width="100%" class="model_listing_table">
-                                                                                        {% for order_model in order.order_model_types %}
-                                                                                            <tr id="model_row_{{ order_model.model_type.id }}"
-                                                                                                order_id="{{ order.id }}">
-                                                                                                <!-- Model Pic -->
-                                                                                                <td class="model_img_col">
-                                                                                                    {% if order_model.model_type.pictures.first() == None %}
-                                                                                                        <img src="../../static/images/example/yamaha_yep621s.jpg"
-                                                                                                             loading="lazy" alt=""
-                                                                                                             class="model_thumbnail">
-                                                                                                    {% else %}
-                                                                                                        <img src="{{ url_for("static",filename=order_model.model_type.pictures.first().address) }}"
-                                                                                                             loading="lazy" alt=""
-                                                                                                             class="model_thumbnail">
-                                                                                                    {% endif %}
-                                                                                                </td>
-                                                                                                <!-- Model Name -->
-                                                                                                <td class="model_name_col">
-                                                                                                    {{ order_model.model_type.name }}
-                                                                                                </td>
-                                                                                                <!-- quantity of this model in this order -->
-                                                                                                <td class="model_quantity_col">
-                                                                                                    &times; {{ order_model.count }}
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                        <table class="info_indentation" width="100%">
+                                                                                            <tr>
+                                                                                                <td colspan="2" class="order_num">
+                                                                                                    Trade No.<br>
+                                                                                                    {{ order.out_trade_no }}
                                                                                                 </td>
                                                                                             </tr>
-                                                                                        {% endfor %}
-                                                                                    </table>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </table>
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-default"
-                                                                                data-dismiss="modal">Close
-                                                                        </button>
-                                                                    </div>
-                                                                </div><!-- /.modal-content -->
-                                                            </div><!-- /.modal -->
-                                                        </div>
+                                                                                            <tr>
+                                                                                                <td colspan="2" class="order_num">
+                                                                                                    Payment No.<br>
+                                                                                                    {{ order.trade_no }}
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td colspan="2">
+                                                                                                    {{ order.timestamp }}
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td class="left-cell">
+                                                                                                    Order Type: <br>
+                                                                                                    {{ order.order_type }}
+                                                                                                </td>
+                                                                                                <td>
+                                                                                                    Delivery Cost: <br>
+                                                                                                    ${{ order.delivery_fee }}
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td class="left-cell">
+                                                                                                    Total Cost: <br>
+                                                                                                    ${{ order.gross_payment }}
+                                                                                                </td>
+                                                                                                <td class="left-cell">
+                                                                                                    Actual Paid: <br>
+                                                                                                    ${{ order.paid_payment }}
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="title_indentation top-indentation medium-heading extra-top-indentation border-1">
+                                                                                        {% if order.order_type == "delivery" %}
+                                                                                            Address Information
+                                                                                        {% elif order.order_type == "self-collection" %}
+                                                                                            Recipient Information
+                                                                                        {% endif %}
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                        <table class="info_indentation" width="100%">
+                                                                                            {% if order.order_type == "delivery" %}
+                                                                                                <tr>
+                                                                                                    <td class="left-cell">
+                                                                                                        {{ order.recipient.recipient_name }}
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        {{ order.recipient.phone }}
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td colspan="2">
+                                                                                                        {{ order.address_text }}
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            {% elif order.order_type == "self-collection" %}
+                                                                                                <tr>
+                                                                                                    <td class="name-box">
+                                                                                                        {{ order.recipient.recipient_name }}
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        {{ order.recipient.phone }}
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            {% endif %}
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
 
-                                                        <!-- Type Modal -->
-                                                        <div class="modal fade" id="modify-modal-{{ order.id }}"
-                                                             tabindex="-1" role="dialog"
-                                                             aria-labelledby="myModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog">
-                                                                <div class="modal-content">
-                                                                    <form class="modal-form">
-                                                                        <div class="modal-header">
-                                                                            <h4 class="modal-title" id="myModalLabel" style="float: left;">
-                                                                                Details
-                                                                            </h4>
-                                                                            <button type="button" class="close"
-                                                                                    data-dismiss="modal" aria-hidden="true">
-                                                                                &times;
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            <div class="row">
-                                                                                <!-- Type section -->
-                                                                                <div class="col-md-12">
-                                                                                    <div class="form-group">
-                                                                                        <label class="modal-label">Type *</label>
-                                                                                        <select id="select-type-{{ order.id }}" name="select-type"
-                                                                                                orderId="{{ order.id }}"
-                                                                                                class="selectpicker form-control type-select" data-style="py-0">
-                                                                                            <option sn="b1" {% if order.order_type == "self-collection" %} selected="selected" {% endif %}>
-                                                                                                Delivery
-                                                                                            </option>
-                                                                                            <option sn="b2" {% if order.order_type == "delivery" %} selected="selected" {% endif %}>
-                                                                                                Self-Collection
-                                                                                            </option>
-                                                                                        </select>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!-- Address section -->
-                                                                                <div id="type-address-section-{{ order.id }}" class="col-md-12" {% if order.order_type == "delivery" %}
-                                                                                     style="display: none" {% endif %}>
-                                                                                    <div class="form-group">
-                                                                                        <label class="modal-label">Address *</label>
-                                                                                        <ul id="addresses-1-{{ order.id }}"
-                                                                                            class="address-list"
-                                                                                            order-id="{{ order.id }}">
-                                                                                            {% for address in order.user.addresses %}
-                                                                                                <li id="address-1-{{ order.id }}-{{ address.id }}"
-                                                                                                    class="address address-1 address-1-{{ order.id }} clickable"
-                                                                                                    orderId="{{ order.id }}"
-                                                                                                    address-id="{{ address.id }}">
-                                                                                                    <div class="cart-container">
-                                                                                                        <div class="main-container">
-                                                                                                            <span class="large-text address address-number"></span>
-                                                                                                            <div class=""></div>
-                                                                                                        </div>
-                                                                                                        <br><br>
-                                                                                                        <div class="main-container">
-                                                                                                            <span class="fine-print-text">Recipient Name:</span>
-                                                                                                            <br>
-                                                                                                            <span class="address-name w-commerce-commerceboldtextblock">{{ address.recipient.recipient_name }}</span>
-                                                                                                        </div>
-                                                                                                        <br>
-                                                                                                        <div class="main-container">
-                                                                                                            <span class="fine-print-text">Full Address:</span>
-                                                                                                            <br>
-                                                                                                            <span class="address-address address-gray"
-                                                                                                                  style="display:flex;">{{ address.get_address() }}</span>
+                                                                    <!-- Models -->
+                                                                    <tr>
+                                                                        <td id="model_table_col">
+                                                                            <table width="100%" class="model_listing_table">
+                                                                                {% for order_model in order.order_model_types %}
+                                                                                    <tr id="model_row_{{ order_model.model_type.id }}"
+                                                                                        order_id="{{ order.id }}">
+                                                                                        <!-- Model Pic -->
+                                                                                        <td class="model_img_col">
+                                                                                            {% if order_model.model_type.pictures.first() == None %}
+                                                                                                <img src="../../static/images/example/yamaha_yep621s.jpg"
+                                                                                                     loading="lazy" alt=""
+                                                                                                     class="model_thumbnail">
+                                                                                            {% else %}
+                                                                                                <img src="{{ url_for("static",filename=order_model.model_type.pictures.first().address) }}"
+                                                                                                     loading="lazy" alt=""
+                                                                                                     class="model_thumbnail">
+                                                                                            {% endif %}
+                                                                                        </td>
+                                                                                        <!-- Model Name -->
+                                                                                        <td class="model_name_col">
+                                                                                            {{ order_model.model_type.name }}
+                                                                                        </td>
+                                                                                        <!-- quantity of this model in this order -->
+                                                                                        <td class="model_quantity_col">
+                                                                                            &times; {{ order_model.count }}
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                {% endfor %}
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default"
+                                                                        data-dismiss="modal">Close
+                                                                </button>
+                                                            </div>
+                                                        </div><!-- /.modal-content -->
+                                                    </div><!-- /.modal -->
+                                                </div>
 
-                                                                                                        </div>
-                                                                                                        {% if address.is_default %}
-                                                                                                            <span id="address-default-sign">[default]</span>
-                                                                                                        {% endif %}
-                                                                                                    </div>
+                                                <!-- Type Modal -->
+                                                <div class="modal fade" id="modify-modal-{{ order.id }}"
+                                                     tabindex="-1" role="dialog"
+                                                     aria-labelledby="myModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <form class="modal-form">
+                                                                <div class="modal-header">
+                                                                    <h4 class="modal-title" id="myModalLabel" style="float: left;">
+                                                                        Details
+                                                                    </h4>
+                                                                    <button type="button" class="close"
+                                                                            data-dismiss="modal" aria-hidden="true">
+                                                                        &times;
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="row">
+                                                                        <!-- Type section -->
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group">
+                                                                                <label class="modal-label">Type *</label>
+{#                                                                                <select id="select-type-{{ order.id }}" name="select-type"#}
+{#                                                                                        orderId="{{ order.id }}"#}
+{#                                                                                        class="selectpicker form-control type-select" data-style="py-0">#}
+{#                                                                                    <option sn="b1" {% if order.order_type == "self-collection" %}#}
+{#                                                                                            selected="selected" {% endif %}>#}
+{#                                                                                        Delivery#}
+{#                                                                                    </option>#}
+{#                                                                                    <option sn="b2" {% if order.order_type == "delivery" %}#}
+{#                                                                                            selected="selected" {% endif %}>#}
+{#                                                                                        Self-Collection#}
+{#                                                                                    </option>#}
+{#                                                                                </select>#}
+                                                                                <div class="dropdown bootstrap-select form-control type-select show">
+                                                                                    <select id="select-type-{{ order.id }}" name="select-type"
+                                                                                            orderId="{{ order.id }}"
+                                                                                            class="form-control type-select" data-style="py-0">
+                                                                                        <option sn="b1" {% if order.order_type == "self-collection" %} selected="selected" {% endif %}>
+                                                                                            Delivery
+                                                                                        </option>
+                                                                                        <option sn="b2" {% if order.order_type == "delivery" %} selected="selected" {% endif %}>
+                                                                                            Self-Collection
+                                                                                        </option>
+                                                                                    </select>
+                                                                                    <button type="button" tabindex="-1" class="btn dropdown-toggle py-0"
+                                                                                            data-toggle="dropdown" role="combobox" aria-owns="bs-select-1"
+                                                                                            aria-haspopup="listbox" aria-expanded="true" data-id="select-type-3"
+                                                                                            title="Self-Collection">
+                                                                                        <div class="filter-option">
+                                                                                            <div class="filter-option-inner">
+                                                                                                <div id="select-type-display-{{ order.id }}" class="filter-option-inner-inner">
+                                                                                                    {% if order.order_type == "self-collection" %}
+                                                                                                        Delivery
+                                                                                                    {% elif order.order_type == "delivery" %}
+                                                                                                        Self-Collection
+                                                                                                    {% endif %}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </button>
+                                                                                    <div class="dropdown-menu"
+                                                                                         style="max-height: 698px; overflow: hidden; min-height: 0px; position: absolute; transform: translate3d(0px, 47px, 0px); top: 0px; left: 0px; will-change: transform;"
+                                                                                         x-placement="bottom-start">
+                                                                                        <div class="inner show" role="listbox" id="bs-select-1" tabindex="-1"
+                                                                                             aria-activedescendant="bs-select-1-1"
+                                                                                             style="max-height: 680px; overflow-y: auto; min-height: 0px;">
+                                                                                            <ul class="dropdown-menu inner show" role="presentation"
+                                                                                                style="margin-top: 0px; margin-bottom: 0px;">
+                                                                                                <li>
+                                                                                                    <a id="select-type-a-delivery-{{ order.id }}"
+                                                                                                       role="option" class="dropdown-item select-type-a"
+                                                                                                       tabindex="0" aria-setsize="2" aria-posinset="1"
+                                                                                                       aria-selected="{{ order.order_type == "self-collection" }}"
+                                                                                                       orderId="{{ order.id }}" selectType="Delivery">
+                                                                                                        <span class="text">Delivery</span>
+                                                                                                    </a>
                                                                                                 </li>
-                                                                                            {% endfor %}
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <!-- Name section -->
-                                                                                <div id="type-name-section-{{ order.id }}" class="col-md-12" {% if order.order_type == "self-collection" %}
-                                                                                     style="display: none" {% endif %}>
-                                                                                    <div class="form-group">
-                                                                                        <label class="modal-label">Recipient Name *</label>
-                                                                                        <input id="recipient-name-1-{{ order.id }}"
-                                                                                                   type="text"
-                                                                                                   class="form-control"
-                                                                                                   placeholder="Enter Name"
-                                                                                                   data-errors="Please Enter Recipient Name.">
-                                                                                        <div class="help-block with-errors"></div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <!-- Phone section -->
-                                                                                <div id="type-phone-section-{{ order.id }}" class="col-md-12" {% if order.order_type == "self-collection" %}
-                                                                                     style="display: none" {% endif %}>
-                                                                                    <div class="form-group">
-                                                                                        <label class="modal-label">Recipient Phone *</label>
-                                                                                        <input id="recipient-phone-1-{{ order.id }}"
-                                                                                                   type="text"
-                                                                                                   class="form-control"
-                                                                                                   placeholder="Enter Serial Number"
-                                                                                                   data-errors="Please Enter Recipient Phone.">
-                                                                                        <div class="help-block with-errors"></div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button id="type-btn-{{ order.id }}" orderId="{{ order.id }}"
-                                                                                    type="button" class="btn btn-primary mr-2 type-btn">
-                                                                                Update
-                                                                            </button>
-                                                                        </div>
-                                                                    </form>
-                                                                </div><!-- /.modal-content -->
-                                                            </div><!-- /.modal -->
-                                                        </div>
-
-                                                        {% if order.order_type == "delivery" %}
-                                                            <!-- Address Modal -->
-                                                            <div class="modal fade" id="address-modal-{{ order.id }}"
-                                                                 tabindex="-1"
-                                                                 role="dialog"
-                                                                 aria-labelledby="myModalLabel" aria-hidden="true">
-                                                                <div class="modal-dialog">
-                                                                    <div class="modal-content">
-                                                                        <form class="modal-form">
-                                                                            <div class="modal-header">
-                                                                                <h4 class="modal-title" id="myModalLabel"
-                                                                                    style="float: left;">Change Address</h4>
-                                                                                <table class="table-borderless">
-
-                                                                                </table>
-                                                                                <button type="button" class="close"
-                                                                                        data-dismiss="modal"
-                                                                                        aria-hidden="true">
-                                                                                    &times;
-                                                                                </button>
-
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                <div class="row">
-                                                                                    <div class="col-md-12">
-                                                                                        <div class="form-group">
-                                                                                            <ul id="addresses-2-{{ order.id }}"
-                                                                                                class="address-list"
-                                                                                                order-id="{{ order.id }}">
-                                                                                                {% for address in order.user.addresses %}
-                                                                                                    <li id="address-2-{{ order.id }}-{{ address.id }}"
-                                                                                                        class="address address-2 address-2-{{ order.id }} clickable"
-                                                                                                        orderId="{{ order.id }}"
-                                                                                                        address-id="{{ address.id }}">
-                                                                                                        <div class="cart-container">
-                                                                                                            <div class="main-container">
-                                                                                                                <span class="large-text address address-number"></span>
-                                                                                                                <div class=""></div>
-                                                                                                            </div>
-                                                                                                            <br><br>
-                                                                                                            <div class="main-container">
-                                                                                                                <span class="fine-print-text">Recipient Name:</span>
-                                                                                                                <br>
-                                                                                                                <span class="address-name w-commerce-commerceboldtextblock">{{ address.recipient.recipient_name }}</span>
-                                                                                                            </div>
-                                                                                                            <br>
-                                                                                                            <div class="main-container">
-                                                                                                                <span class="fine-print-text">Full Address:</span>
-                                                                                                                <br>
-                                                                                                                <span class="address-address address-gray"
-                                                                                                                      style="display:flex;">{{ address.get_address() }}</span>
-
-                                                                                                            </div>
-                                                                                                            {% if address.is_default %}
-                                                                                                                <span id="address-default-sign">[default]</span>
-                                                                                                            {% endif %}
-                                                                                                        </div>
-                                                                                                    </li>
-                                                                                                {% endfor %}
+                                                                                                <li class="selected active">
+                                                                                                    <a id="select-type-a-collection-{{ order.id }}"
+                                                                                                       role="option" class="dropdown-item select-type-a"
+                                                                                                       tabindex="0" aria-setsize="2" aria-posinset="2"
+                                                                                                       aria-selected="{{ order.order_type == "delivery" }}"
+                                                                                                       orderId="{{ order.id }}" selectType="Self-Collection">
+                                                                                                        <span class="text">Self-Collection</span>
+                                                                                                    </a>
+                                                                                                </li>
                                                                                             </ul>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="modal-footer">
-                                                                                <button id="address-btn-{{ order.id }}" orderId="{{ order.id }}"
-                                                                                        type="button" class="btn btn-primary mr-2 address-btn">
-                                                                                    Update
-                                                                                </button>
+                                                                        </div>
+                                                                        <!-- Address section -->
+                                                                        <div id="type-address-section-{{ order.id }}" class="col-md-12"
+                                                                                {% if order.order_type == "delivery" %}
+                                                                             style="display: none" {% endif %}>
+                                                                            <div class="form-group">
+                                                                                <label class="modal-label">Address *</label>
+                                                                                <ul id="addresses-1-{{ order.id }}"
+                                                                                    class="address-list"
+                                                                                    order-id="{{ order.id }}">
+                                                                                    {% for address in order.user.addresses %}
+                                                                                        <li id="address-1-{{ order.id }}-{{ address.id }}"
+                                                                                            class="address address-1 address-1-{{ order.id }} clickable"
+                                                                                            orderId="{{ order.id }}"
+                                                                                            address-id="{{ address.id }}">
+                                                                                            <div class="cart-container">
+                                                                                                <div class="main-container">
+                                                                                                    <span class="large-text address address-number"></span>
+                                                                                                    <div class=""></div>
+                                                                                                </div>
+                                                                                                <br><br>
+                                                                                                <div class="main-container">
+                                                                                                    <span class="fine-print-text">Recipient Name:</span>
+                                                                                                    <br>
+                                                                                                    <span class="address-name w-commerce-commerceboldtextblock">{{ address.recipient.recipient_name }}</span>
+                                                                                                </div>
+                                                                                                <br>
+                                                                                                <div class="main-container">
+                                                                                                    <span class="fine-print-text">Full Address:</span>
+                                                                                                    <br>
+                                                                                                    <span class="address-address address-gray"
+                                                                                                          style="display:flex;">{{ address.get_address() }}</span>
+
+                                                                                                </div>
+                                                                                                {% if address.is_default %}
+                                                                                                    <span id="address-default-sign">[default]</span>
+                                                                                                {% endif %}
+                                                                                            </div>
+                                                                                        </li>
+                                                                                    {% endfor %}
+                                                                                </ul>
                                                                             </div>
-                                                                        </form>
-                                                                    </div><!-- /.modal-content -->
-                                                                </div><!-- /.modal -->
-                                                            </div>
-                                                        {% else %}
-                                                            <!-- Recipient Modal -->
-                                                            <div class="modal fade" id="recipient-modal-{{ order.id }}"
-                                                                 tabindex="-1"
-                                                                 role="dialog"
-                                                                 aria-labelledby="myModalLabel" aria-hidden="true">
-                                                                <div class="modal-dialog">
-                                                                    <div class="modal-content">
-                                                                        <form class="modal-form">
-                                                                            <div class="modal-header">
-                                                                                <h4 class="modal-title" id="myModalLabel"
-                                                                                    style="float: left;">Change
-                                                                                    Recipient</h4>
-                                                                                <table class="table-borderless">
+                                                                        </div>
 
-                                                                                </table>
-                                                                                <button type="button" class="close"
-                                                                                        data-dismiss="modal"
-                                                                                        aria-hidden="true">
-                                                                                    &times;
-                                                                                </button>
-
+                                                                        <!-- Name section -->
+                                                                        <div id="type-name-section-{{ order.id }}" class="col-md-12"
+                                                                                {% if order.order_type == "self-collection" %}
+                                                                             style="display: none" {% endif %}>
+                                                                            <div class="form-group">
+                                                                                <label class="modal-label">Recipient Name *</label>
+                                                                                <input id="recipient-name-1-{{ order.id }}"
+                                                                                       type="text"
+                                                                                       class="form-control"
+                                                                                       placeholder="Enter Name"
+                                                                                       data-errors="Please Enter Recipient Name.">
+                                                                                <div class="help-block with-errors"></div>
                                                                             </div>
-                                                                            <div class="modal-body">
-                                                                                <div class="row">
-                                                                                    <!-- Name section -->
-                                                                                    <div class="col-md-12">
-                                                                                        <div class="form-group">
-                                                                                            <label class="modal-label">Recipient
-                                                                                                Name *</label>
-                                                                                            <input id="recipient-name-2-{{ order.id }}"
-                                                                                                   type="text"
-                                                                                                   class="form-control"
-                                                                                                   placeholder="Enter Name"
-                                                                                                   data-errors="Please Enter Recipient Name."
-                                                                                                   required>
-                                                                                            <div class="help-block with-errors"></div>
-                                                                                        </div>
-                                                                                    </div>
+                                                                        </div>
 
-                                                                                    <!-- Phone section -->
-                                                                                    <div class="col-md-12">
-                                                                                        <div class="form-group">
-                                                                                            <label class="modal-label">Recipient
-                                                                                                Phone *</label>
-                                                                                            <input id="recipient-phone-2-{{ order.id }}"
-                                                                                                   type="text"
-                                                                                                   class="form-control"
-                                                                                                   placeholder="Enter Serial Number"
-                                                                                                   data-errors="Please Enter Recipient Phone."
-                                                                                                   required>
-                                                                                            <div class="help-block with-errors"></div>
-                                                                                        </div>
-                                                                                    </div>
+                                                                        <!-- Phone section -->
+                                                                        <div id="type-phone-section-{{ order.id }}" class="col-md-12"
+                                                                                {% if order.order_type == "self-collection" %}
+                                                                             style="display: none" {% endif %}>
+                                                                            <div class="form-group">
+                                                                                <label class="modal-label">Recipient Phone *</label>
+                                                                                <input id="recipient-phone-1-{{ order.id }}"
+                                                                                       type="text"
+                                                                                       class="form-control"
+                                                                                       placeholder="Enter Serial Number"
+                                                                                       data-errors="Please Enter Recipient Phone.">
+                                                                                <div class="help-block with-errors"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button id="type-btn-{{ order.id }}" orderId="{{ order.id }}"
+                                                                            type="button" class="btn btn-primary mr-2 type-btn">
+                                                                        Update
+                                                                    </button>
+                                                                </div>
+                                                            </form>
+                                                        </div><!-- /.modal-content -->
+                                                    </div><!-- /.modal -->
+                                                </div>
+
+                                                {% if order.order_type == "delivery" %}
+                                                    <!-- Address Modal -->
+                                                    <div class="modal fade" id="address-modal-{{ order.id }}"
+                                                         tabindex="-1"
+                                                         role="dialog"
+                                                         aria-labelledby="myModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <form class="modal-form">
+                                                                    <div class="modal-header">
+                                                                        <h4 class="modal-title" id="myModalLabel"
+                                                                            style="float: left;">Change Address</h4>
+                                                                        <table class="table-borderless">
+
+                                                                        </table>
+                                                                        <button type="button" class="close"
+                                                                                data-dismiss="modal"
+                                                                                aria-hidden="true">
+                                                                            &times;
+                                                                        </button>
+
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-group">
+                                                                                    <ul id="addresses-2-{{ order.id }}"
+                                                                                        class="address-list"
+                                                                                        order-id="{{ order.id }}">
+                                                                                        {% for address in order.user.addresses %}
+                                                                                            <li id="address-2-{{ order.id }}-{{ address.id }}"
+                                                                                                class="address address-2 address-2-{{ order.id }} clickable"
+                                                                                                orderId="{{ order.id }}"
+                                                                                                address-id="{{ address.id }}">
+                                                                                                <div class="cart-container">
+                                                                                                    <div class="main-container">
+                                                                                                        <span class="large-text address address-number"></span>
+                                                                                                        <div class=""></div>
+                                                                                                    </div>
+                                                                                                    <br><br>
+                                                                                                    <div class="main-container">
+                                                                                                        <span class="fine-print-text">Recipient Name:</span>
+                                                                                                        <br>
+                                                                                                        <span class="address-name w-commerce-commerceboldtextblock">{{ address.recipient.recipient_name }}</span>
+                                                                                                    </div>
+                                                                                                    <br>
+                                                                                                    <div class="main-container">
+                                                                                                        <span class="fine-print-text">Full Address:</span>
+                                                                                                        <br>
+                                                                                                        <span class="address-address address-gray"
+                                                                                                              style="display:flex;">{{ address.get_address() }}</span>
+
+                                                                                                    </div>
+                                                                                                    {% if address.is_default %}
+                                                                                                        <span id="address-default-sign">[default]</span>
+                                                                                                    {% endif %}
+                                                                                                </div>
+                                                                                            </li>
+                                                                                        {% endfor %}
+                                                                                    </ul>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="modal-footer">
-                                                                                <button id="recipient-btn-2-{{ order.id }}" orderId="{{ order.id }}"
-                                                                                        type="button" class="btn btn-primary mr-2 recipient-btn-2">
-                                                                                    Update
-                                                                                </button>
-                                                                                <button type="reset" class="btn btn-danger">
-                                                                                    {{ _('Reset') }}
-                                                                                </button>
-                                                                            </div>
-                                                                        </form>
-                                                                    </div><!-- /.modal-content -->
-                                                                </div><!-- /.modal -->
-                                                            </div>
-                                                        {% endif %}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button id="address-btn-{{ order.id }}" orderId="{{ order.id }}"
+                                                                                type="button" class="btn btn-primary mr-2 address-btn">
+                                                                            Update
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
+                                                            </div><!-- /.modal-content -->
+                                                        </div><!-- /.modal -->
                                                     </div>
-                                                </td>
-                                            </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                                                {% else %}
+                                                    <!-- Recipient Modal -->
+                                                    <div class="modal fade" id="recipient-modal-{{ order.id }}"
+                                                         tabindex="-1"
+                                                         role="dialog"
+                                                         aria-labelledby="myModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <form class="modal-form">
+                                                                    <div class="modal-header">
+                                                                        <h4 class="modal-title" id="myModalLabel"
+                                                                            style="float: left;">Change
+                                                                            Recipient</h4>
+                                                                        <table class="table-borderless">
+
+                                                                        </table>
+                                                                        <button type="button" class="close"
+                                                                                data-dismiss="modal"
+                                                                                aria-hidden="true">
+                                                                            &times;
+                                                                        </button>
+
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <div class="row">
+                                                                            <!-- Name section -->
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-group">
+                                                                                    <label class="modal-label">Recipient
+                                                                                        Name *</label>
+                                                                                    <input id="recipient-name-2-{{ order.id }}"
+                                                                                           type="text"
+                                                                                           class="form-control"
+                                                                                           placeholder="Enter Name"
+                                                                                           data-errors="Please Enter Recipient Name."
+                                                                                           required>
+                                                                                    <div class="help-block with-errors"></div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <!-- Phone section -->
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-group">
+                                                                                    <label class="modal-label">Recipient
+                                                                                        Phone *</label>
+                                                                                    <input id="recipient-phone-2-{{ order.id }}"
+                                                                                           type="text"
+                                                                                           class="form-control"
+                                                                                           placeholder="Enter Serial Number"
+                                                                                           data-errors="Please Enter Recipient Phone."
+                                                                                           required>
+                                                                                    <div class="help-block with-errors"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button id="recipient-btn-2-{{ order.id }}" orderId="{{ order.id }}"
+                                                                                type="button" class="btn btn-primary mr-2 recipient-btn-2">
+                                                                            Update
+                                                                        </button>
+                                                                        <button type="reset" class="btn btn-danger">
+                                                                            {{ _('Reset') }}
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
+                                                            </div><!-- /.modal-content -->
+                                                        </div><!-- /.modal -->
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
-                    <!-- Page end  -->
                 </div>
-                <!-- Modal Edit -->
-                <!-- <div class="modal fade" id="edit-note" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div class="popup text-left">
-                                    <div class="media align-items-top justify-content-between">
-                                        <h3 class="mb-3">Product</h3>
-                                        <div class="btn-cancel p-0" data-dismiss="modal"><i class="las la-times"></i>
+            </div>
+            <!-- Page end  -->
+        </div>
+        <!-- Modal Edit -->
+        <!-- <div class="modal fade" id="edit-note" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="popup text-left">
+                            <div class="media align-items-top justify-content-between">
+                                <h3 class="mb-3">Product</h3>
+                                <div class="btn-cancel p-0" data-dismiss="modal"><i class="las la-times"></i>
+                                </div>
+                            </div>
+                            <div class="content edit-notes">
+                                <div class="card card-transparent card-block card-stretch event-note mb-0">
+                                    <div class="card-body px-0 bukmark">
+                                        <div class="d-flex align-items-center justify-content-between pb-2 mb-3 border-bottom">
+                                            <div class="quill-tool">
+                                            </div>
+                                        </div>
+                                        <div id="quill-toolbar1">
+                                            <p>Virtual Digital Marketing Course every week on Monday, Wednesday
+                                                and Saturday.Virtual Digital Marketing Course every week on
+                                                Monday</p>
                                         </div>
                                     </div>
-                                    <div class="content edit-notes">
-                                        <div class="card card-transparent card-block card-stretch event-note mb-0">
-                                            <div class="card-body px-0 bukmark">
-                                                <div class="d-flex align-items-center justify-content-between pb-2 mb-3 border-bottom">
-                                                    <div class="quill-tool">
-                                                    </div>
-                                                </div>
-                                                <div id="quill-toolbar1">
-                                                    <p>Virtual Digital Marketing Course every week on Monday, Wednesday
-                                                        and Saturday.Virtual Digital Marketing Course every week on
-                                                        Monday</p>
-                                                </div>
-                                            </div>
-                                            <div class="card-footer border-0">
-                                                <div class="d-flex flex-wrap align-items-ceter justify-content-end">
-                                                    <div class="btn btn-primary mr-3" data-dismiss="modal">Cancel</div>
-                                                    <div class="btn btn-outline-primary" data-dismiss="modal">Save</div>
-                                                </div>
-                                            </div>
+                                    <div class="card-footer border-0">
+                                        <div class="d-flex flex-wrap align-items-ceter justify-content-end">
+                                            <div class="btn btn-primary mr-3" data-dismiss="modal">Cancel</div>
+                                            <div class="btn btn-outline-primary" data-dismiss="modal">Save</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
+            </div>
+        </div> -->
     </div>
 {% endblock %}
 

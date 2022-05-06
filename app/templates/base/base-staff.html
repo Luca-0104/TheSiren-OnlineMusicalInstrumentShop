@@ -14,7 +14,7 @@
 
         {# import the jQuery #}
         <script type="text/javascript" src="../../static/js/jquery-3.4.1.js"></script>
-
+    <link rel="stylesheet" href="../../static/css/base/base-staff.css">
         {#  for scripts of javascript #}
         {% block scripts %}{% endblock %}
     </head>
@@ -1090,8 +1090,8 @@
                                                         <h5 class="mb-1">{{ current_user.email }}</h5>
                                                         <p class="mb-0">{{ current_user.username }}</p>
                                                         <div class="d-flex align-items-center justify-content-center mt-3">
-                                                            <a href="../app/user-profile.html" class="btn btn-outline-light mr-2">{{ _('Profile') }}</a>
-                                                            <a href="{{ url_for('auth.logout') }}" class="btn btn-outline-light">{{ _('Sign Out') }}</a>
+                                                            <a id="staff-profile-btn" href="#" class="btn btn-outline-light mr-2">{{ _('Profile') }}</a>
+                                                            <a id="staff-sign-out-btn" href="{{ url_for('auth.logout') }}" class="btn btn-outline-light">{{ _('Sign Out') }}</a>
                                                         </div>
                                                     </div>
                                                 </div>

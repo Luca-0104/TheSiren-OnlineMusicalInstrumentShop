@@ -1,0 +1,21 @@
+#staff-profile-btn {
+    color: #7c7f87;
+    border-color: #c7cbd3;
+}
+
+#staff-profile-btn:hover {
+    color: #212529;
+    background-color: #c7cbd3;
+    border-color: #c7cbd3
+}
+
+#staff-sign-out-btn {
+    color: #7c7f87;
+    border-color: #c7cbd3;
+}
+
+#staff-sign-out-btn:hover {
+    color: #212529;
+    background-color: #c7cbd3;
+    border-color: #c7cbd3
+}

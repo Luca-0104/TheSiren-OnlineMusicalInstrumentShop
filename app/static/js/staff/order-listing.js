@@ -68,6 +68,7 @@ function changeStatusTo(order_id, new_code)
     {
         // get from server (backend)
         let returnValue = response['returnValue'];
+        console.log(returnValue);
 
         if (returnValue === 0)
         {
@@ -78,26 +79,70 @@ function changeStatusTo(order_id, new_code)
 }
 
 // modify type //////////////////////////////////////////////////////////////////////////////////////////////////
-$(".type-select").change(function ()
+// $(".type-select").change(function ()
+// {
+//     console.log("here");
+//     let orderId = $(this).attr("orderId");
+//     let checkValue = $(this).val();
+//     console.log(orderId);
+//     console.log(checkValue);
+//
+//     let type_address_section = $("#type-address-section-" + orderId);
+//     let type_name_section = $("#type-name-section-" + orderId);
+//     let type_phone_section = $("#type-phone-section-" + orderId);
+//
+//     if (checkValue === 'Delivery')
+//     {
+//         type_address_section.css('display','');
+//         type_name_section.css('display','none');
+//         type_phone_section.css('display','none');
+//     }
+//     else if (checkValue === 'Self-Collection')
+//     {
+//         type_address_section.css('display','none');
+//         type_name_section.css('display','');
+//         type_phone_section.css('display','');
+//     }
+// });
+$(".select-type-a").on("click", function ()
 {
-    console.log("here");
+    console.log(".select-type-a clicked");
     let orderId = $(this).attr("orderId");
-    let checkValue = $(this).val();
+    let selectType = $(this).attr("selectType");
     console.log(orderId);
-    console.log(checkValue);
+    console.log(selectType);
 
+    // get element of the select's mask
+    let select_type = $("#select-type-"+orderId);
+    let select_type_display = $("#select-type-display-"+orderId);
+
+    // get element of further action area
     let type_address_section = $("#type-address-section-" + orderId);
     let type_name_section = $("#type-name-section-" + orderId);
     let type_phone_section = $("#type-phone-section-" + orderId);
 
-    if (checkValue === 'Delivery')
+    if (selectType === 'Delivery')
     {
+        // change select's mask
+        select_type.val("Delivery");
+        select_type_display.html("Delivery");
+        $("#select-type-a-delivery-"+orderId).attr("aria-selected",true);
+        $("#select-type-a-collection-"+orderId).attr("aria-selected",false);
+
+        // set display of further action area
         type_address_section.css('display','');
         type_name_section.css('display','none');
         type_phone_section.css('display','none');
     }
-    else if (checkValue === 'Self-Collection')
+    else if (selectType === 'Self-Collection')
     {
+        // change select's mask
+        select_type.val("Self-Collection");
+        select_type_display.html("Self-Collection");
+        $("#select-type-a-collection-"+orderId).attr("aria-selected",true);
+        $("#select-type-a-delivery-"+orderId).attr("aria-selected",false);
+
+        // set display of further action area
         type_address_section.css('display','none');
         type_name_section.css('display','');
         type_phone_section.css('display','');

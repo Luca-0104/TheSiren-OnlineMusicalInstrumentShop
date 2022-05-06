@@ -40,3 +40,7 @@ input[type='checkbox'].switch:checked::after {
 #epidemic-box{
     width: 185px;
 }
+
+.clickable {
+    cursor: pointer;
+}
