@@ -484,6 +484,7 @@ def change_status():
 
         # check if the order exists
         if o is None:
+            current_app.logger.error("order not exist!")
             return jsonify({'returnValue': 1})
 
         # get current status code
@@ -523,7 +524,8 @@ def change_status():
             # check the permission
             if new_code in perm_staff:
                 # staff can only change the status to 'finished' when it is 'delivery' or 'waiting for collection'
-                if new_code == 4 and (current_code != 2 or current_code != 3):
+                if new_code == 4 and (current_code != 2 and current_code != 3):
+                    current_app.logger.error("Staff can only change the status to 'finished' when it is 'delivery' or 'waiting for collection'")
                     return jsonify({'returnValue': 2, 'msg': 'Permission denied!'})
                 # update status
                 o.status_code = new_code
@@ -540,6 +542,7 @@ def change_status():
                 db.session.commit()
                 return jsonify({'returnValue': 0})
             else:
+                current_app.logger.error("change order status - Permission denied!")
                 return jsonify({'returnValue': 2, 'msg': 'Permission denied!'})
 
     return jsonify({'returnValue': 1})
