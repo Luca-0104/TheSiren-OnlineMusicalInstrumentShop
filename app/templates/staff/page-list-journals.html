@@ -61,7 +61,7 @@
                                 {% for journal in journal_lst %}
                                     <tr id="journal-row-{{ journal.id }}">
                                         <!-- journal info -->
-                                        <td>{{ journal.timestamp }}</td>
+                                        <td>{{ journal.timestamp.strftime("%Y-%m-%d %H:%M:%S") }}</td>
                                         <td>{{ journal.author.username }}</td>
                                         <td>{{ journal.text }}</td>
 
@@ -127,6 +127,9 @@
                                                                     <div id="quill-toolbar1">
                                                                         <h4>{{ journal.title }}</h4>
                                                                         <p>{{ journal.text }}</p>
+                                                                        <br>
+                                                                        <hr>
+                                                                        <p class="float-right">Last Edit: {{ journal.timestamp.strftime("%Y-%m-%d %H:%M:%S") }}</p>
                                                                     </div>
                                                                 </div>
                                                                 <div class="card-footer border-0">

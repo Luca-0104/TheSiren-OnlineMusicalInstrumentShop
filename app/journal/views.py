@@ -4,6 +4,7 @@ from app import db
 from app.journal import journal
 from flask import render_template, redirect, url_for, request, current_app, jsonify, flash
 
+from app.journal.forms import JournalUploadForm
 from app.models import Journal
 from app.public_tools import get_epidemic_mode_status
 
@@ -29,13 +30,28 @@ def journal_management():
 def upload_journal():
     """
     The function for staffs to upload journals
-    :return:
     """
     # get whether the epidemic mode is turned on currently
     epidemic_mode_on = get_epidemic_mode_status()
 
-    # 待改
-    return render_template("staff/page-list-journals.html", epidemic_mode_on=epidemic_mode_on)
+    # upload form
+    form = JournalUploadForm()
+
+    # if the form is submitted
+    if form.validate_on_submit():
+        title = form.title.data
+        text = form.text.data
+
+        # create a new journal obj
+        new_journal = Journal(title=title, text=text, author_id=current_user.id)
+        db.session.add(new_journal)
+        db.session.commit()
+
+        flash("Journal upload success!")
+        # back to journal listing page
+        return redirect(url_for("journal.journal_management"))
+
+    return render_template("staff/page-add-journal.html", epidemic_mode_on=epidemic_mode_on, form=form)
 
 
 @journal.route("/journal-management/edit-journal", methods=['GET', 'POST'])
