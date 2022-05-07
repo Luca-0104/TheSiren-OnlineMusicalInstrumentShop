@@ -300,7 +300,7 @@ class Journal(BaseModel):
             # get a random text
             text = journal_contents[random.randint(0, len(journal_contents)-1)]
             # get a random staff as the author
-            staffs = User.query.filter_by(id=2, is_deleted=False).all()
+            staffs = User.query.filter_by(role_id=2, is_deleted=False).all()
             author_id = staffs[random.randint(0, len(staffs)-1)].id
 
             new_journal = Journal(text=text, author_id=author_id)
