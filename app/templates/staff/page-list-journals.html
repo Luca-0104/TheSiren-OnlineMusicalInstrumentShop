@@ -81,11 +81,13 @@
                                                 </div>
 
                                                 <!-- "Edit" button -->
-                                                <a class="badge bg-success clickable mr-2"
+                                                <a id="btn-journal-edit-{{ journal.id }}" class="badge bg-success clickable mr-2 btn-journal-edit"
+                                                   author-id="{{ journal.author_id }}"
+                                                   current-user-id="{{ current_user.id }}"
+                                                   href-url="{{ url_for("journal.edit_journal", journal_id=journal.id) }}"
                                                    data-toggle="tooltip"
                                                    data-placement="top" title=""
-                                                   data-original-title="Edit"
-                                                   href="{{ url_for("journal.edit_journal", journal_id=journal.id) }}">
+                                                   data-original-title="Edit">
                                                     <i class="ri-pencil-line mr-0"></i>
                                                 </a>
 

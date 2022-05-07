@@ -1,11 +1,27 @@
-// when journal delete buttons are clicked
+/* when journal delete buttons are clicked */
 $(".btn-journal-delete").on('click', function (){
-    console.log("delete btn clicked: " + $(this).attr("journal-id"));
     if (confirm("Are your sure to delete this journal?") === true){
         // send ajax request to delete this journal
-        deleteJournal($(this).attr("journal-id"))
+        deleteJournal($(this).attr("journal-id"));
     }
 });
+
+/* when edit journal buttons are clicked */
+$(".btn-journal-edit").on('click', function (){
+    // get current user id and journal author id to compare
+    let currentUserId = $(this).attr("current-user-id");
+    let authorId = $(this).attr("author-id");
+    // user can only edit their own journals
+    if(currentUserId === authorId){
+        //get href url
+        let url = $(this).attr("href-url");
+        location.href = url;
+    }else{
+        //notify user
+        window.alert("Permission Denied! You can change only your own journals.");
+    }
+});
+
 
 /*
     ------------------------------ Functions using ajax ------------------------------
