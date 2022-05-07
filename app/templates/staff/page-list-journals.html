@@ -59,7 +59,7 @@
                             <!-- Table body section -->
                             <tbody class="ligth-body">
                                 {% for journal in journal_lst %}
-                                    <tr>
+                                    <tr id="journal-row-{{ journal.id }}">
                                         <!-- journal info -->
                                         <td>{{ journal.timestamp }}</td>
                                         <td>{{ journal.author.username }}</td>
@@ -93,10 +93,14 @@
                                                 </div>
 
                                                 <!-- "Delete" button -->
-                                                <a class="badge bg-warning mr-2" data-toggle="tooltip"
+                                                <a id="btn-journal-delete-{{ journal.id }}" class="badge bg-warning mr-2 btn-journal-delete"
+                                                   journal-id="{{ journal.id }}"
+                                                   data-toggle="tooltip"
                                                    data-placement="top"
-                                                   title="" data-original-title="Delete"
-                                                   href="#"><i class="ri-delete-bin-line mr-0"></i></a>
+                                                   title="" data-original-title="Delete">
+                                                    <i class="ri-delete-bin-line mr-0"></i>
+                                                </a>
+
                                             </div>
                                         </td>
                                     </tr>
@@ -239,6 +243,9 @@
 {% block scripts_end_body %}
     <!-- Backend Bundle JavaScript -->
     <script id="backend-bundle" src="../../static/js/backend-bundle.min.js"></script>
+
+    <!-- Self-defined js -->
+    <script src="../../static/js/staff/journal-listing.js"></script>
 
     <!-- Table Treeview JavaScript -->
     <script src="../../static/js/table-treeview.js"></script>
