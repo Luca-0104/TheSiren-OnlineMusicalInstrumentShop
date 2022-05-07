@@ -73,6 +73,10 @@ def create_app(config_name):
     from .comment import comment as comment_blueprint
     app.register_blueprint(comment_blueprint)
 
+    # register blueprint - journal
+    from .journal import journal as journal_blueprint
+    app.register_blueprint(journal_blueprint)
+
     return app
 
 

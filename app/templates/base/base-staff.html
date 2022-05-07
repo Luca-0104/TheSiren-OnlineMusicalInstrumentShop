@@ -9,15 +9,21 @@
         <title>{% block title %}The Siren{% endblock %}</title>
 
 
+        <link rel="icon" href="../../static/images/half-logo2.png">
+        <link rel="stylesheet" href="../../static/css/base/base-staff.css">
+        <!-- do not know who put epidemic button style inside this one! FUCK! -->
+        <link rel="stylesheet" href="../../static/css/staff/stock-management.css">
         {#  for links to css #}
         {% block style %}{% endblock %}
 
+
         {# import the jQuery #}
         <script type="text/javascript" src="../../static/js/jquery-3.4.1.js"></script>
-    <link rel="stylesheet" href="../../static/css/base/base-staff.css">
         {#  for scripts of javascript #}
         {% block scripts %}{% endblock %}
     </head>
+
+
     <body>
 
         <!-- loader Start -->
@@ -95,6 +101,69 @@
                                     </li>
                                 </ul>
                             </li>
+                            <!-- Section of List Orders -->
+                            <li id="sidebar-Orders" class="sidebar-selection ">
+                                <a href="#order" class="collapsed" data-toggle="collapse" aria-expanded="false">
+                                    <svg class="svg-icon" id="p-dash4" width="20" height="20"
+                                         xmlns="http://www.w3.org/2000/svg"
+                                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                         stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+                                        <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
+                                    </svg>
+                                    <span class="ml-4">Orders</span>
+                                    <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20"
+                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                         stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                         stroke-linejoin="round">
+                                        <polyline points="10 15 15 20 20 15"></polyline>
+                                        <path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
+                                    </svg>
+                                </a>
+                                <ul id="order" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                                    <!-- List Orders -->
+                                    <li id="sidebar-List_Orders" super-selection="sidebar-Orders" class="sidebar-selection ">
+                                        <a href="{{ url_for('order.order_management') }}">
+                                            <i class="las la-minus"></i><span>{{ _('List Orders') }}</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- Section of List Journals & Add journals -->
+                            <li id="sidebar-Journals" class="sidebar-selection ">
+                                <a href="#purchase" class="collapsed" data-toggle="collapse" aria-expanded="false">
+                                    <svg class="svg-icon" id="p-dash5" width="20" height="20"
+                                         xmlns="http://www.w3.org/2000/svg"
+                                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                         stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                                        <line x1="1" y1="10" x2="23" y2="10"></line>
+                                    </svg>
+                                    <span class="ml-4">{{ _('Journals') }}</span>
+                                    <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20"
+                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                         stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                         stroke-linejoin="round">
+                                        <polyline points="10 15 15 20 20 15"></polyline>
+                                        <path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
+                                    </svg>
+                                </a>
+                                <ul id="purchase" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                                    <!-- List Journals -->
+                                    <li id="sidebar-List_Journals" super-selection="sidebar-Journals" class="sidebar-selection ">
+                                        <a href="{{ url_for("journal.journal_management") }}">
+                                            <i class="las la-minus"></i><span>{{ _('List Journals') }}</span>
+                                        </a>
+                                    </li>
+                                    <!-- Add journals -->
+                                    <li id="sidebar-Add_purchase" super-selection="sidebar-Journals" class="sidebar-selection ">
+                                        <a href="{{ url_for("journal.upload_journal") }}">
+                                            <i class="las la-minus"></i><span>{{ _('Upload Journals') }}</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
                             <!-- Section of List Category & Add Category -->
                             <li id="sidebar-Categories" class="sidebar-selection ">
                                 <a href="#category" class="collapsed" data-toggle="collapse" aria-expanded="false">
@@ -125,68 +194,6 @@
                                     <li id="sidebar-Add_Category" super-selection="sidebar-Categories" class="sidebar-selection ">
                                         <a href="../backend/page-add-category.html">
                                             <i class="las la-minus"></i><span>{{ _('Add Category') }}</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!-- Section of List Orders -->
-                            <li id="sidebar-Orders" class="sidebar-selection ">
-                                <a href="#order" class="collapsed" data-toggle="collapse" aria-expanded="false">
-                                    <svg class="svg-icon" id="p-dash4" width="20" height="20"
-                                         xmlns="http://www.w3.org/2000/svg"
-                                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                         stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
-                                        <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
-                                    </svg>
-                                    <span class="ml-4">Orders</span>
-                                    <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20"
-                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                         stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                         stroke-linejoin="round">
-                                        <polyline points="10 15 15 20 20 15"></polyline>
-                                        <path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
-                                    </svg>
-                                </a>
-                                <ul id="order" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                                    <!-- List Orders -->
-                                    <li id="sidebar-List_Orders" super-selection="sidebar-Orders" class="sidebar-selection ">
-                                        <a href="{{ url_for('order.order_management') }}">
-                                            <i class="las la-minus"></i><span>{{ _('List Orders') }}</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!-- Section of List Purchases & Add purchase -->
-                            <li id="sidebar-Purchases" class="sidebar-selection ">
-                                <a href="#purchase" class="collapsed" data-toggle="collapse" aria-expanded="false">
-                                    <svg class="svg-icon" id="p-dash5" width="20" height="20"
-                                         xmlns="http://www.w3.org/2000/svg"
-                                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                         stroke-linecap="round" stroke-linejoin="round">
-                                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-                                        <line x1="1" y1="10" x2="23" y2="10"></line>
-                                    </svg>
-                                    <span class="ml-4">{{ _('Purchases') }}</span>
-                                    <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20"
-                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                         stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                         stroke-linejoin="round">
-                                        <polyline points="10 15 15 20 20 15"></polyline>
-                                        <path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
-                                    </svg>
-                                </a>
-                                <ul id="purchase" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                                    <!-- List Purchases -->
-                                    <li id="sidebar-List_Purchases" super-selection="sidebar-Purchases" class="sidebar-selection ">
-                                        <a href="../backend/page-list-purchase.html">
-                                            <i class="las la-minus"></i><span>{{ _('List Purchases') }}</span>
-                                        </a>
-                                    </li>
-                                    <!-- Add purchase -->
-                                    <li id="sidebar-Add_purchase" super-selection="sidebar-Purchases" class="sidebar-selection ">
-                                        <a href="../backend/page-add-purchase.html">
-                                            <i class="las la-minus"></i><span>{{ _('Add purchase') }}</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -1146,6 +1153,7 @@
 
         {# handel the problem of activation of items in side nav bar #}
         <script src="../../static/js/staff/base-sidebar.js"></script>
+        <script src="../../static/js/staff/epidemic-switch.js"></script>
 
     </body>
 

@@ -403,11 +403,11 @@ def filter_model_types():
         if filter_b == "":
             filter_b = "%"
 
-        print("c: ", filter_c)
-        print("t: ", filter_t)
-        print("a: ", filter_a)
-        print("b: ", filter_b)
-        print("search_count: ", search_content)
+        # print("c: ", filter_c)
+        # print("t: ", filter_t)
+        # print("a: ", filter_a)
+        # print("b: ", filter_b)
+        # print("search_count: ", search_content)
 
         if search_content != "":
             # if the user has searched something

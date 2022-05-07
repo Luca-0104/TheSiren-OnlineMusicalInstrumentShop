@@ -58,11 +58,14 @@ class Tools:
         Cart.insert_carts()
         Order.insert_orders(20)
         OrderModelType.insert_omts()
+        # insert journals
+        Journal.insert_journals(50)
 
         # chat message
         Message.insert_messages(30)
         # init chat room
         ChatRoom.init_chat()
+
 
     @staticmethod
     def insert_pm_glt(pm_list, member_code):
@@ -281,9 +284,31 @@ class Journal(BaseModel):
     """
     __tablename_ = 'journals'
     id = db.Column(db.Integer, primary_key=True)
-    text = db.Column(db.Text, nullable=False)
+    title = db.Column(db.String(128), default="Untitled")   # about 25 words
+    text = db.Column(db.Text(5120), nullable=False)     # about 1000 words
     timestamp = db.Column(db.DateTime(), index=True, default=datetime.utcnow)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    @staticmethod
+    def insert_journals(count: int):
+        journals = [
+            ['Gibson Discount', 'Gibson guitars are on sale, go to check it!'],
+            ['Welcome to The Siren', 'Welcome to our online musical instrument shop, here you will be provided the best services.'],
+            ['New Function', 'Quality communication with our staffs is available now, just try it!'],
+            ['Payment Security', 'Alipay is cooperating with us, you can pay for your order with Alipay']
+        ]
+        for i in range(count):
+            # get a random journal
+            journal_index = random.randint(0, len(journals)-1)
+            journal = journals[journal_index]
+
+            # get a random staff as the author
+            staffs = User.query.filter_by(role_id=2, is_deleted=False).all()
+            author_id = staffs[random.randint(0, len(staffs)-1)].id
+
+            new_journal = Journal(title=journal[0], text=journal[1], author_id=author_id)
+            db.session.add(new_journal)
+        db.session.commit()
 
 
 class TheSiren(BaseModel):
