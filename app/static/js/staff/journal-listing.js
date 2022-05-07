@@ -1,15 +1,11 @@
-$(document).ready(function (){
-
-    // when journal delete buttons are clicked
-    $(".btn-journal-delete").on('click', function (){
-        if (confirm("Are your sure to delete this journal?") === true){
-            // send ajax request to delete this journal
-            deleteJournal($(this).attr("journal-id"))
-        }
-    });
-
+// when journal delete buttons are clicked
+$(".btn-journal-delete").on('click', function (){
+    console.log("delete btn clicked: " + $(this).attr("journal-id"));
+    if (confirm("Are your sure to delete this journal?") === true){
+        // send ajax request to delete this journal
+        deleteJournal($(this).attr("journal-id"))
+    }
 });
-
 
 /*
     ------------------------------ Functions using ajax ------------------------------
