@@ -284,8 +284,8 @@ class Journal(BaseModel):
     """
     __tablename_ = 'journals'
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(24), default="Untitled")
-    text = db.Column(db.Text(256), nullable=False)
+    title = db.Column(db.String(128), default="Untitled")   # about 25 words
+    text = db.Column(db.Text(5120), nullable=False)     # about 1000 words
     timestamp = db.Column(db.DateTime(), index=True, default=datetime.utcnow)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
