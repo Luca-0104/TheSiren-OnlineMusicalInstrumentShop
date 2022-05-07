@@ -205,7 +205,7 @@
                                                         <div class="w-commerce-commercecartlineitem">
                                                             <div>{{ _('Subtotal') }}</div>
                                                             <div class="w-commerce-commercecartordervalue">
-                                                                <span>$ </span><span id="number-subtotal"></span><span> USD</span>
+                                                                <span>￥ </span><span id="number-subtotal"></span><span> CNY</span>
                                                             </div>
                                                         </div>
                                                         {# The go to cart btn #}
@@ -504,17 +504,17 @@
                                                         {% if order.gross_payment == order.paid_payment %}
                                                             <tr>
                                                                 <td class="cost_col large-text">
-                                                                    ${{ order.paid_payment }}
+                                                                    ￥{{ order.paid_payment }}
                                                                 </td>
                                                             </tr>
                                                         {% else %}
                                                             <tr>
                                                                 <td class="cost_col large-text">
                                                                     <div class="old-price">
-                                                                        <span>${{ order.gross_payment }}</span>
+                                                                        <span>￥ order.gross_payment }}</span>
                                                                     </div>
                                                                     <div>
-                                                                        ${{ order.paid_payment }}
+                                                                        ￥{{ order.paid_payment }}
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -591,7 +591,7 @@
 {#                                                    {% endif %}#}
                                                 </td>
                                                 <td class="cost_col">
-                                                    ${{ order.generate_payment() }}
+                                                    ￥{{ order.generate_payment() }}
                                                 </td>
                                                 <td class="status_col">
                                                     {% if order.status_code == 0 %}

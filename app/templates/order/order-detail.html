@@ -212,7 +212,7 @@
                                                         <div class="w-commerce-commercecartlineitem">
                                                             <div>{{ _('Subtotal') }}</div>
                                                             <div class="w-commerce-commercecartordervalue">
-                                                                <span>$ </span><span id="number-subtotal"></span><span> USD</span>
+                                                                <span>￥ </span><span id="number-subtotal"></span><span> CNY</span>
                                                             </div>
                                                         </div>
                                                         {# The go to cart btn #}
@@ -397,15 +397,15 @@
                                                             Order Type: {{ order.order_type }}
                                                         </td>
                                                         <td>
-                                                            Delivery Cost: ${{ order.delivery_fee }}
+                                                            Delivery Cost: ￥{{ order.delivery_fee }}
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td class="left-cell">
-                                                            Total Cost: ${{ order.gross_payment }}
+                                                            Total Cost: ￥{{ order.gross_payment }}
                                                         </td>
                                                         <td class="left-cell">
-                                                            Actual Paid: ${{ order.paid_payment }}
+                                                            Actual Paid: ￥{{ order.paid_payment }}
                                                         </td>
                                                     </tr>
                                                 </table>
