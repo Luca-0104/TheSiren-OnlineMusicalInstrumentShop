@@ -81,16 +81,13 @@
                                                 </div>
 
                                                 <!-- "Edit" button -->
-                                                <div class="mr-2"
-                                                     data-toggle="modal"
-                                                     data-target="#modal-edit-{{ journal.id }}">
-                                                    <a class="badge bg-success clickable"
-                                                       data-toggle="tooltip"
-                                                       data-placement="top" title=""
-                                                       data-original-title="Edit">
-                                                        <i class="ri-pencil-line mr-0"></i>
-                                                    </a>
-                                                </div>
+                                                <a class="badge bg-success clickable mr-2"
+                                                   data-toggle="tooltip"
+                                                   data-placement="top" title=""
+                                                   data-original-title="Edit"
+                                                   href="{{ url_for("journal.edit_journal", journal_id=journal.id) }}">
+                                                    <i class="ri-pencil-line mr-0"></i>
+                                                </a>
 
                                                 <!-- "Delete" button -->
                                                 <a id="btn-journal-delete-{{ journal.id }}" class="badge bg-warning mr-2 btn-journal-delete"

@@ -1,10 +1,12 @@
+from datetime import datetime
+
 from flask_login import current_user, login_required
 
 from app import db
 from app.journal import journal
 from flask import render_template, redirect, url_for, request, current_app, jsonify, flash
 
-from app.journal.forms import JournalUploadForm
+from app.journal.forms import JournalUploadForm, JournalEditForm
 from app.models import Journal
 from app.public_tools import get_epidemic_mode_status
 
@@ -54,14 +56,51 @@ def upload_journal():
     return render_template("staff/page-add-journal.html", epidemic_mode_on=epidemic_mode_on, form=form)
 
 
-@journal.route("/journal-management/edit-journal", methods=['GET', 'POST'])
+@journal.route("/journal-management/edit-journal/<int:journal_id>", methods=['GET', 'POST'])
 @login_required
-def edit_journal():
+def edit_journal(journal_id):
     """
     The function for editing the journals
     :return:
     """
-    pass
+    # get whether the epidemic mode is turned on currently
+    epidemic_mode_on = get_epidemic_mode_status()
+
+    # journal edit form
+    form = JournalEditForm()
+
+    # get journal from db
+    this_journal = Journal.query.get(journal_id)
+
+    if this_journal is None:
+        current_app.logger.error("No such journal with this id")
+        return redirect(url_for("journal.journal_management"))
+
+    # check if the user is the author of this journal
+    if this_journal.author_id != current_user.id:
+        flash("Permission Denied! You can only edit your own journals!")
+        current_app.logger.error("Permission Denied! Some one attempts to edit others' journal")
+        return redirect(url_for("journal.journal_management"))
+
+    # if the form is submitted
+    if form.validate_on_submit():
+        # update the last edit time
+        this_journal.timestamp = datetime.utcnow()
+        # update the journal content
+        this_journal.title = form.title.data
+        this_journal.text = form.text.data
+        # submit to db
+        db.session.add(this_journal)
+        db.session.commit()
+
+        flash("Journal updated successfully!")
+        return redirect(url_for("journal.journal_management"))
+
+    # pre input the current data into this form
+    form.title.data = this_journal.title
+    form.text.data = this_journal.text
+
+    return render_template("staff/page-modify-journal.html", epidemic_mode_on=epidemic_mode_on, form=form)
 
 
 @journal.route("/api/journal-management/delete-journal", methods=['POST'])
