@@ -22,6 +22,8 @@
         {#  for scripts of javascript #}
         {% block scripts %}{% endblock %}
     </head>
+
+
     <body>
 
         <!-- loader Start -->
@@ -156,7 +158,7 @@
                                     <!-- Add journals -->
                                     <li id="sidebar-Add_purchase" super-selection="sidebar-Journals" class="sidebar-selection ">
                                         <a href="{{ url_for("journal.upload_journal") }}">
-                                            <i class="las la-minus"></i><span>{{ _('Add Journals') }}</span>
+                                            <i class="las la-minus"></i><span>{{ _('Upload Journals') }}</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -1151,6 +1153,7 @@
 
         {# handel the problem of activation of items in side nav bar #}
         <script src="../../static/js/staff/base-sidebar.js"></script>
+        <script src="../../static/js/staff/epidemic-switch.js"></script>
 
     </body>
 
