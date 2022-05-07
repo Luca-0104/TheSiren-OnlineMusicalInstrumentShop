@@ -19,4 +19,17 @@ def journal_management():
     # query all journals from db
     journal_lst = Journal.query.order_by(Journal.timestamp.desc())
 
-    return render_template("", epidemic_mode_on=epidemic_mode_on, journal_lst=journal_lst)
+    return render_template("staff/page-list-journals.html", epidemic_mode_on=epidemic_mode_on, journal_lst=journal_lst)
+
+
+@journal.route("/upload-journal", methods=['GET', 'POST'])
+def upload_journal():
+    """
+    The function for staffs to upload journals
+    :return:
+    """
+    # get whether the epidemic mode is turned on currently
+    epidemic_mode_on = get_epidemic_mode_status()
+
+    # 待改
+    return render_template("staff/page-list-journals.html", epidemic_mode_on=epidemic_mode_on)
