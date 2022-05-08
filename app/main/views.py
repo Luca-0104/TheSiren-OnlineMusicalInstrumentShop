@@ -138,11 +138,11 @@ def brand_intro(brand_id):
     # get the brand obj
     brand = Brand.query.get(brand_id)
     # concatenate the prefix with brand name to get the template name
-    template_name = "main/brand_intro/{}.html".format(brand.name)
+    template_name = "main/brand_intro/{}.html".format(brand.name.lower())
     try:
         return render_template(template_name)
     except Exception as e:
-        traceback.print_exc()
+        # traceback.print_exc()
         return render_template("main/brand_intro/coming-soon.html", brand_name=brand.name)
 
 
