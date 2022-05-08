@@ -106,12 +106,12 @@
 }
 
 /* price */
-.price-container{
+.my-price-container{
     margin-top: -10px;
     padding: 4px 0px;
 }
 
-.old-price{
+.my-old-price{
     margin-left: 10px;
     font-size: 18px;
 }
