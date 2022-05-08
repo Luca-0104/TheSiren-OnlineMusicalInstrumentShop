@@ -6,7 +6,7 @@ from app import create_app, db, socketio
 
 # create an object of our app
 from app.models import Tools, Permission, User, Role, Brand, Category, ModelType, ModelTypeIntroPic, ModelTypePic, \
-    Product, CommentPic, Comment, Cart, OrderModelType, Order, TheSiren
+    Product, CommentPic, Comment, Cart, OrderModelType, Order, TheSiren, Journal
 
 app = create_app(os.getenv('FLASK_CONFIG') or 'default')
 
@@ -31,4 +31,5 @@ def make_shell_context():
                 Comment=Comment,
                 Cart=Cart,
                 OrderModelType=OrderModelType,
-                Order=Order)
+                Order=Order,
+                Journal=Journal)

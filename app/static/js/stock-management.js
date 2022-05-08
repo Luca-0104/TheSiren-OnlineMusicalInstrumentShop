@@ -61,3 +61,18 @@ function remove_model_type(model_type_id, product_id)
 }
 
 $(".brands").template()
+
+function search_by(type_id)
+{
+    let invisible_search_type = $("#invisible-search-type");
+    let search_by = $("#search-by");
+    $("#invisible-search-type").val(type_id);
+    if(type_id == 1)
+    {
+        search_by.html("Model Name");
+    }
+    else if(type_id == 2)
+    {
+        search_by.html("Serial Number");
+    }
+}

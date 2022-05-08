@@ -1,3 +1,5 @@
+import traceback
+
 from flask import render_template, request, redirect, url_for, session, jsonify, flash, json, current_app
 from flask_login import login_required, current_user
 from flask_babel import _
@@ -5,14 +7,14 @@ from sqlalchemy import and_
 
 from . import main
 from .. import db
-from ..models import Product, ModelType, Category, Brand, BrowsingHistory
+from ..models import Product, ModelType, Category, Brand, BrowsingHistory, Journal
 from ..public_tools import get_unique_shop_instance
 
 import random
 from datetime import datetime
 
 
-@main.route('/index')
+@main.route('/')
 def index():
     """
         The function is for rendering the real index page
@@ -107,10 +109,10 @@ def index():
     """ 'just arrive' (top 4 according to datetime) """
     rec_time = ModelType.query.filter_by(is_deleted=False).order_by(ModelType.release_time.desc()).limit(4).all()
 
-    return render_template('main/index_new.html', rec_time=rec_time, rec_views=rec_views, rec_preference=rec_preference)
+    return render_template('main/index_new.html', rec_time=rec_time, rec_views=rec_views, rec_preference=rec_preference, is_index=True)
 
 
-@main.route('/')
+@main.route('/index-test')
 @main.route('/index_test', methods=['GET', 'POST'])
 def index_test():
     """
@@ -136,8 +138,12 @@ def brand_intro(brand_id):
     # get the brand obj
     brand = Brand.query.get(brand_id)
     # concatenate the prefix with brand name to get the template name
-    template_name = "main/brand_intro/{}.html".format(brand.name)
-    return render_template(template_name)
+    template_name = "main/brand_intro/{}.html".format(brand.name.lower())
+    try:
+        return render_template(template_name)
+    except Exception as e:
+        # traceback.print_exc()
+        return render_template("main/brand_intro/coming-soon.html", brand_name=brand.name)
 
 
 @main.route('/about-us')
@@ -145,7 +151,9 @@ def about_us():
     """
     This function renders the page of "about us"
     """
-    return render_template('main/about_siren.html')
+    # get all the journals form db
+    journal_lst = Journal.query.order_by(Journal.timestamp.desc())
+    return render_template('main/about_siren.html', journal_lst=journal_lst)
 
 
 @main.route('/all-models')
@@ -403,11 +411,11 @@ def filter_model_types():
         if filter_b == "":
             filter_b = "%"
 
-        print("c: ", filter_c)
-        print("t: ", filter_t)
-        print("a: ", filter_a)
-        print("b: ", filter_b)
-        print("search_count: ", search_content)
+        # print("c: ", filter_c)
+        # print("t: ", filter_t)
+        # print("a: ", filter_a)
+        # print("b: ", filter_b)
+        # print("search_count: ", search_content)
 
         if search_content != "":
             # if the user has searched something

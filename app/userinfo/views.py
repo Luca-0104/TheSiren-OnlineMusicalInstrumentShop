@@ -26,6 +26,7 @@ def user_profile(uid):
         user.username = edit_profile_form.edit_profile_username.data
         user.email = edit_profile_form.edit_profile_email.data
         user.about_me = edit_profile_form.edit_profile_about_me.data
+        print(edit_profile_form.edit_profile_gender.data)
         if edit_profile_form.edit_profile_gender.data == 0:
             user.gender = 'Male'
         elif edit_profile_form.edit_profile_gender.data == 1:

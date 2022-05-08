@@ -15,7 +15,7 @@ class ProductModifyForm(FlaskForm):
     #                             render_kw={"data-errors": 'Please Enter Serial Number.'})
     # choices should be defined in views.py
     brand_id = SelectField(_l('Brand'), validators=[DataRequired()], coerce=int, render_kw={"data-style": 'py-0'})
-    submit = SubmitField(_l('Add Product'))
+    submit = SubmitField(_l('Update'))
 
     # instance variables (those are not in the form)
     def __init__(self, current_product_id):

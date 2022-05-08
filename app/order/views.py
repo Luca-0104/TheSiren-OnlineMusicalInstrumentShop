@@ -668,6 +668,7 @@ def update_priority():
         db.session.add(o)
         db.session.commit()
 
+        flash("Order Priority Updated!")
         return jsonify({"returnValue": 0})
 
     return jsonify({"returnValue": 1})

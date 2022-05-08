@@ -9,15 +9,35 @@
         <title>{% block title %}The Siren{% endblock %}</title>
 
 
+
         {#  for links to css #}
-        {% block style %}{% endblock %}
+        {% block style %}
+            <!-- -------------------- this template css -------------------- -->
+            <link rel="icon" href="../../static/images/half-logo2.png">
+            <link rel="stylesheet" href="../../static/css/backend-plugin.min.css">
+            <link rel="stylesheet" href="../../static/css/backend.css?v=1.0.0">
+            <link rel="stylesheet" href="../../static/css/all.min.css">
+            <link rel="stylesheet" href="../../static/css/line-awesome.min.css">
+            <link rel="stylesheet" href="../../static/css/remixicon.css">
+
+            <!-- -------------------- webflow and jack css -------------------- -->
+            <link href="../../static/css/webflow.css" rel="stylesheet" type="text/css">
+            <link href="../../static/css/jacks-supercool-site-c6dd88.webflow.css" rel="stylesheet" type="text/css">
+            <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+
+            <!-- -------------------- self defined css -------------------- -->
+            <link rel="stylesheet" href="../../static/css/base/base-staff.css">
+            <link rel="stylesheet" href="../../static/css/staff/flash.css">
+        {% endblock %}
+
 
         {# import the jQuery #}
         <script type="text/javascript" src="../../static/js/jquery-3.4.1.js"></script>
-    <link rel="stylesheet" href="../../static/css/base/base-staff.css">
         {#  for scripts of javascript #}
         {% block scripts %}{% endblock %}
     </head>
+
+
     <body>
 
         <!-- loader Start -->
@@ -89,42 +109,8 @@
                                     </li>
                                     <!-- Add Product -->
                                     <li id="sidebar-Add_Product" super-selection="sidebar-Products" class="sidebar-selection ">
-                                        <a href="../backend/page-add-product.html">
+                                        <a href="{{ url_for("product.upload_product") }}">
                                             <i class="las la-minus"></i><span>{{ _('Add Product') }}</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!-- Section of List Category & Add Category -->
-                            <li id="sidebar-Categories" class="sidebar-selection ">
-                                <a href="#category" class="collapsed" data-toggle="collapse" aria-expanded="false">
-                                    <svg class="svg-icon" id="p-dash3" width="20" height="20"
-                                         xmlns="http://www.w3.org/2000/svg"
-                                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                         stroke-linecap="round" stroke-linejoin="round">
-                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                                    </svg>
-                                    <span class="ml-4">Categories</span>
-                                    <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20"
-                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                         stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                         stroke-linejoin="round">
-                                        <polyline points="10 15 15 20 20 15"></polyline>
-                                        <path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
-                                    </svg>
-                                </a>
-                                <ul id="category" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                                    <!-- List Category -->
-                                    <li id="sidebar-List_Category" super-selection="sidebar-Categories" class="sidebar-selection ">
-                                        <a href="../backend/page-list-category.html">
-                                            <i class="las la-minus"></i><span>{{ _('List Category') }}</span>
-                                        </a>
-                                    </li>
-                                    <!-- Add Category -->
-                                    <li id="sidebar-Add_Category" super-selection="sidebar-Categories" class="sidebar-selection ">
-                                        <a href="../backend/page-add-category.html">
-                                            <i class="las la-minus"></i><span>{{ _('Add Category') }}</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -157,8 +143,8 @@
                                     </li>
                                 </ul>
                             </li>
-                            <!-- Section of List Purchases & Add purchase -->
-                            <li id="sidebar-Purchases" class="sidebar-selection ">
+                            <!-- Section of List Journals & Add journals -->
+                            <li id="sidebar-Journals" class="sidebar-selection ">
                                 <a href="#purchase" class="collapsed" data-toggle="collapse" aria-expanded="false">
                                     <svg class="svg-icon" id="p-dash5" width="20" height="20"
                                          xmlns="http://www.w3.org/2000/svg"
@@ -167,7 +153,7 @@
                                         <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
                                         <line x1="1" y1="10" x2="23" y2="10"></line>
                                     </svg>
-                                    <span class="ml-4">{{ _('Purchases') }}</span>
+                                    <span class="ml-4">{{ _('Journals') }}</span>
                                     <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20"
                                          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                          stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -177,16 +163,51 @@
                                     </svg>
                                 </a>
                                 <ul id="purchase" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                                    <!-- List Purchases -->
-                                    <li id="sidebar-List_Purchases" super-selection="sidebar-Purchases" class="sidebar-selection ">
-                                        <a href="../backend/page-list-purchase.html">
-                                            <i class="las la-minus"></i><span>{{ _('List Purchases') }}</span>
+                                    <!-- List Journals -->
+                                    <li id="sidebar-List_Journals" super-selection="sidebar-Journals" class="sidebar-selection ">
+                                        <a href="{{ url_for("journal.journal_management") }}">
+                                            <i class="las la-minus"></i><span>{{ _('List Journals') }}</span>
                                         </a>
                                     </li>
-                                    <!-- Add purchase -->
-                                    <li id="sidebar-Add_purchase" super-selection="sidebar-Purchases" class="sidebar-selection ">
-                                        <a href="../backend/page-add-purchase.html">
-                                            <i class="las la-minus"></i><span>{{ _('Add purchase') }}</span>
+                                    <!-- Add journals -->
+                                    <li id="sidebar-Add_Journals" super-selection="sidebar-Journals" class="sidebar-selection ">
+                                        <a href="{{ url_for("journal.upload_journal") }}">
+                                            <i class="las la-minus"></i><span>{{ _('Upload Journals') }}</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <!-- Section of List Category & Add Category -->
+                            <li id="sidebar-Categories" class="sidebar-selection ">
+                                <a href="#category" class="collapsed" data-toggle="collapse" aria-expanded="false">
+                                    <svg class="svg-icon" id="p-dash3" width="20" height="20"
+                                         xmlns="http://www.w3.org/2000/svg"
+                                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                         stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                    <span class="ml-4">Categories</span>
+                                    <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20"
+                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                         stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                         stroke-linejoin="round">
+                                        <polyline points="10 15 15 20 20 15"></polyline>
+                                        <path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
+                                    </svg>
+                                </a>
+                                <ul id="category" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                                    <!-- List Category -->
+                                    <li id="sidebar-List_Category" super-selection="sidebar-Categories" class="sidebar-selection ">
+                                        <a href="../backend/page-list-category.html">
+                                            <i class="las la-minus"></i><span>{{ _('List Category') }}</span>
+                                        </a>
+                                    </li>
+                                    <!-- Add Category -->
+                                    <li id="sidebar-Add_Category" super-selection="sidebar-Categories" class="sidebar-selection ">
+                                        <a href="../backend/page-add-category.html">
+                                            <i class="las la-minus"></i><span>{{ _('Add Category') }}</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -778,9 +799,9 @@
                             <i class="ri-menu-line wrapper-menu"></i>
 
                             <!-- Logo section on nav bar -->
-                            <a href="../backend/index.html" class="header-logo">
-                                <img src="../assets/images/logo.png" class="img-fluid rounded-normal" alt="logo">
-                                <h5 class="logo-title ml-3">POSDash</h5>
+                            <a href="{{ url_for("product.show_page_staff_index") }}" class="header-logo">
+                                <img src="{{ url_for("static", filename="images/Black-logo-no-background.svg") }}" class="img-fluid rounded-normal" alt="logo">
+                                <h5 class="logo-title ml-3">The Siren</h5>
                             </a>
                         </div>
 
@@ -790,19 +811,44 @@
                             <div class="iq-search-bar device-search">
                                 <form action="/stock-management" class="searchbox" method="post"
                                       id="stock_management_search">
-                                    <a class="search-link" onclick="document:stock_management_search.submit()"><i
-                                            class="ri-search-line"></i></a>
+                                    <!--<a class="search-link" onclick="document:stock_management_search.submit()">
+                                        <i class="ri-search-line"></i>
+                                    </a>
                                     {% if is_search %}
                                         <input type="text" name="key_word" class="text search-input"
                                                placeholder="{{ _('Search here...') }}" value="{{ previous_key }}">
                                     {% else %}
                                         <input type="text" name="key_word" class="text search-input"
                                                placeholder="{{ _('Search here...') }}">
-                                    {% endif %}
-                                    <select name="search_type" class="" data-style="py-0">
-                                        <option value="1">Model Name</option>
-                                        <option value="2">Serial Number</option>
-                                    </select>
+                                    {% endif %}-->
+                                    <div class="input-group">
+                                        {% if is_search %}
+                                            <input type="text" name="key_word"
+                                                   placeholder="{{ _('Search here...') }}" value="{{ previous_key }}"
+                                                   class="form-control search-text-input" aria-label="Text input with segmented dropdown button">
+                                        {% else %}
+                                            <input type="text" name="key_word"
+                                                   placeholder="{{ _('Search here...') }}"
+                                                   class="form-control search-text-input" aria-label="Text input with segmented dropdown button">
+                                        {% endif %}
+                                        <input type="text" name="search_type" style="display:none;" value="1">
+                                        <div class="input-group-append">
+                                            <button type="button" class="btn btn-outline-primary"
+                                                    onclick="document:stock_management_search.submit()">
+                                                <i class="ri-search-line"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-primary dropone dropdown-toggle  dropdown-toggle-split"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="las">
+                                                    &nbsp;<span id="search-by">Model Name</span>&nbsp;<i class="las la-angle-down"></i>
+                                                </i>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="javascript:void(0);" style="color: #212529">Model Name</a>
+                                                <a class="dropdown-item" href="javascript:void(0);" style="color: #212529">Serial Number</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                         {% endblock %}
@@ -1091,7 +1137,8 @@
                                                         <p class="mb-0">{{ current_user.username }}</p>
                                                         <div class="d-flex align-items-center justify-content-center mt-3">
                                                             <a id="staff-profile-btn" href="#" class="btn btn-outline-light mr-2">{{ _('Profile') }}</a>
-                                                            <a id="staff-sign-out-btn" href="{{ url_for('auth.logout') }}" class="btn btn-outline-light">{{ _('Sign Out') }}</a>
+                                                            <a id="staff-sign-out-btn" href="{{ url_for('auth.logout') }}"
+                                                               class="btn btn-outline-light">{{ _('Sign Out') }}</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1107,9 +1154,22 @@
             </div>
 
 
-            {# content #}
-            {% block content %}{% endblock %}
+            <div class="content-page">
+                {# flash #}
+                {% block flash %}
+                    {% for mesage in get_flashed_messages() %}
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            {{ mesage }}
+                            <button type="button" class="close my-flash-close" data-dismiss="alert" aria-label="Close">
+                                &times;
+                            </button>
+                        </div>
+                    {% endfor %}
+                {% endblock %}
 
+                {# content #}
+                {% block content %}{% endblock %}
+            </div>
 
         </div>
         <!-- Wrapper End-->
@@ -1141,11 +1201,24 @@
         </footer>
 
 
-        {# for the children templates to define the javascript statements at the end of the 'body' tag #}
-        {% block scripts_end_body %}{% endblock %}
 
+        <!-- -------------------- NOTICE: These js and block must keep this sequence order! -------------------- -->
+        <!-- Backend Bundle JavaScript -->
+        <script id="backend-bundle" src="../../static/js/backend-bundle.min.js"></script>
+        {# for the children templates to define the javascript statements at the end of the 'body' tag #}
+        {% block scripts_end_body %}
+            <!-- Table Treeview JavaScript -->
+            <script src="../../static/js/table-treeview.js"></script>
+            <!-- Chart Custom JavaScript -->
+            <script src="../../static/js/customizer.js"></script>
+            <!-- Chart Custom JavaScript -->
+            <script async src="../../static/js/chart-custom.js"></script>
+        {% endblock %}
+        <!-- app JavaScript -->
+        <script src="../../static/js/app.js"></script>
         {# handel the problem of activation of items in side nav bar #}
         <script src="../../static/js/staff/base-sidebar.js"></script>
+        <script src="../../static/js/staff/epidemic-switch.js"></script>
 
     </body>
 
