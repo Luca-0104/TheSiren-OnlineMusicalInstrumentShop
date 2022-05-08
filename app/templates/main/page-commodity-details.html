@@ -45,7 +45,7 @@
             <div class="main-container">
                 <div class="w-layout-grid product-grid">
 
-
+                    <!-- Left side section of upper section -->
                     {# <img src="{{ url_for('static', filename=model.pictures.first().address) }}" loading="lazy" alt="" class="main-product-image">#}
                     {#        product picture slide #}
                     {#            the outer box contains the picture list and picture selecting button #}
@@ -66,31 +66,51 @@
                         </div>
                     </div>
 
-
+                    <!-- Vertical Border (The Divider Line) -->
                     <div id="w-node-c7e51d0f-2d88-d3ea-4d4e-74172b8dc048-625ac608" class="vertical-border"></div>
+
+                    <!-- Right side section of upper section -->
                     <div class="product-description">
+
+                        <!-- Hierarchical table of content on the top -->
                         <div class="breadcrumbs">
-                            <a href="shop.html">Shop</a><img src="images/icon-caret-right.svg" loading="lazy" alt=""
-                                                             class="breadcrumb-arrow">
+                            <a href="{{ url_for("main.go_all") }}">Shop</a>
+
+                            <img src="{{ url_for("static", filename="images/icon-caret-right.svg") }}" loading="lazy" alt="" class="breadcrumb-arrow">
+
                             <div class="w-dyn-list">
                                 <div role="list" class="w-dyn-items">
                                     <div role="listitem" class="w-dyn-item">
-                                        <a href="#">Acoustic</a>
+                                        <a href="{{ url_for("main.products_in_category", cate_name=model.product.categories.all()[0].name) }}">{{ model.product.categories.all()[0].name }}</a>
                                     </div>
                                 </div>
-                                {% if model.name == none %}
-                                    <div class="w-dyn-empty">
-                                        <div>No items found.</div>
+                            </div>
+
+                            <img src="{{ url_for("static", filename="images/icon-caret-right.svg") }}" loading="lazy" alt="" class="breadcrumb-arrow">
+
+                            <div class="w-dyn-list">
+                                <div role="list" class="w-dyn-items">
+                                    <div role="listitem" class="w-dyn-item">
+                                        <a href="{{ url_for("main.brand_intro", brand_id=model.product.brand.id) }}">{{ model.product.brand.name }}</a>
                                     </div>
-                                {% endif %}
+                                </div>
+                            </div>
+
+                            <img src="{{ url_for("static", filename="images/icon-caret-right.svg") }}" loading="lazy" alt="" class="breadcrumb-arrow">
+
+                            <div class="w-dyn-list">
+                                <div role="list" class="w-dyn-items">
+                                    <div role="listitem" class="w-dyn-item">
+                                        <a href="{{ url_for("main.model_type_details", mt_id=model.id) }}">{{ model.name }}</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <a href="#" class="w-inline-block">
-                            <h5>{{ model.brand }}</h5>
-                        </a>
+
+                        <!-- Basic Info section -->
                         <h1 class="medium-heading">{{ model.name }}</h1>
                         <div class="price-container large-text">
-                            <div class="old-price increased-margin">￥700,000</div>
+                            <div class="old-price increased-margin">￥{{ model.price*2 }}</div>
                             <div>￥{{ model.price }}</div>
                             <div></div>
                         </div>
