@@ -4,14 +4,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // let room = "Chat";
     // let room = "Chat";
     console.log(id);
-    joinRoom(id);
+   // joinRoom(id);
     console.log('cawcwcw');
     console.log(chatroom_id);
     console.log(username);
 
     // Display incoming message
     socket.on('message', data => {
-        // console.log(`Message received: ${data}`);
+        console.log(`Message received: ${data}`);
+
+        //html elements declaration
         const p = document.createElement('p');
 
         const div_chat = document.createElement('div');
@@ -24,49 +26,63 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const a = document.createElement('a');
         const img = document.createElement('img');
-        const br = document.createElement('br');
 
+        //html elements attribute set and filling
+        div_chat_user.setAttribute("class","chat-user")
+        div_username.setAttribute("class", "chat-sidebar-name");
+        div_username.innerHTML = data.username;
+
+        div_chat_detail.setAttribute("class","chat-detail");
+        div_chat_message.setAttribute("class","chat-message");
+
+        span_timestamp.setAttribute("class", "chat-time mt-1");
+        span_timestamp.innerHTML = data.time_stamp;
+
+        a.setAttribute("class","avatar m-0");
+
+        img.setAttribute("class","avatar-35");
+        img.setAttribute("alt","avatar");
+        //set and filling end
+
+        //message html generation
+         p.innerHTML=data.msg;
+         a.innerHTML = img.outerHTML;
+
+         div_chat_user.innerHTML = a.outerHTML + div_username.outerHTML + span_timestamp.outerHTML;
+
+         div_chat_message.innerHTML = p.outerHTML;
+         div_chat_detail.innerHTML = div_chat_message.outerHTML;
+
+         div_chat.innerHTML = div_chat_user.outerHTML + div_chat_detail.outerHTML;
+         //generation end
+         console.log("near if");
         if (data.username === username){
+            console.log("inside if 1");
             div_chat.setAttribute("class","chat");
-            div_username.setAttribute("class", "my-username");
-            div_username.innerHTML = data.username;
+            document.querySelector('#chat-window').append(div_chat);
 
-            span_timestamp.setAttribute("class", "timestamp");
-            span_timestamp.innerHTML = data.time_stamp;
-
-            p.innerHTML = div_username.outerHTML + br.outerHTML + data.msg + br.outerHTML
-            + span_timestamp.outerHTML;
-            // p.innerHTML = data;
-            document.querySelector('#display-message-section').append(p);
         } else if (data.username !== username && typeof data.username !== 'undefined') {
-            p.setAttribute("class", "others-msg");
+            console.log("inside if 2");
+            div_chat.setAttribute("class","chat chat-left");
+            document.querySelector('#chat-window').append(div_chat);
 
-            div_username.setAttribute("class", "other-username");
-            div_username.innerHTML = data.username;
-
-            span_timestamp.setAttribute("class", "timestamp");
-            span_timestamp.innerHTML = data.time_stamp;
-
-            p.innerHTML = div_username.outerHTML + br.outerHTML + data.msg + br.outerHTML
-            + span_timestamp.outerHTML;
-            // p.innerHTML = data;
-            document.querySelector('#display-message-section').append(p);
         } else {
+            console.log("inside if 3");
             printSysMsg(data.msg)
         }
-
 
     });
 
     // Send message
-    document.querySelector('#send_message').onclick = () => {
+    $('#send_message').on("click", function(){
+        console.log('dawda');
         socket.send({'msg': document.querySelector('#user_message').value,
         'username': username, 'room': chatroom_id });
         // Clear input area
         document.querySelector('#user_message').value = '';
         console.log(chatroom_id);
         console.log(username);
-    }
+    });
 
     // Room selection
     // document.querySelectorAll('.select-room').forEach(p => {
@@ -100,7 +116,61 @@ document.addEventListener('DOMContentLoaded', () => {
         }).done(function (response) {
             let chat_history = response['history'];
             for(let i = 0; i < chat_history.length; i++){
+                const p = document.createElement('p');
 
+        const div_chat = document.createElement('div');
+        const div_chat_user = document.createElement('div');
+        const div_username = document.createElement('div');
+        const div_chat_detail = document.createElement('div');
+        const div_chat_message = document.createElement('div');
+
+        const span_timestamp = document.createElement('span');
+
+        const a = document.createElement('a');
+        const img = document.createElement('img');
+
+        //html elements attribute set and filling
+        div_chat_user.setAttribute("class","chat-user")
+        div_username.setAttribute("class", "chat-sidebar-name");
+        div_username.innerHTML = data.username;
+
+        div_chat_detail.setAttribute("class","chat-detail");
+        div_chat_message.setAttribute("class","chat-message");
+
+        span_timestamp.setAttribute("class", "chat-time mt-1");
+        span_timestamp.innerHTML = data.time_stamp;
+
+        a.setAttribute("class","avatar m-0");
+
+        img.setAttribute("class","avatar-35");
+        img.setAttribute("alt","avatar");
+        //set and filling end
+
+        //message html generation
+         p.innerHTML=data.msg;
+         a.innerHTML = img.outerHTML;
+
+         div_chat_user.innerHTML = a.outerHTML + div_username.outerHTML + span_timestamp.outerHTML;
+
+         div_chat_message.innerHTML = p.outerHTML;
+         div_chat_detail.innerHTML = div_chat_message.outerHTML;
+
+         div_chat.innerHTML = div_chat_user.outerHTML + div_chat_detail.outerHTML;
+         //generation end
+
+        if (data.username === username){
+
+            div_chat.setAttribute("class","chat");
+            document.querySelector('#chat-window').append(div_chat);
+
+        } else if (data.username !== username && typeof data.username !== 'undefined') {
+
+            div_chat.setAttribute("class","chat chat-left");
+            document.querySelector('#chat-window').append(div_chat);
+
+        } else {
+            printSysMsg(data.msg)
+        }
             }
         })
 
