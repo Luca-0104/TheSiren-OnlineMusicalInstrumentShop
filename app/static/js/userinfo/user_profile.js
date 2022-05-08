@@ -179,28 +179,28 @@ $("#prime_btn").on("click",function()
 
 $("#Order_btn").on("click",function()
 {
-    let info_container = $("#info_container");
-    let address_container = $("#address_container");
-    let brand_container = $("#brand_container");
-    let category_container = $("#category_container");
-    let prime_container = $("#prime_container");
-    let order_container = $("#order_container");
-
-    let Order_btn = $("#Order_btn");
-
-    if(order_container.css("display")=='none')
-    {
-        info_container.css('display','none');
-        address_container.css('display','none');
-        brand_container.css('display','none');
-        category_container.css('display','none');
-        prime_container.css('display','none');
-        order_container.css('display','');
-
-        topicBtnRefresh();
-
-        Order_btn.removeClass("clickable");
-        Order_btn.addClass("clicked");
-    }
+    // let info_container = $("#info_container");
+    // let address_container = $("#address_container");
+    // let brand_container = $("#brand_container");
+    // let category_container = $("#category_container");
+    // let prime_container = $("#prime_container");
+    // let order_container = $("#order_container");
+    //
+    // let Order_btn = $("#Order_btn");
+    //
+    // if(order_container.css("display")=='none')
+    // {
+    //     info_container.css('display','none');
+    //     address_container.css('display','none');
+    //     brand_container.css('display','none');
+    //     category_container.css('display','none');
+    //     prime_container.css('display','none');
+    //     order_container.css('display','');
+    //
+    //     topicBtnRefresh();
+    //
+    //     Order_btn.removeClass("clickable");
+    //     Order_btn.addClass("clicked");
+    // }
 });
 
