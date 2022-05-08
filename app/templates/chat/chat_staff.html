@@ -851,7 +851,7 @@
 
                                  {% for room in rooms %}
                                      <!--Chatroom Listing Unit-->
-                                     <li>
+                                     <li class="listing-group-item">
                                          <!--Chat Link href-->
                                        <a class="listing-item" id="{{ room.id }}" sn="{{ room.staff.username }}" data-toggle="pill" href="#chatbox{{ room.id }}">
                                           <div class="d-flex align-items-center">
@@ -989,8 +989,8 @@
                                                  <a class="avatar m-0">
                                                     <img src="../../static/images/popo.jpg" alt="avatar" class="avatar-35">
                                                  </a>
-                                                  <div class="chat-sidebar-name">{{ room.customer.username }}</div>
-                                                 <span class="chat-time mt-1">{{ moment(message.timestamp).format('YYYY-MM-DD HH:mm:ss') }}</span>
+{#                                                  <div class="chat-sidebar-name">{{ room.customer.username }}</div>#}
+{#                                                 <span class="chat-time mt-1">{{ moment(message.timestamp).format('YYYY-MM-DD HH:mm:ss') }}</span>#}
                                               </div>
                                               <div class="chat-detail">
                                                  <div class="chat-message">
@@ -1146,13 +1146,8 @@
         <script type="text/javascript">
             const id = 1;
             let chatroom_id;
-            let username;
-            $('.listing-item').on("click", function(){
-                 chatroom_id = $(this).attr('id');
-                 username = $(this).attr('sn');
-                 console.log(chatroom_id);
-                 console.log(username);
-            })
+            let username = '{{ current_user.username }}';
+
         </script>
 
   </body>
