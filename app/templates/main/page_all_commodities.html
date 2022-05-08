@@ -409,8 +409,25 @@
                                         {#                          <a href="{{ url_for("main.model_type_details", mt_id=mt.id) }}" class="product-preview-link w-inline-block">#}
                                         <a href="/product-details/{{ mt.id }}" class="product-preview-link w-inline-block">
                                             {#                              <img src="{{ url_for("static",filename=mt.pictures.first().address) }}" loading="lazy" alt="" class="product-thumbnail">#}
-                                            <img src="../../static/{{ mt.pictures.first().address }}"
-                                                 loading="lazy" alt="" class="product-thumbnail commodity-pic">
+                                            <div class="commodity-pic
+                                                 {% if (mt.video_address == None or mt.video_address == "") and (mt.audio_addresses.count() == 0) and (mt.three_d_model_address != None and mt.three_d_model_address != "") %}
+                                                    commodity-pic1
+                                                 {% elif (mt.video_address == None or mt.video_address == "") and (mt.audio_addresses.count() != 0) and (mt.three_d_model_address == None or mt.three_d_model_address == "") %}
+                                                    commodity-pic2
+                                                 {% elif (mt.video_address != None and mt.video_address != "") and (mt.audio_addresses.count() == 0) and (mt.three_d_model_address == None or mt.three_d_model_address == "") %}
+                                                    commodity-pic3
+                                                 {% elif (mt.video_address != None and mt.video_address != "") and (mt.audio_addresses.count() != 0) and (mt.three_d_model_address == None or mt.three_d_model_address == "") %}
+                                                    commodity-pic4
+                                                 {% elif (mt.video_address != None and mt.video_address != "") and (mt.audio_addresses.count() == 0) and (mt.three_d_model_address != None and mt.three_d_model_address != "") %}
+                                                    commodity-pic5
+                                                 {% elif (mt.video_address == None or mt.video_address == "") and (mt.audio_addresses.count() != 0) and (mt.three_d_model_address != None and mt.three_d_model_address != "") %}
+                                                    commodity-pic6
+                                                 {% elif (mt.video_address != None and mt.video_address != "") and (mt.audio_addresses.count() != 0) and (mt.three_d_model_address != None and mt.three_d_model_address != "") %}
+                                                    commodity-pic7
+                                                 {% endif %}">
+                                                <img src="../../static/{{ mt.pictures.first().address }}"
+                                                     loading="lazy" alt="" class="product-thumbnail">
+                                            </div>
                                             <div class="uppercase-text brand brand-row">{{ mt.product.brand.name }}</div>
                                             <h5 class="no-bottom-margin">{{ mt.name }}</h5>
                                             <div class="price-container">
