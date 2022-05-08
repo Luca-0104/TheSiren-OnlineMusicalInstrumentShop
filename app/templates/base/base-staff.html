@@ -9,12 +9,26 @@
         <title>{% block title %}The Siren{% endblock %}</title>
 
 
-        <link rel="icon" href="../../static/images/half-logo2.png">
-        <link rel="stylesheet" href="../../static/css/base/base-staff.css">
-        <!-- do not know who put epidemic button style inside this one! FUCK! -->
-{#        <link rel="stylesheet" href="../../static/css/staff/stock-management.css">#}
+
         {#  for links to css #}
-        {% block style %}{% endblock %}
+        {% block style %}
+            <!-- -------------------- this template css -------------------- -->
+            <link rel="icon" href="../../static/images/half-logo2.png">
+            <link rel="stylesheet" href="../../static/css/backend-plugin.min.css">
+            <link rel="stylesheet" href="../../static/css/backend.css?v=1.0.0">
+            <link rel="stylesheet" href="../../static/css/all.min.css">
+            <link rel="stylesheet" href="../../static/css/line-awesome.min.css">
+            <link rel="stylesheet" href="../../static/css/remixicon.css">
+
+            <!-- -------------------- webflow and jack css -------------------- -->
+            <link href="../../static/css/webflow.css" rel="stylesheet" type="text/css">
+            <link href="../../static/css/jacks-supercool-site-c6dd88.webflow.css" rel="stylesheet" type="text/css">
+            <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+
+            <!-- -------------------- self defined css -------------------- -->
+            <link rel="stylesheet" href="../../static/css/base/base-staff.css">
+            <link rel="stylesheet" href="../../static/css/staff/flash.css">
+        {% endblock %}
 
 
         {# import the jQuery #}
