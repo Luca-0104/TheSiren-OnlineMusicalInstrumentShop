@@ -1,3 +1,6 @@
+/*
+    Fight against BootStrap
+ */
 .bg-primary {
     background-color: #343434 !important;
     color: #fff !important;
@@ -40,4 +43,15 @@
 .bg-dark {
     background-color: #000000 !important;
     color: #fff !important;
+}
+
+/*
+    Other things
+*/
+.btn-change-pic{
+    background-color: #8e8267;
+}
+
+.carousel-indicators li{
+    background-color: #8e8267;
 }
