@@ -6,6 +6,7 @@ $(document).ready(function () {
         // get the "switch_to" status
         let switchTo = $("#switch-epidemic").prop("checked");
         // send Ajax request to switch the mode
+        console.log("Here upon the if");
         if (switchTo === true) {
             if (confirm('Are you sure to turn on the epidemic mode?') === true) {
                 switchEpidemicMode('1');
