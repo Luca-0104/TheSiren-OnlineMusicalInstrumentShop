@@ -114,7 +114,17 @@ def chat_history():
     for past_message in past_messages:
         dic = prepare_for_history_json(past_message, chat_room_id)
         chat_history.append(dic)
-    return jsonify({"history": chat_history})
+
+    user = User.query.filter_by(id=current_user.id).first()
+    role_id = user.role_id
+    # role is customer
+    if role_id == 1:
+        role = 'customer'
+    if role_id == 2:
+        role = 'staff'
+
+    return jsonify({"history": chat_history,
+                    "current_user": role})
 
 
 def prepare_for_history_json(item, chat_id):
@@ -126,10 +136,10 @@ def prepare_for_history_json(item, chat_id):
     local_dt = item.timestamp.replace(tzinfo=local_zone)
     utc_time = local_dt.astimezone(utc_zone)
     if item.author_type == 'customer':
-        message = {'msg': item.content, 'username': username, 'time_stamp': utc_time.strftime('%Y-%m-%d %H:%M:%S')}
+        message = {'msg': item.content, 'username': username, 'time_stamp': utc_time.strftime('%Y-%m-%d %H:%M:%S'), 'author_type': 'customer'}
 
     if item.author_type == 'staff':
-        message = {'msg': item.content, 'username': 'staff', 'time_stamp': utc_time.strftime('%Y-%m-%d %H:%M:%S')}
+        message = {'msg': item.content, 'username': 'staff', 'time_stamp': utc_time.strftime('%Y-%m-%d %H:%M:%S'), 'author_type': 'staff'}
 
     return message
 
