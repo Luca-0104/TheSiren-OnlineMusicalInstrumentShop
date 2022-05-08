@@ -34,6 +34,8 @@
     transition: 0.25s;
 }
 
+
+
 .commodity-card:hover {
     /*border-left: 1px solid #9c9c9c54;*/
     /*border-right: 1px solid #9c9c9c54;*/
@@ -48,7 +50,108 @@
 }
 
 .commodity-pic {
+    position: relative;
 }
 
-.brand-row {
+.commodity-pic1:after {
+    content: "";
+    z-index: 20;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 50px;
+    background: url('../../images/icon-3d.png') no-repeat;
+    background-size:30px 30px;
+    background-position: 50% 50%;
+    background-color: #34343426;
+}
+
+.commodity-pic2:after {
+    content: "";
+    z-index: 20;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 50px;
+    background: url('../../images/icon-audio.png') no-repeat;
+    background-size:30px 30px;
+    background-position: 50% 50%;
+    background-color: #34343426;
+}
+
+.commodity-pic3:after {
+    content: "";
+    z-index: 20;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 50px;
+    background: url('../../images/icon-vedio.png') no-repeat;
+    background-size:30px 30px;
+    background-position: 50% 50%;
+    background-color: #34343426;
+}
+
+.commodity-pic4:after {
+    content: "";
+    z-index: 20;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 100px;
+    background: url('../../images/icon-audio.png') no-repeat,
+            url('../../images/icon-vedio.png') no-repeat;
+    background-size:30px 30px, 30px 30px;
+    background-position: 50% 17%, 50% 83%;
+    background-color: #34343426;
+}
+
+.commodity-pic5:after {
+    content: "";
+    z-index: 20;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 100px;
+    background: url('../../images/icon-3d.png') no-repeat,
+            url('../../images/icon-vedio.png') no-repeat;
+    background-size:30px 30px, 30px 30px;
+    background-position: 50% 17%, 50% 83%;
+    background-color: #34343426;
+}
+
+.commodity-pic6:after {
+    content: "";
+    z-index: 20;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 100px;
+    background: url('../../images/icon-3d.png') no-repeat,
+            url('../../images/icon-audio.png') no-repeat;
+    background-size:30px 30px, 30px 30px;
+    background-position: 50% 17%, 50% 83%;
+    background-color: #34343426;
+}
+
+.commodity-pic7:after{
+    content: "";
+    z-index: 20;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 150px;
+    background: url('../../images/icon-3d.png') no-repeat,
+            url('../../images/icon-audio.png') no-repeat,
+            url('../../images/icon-vedio.png') no-repeat;
+    background-size:30px 30px, 30px 30px, 30px 30px;
+    background-position: 50% 10%, 50% 50%, 50% 90%;
+    background-color: #34343426;
 }
