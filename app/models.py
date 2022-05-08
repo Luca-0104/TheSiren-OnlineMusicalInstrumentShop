@@ -292,10 +292,10 @@ class Journal(BaseModel):
     @staticmethod
     def insert_journals(count: int):
         journals = [
-            ['Gibson Discount', 'Gibson guitars are on sale, go to check it!'],
-            ['Welcome to The Siren', 'Welcome to our online musical instrument shop, here you will be provided the best services.'],
-            ['New Function', 'Quality communication with our staffs is available now, just try it!'],
-            ['Payment Security', 'Alipay is cooperating with us, you can pay for your order with Alipay']
+            ['Gibson Discount', 'Gibson guitars are on sale, go to check it!  Gibson guitars are on sale, go to check it! Gibson guitars are on sale, go to check it! Gibson guitars are on sale, go to check it! Gibson guitars are on sale, go to check it! Gibson guitars are on sale, go to check it! Gibson guitars are on sale, go to check it!'],
+            ['Welcome to The Siren', 'Welcome to our online musical instrument shop, here you will be provided the best services. Welcome to our online musical instrument shop, here you will be provided the best services. Welcome to our online musical instrument shop, here you will be provided the best services. Welcome to our online musical instrument shop, here you will be provided the best services. Welcome to our online musical instrument shop, here you will be provided the best services. Welcome to our online musical instrument shop, here you will be provided the best services. Welcome to our online musical instrument shop, here you will be provided the best services.'],
+            ['New Function', 'Quality communication with our staffs is available now, just try it! Quality communication with our staffs is available now, just try it! Quality communication with our staffs is available now, just try it! Quality communication with our staffs is available now, just try it! Quality communication with our staffs is available now, just try it! Quality communication with our staffs is available now, just try it! Quality communication with our staffs is available now, just try it!'],
+            ['Payment Security', 'Alipay is cooperating with us, you can pay for your order with Alipay. Alipay is cooperating with us, you can pay for your order with Alipay. Alipay is cooperating with us, you can pay for your order with Alipay. Alipay is cooperating with us, you can pay for your order with Alipay. Alipay is cooperating with us, you can pay for your order with Alipay. Alipay is cooperating with us, you can pay for your order with Alipay. Alipay is cooperating with us, you can pay for your order with Alipay.']
         ]
         for i in range(count):
             # get a random journal
