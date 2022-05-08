@@ -35,9 +35,13 @@ function deleteJournal(journalId){
         let returnValue = response['returnValue'];
 
         if (returnValue === 0) { //success
-            // remove the row from page
-            let tableRowId = "#journal-row-" + journalId;
-            $(tableRowId).remove();
+            // // remove the row from page
+            // let tableRowId = "#journal-row-" + journalId;
+            // $(tableRowId).remove();
+
+            // we must refresh the page here
+            let url = "/journal-management";
+            location.href = url;
 
         }else if (returnValue === 2){  //attempt to delete other's journal
             //notify the user
