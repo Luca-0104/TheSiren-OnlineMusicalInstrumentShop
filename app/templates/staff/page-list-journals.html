@@ -25,8 +25,38 @@
 
 
 
+{# nav search block #}
+{% block nav_search %}
+    {# the default search block is the one for "stock management" #}
+    <div class="iq-search-bar device-search">
+        <form action="/stock-management" class="searchbox" method="post"
+              id="journals_search">
+            <div class="input-group">
+                {% if is_search %}
+                    <input type="text" name="key_word"
+                           placeholder="{{ _('Search here...') }}" value="{{ previous_key }}"
+                           class="form-control search-text-input" aria-label="Text input with segmented dropdown button">
+                {% else %}
+                    <input type="text" name="key_word"
+                           placeholder="{{ _('Search here...') }}"
+                           class="form-control search-text-input" aria-label="Text input with segmented dropdown button">
+                {% endif %}
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-outline-primary"
+                            onclick="document:journals_search.submit()">
+                        <i class="ri-search-line"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+
+
 {# content #}
 {% block content %}
+    <span id="sidebar-anchor" style="display: none" sidebar-anchor="List_Journals"></span>
     <div class="content-page">
         <div class="container-fluid">
             <div class="row">
@@ -128,7 +158,8 @@
                                                                         <p>{{ journal.text }}</p>
                                                                         <br>
                                                                         <hr>
-                                                                        <p class="float-right">Last Edit: {{ journal.timestamp.strftime("%Y-%m-%d %H:%M:%S") }}</p>
+                                                                        <p class="float-right">Last
+                                                                            Edit: {{ journal.timestamp.strftime("%Y-%m-%d %H:%M:%S") }}</p>
                                                                     </div>
                                                                 </div>
                                                                 <div class="card-footer border-0">

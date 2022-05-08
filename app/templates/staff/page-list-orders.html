@@ -31,7 +31,8 @@
 
 {# nav search block #}
 {% block nav_search %}
-
+    {# the default search block is the one for "stock management" #}
+    <div class="iq-search-bar device-search"></div>
 {% endblock %}
 
 
@@ -48,13 +49,12 @@
                 <div class="col-lg-12">
                     <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
                         <div>
-                            <h4 class="mb-3">{{ _('Sale List') }}</h4>
-                            <p class="mb-0">Sales enables you to effectively control sales KPIs and monitor them
-                                in one central<br>
-                                place while helping teams to reach sales goals. </p>
+                            <h4 class="mb-3">{{ _('Order List') }}</h4>
+                            <p class="mb-0">
+                                This page effectively list all orders from clients and provides functionalities <br>
+                                for you to manage and update these orders.
+                            </p>
                         </div>
-                        <a href="page-add-sale.html" class="btn btn-primary add-list"><i
-                                class="las la-plus mr-3"></i>Add Sale</a>
                     </div>
                 </div>
 
@@ -171,29 +171,37 @@
                                                 <div class="mr-2" data-toggle="modal"
                                                      data-target="#detail-modal-{{ order.id }}">
                                                     <a class="badge bg-info" data-toggle="tooltip"
-                                                       data-original-title="view" title=""
-                                                       href="#"><i class="ri-eye-line mr-0"></i></a>
+                                                       data-original-title="View" title=""
+                                                       href="#">
+                                                        <i class="ri-eye-line mr-0"></i>
+                                                    </a>
                                                 </div>
                                                 <div class="mr-2" data-toggle="modal"
                                                      data-target="#modify-modal-{{ order.id }}">
                                                     <a class="badge bg-success" data-toggle="tooltip"
-                                                       data-original-title="Eidt" title=""
-                                                       href="#"><i class="ri-pencil-line mr-0"></i></a>
+                                                       data-original-title="Modify Type" title=""
+                                                       href="#">
+                                                        <i class="ri-pencil-line mr-0"></i>
+                                                    </a>
                                                 </div>
                                                 {% if order.order_type == "delivery" %}
                                                     <div class="mr-2" data-toggle="modal"
                                                          data-target="#address-modal-{{ order.id }}">
                                                         <a class="badge bg-success" data-toggle="tooltip"
-                                                           data-original-title="Eidt" title=""
-                                                           href="#"><i class="ri-home-4-line mr-0"></i></a>
+                                                           data-original-title="Modify Address" title=""
+                                                           href="#">
+                                                            <i class="ri-home-4-line mr-0"></i>
+                                                        </a>
                                                     </div>
                                                 {% else %}
                                                     <div class="mr-2" data-toggle="modal"
                                                          data-target="#recipient-modal-{{ order.id }}">
                                                         <a class="badge bg-success" data-toggle="tooltip"
-                                                           data-original-title="Eidt"
+                                                           data-original-title="Modify Recipient"
                                                            title=""
-                                                           href="#"><i class="ri-user-3-fill mr-0"></i></a>
+                                                           href="#">
+                                                            <i class="ri-user-3-fill mr-0"></i>
+                                                        </a>
                                                     </div>
                                                 {% endif %}
 
@@ -201,46 +209,53 @@
                                                     <a class="badge bg-dark mr-2" data-toggle="tooltip"
                                                        data-placement="top" title=""
                                                        data-original-title="Cancel"
-                                                       href="#" onclick="changeStatusTo({{ order.id }}, 5);"><i
-                                                            class="ri-close-circle-line mr-0"></i></a>
+                                                       href="#" onclick="changeStatusTo({{ order.id }}, 5);">
+                                                        <i class="ri-close-circle-line mr-0"></i>
+                                                    </a>
                                                 {% elif order.status_code == 1 %}
                                                     {% if order.order_type == "delivery" %}
                                                         <a class="badge bg-warning mr-2" data-toggle="tooltip"
                                                            data-placement="top" title=""
-                                                           data-original-title="on deli"
+                                                           data-original-title="Start Delivery"
                                                            href="#"
-                                                           onclick="changeStatusTo({{ order.id }}, 2);"><i
-                                                                class="ri-truck-fill mr-0"></i></a>
+                                                           onclick="changeStatusTo({{ order.id }}, 2);">
+                                                            <i class="ri-truck-fill mr-0"></i>
+                                                        </a>
                                                     {% else %}
                                                         <a class="badge bg-warning mr-2" data-toggle="tooltip"
                                                            data-placement="top" title=""
-                                                           data-original-title="wait"
+                                                           data-original-title="Ready for Colloetion"
                                                            href="#"
-                                                           onclick="changeStatusTo({{ order.id }}, 3);"><i
-                                                                class="ri-share-forward-box-line mr-0"></i></a>
+                                                           onclick="changeStatusTo({{ order.id }}, 3);">
+                                                            <i class="ri-share-forward-box-line mr-0"></i>
+                                                        </a>
                                                     {% endif %}
                                                     <a class="badge bg-dark mr-2" data-toggle="tooltip"
                                                        data-placement="top" title=""
                                                        data-original-title="Cancel"
-                                                       href="#" onclick="changeStatusTo({{ order.id }}, 5);"><i
-                                                            class="ri-close-circle-line mr-0"></i></a>
+                                                       href="#" onclick="changeStatusTo({{ order.id }}, 5);">
+                                                        <i class="ri-close-circle-line mr-0"></i>
+                                                    </a>
                                                 {% elif order.status_code == 2 %}
                                                     <a class="badge bg-danger mr-2" data-toggle="tooltip"
                                                        data-placement="top" title=""
                                                        data-original-title="Finish"
-                                                       href="#" onclick="changeStatusTo({{ order.id }}, 4);"><i
-                                                            class="ri-check-fill mr-0"></i></a>
+                                                       href="#" onclick="changeStatusTo({{ order.id }}, 4);">
+                                                        <i class="ri-check-fill mr-0"></i>
+                                                    </a>
                                                 {% elif order.status_code == 3 %}
                                                     <a class="badge bg-danger mr-2" data-toggle="tooltip"
                                                        data-placement="top" title=""
                                                        data-original-title="Finish"
-                                                       href="#" onclick="changeStatusTo({{ order.id }}, 4);"><i
-                                                            class="ri-check-fill mr-0"></i></a>
+                                                       href="#" onclick="changeStatusTo({{ order.id }}, 4);">
+                                                        <i class="ri-check-fill mr-0"></i>
+                                                    </a>
                                                     <a class="badge bg-dark mr-2" data-toggle="tooltip"
                                                        data-placement="top" title=""
                                                        data-original-title="Cancel"
-                                                       href="#" onclick="changeStatusTo({{ order.id }}, 5);"><i
-                                                            class="ri-close-circle-line mr-0"></i></a>
+                                                       href="#" onclick="changeStatusTo({{ order.id }}, 5);">
+                                                        <i class="ri-close-circle-line mr-0"></i>
+                                                    </a>
                                                 {% endif %}
 
                                                 <!-- Modify Modal Section -->

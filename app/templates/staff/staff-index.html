@@ -26,6 +26,14 @@
 
 
 
+{# nav search block #}
+{% block nav_search %}
+    {# the default search block is the one for "stock management" #}
+    <div class="iq-search-bar device-search"></div>
+{% endblock %}
+
+
+
 {# content #}
 {% block content %}
     <span id="sidebar-anchor" style="display: none" sidebar-anchor="Dashboards"></span>
@@ -36,8 +44,9 @@
                             <div class="card card-transparent card-block card-stretch card-height border-none">
                                 <div class="card-body p-0 mt-lg-2 mt-0">
                                     <h3 class="mb-3">Hi {{ current_user.username }}, Greetings.</h3>
-                                    <p class="mb-0 mr-4">Your dashboard gives you views of key performance or business
-                                        process.</p>
+                                    <p class="mb-0 mr-4">
+                                        Dashboard gives you views of key performance of The Siren's recent business progress.
+                                    </p>
                                 </div>
                             </div>
                         </div>

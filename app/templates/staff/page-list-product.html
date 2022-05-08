@@ -27,24 +27,45 @@
 
 
 <!-- Search section on nav bar -->
+{# nav search block #}
 {% block nav_search %}
-    <span id="sidebar-anchor" style="display: none" sidebar-anchor="List_Product"></span>
+    {# the default search block is the one for "stock management" #}
     <div class="iq-search-bar device-search">
         <form action="/stock-management" class="searchbox" method="post"
               id="stock_management_search">
-            <a class="search-link" onclick="document:stock_management_search.submit()"><i
-                    class="ri-search-line"></i></a>
-            {% if is_search %}
-                <input type="text" name="key_word" class="text search-input"
-                       placeholder="{{ _('Search here...') }}" value="{{ previous_key }}">
-            {% else %}
-                <input type="text" name="key_word" class="text search-input"
-                       placeholder="{{ _('Search here...') }}">
-            {% endif %}
-            <select name="search_type" class="" data-style="py-0">
-                <option value="1">Model Name</option>
-                <option value="2">Serial Number</option>
-            </select>
+            <div class="input-group">
+                {% if is_search %}
+                    <input type="text" name="key_word"
+                           placeholder="{{ _('Search here...') }}" value="{{ previous_key }}"
+                           class="form-control search-text-input" aria-label="Text input with segmented dropdown button">
+                {% else %}
+                    <input type="text" name="key_word"
+                           placeholder="{{ _('Search here...') }}"
+                           class="form-control search-text-input" aria-label="Text input with segmented dropdown button">
+                {% endif %}
+                <input id="invisible-search-type" name="search_type" type="text" style="display:none;" value="1">
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-outline-primary"
+                            onclick="document:stock_management_search.submit()">
+                        <i class="ri-search-line"></i>
+                    </button>
+                    <button type="button" class="btn btn-primary dropone dropdown-toggle  dropdown-toggle-split"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="las">
+                            &nbsp;
+                            <span id="search-by">
+                                Model Name
+                            </span>
+                            &nbsp;
+                            <i class="las la-angle-down"></i>
+                        </i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="javascript:search_by(1);" style="color: #212529">Model Name</a>
+                        <a class="dropdown-item" href="javascript:search_by(2);" style="color: #212529">Serial Number</a>
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
 {% endblock %}
@@ -53,6 +74,7 @@
 
 {# content #}
 {% block content %}
+    <span id="sidebar-anchor" style="display: none" sidebar-anchor="List_Product"></span>
     <!-- Stock Management section -->
     <div class="content-page">
         <!-- The flash section -->
@@ -69,9 +91,10 @@
                     <div class="d-flex flex-wrap flex-wrap align-items-center justify-content-between mb-4">
                         <div>
                             <h4 class="mb-3">{{ _('Product List') }}</h4>
-                            <p class="mb-0">The product list effectively dictates product presentation and
-                                provides
-                                space<br> to list your products and offering in the most appealing way.</p>
+                            <p class="mb-0">
+                                This page effectively list all commodities and provides functionalities <br>
+                                for you to manage products and model types.
+                            </p>
                         </div>
                         <a href="/upload-product" class="btn btn-primary add-list"><i
                                 class="las la-plus mr-3"></i>{{ _('Add Product') }}</a>
@@ -229,14 +252,16 @@
                                                                     {# ----------------------------------------------------------------------------------------------- #}
 
                                                                     <!-- Modal window for three buttons (video, audio, 3d-file) -->
-                                                                    <div class="modal fade" id="modal-media-{{ model.id }}" tabindex="-1" role="dialog" aria-hidden="true">
+                                                                    <div class="modal fade" id="modal-media-{{ model.id }}" tabindex="-1" role="dialog"
+                                                                         aria-hidden="true">
                                                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                                                             <div class="modal-content">
                                                                                 <div class="modal-body">
                                                                                     <div class="popup text-left">
                                                                                         <div class="media align-items-top justify-content-between">
                                                                                             <h3 class="mb-3">Which kind of media to upload</h3>
-                                                                                            <div class="btn-cancel p-0" data-dismiss="modal"><i class="las la-times"></i>
+                                                                                            <div class="btn-cancel p-0" data-dismiss="modal"><i
+                                                                                                    class="las la-times"></i>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="content edit-notes">
@@ -249,22 +274,28 @@
                                                                                                     <div id="quill-toolbar1">
 
                                                                                                         {# the button for upload video #}
-                                                                                                        <a data-toggle="modal" data-target="#modal-media-video-{{ model.id }}">
-                                                                                                            <div class="btn btn-primary mr-3" data-dismiss="modal">
+                                                                                                        <a data-toggle="modal"
+                                                                                                           data-target="#modal-media-video-{{ model.id }}">
+                                                                                                            <div class="btn btn-primary mr-3"
+                                                                                                                 data-dismiss="modal">
                                                                                                                 Upload Video
                                                                                                             </div>
                                                                                                         </a>
 
                                                                                                         {# the button for upload Audio #}
-                                                                                                        <a data-toggle="modal" data-target="#modal-media-audio-{{ model.id }}">
-                                                                                                            <div class="btn btn-primary mr-3" data-dismiss="modal">
+                                                                                                        <a data-toggle="modal"
+                                                                                                           data-target="#modal-media-audio-{{ model.id }}">
+                                                                                                            <div class="btn btn-primary mr-3"
+                                                                                                                 data-dismiss="modal">
                                                                                                                 Upload Audio
                                                                                                             </div>
                                                                                                         </a>
 
                                                                                                         {# the button for upload 3D Model File #}
-                                                                                                        <a data-toggle="modal" data-target="#modal-media-3d-file-{{ model.id }}">
-                                                                                                            <div class="btn btn-primary mr-3" data-dismiss="modal">
+                                                                                                        <a data-toggle="modal"
+                                                                                                           data-target="#modal-media-3d-file-{{ model.id }}">
+                                                                                                            <div class="btn btn-primary mr-3"
+                                                                                                                 data-dismiss="modal">
                                                                                                                 Upload 3D Model
                                                                                                             </div>
                                                                                                         </a>
@@ -287,21 +318,24 @@
 
 
                                                                     <!-- Modal window for uploading Video -->
-                                                                    <div class="modal fade" id="modal-media-video-{{ model.id }}" tabindex="-1" role="dialog" aria-hidden="true">
+                                                                    <div class="modal fade" id="modal-media-video-{{ model.id }}" tabindex="-1" role="dialog"
+                                                                         aria-hidden="true">
                                                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                                                             <div class="modal-content">
                                                                                 <div class="modal-body">
                                                                                     <div class="popup text-left">
                                                                                         <div class="media align-items-top justify-content-between">
                                                                                             <h3 class="mb-3">Upload a Video File</h3>
-                                                                                            <div class="btn-cancel p-0" data-dismiss="modal"><i class="las la-times"></i>
+                                                                                            <div class="btn-cancel p-0" data-dismiss="modal"><i
+                                                                                                    class="las la-times"></i>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="content edit-notes">
                                                                                             <div class="card card-transparent card-block card-stretch event-note mb-0">
 
                                                                                                 {# upload form (file+submit) #}
-                                                                                                <form action="{{ url_for("product.upload_video", mt_id=model.id) }}" method="post"
+                                                                                                <form action="{{ url_for("product.upload_video", mt_id=model.id) }}"
+                                                                                                      method="post"
                                                                                                       enctype="multipart/form-data">
                                                                                                     <div class="card-body px-0 bukmark">
                                                                                                         <div class="d-flex align-items-center justify-content-between pb-2 mb-3 border-bottom">
@@ -320,16 +354,19 @@
                                                                                                                            aria-describedby="inputGroupFileAddon01"
                                                                                                                            required="required">
                                                                                                                     <label class="custom-file-label"
-                                                                                                                           for="input-upload-model-type-video">Choose file (MP4 Only)</label><br>
+                                                                                                                           for="input-upload-model-type-video">Choose
+                                                                                                                        file (MP4 Only)</label><br>
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                     <div class="card-footer border-0">
                                                                                                         <div class="d-flex flex-wrap align-items-ceter justify-content-end">
-                                                                                                            <div class="btn btn-outline-light mr-3" data-dismiss="modal">{{ _('Cancel') }}</div>
+                                                                                                            <div class="btn btn-outline-light mr-3"
+                                                                                                                 data-dismiss="modal">{{ _('Cancel') }}</div>
                                                                                                             {# form - submit #}
-                                                                                                            <input type="submit" class="btn btn-primary" value="Upload">
+                                                                                                            <input type="submit" class="btn btn-primary"
+                                                                                                                   value="Upload">
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </form>
@@ -344,21 +381,24 @@
 
 
                                                                     <!-- Modal window for uploading Audio -->
-                                                                    <div class="modal fade" id="modal-media-audio-{{ model.id }}" tabindex="-1" role="dialog" aria-hidden="true">
+                                                                    <div class="modal fade" id="modal-media-audio-{{ model.id }}" tabindex="-1" role="dialog"
+                                                                         aria-hidden="true">
                                                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                                                             <div class="modal-content">
                                                                                 <div class="modal-body">
                                                                                     <div class="popup text-left">
                                                                                         <div class="media align-items-top justify-content-between">
                                                                                             <h3 class="mb-3">Upload a Audio File</h3>
-                                                                                            <div class="btn-cancel p-0" data-dismiss="modal"><i class="las la-times"></i>
+                                                                                            <div class="btn-cancel p-0" data-dismiss="modal"><i
+                                                                                                    class="las la-times"></i>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="content edit-notes">
                                                                                             <div class="card card-transparent card-block card-stretch event-note mb-0">
 
                                                                                                 {# upload form (file+submit) #}
-                                                                                                <form action="{{ url_for("product.upload_audio", mt_id=model.id) }}" method="post"
+                                                                                                <form action="{{ url_for("product.upload_audio", mt_id=model.id) }}"
+                                                                                                      method="post"
                                                                                                       enctype="multipart/form-data">
                                                                                                     <div class="card-body px-0 bukmark">
                                                                                                         <div class="d-flex align-items-center justify-content-between pb-2 mb-3 border-bottom">
@@ -377,7 +417,8 @@
                                                                                                                            aria-describedby="inputGroupFileAddon01"
                                                                                                                            required="required">
                                                                                                                     <label class="custom-file-label"
-                                                                                                                           for="input-upload-model-type-audio-{{ model.id }}">Choose file (MP3
+                                                                                                                           for="input-upload-model-type-audio-{{ model.id }}">Choose
+                                                                                                                        file (MP3
                                                                                                                         Only)</label><br>
                                                                                                                 </div>
                                                                                                             </div>
@@ -385,9 +426,11 @@
                                                                                                     </div>
                                                                                                     <div class="card-footer border-0">
                                                                                                         <div class="d-flex flex-wrap align-items-ceter justify-content-end">
-                                                                                                            <div class="btn btn-outline-light mr-3" data-dismiss="modal">{{ _('Cancel') }}</div>
+                                                                                                            <div class="btn btn-outline-light mr-3"
+                                                                                                                 data-dismiss="modal">{{ _('Cancel') }}</div>
                                                                                                             {# form - submit #}
-                                                                                                            <input type="submit" class="btn btn-primary" value="Upload">
+                                                                                                            <input type="submit" class="btn btn-primary"
+                                                                                                                   value="Upload">
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </form>
@@ -401,21 +444,24 @@
                                                                     </div>
 
                                                                     <!-- Modal window for uploading 3D Model File -->
-                                                                    <div class="modal fade" id="modal-media-3d-file-{{ model.id }}" tabindex="-1" role="dialog" aria-hidden="true">
+                                                                    <div class="modal fade" id="modal-media-3d-file-{{ model.id }}" tabindex="-1" role="dialog"
+                                                                         aria-hidden="true">
                                                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                                                             <div class="modal-content">
                                                                                 <div class="modal-body">
                                                                                     <div class="popup text-left">
                                                                                         <div class="media align-items-top justify-content-between">
                                                                                             <h3 class="mb-3">Upload 3D Model File</h3>
-                                                                                            <div class="btn-cancel p-0" data-dismiss="modal"><i class="las la-times"></i>
+                                                                                            <div class="btn-cancel p-0" data-dismiss="modal"><i
+                                                                                                    class="las la-times"></i>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="content edit-notes">
                                                                                             <div class="card card-transparent card-block card-stretch event-note mb-0">
 
                                                                                                 {# upload form (file+submit) #}
-                                                                                                <form action="{{ url_for("product.upload_3d_file", mt_id=model.id) }}" method="post"
+                                                                                                <form action="{{ url_for("product.upload_3d_file", mt_id=model.id) }}"
+                                                                                                      method="post"
                                                                                                       enctype="multipart/form-data">
                                                                                                     <div class="card-body px-0 bukmark">
                                                                                                         <div class="d-flex align-items-center justify-content-between pb-2 mb-3 border-bottom">
@@ -433,7 +479,8 @@
                                                                                                                            aria-describedby="inputGroupFileAddon01"
                                                                                                                            required="required">
                                                                                                                     <label class="custom-file-label"
-                                                                                                                           for="input-upload-model-type-3d-{{ model.id }}">Choose file (.obj/.fbx
+                                                                                                                           for="input-upload-model-type-3d-{{ model.id }}">Choose
+                                                                                                                        file (.obj/.fbx
                                                                                                                         Only)</label><br>
                                                                                                                 </div>
                                                                                                             </div>
@@ -441,9 +488,11 @@
                                                                                                     </div>
                                                                                                     <div class="card-footer border-0">
                                                                                                         <div class="d-flex flex-wrap align-items-ceter justify-content-end">
-                                                                                                            <div class="btn btn-outline-light mr-3" data-dismiss="modal">{{ _('Cancel') }}</div>
+                                                                                                            <div class="btn btn-outline-light mr-3"
+                                                                                                                 data-dismiss="modal">{{ _('Cancel') }}</div>
                                                                                                             {# form - submit #}
-                                                                                                            <input type="submit" class="btn btn-primary" value="Upload">
+                                                                                                            <input type="submit" class="btn btn-primary"
+                                                                                                                   value="Upload">
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </form>
