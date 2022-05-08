@@ -1,0 +1,43 @@
+.bg-primary {
+    background-color: #343434 !important;
+    color: #fff !important;
+}
+
+.bg-primary-dark {
+    background-color: #292828 !important;
+    color: #fff !important;
+}
+
+.bg-primary-light {
+    background-color: #eeeeee !important;
+    color: #000 !important;
+}
+
+.button.bg-primary {
+    background-color: #424244 !important;
+    color: #fff !important;
+}
+
+.button.bg-primary:hover {
+    background-color: #9c8e77 !important;
+    color: #fff !important;
+}
+
+.button.bg-primary-dark {
+    background-color: #242b32 !important;
+    color: #fff !important;
+}
+
+.button.bg-primary-dark:hover {
+    background-color: #78726b !important;
+    color: #fff !important;
+}
+
+.empty-state.bg-primary {
+    background-color: #7f8567 !important;
+}
+
+.bg-dark {
+    background-color: #000000 !important;
+    color: #fff !important;
+}
