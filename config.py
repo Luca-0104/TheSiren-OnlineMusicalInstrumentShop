@@ -34,6 +34,7 @@ class Config:
     video_dir = os.path.join(model_type_dir, 'videos')          # videos of model types
     audios_dir = os.path.join(model_type_dir, 'audios')         # audios of model types
     threeD_dir = os.path.join(model_type_dir, '3d-model-files')     # 3d model files of model types
+    threeD_texture_dir = os.path.join(model_type_dir, '3d-model-texture-files')     # 3d model texture files of model types
     model_type_intro_dir = os.path.join(upload_dir, 'model_type_intro')       # The directory for storing the photos of the introduction of model types in this website
     comment_dir = os.path.join(upload_dir, 'comment')       # The directory for storing the photos of the comments of products in this website
     avatar_dir = os.path.join(upload_dir, 'avatar')         # The directory for storing the avatars of users
