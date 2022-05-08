@@ -21,7 +21,7 @@
 {% block nav_search %}
     {# the default search block is the one for "stock management" #}
     <div class="iq-search-bar device-search">
-        <form action="/stock-management" class="searchbox" method="post"
+        <form action="{{ url_for("journal.journal_management") }}" method="post" class="searchbox" method="post"
               id="journals_search">
             <div class="input-group">
                 {% if is_search %}

@@ -538,8 +538,7 @@
                                                                        width="100%">
                                                                     {% if order.status_code == 0 %}
                                                                         <tr>
-                                                                            <td class="clickable action_pay button"
-                                                                                onclick="">
+                                                                            <td class="clickable action_pay button" onclick="location.href='{{ url_for("order.order_confirm", order_id=order.id) }}'">
                                                                                 Pay
                                                                             </td>
                                                                         </tr>

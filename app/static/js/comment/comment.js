@@ -17,3 +17,11 @@ $(".star ").on("click",function()
     }
     $("#form-rate").val(star_level);
 });
+
+//This part is newly added
+$('#comment_send').on('click', function(){
+    console.log("send comment");
+    $.post('',
+
+    )
+});

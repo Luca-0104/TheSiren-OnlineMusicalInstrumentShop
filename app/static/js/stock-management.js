@@ -73,6 +73,6 @@ function search_by(type_id)
     }
     else if(type_id == 2)
     {
-        search_by.html("Serial Number");
+        search_by.html("Model Serial");
     }
 }

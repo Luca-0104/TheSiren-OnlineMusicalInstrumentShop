@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from flask_login import current_user, login_required
+from sqlalchemy import or_
 
 from app import db
 from app.journal import journal
@@ -11,7 +12,7 @@ from app.models import Journal
 from app.public_tools import get_epidemic_mode_status
 
 
-@journal.route("/journal-management")
+@journal.route("/journal-management", methods=['GET', 'POST'])
 @login_required
 def journal_management():
     """
@@ -21,8 +22,22 @@ def journal_management():
     # get whether the epidemic mode is turned on currently
     epidemic_mode_on = get_epidemic_mode_status()
 
-    # query all journals from db
-    journal_lst = Journal.query.order_by(Journal.timestamp.desc())
+    """ if the search form is submitted """
+    if request.method == 'POST':
+        key_word = request.form.get("key_word")
+
+        if key_word is None or key_word.strip() == "":
+            # query all journals from db
+            journal_lst = Journal.query.order_by(Journal.timestamp.desc())
+        else:
+            # query out journals with this key word in title or body, and sort them by date time
+            journal_lst = Journal.query.filter(or_(Journal.title.contains(key_word), Journal.text.contains(key_word))).order_by(Journal.timestamp.desc())
+
+        flash("Your search result is shown below!")
+
+    else:
+        # query all journals from db
+        journal_lst = Journal.query.order_by(Journal.timestamp.desc())
 
     return render_template("staff/page-list-journals.html", epidemic_mode_on=epidemic_mode_on, journal_lst=journal_lst)
 

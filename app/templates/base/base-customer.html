@@ -48,7 +48,8 @@
                 <div class="main-container">
                     <div class="announcement-contents">
                         <div class="announcement-text">
-                            Welcome to Siren – Selects online music instrument shop for you.
+{#                            Welcome to Siren – Selects online music instrument shop for you.#}
+                            别看啦，快去赶DDL ~   (by the way 睡前别忘打卡~)
                             <a href="{{ url_for('main.go_all') }}" target="_blank">View instruments here</a>
                         </div>
                     </div>
@@ -119,6 +120,18 @@
                             </div>
                         {% endif %}
 
+                        <!--chat button-->
+                        {% if current_user.is_authenticated %}
+                            <div data-node-type="commerce-cart-wrapper" data-open-product=""
+                                 data-wf-cart-type="rightSidebar"
+                                 data-wf-cart-query="" data-wf-page-link-href-prefix=""
+                                 class="w-commerce-commerceuserwrapper" onclick="$('#chat_window').display = 'block'; console.log('www');">
+                                <a href="#"
+                                   class="w-commerce-commercecartopenlink nav-cart-button w-inline-block"><img
+                                        src="../../static/images/chat-icon.png" loading="eager" alt="">
+                                </a>
+                            </div>
+                        {% endif %}
 
                         <!-- Cart -->
                         {% if current_user.is_authenticated %}
