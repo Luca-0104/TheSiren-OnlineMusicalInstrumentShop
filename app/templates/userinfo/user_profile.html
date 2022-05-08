@@ -99,13 +99,13 @@
                                                     </p>
                                                 </div>
                                                 <span>
-                                                {% if user.is_premium == true %}
-                                                    <img id="prime-img" src="../../static/images/user/prime1.png">
-                                                {% else %}
-                                                    <a href="{{ url_for("main.premium_intro") }}">
-                                                    <img id="prime-img" src="../../static/images/user/prime0.png"></a>
-                                                {% endif %}
-                                            </span>
+                                                    {% if user.is_premium == true %}
+                                                        <img id="prime-img" src="../../static/images/user/prime1.png">
+                                                    {% else %}
+                                                        <a href="{{ url_for("main.premium_intro") }}">
+                                                        <img id="prime-img" src="../../static/images/user/prime0.png"></a>
+                                                    {% endif %}
+                                                </span>
                                             </td>
                                             <td id="edit_cell" rowspan="3">
                                                 <a href="#" id="show_edit_info_form_btn"

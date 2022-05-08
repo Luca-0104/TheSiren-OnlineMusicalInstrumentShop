@@ -354,7 +354,7 @@
                                                         <tr>
                                                             <td id="order_time_{{ order.id }}"
                                                                 class="order_time small-text">
-                                                                {{ order.timestamp }}
+                                                                {{ order.timestamp.strftime("%Y-%m-%d %H:%M:%S") }}
                                                             </td>
                                                             <td id="order_num_{{ order.id }}"
                                                                 class="order_num small-text">
