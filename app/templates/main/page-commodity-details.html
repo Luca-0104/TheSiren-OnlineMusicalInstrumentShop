@@ -168,50 +168,58 @@
                             <div></div>
                         </div>
 
+                        <!-- The outer container of rest things of the upper part in this page -->
                         <div class="w-layout-grid product-details-grid">
+                            <!-- Description Section -->
                             <div>
                                 <h6 class="uppercase-text product-details-heading">Description</h6>
                                 <div>{{ model.description }}</div>
                             </div>
-                            {#            <div>#}
-                            {#              <h6 class="uppercase-text product-details-heading">details</h6>#}
-                            {#              <div class="product-details-list w-richtext">#}
-                            {#                  <ul class="product-details-list">#}
-                            {#                      <li>质量高达3kg，品质首选</li>#}
-                            {#                      <li>自带加湿功能</li>#}
-                            {#                      <li>工作一天仅需5元食物</li>#}
-                            {#                      <li>质保期限：直到您的墩布退休！</li>#}
-                            {#                  </ul>#}
-                            {#              </div>#}
-                            {#            </div>#}
-                            {#            <div>#}
-                            {#              <h6 class="uppercase-text product-details-heading">Dimensions (MM)</h6>#}
-                            {#              <div class="product-dimensions">#}
-                            {#                <div>#}
-                            {#                  <div class="dimensions-heading">String</div>#}
-                            {#                  <div>Copper</div>#}
-                            {#                </div>#}
-                            {#                <div>#}
-                            {#                  <div class="dimensions-heading">Texture</div>#}
-                            {#                  <div>2 * 1.5 dm mosaic oak wood</div>#}
-                            {#                </div>#}
-                            {#                <div>#}
-                            {#                  <div class="dimensions-heading">Genre</div>#}
-                            {#                  <div>Dreadnought Acoustic</div>#}
-                            {#                </div>#}
-                            {#              </div>#}
-                            {#            </div>#}
+
+                            <!-- Detail List Section -->
+{#                            <div>#}
+{#                                <h6 class="uppercase-text product-details-heading">details</h6>#}
+{#                                <div class="product-details-list w-richtext">#}
+{#                                    <ul class="product-details-list">#}
+{#                                        <li>质量高达3kg，品质首选</li>#}
+{#                                        <li>自带加湿功能</li>#}
+{#                                        <li>工作一天仅需5元食物</li>#}
+{#                                        <li>质保期限：直到您的墩布退休！</li>#}
+{#                                    </ul>#}
+{#                                </div>#}
+{#                            </div>#}
+
+                            <!-- Specification Table Section -->
+                            <div>
+                                <h6 class="uppercase-text product-details-heading">Dimensions (MM)</h6>
+                                <div class="product-dimensions">
+                                    <div>
+                                        <div class="dimensions-heading">String</div>
+                                        <div>Copper</div>
+                                    </div>
+                                    <div>
+                                        <div class="dimensions-heading">Texture</div>
+                                        <div>2 * 1.5 dm mosaic oak wood</div>
+                                    </div>
+                                    <div>
+                                        <div class="dimensions-heading">Genre</div>
+                                        <div>Dreadnought Acoustic</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Additional Info Section -->
                             <div>
                                 <h6 class="uppercase-text product-details-heading">Additional information</h6>
                                 <div class="product-description">Please Notice that this is a consumable product and
                                     cannot be refunded once sold after 7-days.
                                 </div>
                             </div>
+
                             <div>
-
                                 {% if model.is_deleted == False %}
-
                                     {% if model.stock > 0 %}
+                                        <!-- The Purchase Module -->
                                         <form data-node-type="commerce-add-to-cart-form"
                                           class="w-commerce-commerceaddtocartform cart-default-state">
                                             <div class="add-to-cart-form">
@@ -235,35 +243,38 @@
                                                class="w-commerce-commercebuynowbutton button no-top-margin bg-primary">Buy
                                                 It Now</a>
                                         </form>
+
                                     {% else %}
-                                        <div>
-                                            <h6 class="uppercase-text product-details-heading" style="color: darkred">This
-                                                item is out of stock.</h6>
+                                        <!-- Out of stock statement -->
+                                        <div class="w-commerce-commerceaddtocartoutofstock empty-state">
+                                            <h1 class="uppercase-text large-text" style="color: darkred">This
+                                                item runs out of stock.</h1>
                                         </div>
                                     {% endif %}
 
                                 {% else %}
-                                    <div>
-                                        <h6 class="uppercase-text product-details-heading" style="color: darkred">This
-                                            item is no longer available.</h6>
+                                    <!-- Sold out statement -->
+                                    <div class="w-commerce-commerceaddtocartoutofstock empty-state">
+                                        <h1 class="uppercase-text product-details-heading" style="color: darkred">This
+                                            item is no longer available (Sold out).</h1>
                                     </div>
                                 {% endif %}
 
-                                <div style="display:none" class="w-commerce-commerceaddtocartoutofstock empty-state">
-                                    <div>This product is out of stock.</div>
-                                </div>
-                                <div data-node-type="commerce-add-to-cart-error" style="display:none"
-                                     class="w-commerce-commerceaddtocarterror form-error">
-                                    <div data-node-type="commerce-add-to-cart-error"
-                                         data-w-add-to-cart-quantity-error="Product is not available in this quantity."
-                                         data-w-add-to-cart-general-error="Something went wrong when adding this item to the cart."
-                                         data-w-add-to-cart-mixed-cart-error="You canâ€™t purchase another product with a subscription."
-                                         data-w-add-to-cart-buy-now-error="Something went wrong when trying to purchase this item."
-                                         data-w-add-to-cart-checkout-disabled-error="Checkout is disabled on this site."
-                                         data-w-add-to-cart-select-all-options-error="Please select an option in each set.">
-                                        Product is not available in this quantity.
-                                    </div>
-                                </div>
+
+                                <!-- add to cart error statements -->
+{#                                <div data-node-type="commerce-add-to-cart-error" style="display:none"#}
+{#                                     class="w-commerce-commerceaddtocarterror form-error">#}
+{#                                    <div data-node-type="commerce-add-to-cart-error"#}
+{#                                         data-w-add-to-cart-quantity-error="Product is not available in this quantity."#}
+{#                                         data-w-add-to-cart-general-error="Something went wrong when adding this item to the cart."#}
+{#                                         data-w-add-to-cart-mixed-cart-error="You canâ€™t purchase another product with a subscription."#}
+{#                                         data-w-add-to-cart-buy-now-error="Something went wrong when trying to purchase this item."#}
+{#                                         data-w-add-to-cart-checkout-disabled-error="Checkout is disabled on this site."#}
+{#                                         data-w-add-to-cart-select-all-options-error="Please select an option in each set.">#}
+{#                                        Product is not available in this quantity.#}
+{#                                    </div>#}
+{#                                </div>#}
+
                             </div>
                             <div class="fine-print-text muted">This product supports 7-days refund and the quality is
                                 guaranteed.
