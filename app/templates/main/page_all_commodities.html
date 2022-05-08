@@ -404,18 +404,17 @@
                         <div id="model-list" role="list" class="product-thirds-grid w-dyn-items">
                             {% for mt in mt_list %}
                                 {# This represent each model card #}
-                                <div role="listitem" class="w-dyn-item">
+                                <div role="listitem" class="w-dyn-item commodity-card">
                                     <div>
                                         {#                          <a href="{{ url_for("main.model_type_details", mt_id=mt.id) }}" class="product-preview-link w-inline-block">#}
-                                        <a href="/product-details/{{ mt.id }}"
-                                           class="product-preview-link w-inline-block">
+                                        <a href="/product-details/{{ mt.id }}" class="product-preview-link w-inline-block">
                                             {#                              <img src="{{ url_for("static",filename=mt.pictures.first().address) }}" loading="lazy" alt="" class="product-thumbnail">#}
-                                            <img src="../../static/{{ mt.pictures.first().address }}" loading="lazy"
-                                                 alt="" class="product-thumbnail">
-                                            <div class="uppercase-text brand">{{ mt.product.brand.name }}</div>
+                                            <img src="../../static/{{ mt.pictures.first().address }}"
+                                                 loading="lazy" alt="" class="product-thumbnail commodity-pic">
+                                            <div class="uppercase-text brand brand-row">{{ mt.product.brand.name }}</div>
                                             <h5 class="no-bottom-margin">{{ mt.name }}</h5>
                                             <div class="price-container">
-                                                <div class="old-price"><span>￥</span>{{ mt.price }}</div>
+                                                <div class="old-price"><span>￥</span>{{ mt.price*2 }}</div>
                                                 <div><span>￥</span>{{ mt.price }}</div>
                                             </div>
                                         </a>

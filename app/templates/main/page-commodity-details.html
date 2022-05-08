@@ -210,6 +210,22 @@
                                 </div>
                             </div>
 
+                            <!-- Customization Section -->
+                            <div>
+                                <h6 class="uppercase-text product-details-heading">Customization</h6>
+                                <div class="form-group">
+                                    <div class="select-wrapper">
+                                        <select id="select-model-type" name="select-type" data-name="field" class="select-field w-select">
+                                            {% for mt in model.product.model_types %}
+                                                <option value="{{ url_for("main.model_type_details", mt_id=mt.id) }}" {% if mt.id == model.id %}selected="selected"{% endif %}>
+                                                    {{ mt.name }}
+                                                </option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
                             <!-- Additional Info Section -->
                             <div>
                                 <h6 class="uppercase-text product-details-heading">Additional information</h6>
@@ -613,6 +629,7 @@
             <script src="../../static/js/main/detail_purchase_section.js" type="text/javascript"></script>
             <script type="text/javascript" src="../../static/js/cart/sidebar_cart.js"></script>
             <script type="text/javascript" src="../../static/js/main/hover_commodity_3d_view.js"></script>
+            <script type="text/javascript" src="../../static/js/main/commodity-customization.js"></script>
         </body>
     </html>
 {% endblock %}
