@@ -1276,8 +1276,9 @@ class Recipient(BaseModel):
     @staticmethod
     def insert_recipients(count):
         fake = Faker()
+        faker_for_phone = Faker("zh_CN")
         for i in range(count):
-            new_recipient = Recipient(recipient_name=fake.name(), phone=fake.phone_number())
+            new_recipient = Recipient(recipient_name=fake.name(), phone=faker_for_phone.phone_number())
             db.session.add(new_recipient)
         db.session.commit()
 
