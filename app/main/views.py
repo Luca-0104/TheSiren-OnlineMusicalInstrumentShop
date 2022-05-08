@@ -5,7 +5,7 @@ from sqlalchemy import and_
 
 from . import main
 from .. import db
-from ..models import Product, ModelType, Category, Brand, BrowsingHistory
+from ..models import Product, ModelType, Category, Brand, BrowsingHistory, Journal
 from ..public_tools import get_unique_shop_instance
 
 import random
@@ -145,7 +145,9 @@ def about_us():
     """
     This function renders the page of "about us"
     """
-    return render_template('main/about_siren.html')
+    # get all the journals form db
+    journal_lst = Journal.query.order_by(Journal.timestamp.desc())
+    return render_template('main/about_siren.html', journal_lst=journal_lst)
 
 
 @main.route('/all-models')

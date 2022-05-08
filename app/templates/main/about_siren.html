@@ -113,9 +113,12 @@
                 </div>
             </div>
         </div>
+
+
+        <!-- Journal Section -->
         <div class="section wf-section">
             <div class="main-container">
-                <h3 class="section-title above-journal-grid">Journal</h3>
+                <h2 class="section-title above-journal-grid">View Journals and Notifications Here~</h2>
                 <div class="w-dyn-list">
                     <div role="list" class="journal-grid w-dyn-items">
                         <div role="listitem" class="w-dyn-item">
@@ -128,12 +131,31 @@
                             </div>
                         </div>
                     </div>
-                    <div class="empty-state w-dyn-empty">
-                        <div>There are no Journal Articles published yet.</div>
-                    </div>
+                    <!-- If there are journals -->
+                    {% if journal_lst and journal_lst.count() > 0 %}
+                        {% for journal in journal_lst %}
+                            <div class="process-item">
+                                <h2 class="no-bottom-margin">{{ journal.title }}</h2>
+                                <br>
+                                <p class="large-text">{{ journal.text }}</p>
+                                <br>
+                                <div>RELEASED BY: {{ journal.author.username }}</div>
+                                <br>
+                                <div>{{ journal.timestamp.strftime("%Y-%m-%d %H:%M:%S") }}</div>
+                            </div>
+                            <br>
+                        {% endfor %}
+
+                    <!-- If no journals yet -->
+                    {% else %}
+                        <div class="empty-state w-dyn-empty">
+                            <div>There are no Journal Articles published yet.</div>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
+
         <div class="section bg-primary-dark wf-section">
             <div class="main-container">
                 <div class="w-layout-grid grid-halves">
