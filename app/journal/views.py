@@ -22,9 +22,17 @@ def journal_management():
     # get whether the epidemic mode is turned on currently
     epidemic_mode_on = get_epidemic_mode_status()
 
+    # the current search key word
+    previous_key = None
+
     """ if the search form is submitted """
     if request.method == 'POST':
+        # mark search
+        is_search = True
+
+        # get search key word
         key_word = request.form.get("key_word")
+        previous_key = key_word
 
         if key_word is None or key_word.strip() == "":
             # query all journals from db
@@ -36,10 +44,13 @@ def journal_management():
         flash("Your search result is shown below!")
 
     else:
+        # mark search
+        is_search = False
+
         # query all journals from db
         journal_lst = Journal.query.order_by(Journal.timestamp.desc())
 
-    return render_template("staff/page-list-journals.html", epidemic_mode_on=epidemic_mode_on, journal_lst=journal_lst)
+    return render_template("staff/page-list-journals.html", epidemic_mode_on=epidemic_mode_on, journal_lst=journal_lst, is_search=is_search, previous_key=previous_key)
 
 
 @journal.route("/journal-management/upload-journal", methods=['GET', 'POST'])

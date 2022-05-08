@@ -2,6 +2,14 @@
 
 {% block title %}The Siren - Commodity Detail: {{ model.name }}{% endblock %}
 
+
+
+{% block top_css %}
+    {# css for bootstrap #}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" crossorigin="anonymous">
+{% endblock %}
+
+
 {#  for links to css #}
 {% block style %}
     <link rel="icon" href="../../static/images/half-logo.png">
@@ -51,7 +59,12 @@
             -webkit-appearance: none;
         }
     </style>
+
+    <!-- Fight against the 'import' style in bootstrap -->
+    <link href="../../static/css/main/commodity-details-against-bootstrap.css" rel="stylesheet" type="text/css">
 {% endblock %}
+
+
 
 {# content #}
 {% block content %}
@@ -63,280 +76,315 @@
                     <div class="w-layout-grid product-grid">
 
 
-                    {# <img src="{{ url_for('static', filename=model.pictures.first().address) }}" loading="lazy" alt="" class="main-product-image">#}
-                    {#        product picture slide #}
-                    {#            the outer box contains the picture list and picture selecting button #}
-                    <div class="picture-panel-box">
-                        <ul class="pic-container">
-                            {# loop through all the pictures to make each of them in an list item #}
-                            {% for picture in model.pictures %}
-                                <li class="pic">
-                                    <img src="{{ url_for('static', filename=picture.address) }}" alt="product-picture">
-                                </li>
-                            {% endfor %}
-                        </ul>
-
+                        {# <img src="{{ url_for('static', filename=model.pictures.first().address) }}" loading="lazy" alt="" class="main-product-image">#}
+                        {#        product picture slide #}
+                        {#            the outer box contains the picture list and picture selecting button #}
+                        {#                    <div class="picture-panel-box">#}
+                        {#                        <ul class="pic-container">#}
+                        {# loop through all the pictures to make each of them in an list item #}
+                        {#                            {% for picture in model.pictures %}#}
+                        {#                                <li class="pic">#}
+                        {#                                    <img src="{{ url_for('static', filename=picture.address) }}" alt="product-picture">#}
+                        {#                                </li>#}
+                        {#                            {% endfor %}#}
+                        {#                        </ul>#}
+                        {##}
                         {# the btn container, wich contains the btn for next and last picture #}
-                        <div class="btn">
-                            <div class="btn-left"><</div>
-                            <div class="btn-right">></div>
-                        </div>
-                    </div>
+                        {#                        <div class="btn">#}
+                        {#                            <div class="btn-left"><</div>#}
+                        {#                            <div class="btn-right">></div>#}
+                        {#                        </div>#}
+                        {#                    </div>#}
 
-                    <!-- Vertical Border (The Divider Line) -->
-                    <div id="w-node-c7e51d0f-2d88-d3ea-4d4e-74172b8dc048-625ac608" class="vertical-border"></div>
+{#                        <img#}
+{#                                data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D" loading="lazy"#}
+{#                                data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3Amore-images%22%3A%7B%22exists%22%3A%22no%22%2C%22type%22%3A%22Set%22%7D%7D%7D%2C%22timezone%22%3A%22Australia%2FMelbourne%22%7D"#}
+{#                                src="{{ url_for("static", filename=model.pictures.all()[0].address) }}" alt=""#}
+{#                                sizes="100vw"#}
+{#                                srcset="https://assets.website-files.com/619d7624f1a47727712de71e/61a564458430d13b4751eebf_product-decor-03-p-500.jpeg 500w, https://assets.website-files.com/619d7624f1a47727712de71e/61a564458430d13b4751eebf_product-decor-03-p-800.jpeg 800w, https://assets.website-files.com/619d7624f1a47727712de71e/61a564458430d13b4751eebf_product-decor-03.jpg 1080w"#}
+{#                                class="main-product-image"#}
+{#                                style="object-fit: cover">#}
 
-                    <!-- Right side section of upper section -->
-                    <div class="product-description">
-
-                        <!-- Hierarchical table of content on the top -->
-                        <div class="breadcrumbs">
-                            <!-- The whole shop -->
-                            <a href="{{ url_for("main.go_all") }}">Shop</a>
-
-                            <img src="{{ url_for("static", filename="images/icon-caret-right.svg") }}" loading="lazy" alt="" class="breadcrumb-arrow">
-
-                            <!-- The category -->
-                            <div class="w-dyn-list">
-                                <div role="list" class="w-dyn-items">
-                                    <div role="listitem" class="w-dyn-item">
-                                        <a href="{{ url_for("main.products_in_category", cate_name=model.product.categories.all()[0].name) }}">{{ model.product.categories.all()[0].name }}</a>
+                        <!-- Slide window from bootstrap -->
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                {% for picture in model.pictures %}
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="{{ loop.index0 }}" class="{% if loop.index == 1 %}active{% endif %}"></li>
+                                {% endfor %}
+                            </ol>
+                            <div class="carousel-inner">
+                                {% for picture in model.pictures %}
+                                    <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
+                                        <img src="{{ url_for("static", filename=picture.address) }}" class="d-block w-100" alt="...">
                                     </div>
-                                </div>
+                                {% endfor %}
                             </div>
-
-                            <img src="{{ url_for("static", filename="images/icon-caret-right.svg") }}" loading="lazy" alt="" class="breadcrumb-arrow">
-
-                            <!-- The brand -->
-                            <div class="w-dyn-list">
-                                <div role="list" class="w-dyn-items">
-                                    <div role="listitem" class="w-dyn-item">
-                                        <a href="{{ url_for("main.brand_intro", brand_id=model.product.brand.id) }}">{{ model.product.brand.name }}</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <img src="{{ url_for("static", filename="images/icon-caret-right.svg") }}" loading="lazy" alt="" class="breadcrumb-arrow">
-
-                            <!-- The current model type -->
-                            <div class="w-dyn-list">
-                                <div role="list" class="w-dyn-items">
-                                    <div role="listitem" class="w-dyn-item">
-                                        <a href="{{ url_for("main.model_type_details", mt_id=model.id) }}">{{ model.name }}</a>
-                                    </div>
-                                </div>
-                            </div>
+                            <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
+                                <span class="carousel-control-prev-icon btn-change-pic" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-target="#carouselExampleIndicators" data-slide="next">
+                                <span class="carousel-control-next-icon btn-change-pic" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </button>
                         </div>
 
-                        <!-- Model Name Section -->
-                        <h1 class="medium-heading">{{ model.name }}</h1>
 
-                        <!-- rating stars of this product -->
-                        <div class="box-product-rate">
-                            <ul class="box-rate-stars">
-                                {% if (model.rate // 1) == 0 %}
-                                    <li class="star-dark">&#9733</li>
-                                    <li class="star-dark">&#9733</li>
-                                    <li class="star-dark">&#9733</li>
-                                    <li class="star-dark">&#9733</li>
-                                    <li class="star-dark">&#9733</li>
-                                {% elif (model.rate // 1) == 1 %}
-                                    <li class="star-bright">&#9733</li>
-                                    <li class="star-dark">&#9733</li>
-                                    <li class="star-dark">&#9733</li>
-                                    <li class="star-dark">&#9733</li>
-                                    <li class="star-dark">&#9733</li>
-                                {% elif (model.rate // 1) == 2 %}
-                                    <li class="star-bright">&#9733</li>
-                                    <li class="star-bright">&#9733</li>
-                                    <li class="star-dark">&#9733</li>
-                                    <li class="star-dark">&#9733</li>
-                                    <li class="star-dark">&#9733</li>
-                                {% elif (model.rate // 1) == 3 %}
-                                    <li class="star-bright">&#9733</li>
-                                    <li class="star-bright">&#9733</li>
-                                    <li class="star-bright">&#9733</li>
-                                    <li class="star-dark">&#9733</li>
-                                    <li class="star-dark">&#9733</li>
-                                {% elif (model.rate // 1) == 4 %}
-                                    <li class="star-bright">&#9733</li>
-                                    <li class="star-bright">&#9733</li>
-                                    <li class="star-bright">&#9733</li>
-                                    <li class="star-bright">&#9733</li>
-                                    <li class="star-dark">&#9733</li>
-                                {% elif (model.rate // 1) == 5 %}
-                                    <li class="star-bright">&#9733</li>
-                                    <li class="star-bright">&#9733</li>
-                                    <li class="star-bright">&#9733</li>
-                                    <li class="star-bright">&#9733</li>
-                                    <li class="star-bright">&#9733</li>
-                                {% endif %}
-                            </ul>
-                        </div>
+                        <!-- Vertical Border (The Divider Line) -->
+                        <div id="w-node-c7e51d0f-2d88-d3ea-4d4e-74172b8dc048-625ac608" class="vertical-border"></div>
 
-                        <!-- Price Section -->
-                        <div class="price-container large-text">
-                            <div class="old-price increased-margin">￥{{ model.price*2 }}</div>
-                            <div>￥{{ model.price }}</div>
-                            <div></div>
-                        </div>
+                        <!-- Right side section of upper section -->
+                        <div class="product-description">
 
-                        <!-- The outer container of rest things of the upper part in this page -->
-                        <div class="w-layout-grid product-details-grid">
-                            <!-- Description Section -->
-                            <div>
-                                <h6 class="uppercase-text product-details-heading">Description</h6>
-                                <div>{{ model.description }}</div>
-                            </div>
+                            <!-- Hierarchical table of content on the top -->
+                            <div class="breadcrumbs">
+                                <!-- The whole shop -->
+                                <a href="{{ url_for("main.go_all") }}">Shop</a>
 
-                            <!-- Detail List Section -->
-{#                            <div>#}
-{#                                <h6 class="uppercase-text product-details-heading">details</h6>#}
-{#                                <div class="product-details-list w-richtext">#}
-{#                                    <ul class="product-details-list">#}
-{#                                        <li>质量高达3kg，品质首选</li>#}
-{#                                        <li>自带加湿功能</li>#}
-{#                                        <li>工作一天仅需5元食物</li>#}
-{#                                        <li>质保期限：直到您的墩布退休！</li>#}
-{#                                    </ul>#}
-{#                                </div>#}
-{#                            </div>#}
+                                <img src="{{ url_for("static", filename="images/icon-caret-right.svg") }}" loading="lazy" alt="" class="breadcrumb-arrow">
 
-                            <!-- Specification Table Section -->
-                            <div>
-                                <h6 class="uppercase-text product-details-heading">Specification Table</h6>
-                                <div class="product-dimensions">
-                                    <div>
-                                        <div class="dimensions-heading">Weight</div>
-                                        <div>{{ model.weight }} <i>kg</i></div>
+                                <!-- The category -->
+                                <div class="w-dyn-list">
+                                    <div role="list" class="w-dyn-items">
+                                        <div role="listitem" class="w-dyn-item">
+                                            <a href="{{ url_for("main.products_in_category", cate_name=model.product.categories.all()[0].name) }}">{{ model.product.categories.all()[0].name }}</a>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <div class="dimensions-heading">Views</div>
-                                        <div>{{ model.get_formatted_views() }}</div>
+                                </div>
+
+                                <img src="{{ url_for("static", filename="images/icon-caret-right.svg") }}" loading="lazy" alt="" class="breadcrumb-arrow">
+
+                                <!-- The brand -->
+                                <div class="w-dyn-list">
+                                    <div role="list" class="w-dyn-items">
+                                        <div role="listitem" class="w-dyn-item">
+                                            <a href="{{ url_for("main.brand_intro", brand_id=model.product.brand.id) }}">{{ model.product.brand.name }}</a>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <div class="dimensions-heading">Sales</div>
-                                        <div>{{ model.get_formatted_sales() }} <i>times</i></div>
+                                </div>
+
+                                <img src="{{ url_for("static", filename="images/icon-caret-right.svg") }}" loading="lazy" alt="" class="breadcrumb-arrow">
+
+                                <!-- The current model type -->
+                                <div class="w-dyn-list">
+                                    <div role="list" class="w-dyn-items">
+                                        <div role="listitem" class="w-dyn-item">
+                                            <a href="{{ url_for("main.model_type_details", mt_id=model.id) }}">{{ model.name }}</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Customization Section -->
-                            <div>
-                                <h6 class="uppercase-text product-details-heading">Customization</h6>
-                                <div class="form-group">
-                                    <div class="select-wrapper">
-                                        <select id="select-model-type" name="select-type" data-name="field" class="select-field w-select">
-                                            {% for mt in model.product.model_types %}
-                                                <option value="{{ url_for("main.model_type_details", mt_id=mt.id) }}" {% if mt.id == model.id %}selected="selected"{% endif %}>
-                                                    {{ mt.name }}
-                                                </option>
-                                            {% endfor %}
-                                        </select>
+                            <!-- Model Name Section -->
+                            <h1 class="medium-heading">{{ model.name }}</h1>
+
+                            <!-- rating stars of this product -->
+                            <div class="box-product-rate">
+                                <ul class="box-rate-stars">
+                                    {% if (model.rate // 1) == 0 %}
+                                        <li class="star-dark">&#9733</li>
+                                        <li class="star-dark">&#9733</li>
+                                        <li class="star-dark">&#9733</li>
+                                        <li class="star-dark">&#9733</li>
+                                        <li class="star-dark">&#9733</li>
+                                    {% elif (model.rate // 1) == 1 %}
+                                        <li class="star-bright">&#9733</li>
+                                        <li class="star-dark">&#9733</li>
+                                        <li class="star-dark">&#9733</li>
+                                        <li class="star-dark">&#9733</li>
+                                        <li class="star-dark">&#9733</li>
+                                    {% elif (model.rate // 1) == 2 %}
+                                        <li class="star-bright">&#9733</li>
+                                        <li class="star-bright">&#9733</li>
+                                        <li class="star-dark">&#9733</li>
+                                        <li class="star-dark">&#9733</li>
+                                        <li class="star-dark">&#9733</li>
+                                    {% elif (model.rate // 1) == 3 %}
+                                        <li class="star-bright">&#9733</li>
+                                        <li class="star-bright">&#9733</li>
+                                        <li class="star-bright">&#9733</li>
+                                        <li class="star-dark">&#9733</li>
+                                        <li class="star-dark">&#9733</li>
+                                    {% elif (model.rate // 1) == 4 %}
+                                        <li class="star-bright">&#9733</li>
+                                        <li class="star-bright">&#9733</li>
+                                        <li class="star-bright">&#9733</li>
+                                        <li class="star-bright">&#9733</li>
+                                        <li class="star-dark">&#9733</li>
+                                    {% elif (model.rate // 1) == 5 %}
+                                        <li class="star-bright">&#9733</li>
+                                        <li class="star-bright">&#9733</li>
+                                        <li class="star-bright">&#9733</li>
+                                        <li class="star-bright">&#9733</li>
+                                        <li class="star-bright">&#9733</li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+
+                            <!-- Price Section -->
+                            <div class="price-container large-text">
+                                <div class="old-price increased-margin">￥{{ model.price*2 }}</div>
+                                <div>￥{{ model.price }}</div>
+                                <div></div>
+                            </div>
+
+                            <!-- The outer container of rest things of the upper part in this page -->
+                            <div class="w-layout-grid product-details-grid">
+                                <!-- Description Section -->
+                                <div>
+                                    <h6 class="uppercase-text product-details-heading">Description</h6>
+                                    <div>{{ model.description }}</div>
+                                </div>
+
+                                <!-- Detail List Section -->
+                                {#                            <div>#}
+                                {#                                <h6 class="uppercase-text product-details-heading">details</h6>#}
+                                {#                                <div class="product-details-list w-richtext">#}
+                                {#                                    <ul class="product-details-list">#}
+                                {#                                        <li>质量高达3kg，品质首选</li>#}
+                                {#                                        <li>自带加湿功能</li>#}
+                                {#                                        <li>工作一天仅需5元食物</li>#}
+                                {#                                        <li>质保期限：直到您的墩布退休！</li>#}
+                                {#                                    </ul>#}
+                                {#                                </div>#}
+                                {#                            </div>#}
+
+                                <!-- Specification Table Section -->
+                                <div>
+                                    <h6 class="uppercase-text product-details-heading">Specification Table</h6>
+                                    <div class="product-dimensions">
+                                        <div>
+                                            <div class="dimensions-heading">Weight</div>
+                                            <div>{{ model.weight }} <i>kg</i></div>
+                                        </div>
+                                        <div>
+                                            <div class="dimensions-heading">Views</div>
+                                            <div>{{ model.get_formatted_views() }}</div>
+                                        </div>
+                                        <div>
+                                            <div class="dimensions-heading">Sales</div>
+                                            <div>{{ model.get_formatted_sales() }} <i>times</i></div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- Additional Info Section -->
-                            <div>
-                                <h6 class="uppercase-text product-details-heading">Additional information</h6>
-                                <div class="product-description">Please Notice that this is a consumable product and
-                                    cannot be refunded once sold after 7-days.
+                                <!-- Customization Section -->
+                                <div>
+                                    <h6 class="uppercase-text product-details-heading">Customization</h6>
+                                    <div class="form-group">
+                                        <div class="select-wrapper">
+                                            <select id="select-model-type" name="select-type" data-name="field" class="select-field w-select">
+                                                {% for mt in model.product.model_types %}
+                                                    <option value="{{ url_for("main.model_type_details", mt_id=mt.id) }}"
+                                                            {% if mt.id == model.id %}selected="selected"{% endif %}>
+                                                        {{ mt.name }}
+                                                    </option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div>
-                                {% if model.is_deleted == False %}
-                                    {% if model.stock > 0 %}
-                                        <!-- The Purchase Module -->
-                                        <form data-node-type="commerce-add-to-cart-form"
-                                          class="w-commerce-commerceaddtocartform cart-default-state">
-                                            <div class="add-to-cart-form">
-                                                <div class="quantity-wrapper">
-                                                    <label for="quantity-6194caf15498d8612861f033e8278855" class="quantity-label">Quantity:</label>
-                                                    <input type="number" pattern="^[0-9]$"
-                                                           inputmode="numeric"
-                                                           id="quantity-6194caf15498d8612861f033e8278855"
-                                                           name="commerce-add-to-cart-quantity-input"
-                                                           min="1" class="w-commerce-commerceaddtocartquantityinput quantity-input"
-                                                           value="1">
+                                <!-- Additional Info Section -->
+                                <div>
+                                    <h6 class="uppercase-text product-details-heading">Additional information</h6>
+                                    <div class="product-description">Please Notice that this is a consumable product and
+                                        cannot be refunded once sold after 7-days.
+                                    </div>
+                                </div>
+
+                                <div>
+                                    {% if model.is_deleted == False %}
+                                        {% if model.stock > 0 %}
+                                            <!-- The Purchase Module -->
+                                            <form data-node-type="commerce-add-to-cart-form"
+                                                  class="w-commerce-commerceaddtocartform cart-default-state">
+                                                <div class="add-to-cart-form">
+                                                    <div class="quantity-wrapper">
+                                                        <label for="quantity-6194caf15498d8612861f033e8278855" class="quantity-label">Quantity:</label>
+                                                        <input type="number" pattern="^[0-9]$"
+                                                               inputmode="numeric"
+                                                               id="quantity-6194caf15498d8612861f033e8278855"
+                                                               name="commerce-add-to-cart-quantity-input"
+                                                               min="1" class="w-commerce-commerceaddtocartquantityinput quantity-input"
+                                                               value="1">
+                                                    </div>
+                                                    <input id="btn-add-to-cart" type="submit"
+                                                           data-node-type="commerce-add-to-cart-button"
+                                                           data-loading-text="Adding to cart..." value="Add to Cart"
+                                                           class="w-commerce-commerceaddtocartbutton button small">
                                                 </div>
-                                                <input id="btn-add-to-cart" type="submit"
-                                                       data-node-type="commerce-add-to-cart-button"
-                                                       data-loading-text="Adding to cart..." value="Add to Cart"
-                                                       class="w-commerce-commerceaddtocartbutton button small">
+                                                <div id="btn-buy-now" model_id="{{ model.id }}" href="#"
+                                                   data-node-type="commerce-buy-now-button" data-default-text="Buy It Now"
+                                                   data-subscription-text="Subscribe now"
+                                                   class="w-commerce-commercebuynowbutton button no-top-margin bg-primary">Buy
+                                                    It Now</div>
+                                            </form>
+
+                                        {% else %}
+                                            <!-- Out of stock statement -->
+                                            <div class="w-commerce-commerceaddtocartoutofstock empty-state">
+                                                <h1 class="uppercase-text large-text" style="color: darkred">This
+                                                    item runs out of stock.</h1>
                                             </div>
-                                            <a id="btn-buy-now" model_id="{{ model.id }}" href="#"
-                                               data-node-type="commerce-buy-now-button" data-default-text="Buy It Now"
-                                               data-subscription-text="Subscribe now"
-                                               class="w-commerce-commercebuynowbutton button no-top-margin bg-primary">Buy
-                                                It Now</a>
-                                        </form>
+                                        {% endif %}
 
                                     {% else %}
-                                        <!-- Out of stock statement -->
+                                        <!-- Sold out statement -->
                                         <div class="w-commerce-commerceaddtocartoutofstock empty-state">
-                                            <h1 class="uppercase-text large-text" style="color: darkred">This
-                                                item runs out of stock.</h1>
+                                            <h1 class="uppercase-text product-details-heading" style="color: darkred">This
+                                                item is no longer available (Sold out).</h1>
                                         </div>
                                     {% endif %}
 
-                                {% else %}
-                                    <!-- Sold out statement -->
-                                    <div class="w-commerce-commerceaddtocartoutofstock empty-state">
-                                        <h1 class="uppercase-text product-details-heading" style="color: darkred">This
-                                            item is no longer available (Sold out).</h1>
-                                    </div>
-                                {% endif %}
 
+                                    <!-- add to cart error statements -->
+                                    {#                                <div data-node-type="commerce-add-to-cart-error" style="display:none"#}
+                                    {#                                     class="w-commerce-commerceaddtocarterror form-error">#}
+                                    {#                                    <div data-node-type="commerce-add-to-cart-error"#}
+                                    {#                                         data-w-add-to-cart-quantity-error="Product is not available in this quantity."#}
+                                    {#                                         data-w-add-to-cart-general-error="Something went wrong when adding this item to the cart."#}
+                                    {#                                         data-w-add-to-cart-mixed-cart-error="You canâ€™t purchase another product with a subscription."#}
+                                    {#                                         data-w-add-to-cart-buy-now-error="Something went wrong when trying to purchase this item."#}
+                                    {#                                         data-w-add-to-cart-checkout-disabled-error="Checkout is disabled on this site."#}
+                                    {#                                         data-w-add-to-cart-select-all-options-error="Please select an option in each set.">#}
+                                    {#                                        Product is not available in this quantity.#}
+                                    {#                                    </div>#}
+                                    {#                                </div>#}
 
-                                <!-- add to cart error statements -->
-{#                                <div data-node-type="commerce-add-to-cart-error" style="display:none"#}
-{#                                     class="w-commerce-commerceaddtocarterror form-error">#}
-{#                                    <div data-node-type="commerce-add-to-cart-error"#}
-{#                                         data-w-add-to-cart-quantity-error="Product is not available in this quantity."#}
-{#                                         data-w-add-to-cart-general-error="Something went wrong when adding this item to the cart."#}
-{#                                         data-w-add-to-cart-mixed-cart-error="You canâ€™t purchase another product with a subscription."#}
-{#                                         data-w-add-to-cart-buy-now-error="Something went wrong when trying to purchase this item."#}
-{#                                         data-w-add-to-cart-checkout-disabled-error="Checkout is disabled on this site."#}
-{#                                         data-w-add-to-cart-select-all-options-error="Please select an option in each set.">#}
-{#                                        Product is not available in this quantity.#}
-{#                                    </div>#}
-{#                                </div>#}
-
-                            </div>
-                            <div class="fine-print-text muted">This product supports 7-days refund and the quality is
-                                guaranteed.
+                                </div>
+                                <div class="fine-print-text muted">This product supports 7-days refund and the quality is
+                                    guaranteed.
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        {# video section about this model #}
-        {% if model.video_address != None and model.video_address != "" %}
-            <div class="section bg-primary-dark wf-section">
-                <div class="main-container">
-                    <div class="video-and-title-box">
-                        {# the title (left) #}
-                        <div class="container video-title">
-                            <h6 class="uppercase-text large-heading">Video for showing</h6>
-                            <h3 class="medium-heading"></h3>
-                            <div class="large-text"></div>
-                        </div>
-                        <div class="container">
-                            {# The video (right) #}
-                            <video controls>
-                                <source src="{{ url_for("static", filename=model.video_address) }}" type="video/mp4">
-                            </video>
+            {# video section about this model #}
+            {% if model.video_address != None and model.video_address != "" %}
+                <div class="section bg-primary-dark wf-section">
+                    <div class="main-container">
+                        <div class="video-and-title-box">
+                            {# the title (left) #}
+                            <div class="container video-title">
+                                <h6 class="uppercase-text large-heading">Video for showing</h6>
+                                <h3 class="medium-heading"></h3>
+                                <div class="large-text"></div>
+                            </div>
+                            <div class="container">
+                                {# The video (right) #}
+                                <video controls>
+                                    <source src="{{ url_for("static", filename=model.video_address) }}" type="video/mp4">
+                                </video>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <br><br>
-        {% endif %}
+                <br><br>
+            {% endif %}
 
             {# radio section about this model #}
             {% if model.audio_addresses.count() != 0 %}
@@ -368,12 +416,12 @@
             {% if model.comments.count() != 0 %}
                 <div class="main-container">
                     <div class="">
-                        <div class="container">
-                            <h3 class="no-bottom-margin">Comments</h3>
+                        <div>
+                            <h3 id="comment-section-title" class="no-bottom-margin">Comments</h3>
                             <h3 class="medium-heading"></h3>
                             <div class="large-text"></div>
                         </div>
-                        <table border="1" class="comments-table">
+                        <table class="comments-table">
                             {% for comment in model.comments %}
                                 <tr class="comment-row">
                                     <td class="tight-wrapper-col">
@@ -423,7 +471,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="rate-col">
-                                                    <div class="container">
+                                                    <div>
                                                         <div class="no-bottom-margin box-product-rate">
                                                             <ul class="box-rate-stars">
                                                                 {% if (comment.star_num // 1) == 0 %}
@@ -670,6 +718,10 @@
             <script type="text/javascript" src="../../static/js/main/commodity-customization.js"></script>
             <script type="text/javascript" src="../../static/js/main/three-js.js"></script>
             <script type="text/javascript" src="../../static/js/main/grab.js"></script>
+
+            <!-- js for Bootstrap -->
+            <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         </body>
     </html>
 {% endblock %}

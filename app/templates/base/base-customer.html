@@ -4,6 +4,8 @@
         <meta charset="UTF-8">
         <title>{% block title %}The Siren{% endblock %}</title>
 
+        {% block top_css %}{% endblock %}
+
         <link rel="icon" href="../../static/images/half-logo.png">
 
         <link href="../../static/css/normalize.css" rel="stylesheet" type="text/css">
@@ -48,8 +50,8 @@
                 <div class="main-container">
                     <div class="announcement-contents">
                         <div class="announcement-text">
-{#                            Welcome to Siren – Selects online music instrument shop for you.#}
-                            别看啦，快去赶DDL ~   (by the way 睡前别忘打卡~)
+                            Welcome to Siren – Selects online music instrument shop for you.
+{#                            别看啦，快去赶DDL ~   (by the way 睡前别忘打卡~)#}
                             <a href="{{ url_for('main.go_all') }}" target="_blank">View instruments here</a>
                         </div>
                     </div>
@@ -372,41 +374,41 @@
                         <div>
                             <div class="uppercase-text links-grid-title">{{ _('shop') }}</div>
                             <div class="links-grid">
-                                <a href="shop.html" class="list-link">{{ _('All') }}</a>
+                                <a href="{{ url_for("main.go_all") }}" class="list-link">{{ _('All') }}</a>
                                 <div class="w-dyn-list">
                                     <div role="list" class="links-grid w-dyn-items">
                                         <div role="listitem" class="w-dyn-item">
-                                            <a href="#" class="list-link">{{ _('Brands') }}</a>
+                                            <a href="#brand-gallery" class="list-link">{{ _('Brands') }}</a>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="contact.html" class="list-link">Catagory</a>
+                                <a href="{{ url_for("main.go_all") }}" class="list-link">Catagory</a>
                             </div>
                         </div>
                         <div>
                             <div class="uppercase-text links-grid-title">{{ _('Company') }}</div>
                             <div class="links-grid">
-                                <a href="about.html" class="list-link">{{ _('About us') }}</a>
-                                <a href="contact.html" class="list-link">{{ _('Contect us') }}</a>
-                                <a href="refund-policy.html" class="list-link">{{ _('Premium') }}</a>
+                                <a href="{{ url_for("main.about_us") }}" class="list-link">{{ _('About us') }}</a>
+                                <a href="#" class="list-link">{{ _('Contect us') }}</a>
+                                <a href="{{ url_for("main.premium_intro") }}" class="list-link">{{ _('Premium') }}</a>
                             </div>
                         </div>
                         <div>
                             <div class="uppercase-text links-grid-title">Franchising Brand</div>
                             <div class="links-grid">
-                                <a href="about.html" class="list-link">Lowden</a>
-                                <a href="about.html" class="list-link">Gibson</a>
-                                <a href="about.html" class="list-link">YAMAHA</a>
-                                <a href="about.html" class="list-link">Stentor</a>
-                                <a href="about.html" class="list-link">Martin</a>
-                                <a href="about.html" class="list-link">Steinway</a>
-                                <a href="about.html" class="list-link">Fender</a>
+                                <a href="{{ url_for("main.brand_intro", brand_id=1) }}" class="list-link">Lowden</a>
+                                <a href="{{ url_for("main.brand_intro", brand_id=2) }}" class="list-link">Gibson</a>
+                                <a href="{{ url_for("main.brand_intro", brand_id=16) }}" class="list-link">YAMAHA</a>
+                                <a href="{{ url_for("main.brand_intro", brand_id=4) }}" class="list-link">Stentor</a>
+                                <a href="{{ url_for("main.brand_intro", brand_id=5) }}" class="list-link">Martin</a>
+                                <a href="{{ url_for("main.brand_intro", brand_id=12) }}" class="list-link">Steinway</a>
+                                <a href="{{ url_for("main.brand_intro", brand_id=14) }}" class="list-link">Fender</a>
                             </div>
                         </div>
                     </div>
                     <div class="footer-fine-print">
                         <div class="fine-print-text">© Copyright Company powered by
-                            <a href="{{ url_for('main.index') }}" target="_blank" class="underline-link">Siren</a>
+                            <a href="{{ url_for('main.index') }}" target="_blank" class="underline-link">The Siren</a>
                         </div>
                         <div class="social-links">
                             <a href="#" target="_blank" class="social-link w-inline-block">

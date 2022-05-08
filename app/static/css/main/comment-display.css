@@ -1,3 +1,12 @@
+/* comment section title */
+#comment-section-title{
+    font-size: 280%;
+    font-weight: 700;
+    margin-top: 10%;
+    margin-bottom: 3%;
+    margin-left: 1%;
+}
+
 .commodity-main-section {
     border-bottom: 2px solid #afafaf57;
     margin-bottom: 25px;
