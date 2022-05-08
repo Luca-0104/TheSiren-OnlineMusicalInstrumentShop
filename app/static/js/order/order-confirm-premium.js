@@ -1,7 +1,7 @@
 $(document).ready(function (){
 
     //the currently selected plan
-    let selectedPlanID = "plan-90";
+    let selectedPlanID = "plan-30";
 
     //set the payment info of default plan (30days)
     $("#pay-total").text("98");
