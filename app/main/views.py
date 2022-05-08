@@ -1,3 +1,5 @@
+import traceback
+
 from flask import render_template, request, redirect, url_for, session, jsonify, flash, json, current_app
 from flask_login import login_required, current_user
 from flask_babel import _
@@ -140,7 +142,7 @@ def brand_intro(brand_id):
     try:
         return render_template(template_name)
     except Exception as e:
-        print(e)
+        traceback.print_exc()
         return render_template("main/brand_intro/coming-soon.html", brand_name=brand.name)
 
 
