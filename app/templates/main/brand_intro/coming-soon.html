@@ -61,21 +61,6 @@
             <!-- [if lte IE 9]>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script>
             <![endif] -->
-            <script type="text/javascript">
-                $(document).ready(function () {
-                    // get the notification data from alipay
-                    // everytime after paying, there is a GET request sent by Alipay carrying the notification data to the 'return_url'
-                    let alipayNotificationData = document.location.href;
-
-                    console.log(alipayNotificationData);
-
-                    // send data back to the backend
-                    // no call back function needed here
-                    $.post('/api/payment-notify', {
-                        "notify_data": alipayNotificationData
-                    })
-                });
-            </script>
         </body>
     </html>
 {% endblock %}
