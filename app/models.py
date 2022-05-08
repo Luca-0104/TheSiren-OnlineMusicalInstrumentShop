@@ -55,6 +55,7 @@ class Tools:
         # ------
         # # products(100)  # 100 fake products
         ModelType.insert_model_types()  # the constant model types for testing
+        Comment.insert_comments(12)
         Cart.insert_carts()
         Order.insert_orders(20)
         OrderModelType.insert_omts()
@@ -804,15 +805,54 @@ class Comment(BaseModel):
     def __repr__(self):
         return '<Comment %r>' % self.content[:10]
 
-    # def to_dict(self):
-    #     """
-    #         Map the object to dictionary data structure
-    #     """
-    #     result = super(Comment, self).to_dict()
-    #     # add relations to the result dict
-    #     Tools.add_relation_to_dict(result, self.pictures.all(), "pictures")
-    #
-    #     return Tools.delete_instance_state(result)
+    @staticmethod
+    def insert_comments(count):
+        content = "This is a testing comment. This is a testing comment. This is a testing comment. This is a testing comment. Pictures are also for testing. Pictures are also for testing. Pictures are also for testing. "
+        pic_address_lst = [
+            'upload/comment/pre-stored/1.jpg',
+            'upload/comment/pre-stored/2.jpg',
+            'upload/comment/pre-stored/3.png',
+            'upload/comment/pre-stored/4.png',
+            'upload/comment/pre-stored/5.jpg',
+            'upload/comment/pre-stored/6.jpg',
+            'upload/comment/pre-stored/7.jpg',
+            'upload/comment/pre-stored/8.png',
+            'upload/comment/pre-stored/9.jpg',
+            'upload/comment/pre-stored/10.png',
+            'upload/comment/pre-stored/12.jpg',
+            'upload/comment/pre-stored/13.png',
+            'upload/comment/pre-stored/14.jpg',
+            'upload/comment/pre-stored/15.jpg',
+            'upload/comment/pre-stored/16.jpg',
+            'upload/comment/pre-stored/17.jpg',
+            'upload/comment/pre-stored/18.jpg',
+            'upload/comment/pre-stored/19.jpg',
+            'upload/comment/pre-stored/20.jpg',
+            'upload/comment/pre-stored/21.png'
+        ]
+        # get all the model types
+        mt_lst = ModelType.query.all()
+        # get all customers
+        customer_lst = User.query.filter_by(role_id=1).all()
+        # for each model type
+        for mt in mt_lst:
+            # create comments for this model type
+            for i in range(count):
+                new_comment = Comment(content=content, model_type_id=mt.id, auth_id=customer_lst[random.randint(0, len(customer_lst)-1)].id, star_num=random.randint(1, 5))
+                db.session.add(new_comment)
+
+                # create pictures for this comment
+                current_pic_address_lst = []
+                for j in range(random.randint(2, 5)):
+                    # get an random and not repeat pic address
+                    address = pic_address_lst[random.randint(0, len(pic_address_lst) - 1)]
+                    while address in current_pic_address_lst:
+                        address = pic_address_lst[random.randint(0, len(pic_address_lst) - 1)]
+                    current_pic_address_lst.append(address)
+                    # create pic obj
+                    new_pic = CommentPic(address=address, comment=new_comment)
+                    db.session.add(new_pic)
+            db.session.commit()
 
 
 class CommentPic(BaseModel):
