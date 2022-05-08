@@ -325,3 +325,24 @@
     padding-bottom: 5px;
     padding-top: 5px;
 }
+
+.premium-remain-box{
+    margin-left: 30px;
+    margin-right: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px #c1bfbf solid;
+}
+
+#premium-table{
+    margin-bottom: 30px;
+    /*border-collapse: separate;*/
+    /*border-spacing: 20px 50px;*/
+}
+
+.premium-table-head{
+    width: 30%;
+}
+
+.highlight-content{
+    color: #d11b1b;
+}
