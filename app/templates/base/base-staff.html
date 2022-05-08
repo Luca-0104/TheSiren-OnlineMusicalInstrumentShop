@@ -95,7 +95,7 @@
                                     </li>
                                     <!-- Add Product -->
                                     <li id="sidebar-Add_Product" super-selection="sidebar-Products" class="sidebar-selection ">
-                                        <a href="../backend/page-add-product.html">
+                                        <a href="{{ url_for("product.upload_product") }}">
                                             <i class="las la-minus"></i><span>{{ _('Add Product') }}</span>
                                         </a>
                                     </li>
@@ -156,7 +156,7 @@
                                         </a>
                                     </li>
                                     <!-- Add journals -->
-                                    <li id="sidebar-Add_purchase" super-selection="sidebar-Journals" class="sidebar-selection ">
+                                    <li id="sidebar-Add_Journals" super-selection="sidebar-Journals" class="sidebar-selection ">
                                         <a href="{{ url_for("journal.upload_journal") }}">
                                             <i class="las la-minus"></i><span>{{ _('Upload Journals') }}</span>
                                         </a>
@@ -797,19 +797,44 @@
                             <div class="iq-search-bar device-search">
                                 <form action="/stock-management" class="searchbox" method="post"
                                       id="stock_management_search">
-                                    <a class="search-link" onclick="document:stock_management_search.submit()"><i
-                                            class="ri-search-line"></i></a>
+                                    <!--<a class="search-link" onclick="document:stock_management_search.submit()">
+                                        <i class="ri-search-line"></i>
+                                    </a>
                                     {% if is_search %}
                                         <input type="text" name="key_word" class="text search-input"
                                                placeholder="{{ _('Search here...') }}" value="{{ previous_key }}">
                                     {% else %}
                                         <input type="text" name="key_word" class="text search-input"
                                                placeholder="{{ _('Search here...') }}">
-                                    {% endif %}
-                                    <select name="search_type" class="" data-style="py-0">
-                                        <option value="1">Model Name</option>
-                                        <option value="2">Serial Number</option>
-                                    </select>
+                                    {% endif %}-->
+                                    <div class="input-group">
+                                        {% if is_search %}
+                                            <input type="text" name="key_word"
+                                                   placeholder="{{ _('Search here...') }}" value="{{ previous_key }}"
+                                                   class="form-control search-text-input" aria-label="Text input with segmented dropdown button">
+                                        {% else %}
+                                            <input type="text" name="key_word"
+                                                   placeholder="{{ _('Search here...') }}"
+                                                   class="form-control search-text-input" aria-label="Text input with segmented dropdown button">
+                                        {% endif %}
+                                        <input type="text" name="search_type" style="display:none;" value="1">
+                                        <div class="input-group-append">
+                                            <button type="button" class="btn btn-outline-primary"
+                                                    onclick="document:stock_management_search.submit()">
+                                                <i class="ri-search-line"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-primary dropone dropdown-toggle  dropdown-toggle-split"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="las">
+                                                    &nbsp;<span id="search-by">Model Name</span>&nbsp;<i class="las la-angle-down"></i>
+                                                </i>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="javascript:void(0);" style="color: #212529">Model Name</a>
+                                                <a class="dropdown-item" href="javascript:void(0);" style="color: #212529">Serial Number</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                         {% endblock %}
@@ -1098,7 +1123,8 @@
                                                         <p class="mb-0">{{ current_user.username }}</p>
                                                         <div class="d-flex align-items-center justify-content-center mt-3">
                                                             <a id="staff-profile-btn" href="#" class="btn btn-outline-light mr-2">{{ _('Profile') }}</a>
-                                                            <a id="staff-sign-out-btn" href="{{ url_for('auth.logout') }}" class="btn btn-outline-light">{{ _('Sign Out') }}</a>
+                                                            <a id="staff-sign-out-btn" href="{{ url_for('auth.logout') }}"
+                                                               class="btn btn-outline-light">{{ _('Sign Out') }}</a>
                                                         </div>
                                                     </div>
                                                 </div>

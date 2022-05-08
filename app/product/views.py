@@ -51,6 +51,9 @@ def show_page_stock_management():
         key_word = request.form.get('key_word')
         search_type = int(request.form.get('search_type'))
 
+        print(key_word)
+        print(search_type)
+
         is_search = True
         previous_key = key_word
 

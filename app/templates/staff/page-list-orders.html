@@ -31,7 +31,8 @@
 
 {# nav search block #}
 {% block nav_search %}
-
+    {# the default search block is the one for "stock management" #}
+    <div class="iq-search-bar device-search"></div>
 {% endblock %}
 
 
@@ -48,13 +49,12 @@
                 <div class="col-lg-12">
                     <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
                         <div>
-                            <h4 class="mb-3">{{ _('Sale List') }}</h4>
-                            <p class="mb-0">Sales enables you to effectively control sales KPIs and monitor them
-                                in one central<br>
-                                place while helping teams to reach sales goals. </p>
+                            <h4 class="mb-3">{{ _('Order List') }}</h4>
+                            <p class="mb-0">
+                                This page effectively list all orders from clients and provides functionalities <br>
+                                for you to manage and update these orders.
+                            </p>
                         </div>
-                        <a href="page-add-sale.html" class="btn btn-primary add-list"><i
-                                class="las la-plus mr-3"></i>Add Sale</a>
                     </div>
                 </div>
 
