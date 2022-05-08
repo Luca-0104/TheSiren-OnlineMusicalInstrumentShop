@@ -1,0 +1,1 @@
+This folder is storage for the open source three.js files which in under MIT license.

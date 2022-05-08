@@ -35,6 +35,17 @@
             type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
             crossorigin="anonymous"></script>
 
+    <!-- 3D model required -->
+        <script src="../../static/three-d-model-support/three.js-master/build/three.js"></script>
+        <script src="../../static/three-d-model-support/three.js-master/build/three.min.js"></script>
+        <script src="../../static/three-d-model-support/three.js-master/build/three.module.js"></script>
+        <script src="../../static/three-d-model-support/three.js-master/examples/js/controls/OrbitControls.js"></script>
+        <script src="../../static/three-d-model-support/three.js-master/examples/js/loaders/OBJLoader.js"></script>
+        <!-- <script src="http://www.yanhuangxueyuan.com/versions/threejsR92/build/three.js"></script>-->
+        <script src="http://www.yanhuangxueyuan.com/versions/threejsR92/examples/js/loaders/FBXLoader.js"></script>
+        <script src="http://www.yanhuangxueyuan.com/versions/threejsR92/examples/js/libs/inflate.min.js"></script>
+    <!-- 3D model required end -->
+
     {# css for product box #}
     <link rel="stylesheet" href="../../static/css/main/product_box.css">
 
@@ -547,7 +558,7 @@
             {# 3D view section #}
             {% if model.id == 28 %}
                 <br>
-                <div class="section bg-primary-dark wf-section">
+                <div id="modeltype-3d-model"  class="section bg-primary-dark wf-section">
                     <div class="main-container">
                         <div class="w-layout-grid grid-halves">
                             {# title of 3D view #}
@@ -564,6 +575,31 @@
                                             webkitallowfullscreen="true" style="border:0;"
                                             src="https://api.cappasity.com/api/player/e5ee3fda-6cff-4e34-972e-eeb8720ad538/embedded?autorun=0&closebutton=1&logo=0&analytics=1&uipadx=0&uipady=0&enablestoreurl=0&storeurl=&hidehints=0&language=&autorotate=0&autorotatetime=3.282909393310547&autorotatedelay=2&autorotatedir=1&hidefullscreen=1&hideautorotateopt=0&hidesettingsbtn=0&enableimagezoom=1&zoomquality=1&hidezoomopt=0&arbutton=1"></iframe>
                                     <h3 class="no-bottom-margin"></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% elif model.three_d_model_address != None and model.three_d_model_address != "" %}
+                <br>
+                <div id="modeltype-3d-model" class="section bg-primary-dark wf-section" model-address="{{ url_for("static", filename=model.three_d_model_address) }}">
+                    <div class="main-container">
+                        <div class="w-layout-grid grid-halves">
+                            {# title of 3D view #}
+                            <div class="container">
+                                <h1 class="no-bottom-margin view-3d-title">3D view of {{ model.name }}</h1>
+                                <div>
+                                    <br>
+                                    You can use mouse to move the camara around by dragging and use mouse wheel to move closer.<br>
+                                    If you cannot see the 3d model, please move the camara.
+                                </div>
+                            </div>
+                            {# container of the 3D view #}
+                            <div class="container">
+                                <div class="section-title more-from-brand-title view-3d">
+                                    <div id="webgl-output" class="grab">
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -682,6 +718,8 @@
             <script type="text/javascript" src="../../static/js/cart/sidebar_cart.js"></script>
             <script type="text/javascript" src="../../static/js/main/hover_commodity_3d_view.js"></script>
             <script type="text/javascript" src="../../static/js/main/commodity-customization.js"></script>
+            <script type="text/javascript" src="../../static/js/main/three-js.js"></script>
+            <script type="text/javascript" src="../../static/js/main/grab.js"></script>
 
             <!-- js for Bootstrap -->
             <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" crossorigin="anonymous"></script>

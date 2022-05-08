@@ -1008,6 +1008,15 @@ class ModelType(BaseModel):
         Each model of a product may have different name, price, pictures and descriptions
         1 ModelType -> 1 Product
         1 Product -> n ModelType
+
+        0: nothing
+        1: only 3d
+        2: only audio
+        3: only vedio
+        4: audio & vedio
+        5: 3d & vedio
+        6: 3d & audio
+        7: 3d & audio & vedio
     """
     __tablename__ = 'model_types'
     id = db.Column(db.Integer, primary_key=True)

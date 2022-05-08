@@ -5,3 +5,11 @@
 .view-3d{
     width: 105%;
 }
+
+.grab{
+    cursor: grab;
+}
+
+.grabbing{
+    cursor: grabbing;
+}
