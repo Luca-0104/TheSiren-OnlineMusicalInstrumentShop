@@ -107,7 +107,7 @@ def index():
     """ 'just arrive' (top 4 according to datetime) """
     rec_time = ModelType.query.filter_by(is_deleted=False).order_by(ModelType.release_time.desc()).limit(4).all()
 
-    return render_template('main/index_new.html', rec_time=rec_time, rec_views=rec_views, rec_preference=rec_preference)
+    return render_template('main/index_new.html', rec_time=rec_time, rec_views=rec_views, rec_preference=rec_preference, is_index=True)
 
 
 @main.route('/index-test')
