@@ -199,24 +199,6 @@ def search_models_by_keyword(keyword):
     return mt_bq_lst
 
 
-@main.route('/products-in-category/<category_name>')
-def products_in_category(category_name):
-    """
-        Go to the see-all page with the constrain of a specific category
-    """
-    # get the category obj by its name
-    cate = Category.query.filter_by(name=category_name).first()
-    # get products under this cate
-    product_lst = cate.products.filter_by(is_deleted=False).all()
-    # put all the models into a list
-    mt_list = []
-    for product in product_lst:
-        mt_list += product.get_exist_model_types()
-    # sort these models by their sale
-    sort_db_models(mt_list, sort_key=take_sales, reverse=True)
-    return render_template('', mt_list=mt_list)  # see-all page
-
-
 # ----------------- sorting tools > ------------------
 
 
@@ -243,7 +225,7 @@ def sort_db_models(model_list: list, sort_key, reverse: bool):
 # ----------------- < sorting tools ------------------
 
 
-@main.route('/products-in-brand/<brand_name>')
+@main.route('/products-in-brand/<string:brand_name>')
 def products_in_brand(brand_name):
     """
         Go to the see-all page with the constrain of a specific brand
@@ -258,7 +240,31 @@ def products_in_brand(brand_name):
         mt_list += product.get_exist_model_types()
     # sort the model list by the sale numbers
     sort_db_models(mt_list, sort_key=take_sales, reverse=True)
-    return render_template('', mt_list=mt_list)  # see-all page
+    return render_template('main/page_all_commodities.html', mt_list=mt_list)  # see-all page
+
+
+@main.route('/products-in-category/<string:cate_name>')
+def products_in_category(cate_name):
+    """
+    Go to the see-all page with the constrain of a specific category
+    :param cate_name: The name of the category
+    """
+    # get the category obj from db
+    cate = Category.query.filter_by(name=cate_name).first()
+
+    if cate is None:
+        current_app.logger.error("No such category with this name")
+        return redirect(url_for("main.go_all"))
+
+    # get all products in this category
+    product_lst = cate.products.filter_by(is_deleted=False).all()
+    # put all the models into a list
+    mt_list = []
+    for product in product_lst:
+        mt_list += product.get_exist_model_types()
+    # sort the model list by the sale numbers
+    sort_db_models(mt_list, sort_key=take_sales, reverse=True)
+    return render_template('main/page_all_commodities.html', mt_list=mt_list, cate_name=cate_name)  # see-all page
 
 
 @main.route('/product-details/<int:mt_id>')
