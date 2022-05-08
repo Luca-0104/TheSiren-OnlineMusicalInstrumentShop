@@ -723,7 +723,9 @@ def switch_epidemic_mode():
         # reverse the current switch of epidemic_mode_on
         if switch_to == '0':
             siren.epidemic_mode_on = False
+            flash("Epidemic Mode turned off.")
         elif switch_to == '1':
+            flash("Epidemic Mode turned on.")
             siren.epidemic_mode_on = True
         else:
             current_app.logger.error("wrong value of 'switch_to' from Ajax")
