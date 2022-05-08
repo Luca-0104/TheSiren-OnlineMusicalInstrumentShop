@@ -156,18 +156,22 @@
             </div>
         </div>
 
-        <div class="section bg-primary-dark wf-section">
+        <!-- Famous Saying Section -->
+        <div class="section bg-dark wf-section">
             <div class="main-container">
                 <div class="w-layout-grid grid-halves">
-                    <div class="w-layout-grid social-images"><img src="images/social-06.jpg" loading="lazy" alt=""><img
-                            src="images/social-01.jpg" loading="lazy" alt=""><img src="images/social-03.jpg"
-                                                                                  loading="lazy" alt=""></div>
+                    <div class="w-layout-grid social-images">
+                        <img src="../../static/images/index/guitar.jpg" loading="lazy" alt="">
+                        <img src="../../static/images/index/wind.jpg" loading="lazy" alt="">
+                        <img src="../../static/images/index/keyboard.jpg" loading="lazy" alt="">
+                    </div>
                     <div class="text-center">
-                        <h4 class="medium-heading">Follow us for inspiration</h4>
+                        <h4 class="medium-heading slogan">{{ _('Music should strike fire from the heart of man.') }}</h4>
+                        <h6 class="small-heading slogan_name">{{ _('Beethoven') }}</h6>
                         <div class="button-row justify-content-center">
-                            <a href="{{ url_for("auth.register") }}" target="_blank"
+                            <a href="{{ url_for('auth.register') }}" target="_blank"
                                class="button bg-white-faded w-inline-block">
-                                <div>Follow Now</div>
+                                <div>{{ _('Start Voyage') }}</div>
                             </a>
                         </div>
                     </div>
