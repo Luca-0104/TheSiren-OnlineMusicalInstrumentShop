@@ -140,6 +140,7 @@ def brand_intro(brand_id):
     try:
         return render_template(template_name)
     except Exception as e:
+        print(e)
         return render_template("main/brand_intro/coming-soon.html", brand_name=brand.name)
 
 
