@@ -43,7 +43,7 @@
 
         {#  nav bar  #}
         <!-- Section of Announcement Bar -->
-        {% if not get_flashed_messages() %}
+        {% if not get_flashed_messages() and is_index %}
             <div class="announcement-bar">
                 <div class="main-container">
                     <div class="announcement-contents">
