@@ -260,6 +260,30 @@ class Tools:
             relation_lst.append(r.to_dict())
         dic[key_name] = relation_lst
 
+    @staticmethod
+    def bytes_to_human_readable_str(number):
+        """
+        Transform the number to and human readable str.
+        e.g. 1000 -> 1k, 10000 -> 10k, 10000000 -> 10M
+        :param number: The original number
+        :return: A string after formatting process
+        """
+        if number < 1024:  # bit
+            number = str(round(number, 2))                    # B
+        elif number >= 1024 and number < 1024 * 1024:
+            number = str(round(number / 1024, 2)) + 'K'              # KB
+        elif number >= 1024 * 1024 and number < 1024 * 1024 * 1024:
+            number = str(round(number / 1024 / 1024, 2)) + 'M'
+        elif number >= 1024 * 1024 * 1024 and number < 1024 * 1024 * 1024 * 1024:
+            number = str(round(number / 1024 / 1024 / 1024, 2)) + 'G'
+        elif number >= 1024 * 1024 * 1024 * 1024 and number < 1024 * 1024 * 1024 * 1024 * 1024:
+            number = str(round(number / 1024 / 1024 / 1024 / 1024, 2)) + 'T'
+        elif number >= 1024 * 1024 * 1024 * 1024 * 1024 and number < 1024 * 1024 * 1024 * 1024 * 1024 * 1024:
+            number = str(round(number / 1024 / 1024 / 1024 / 1024 / 1024, 2)) + 'P'
+        elif number >= 1024 * 1024 * 1024 * 1024 * 1024 * 1024 and number < 1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024:
+            number = str(round(number / 1024 / 1024 / 1024 / 1024 / 1024 / 1024, 2)) + 'E'
+        return number
+
 
 class BaseModel(db.Model):
     """
@@ -1014,6 +1038,20 @@ class ModelType(BaseModel):
         :return: The real complete serial number string
         """
         return '{}-{}'.format(self.product.get_serial_number(), self.serial_number)
+
+    def get_formatted_views(self):
+        """
+        Format the number of views. e.g. 1000 -> 1k, 1000000 -> 1M
+        :return: A string of formatted view number
+        """
+        return Tools.bytes_to_human_readable_str(self.views)
+
+    def get_formatted_sales(self):
+        """
+        Format the number of sales. e.g. 1000 -> 1k, 1000000 -> 1M
+        :return: A string of formatted sales number
+        """
+        return Tools.bytes_to_human_readable_str(self.sales)
 
     @staticmethod
     def insert_model_types():

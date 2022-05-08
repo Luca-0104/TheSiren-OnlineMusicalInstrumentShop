@@ -191,19 +191,19 @@
 
                             <!-- Specification Table Section -->
                             <div>
-                                <h6 class="uppercase-text product-details-heading">Dimensions (MM)</h6>
+                                <h6 class="uppercase-text product-details-heading">Specification Table</h6>
                                 <div class="product-dimensions">
                                     <div>
-                                        <div class="dimensions-heading">String</div>
-                                        <div>Copper</div>
+                                        <div class="dimensions-heading">Weight</div>
+                                        <div>{{ model.weight }} <i>kg</i></div>
                                     </div>
                                     <div>
-                                        <div class="dimensions-heading">Texture</div>
-                                        <div>2 * 1.5 dm mosaic oak wood</div>
+                                        <div class="dimensions-heading">Views</div>
+                                        <div>{{ model.get_formatted_views() }}</div>
                                     </div>
                                     <div>
-                                        <div class="dimensions-heading">Genre</div>
-                                        <div>Dreadnought Acoustic</div>
+                                        <div class="dimensions-heading">Sales</div>
+                                        <div>{{ model.get_formatted_sales() }} <i>times</i></div>
                                     </div>
                                 </div>
                             </div>
