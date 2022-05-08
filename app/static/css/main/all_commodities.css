@@ -1,5 +1,5 @@
 /* This should be add to checkbox containers using js */
-.invisible-checkbox{
+.invisible-checkbox {
     display: none;
 }
 
@@ -11,4 +11,44 @@
 .sidebar {
     overflow-y: scroll;
     height: 670px;
+}
+
+.commodity-card {
+    position: relative;
+    transition: 0.25s;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+}
+
+.commodity-card:before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    right: -12px;
+    width: 12px;
+    height: 12px;
+    background-color: #8e8267;
+    transition: 2s;
+    transition: 0.25s;
+}
+
+.commodity-card:hover {
+    /*border-left: 1px solid #9c9c9c54;*/
+    /*border-right: 1px solid #9c9c9c54;*/
+    border-top: 1px solid #9c9c9c54;
+    /*border-bottom: 1px solid #9c9c9c54;*/
+}
+
+.commodity-card:hover:before {
+    /*border-right: 1px solid #9c9c9c54;*/
+    height: 50%;
+    background-color: #edcb79;
+}
+
+.commodity-pic {
+}
+
+.brand-row {
 }
