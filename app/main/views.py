@@ -352,6 +352,12 @@ def model_listing(search_content):
 def change_language():
     # if the user already logged in, we change language setting both in db and session
     if current_user.is_authenticated:
+
+        # determine the redirect_target of this user according to their role_id
+        redirect_to = url_for("main.index")
+        if current_user.role_id == 2:   # staff
+            redirect_to = url_for("product.show_page_staff_index")
+
         # change setting in db
         if current_user.language == 'en':
             current_user.language = 'zh'
@@ -359,7 +365,7 @@ def change_language():
 
         elif current_user.language == 'zh':
             current_user.language = 'en'
-            flash("Language is changed to [English]")
+            flash("Language has been changed to [English]")
 
         db.session.add(current_user)
         db.session.commit()
@@ -367,19 +373,22 @@ def change_language():
         # change setting in session
         session["language"] = current_user.language
 
+        # redirect the user
+        return redirect(redirect_to)
+
     else:
         # if the user is anonymous, we only change the language setting in session
 
         # if the first time access the website, we should init the session of language first
         if session.get("language") is None:
             session["language"] = 'en'
-            flash("Language is changed to [English]")
+            flash("Language has been changed to [English]")
             return redirect(url_for("main.index"))
 
         # change setting in the session
         if session["language"] == 'zh':
             session["language"] = 'en'
-            flash("Language is changed to [English]")
+            flash("Language has been changed to [English]")
 
         elif session["language"] == 'en':
             session["language"] = 'zh'
