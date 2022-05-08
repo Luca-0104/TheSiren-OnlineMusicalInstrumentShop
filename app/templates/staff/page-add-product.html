@@ -23,266 +23,264 @@
 {# content #}
 {% block content %}
     <span id="sidebar-anchor" style="display: none" sidebar-anchor="Add_Product"></span>
-    <div class="content-page">
-        <div class="container-fluid add-form-list">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="card">
-                        <div class="card-header d-flex justify-content-between">
-                            <div class="header-title">
-                                <h4 class="card-title">{{ _('Add Product') }}</h4>
+    <div class="container-fluid add-form-list">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        <div class="header-title">
+                            <h4 class="card-title">{{ _('Add Product') }}</h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form id="product_form" method="post" action="/upload-product"
+                              enctype="multipart/form-data" data-toggle="validator">
+                            <div class="row">
+                                <div class="card-group">
+
+                                    <!-- Name Section -->
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>{{ _('Product Name') }} *</label>
+                                            <input name="product_name" type="text" class="form-control"
+                                                   placeholder="{{ _('Enter Name') }}"
+                                                   data-errors="{{ _('Please Enter Name.') }}">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Category section --->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>{{ _('Classification') }} *</label>
+                                            <select id="classification" name="categories[]"
+                                                    class="selectpicker form-control" data-style="py-0">
+                                                <option sn="c1">Strings</option>
+                                                <option sn="c2">Woodwinds</option>
+                                                <option sn="c3">Brass</option>
+                                                <option sn="c4">Percussion</option>
+                                                <option sn="c5">Keyboard</option>
+                                                <option sn="c6">Accessories</option>
+                                            </select>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>{{ _('Type') }} *</label>
+                                            <select id="type" name="categories[]"
+                                                    class="selectpicker form-control" data-style="py-0">
+                                                <optgroup label="String">
+                                                    <option sn="t1">Violin</option>
+                                                    <option sn="t2">Viola</option>
+                                                    <option sn="t3">Cello</option>
+                                                    <option sn="t4">Double Bass</option>
+                                                    <option sn="t5">Guitar</option>
+                                                    <option sn="t6">Bass</option>
+                                                    <option sn="t7">Ukulele</option>
+                                                    <option sn="t8">Harp</option>
+                                                    <option sn="t9">Erhu</option>
+                                                    <option sn="t10">Guzheng</option>
+                                                    <option sn="t11">Guqin</option>
+                                                    <option sn="t12">Pipa</option>
+                                                </optgroup>
+
+                                                <optgroup label="Woodwind">
+                                                    <option sn="t13">Flute</option>
+                                                    <option sn="t14">Clarinet</option>
+                                                    <option sn="t15">Oboe</option>
+                                                    <option sn="t16">Piccolo</option>
+                                                    <option sn="t17">Saxophone</option>
+                                                    <option sn="t18">English Horn</option>
+                                                    <option sn="t19">Bassoon</option>
+                                                    <option sn="t20">Recorder</option>
+                                                    <option sn="t21">Bagpipes</option>
+                                                    <option sn="t22">Suona Horn</option>
+                                                    <option sn="t23">Sheng</option>
+                                                </optgroup>
+
+                                                <optgroup label="Brass">
+                                                    <option sn="t24">Trumpet</option>
+                                                    <option sn="t25">Trombone</option>
+                                                    <option sn="t26">French Horn</option>
+                                                    <option sn="t27">Tuba</option>
+                                                    <option sn="t28">Euphonium</option>
+                                                    <option sn="t29">Harmonica</option>
+                                                </optgroup>
+
+                                                <optgroup label="Percussion">
+                                                    <option sn="t30">Timpani</option>
+                                                    <option sn="t31">Bass Drum</option>
+                                                    <option sn="t32">Snare</option>
+                                                    <option sn="t33">Cajon</option>
+                                                    <option sn="t34">SoundBox</option>
+                                                    <option sn="t35">Tam-tam</option>
+                                                    <option sn="t36">Tambourine</option>
+                                                    <option sn="t37">Marimba & Xylophone</option>
+                                                    <option sn="t38">Vibraphone</option>
+                                                    <option sn="t39">Drum Kit</option>
+                                                    <option sn="t40">Other Percussion</option>
+                                                </optgroup>
+
+                                                <optgroup label="Keyboard">
+                                                    <option sn="t41">Piano</option>
+                                                    <option sn="t42">Accordion</option>
+                                                    <option sn="t43">Launchpad</option>
+                                                </optgroup>
+
+                                                <optgroup label="Accessories">
+                                                    <option sn="t44">Effects</option>
+                                                    <option sn="t45">Synthesizer</option>
+                                                    <option sn="t46">Microphone</option>
+                                                    <option sn="t47">Monitor Headphone</option>
+                                                </optgroup>
+                                            </select>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>{{ _('Additional Specifications') }} *</label>
+                                            <select id="additional" name="categories[]"
+                                                    class="selectpicker form-control" data-style="py-0">
+                                                <option sn="a1">Acoustic Only</option>
+                                                <option sn="a2">Electricity Required</option>
+                                                <option sn="a3">Electricity Support</option>
+                                                <option sn="a4">Accessories</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Brand section -->
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>{{ _('Brand') }} *</label>
+                                            <select id="brand" name="product_brand"
+                                                    class="selectpicker form-control" data-style="py-0">
+                                                <option sn="b1">Lowden</option>
+                                                <option sn="b2">Gibson</option>
+                                                <option sn="b3">Orange</option>
+                                                <option sn="b4">Stentor</option>
+                                                <option sn="b5">Martin</option>
+                                                <option sn="b6">Buffet Crampon</option>
+                                                <option sn="b7">Besson London</option>
+                                                <option sn="b8">Hohner</option>
+                                                <option sn="b9">Marshall</option>
+                                                <option sn="b10">Meinl</option>
+                                                <option sn="b11">Henri Selmer Paris</option>
+                                                <option sn="b12">Steinway</option>
+                                                <option sn="b13">Boss</option>
+                                                <option sn="b14">Fender</option>
+                                                <option sn="b15">Taylor</option>
+                                                <option sn="b16">Yamaha</option>
+                                                <option sn="b17">others</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
-                        </div>
-                        <div class="card-body">
-                            <form id="product_form" method="post" action="/upload-product"
-                                  enctype="multipart/form-data" data-toggle="validator">
-                                <div class="row">
-                                    <div class="card-group">
 
-                                        <!-- Name Section -->
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>{{ _('Product Name') }} *</label>
-                                                <input name="product_name" type="text" class="form-control"
-                                                       placeholder="{{ _('Enter Name') }}"
-                                                       data-errors="{{ _('Please Enter Name.') }}">
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Category section --->
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>{{ _('Classification') }} *</label>
-                                                <select id="classification" name="categories[]"
-                                                        class="selectpicker form-control" data-style="py-0">
-                                                    <option sn="c1">Strings</option>
-                                                    <option sn="c2">Woodwinds</option>
-                                                    <option sn="c3">Brass</option>
-                                                    <option sn="c4">Percussion</option>
-                                                    <option sn="c5">Keyboard</option>
-                                                    <option sn="c6">Accessories</option>
-                                                </select>
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>{{ _('Type') }} *</label>
-                                                <select id="type" name="categories[]"
-                                                        class="selectpicker form-control" data-style="py-0">
-                                                    <optgroup label="String">
-                                                        <option sn="t1">Violin</option>
-                                                        <option sn="t2">Viola</option>
-                                                        <option sn="t3">Cello</option>
-                                                        <option sn="t4">Double Bass</option>
-                                                        <option sn="t5">Guitar</option>
-                                                        <option sn="t6">Bass</option>
-                                                        <option sn="t7">Ukulele</option>
-                                                        <option sn="t8">Harp</option>
-                                                        <option sn="t9">Erhu</option>
-                                                        <option sn="t10">Guzheng</option>
-                                                        <option sn="t11">Guqin</option>
-                                                        <option sn="t12">Pipa</option>
-                                                    </optgroup>
-
-                                                    <optgroup label="Woodwind">
-                                                        <option sn="t13">Flute</option>
-                                                        <option sn="t14">Clarinet</option>
-                                                        <option sn="t15">Oboe</option>
-                                                        <option sn="t16">Piccolo</option>
-                                                        <option sn="t17">Saxophone</option>
-                                                        <option sn="t18">English Horn</option>
-                                                        <option sn="t19">Bassoon</option>
-                                                        <option sn="t20">Recorder</option>
-                                                        <option sn="t21">Bagpipes</option>
-                                                        <option sn="t22">Suona Horn</option>
-                                                        <option sn="t23">Sheng</option>
-                                                    </optgroup>
-
-                                                    <optgroup label="Brass">
-                                                        <option sn="t24">Trumpet</option>
-                                                        <option sn="t25">Trombone</option>
-                                                        <option sn="t26">French Horn</option>
-                                                        <option sn="t27">Tuba</option>
-                                                        <option sn="t28">Euphonium</option>
-                                                        <option sn="t29">Harmonica</option>
-                                                    </optgroup>
-
-                                                    <optgroup label="Percussion">
-                                                        <option sn="t30">Timpani</option>
-                                                        <option sn="t31">Bass Drum</option>
-                                                        <option sn="t32">Snare</option>
-                                                        <option sn="t33">Cajon</option>
-                                                        <option sn="t34">SoundBox</option>
-                                                        <option sn="t35">Tam-tam</option>
-                                                        <option sn="t36">Tambourine</option>
-                                                        <option sn="t37">Marimba & Xylophone</option>
-                                                        <option sn="t38">Vibraphone</option>
-                                                        <option sn="t39">Drum Kit</option>
-                                                        <option sn="t40">Other Percussion</option>
-                                                    </optgroup>
-
-                                                    <optgroup label="Keyboard">
-                                                        <option sn="t41">Piano</option>
-                                                        <option sn="t42">Accordion</option>
-                                                        <option sn="t43">Launchpad</option>
-                                                    </optgroup>
-
-                                                    <optgroup label="Accessories">
-                                                        <option sn="t44">Effects</option>
-                                                        <option sn="t45">Synthesizer</option>
-                                                        <option sn="t46">Microphone</option>
-                                                        <option sn="t47">Monitor Headphone</option>
-                                                    </optgroup>
-                                                </select>
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>{{ _('Additional Specifications') }} *</label>
-                                                <select id="additional" name="categories[]"
-                                                        class="selectpicker form-control" data-style="py-0">
-                                                    <option sn="a1">Acoustic Only</option>
-                                                    <option sn="a2">Electricity Required</option>
-                                                    <option sn="a3">Electricity Support</option>
-                                                    <option sn="a4">Accessories</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <!-- Brand section -->
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>{{ _('Brand') }} *</label>
-                                                <select id="brand" name="product_brand"
-                                                        class="selectpicker form-control" data-style="py-0">
-                                                    <option sn="b1">Lowden</option>
-                                                    <option sn="b2">Gibson</option>
-                                                    <option sn="b3">Orange</option>
-                                                    <option sn="b4">Stentor</option>
-                                                    <option sn="b5">Martin</option>
-                                                    <option sn="b6">Buffet Crampon</option>
-                                                    <option sn="b7">Besson London</option>
-                                                    <option sn="b8">Hohner</option>
-                                                    <option sn="b9">Marshall</option>
-                                                    <option sn="b10">Meinl</option>
-                                                    <option sn="b11">Henri Selmer Paris</option>
-                                                    <option sn="b12">Steinway</option>
-                                                    <option sn="b13">Boss</option>
-                                                    <option sn="b14">Fender</option>
-                                                    <option sn="b15">Taylor</option>
-                                                    <option sn="b16">Yamaha</option>
-                                                    <option sn="b17">others</option>
-                                                </select>
-                                            </div>
-                                        </div>
+                            <div class="row">
+                                <!-- Initial ModelType Section -->
+                                <div class="card-header d-flex justify-content-between">
+                                    <div class="header-title">
+                                        <h4 class="card-title">{{ _('Product Initial ModelType(s)') }}</h4>
                                     </div>
-
                                 </div>
 
-                                <div class="row">
-                                    <!-- Initial ModelType Section -->
-                                    <div class="card-header d-flex justify-content-between">
-                                        <div class="header-title">
-                                            <h4 class="card-title">{{ _('Product Initial ModelType(s)') }}</h4>
+                                <div id="one-model-type" class="card-group">
+                                    <!-- Name section -->
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>{{ _('Model Name') }} *</label>
+                                            <input name="1_model_name" type="text" class="form-control"
+                                                   placeholder="{{ _('Enter Name') }}"
+                                                   data-errors="{{ _('Please Enter Name.') }}">
+                                            <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
 
-                                    <div id="one-model-type" class="card-group">
-                                        <!-- Name section -->
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>{{ _('Model Name') }} *</label>
-                                                <input name="1_model_name" type="text" class="form-control"
-                                                       placeholder="{{ _('Enter Name') }}"
-                                                       data-errors="{{ _('Please Enter Name.') }}">
-                                                <div class="help-block with-errors"></div>
-                                            </div>
+                                    <!-- Serial number section -->
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Serial Number *</label>
+                                            <div id="sn_model_type"></div>
+                                            <input name="1_model_num" type="text" class="form-control"
+                                                   placeholder="{{ _('Enter Serial Number') }}"
+                                                   data-errors="{{ _('Please Enter Serial Number.') }}">
+
+                                            <div class="help-block with-errors"></div>
                                         </div>
+                                    </div>
 
-                                        <!-- Serial number section -->
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>Serial Number *</label>
-                                                <div id="sn_model_type"></div>
-                                                <input name="1_model_num" type="text" class="form-control"
-                                                       placeholder="{{ _('Enter Serial Number') }}"
-                                                       data-errors="{{ _('Please Enter Serial Number.') }}">
-
-                                                <div class="help-block with-errors"></div>
-                                            </div>
+                                    <!-- Price section -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>{{ _('Price') }} *</label>
+                                            <input name="1_model_price" type="text" class="form-control"
+                                                   placeholder="{{ _('Enter Price') }}"
+                                                   data-errors="{{ _('Please Enter Price.') }}">
+                                            <div class="help-block with-errors"></div>
                                         </div>
+                                    </div>
 
-                                        <!-- Price section -->
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>{{ _('Price') }} *</label>
-                                                <input name="1_model_price" type="text" class="form-control"
-                                                       placeholder="{{ _('Enter Price') }}"
-                                                       data-errors="{{ _('Please Enter Price.') }}">
-                                                <div class="help-block with-errors"></div>
-                                            </div>
+                                    <!-- Stock section -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>{{ _('Stock') }} *</label>
+                                            <input name="1_model_stock" type="text" class="form-control"
+                                                   placeholder="{{ _('Enter Stock') }}"
+                                                   data-errors="{{ _('Please Enter Stock.') }}">
+                                            <div class="help-block with-errors"></div>
                                         </div>
+                                    </div>
 
-                                        <!-- Stock section -->
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>{{ _('Stock') }} *</label>
-                                                <input name="1_model_stock" type="text" class="form-control"
-                                                       placeholder="{{ _('Enter Stock') }}"
-                                                       data-errors="{{ _('Please Enter Stock.') }}">
-                                                <div class="help-block with-errors"></div>
-                                            </div>
+                                    <!-- Intro pic section -->
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>{{ _('Thumbnail') }} *</label>
+                                            <input name="1_model_intro_pic" type="file"
+                                                   class="form-control image-file" name="pic"
+                                                   accept="image/*" multiple="multiple">
                                         </div>
+                                    </div>
 
-                                        <!-- Intro pic section -->
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>{{ _('Thumbnail') }} *</label>
-                                                <input name="1_model_intro_pic" type="file"
-                                                       class="form-control image-file" name="pic"
-                                                       accept="image/*" multiple="multiple">
-                                            </div>
+                                    <!-- Pics section -->
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>{{ _('Product Pictures') }} *</label>
+                                            <input name="1_model_pic" type="file"
+                                                   class="form-control image-file" name="pic"
+                                                   accept="image/*" multiple="multiple">
                                         </div>
+                                    </div>
 
-                                        <!-- Pics section -->
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>{{ _('Product Pictures') }} *</label>
-                                                <input name="1_model_pic" type="file"
-                                                       class="form-control image-file" name="pic"
-                                                       accept="image/*" multiple="multiple">
-                                            </div>
-                                        </div>
-
-                                        <!-- Description section -->
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>{{ _('Description / Product Details') }}</label>
-                                                <textarea name="1_model_description" class="form-control"
-                                                          rows="4"></textarea>
-                                            </div>
+                                    <!-- Description section -->
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>{{ _('Description / Product Details') }}</label>
+                                            <textarea name="1_model_description" class="form-control"
+                                                      rows="4"></textarea>
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit"
-                                        class="btn btn-primary mr-2">{{ _('Add Product') }}</button>
-                                <button type="reset" class="btn btn-danger">{{ _('Reset') }}</button>
-                                <a class="btn btn-warning mr-3 justify-content-between"
-                                   id="add-model-type">+ {{ _('Add Model Type') }}</a>
+                            </div>
+                            <button type="submit"
+                                    class="btn btn-primary mr-2">{{ _('Add Product') }}</button>
+                            <button type="reset" class="btn btn-danger">{{ _('Reset') }}</button>
+                            <a class="btn btn-warning mr-3 justify-content-between"
+                               id="add-model-type">+ {{ _('Add Model Type') }}</a>
 
 
-                            </form>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            <!-- Page end  -->
         </div>
+        <!-- Page end  -->
     </div>
 {% endblock %}
 

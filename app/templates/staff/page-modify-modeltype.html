@@ -23,140 +23,138 @@
 {# content #}
 {% block content %}
     <span id="sidebar-anchor" style="display: none" sidebar-anchor="Products"></span>
-    <div class="content-page">
-                <div class="container-fluid add-form-list">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="card">
-                                <div class="card-header d-flex justify-content-between">
-                                    <div class="header-title">
-                                        <h4 class="card-title">{{ _('Modify Model') }}</h4>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <form action="" method="post" enctype="multipart/form-data" data-toggle="validator"
-                                          novalidate>
-                                        {{ form.hidden_tag() }}
-                                        <div class="row">
-                                            <!-- Name section -->
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <!--<label>Model Name *</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Name" data-errors="Please Enter Name." required>-->
-                                                    {{ form.name.label }}
-                                                    {{ form.name(class="form-control", placeholder="{{_('Enter Name')}}") }}
-                                                    {% for error in form.name.errors %}
-                                                        <span>{{ error }}</span>
-                                                    {% endfor %}
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Serial number section -->
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <!--<label>Serial Number *</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Serial Number" data-errors="Please Enter Serial Number." required>-->
-                                                    {{ form.serial_number.label }}
-                                                    {{ form.serial_number(class="form-control", placeholder="{{_('Enter Serial Number')}}") }}
-                                                    {% for error in form.serial_number.errors %}
-                                                        <span>{{ error }}</span>
-                                                    {% endfor %}
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Price section -->
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <!--<label>Price *</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." required>-->
-                                                    {{ form.price.label }}
-                                                    {{ form.price(class="form-control", placeholder="{{_('Enter Price')}}") }}
-                                                    {% for error in form.price.errors %}
-                                                        <span>{{ error }}</span>
-                                                    {% endfor %}
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Stock section -->
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <!--<label>Stock *</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Stock" data-errors="Please Enter Stock." required>-->
-                                                    {{ form.stock.label }}
-                                                    {{ form.stock(class="form-control", placeholder="{{_('Enter Stock')}}") }}
-                                                    {% for error in form.stock.errors %}
-                                                        <span>{{ error }}</span>
-                                                    {% endfor %}
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Intro pic section -->
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    {#                                                    <label>Thumbnail *</label>#}
-                                                    {#                                                    <input type="file" class="form-control image-file" name="pic" accept="image/*" multiple="multiple">#}
-                                                    {#                                                    {{ form.stock.label }}#}
-                                                    {#                                                    {{ form.stock(class="form-control", placeholder="Enter Stock") }}#}
-                                                    {#                                                    {% for error in form.stock.errors %}#}
-                                                    {#                                                        <span>{{ error }}</span>#}
-                                                    {#                                                    {% endfor %}#}
-
-                                                    {#    pictures #}
-                                                    {{ form.pictures.label() }}
-                                                    {{ form.pictures(class='form-control image-file') }}
-
-                                                    {#         adding validation messages#}
-                                                    {% for error in form.pictures.errors %}
-                                                        <span>[{{ error }}]</span>
-                                                    {% endfor %}
-                                                </div>
-                                            </div>
-
-                                            <!-- Pics section -->
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    {#                                                    <label>Product Pictures *</label>#}
-                                                    {#                                                    <input type="file" class="form-control image-file" name="pic" accept="image/*" multiple="multiple">#}
-
-                                                    {#    introduction pictures #}
-                                                    {{ form.intro_pictures.label() }}
-                                                    {{ form.intro_pictures(class='form-control image-file') }}
-
-                                                    {#         adding validation messages#}
-                                                    {% for error in form.intro_pictures.errors %}
-                                                        <span>[{{ error }}]</span>
-                                                    {% endfor %}
-                                                </div>
-                                            </div>
-
-                                            <!-- Description section -->
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <!--<label>Description / Product Details</label>
-                                                    <textarea class="form-control" rows="4"></textarea>-->
-                                                    {{ form.description.label }}
-                                                    {{ form.description(class="form-control", placeholder="{{_('Enter Stock')}}") }}
-                                                    {% for error in form.description.errors %}
-                                                        <span>{{ error }}</span>
-                                                    {% endfor %}
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--<button type="submit" class="btn btn-primary mr-2">Add Product</button>-->
-                                        {{ form.submit(class="btn btn-primary mr-2") }}
-                                        <button type="reset" class="btn btn-danger">{{ _('Reset') }}</button>
-                                    </form>
-                                </div>
-                            </div>
+    <div class="container-fluid add-form-list">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        <div class="header-title">
+                            <h4 class="card-title">{{ _('Modify Model') }}</h4>
                         </div>
                     </div>
-                    <!-- Content & Page end  -->
+                    <div class="card-body">
+                        <form action="" method="post" enctype="multipart/form-data" data-toggle="validator"
+                              novalidate>
+                            {{ form.hidden_tag() }}
+                            <div class="row">
+                                <!-- Name section -->
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <!--<label>Model Name *</label>
+                                        <input type="text" class="form-control" placeholder="Enter Name" data-errors="Please Enter Name." required>-->
+                                        {{ form.name.label }}
+                                        {{ form.name(class="form-control", placeholder="{{_('Enter Name')}}") }}
+                                        {% for error in form.name.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Serial number section -->
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <!--<label>Serial Number *</label>
+                                        <input type="text" class="form-control" placeholder="Enter Serial Number" data-errors="Please Enter Serial Number." required>-->
+                                        {{ form.serial_number.label }}
+                                        {{ form.serial_number(class="form-control", placeholder="{{_('Enter Serial Number')}}") }}
+                                        {% for error in form.serial_number.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Price section -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <!--<label>Price *</label>
+                                        <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." required>-->
+                                        {{ form.price.label }}
+                                        {{ form.price(class="form-control", placeholder="{{_('Enter Price')}}") }}
+                                        {% for error in form.price.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Stock section -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <!--<label>Stock *</label>
+                                        <input type="text" class="form-control" placeholder="Enter Stock" data-errors="Please Enter Stock." required>-->
+                                        {{ form.stock.label }}
+                                        {{ form.stock(class="form-control", placeholder="{{_('Enter Stock')}}") }}
+                                        {% for error in form.stock.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Intro pic section -->
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        {#                                                    <label>Thumbnail *</label>#}
+                                        {#                                                    <input type="file" class="form-control image-file" name="pic" accept="image/*" multiple="multiple">#}
+                                        {#                                                    {{ form.stock.label }}#}
+                                        {#                                                    {{ form.stock(class="form-control", placeholder="Enter Stock") }}#}
+                                        {#                                                    {% for error in form.stock.errors %}#}
+                                        {#                                                        <span>{{ error }}</span>#}
+                                        {#                                                    {% endfor %}#}
+
+                                        {#    pictures #}
+                                        {{ form.pictures.label() }}
+                                        {{ form.pictures(class='form-control image-file') }}
+
+                                        {#         adding validation messages#}
+                                        {% for error in form.pictures.errors %}
+                                            <span>[{{ error }}]</span>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+
+                                <!-- Pics section -->
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        {#                                                    <label>Product Pictures *</label>#}
+                                        {#                                                    <input type="file" class="form-control image-file" name="pic" accept="image/*" multiple="multiple">#}
+
+                                        {#    introduction pictures #}
+                                        {{ form.intro_pictures.label() }}
+                                        {{ form.intro_pictures(class='form-control image-file') }}
+
+                                        {#         adding validation messages#}
+                                        {% for error in form.intro_pictures.errors %}
+                                            <span>[{{ error }}]</span>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+
+                                <!-- Description section -->
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <!--<label>Description / Product Details</label>
+                                        <textarea class="form-control" rows="4"></textarea>-->
+                                        {{ form.description.label }}
+                                        {{ form.description(class="form-control", placeholder="{{_('Enter Stock')}}") }}
+                                        {% for error in form.description.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<button type="submit" class="btn btn-primary mr-2">Add Product</button>-->
+                            {{ form.submit(class="btn btn-primary mr-2") }}
+                            <button type="reset" class="btn btn-danger">{{ _('Reset') }}</button>
+                        </form>
+                    </div>
                 </div>
             </div>
+        </div>
+        <!-- Content & Page end  -->
+    </div>
 {% endblock %}
 
 
