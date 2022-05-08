@@ -1188,9 +1188,21 @@
         </footer>
 
 
-        {# for the children templates to define the javascript statements at the end of the 'body' tag #}
-        {% block scripts_end_body %}{% endblock %}
 
+        <!-- -------------------- NOTICE: These js and block must keep this sequence order! -------------------- -->
+        <!-- Backend Bundle JavaScript -->
+        <script id="backend-bundle" src="../../static/js/backend-bundle.min.js"></script>
+        {# for the children templates to define the javascript statements at the end of the 'body' tag #}
+        {% block scripts_end_body %}
+            <!-- Table Treeview JavaScript -->
+            <script src="../../static/js/table-treeview.js"></script>
+            <!-- Chart Custom JavaScript -->
+            <script src="../../static/js/customizer.js"></script>
+            <!-- Chart Custom JavaScript -->
+            <script async src="../../static/js/chart-custom.js"></script>
+        {% endblock %}
+        <!-- app JavaScript -->
+        <script src="../../static/js/app.js"></script>
         {# handel the problem of activation of items in side nav bar #}
         <script src="../../static/js/staff/base-sidebar.js"></script>
         <script src="../../static/js/staff/epidemic-switch.js"></script>

@@ -96,21 +96,5 @@
 
 {# for the children templates to define the javascript statements at the end of the 'body' tag #}
 {% block scripts_end_body %}
-    <!-- Backend Bundle JavaScript -->
-    <script id="backend-bundle" src="../../static/js/backend-bundle.min.js"></script>
-
-    <!-- Self-defined js -->
-
-
-    <!-- Table Treeview JavaScript -->
-    <script src="../../static/js/table-treeview.js"></script>
-
-    <!-- Chart Custom JavaScript -->
-    <script src="../../static/js/customizer.js"></script>
-
-    <!-- Chart Custom JavaScript -->
-    <script async src="../../static/js/chart-custom.js"></script>
-
-    <!-- app JavaScript -->
-    <script src="../../static/js/app.js"></script>
+    {{ super() }}
 {% endblock %}
