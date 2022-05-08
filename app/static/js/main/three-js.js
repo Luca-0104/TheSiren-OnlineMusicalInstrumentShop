@@ -72,8 +72,10 @@ function init()
     //     scene.add(obj);
     // });
 
-    var texturePlant = new THREE.TextureLoader().load("/static/upload/model_type/3d-model-texture-files/pre-store/cello.png");//模型贴图
-
+    // var texturePlant = new THREE.TextureLoader().load("/static/upload/model_type/3d-model-texture-files/pre-store/cello.png");//模型贴图
+    let texturePlant = $("#modeltype-3d-model").attr("model-texture-address");
+    console.log("texture");
+    console.log(texturePlant);
     let modelAddress = $("#modeltype-3d-model").attr("model-address");
     var loader = new THREE.FBXLoader();//创建一个FBX加载器
     // loader.load("/static/upload/model_type/3d-model-files/pre-store/cello.fbx", function (obj)
