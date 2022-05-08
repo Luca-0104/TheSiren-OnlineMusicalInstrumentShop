@@ -139,9 +139,9 @@
                                 <br>
                                 <p class="large-text">{{ journal.text }}</p>
                                 <br>
-                                <div>RELEASED BY: {{ journal.author.username }}</div>
+                                <div style="text-align: right">RELEASED BY: {{ journal.author.username }}</div>
                                 <br>
-                                <div>{{ journal.timestamp.strftime("%Y-%m-%d %H:%M:%S") }}</div>
+                                <div style="text-align: right">{{ journal.timestamp.strftime("%Y-%m-%d %H:%M:%S") }}</div>
                             </div>
                             <br>
                         {% endfor %}
