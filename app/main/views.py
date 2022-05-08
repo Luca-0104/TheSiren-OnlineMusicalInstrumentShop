@@ -12,7 +12,7 @@ import random
 from datetime import datetime
 
 
-@main.route('/index')
+@main.route('/')
 def index():
     """
         The function is for rendering the real index page
@@ -110,7 +110,7 @@ def index():
     return render_template('main/index_new.html', rec_time=rec_time, rec_views=rec_views, rec_preference=rec_preference)
 
 
-@main.route('/')
+@main.route('/index-test')
 @main.route('/index_test', methods=['GET', 'POST'])
 def index_test():
     """
