@@ -66,6 +66,8 @@ def add_to_cart():
                 flash("Add to cart successful!")
                 return jsonify({"returnValue": 0, "cartID": response_cart_id})
 
+            else:
+                flash("This item runs out of stock!")
     return jsonify({"returnValue": 1})
 
 
@@ -131,6 +133,7 @@ def remove_cart_relation():
         if cart_relation:
             db.session.delete(cart_relation)
             db.session.commit()
+            flash("Remove commodity successful!")
             return jsonify({'returnValue': 0})
 
     return jsonify({'returnValue': 1})
