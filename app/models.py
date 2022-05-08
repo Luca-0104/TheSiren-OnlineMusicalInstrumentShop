@@ -43,7 +43,7 @@ class Tools:
         # # users(100)  # 100 fake users
         Category.insert_categories()  # the product categories
         Brand.insert_brands()  # the product brands
-        Product.insert_products()  # the constant products for show
+        # Product.insert_products()  # the constant products for show
         # ProductPic.insert_pictures()  # the pictures of the constant products
         # ------
         # Tools.insert_pm()   # pre-stored product and mt info
@@ -54,7 +54,7 @@ class Tools:
         Tools.insert_pm_glt(pm_lst_t, 't')
         # ------
         # # products(100)  # 100 fake products
-        ModelType.insert_model_types()  # the constant model types for testing
+        # ModelType.insert_model_types()  # the constant model types for testing
         Comment.insert_comments(12)
         Cart.insert_carts()
         Order.insert_orders(20)
