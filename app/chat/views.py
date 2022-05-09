@@ -12,6 +12,8 @@ from flask import render_template, redirect, url_for, flash, request, session, j
 from flask_login import current_user, login_required
 from app import socketio
 from flask_socketio import emit, send, join_room, leave_room
+
+from ..decorators import staff_only, customer_only
 from ..models import ChatRoom, Message, User
 from engineio.payload import Payload
 
@@ -21,7 +23,7 @@ msg_queue = queue.Queue()
 
 
 @chat.route('/chat_room', methods=['GET', 'POST'])
-# @login_required
+@login_required
 def chat_room():
     if session.get('username') is not None:
         if session["role_id"] == 1:
@@ -60,7 +62,8 @@ def chat_room():
 
 # this route is used by staff account
 @chat.route('/chat_staff/<chat_room_id>', methods=['GET', 'POST'])
-# @login_required
+@login_required
+@staff_only()
 def chat_for_staff(chat_room_id):
     # gain the chat data
     messages = Message.query.filter_by(id=chat_room_id).order_by(Message.timestamp.asc()).all()
@@ -75,7 +78,8 @@ def chat_for_staff(chat_room_id):
 
 # this route id used by user account
 @chat.route('/chat', methods=['GET', 'POST'])
-# @login_required
+@login_required
+@customer_only()
 def chat_for_customer():
     # gain the chat data
     print("create")

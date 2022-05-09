@@ -5,6 +5,7 @@ from flask_login import login_required, current_user
 
 from . import comment
 from config import Config
+from ..decorators import customer_only
 from ..public_tools import generate_safe_pic_name, upload_picture
 from ..comment.forms import CommentForm
 from ..models import User, Address, Comment, ModelType, OrderModelType, Order
@@ -13,6 +14,7 @@ from .. import db
 
 @comment.route('/upload-comment/<int:omt_id>', methods=['GET', 'POST'])
 @login_required
+@customer_only()
 def upload_comment(omt_id):
     """
     Upload a comment for a bought item

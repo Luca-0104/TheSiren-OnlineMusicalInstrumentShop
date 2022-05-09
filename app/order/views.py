@@ -7,6 +7,8 @@ from app.models import Cart, Order, OrderModelType, ModelType, PremiumOrder, Add
 from app.order import order
 
 from datetime import datetime
+
+from ..decorators import customer_only, staff_only
 from ..public_tools import get_unique_shop_instance, get_epidemic_mode_status
 
 
@@ -15,6 +17,7 @@ from ..public_tools import get_unique_shop_instance, get_epidemic_mode_status
 
 @order.route('/generate-order-from-cart', methods=['GET', 'POST'])
 @login_required
+@customer_only()
 def generate_order_from_cart():
     """
         (Using Ajax)
@@ -61,6 +64,8 @@ def generate_order_from_cart():
 
 
 @order.route('/generate-order-from-buy-now', methods=['POST'])
+@login_required
+@customer_only()
 def generate_order_from_buy_now():
     """
     (Using Ajax)
@@ -123,6 +128,7 @@ def generate_order_from_buy_now():
 
 @order.route('/order-confirm/<int:order_id>', methods=['GET', 'POST'])
 @login_required
+@customer_only()
 def order_confirm(order_id):
     """
         This function is for rendering the page of order confirmation.
@@ -141,6 +147,7 @@ def order_confirm(order_id):
 
 @order.route('/order-confirm-premium', methods=['GET', 'POST'])
 @login_required
+@customer_only()
 def order_confirm_premium():
     """
         This function is for rendering the page of premium membership order confirmation.
@@ -418,6 +425,7 @@ def change_order_to_collection():
 
 @order.route('/my-orders')
 @login_required
+@customer_only()
 def my_orders():
     """
     For rendering the page of 'my orders'
@@ -430,6 +438,7 @@ def my_orders():
 
 @order.route('/order-details/<int:order_id>')
 @login_required
+@customer_only()
 def order_details(order_id):
     """
     Rendering the page of order details
@@ -441,6 +450,7 @@ def order_details(order_id):
 
 @order.route('/api/order/my-orders/filter-orders', methods=['POST'])
 @login_required
+@customer_only()
 def filter_orders():
     """
     (Using ajax)
@@ -567,6 +577,7 @@ def change_status():
 
 @order.route('/api/generate-premium-order', methods=['POST'])
 @login_required
+@customer_only()
 def generate_premium_order():
     """
     (Using Ajax)
@@ -623,6 +634,7 @@ def generate_premium_order():
 
 @order.route('/order-management')
 @login_required
+@staff_only()
 def order_management():
     """
         This function renders the page of "staff order management"
@@ -638,6 +650,7 @@ def order_management():
 
 @order.route('/api/order-management/update-priority', methods=['POST'])
 @login_required
+@staff_only()
 def update_priority():
     """
     (Using Ajax)

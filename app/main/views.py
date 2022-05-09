@@ -1,12 +1,13 @@
 import traceback
 
-from flask import render_template, request, redirect, url_for, session, jsonify, flash, json, current_app
+from flask import render_template, request, redirect, url_for, session, jsonify, flash, json, current_app, abort
 from flask_login import login_required, current_user
 from flask_babel import _
 from sqlalchemy import and_
 
 from . import main
 from .. import db
+from ..decorators import customer_only, staff_only
 from ..models import Product, ModelType, Category, Brand, BrowsingHistory, Journal
 from ..public_tools import get_unique_shop_instance
 
@@ -400,21 +401,6 @@ def change_language():
 # ------------------------------ BACK-END Server (using Ajax) ----------------------------------
 
 
-@main.route('/api/change-theme', methods=['POST'])
-def change_theme():
-    pass
-
-
-@main.route('/api/cart/purchase_cart', methods=['POST'])
-def purchase_cart():
-    """
-        get a list of id of cart relations that should be purchased.
-        we should remove them from database - Cart table and add the records
-        into the History table.
-    """
-    pass
-
-
 @main.route('/api/filter-model-types', methods=['POST'])
 def filter_model_types():
     """
@@ -693,6 +679,7 @@ def validate_model_count():
 
 @main.route('/api/the-siren/switch-epidemic-mode', methods=['POST'])
 @login_required
+@staff_only()
 def switch_epidemic_mode():
     """
     (Using Ajax)

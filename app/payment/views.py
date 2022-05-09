@@ -6,6 +6,7 @@ from flask_login import login_required, current_user
 from flask_babel import _
 
 from app import db
+from app.decorators import customer_only
 from app.models import Order, PremiumOrder
 from app.payment import payment
 
@@ -14,6 +15,7 @@ from alipay import AliPay, AliPayConfig
 
 @payment.route('/api/pay-for-order/instrument', methods=['POST'])
 @login_required
+@customer_only()
 def pay_for_order_instrument():
     """
         (Using Ajax)
@@ -59,6 +61,7 @@ def pay_for_order_instrument():
 
 @payment.route('/api/pay-for-order/premium', methods=['POST'])
 @login_required
+@customer_only()
 def pay_for_order_premium():
     """
         (Using Ajax)

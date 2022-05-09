@@ -1,6 +1,6 @@
 {% extends "base/base-customer.html" %}
 
-{% block title %}The Siren - 404 Page Not Found{% endblock %}
+{% block title %}The Siren - 500 Internal Server Error{% endblock %}
 
 {#  for links to css #}
 {% block style %}
@@ -18,17 +18,6 @@
     }(window, document);</script>
     <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <link href="images/webclip.png" rel="apple-touch-icon">
-
-    <style>
-        body {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        select, input, textarea {
-            -webkit-appearance: none;
-        }
-    </style>
     <style>
         body {
             -moz-osx-font-smoothing: grayscale;
@@ -48,10 +37,10 @@
     <html data-wf-page="6221c36b59f19804945ac5ff" data-wf-site="6221c36b59f1986aa65ac5f0">
         <body>
 
-            <div class="utility-page-wrap section wf-section">
+            <div class="utility-page-wrap">
                 <div class="utility-page-content w-form">
-                    <h2>404 - {{ _("Page Not Found") }}</h2>
-                    <div>{{ _("The page you are looking for doesn&#x27;t exist or may have been moved.") }}</div>
+                    <h2>500 - {{ _("Internal Server Error") }}</h2>
+                    <div>{{ _("Something wrong in the server, this would be fixed soon.") }}</div>
                     <div class="button-row justify-content-center">
                         <a href="{{ url_for('main.index') }}" class="button w-inline-block">
                             <div>{{ _("Back to Home") }}</div>

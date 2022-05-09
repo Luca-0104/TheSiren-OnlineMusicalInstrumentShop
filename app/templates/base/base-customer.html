@@ -311,11 +311,11 @@
                             <div class="w-dyn-list">
                                 <div role="list" class="navbar-categories w-dyn-items">
                                     <div role="listitem" class="w-dyn-item nav_topic">
-                                        <a href="#" class="nav-link">{{ _('Category') }}</a>
+                                        <a href="{{ url_for("main.go_all") }}" class="nav-link">{{ _('Category') }}</a>
 
                                     </div>
                                     <div role="listitem" class="w-dyn-item nav_topic">
-                                        <a href="#" class="nav-link">{{ _('Brand') }}</a>
+                                        <a href="#brand-gallery" class="nav-link">{{ _('Brand') }}</a>
 
                                     </div>
                                 </div>
@@ -326,7 +326,7 @@
 
                             <!-- Right side -->
                             <a href="{{ url_for("main.about_us") }}" class="nav-link">{{ _('About') }}</a>
-                            <a href="contact.html" class="nav-link">{{ _('Contact') }}</a>
+                            <a href="{{ url_for('chat.chat_room')}}" class="nav-link">{{ _('Contact') }}</a>
                         </div>
                     </nav>
                 </div>
@@ -415,6 +415,36 @@
                 </div>
             </div>
         </div>
+
+
+        <!--Display sticky chat section-->
+        <div class="lineBox">
+            <div class="lineItem">
+                <a href="{{ url_for('chat.chat_room')}}">
+                    <i class="layui-icon" href="{{ url_for('chat.chat_room')}}">&#xe626;</i>
+                    <div class="lineTip">
+                        Customer Service
+                    </div>
+                </a>
+
+            </div>
+            <div class="lineItem lineTop" id="launchTopButton">
+                <i class="layui-icon">&#xe604;</i>
+            </div>
+        </div>
+
+        <!-- The button for go back to the top -->
+        <script>
+            $(function(){
+                $("#launchTopButton").click(function() {
+                    $('body,html').scrollTop(0);
+                });
+                $(".lineItem").hover(function() {
+                    $(".lineTip").hide();
+                    $(this).find(".lineTip").show();
+                });
+            });
+        </script>
 
 
         <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6221c36b59f1986aa65ac5f0"
