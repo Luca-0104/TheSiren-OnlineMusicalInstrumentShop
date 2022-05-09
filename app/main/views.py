@@ -468,7 +468,7 @@ def filter_model_types():
         """ structure the return data into a JSON dict """
         data = [mt.to_dict() for mt in mt_lst]
 
-        print(data)
+        # print(data)
 
         return jsonify({'returnValue': 0, 'data': data})
 
