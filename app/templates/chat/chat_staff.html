@@ -49,7 +49,7 @@
                                             </div>
                                             <div class="chat-caption">
                                                 <h5 class="mb-0">{{ current_user.username }}</h5>
-                                                <p class="m-0">Staff</p>
+                                                <p class="m-0">{{ _("Staff") }}</p>
                                             </div>
                                             <button type="submit" class="close-btn-res p-3"><i class="ri-close-fill"></i></button>
                                         </div>
@@ -65,26 +65,27 @@
                                                         <h4>{{ current_user.username }}</h4>
                                                     </div>
                                                     <div class="user-desc">
-                                                        <p>Staff</p>
+                                                        <p>{{ _("Staff") }}</p>
                                                     </div>
                                                 </div>
                                                 <hr>
                                                 <div class="user-detail text-left mt-4 pl-4 pr-4">
-                                                    <h5 class="mt-4 mb-4">About</h5>
-                                                    <p>It is long established fact that a reader will be distracted bt the reddable.</p>
-                                                    <h5 class="mt-3 mb-3">Status</h5>
+                                                    <h5 class="mt-4 mb-4">{{ _("About") }}</h5>
+                                                    <p>{{ _("It is long established fact that a reader will be distracted bt
+                                                            the reddable.")}}</p>
+                                                    <h5 class="mt-3 mb-3">{{ _("Status") }}</h5>
                                                     <ul class="user-status p-0">
                                                         <li class="mb-1"><i
-                                                                class="ri-checkbox-blank-circle-fill text-success pr-1"></i><span>Online</span>
+                                                                class="ri-checkbox-blank-circle-fill text-success pr-1"></i><span>{{ _("Online") }}</span>
                                                         </li>
                                                         <li class="mb-1"><i
-                                                                class="ri-checkbox-blank-circle-fill text-warning pr-1"></i><span>Away</span>
+                                                                class="ri-checkbox-blank-circle-fill text-warning pr-1"></i><span>{{ _("Away") }}</span>
                                                         </li>
                                                         <li class="mb-1"><i
-                                                                class="ri-checkbox-blank-circle-fill text-danger pr-1"></i><span>Do Not
-                                                   Disturb</span></li>
+                                                                class="ri-checkbox-blank-circle-fill text-danger pr-1"></i><span>{{ _("Do Not
+                                                                Disturb")}}</span></li>
                                                         <li class="mb-1"><i
-                                                                class="ri-checkbox-blank-circle-fill text-light pr-1"></i><span>Offline</span>
+                                                                class="ri-checkbox-blank-circle-fill text-light pr-1"></i><span>{{ _("Offline") }}</span>
                                                         </li>
                                                     </ul>
                                                 </div>
