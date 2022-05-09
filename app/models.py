@@ -1524,7 +1524,7 @@ class User(UserMixin, BaseModel):
     username = db.Column(db.String(64), unique=True, index=True)
     password_hash = db.Column(db.String(128))
     start_datetime = db.Column(db.DateTime(), default=datetime.utcnow)
-    avatar = db.Column(db.String(256), default='upload/avatar/default__0__.jpg')  # The avatar
+    avatar = db.Column(db.String(256), default='upload/avatar/default-avatars/default__9__.jpg')  # The avatar
     background_pic = db.Column(db.String(256), default='upload/user-background/default__0__.png')  # The avatar
     theme = db.Column(db.String(16), default='light')  # the user preferred theme of our website
     language = db.Column(db.String(16), default='en')
