@@ -6,6 +6,7 @@ from flask_babel import _
 
 from config import Config
 from . import userinfo
+from ..decorators import customer_only
 from ..public_tools import generate_safe_pic_name
 from ..userinfo.forms import EditProfileForm, AddAddressForm, EditAddressForm, UpdateAvatarForm
 from ..models import User, Address, Recipient, Brand, Category
@@ -13,6 +14,8 @@ from .. import db
 
 
 @userinfo.route('/user_profile/<int:uid>', methods=['GET', 'POST'])
+@login_required
+@customer_only()
 def user_profile(uid):
     user = User.query.get(uid)
     edit_profile_form = EditProfileForm(current_user)
@@ -304,6 +307,7 @@ def user_profile(uid):
 
 @userinfo.route('/api/remove-address', methods=['POST'])
 @login_required
+@customer_only()
 def remove_address():
     """
     (Using Ajax)
@@ -364,6 +368,7 @@ def remove_address():
 
 @userinfo.route('/api/change-default-address', methods=['POST'])
 @login_required
+@customer_only()
 def change_default_address():
     if request.method == 'POST':
         # get the address id from ajax
@@ -418,6 +423,7 @@ def address_prepare_for_json(address_obj):
 
 @userinfo.route('/api/userinfo/brand-section/follow-brand', methods=['POST'])
 @login_required
+@customer_only()
 def follow_brand():
     """
         (Using Ajax)
@@ -451,6 +457,7 @@ def follow_brand():
 
 @userinfo.route('/api/userinfo/brand-section/unfollow-brand', methods=['POST'])
 @login_required
+@customer_only()
 def unfollow_brand():
     """
         (Using Ajax)
@@ -492,6 +499,7 @@ def unfollow_brand():
 
 @userinfo.route('/api/userinfo/category-section/follow-category', methods=['POST'])
 @login_required
+@customer_only()
 def follow_category():
     """
         (Using Ajax)
@@ -525,6 +533,7 @@ def follow_category():
 
 @userinfo.route('/api/userinfo/brand-section/unfollow-category', methods=['POST'])
 @login_required
+@customer_only()
 def unfollow_category():
     """
         (Using Ajax)
