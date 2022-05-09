@@ -142,7 +142,7 @@ function init()
     // locate camera and point to the center of scene
     camera.position.x = 0;
     camera.position.y = 0;
-    camera.position.z = 400;
+    camera.position.z = 50;
     camera.lookAt(scene.position);
 
     // add renderer's output to html page
