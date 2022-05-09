@@ -14,7 +14,7 @@ app = create_app(os.getenv('FLASK_CONFIG') or 'default')
 # --------------------------------------- self-defined error pages ---------------------------------------
 
 @app.errorhandler(403)
-def page_not_found(e):
+def forbidden(e):
     return render_template("errors/403.html"), 403
 
 
@@ -24,9 +24,8 @@ def page_not_found(e):
 
 
 @app.errorhandler(500)
-def page_not_found(e):
+def internal_server_error(e):
     return render_template("errors/500.html"), 500
-
 
 
 # --------------------------------------- context processor ---------------------------------------
