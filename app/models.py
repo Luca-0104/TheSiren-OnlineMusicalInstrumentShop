@@ -66,8 +66,6 @@ class Tools:
 
         # chat message
         Message.insert_messages(30)
-        # init chat room
-        ChatRoom.init_chat()
 
     @staticmethod
     def insert_3d_for_mt():
@@ -403,13 +401,6 @@ class ChatRoom(BaseModel):
     # messages in this chat room
     messages = db.relationship('Message', backref='chat_room', lazy='dynamic')
 
-    @staticmethod
-    def init_chat():
-        room1 = ChatRoom(customer_id=1, staff_id=3)
-        room2 = ChatRoom(customer_id=2, staff_id=4)
-        db.session.add(room1)
-        db.session.add(room2)
-        db.session.commit()
 
     def __repr__(self):
         return '<ChatRoom cus: %r - staff: %r>' % (self.customer_id, self.staff_id)
@@ -1674,25 +1665,25 @@ class User(UserMixin, BaseModel):
         else:
             return None
 
-    def become_premium_member(self, duration: int):
-        """
-        Call this function to set this user as the premium member.
-        :param duration: the duration of this new premium membership, unit is 'day'
-        """
-
-        # mark the current premium record as expired
-        # (if this is a renewal of membership, we still need to let only a single record be marked as not expired)
-        p = self.get_current_premium()
-        if p:
-            p.expire()
-
-        # create a obj of new premium record
-        new_premium = Premium(user_id=self.id, duration=duration)
-
-        # update the premium Columns in this table
-        self.is_premium = True
-        self.premium_left_days += new_premium.duration
-        db.session.commit()
+    # def become_premium_member(self, duration: int):
+    #     """
+    #     Call this function to set this user as the premium member.
+    #     :param duration: the duration of this new premium membership, unit is 'day'
+    #     """
+    #
+    #     # mark the current premium record as expired
+    #     # (if this is a renewal of membership, we still need to let only a single record be marked as not expired)
+    #     p = self.get_current_premium()
+    #     if p:
+    #         p.expire()
+    #
+    #     # create a obj of new premium record
+    #     new_premium = Premium(user_id=self.id, duration=duration)
+    #
+    #     # update the premium Columns in this table
+    #     self.is_premium = True
+    #     self.premium_left_days += new_premium.duration
+    #     db.session.commit()
 
     def expire_premium_member(self):
         """
