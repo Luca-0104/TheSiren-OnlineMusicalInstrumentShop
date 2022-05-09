@@ -45,7 +45,7 @@
                                     <div class="chat-search pt-3 pl-3">
                                         <div class="d-flex align-items-center">
                                             <div class="chat-profile mr-3">
-                                                <img src="../../static/images/popo.jpg" alt="chat-user" class="avatar-60 ">
+                                                <img src="{{ url_for('static', filename=current_user.avatar) }}" alt="chat-user" class="avatar-60 ">
                                             </div>
                                             <div class="chat-caption">
                                                 <h5 class="mb-0">{{ current_user.username }}</h5>
@@ -58,14 +58,14 @@
                                                 <button type="submit" class="close-popup p-3"><i class="ri-close-fill"></i></button>
                                                 <div class="user text-center mb-4">
                                                     <a class="avatar m-0">
-                                                        <img src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg" class="avatar-100"
+                                                        <img src="{{ url_for('static', filename=current_user.avatar) }}" class="avatar-100"
                                                              alt="avatar">
                                                     </a>
                                                     <div class="user-name mt-4">
-                                                        <h4>Bni Jordan</h4>
+                                                        <h4>{{ current_user.username }}</h4>
                                                     </div>
                                                     <div class="user-desc">
-                                                        <p>Web Designer</p>
+                                                        <p>Staff</p>
                                                     </div>
                                                 </div>
                                                 <hr>
