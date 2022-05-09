@@ -1,6 +1,6 @@
 {% extends "base/base-customer.html" %}
 
-{% block title %}The Siren - 403 Permission Denied{% endblock %}
+{% block title %}The Siren - 403 Forbidden{% endblock %}
 
 {#  for links to css #}
 {% block style %}
@@ -25,8 +25,8 @@
 
             <div class="utility-page-wrap">
                 <div class="utility-page-content w-form">
-                    <h2>403 - {{ _("Permission Denied") }}</h2>
-                    <div>{{ _("You do not have permission to access this function.") }}</div>
+                    <h2>403 - {{ _("Forbidden") }}</h2>
+                    <div>{{ _("You do not have the permission to access this function.") }}</div>
                     <div class="button-row justify-content-center">
                         <a href="{{ url_for('main.index') }}" class="button w-inline-block">
                             <div>{{ _("Back to Home") }}</div>
