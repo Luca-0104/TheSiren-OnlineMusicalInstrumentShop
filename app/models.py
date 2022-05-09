@@ -55,6 +55,8 @@ class Tools:
         # ------
         # # products(100)  # 100 fake products
         # ModelType.insert_model_types()  # the constant model types for testing
+        # insert 3D files and texture files
+        Tools.insert_3d_for_mt()
         Comment.insert_comments(12)
         Cart.insert_carts()
         Order.insert_orders(20)
@@ -66,6 +68,21 @@ class Tools:
         Message.insert_messages(30)
         # init chat room
         ChatRoom.init_chat()
+
+    @staticmethod
+    def insert_3d_for_mt():
+        """
+        This should be called after calling all of the other insert functions
+        """
+        # insert the 3D model file and texture file for that cello model type (id=13)
+        cello = ModelType.query.get(13)
+        cello.three_d_model_texture_address = "upload/model_type/3d-model-texture-files/pre-store/cello.png"
+        cello.three_d_model_address = "upload/model_type/3d-model-files/pre-store/cello.fbx"
+        # to ensure this can be shown as the first several products
+        cello.views = 4685267
+        cello.sales = 1562
+        db.session.add(cello)
+        db.session.commit()
 
 
     @staticmethod

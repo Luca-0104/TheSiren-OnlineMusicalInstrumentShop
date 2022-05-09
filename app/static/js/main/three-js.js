@@ -72,8 +72,8 @@ function init()
     //     scene.add(obj);
     // });
 
-    // var texturePlant = new THREE.TextureLoader().load("/static/upload/model_type/3d-model-texture-files/pre-store/cello.png");//模型贴图
-    let texturePlant = $("#modeltype-3d-model").attr("model-texture-address");
+    let textureAddress = $("#modeltype-3d-model").attr("model-texture-address");
+    let texturePlant = new THREE.TextureLoader().load(textureAddress);//模型贴图
     console.log("texture");
     console.log(texturePlant);
     let modelAddress = $("#modeltype-3d-model").attr("model-address");
