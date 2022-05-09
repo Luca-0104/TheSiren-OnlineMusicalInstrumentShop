@@ -1131,6 +1131,48 @@ class ModelType(BaseModel):
         """
         return Tools.bytes_to_human_readable_str(self.sales)
 
+    def get_additon_type(self):
+        """
+        Tells the type of additionals and return it
+        Types:
+                0: nothing
+                1: only 3d
+                2: only audio
+                3: only vedio
+                4: audio & vedio
+                5: 3d & vedio
+                6: 3d & audio
+                7: 3d & audio & vedio
+        :return: A integer representing the type of additionals
+        """
+        type_id = -1
+        has3d = False
+        hasAudio = False
+        hasVedio = False
+        if self.three_d_model_address != None:
+            has3d = True
+        if self.audio_addresses.count() != 0:
+            hasAudio = True
+        if self.video_address != None:
+            hasVedio = True
+
+        if has3d and hasAudio and hasVedio:
+            return 7
+        elif has3d and hasAudio and not hasVedio:
+            return 6
+        elif has3d and not hasAudio and hasVedio:
+            return 5
+        elif not has3d and hasAudio and hasVedio:
+            return 4
+        elif not has3d and not hasAudio and hasVedio:
+            return 3
+        elif not has3d and hasAudio and not hasVedio:
+            return 2
+        elif has3d and not hasAudio and not hasVedio:
+            return 1
+        else:
+            return 0
+
     @staticmethod
     def insert_model_types():
         """
