@@ -6,7 +6,7 @@ let classification, type, additional, brand;
 let data;
 //This need to be modified if brand number is changed!!!
 //Every number is plus one compared to original because "see all" option.
-let checking_numbers = [7, 48, 5, 6];
+let checking_numbers = [7, 48, 5, 17];
 
 function initialize_checkbox(param) {
     let p = 0;
@@ -38,8 +38,10 @@ $(document).ready(function () {
     initialize_checkbox("#check_brand_");
 
     $('.category').on("change", function () {
-        console.log("here change: " + $(this).attr("id"));
         //for test
+        console.log($(this).attr('id'));
+
+        console.log($(this).prop('checked'));
 
         let p = $(this).attr('id').split('_').pop();
 
@@ -49,9 +51,9 @@ $(document).ready(function () {
                 if (p !== i) {
                     let cancel_select = $('#check_class_' + i);
                     cancel_select.attr("class", "checkbox category");
-                    console.log("Before " + cancel_select.prop('checked'));
+                    // console.log("Before " + cancel_select.prop('checked'));
                     cancel_select.prop("checked", "off");
-                    console.log("After " + cancel_select.prop('checked'));
+                    // console.log("After " + cancel_select.prop('checked'));
                 }
             }
             $(this).attr("class", "checkbox w--redirected-checked category");
@@ -60,8 +62,8 @@ $(document).ready(function () {
             checked_value[0] = $(this).attr("name");
 
             classification = checked_value[0];
-            console.log($(this).attr("checked") + '2');
-            console.log(checked_value);
+            // console.log($(this).attr("checked") + '2');
+            // console.log(checked_value);
 
             //only show the "type" boxes of this class
             update_type_boxes($(this).attr("id"));
@@ -71,7 +73,7 @@ $(document).ready(function () {
     $('.type').on("change", function () {
         console.log($(this).attr('id'));
 
-        console.log($(this).attr("checked"));
+        console.log($(this).prop('checked'));
         let p = $(this).attr('id').split('_').pop();
         console.log(p);
 
@@ -98,7 +100,7 @@ $(document).ready(function () {
     $('.add').on("change", function () {
         console.log($(this).attr('id'));
 
-        console.log($(this).attr("checked"));
+        console.log($(this).prop('checked'));
         let p = $(this).attr('id').split('_').pop();
         console.log(p);
 
@@ -123,19 +125,23 @@ $(document).ready(function () {
     });
 
     $('.brands').on("change", function () {
+        console.log("==========================================");
+        console.log(checking_numbers[3]);
         console.log($(this).attr('id'));
 
-        console.log($(this).attr("checked"));
+        console.log($(this).prop('checked'));
         let p = $(this).attr('id').split('_').pop();
         console.log(p);
 
         if (!$(this).prop('checked')) {
-
             for (let i = 1; i <= checking_numbers[3]; i++) {
                 if (p !== i) {
                     let cancel_select = $('#check_brand_' + i);
                     cancel_select.attr("class", "checkbox brand");
+                    console.log(i + " Before " + cancel_select.prop('checked'));
                     cancel_select.prop("checked", "off");
+                    console.log(i + " After " + cancel_select.prop('checked'));
+                    console.log("");
                 }
             }
             $(this).attr("class", "checkbox w--redirected-checked brand");
@@ -144,7 +150,7 @@ $(document).ready(function () {
             checked_value[3] = $(this).attr("name");
 
             brand = checked_value[3];
-            console.log($(this).attr("checked") + '2');
+            console.log($(this).prop('checked') + '2');
             console.log(checked_value);
         }
     });
@@ -292,11 +298,13 @@ function put_data(mt){
     let firstPicAddress = mt.pictures[0].address;
 
     //put those info on to model card
-    let cardHTML = '<div role="listitem" class="w-dyn-item">'
+    let cardHTML = '<div role="listitem" class="w-dyn-item commodity-card">'
                         + '<div>'
                             + '<a href="/product-details/' + mtID + '" class="product-preview-link w-inline-block">'
-                                + '<img src="../../static/' + firstPicAddress + '"loading="lazy" alt="" class="product-thumbnail">'
-                                + '<div class="uppercase-text brand">' + brandName + '</div>'
+                                + '<div>'
+                                    + '<img src="../../static/' + firstPicAddress + '"loading="lazy" alt="" class="product-thumbnail">'
+                                + '</div>'
+                                + '<div class="uppercase-text brand brand-row">' + brandName + '</div>'
                                 + '<h5 class="no-bottom-margin">' + mtName + '</h5>'
                                 + '<div class="price-container">'
                                     + '<div class="old-price"><span>$</span>' + mtPrice + '</div>'
