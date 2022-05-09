@@ -39,15 +39,16 @@
             <!-- Inform section -->
             <div class="utility-page-wrap inform-section">
                 <div class="utility-page-content w-form">
-                    <h2>It's Around the Corner!</h2>
+                    <h2>{{ _("It's Around the Corner!")}}</h2>
                     <div>
-                        Coming Soon! <br>
-                        We are very sorry to tell you that the manufacturer - <i style="color: #b6a9ff">{{ brand_name }}</i> hasn't update their information to our shop,
-                        you can try to view other brands in the Home Page Brand Gallery.
+                        {{ _("Coming Soon!")}} <br>
+                        {{ _("We are very sorry to tell you that the manufacturer")}} - <i style="color: #b6a9ff">{{ brand_name }}</i>
+                        {{ _("hasn't update their information to our shop,
+                        you can try to view other brands in the Home Page Brand Gallery.")}}
                     </div>
                     <div class="button-row justify-content-center">
                         <a href="{{ url_for('main.index') }}" class="button w-inline-block">
-                            <div>Back to Home Page</div>
+                            <div>{{ _("Back to Home Page")}}</div>
                         </a>
                     </div>
                 </div>

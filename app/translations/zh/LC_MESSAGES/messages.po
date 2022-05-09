@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-04-12 21:13+0800\n"
+"POT-Creation-Date: 2022-05-09 18:01+0800\n"
 "PO-Revision-Date: 2022-03-23 16:06+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
@@ -19,10 +19,8 @@ msgstr ""
 "Generated-By: Babel 2.9.1\n"
 
 #: app/auth/forms.py:13 app/auth/forms.py:45
-#: app/templates/staff/backup-staff-modify.html:842
-#: app/templates/staff/page-add-product.html:865
-#: app/templates/staff/page-list-product.html:1044
-#: app/templates/userinfo/user_profile.html:366
+#: app/templates/staff/backup-staff-modify.html:840
+#: app/templates/userinfo/user_profile.html:146
 msgid "Email"
 msgstr "邮件"
 
@@ -34,22 +32,13 @@ msgstr "密码"
 msgid "keep me login"
 msgstr "保持登录"
 
-#: app/auth/forms.py:16 app/templates/auth/login_new.html:73
-#: app/templates/auth/register_new.html:74 app/templates/cart/page-cart.html:85
-#: app/templates/main/404.html:55 app/templates/main/about.html:73
-#: app/templates/main/brand_intro/lowden.html:74
-#: app/templates/main/brand_intro/steinway.html:74
-#: app/templates/main/index_new.html:103
-#: app/templates/main/page-commodity-details.html:62
-#: app/templates/main/page_all_commodities.html:56
-#: app/templates/order/order-confirm.html:101
-#: app/templates/order/order-detail.html:86
-#: app/templates/order/order-listing.html:84
-#: app/templates/order/payment-success.html:69
-#: app/templates/staff/backup-staff-modify.html:403
-#: app/templates/staff/page-add-product.html:399
-#: app/templates/staff/page-list-product.html:489
-#: app/templates/userinfo/user_profile.html:84
+#: app/auth/forms.py:16 app/templates/auth/register_new.html:44
+#: app/templates/backend-test/payment/payment-finished.html:66
+#: app/templates/base/base-customer.html:98
+#: app/templates/base/base-staff.html:520 app/templates/comment/comment.html:80
+#: app/templates/order/order-detail.html:80
+#: app/templates/order/order-listing.html:73
+#: app/templates/staff/backup-staff-modify.html:401
 msgid "Login"
 msgstr "登录"
 
@@ -69,10 +58,9 @@ msgstr "用户名"
 msgid "Confirm your password"
 msgstr "确认密码"
 
-#: app/auth/forms.py:48 app/templates/auth/login_new.html:246
-#: app/templates/staff/backup-staff-modify.html:408
-#: app/templates/staff/page-add-product.html:404
-#: app/templates/staff/page-list-product.html:494
+#: app/auth/forms.py:48 app/templates/auth/login_new.html:46
+#: app/templates/base/base-staff.html:525
+#: app/templates/staff/backup-staff-modify.html:406
 msgid "Register"
 msgstr "注册"
 
@@ -84,48 +72,48 @@ msgstr "邮箱已被注册！"
 msgid "You have been logged out"
 msgstr "您已退出登录"
 
-#: app/auth/views.py:54
+#: app/auth/views.py:52
 msgid "Register Successfully! You can go for login now!"
 msgstr "注册成功！您现在可以登录了！"
 
-#: app/auth/views.py:105 app/templates/auth/login_new.html:292
-#: app/templates/auth/register_new.html:301
+#: app/auth/views.py:103 app/templates/auth/login_new.html:94
+#: app/templates/auth/register_new.html:106
 msgid "Login success!"
 msgstr "登录成功！"
 
-#: app/auth/views.py:123
+#: app/auth/views.py:120
 msgid "Login Failed! Check your username or password."
 msgstr "登录失败！检查您的用户名或密码！"
 
-#: app/main/views.py:307
+#: app/main/views.py:330
 msgid "No such commodity!"
 msgstr "没有这件商品！"
 
-#: app/order/views.py:52 app/order/views.py:106
+#: app/order/views.py:54 app/order/views.py:111
 msgid "Order created!"
 msgstr "订单已创建！"
 
-#: app/order/views.py:56
+#: app/order/views.py:58
 msgid "Order generation failed!"
 msgstr "订单生成失败！"
 
-#: app/order/views.py:126
+#: app/order/views.py:138
 msgid "Permission denied!"
 msgstr "权限被拒绝！"
 
-#: app/order/views.py:449
+#: app/order/views.py:589
 msgid "Error in Duration info!"
 msgstr "持续时间信息中出现错误！"
 
-#: app/order/views.py:453
+#: app/order/views.py:593
 msgid "No duration info!"
 msgstr "没有时间信息！"
 
-#: app/order/views.py:461
+#: app/order/views.py:601
 msgid "Error in payment info!"
 msgstr "支付信息中出现错误！"
 
-#: app/order/views.py:465
+#: app/order/views.py:605
 msgid "No payment info!"
 msgstr "没有支付信息！"
 
@@ -150,67 +138,59 @@ msgid "premiumOrder does not exist!"
 msgstr "会员订单不存在！"
 
 #: app/product/forms.py:12 app/product/forms.py:40 app/product/forms.py:97
-#: app/templates/staff/page-list-product.html:1149
+#: app/templates/staff/page-list-product.html:165
 msgid "Name"
 msgstr "用户名"
 
-#: app/product/forms.py:14 app/product/forms.py:49 app/product/forms.py:104
-#: app/templates/staff/backup-staff-modify.html:882
-#: app/templates/staff/page-list-product.html:1106
-msgid "Serial Number"
-msgstr "商品序列号"
-
-#: app/product/forms.py:17 app/templates/auth/login_new.html:222
-#: app/templates/auth/register_new.html:223
-#: app/templates/cart/page-cart.html:234 app/templates/main/404.html:204
-#: app/templates/main/about.html:222
-#: app/templates/main/brand_intro/lowden.html:236
-#: app/templates/main/brand_intro/steinway.html:237
-#: app/templates/main/index_new.html:263
-#: app/templates/main/page-commodity-details.html:221
-#: app/templates/main/page_all_commodities.html:205
-#: app/templates/order/order-confirm.html:250
-#: app/templates/order/order-detail.html:234
-#: app/templates/order/order-listing.html:125
-#: app/templates/order/payment-success.html:222
-#: app/templates/staff/backup-staff-modify.html:991
-#: app/templates/staff/page-add-product.html:1007
-#: app/templates/staff/page-list-product.html:1114
-#: app/templates/userinfo/user_profile.html:249
+#: app/product/forms.py:17
+#: app/templates/backend-test/payment/payment-finished.html:255
+#: app/templates/base/base-customer.html:322
+#: app/templates/comment/comment.html:293
+#: app/templates/order/order-detail.html:293
+#: app/templates/order/order-listing.html:286
+#: app/templates/staff/backup-staff-modify.html:989
+#: app/templates/staff/page-add-product.html:159
+#: app/templates/staff/page-list-product.html:124
 msgid "Brand"
 msgstr "品牌"
 
-#: app/product/forms.py:18 app/templates/staff/backup-staff-modify.html:68
-#: app/templates/staff/backup-staff-modify.html:1060
-#: app/templates/staff/page-add-product.html:64
-#: app/templates/staff/page-add-product.html:886
-#: app/templates/staff/page-add-product.html:1104
-#: app/templates/staff/page-list-product.html:80
-#: app/templates/staff/page-list-product.html:1072
-msgid "Add Product"
-msgstr "添加商品"
+#: app/product/forms.py:18 app/templates/order/order-detail.html:892
+#: app/templates/order/order-detail.html:975
+#: app/templates/staff/page-list-orders.html:645
+#: app/templates/staff/page-list-orders.html:722
+#: app/templates/staff/page-list-orders.html:790
+#, fuzzy
+msgid "Update"
+msgstr "型号已更新！"
 
 #: app/product/forms.py:33 app/product/forms.py:123
 msgid "Serial Number already used."
 msgstr "序列号已存在"
 
 #: app/product/forms.py:42 app/product/forms.py:99
+#: app/templates/main/page-commodity-details.html:235
 msgid "Description"
 msgstr "描述"
 
 #: app/product/forms.py:43 app/product/forms.py:100
-#: app/templates/cart/page-cart.html:278
-#: app/templates/staff/backup-staff-modify.html:1026
-#: app/templates/staff/page-add-product.html:1063
-#: app/templates/staff/page-list-product.html:1155
+#: app/templates/cart/page-cart.html:52
+#: app/templates/staff/backup-staff-modify.html:1024
+#: app/templates/staff/page-add-product.html:222
+#: app/templates/staff/page-list-product.html:171
 msgid "Price"
 msgstr "价格"
 
 #: app/product/forms.py:45 app/product/forms.py:102
-#: app/templates/staff/page-add-product.html:1072
-#: app/templates/staff/page-list-product.html:1158
+#: app/templates/staff/page-add-product.html:233
+#: app/templates/staff/page-list-product.html:174
 msgid "Stock"
 msgstr "库存"
+
+#: app/product/forms.py:49 app/product/forms.py:104
+#: app/templates/staff/backup-staff-modify.html:880
+#: app/templates/staff/page-list-product.html:116
+msgid "Serial Number"
+msgstr "商品序列号"
 
 #: app/product/forms.py:50 app/product/forms.py:106
 msgid "Pictures for exhibition"
@@ -233,478 +213,824 @@ msgstr "商品序列号已应用于该商品的另一型号！"
 msgid "Picture name cannot longer than 216 chars!"
 msgstr "图片名称不能超过216个字！"
 
-#: app/product/views.py:244
+#: app/product/views.py:265
 msgid "New product and its models are uploaded successfully!"
 msgstr "成功上传新商品及其型号！"
 
-#: app/product/views.py:364
+#: app/product/views.py:389
 msgid "The product information updated!"
 msgstr "商品信息已更新！"
 
-#: app/product/views.py:461
+#: app/product/views.py:491
 msgid "Error! The product does not exist! Try it again!"
 msgstr "发生错误！商品不存在！请重试！"
 
-#: app/product/views.py:572
-msgid "Model updated!"
+#: app/product/views.py:605
+#, fuzzy
+msgid "Model Type updated!"
 msgstr "型号已更新！"
 
-#: app/templates/auth/login_new.html:46 app/templates/auth/register_new.html:46
-msgid "Welcome to Verse – An E-Commerce template for brand curators."
-msgstr "欢迎光临Verse - 品牌展测人的电子商务模版。"
-
-#: app/templates/auth/login_new.html:47 app/templates/auth/register_new.html:48
-msgid "View all templates here"
-msgstr "浏览所有模版"
-
-#: app/templates/auth/login_new.html:69 app/templates/auth/register_new.html:70
-#: app/templates/cart/page-cart.html:81 app/templates/main/404.html:51
-#: app/templates/main/about.html:69
-#: app/templates/main/brand_intro/lowden.html:70
-#: app/templates/main/brand_intro/steinway.html:70
-#: app/templates/main/index_new.html:99
-#: app/templates/main/page-commodity-details.html:58
-#: app/templates/main/page_all_commodities.html:52
-#: app/templates/order/order-confirm.html:97
-#: app/templates/order/order-detail.html:82
-#: app/templates/order/order-listing.html:80
-#: app/templates/order/payment-success.html:65
-#: app/templates/userinfo/user_profile.html:80
-msgid "Logout"
-msgstr "退出登录"
-
-#: app/templates/auth/login_new.html:90 app/templates/auth/register_new.html:91
-#: app/templates/cart/page-cart.html:102 app/templates/cart/page-cart.html:257
-#: app/templates/main/404.html:72 app/templates/main/about.html:90
-#: app/templates/main/brand_intro/lowden.html:94
-#: app/templates/main/brand_intro/steinway.html:94
-#: app/templates/main/index_new.html:123
-#: app/templates/main/page-commodity-details.html:82
-#: app/templates/main/page_all_commodities.html:73
-#: app/templates/order/order-confirm-premium.html:101
-#: app/templates/order/order-confirm.html:118
-#: app/templates/order/order-detail.html:103
-#: app/templates/order/payment-success.html:86
-#: app/templates/userinfo/user_profile.html:103
-msgid "Your Cart"
-msgstr "您的购物车"
-
-#: app/templates/auth/login_new.html:105
-#: app/templates/auth/register_new.html:106
-#: app/templates/cart/page-cart.html:117 app/templates/main/404.html:87
-#: app/templates/main/about.html:105
-#: app/templates/main/brand_intro/lowden.html:110
-#: app/templates/main/brand_intro/steinway.html:111
-#: app/templates/main/index_new.html:190
-#: app/templates/main/page-commodity-details.html:149
-#: app/templates/main/page_all_commodities.html:88
-#: app/templates/order/order-confirm-premium.html:116
-#: app/templates/order/order-confirm.html:133
-#: app/templates/order/order-detail.html:118
-#: app/templates/order/payment-success.html:101
-#: app/templates/userinfo/user_profile.html:119
-msgid "Subtotal"
-msgstr "小计"
-
-#: app/templates/auth/login_new.html:159
-#: app/templates/auth/register_new.html:160
-#: app/templates/cart/page-cart.html:171 app/templates/main/404.html:141
-#: app/templates/main/about.html:159
-#: app/templates/main/brand_intro/lowden.html:169
-#: app/templates/main/brand_intro/steinway.html:170
-#: app/templates/main/page_all_commodities.html:142
-#: app/templates/order/order-confirm-premium.html:270
-#: app/templates/order/order-confirm.html:187
-#: app/templates/order/order-confirm.html:318
-#: app/templates/order/order-detail.html:172
-#: app/templates/order/payment-success.html:155
-#: app/templates/userinfo/user_profile.html:178
-msgid "Pay with browser."
-msgstr "使用浏览器支付"
-
-#: app/templates/auth/login_new.html:165
-#: app/templates/auth/register_new.html:166
-#: app/templates/cart/page-cart.html:177 app/templates/cart/page-cart.html:344
-#: app/templates/main/404.html:147 app/templates/main/about.html:165
-#: app/templates/main/brand_intro/lowden.html:175
-#: app/templates/main/brand_intro/steinway.html:176
-#: app/templates/main/page_all_commodities.html:148
-#: app/templates/order/order-confirm-premium.html:159
-#: app/templates/order/order-confirm.html:193
-#: app/templates/order/order-detail.html:178
-#: app/templates/order/payment-success.html:161
-#: app/templates/userinfo/user_profile.html:184
-msgid "Continue to Checkout"
-msgstr "继续支付"
-
-#: app/templates/auth/login_new.html:170 app/templates/auth/login_new.html:334
-#: app/templates/auth/register_new.html:171
-#: app/templates/auth/register_new.html:344
-#: app/templates/cart/page-cart.html:182 app/templates/cart/page-cart.html:400
-#: app/templates/main/404.html:152 app/templates/main/about.html:170
-#: app/templates/main/brand_intro/lowden.html:180
-#: app/templates/main/brand_intro/steinway.html:181
-#: app/templates/main/index_new.html:207
-#: app/templates/main/page-commodity-details.html:166
-#: app/templates/main/page_all_commodities.html:153
-#: app/templates/order/order-confirm-premium.html:164
-#: app/templates/order/order-confirm-premium.html:371
-#: app/templates/order/order-confirm.html:198
-#: app/templates/order/order-confirm.html:1143
-#: app/templates/order/order-detail.html:183
-#: app/templates/order/order-detail.html:643
-#: app/templates/order/order-listing.html:500
-#: app/templates/order/payment-success.html:166
-#: app/templates/userinfo/user_profile.html:189
-#: app/templates/userinfo/user_profile.html:625
-msgid "No items found."
-msgstr "没有找到商品。"
-
-#: app/templates/auth/login_new.html:180
-#: app/templates/auth/register_new.html:181
-#: app/templates/cart/page-cart.html:192 app/templates/main/404.html:162
-#: app/templates/main/about.html:180
-#: app/templates/main/brand_intro/lowden.html:190
-#: app/templates/main/brand_intro/steinway.html:191
-#: app/templates/main/index_new.html:219
-#: app/templates/main/page-commodity-details.html:178
-#: app/templates/main/page_all_commodities.html:163
-#: app/templates/order/order-confirm-premium.html:174
-#: app/templates/order/order-confirm.html:208
-#: app/templates/order/order-detail.html:193
-#: app/templates/order/payment-success.html:176
-#: app/templates/userinfo/user_profile.html:199
-msgid "Product is not available in this quantity."
-msgstr "产品数量不足！"
-
-#: app/templates/auth/login_new.html:195
-#: app/templates/auth/register_new.html:196
-#: app/templates/cart/page-cart.html:207 app/templates/main/404.html:177
-#: app/templates/main/about.html:195
-#: app/templates/main/brand_intro/lowden.html:208
-#: app/templates/main/brand_intro/steinway.html:209
-#: app/templates/main/index_new.html:236
-#: app/templates/main/page-commodity-details.html:194
-#: app/templates/main/page_all_commodities.html:178
-#: app/templates/order/order-confirm.html:223
-#: app/templates/order/order-detail.html:208
-#: app/templates/order/order-listing.html:97
-#: app/templates/order/payment-success.html:191
-#: app/templates/userinfo/user_profile.html:217
-msgid "Search here"
-msgstr "搜索"
-
-#: app/templates/auth/login_new.html:206
-#: app/templates/auth/register_new.html:207
-#: app/templates/cart/page-cart.html:218 app/templates/main/404.html:188
-#: app/templates/main/about.html:206
-#: app/templates/main/brand_intro/lowden.html:220
-#: app/templates/main/brand_intro/steinway.html:221
-#: app/templates/main/index_new.html:247
-#: app/templates/main/page-commodity-details.html:205
-#: app/templates/main/page_all_commodities.html:189
-#: app/templates/order/order-confirm-premium.html:195
-#: app/templates/order/order-confirm.html:234
-#: app/templates/order/order-detail.html:219
-#: app/templates/order/order-listing.html:110
-#: app/templates/order/payment-success.html:202
-#: app/templates/userinfo/user_profile.html:229
-msgid "Menu"
-msgstr "菜单"
-
-#: app/templates/auth/login_new.html:212 app/templates/auth/login_new.html:326
-#: app/templates/auth/register_new.html:213
-#: app/templates/auth/register_new.html:336
-#: app/templates/cart/page-cart.html:224 app/templates/cart/page-cart.html:392
-#: app/templates/main/404.html:194 app/templates/main/about.html:212
-#: app/templates/main/brand_intro/lowden.html:226
-#: app/templates/main/brand_intro/steinway.html:227
-#: app/templates/main/index_new.html:253 app/templates/main/index_new.html:1305
-#: app/templates/main/page-commodity-details.html:211
-#: app/templates/main/page_all_commodities.html:195
-#: app/templates/order/order-confirm-premium.html:199
-#: app/templates/order/order-confirm-premium.html:363
-#: app/templates/order/order-confirm.html:240
-#: app/templates/order/order-confirm.html:1135
-#: app/templates/order/order-detail.html:225
-#: app/templates/order/order-detail.html:635
-#: app/templates/order/order-listing.html:116
-#: app/templates/order/order-listing.html:156
-#: app/templates/order/order-listing.html:492
-#: app/templates/order/payment-success.html:208
-#: app/templates/order/payment-success.html:275
-#: app/templates/userinfo/user_profile.html:235
-#: app/templates/userinfo/user_profile.html:617
-msgid "All"
-msgstr "全部"
-
-#: app/templates/auth/login_new.html:218
-#: app/templates/auth/register_new.html:219
-#: app/templates/cart/page-cart.html:230 app/templates/main/404.html:200
-#: app/templates/main/about.html:218
-#: app/templates/main/brand_intro/lowden.html:232
-#: app/templates/main/brand_intro/steinway.html:233
-#: app/templates/main/page-commodity-details.html:217
-#: app/templates/main/page_all_commodities.html:201
-#: app/templates/order/order-confirm.html:246
-#: app/templates/order/order-detail.html:231
-msgid "Catagory"
-msgstr "分类"
-
-#: app/templates/auth/login_new.html:232 app/templates/auth/login_new.html:342
-#: app/templates/auth/register_new.html:233
-#: app/templates/auth/register_new.html:352
-#: app/templates/cart/page-cart.html:244 app/templates/cart/page-cart.html:408
-#: app/templates/main/404.html:214 app/templates/main/about.html:232
-#: app/templates/main/brand_intro/lowden.html:246
-#: app/templates/main/brand_intro/steinway.html:247
-#: app/templates/main/index_new.html:273 app/templates/main/index_new.html:1318
-#: app/templates/main/page-commodity-details.html:231
-#: app/templates/main/page_all_commodities.html:215
-#: app/templates/order/order-confirm-premium.html:211
-#: app/templates/order/order-confirm-premium.html:379
-#: app/templates/order/order-confirm.html:260
-#: app/templates/order/order-confirm.html:1151
-#: app/templates/order/order-detail.html:243
-#: app/templates/order/order-detail.html:651
-#: app/templates/order/order-listing.html:134
-#: app/templates/order/order-listing.html:508
-#: app/templates/order/payment-success.html:236
-#: app/templates/order/payment-success.html:288
-#: app/templates/userinfo/user_profile.html:263
-#: app/templates/userinfo/user_profile.html:633
-msgid "About"
-msgstr "关于"
-
-#: app/templates/auth/login_new.html:233 app/templates/auth/login_new.html:344
-#: app/templates/auth/register_new.html:234
-#: app/templates/auth/register_new.html:354
-#: app/templates/cart/page-cart.html:245 app/templates/cart/page-cart.html:410
-#: app/templates/main/404.html:215 app/templates/main/about.html:233
-#: app/templates/main/brand_intro/lowden.html:247
-#: app/templates/main/brand_intro/steinway.html:248
-#: app/templates/main/index_new.html:274 app/templates/main/index_new.html:1320
-#: app/templates/main/page-commodity-details.html:232
-#: app/templates/main/page_all_commodities.html:216
-#: app/templates/order/order-confirm-premium.html:213
-#: app/templates/order/order-confirm-premium.html:381
-#: app/templates/order/order-confirm.html:261
-#: app/templates/order/order-confirm.html:1153
-#: app/templates/order/order-detail.html:244
-#: app/templates/order/order-detail.html:653
-#: app/templates/order/order-listing.html:135
-#: app/templates/order/order-listing.html:510
-#: app/templates/order/payment-success.html:237
-#: app/templates/order/payment-success.html:290
-#: app/templates/userinfo/user_profile.html:264
-#: app/templates/userinfo/user_profile.html:635
-msgid "Contact"
-msgstr "联系客服"
-
-#: app/templates/auth/login_new.html:242
+#: app/templates/auth/login_new.html:41
 msgid "Please login and explore more."
 msgstr "请登录以浏览更多。"
 
-#: app/templates/auth/login_new.html:244
+#: app/templates/auth/login_new.html:43
 msgid "New here?"
 msgstr "第一次访问？"
 
-#: app/templates/auth/login_new.html:295
-#: app/templates/auth/register_new.html:304
+#: app/templates/auth/login_new.html:97
+#: app/templates/auth/register_new.html:109
 msgid "Oops! Something went wrong while submitting the form."
 msgstr "哦不！在提交表单的时候发生了一些错误。"
 
-#: app/templates/auth/login_new.html:298
-#: app/templates/auth/register_new.html:307
+#: app/templates/auth/login_new.html:101
+#, fuzzy
+msgid "We will never share your personal information with third parties."
+msgstr "我们将保证您的隐私安全并不会与任何第三方共享您的信息"
+
+#: app/templates/auth/register_new.html:40
+msgid "Join us now!"
+msgstr "现在加入我们吧！"
+
+#: app/templates/auth/register_new.html:42
+msgid "Already have an account?"
+msgstr ""
+
+#: app/templates/auth/register_new.html:112
 msgid ""
 "We will never share your personal information with third\n"
 "                    parties."
 msgstr "我们将保证您的隐私安全并不会与任何第三方共享您的信息"
 
-#: app/templates/auth/login_new.html:317
-#: app/templates/auth/register_new.html:327
-#: app/templates/cart/page-cart.html:383 app/templates/main/index_new.html:1296
-#: app/templates/order/order-confirm-premium.html:354
-#: app/templates/order/order-confirm.html:1126
-#: app/templates/order/order-detail.html:626
-#: app/templates/order/order-listing.html:483
-#: app/templates/order/payment-success.html:266
-#: app/templates/userinfo/user_profile.html:608
+#: app/templates/backend-test/payment/payment-finished.html:62
+#: app/templates/base/base-customer.html:94
+#: app/templates/comment/comment.html:76
+#: app/templates/order/order-detail.html:76
+#: app/templates/order/order-listing.html:69
+msgid "Logout"
+msgstr "退出登录"
+
+#: app/templates/backend-test/payment/payment-finished.html:109
+#: app/templates/base/base-customer.html:150
+#: app/templates/cart/page-cart.html:30 app/templates/comment/comment.html:130
+#: app/templates/order/order-detail.html:130
+#: app/templates/order/order-listing.html:123
+msgid "Your Cart"
+msgstr "您的购物车"
+
+#: app/templates/backend-test/payment/payment-finished.html:125
+#: app/templates/base/base-customer.html:242
+#: app/templates/comment/comment.html:213
+#: app/templates/order/order-detail.html:213
+#: app/templates/order/order-listing.html:206
+msgid "Subtotal"
+msgstr "小计"
+
+#: app/templates/backend-test/payment/payment-finished.html:184
+#: app/templates/order/order-confirm-premium.html:118
+#: app/templates/order/order-confirm.html:120
+msgid "Pay with browser."
+msgstr "使用浏览器支付"
+
+#: app/templates/backend-test/payment/payment-finished.html:190
+#: app/templates/cart/page-cart.html:151
+msgid "Continue to Checkout"
+msgstr "继续支付"
+
+#: app/templates/backend-test/payment/payment-finished.html:195
+#: app/templates/base/base-customer.html:262
+#: app/templates/comment/comment.html:233
+#: app/templates/main/page-commodity-details.html:669
+#: app/templates/order/order-detail.html:233
+#: app/templates/order/order-listing.html:226
+msgid "No items found."
+msgstr "没有找到商品。"
+
+#: app/templates/backend-test/payment/payment-finished.html:205
+#: app/templates/base/base-customer.html:274
+#: app/templates/comment/comment.html:245
+#: app/templates/order/order-detail.html:245
+#: app/templates/order/order-listing.html:238
+msgid "Product is not available in this quantity."
+msgstr "产品数量不足！"
+
+#: app/templates/backend-test/payment/payment-finished.html:223
+#: app/templates/base/base-customer.html:294
+#: app/templates/comment/comment.html:265
+#: app/templates/order/order-detail.html:265
+#: app/templates/order/order-listing.html:258
+msgid "Search here"
+msgstr "搜索"
+
+#: app/templates/backend-test/payment/payment-finished.html:235
+#: app/templates/base/base-customer.html:306
+#: app/templates/comment/comment.html:277
+#: app/templates/order/order-detail.html:277
+#: app/templates/order/order-listing.html:270
+msgid "Menu"
+msgstr "菜单"
+
+#: app/templates/backend-test/payment/payment-finished.html:241
+#: app/templates/backend-test/payment/payment-finished.html:309
+#: app/templates/base/base-customer.html:312
+#: app/templates/base/base-customer.html:368
+#: app/templates/comment/comment.html:283
+#: app/templates/comment/comment.html:503
+#: app/templates/order/order-detail.html:283
+#: app/templates/order/order-detail.html:747
+#: app/templates/order/order-listing.html:276
+#: app/templates/order/order-listing.html:318
+#: app/templates/order/order-listing.html:728
+msgid "All"
+msgstr "全部"
+
+#: app/templates/backend-test/payment/payment-finished.html:247
+msgid "Gatagory"
+msgstr "分类"
+
+#: app/templates/backend-test/payment/payment-finished.html:269
+#: app/templates/backend-test/payment/payment-finished.html:322
+#: app/templates/base/base-customer.html:332
+#: app/templates/comment/comment.html:303
+#: app/templates/order/order-detail.html:303
+#: app/templates/order/order-listing.html:296
+msgid "About"
+msgstr "关于"
+
+#: app/templates/backend-test/payment/payment-finished.html:270
+#: app/templates/backend-test/payment/payment-finished.html:324
+#: app/templates/base/base-customer.html:333
+#: app/templates/chat/chat_page.html:13 app/templates/comment/comment.html:304
+#: app/templates/order/order-detail.html:304
+#: app/templates/order/order-listing.html:297
+msgid "Contact"
+msgstr "联系客服"
+
+#: app/templates/backend-test/payment/payment-finished.html:280
+#: app/templates/order/payment-success.html:42
+#, fuzzy
+msgid "Payment Finished"
+msgstr "没有支付信息！"
+
+#: app/templates/backend-test/payment/payment-finished.html:281
+#: app/templates/order/payment-success.html:43
+msgid ""
+"Your payment is successfully finished. Please click the button below to "
+"go back to home page."
+msgstr ""
+
+#: app/templates/backend-test/payment/payment-finished.html:284
+#: app/templates/order/payment-success.html:46
+#, fuzzy
+msgid "Check Orders"
+msgstr "下单"
+
+#: app/templates/backend-test/payment/payment-finished.html:300
 msgid "34 Market Street, South Melbourne"
 msgstr "商店街34号，南墨尔本"
 
-#: app/templates/auth/login_new.html:317
-#: app/templates/auth/register_new.html:327
-#: app/templates/cart/page-cart.html:383 app/templates/main/index_new.html:1296
-#: app/templates/order/order-confirm-premium.html:354
-#: app/templates/order/order-confirm.html:1126
-#: app/templates/order/order-detail.html:626
-#: app/templates/order/order-listing.html:483
-#: app/templates/order/payment-success.html:266
-#: app/templates/userinfo/user_profile.html:608
+#: app/templates/backend-test/payment/payment-finished.html:300
 msgid "Victoria 3009"
 msgstr "维多利亚3009号"
 
-#: app/templates/auth/login_new.html:319
-msgid "contact@website.com"
-msgstr ""
-
-#: app/templates/auth/login_new.html:320
-msgid "(03) 92337 4627"
-msgstr ""
-
-#: app/templates/auth/login_new.html:324
-#: app/templates/auth/register_new.html:334
-#: app/templates/cart/page-cart.html:390 app/templates/main/index_new.html:1303
-#: app/templates/order/order-confirm-premium.html:361
-#: app/templates/order/order-confirm.html:1133
-#: app/templates/order/order-detail.html:633
-#: app/templates/order/order-listing.html:490
-#: app/templates/order/payment-success.html:273
-#: app/templates/userinfo/user_profile.html:615
+#: app/templates/backend-test/payment/payment-finished.html:307
+#: app/templates/base/base-customer.html:366
+#: app/templates/comment/comment.html:501
+#: app/templates/order/order-detail.html:745
+#: app/templates/order/order-listing.html:726
 msgid "shop"
 msgstr "商店"
 
-#: app/templates/auth/login_new.html:340
-#: app/templates/auth/register_new.html:350
-#: app/templates/cart/page-cart.html:406 app/templates/main/index_new.html:1316
-#: app/templates/order/order-confirm-premium.html:377
-#: app/templates/order/order-confirm.html:1149
-#: app/templates/order/order-detail.html:649
-#: app/templates/order/order-listing.html:506
-#: app/templates/order/payment-success.html:286
-#: app/templates/userinfo/user_profile.html:631
+#: app/templates/backend-test/payment/payment-finished.html:313
+#: app/templates/base/base-customer.html:372
+#: app/templates/comment/comment.html:507
+#: app/templates/main/page_all_commodities.html:321
+#: app/templates/order/order-detail.html:751
+#: app/templates/order/order-listing.html:732
+msgid "Brands"
+msgstr "品牌"
+
+#: app/templates/backend-test/payment/payment-finished.html:320
+#: app/templates/base/base-customer.html:380
+#: app/templates/comment/comment.html:515
+#: app/templates/order/order-detail.html:759
+#: app/templates/order/order-listing.html:740
 msgid "Company"
 msgstr "公司"
 
-#: app/templates/auth/login_new.html:343
-#: app/templates/auth/register_new.html:353
-#: app/templates/cart/page-cart.html:409 app/templates/main/index_new.html:1319
-#: app/templates/order/order-confirm-premium.html:212
-#: app/templates/order/order-confirm-premium.html:380
-#: app/templates/order/order-confirm.html:1152
-#: app/templates/order/order-detail.html:652
-#: app/templates/order/order-listing.html:509
-#: app/templates/order/payment-success.html:289
-#: app/templates/userinfo/user_profile.html:634
+#: app/templates/backend-test/payment/payment-finished.html:323
 msgid "Journal"
 msgstr "账目"
 
-#: app/templates/auth/login_new.html:345
-#: app/templates/auth/register_new.html:355
-#: app/templates/cart/page-cart.html:411 app/templates/main/index_new.html:1321
-#: app/templates/order/order-confirm-premium.html:382
-#: app/templates/order/order-confirm.html:1154
-#: app/templates/order/order-detail.html:654
-#: app/templates/order/order-listing.html:511
-#: app/templates/order/payment-success.html:291
-#: app/templates/userinfo/user_profile.html:636
+#: app/templates/backend-test/payment/payment-finished.html:325
 msgid "Refund Policy"
 msgstr "退款政策"
 
-#: app/templates/auth/login_new.html:349
-#: app/templates/auth/register_new.html:359
-#: app/templates/order/order-confirm-premium.html:386
-#: app/templates/order/order-confirm.html:1158
-msgid "Template"
-msgstr "模版"
+#: app/templates/base/base-customer.html:54
+#: app/templates/order/order-detail.html:51
+msgid "Welcome to Siren – Selects online music instrument shop for you."
+msgstr ""
 
-#: app/templates/auth/login_new.html:351
-#: app/templates/auth/register_new.html:361
-msgid "Style Guide"
-msgstr "样式指导"
+#: app/templates/base/base-customer.html:56
+#: app/templates/order/order-detail.html:52
+#: app/templates/order/order-listing.html:45
+msgid "View instruments here"
+msgstr ""
 
-#: app/templates/auth/login_new.html:352
-#: app/templates/auth/register_new.html:362
-msgid "Changelog"
-msgstr "更改目录"
-
-#: app/templates/auth/login_new.html:353
-#: app/templates/auth/register_new.html:364
-msgid "Getting Started"
-msgstr "即刻开始"
-
-#: app/templates/auth/login_new.html:354
-#: app/templates/auth/register_new.html:365
-msgid "Licenses"
-msgstr "证书"
-
-#: app/templates/auth/login_new.html:355
-#: app/templates/auth/register_new.html:367
-msgid "More Templates"
-msgstr "更多模版"
-
-#: app/templates/auth/register_new.html:244
-msgid "Join us now!"
-msgstr "现在加入我们吧！"
-
-#: app/templates/cart/page-cart.html:269
-msgid "Select"
-msgstr "选择"
-
-#: app/templates/cart/page-cart.html:272
-msgid "Model Info"
-msgstr "型号信息"
-
-#: app/templates/cart/page-cart.html:275
-#: app/templates/staff/backup-staff-modify.html:1042
-msgid "Quantity"
-msgstr "数量"
-
-#: app/templates/cart/page-cart.html:322
+#: app/templates/base/base-customer.html:213
+#: app/templates/cart/page-cart.html:129 app/templates/comment/comment.html:190
+#: app/templates/order/order-detail.html:190
+#: app/templates/order/order-listing.html:183
 msgid "Remove"
 msgstr "移除"
 
-#: app/templates/cart/page-cart.html:333
-msgid "Total Cost"
-msgstr "总计"
+#: app/templates/base/base-customer.html:232
+msgid "Out Of Stock"
+msgstr ""
 
-#: app/templates/main/index_new.html:198
-#: app/templates/main/page-commodity-details.html:157
+#: app/templates/base/base-customer.html:253
+#: app/templates/comment/comment.html:224
+#: app/templates/order/order-detail.html:224
+#: app/templates/order/order-listing.html:217
 msgid "Go to my cart"
 msgstr "我的购物车"
 
-#: app/templates/main/index_new.html:259
-#: app/templates/order/order-listing.html:122
-#: app/templates/staff/backup-staff-modify.html:1005
+#: app/templates/base/base-customer.html:318
+#: app/templates/order/order-listing.html:736
+#: app/templates/staff/backup-staff-modify.html:1003
 msgid "Category"
 msgstr "分类"
 
-#: app/templates/main/index_new.html:369
-msgid "Start Browsing"
-msgstr "开始浏览"
+#: app/templates/base/base-customer.html:357
+#: app/templates/comment/comment.html:492
+#: app/templates/order/order-detail.html:736
+#: app/templates/order/order-listing.html:717
+msgid "China Beijing Chaoyang Distinct Pingleyuan No.100"
+msgstr ""
 
-#: app/templates/main/index_new.html:416
-msgid "Featured"
-msgstr "热销"
+#: app/templates/base/base-customer.html:357
+#: app/templates/comment/comment.html:492
+#: app/templates/order/order-detail.html:736
+#: app/templates/order/order-listing.html:717
+#, fuzzy
+msgid ""
+"Beijing University of\n"
+"                                    Technology"
+msgstr "设为默认"
 
-#: app/templates/main/index_new.html:416
-msgid "Collection"
-msgstr "产品"
+#: app/templates/base/base-customer.html:376
+#: app/templates/comment/comment.html:289
+#: app/templates/comment/comment.html:511
+#: app/templates/order/order-detail.html:289
+#: app/templates/order/order-detail.html:755
+#: app/templates/order/order-listing.html:282
+msgid "Catagory"
+msgstr "分类"
 
-#: app/templates/main/index_new.html:439 app/templates/main/index_new.html:591
-#: app/templates/main/index_new.html:760
-msgid "Click for Details"
-msgstr "点击获取更多信息"
-
-#: app/templates/main/index_new.html:458 app/templates/main/index_new.html:610
-#: app/templates/main/index_new.html:779
-msgid "comments"
-msgstr "评论"
-
-#: app/templates/main/index_new.html:569
-msgid "Your"
-msgstr "猜"
-
-#: app/templates/main/index_new.html:569
-msgid "Interests"
-msgstr "您喜欢"
-
-#: app/templates/main/index_new.html:723 app/templates/main/index_new.html:730
-msgid "About Us"
+#: app/templates/base/base-customer.html:382
+#: app/templates/comment/comment.html:517
+#: app/templates/order/order-detail.html:761
+#: app/templates/order/order-listing.html:742
+#, fuzzy
+msgid "About us"
 msgstr "关于我们"
 
-#: app/templates/main/index_new.html:725
+#: app/templates/base/base-customer.html:383
+msgid "Contect us"
+msgstr ""
+
+#: app/templates/base/base-customer.html:384
+#: app/templates/comment/comment.html:519
+#: app/templates/order/order-detail.html:763
+#: app/templates/order/order-listing.html:744
+#: app/templates/userinfo/user_profile.html:65
+#: app/templates/userinfo/user_profile.html:70
+#, fuzzy
+msgid "Premium"
+msgstr "成为会员"
+
+#: app/templates/base/base-customer.html:388
+#: app/templates/comment/comment.html:523
+#: app/templates/order/order-detail.html:767
+#: app/templates/order/order-listing.html:748
+msgid "Franchising Brand"
+msgstr ""
+
+#: app/templates/base/base-staff.html:61
+msgid "STAFF&nbsp;TERMINAL"
+msgstr ""
+
+#: app/templates/base/base-staff.html:80
+#: app/templates/staff/backup-staff-modify.html:43
+msgid "Dashboards"
+msgstr "仪表盘"
+
+#: app/templates/base/base-staff.html:94
+#: app/templates/staff/backup-staff-modify.html:52
+msgid "Products"
+msgstr "产品"
+
+#: app/templates/base/base-staff.html:107
+#: app/templates/staff/backup-staff-modify.html:61
+msgid "List Product"
+msgstr "产品列表"
+
+#: app/templates/base/base-staff.html:113
+#: app/templates/staff/backup-staff-modify.html:66
+#: app/templates/staff/backup-staff-modify.html:1058
+#: app/templates/staff/page-add-product.html:32
+#: app/templates/staff/page-add-product.html:272
+#: app/templates/staff/page-list-product.html:81
+msgid "Add Product"
+msgstr "添加商品"
+
+#: app/templates/base/base-staff.html:128
+#, fuzzy
+msgid "Orders"
+msgstr "订单"
+
+#: app/templates/base/base-staff.html:141
+#, fuzzy
+msgid "List Orders"
+msgstr "返回列表"
+
+#: app/templates/base/base-staff.html:156
+#, fuzzy
+msgid "Journals"
+msgstr "账目"
+
+#: app/templates/base/base-staff.html:169
+#, fuzzy
+msgid "List Journals"
+msgstr "返回列表"
+
+#: app/templates/base/base-staff.html:175
+msgid "Upload Journals"
+msgstr ""
+
+#: app/templates/base/base-staff.html:190
+#: app/templates/staff/backup-staff-modify.html:76
+#: app/templates/userinfo/user_profile.html:384
+msgid "Categories"
+msgstr "分类"
+
+#: app/templates/base/base-staff.html:203
+#: app/templates/staff/backup-staff-modify.html:84
+msgid "List Category"
+msgstr "分类列表"
+
+#: app/templates/base/base-staff.html:209
+#: app/templates/staff/backup-staff-modify.html:89
+msgid "Add Category"
+msgstr "添加分类"
+
+#: app/templates/base/base-staff.html:226
+#: app/templates/staff/backup-staff-modify.html:145
+msgid "Returns"
+msgstr "返回列表"
+
+#: app/templates/base/base-staff.html:239
+#: app/templates/staff/backup-staff-modify.html:153
+msgid "List Returns"
+msgstr "返回列表"
+
+#: app/templates/base/base-staff.html:245
+#: app/templates/staff/backup-staff-modify.html:158
+msgid "Add Return"
+msgstr "添加返回"
+
+#: app/templates/base/base-staff.html:262
+#: app/templates/staff/backup-staff-modify.html:168
+msgid "People"
+msgstr "群组"
+
+#: app/templates/base/base-staff.html:293
+#: app/templates/staff/backup-staff-modify.html:211
+msgid "Reports"
+msgstr "报告"
+
+#: app/templates/base/base-staff.html:309
+#: app/templates/staff/backup-staff-modify.html:221
+msgid "other page"
+msgstr "其他页面"
+
+#: app/templates/base/base-staff.html:329
+#: app/templates/staff/backup-staff-modify.html:232
+msgid "User Details"
+msgstr "用户详情"
+
+#: app/templates/base/base-staff.html:341
+#: app/templates/staff/backup-staff-modify.html:240
+msgid "User Profile"
+msgstr "用户主页"
+
+#: app/templates/base/base-staff.html:346
+#: app/templates/staff/backup-staff-modify.html:245
+msgid "User Add"
+msgstr "添加用户"
+
+#: app/templates/base/base-staff.html:351
+#: app/templates/staff/backup-staff-modify.html:250
+msgid "User List"
+msgstr "用户列表"
+
+#: app/templates/base/base-staff.html:364
+#: app/templates/staff/backup-staff-modify.html:260
+msgid "UI Elements"
+msgstr "UI组件"
+
+#: app/templates/base/base-staff.html:376
+#: app/templates/staff/backup-staff-modify.html:268
+msgid "Avatars"
+msgstr "头像"
+
+#: app/templates/base/base-staff.html:381
+#: app/templates/staff/backup-staff-modify.html:273
+msgid "Alerts"
+msgstr "警告"
+
+#: app/templates/base/base-staff.html:386
+#: app/templates/staff/backup-staff-modify.html:278
+msgid "Badges"
+msgstr "标记"
+
+#: app/templates/base/base-staff.html:391
+#: app/templates/staff/backup-staff-modify.html:283
+msgid "Breadcrumb"
+msgstr "面包屑"
+
+#: app/templates/base/base-staff.html:396
+#: app/templates/staff/backup-staff-modify.html:288
+msgid "Buttons"
+msgstr "按钮"
+
+#: app/templates/base/base-staff.html:401
+#: app/templates/staff/backup-staff-modify.html:293
+msgid "Buttons Group"
+msgstr "按钮群组"
+
+#: app/templates/base/base-staff.html:406
+#: app/templates/staff/backup-staff-modify.html:298
+msgid "Box Shadow"
+msgstr "选择框阴影"
+
+#: app/templates/base/base-staff.html:411
+#: app/templates/staff/backup-staff-modify.html:303
+msgid "Colors"
+msgstr "颜色"
+
+#: app/templates/base/base-staff.html:416
+#: app/templates/staff/backup-staff-modify.html:308
+msgid "Cards"
+msgstr "卡片"
+
+#: app/templates/base/base-staff.html:421
+#: app/templates/staff/backup-staff-modify.html:313
+msgid "Carousel"
+msgstr "轮播图"
+
+#: app/templates/base/base-staff.html:426
+#: app/templates/staff/backup-staff-modify.html:318
+msgid "Grid"
+msgstr "网格"
+
+#: app/templates/base/base-staff.html:431
+#: app/templates/staff/backup-staff-modify.html:323
+msgid "Helper classes"
+msgstr "帮助类"
+
+#: app/templates/base/base-staff.html:436
+#: app/templates/staff/backup-staff-modify.html:328
+msgid "Images"
+msgstr "图片"
+
+#: app/templates/base/base-staff.html:441
+#: app/templates/staff/backup-staff-modify.html:333
+msgid "list Group"
+msgstr "群组列表"
+
+#: app/templates/base/base-staff.html:446
+#: app/templates/staff/backup-staff-modify.html:338
+msgid "Media"
+msgstr "媒体"
+
+#: app/templates/base/base-staff.html:451
+#: app/templates/staff/backup-staff-modify.html:343
+msgid "Modal"
+msgstr "模式"
+
+#: app/templates/base/base-staff.html:456
+#: app/templates/base/base-staff.html:1024
+#: app/templates/staff/backup-staff-modify.html:348
+#: app/templates/staff/backup-staff-modify.html:749
+msgid "Notifications"
+msgstr "通知"
+
+#: app/templates/base/base-staff.html:461
+#: app/templates/staff/backup-staff-modify.html:353
+msgid "Pagination"
+msgstr "页码"
+
+#: app/templates/base/base-staff.html:466
+#: app/templates/staff/backup-staff-modify.html:358
+msgid "Popovers"
+msgstr "弹出框"
+
+#: app/templates/base/base-staff.html:471
+#: app/templates/staff/backup-staff-modify.html:363
+msgid "Progressbars"
+msgstr "进度条"
+
+#: app/templates/base/base-staff.html:476
+#: app/templates/staff/backup-staff-modify.html:368
+msgid "Typography"
+msgstr "印刷"
+
+#: app/templates/base/base-staff.html:481
+#: app/templates/staff/backup-staff-modify.html:373
+msgid "Tabs"
+msgstr "标号"
+
+#: app/templates/base/base-staff.html:486
+#: app/templates/staff/backup-staff-modify.html:378
+msgid "Tooltips"
+msgstr "工具提示"
+
+#: app/templates/base/base-staff.html:491
+#: app/templates/staff/backup-staff-modify.html:383
+msgid "Video"
+msgstr "视频"
+
+#: app/templates/base/base-staff.html:508
+#: app/templates/staff/backup-staff-modify.html:393
+msgid "Authentication"
+msgstr "鉴定"
+
+#: app/templates/base/base-staff.html:530
+#: app/templates/staff/backup-staff-modify.html:411
+msgid "Recover Password"
+msgstr "密码错误！"
+
+#: app/templates/base/base-staff.html:535
+#: app/templates/staff/backup-staff-modify.html:416
+msgid "Confirm Mail"
+msgstr "确认邮件地址"
+
+#: app/templates/base/base-staff.html:540
+#: app/templates/staff/backup-staff-modify.html:421
+msgid "Lock Screen"
+msgstr "锁屏"
+
+#: app/templates/base/base-staff.html:555
+#: app/templates/staff/backup-staff-modify.html:431
+msgid "Forms"
+msgstr "表单"
+
+#: app/templates/base/base-staff.html:568
+#: app/templates/staff/backup-staff-modify.html:439
+msgid "Form Elements"
+msgstr "表单元素"
+
+#: app/templates/base/base-staff.html:574
+#: app/templates/staff/backup-staff-modify.html:444
+msgid "Form Input"
+msgstr "表单输入"
+
+#: app/templates/base/base-staff.html:580
+#: app/templates/staff/backup-staff-modify.html:449
+msgid "Form Validation"
+msgstr "表单验证"
+
+#: app/templates/base/base-staff.html:586
+#: app/templates/staff/backup-staff-modify.html:454
+msgid "Form Switch"
+msgstr "表单切换"
+
+#: app/templates/base/base-staff.html:592
+#: app/templates/staff/backup-staff-modify.html:459
+msgid "Form Checkbox"
+msgstr "表单勾选框"
+
+#: app/templates/base/base-staff.html:598
+#: app/templates/staff/backup-staff-modify.html:464
+msgid "Form Radio"
+msgstr "表单选择框"
+
+#: app/templates/base/base-staff.html:604
+#: app/templates/staff/backup-staff-modify.html:469
+msgid "Form Textarea"
+msgstr "表单文本"
+
+#: app/templates/base/base-staff.html:620
+#: app/templates/staff/backup-staff-modify.html:479
+msgid "Table"
+msgstr "表格"
+
+#: app/templates/base/base-staff.html:632
+#: app/templates/staff/backup-staff-modify.html:487
+msgid "Basic Tables"
+msgstr "基础表格"
+
+#: app/templates/base/base-staff.html:637
+#: app/templates/staff/backup-staff-modify.html:492
+msgid "Data Table"
+msgstr "数据表格"
+
+#: app/templates/base/base-staff.html:642
+#: app/templates/staff/backup-staff-modify.html:497
+msgid "Table Tree"
+msgstr "表格树"
+
+#: app/templates/base/base-staff.html:658
+#: app/templates/staff/backup-staff-modify.html:507
+msgid "Pricing"
+msgstr "定价"
+
+#: app/templates/base/base-staff.html:692
+#: app/templates/staff/backup-staff-modify.html:530
+msgid "Invoice"
+msgstr "发票"
+
+#: app/templates/base/base-staff.html:706
+#: app/templates/staff/backup-staff-modify.html:538
+msgid "Error"
+msgstr "错误"
+
+#: app/templates/base/base-staff.html:737
+#: app/templates/staff/backup-staff-modify.html:561
+msgid "Blank Page"
+msgstr "空白页"
+
+#: app/templates/base/base-staff.html:748
+#: app/templates/staff/backup-staff-modify.html:569
+msgid "Maintenance"
+msgstr "维护"
+
+#: app/templates/base/base-staff.html:788
+#: app/templates/base/base-staff.html:791
+#: app/templates/base/base-staff.html:796
+#: app/templates/base/base-staff.html:800
+#: app/templates/staff/page-list-journals.html:29
+#: app/templates/staff/page-list-journals.html:34
+#: app/templates/staff/page-list-product.html:25
+#: app/templates/staff/page-list-product.html:30
+msgid "Search here..."
+msgstr "搜索"
+
+#: app/templates/base/base-staff.html:812
+#: app/templates/staff/page-add-product.html:198
+#: app/templates/staff/page-list-product.html:45
+#: app/templates/staff/page-list-product.html:52
+msgid "Model Name"
+msgstr "型号名称"
+
+#: app/templates/base/base-staff.html:816
+#, fuzzy
+msgid ""
+"Model\n"
+"                                                        Name"
+msgstr "显示更多"
+
+#: app/templates/base/base-staff.html:818
+#, fuzzy
+msgid ""
+"Model\n"
+"                                                        Serial"
+msgstr "显示更多"
+
+#: app/templates/base/base-staff.html:893
+msgid "Epidemic Mode"
+msgstr ""
+
+#: app/templates/base/base-staff.html:938
+#: app/templates/staff/backup-staff-modify.html:680
+msgid "All Messages"
+msgstr "全部消息"
+
+#: app/templates/base/base-staff.html:998
+#: app/templates/base/base-staff.html:1084
+#: app/templates/staff/staff-index.html:261
+msgid "View All"
+msgstr "显示更多"
+
+#: app/templates/base/base-staff.html:1110
+msgid "Profile"
+msgstr "修改个人主页"
+
+#: app/templates/base/base-staff.html:1112
+msgid "Sign Out"
+msgstr "退出登录"
+
+#: app/templates/base/base-staff.html:1157
+#: app/templates/staff/backup-staff-modify.html:1078
+msgid "Privacy Policy"
+msgstr "隐私政策"
+
+#: app/templates/base/base-staff.html:1159
+#: app/templates/staff/backup-staff-modify.html:1079
+msgid "Terms of Use"
+msgstr "使用术语"
+
+#: app/templates/cart/page-cart.html:43
+msgid "Select"
+msgstr "选择"
+
+#: app/templates/cart/page-cart.html:46
+msgid "Model Info"
+msgstr "型号信息"
+
+#: app/templates/cart/page-cart.html:49
+#: app/templates/main/page-commodity-details.html:305
+#: app/templates/staff/backup-staff-modify.html:1040
+msgid "Quantity"
+msgstr "数量"
+
+#: app/templates/cart/page-cart.html:140
+#: app/templates/order/order-detail.html:405
+#: app/templates/staff/page-list-orders.html:347
+#: app/templates/staff/staff-index.html:68
+msgid "Total Cost"
+msgstr "总计"
+
+#: app/templates/chat/chat_customer.html:25
+#, fuzzy
+msgid "Chat Messages"
+msgstr "全部消息"
+
+#: app/templates/chat/chat_customer.html:77
+msgid "Type Message ..."
+msgstr ""
+
+#: app/templates/chat/chat_customer.html:79
+#: app/templates/chat/chat_staff.html:326
+#, fuzzy
+msgid "Send"
+msgstr "性别："
+
+#: app/templates/chat/chat_staff.html:95
+msgid "Search"
+msgstr ""
+
+#: app/templates/chat/chat_staff.html:101
+msgid "Direct Message"
+msgstr ""
+
+#: app/templates/chat/chat_staff.html:120
+msgid "translation by"
+msgstr ""
+
+#: app/templates/chat/chat_staff.html:138
+#, fuzzy
+msgid ""
+"Start\n"
+"                                               Conversation By Choosing "
+"Chatroom!"
+msgstr "设为默认"
+
+#: app/templates/chat/chat_staff.html:323
+msgid "Type your message"
+msgstr ""
+
+#: app/templates/comment/comment.html:316
+#: app/templates/order/order-detail.html:702
+#, fuzzy
+msgid "Comment"
+msgstr "评论"
+
+#: app/templates/comment/comment.html:330
+#, fuzzy
+msgid "Your Purchase"
+msgstr "添加购买"
+
+#: app/templates/comment/comment.html:421
+#, fuzzy
+msgid "Your Comment"
+msgstr "评论"
+
+#: app/templates/comment/comment.html:518
+#: app/templates/order/order-detail.html:762
+#: app/templates/order/order-listing.html:743
+#, fuzzy
+msgid "Contact us"
+msgstr "联系客服"
+
+#: app/templates/main/404.html:33
+msgid "Page Not Found"
+msgstr ""
+
+#: app/templates/main/404.html:34
+msgid "The page you are looking for doesn&#x27;t exist or may have been moved."
+msgstr ""
+
+#: app/templates/main/404.html:37
+msgid "Back to Home"
+msgstr ""
+
+#: app/templates/main/about_siren.html:43
+msgid "A curated collection of timeless instruments"
+msgstr ""
+
+#: app/templates/main/about_siren.html:46 app/templates/main/index_new.html:528
 msgid ""
 "Siren is an online instrument e-commerce website. We provide up-to-date "
 "services for\n"
@@ -712,15 +1038,154 @@ msgid ""
 "renowned brands are currently in cooperation."
 msgstr "Siren是一个在线乐器商务网站。我们为现代的表演者提供最新的服务目前有众多知名品牌正在合作"
 
-#: app/templates/main/index_new.html:742
+#: app/templates/main/about_siren.html:66
+msgid "Timeless craft, handpicked"
+msgstr ""
+
+#: app/templates/main/about_siren.html:67
+msgid ""
+"We provide some of the most advanced services for instrument care,\n"
+"                                all of our instrument brands are "
+"handpicked by professionals to ensure\n"
+"                                the performance quality of each."
+msgstr ""
+
+#: app/templates/main/about_siren.html:78
+msgid "Our Service"
+msgstr ""
+
+#: app/templates/main/about_siren.html:81
+#, fuzzy
+msgid "Selection"
+msgstr "产品"
+
+#: app/templates/main/about_siren.html:84
+msgid ""
+"Every instrument is selected by our staffs. We value every detail of an "
+"instrument,\n"
+"                                    its quality, its style and theme, and"
+" its acoustic fidelity. We provide various kinds\n"
+"                                    of exquisite instruments from a dozen"
+" famous brands."
+msgstr ""
+
+#: app/templates/main/about_siren.html:90
+msgid "Partnership"
+msgstr ""
+
+#: app/templates/main/about_siren.html:91
+msgid ""
+"We are collaborating with 16 different brands. Every brand has their "
+"featured\n"
+"                                    instruments. Cooperating with those "
+"famous brands would allow us to provide you\n"
+"                                    dozens of instrument types."
+msgstr ""
+
+#: app/templates/main/about_siren.html:97
+#: app/templates/order/order-detail.html:823
+#: app/templates/staff/page-list-orders.html:128
+#: app/templates/staff/page-list-orders.html:489
+#: app/templates/staff/page-list-orders.html:511
+#: app/templates/staff/page-list-orders.html:539
+#, fuzzy
+msgid "Delivery"
+msgstr "快递"
+
+#: app/templates/main/about_siren.html:98
+msgid ""
+"We provide both self-collection and express delivery, you can either go "
+"to our\n"
+"                                    physical shop and pick your "
+"instrument or wait for home delivery. Of course, due to\n"
+"                                    the COVID-19, we recommend express "
+"delivery."
+msgstr ""
+
+#: app/templates/main/about_siren.html:104
+msgid "Support"
+msgstr ""
+
+#: app/templates/main/about_siren.html:105
+msgid ""
+"We provide online one-on-one chatting service between you and our well-"
+"trained staffs.\n"
+"                                    We would answer all sorts of "
+"questions you may have before your purchase in a short\n"
+"                                    period of time so that you won’t have"
+" to wait for our reply. Moreover, we have\n"
+"                                    after-sale service that would support"
+" you on any issues you might have, say the\n"
+"                                    change of product, repair or "
+"maintenance of instruments, and replaceable accessories,\n"
+"                                    etc."
+msgstr ""
+
+#: app/templates/main/about_siren.html:170
+#: app/templates/main/index_new.html:1083
+#: app/templates/main/page-commodity-details.html:709
+#: app/templates/main/page_all_commodities.html:476
+msgid "Music should strike fire from the heart of man."
+msgstr "音乐的魔力使人们激情燃烧"
+
+#: app/templates/main/about_siren.html:171
+#: app/templates/main/index_new.html:1084
+#: app/templates/main/page-commodity-details.html:710
+#: app/templates/main/page_all_commodities.html:477
+msgid "Beethoven"
+msgstr "贝多芬"
+
+#: app/templates/main/about_siren.html:175
+#: app/templates/main/index_new.html:1088
+#: app/templates/main/page-commodity-details.html:714
+#: app/templates/main/page_all_commodities.html:481
+msgid "Start Voyage"
+msgstr "开始徜徉在音乐的海洋"
+
+#: app/templates/main/index_new.html:160
+msgid "Start Browsing"
+msgstr "开始浏览"
+
+#: app/templates/main/index_new.html:207
+msgid "Featured"
+msgstr "热销"
+
+#: app/templates/main/index_new.html:207
+#: app/templates/staff/page-list-orders.html:106
+msgid "Collection"
+msgstr "产品"
+
+#: app/templates/main/index_new.html:231 app/templates/main/index_new.html:389
+#: app/templates/main/index_new.html:566
+msgid "Click for Details"
+msgstr "点击获取更多信息"
+
+#: app/templates/main/index_new.html:254 app/templates/main/index_new.html:412
+#: app/templates/main/index_new.html:587
+msgid "comments"
+msgstr "评论"
+
+#: app/templates/main/index_new.html:365
+msgid "Your"
+msgstr "猜"
+
+#: app/templates/main/index_new.html:365
+msgid "Interests"
+msgstr "您喜欢"
+
+#: app/templates/main/index_new.html:526 app/templates/main/index_new.html:533
+msgid "About Us"
+msgstr "关于我们"
+
+#: app/templates/main/index_new.html:545
 msgid "Just Arrived"
 msgstr "最新到货"
 
-#: app/templates/main/index_new.html:903
+#: app/templates/main/index_new.html:711
 msgid "Join"
 msgstr "成为会员"
 
-#: app/templates/main/index_new.html:905
+#: app/templates/main/index_new.html:713
 msgid ""
 "Join Us with the least cost while receiving\n"
 "                                great benefits. Regular sales and "
@@ -728,792 +1193,1550 @@ msgid ""
 "                                and only for members."
 msgstr "加入我们以获取更多优惠。定期销售和独家限量版将仅限适用于会员"
 
-#: app/templates/main/index_new.html:911
-#: app/templates/staff/backup-staff-modify.html:584
-#: app/templates/staff/page-list-product.html:722
+#: app/templates/main/index_new.html:719 app/templates/main/premium.html:70
+#: app/templates/staff/backup-staff-modify.html:582
 msgid "Go Premium"
 msgstr "成为会员"
 
-#: app/templates/main/index_new.html:1275
-msgid "Music should strike fire from the heart of man."
-msgstr "音乐的魔力使人们激情燃烧"
+#: app/templates/main/page-commodity-details.html:124
+#: app/templates/main/page_all_commodities.html:454
+msgid "Previous"
+msgstr ""
 
-#: app/templates/main/index_new.html:1276
-msgid "Beethoven"
-msgstr "贝多芬"
+#: app/templates/main/page-commodity-details.html:128
+#: app/templates/main/page_all_commodities.html:457
+msgid "Next"
+msgstr ""
 
-#: app/templates/main/index_new.html:1279
-msgid "Start Voyage"
-msgstr "开始徜徉在音乐的海洋"
+#: app/templates/main/page-commodity-details.html:142
+#, fuzzy
+msgid "Shop"
+msgstr "商店"
 
-#: app/templates/main/index_new.html:1309
-#: app/templates/order/payment-success.html:279
-msgid "Brands"
-msgstr "品牌"
+#: app/templates/main/page-commodity-details.html:254
+#, fuzzy
+msgid "Specification Table"
+msgstr "分类"
 
-#: app/templates/order/order-confirm-premium.html:87
-msgid "Buy Now"
-msgstr "现在购买"
+#: app/templates/main/page-commodity-details.html:257
+msgid "Weight"
+msgstr ""
 
-#: app/templates/order/order-confirm-premium.html:277
+#: app/templates/main/page-commodity-details.html:261
+msgid "Views"
+msgstr ""
+
+#: app/templates/main/page-commodity-details.html:265
+#, fuzzy
+msgid "Sales"
+msgstr "售卖"
+
+#: app/templates/main/page-commodity-details.html:266
+#, fuzzy
+msgid "times"
+msgstr "我的会员"
+
+#: app/templates/main/page-commodity-details.html:273
+msgid "Customization"
+msgstr ""
+
+#: app/templates/main/page-commodity-details.html:290
+#, fuzzy
+msgid "Additional information"
+msgstr "附加规格"
+
+#: app/templates/main/page-commodity-details.html:291
+msgid ""
+"Please Notice that this is a consumable product\n"
+"                                            and\n"
+"                                            cannot be refunded once sold "
+"after 7-days."
+msgstr ""
+
+#: app/templates/main/page-commodity-details.html:322
+#, fuzzy
+msgid ""
+"Buy\n"
+"                                                            It Now"
+msgstr "显示更多"
+
+#: app/templates/main/page-commodity-details.html:329
+#, fuzzy
+msgid ""
+"This\n"
+"                                                        item runs out of "
+"stock."
+msgstr "显示更多"
+
+#: app/templates/main/page-commodity-details.html:338
+#, fuzzy
+msgid ""
+"This\n"
+"                                                        item is no longer"
+" available (Sold out)."
+msgstr "显示更多"
+
+#: app/templates/main/page-commodity-details.html:359
+msgid ""
+"This product supports 7-days refund and the quality\n"
+"                                        is\n"
+"                                        guaranteed."
+msgstr ""
+
+#: app/templates/main/page-commodity-details.html:408
+msgid "3D view of"
+msgstr ""
+
+#: app/templates/main/page-commodity-details.html:411
+msgid ""
+"You can use mouse to move the camara around by dragging and use mouse "
+"wheel to move\n"
+"                                            closer."
+msgstr ""
+
+#: app/templates/main/page-commodity-details.html:413
+msgid "If you cannot see the 3d model, please move the camara."
+msgstr ""
+
+#: app/templates/main/page-commodity-details.html:414
+msgid ""
+"You may wait for a moment before it finishes rendering, this may take "
+"several\n"
+"                                            minuses."
+msgstr ""
+
+#: app/templates/main/page-commodity-details.html:440
+msgid "Video for showing"
+msgstr ""
+
+#: app/templates/main/page-commodity-details.html:464
+msgid "Audio Samples"
+msgstr ""
+
+#: app/templates/main/page-commodity-details.html:488
+#, fuzzy
+msgid "Comments"
+msgstr "评论"
+
+#: app/templates/main/page-commodity-details.html:608
+msgid "about the brand"
+msgstr ""
+
+#: app/templates/main/page-commodity-details.html:613
+msgid "View Range"
+msgstr ""
+
+#: app/templates/main/page-commodity-details.html:627
+msgid "More from "
+msgstr ""
+
+#: app/templates/main/page-commodity-details.html:651
+msgid "There are no more products from this brand yet."
+msgstr ""
+
+#: app/templates/main/page-commodity-details.html:660
+msgid "Related Recommendation"
+msgstr ""
+
+#: app/templates/main/page-commodity-details.html:693
+msgid "There are no more products from this category yet."
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:54
+#, fuzzy
+msgid "By Category"
+msgstr "分类"
+
+#: app/templates/main/page_all_commodities.html:55
+#: app/templates/staff/backup-staff-modify.html:889
+#: app/templates/staff/page-add-product.html:56
+#: app/templates/staff/page-modify-product.html:71
+msgid "Classification"
+msgstr "分类"
+
+#: app/templates/main/page_all_commodities.html:62
+#: app/templates/main/page_all_commodities.html:99
+#: app/templates/main/page_all_commodities.html:300
+#: app/templates/main/page_all_commodities.html:327
+msgid "See All"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:66
+#, fuzzy
+msgid "String"
+msgstr "定价"
+
+#: app/templates/main/page_all_commodities.html:70
+#: app/templates/staff/page-add-product.html:60
+#: app/templates/staff/page-modify-product.html:75
+msgid "Woodwinds"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:74
+#: app/templates/staff/page-add-product.html:61
+#: app/templates/staff/page-modify-product.html:76
+msgid "Brass"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:78
+#: app/templates/staff/page-add-product.html:62
+#: app/templates/staff/page-modify-product.html:77
+msgid "Percussion"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:82
+#: app/templates/staff/page-add-product.html:63
+#: app/templates/staff/page-modify-product.html:78
+msgid "Keyboard"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:86
+#: app/templates/main/page_all_commodities.html:316
+#: app/templates/staff/page-add-product.html:64
+#: app/templates/staff/page-add-product.html:152
+#: app/templates/staff/page-modify-product.html:79
+#, fuzzy
+msgid "Accessories"
+msgstr "分类"
+
+#: app/templates/main/page_all_commodities.html:92
+#: app/templates/staff/backup-staff-modify.html:903
+#: app/templates/staff/page-add-product.html:72
+#: app/templates/staff/page-list-orders.html:62
+#: app/templates/staff/page-list-orders.html:467
+#: app/templates/staff/page-modify-product.html:86
+msgid "Type"
+msgstr "类型"
+
+#: app/templates/main/page_all_commodities.html:103
+#: app/templates/staff/page-add-product.html:76
+#: app/templates/staff/page-modify-product.html:90
+#, fuzzy
+msgid "Violin"
+msgstr "成为会员"
+
+#: app/templates/main/page_all_commodities.html:107
+#: app/templates/staff/page-add-product.html:77
+#: app/templates/staff/page-modify-product.html:91
+msgid "Viola"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:111
+#: app/templates/staff/page-add-product.html:78
+#: app/templates/staff/page-modify-product.html:92
+msgid "Cello"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:115
+#: app/templates/staff/page-add-product.html:79
+#: app/templates/staff/page-modify-product.html:93
+msgid "Double Bass"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:119
+#: app/templates/staff/page-add-product.html:80
+#: app/templates/staff/page-modify-product.html:94
+msgid "Guitar"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:123
+#: app/templates/staff/page-add-product.html:81
+#: app/templates/staff/page-modify-product.html:95
+msgid "Bass"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:127
+#: app/templates/staff/page-add-product.html:82
+#: app/templates/staff/page-modify-product.html:96
+msgid "Ukulele"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:131
+#: app/templates/staff/page-add-product.html:83
+#: app/templates/staff/page-modify-product.html:97
+msgid "Harp"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:135
+#: app/templates/staff/page-add-product.html:84
+#: app/templates/staff/page-modify-product.html:98
+msgid "Erhu"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:139
+#: app/templates/staff/page-add-product.html:85
+#: app/templates/staff/page-modify-product.html:99
+msgid "Guzheng"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:143
+#: app/templates/staff/page-add-product.html:86
+#: app/templates/staff/page-modify-product.html:100
+#, fuzzy
+msgid "Guqin"
+msgstr "登录"
+
+#: app/templates/main/page_all_commodities.html:147
+#: app/templates/staff/page-add-product.html:87
+#: app/templates/staff/page-modify-product.html:101
+msgid "Pipa"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:151
+#: app/templates/staff/page-add-product.html:91
+#: app/templates/staff/page-modify-product.html:105
+msgid "Flute"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:155
+#: app/templates/staff/page-add-product.html:92
+#: app/templates/staff/page-modify-product.html:106
+msgid "Clarinet"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:159
+#: app/templates/staff/page-add-product.html:93
+#: app/templates/staff/page-modify-product.html:107
+msgid "Oboe"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:163
+#: app/templates/staff/page-add-product.html:94
+#: app/templates/staff/page-modify-product.html:108
+msgid "Piccolo"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:167
+#: app/templates/staff/page-add-product.html:95
+#: app/templates/staff/page-modify-product.html:109
+msgid "Saxophone"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:171
+#: app/templates/staff/page-add-product.html:96
+#: app/templates/staff/page-modify-product.html:110
+msgid "English Horn"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:175
+#: app/templates/staff/page-add-product.html:97
+#: app/templates/staff/page-modify-product.html:111
+msgid "Bassoon"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:179
+#: app/templates/staff/page-add-product.html:98
+#: app/templates/staff/page-modify-product.html:112
+#, fuzzy
+msgid "Recorder"
+msgstr "订单"
+
+#: app/templates/main/page_all_commodities.html:183
+#: app/templates/staff/page-add-product.html:99
+#: app/templates/staff/page-modify-product.html:113
+msgid "Bagpipes"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:187
+#: app/templates/staff/page-add-product.html:100
+#: app/templates/staff/page-modify-product.html:114
+msgid "Suona Horn"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:191
+#: app/templates/staff/page-add-product.html:101
+#: app/templates/staff/page-modify-product.html:115
+msgid "Sheng"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:195
+#: app/templates/staff/page-add-product.html:105
+#: app/templates/staff/page-modify-product.html:119
+msgid "Trumpet"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:199
+#: app/templates/staff/page-add-product.html:106
+#: app/templates/staff/page-modify-product.html:120
+msgid "Trombone"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:203
+#: app/templates/staff/page-add-product.html:107
+#: app/templates/staff/page-modify-product.html:121
+msgid "French Horn"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:207
+#: app/templates/staff/page-add-product.html:108
+#: app/templates/staff/page-modify-product.html:122
+msgid "Tuba"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:211
+#: app/templates/staff/page-add-product.html:109
+#: app/templates/staff/page-modify-product.html:123
+msgid "Euphonium"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:215
+#: app/templates/staff/page-add-product.html:110
+#: app/templates/staff/page-modify-product.html:124
+msgid "Harmonica"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:219
+#: app/templates/staff/page-add-product.html:114
+#: app/templates/staff/page-modify-product.html:128
+msgid "Timpani"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:223
+#: app/templates/staff/page-add-product.html:115
+#: app/templates/staff/page-modify-product.html:129
+msgid "Bass Drum"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:227
+#: app/templates/staff/page-add-product.html:116
+#: app/templates/staff/page-modify-product.html:130
+#, fuzzy
+msgid "Snare"
+msgstr "用户名"
+
+#: app/templates/main/page_all_commodities.html:231
+#: app/templates/staff/page-add-product.html:117
+#: app/templates/staff/page-modify-product.html:131
+msgid "Cajon"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:235
+#: app/templates/staff/page-add-product.html:118
+msgid "SoundBox"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:239
+#: app/templates/staff/page-add-product.html:119
+#: app/templates/staff/page-modify-product.html:133
+msgid "Tam-tam"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:243
+#: app/templates/staff/page-add-product.html:120
+#: app/templates/staff/page-modify-product.html:134
+msgid "Tambourine"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:247
+#: app/templates/staff/page-add-product.html:121
+#: app/templates/staff/page-modify-product.html:135
+msgid "Marimba & Xylophone"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:251
+#: app/templates/staff/page-add-product.html:122
+#: app/templates/staff/page-modify-product.html:136
+msgid "Vibraphone"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:255
+#: app/templates/staff/page-add-product.html:123
+#: app/templates/staff/page-modify-product.html:137
+msgid "Drum Kit"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:259
+#: app/templates/staff/page-add-product.html:124
+#: app/templates/staff/page-modify-product.html:138
+#, fuzzy
+msgid "Other Percussion"
+msgstr "其他页面"
+
+#: app/templates/main/page_all_commodities.html:263
+#: app/templates/staff/page-add-product.html:128
+#: app/templates/staff/page-modify-product.html:142
+msgid "Piano"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:267
+#: app/templates/staff/page-add-product.html:129
+#: app/templates/staff/page-modify-product.html:143
+msgid "Accordion"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:271
+#: app/templates/staff/page-add-product.html:130
+#: app/templates/staff/page-modify-product.html:144
+msgid "Launchpad"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:275
+#: app/templates/staff/page-add-product.html:134
+#: app/templates/staff/page-modify-product.html:148
+#, fuzzy
+msgid "Effects"
+msgstr "选择"
+
+#: app/templates/main/page_all_commodities.html:279
+#: app/templates/staff/page-add-product.html:135
+#: app/templates/staff/page-modify-product.html:149
+msgid "Synthesizer"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:283
+#: app/templates/staff/page-add-product.html:136
+#: app/templates/staff/page-modify-product.html:150
+msgid "Microphone"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:287
+#: app/templates/staff/page-add-product.html:137
+#: app/templates/staff/page-modify-product.html:151
+msgid "Monitor Headphone"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:293
+#, fuzzy
+msgid "Additional Requirements"
+msgstr "额外要求"
+
+#: app/templates/main/page_all_commodities.html:304
+#: app/templates/staff/page-add-product.html:149
+#: app/templates/staff/page-modify-product.html:162
+msgid "Acoustic Only"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:308
+#: app/templates/staff/page-add-product.html:150
+#: app/templates/staff/page-modify-product.html:163
+msgid "Electricity Required"
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:312
+#: app/templates/staff/page-add-product.html:151
+#: app/templates/staff/page-modify-product.html:164
+msgid "Electricity Support"
+msgstr ""
+
+#: app/templates/main/premium.html:42
+msgid "SELECTED INSTRUMENT."
+msgstr ""
+
+#: app/templates/main/premium.html:45
+msgid "FOCUS ON PERFORMING."
+msgstr ""
+
+#: app/templates/main/premium.html:50
+msgid "WORRY NOT ABOUT ANY OTHER."
+msgstr ""
+
+#: app/templates/main/premium.html:53
+msgid "LEAVE THE TRIVIAS TO US."
+msgstr ""
+
+#: app/templates/main/premium.html:58
+msgid "STAGE QUALITY GUARENTEED."
+msgstr ""
+
+#: app/templates/main/premium.html:61
+msgid "CUSTOM SALES ENSURED."
+msgstr ""
+
+#: app/templates/main/premium.html:66
+msgid "START YOUR PREMIUM JOURNEY."
+msgstr ""
+
+#: app/templates/order/order-confirm-premium.html:126
 msgid "Choose Your Premium Plan"
 msgstr "选择您的会员计划"
 
-#: app/templates/order/order-confirm-premium.html:294
-#: app/templates/order/order-confirm.html:1053
+#: app/templates/order/order-confirm-premium.html:130
+msgid "30days"
+msgstr ""
+
+#: app/templates/order/order-confirm-premium.html:131
+msgid "90days"
+msgstr ""
+
+#: app/templates/order/order-confirm-premium.html:132
+msgid "180days"
+msgstr ""
+
+#: app/templates/order/order-confirm-premium.html:133
+msgid "360days"
+msgstr ""
+
+#: app/templates/order/order-confirm-premium.html:143
+#: app/templates/order/order-confirm.html:218
+#: app/templates/staff/staff-index.html:373
 msgid "Order Summary"
 msgstr "订单综述"
 
-#: app/templates/order/order-confirm-premium.html:299
+#: app/templates/order/order-confirm-premium.html:148
 msgid "Total Payment"
 msgstr "没有支付信息！"
 
-#: app/templates/order/order-confirm-premium.html:306
-#: app/templates/order/order-confirm.html:1078
+#: app/templates/order/order-confirm-premium.html:157
+#: app/templates/order/order-confirm.html:250
 msgid "Place Order"
 msgstr "下单"
 
-#: app/templates/order/order-confirm-premium.html:322
-#: app/templates/order/order-confirm.html:1094
+#: app/templates/order/order-confirm-premium.html:173
+#: app/templates/order/order-confirm.html:266
 msgid ""
 "There was an error processing your customer info. Please try again, or "
 "contact us if you\n"
 "                                continue to have problems."
 msgstr "处理您的用户信息时出错，请您重新尝试。如果您仍有问题请联系我们。"
 
-#: app/templates/order/order-confirm.html:344
-msgid "Shipping Address"
-msgstr "配送地址"
+#: app/templates/order/order-confirm.html:129
+#, fuzzy
+msgid "Recipient Info"
+msgstr "收货人姓名"
 
-#: app/templates/order/order-confirm.html:345
+#: app/templates/order/order-confirm.html:130
+#: app/templates/order/order-confirm.html:149
 msgid "Required"
 msgstr "必填"
 
-#: app/templates/order/order-confirm.html:393
+#: app/templates/order/order-confirm.html:133
+#: app/templates/order/order-confirm.html:164
+#: app/templates/order/order-detail.html:851
+#: app/templates/order/order-detail.html:878
+#: app/templates/order/order-detail.html:934
+#: app/templates/order/order-detail.html:961
+#: app/templates/staff/page-list-orders.html:583
+#: app/templates/staff/page-list-orders.html:611
+#: app/templates/staff/page-list-orders.html:694
+#: app/templates/userinfo/temp_address_listing.html:47
+msgid "Recipient Name"
+msgstr "收货人姓名"
+
+#: app/templates/order/order-confirm.html:137
+#: app/templates/order/order-detail.html:882
+#: app/templates/order/order-detail.html:965
+msgid "Phone Number"
+msgstr ""
+
+#: app/templates/order/order-confirm.html:148
+msgid "Shipping Address"
+msgstr "配送地址"
+
+#: app/templates/order/order-confirm.html:170
+#: app/templates/order/order-detail.html:857
+#: app/templates/order/order-detail.html:940
+#: app/templates/staff/page-list-orders.html:589
+#: app/templates/staff/page-list-orders.html:700
+#, fuzzy
+msgid "Full Address"
+msgstr "添加地址"
+
+#: app/templates/order/order-confirm.html:177
+#: app/templates/order/order-detail.html:864
+#: app/templates/order/order-detail.html:947
+#: app/templates/staff/page-list-orders.html:596
+#: app/templates/staff/page-list-orders.html:707
+#, fuzzy
+msgid "default"
+msgstr "默认"
+
+#: app/templates/order/order-confirm.html:182
+#: app/templates/userinfo/temp_address_listing.html:82
+#: app/templates/userinfo/temp_address_listing.html:91
+#: app/templates/userinfo/user_profile.html:334
+msgid "Delete"
+msgstr "删除"
+
+#: app/templates/order/order-confirm.html:184
+#: app/templates/staff/page-list-product.html:132
+#: app/templates/staff/page-list-product.html:177
+#: app/templates/userinfo/temp_address_listing.html:79
+#: app/templates/userinfo/temp_address_listing.html:88
+#: app/templates/userinfo/user_profile.html:113
+#: app/templates/userinfo/user_profile.html:324
+msgid "Edit"
+msgstr "编辑"
+
+#: app/templates/order/order-confirm.html:198
 msgid "Shipping Method"
 msgstr "配送方式"
 
-#: app/templates/order/order-confirm.html:1058
+#: app/templates/order/order-confirm.html:200
+msgid "NOTICE: The self-collection is not available during epidemic time"
+msgstr ""
+
+#: app/templates/order/order-confirm.html:204
+#, fuzzy
+msgid "delivery"
+msgstr "快递"
+
+#: app/templates/order/order-confirm.html:207
+#: app/templates/order/order-confirm.html:209
+#, fuzzy
+msgid "self-collecting"
+msgstr "产品"
+
+#: app/templates/order/order-confirm.html:223
 msgid "Subtotal (without delivery fee)"
 msgstr "小计（不包含运费）"
 
-#: app/templates/order/order-confirm.html:1071
+#: app/templates/order/order-confirm.html:231
+msgid "Delivery Fee"
+msgstr ""
+
+#: app/templates/order/order-confirm.html:237
+#: app/templates/staff/page-list-orders.html:59
 msgid "Total"
 msgstr "小计"
 
-#: app/templates/order/order-detail.html:324
-#: app/templates/order/order-listing.html:147
+#: app/templates/order/order-confirm.html:242
+msgid "Payment (after discount)"
+msgstr ""
+
+#: app/templates/order/order-detail.html:316
+#: app/templates/order/order-listing.html:309
 #: app/templates/userinfo/temp_address_listing.html:23
 msgid "Your Order"
 msgstr "我的订单"
 
-#: app/templates/order/order-listing.html:160
-msgid "Canceled"
-msgstr "已取消"
+#: app/templates/order/order-detail.html:329
+#: app/templates/order/order-listing.html:370
+#: app/templates/staff/page-list-orders.html:274
+msgid "Waiting for Payment"
+msgstr ""
 
-#: app/templates/order/order-listing.html:164
-msgid "Unpaid"
-msgstr "未支付"
+#: app/templates/order/order-detail.html:333
+#: app/templates/order/order-detail.html:513
+#: app/templates/order/order-detail.html:519
+#: app/templates/order/order-listing.html:374
+#: app/templates/staff/page-list-orders.html:96
+#: app/templates/staff/page-list-orders.html:278
+msgid "Preparing"
+msgstr ""
 
-#: app/templates/order/order-listing.html:168
-msgid "Delivering"
-msgstr "快递"
+#: app/templates/order/order-detail.html:337
+#: app/templates/order/order-detail.html:529
+#: app/templates/order/order-detail.html:535
+#: app/templates/order/order-listing.html:378
+#: app/templates/staff/page-list-orders.html:282
+msgid "On Delivery"
+msgstr ""
 
-#: app/templates/order/order-listing.html:172
-msgid "Wait for Collection"
+#: app/templates/order/order-detail.html:341
+#: app/templates/order/order-listing.html:382
+#: app/templates/staff/page-list-orders.html:286
+#, fuzzy
+msgid "Waiting for Collection"
 msgstr "等待整理"
 
-#: app/templates/order/order-listing.html:176
+#: app/templates/order/order-detail.html:345
+#: app/templates/order/order-detail.html:545
+#: app/templates/order/order-detail.html:551
+#: app/templates/order/order-detail.html:578
+#: app/templates/order/order-detail.html:584
+#: app/templates/order/order-listing.html:338
+#: app/templates/order/order-listing.html:386
+#: app/templates/staff/page-list-orders.html:111
+#: app/templates/staff/page-list-orders.html:290
 msgid "Finished"
 msgstr "完成"
 
-#: app/templates/order/payment-success.html:214
-#: app/templates/userinfo/user_profile.html:241
-msgid "Gatagory"
-msgstr "分类"
+#: app/templates/order/order-detail.html:349
+#: app/templates/order/order-listing.html:322
+#: app/templates/order/order-listing.html:390
+#: app/templates/staff/page-list-orders.html:116
+#: app/templates/staff/page-list-orders.html:294
+msgid "Canceled"
+msgstr "已取消"
 
-#: app/templates/staff/backup-staff-modify.html:31
+#: app/templates/order/order-detail.html:353
+#: app/templates/order/order-listing.html:394
+#: app/templates/staff/page-list-orders.html:121
+#: app/templates/staff/page-list-orders.html:298
+#, fuzzy
+msgid "Expired"
+msgstr "必填"
+
+#: app/templates/order/order-detail.html:364
+#: app/templates/staff/page-list-orders.html:309
+#, fuzzy
+msgid "Basic Information"
+msgstr "个人信息"
+
+#: app/templates/order/order-detail.html:371
+#: app/templates/order/order-detail.html:812
+#, fuzzy
+msgid "Modify Type"
+msgstr "修改商品"
+
+#: app/templates/order/order-detail.html:382
+#: app/templates/order/order-listing.html:361
+#: app/templates/staff/page-list-orders.html:319
+#, fuzzy
+msgid "Trade"
+msgstr "订单"
+
+#: app/templates/order/order-detail.html:387
+#: app/templates/order/order-detail.html:495
+#: app/templates/order/order-detail.html:501
+#: app/templates/staff/page-list-orders.html:326
+#, fuzzy
+msgid "Payment"
+msgstr "没有支付信息！"
+
+#: app/templates/order/order-detail.html:397
+#: app/templates/staff/page-list-orders.html:337
+#, fuzzy
+msgid "Order Type"
+msgstr "型号"
+
+#: app/templates/order/order-detail.html:400
+#: app/templates/staff/page-list-orders.html:341
+msgid "Delivery Cost"
+msgstr ""
+
+#: app/templates/order/order-detail.html:408
+#: app/templates/staff/page-list-orders.html:351
+msgid "Actual Paid"
+msgstr ""
+
+#: app/templates/order/order-detail.html:417
+#: app/templates/staff/page-list-orders.html:361
+#, fuzzy
+msgid "Address Information"
+msgstr "个人信息"
+
+#: app/templates/order/order-detail.html:419
+#: app/templates/staff/page-list-orders.html:363
+#, fuzzy
+msgid "Recipient Information"
+msgstr "个人信息"
+
+#: app/templates/order/order-detail.html:427
+#: app/templates/order/order-detail.html:909
+#, fuzzy
+msgid "Modify Address"
+msgstr "修改地址"
+
+#: app/templates/order/order-detail.html:432
+#: app/templates/order/order-detail.html:911
+#, fuzzy
+msgid "Modify Recipient"
+msgstr "修改商品"
+
+#: app/templates/order/order-detail.html:562
+#: app/templates/order/order-detail.html:568
+#, fuzzy
+msgid "Waiting For Collection"
+msgstr "等待整理"
+
+#: app/templates/order/order-detail.html:693
+#, fuzzy
+msgid "Commented"
+msgstr "评论"
+
+#: app/templates/order/order-detail.html:826
+#: app/templates/staff/page-list-orders.html:130
+#: app/templates/staff/page-list-orders.html:494
+#: app/templates/staff/page-list-orders.html:513
+#: app/templates/staff/page-list-orders.html:552
+#, fuzzy
+msgid "Self-Collection"
+msgstr "产品"
+
+#: app/templates/order/order-listing.html:44
+msgid "Welcome to Siren – Selects online music instrument shop for you"
+msgstr ""
+
+#: app/templates/order/order-listing.html:326
+#: app/templates/staff/page-list-orders.html:91
+msgid "Unpaid"
+msgstr "未支付"
+
+#: app/templates/order/order-listing.html:330
+#: app/templates/staff/page-list-orders.html:101
+msgid "Delivering"
+msgstr "快递"
+
+#: app/templates/order/order-listing.html:334
+msgid "Wait for Collection"
+msgstr "等待整理"
+
+#: app/templates/order/order-listing.html:432
+msgid "View All & Details"
+msgstr ""
+
+#: app/templates/order/order-listing.html:483
+#, fuzzy
+msgid "View Details"
+msgstr "用户详情"
+
+#: app/templates/order/order-listing.html:542
+#, fuzzy
+msgid "Pay"
+msgstr "公司"
+
+#: app/templates/order/order-listing.html:548
+#: app/templates/staff/backup-staff-modify.html:845
+#: app/templates/staff/page-list-journals.html:210
+#: app/templates/staff/page-list-journals.html:258
+#: app/templates/staff/page-list-product.html:295
+#: app/templates/staff/page-list-product.html:360
+#: app/templates/staff/page-list-product.html:431
+#: app/templates/staff/page-list-product.html:522
+msgid "Cancel"
+msgstr "取消"
+
+#: app/templates/order/order-listing.html:555
+#: app/templates/order/order-listing.html:562
+msgid "View Progress"
+msgstr ""
+
+#: app/templates/order/order-listing.html:568
+#, fuzzy
+msgid "Confirm"
+msgstr "确认邮件地址"
+
+#: app/templates/order/order-listing.html:575
+msgid "After Sale Service"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:29
 msgid "Siren Management"
 msgstr "塞壬管理"
 
-#: app/templates/staff/backup-staff-modify.html:45
-#: app/templates/staff/page-add-product.html:43
-msgid "Dashboards"
-msgstr "仪表盘"
-
-#: app/templates/staff/backup-staff-modify.html:54
-#: app/templates/staff/page-add-product.html:51
-#: app/templates/staff/page-list-product.html:64
-msgid "Products"
-msgstr "产品"
-
-#: app/templates/staff/backup-staff-modify.html:63
-#: app/templates/staff/page-add-product.html:59
-#: app/templates/staff/page-list-product.html:75
-msgid "List Product"
-msgstr "产品列表"
-
-#: app/templates/staff/backup-staff-modify.html:86
-#: app/templates/staff/page-add-product.html:82
-#: app/templates/staff/page-list-product.html:104
-msgid "List Category"
-msgstr "分类列表"
-
-#: app/templates/staff/backup-staff-modify.html:91
-#: app/templates/staff/page-add-product.html:87
-#: app/templates/staff/page-list-product.html:109
-msgid "Add Category"
-msgstr "添加分类"
-
-#: app/templates/staff/backup-staff-modify.html:101
-#: app/templates/staff/page-add-product.html:97
+#: app/templates/staff/backup-staff-modify.html:99
 msgid "Sale"
 msgstr "售卖"
 
-#: app/templates/staff/backup-staff-modify.html:109
-#: app/templates/staff/page-add-product.html:105
-#: app/templates/staff/page-list-product.html:133
+#: app/templates/staff/backup-staff-modify.html:107
 msgid "List Sale"
 msgstr "售卖列表"
 
-#: app/templates/staff/backup-staff-modify.html:114
-#: app/templates/staff/page-add-product.html:110
-#: app/templates/staff/page-list-product.html:138
+#: app/templates/staff/backup-staff-modify.html:112
 msgid "Add Sale"
 msgstr "添加售卖"
 
-#: app/templates/staff/backup-staff-modify.html:124
-#: app/templates/staff/page-add-product.html:120
-#: app/templates/staff/page-list-product.html:151
+#: app/templates/staff/backup-staff-modify.html:122
 msgid "Purchases"
 msgstr "购买"
 
-#: app/templates/staff/backup-staff-modify.html:132
-#: app/templates/staff/page-add-product.html:128
-#: app/templates/staff/page-list-product.html:162
+#: app/templates/staff/backup-staff-modify.html:130
 msgid "List Purchases"
 msgstr "购买列表"
 
-#: app/templates/staff/backup-staff-modify.html:137
-#: app/templates/staff/page-add-product.html:133
-#: app/templates/staff/page-list-product.html:167
+#: app/templates/staff/backup-staff-modify.html:135
 msgid "Add purchase"
 msgstr "添加购买"
 
-#: app/templates/staff/backup-staff-modify.html:155
-#: app/templates/staff/page-add-product.html:151
-#: app/templates/staff/page-list-product.html:193
-msgid "List Returns"
-msgstr "返回列表"
-
-#: app/templates/staff/backup-staff-modify.html:160
-#: app/templates/staff/page-add-product.html:156
-#: app/templates/staff/page-list-product.html:198
-msgid "Add Return"
-msgstr "添加返回"
-
-#: app/templates/staff/backup-staff-modify.html:170
-#: app/templates/staff/page-add-product.html:166
-#: app/templates/staff/page-list-product.html:213
-msgid "People"
-msgstr "群组"
-
-#: app/templates/staff/backup-staff-modify.html:178
-#: app/templates/staff/page-add-product.html:174
-#: app/templates/staff/page-list-product.html:224
+#: app/templates/staff/backup-staff-modify.html:176
 msgid "Customers"
 msgstr "顾客"
 
-#: app/templates/staff/backup-staff-modify.html:183
-#: app/templates/staff/page-add-product.html:179
-#: app/templates/staff/page-list-product.html:229
+#: app/templates/staff/backup-staff-modify.html:181
 msgid "Add Customers"
 msgstr "添加顾客"
 
-#: app/templates/staff/backup-staff-modify.html:188
-#: app/templates/staff/page-add-product.html:184
-#: app/templates/staff/page-list-product.html:234
+#: app/templates/staff/backup-staff-modify.html:186
 msgid "Users"
 msgstr "用户"
 
-#: app/templates/staff/backup-staff-modify.html:193
-#: app/templates/staff/page-add-product.html:189
-#: app/templates/staff/page-list-product.html:239
+#: app/templates/staff/backup-staff-modify.html:191
 msgid "Add Users"
 msgstr "添加用户"
 
-#: app/templates/staff/backup-staff-modify.html:198
-#: app/templates/staff/page-add-product.html:194
-#: app/templates/staff/page-list-product.html:244
+#: app/templates/staff/backup-staff-modify.html:196
 msgid "Suppliers"
 msgstr "供应商"
 
-#: app/templates/staff/backup-staff-modify.html:203
-#: app/templates/staff/page-add-product.html:199
-#: app/templates/staff/page-list-product.html:249
+#: app/templates/staff/backup-staff-modify.html:201
 msgid "Add Suppliers"
 msgstr "添加供应商"
 
-#: app/templates/staff/backup-staff-modify.html:213
-#: app/templates/staff/page-add-product.html:209
-#: app/templates/staff/page-list-product.html:265
-msgid "Reports"
-msgstr "报告"
-
-#: app/templates/staff/backup-staff-modify.html:223
-#: app/templates/staff/page-add-product.html:219
-#: app/templates/staff/page-list-product.html:279
-msgid "other page"
-msgstr "其他页面"
-
-#: app/templates/staff/backup-staff-modify.html:234
-#: app/templates/staff/page-add-product.html:230
-#: app/templates/staff/page-list-product.html:298
-msgid "User Details"
-msgstr "用户详情"
-
-#: app/templates/staff/backup-staff-modify.html:242
-#: app/templates/staff/page-add-product.html:238
-#: app/templates/staff/page-list-product.html:310
-msgid "User Profile"
-msgstr "用户主页"
-
-#: app/templates/staff/backup-staff-modify.html:247
-#: app/templates/staff/page-add-product.html:243
-#: app/templates/staff/page-list-product.html:315
-msgid "User Add"
-msgstr "添加用户"
-
-#: app/templates/staff/backup-staff-modify.html:252
-#: app/templates/staff/page-add-product.html:248
-#: app/templates/staff/page-list-product.html:320
-msgid "User List"
-msgstr "用户列表"
-
-#: app/templates/staff/backup-staff-modify.html:262
-#: app/templates/staff/page-add-product.html:258
-#: app/templates/staff/page-list-product.html:333
-msgid "UI Elements"
-msgstr "UI组件"
-
-#: app/templates/staff/backup-staff-modify.html:270
-#: app/templates/staff/page-add-product.html:266
-#: app/templates/staff/page-list-product.html:345
-msgid "Avatars"
-msgstr "头像"
-
-#: app/templates/staff/backup-staff-modify.html:275
-#: app/templates/staff/page-add-product.html:271
-#: app/templates/staff/page-list-product.html:350
-msgid "Alerts"
-msgstr "警告"
-
-#: app/templates/staff/backup-staff-modify.html:280
-#: app/templates/staff/page-add-product.html:276
-#: app/templates/staff/page-list-product.html:355
-msgid "Badges"
-msgstr "标记"
-
-#: app/templates/staff/backup-staff-modify.html:285
-#: app/templates/staff/page-add-product.html:281
-#: app/templates/staff/page-list-product.html:360
-msgid "Breadcrumb"
-msgstr "面包屑"
-
-#: app/templates/staff/backup-staff-modify.html:290
-#: app/templates/staff/page-add-product.html:286
-#: app/templates/staff/page-list-product.html:365
-msgid "Buttons"
-msgstr "按钮"
-
-#: app/templates/staff/backup-staff-modify.html:295
-#: app/templates/staff/page-add-product.html:291
-#: app/templates/staff/page-list-product.html:370
-msgid "Buttons Group"
-msgstr "按钮群组"
-
-#: app/templates/staff/backup-staff-modify.html:300
-#: app/templates/staff/page-add-product.html:296
-#: app/templates/staff/page-list-product.html:375
-msgid "Box Shadow"
-msgstr "选择框阴影"
-
-#: app/templates/staff/backup-staff-modify.html:305
-#: app/templates/staff/page-add-product.html:301
-#: app/templates/staff/page-list-product.html:380
-msgid "Colors"
-msgstr "颜色"
-
-#: app/templates/staff/backup-staff-modify.html:310
-#: app/templates/staff/page-add-product.html:306
-#: app/templates/staff/page-list-product.html:385
-msgid "Cards"
-msgstr "卡片"
-
-#: app/templates/staff/backup-staff-modify.html:315
-#: app/templates/staff/page-add-product.html:311
-#: app/templates/staff/page-list-product.html:390
-msgid "Carousel"
-msgstr "轮播图"
-
-#: app/templates/staff/backup-staff-modify.html:320
-#: app/templates/staff/page-add-product.html:316
-#: app/templates/staff/page-list-product.html:395
-msgid "Grid"
-msgstr "网格"
-
-#: app/templates/staff/backup-staff-modify.html:325
-#: app/templates/staff/page-add-product.html:321
-#: app/templates/staff/page-list-product.html:400
-msgid "Helper classes"
-msgstr "帮助类"
-
-#: app/templates/staff/backup-staff-modify.html:330
-#: app/templates/staff/page-add-product.html:326
-#: app/templates/staff/page-list-product.html:405
-msgid "Images"
-msgstr "图片"
-
-#: app/templates/staff/backup-staff-modify.html:335
-#: app/templates/staff/page-add-product.html:331
-#: app/templates/staff/page-list-product.html:410
-msgid "list Group"
-msgstr "群组列表"
-
-#: app/templates/staff/backup-staff-modify.html:340
-#: app/templates/staff/page-add-product.html:336
-#: app/templates/staff/page-list-product.html:415
-msgid "Media"
-msgstr "媒体"
-
-#: app/templates/staff/backup-staff-modify.html:345
-#: app/templates/staff/page-add-product.html:341
-#: app/templates/staff/page-list-product.html:420
-msgid "Modal"
-msgstr "模式"
-
-#: app/templates/staff/backup-staff-modify.html:350
-#: app/templates/staff/backup-staff-modify.html:751
-#: app/templates/staff/page-add-product.html:346
-#: app/templates/staff/page-add-product.html:766
-#: app/templates/staff/page-list-product.html:425
-#: app/templates/staff/page-list-product.html:940
-msgid "Notifications"
-msgstr "通知"
-
-#: app/templates/staff/backup-staff-modify.html:355
-#: app/templates/staff/page-add-product.html:351
-#: app/templates/staff/page-list-product.html:430
-msgid "Pagination"
-msgstr "页码"
-
-#: app/templates/staff/backup-staff-modify.html:360
-#: app/templates/staff/page-add-product.html:356
-#: app/templates/staff/page-list-product.html:435
-msgid "Popovers"
-msgstr "弹出框"
-
-#: app/templates/staff/backup-staff-modify.html:365
-#: app/templates/staff/page-add-product.html:361
-#: app/templates/staff/page-list-product.html:440
-msgid "Progressbars"
-msgstr "进度条"
-
-#: app/templates/staff/backup-staff-modify.html:370
-#: app/templates/staff/page-add-product.html:366
-#: app/templates/staff/page-list-product.html:445
-msgid "Typography"
-msgstr "印刷"
-
-#: app/templates/staff/backup-staff-modify.html:375
-#: app/templates/staff/page-add-product.html:371
-#: app/templates/staff/page-list-product.html:450
-msgid "Tabs"
-msgstr "标号"
-
-#: app/templates/staff/backup-staff-modify.html:380
-#: app/templates/staff/page-add-product.html:376
-#: app/templates/staff/page-list-product.html:455
-msgid "Tooltips"
-msgstr "工具提示"
-
-#: app/templates/staff/backup-staff-modify.html:385
-#: app/templates/staff/page-add-product.html:381
-#: app/templates/staff/page-list-product.html:460
-msgid "Video"
-msgstr "视频"
-
-#: app/templates/staff/backup-staff-modify.html:395
-#: app/templates/staff/page-add-product.html:391
-#: app/templates/staff/page-list-product.html:477
-msgid "Authentication"
-msgstr "鉴定"
-
-#: app/templates/staff/backup-staff-modify.html:413
-#: app/templates/staff/page-add-product.html:409
-#: app/templates/staff/page-list-product.html:499
-msgid "Recover Password"
-msgstr "密码错误！"
-
-#: app/templates/staff/backup-staff-modify.html:418
-#: app/templates/staff/page-add-product.html:414
-#: app/templates/staff/page-list-product.html:504
-msgid "Confirm Mail"
-msgstr "确认邮件地址"
-
-#: app/templates/staff/backup-staff-modify.html:423
-#: app/templates/staff/page-add-product.html:419
-#: app/templates/staff/page-list-product.html:509
-msgid "Lock Screen"
-msgstr "锁屏"
-
-#: app/templates/staff/backup-staff-modify.html:433
-#: app/templates/staff/page-add-product.html:429
-#: app/templates/staff/page-list-product.html:523
-msgid "Forms"
-msgstr "表单"
-
-#: app/templates/staff/backup-staff-modify.html:441
-#: app/templates/staff/page-add-product.html:437
-#: app/templates/staff/page-list-product.html:535
-msgid "Form Elements"
-msgstr "表单元素"
-
-#: app/templates/staff/backup-staff-modify.html:446
-#: app/templates/staff/page-add-product.html:442
-#: app/templates/staff/page-list-product.html:540
-msgid "Form Input"
-msgstr "表单输入"
-
-#: app/templates/staff/backup-staff-modify.html:451
-#: app/templates/staff/page-add-product.html:447
-#: app/templates/staff/page-list-product.html:545
-msgid "Form Validation"
-msgstr "表单验证"
-
-#: app/templates/staff/backup-staff-modify.html:456
-#: app/templates/staff/page-add-product.html:452
-#: app/templates/staff/page-list-product.html:550
-msgid "Form Switch"
-msgstr "表单切换"
-
-#: app/templates/staff/backup-staff-modify.html:461
-#: app/templates/staff/page-add-product.html:457
-#: app/templates/staff/page-list-product.html:555
-msgid "Form Checkbox"
-msgstr "表单勾选框"
-
-#: app/templates/staff/backup-staff-modify.html:466
-#: app/templates/staff/page-add-product.html:462
-#: app/templates/staff/page-list-product.html:560
-msgid "Form Radio"
-msgstr "表单选择框"
-
-#: app/templates/staff/backup-staff-modify.html:471
-#: app/templates/staff/page-add-product.html:467
-#: app/templates/staff/page-list-product.html:565
-msgid "Form Textarea"
-msgstr "表单文本"
-
-#: app/templates/staff/backup-staff-modify.html:489
-#: app/templates/staff/page-add-product.html:485
-#: app/templates/staff/page-list-product.html:593
-msgid "Basic Tables"
-msgstr "基础表格"
-
-#: app/templates/staff/backup-staff-modify.html:494
-#: app/templates/staff/page-add-product.html:490
-#: app/templates/staff/page-list-product.html:598
-msgid "Data Table"
-msgstr "数据表格"
-
-#: app/templates/staff/backup-staff-modify.html:499
-#: app/templates/staff/page-add-product.html:495
-#: app/templates/staff/page-list-product.html:603
-msgid "Table Tree"
-msgstr "表格树"
-
-#: app/templates/staff/backup-staff-modify.html:509
-#: app/templates/staff/page-add-product.html:505
-#: app/templates/staff/page-list-product.html:618
-msgid "Pricing"
-msgstr "定价"
-
-#: app/templates/staff/backup-staff-modify.html:532
-#: app/templates/staff/page-add-product.html:528
-#: app/templates/staff/page-list-product.html:652
-msgid "Invoice"
-msgstr "发票"
-
-#: app/templates/staff/backup-staff-modify.html:540
-#: app/templates/staff/page-add-product.html:536
-#: app/templates/staff/page-list-product.html:665
-msgid "Error"
-msgstr "错误"
-
-#: app/templates/staff/backup-staff-modify.html:563
-#: app/templates/staff/page-add-product.html:559
-#: app/templates/staff/page-list-product.html:696
-msgid "Blank Page"
-msgstr "空白页"
-
-#: app/templates/staff/backup-staff-modify.html:571
-#: app/templates/staff/page-add-product.html:567
-#: app/templates/staff/page-list-product.html:707
-msgid "Maintenance"
-msgstr "维护"
-
-#: app/templates/staff/backup-staff-modify.html:583
-#: app/templates/staff/page-add-product.html:579
-#: app/templates/staff/page-list-product.html:721
+#: app/templates/staff/backup-staff-modify.html:581
 msgid "Get More Feature by Upgrading"
 msgstr "更新以获得更多特征"
 
-#: app/templates/staff/backup-staff-modify.html:682
-#: app/templates/staff/page-add-product.html:691
-#: app/templates/staff/page-list-product.html:863
-msgid "All Messages"
-msgstr "全部消息"
-
-#: app/templates/staff/backup-staff-modify.html:799
+#: app/templates/staff/backup-staff-modify.html:797
 msgid ""
 "View\n"
 "                                                            All"
 msgstr "显示更多"
 
-#: app/templates/staff/backup-staff-modify.html:839
-#: app/templates/staff/page-add-product.html:862
-#: app/templates/staff/page-list-product.html:1041
+#: app/templates/staff/backup-staff-modify.html:837
 msgid "New Order"
 msgstr "新订单"
 
-#: app/templates/staff/backup-staff-modify.html:847
-#: app/templates/staff/page-add-product.html:870
-#: app/templates/staff/page-list-product.html:1049
-#: app/templates/staff/page-list-product.html:1231
-msgid "Cancel"
-msgstr "取消"
-
-#: app/templates/staff/backup-staff-modify.html:848
-#: app/templates/staff/page-add-product.html:871
-#: app/templates/staff/page-list-product.html:1050
+#: app/templates/staff/backup-staff-modify.html:846
 msgid "Create"
 msgstr "创建"
 
-#: app/templates/staff/backup-staff-modify.html:864
-#: app/templates/staff/page-modify-product.html:864
+#: app/templates/staff/backup-staff-modify.html:862
+#: app/templates/staff/page-modify-product.html:33
 msgid "Modify Product"
 msgstr "修改商品"
 
-#: app/templates/staff/backup-staff-modify.html:891
-#: app/templates/staff/page-add-product.html:906
-#: app/templates/staff/page-modify-product.html:902
-msgid "Classification"
-msgstr "分类"
-
-#: app/templates/staff/backup-staff-modify.html:905
-#: app/templates/staff/page-add-product.html:920
-#: app/templates/staff/page-modify-product.html:916
-msgid "Type"
-msgstr "类型"
-
-#: app/templates/staff/backup-staff-modify.html:977
-#: app/templates/staff/page-modify-product.html:988
+#: app/templates/staff/backup-staff-modify.html:975
+#: app/templates/staff/page-modify-product.html:159
 msgid "Extra Requirement"
 msgstr "额外要求"
 
-#: app/templates/staff/backup-staff-modify.html:1019
+#: app/templates/staff/backup-staff-modify.html:1017
 msgid "Cost"
 msgstr "价格"
 
-#: app/templates/staff/backup-staff-modify.html:1033
+#: app/templates/staff/backup-staff-modify.html:1031
 msgid "Tax Method"
 msgstr "计税方法"
 
-#: app/templates/staff/backup-staff-modify.html:1049
+#: app/templates/staff/backup-staff-modify.html:1047
 msgid "Image"
 msgstr "图片"
 
-#: app/templates/staff/backup-staff-modify.html:1055
-#: app/templates/staff/page-add-product.html:1097
+#: app/templates/staff/backup-staff-modify.html:1053
+#: app/templates/staff/page-add-product.html:264
 msgid "Description / Product Details"
 msgstr "描述/商品详情"
 
-#: app/templates/staff/backup-staff-modify.html:1061
-#: app/templates/staff/page-add-product.html:1105
-#: app/templates/staff/page-modify-modeltype.html:980
-#: app/templates/staff/page-modify-product.html:1022
-#: app/templates/staff/page-upload-modeltype.html:970
+#: app/templates/staff/backup-staff-modify.html:1059
+#: app/templates/staff/page-add-journal.html:82
+#: app/templates/staff/page-add-product.html:273
+#: app/templates/staff/page-list-orders.html:793
+#: app/templates/staff/page-modify-journal.html:82
+#: app/templates/staff/page-modify-modeltype.html:150
+#: app/templates/staff/page-modify-product.html:194
+#: app/templates/staff/page-upload-modeltype.html:140
 msgid "Reset"
 msgstr "重置"
 
-#: app/templates/staff/backup-staff-modify.html:1080
-#: app/templates/staff/page-add-product.html:1126
-#: app/templates/staff/page-list-product.html:1252
-#: app/templates/staff/page-modify-modeltype.html:999
-#: app/templates/staff/page-modify-product.html:1040
-#: app/templates/staff/page-upload-modeltype.html:989
-msgid "Privacy Policy"
-msgstr "隐私政策"
+#: app/templates/staff/page-add-journal.html:39
+msgid "Upload New Journal"
+msgstr ""
 
-#: app/templates/staff/backup-staff-modify.html:1081
-#: app/templates/staff/page-add-product.html:1127
-#: app/templates/staff/page-list-product.html:1254
-#: app/templates/staff/page-modify-modeltype.html:1000
-#: app/templates/staff/page-modify-product.html:1041
-#: app/templates/staff/page-upload-modeltype.html:990
-msgid "Terms of Use"
-msgstr "使用术语"
-
-#: app/templates/staff/page-add-product.html:74
-msgid "Categories"
-msgstr "分类"
-
-#: app/templates/staff/page-add-product.html:143
-#: app/templates/staff/page-list-product.html:182
-msgid "Returns"
-msgstr "返回列表"
-
-#: app/templates/staff/page-add-product.html:477
-#: app/templates/staff/page-list-product.html:581
-msgid "Table"
-msgstr "表格"
-
-#: app/templates/staff/page-add-product.html:601
-#: app/templates/staff/page-list-product.html:754
-#: app/templates/staff/page-list-product.html:756
-#: app/templates/staff/page-modify-product.html:604
-msgid "Search here..."
-msgstr "搜索"
-
-#: app/templates/staff/page-add-product.html:744
-#: app/templates/staff/page-add-product.html:819
-#: app/templates/staff/page-list-product.html:916
-#: app/templates/staff/page-list-product.html:993
-msgid "View All"
-msgstr "显示更多"
-
-#: app/templates/staff/page-add-product.html:843
-msgid "Profile"
-msgstr "修改个人主页"
-
-#: app/templates/staff/page-add-product.html:844
-msgid "Sign Out"
-msgstr "退出登录"
-
-#: app/templates/staff/page-add-product.html:866
-#: app/templates/staff/page-list-product.html:1045
-msgid "Enter Name or Email"
-msgstr "请输入姓名或邮箱"
-
-#: app/templates/staff/page-add-product.html:897
+#: app/templates/staff/page-add-product.html:44
 msgid "Product Name"
 msgstr "产品名"
 
-#: app/templates/staff/page-add-product.html:898
-#: app/templates/staff/page-add-product.html:1044
+#: app/templates/staff/page-add-product.html:46
+#: app/templates/staff/page-add-product.html:200
 msgid "Enter Name"
 msgstr "请输入用户名"
 
-#: app/templates/staff/page-add-product.html:898
-#: app/templates/staff/page-add-product.html:1044
+#: app/templates/staff/page-add-product.html:47
+#: app/templates/staff/page-add-product.html:201
 msgid "Please Enter Name."
 msgstr "请输入商品名称"
 
-#: app/templates/staff/page-add-product.html:994
+#: app/templates/staff/page-add-product.html:59
+#: app/templates/staff/page-modify-product.html:74
+msgid "Strings"
+msgstr ""
+
+#: app/templates/staff/page-add-product.html:146
 msgid "Additional Specifications"
 msgstr "附加规格"
 
-#: app/templates/staff/page-add-product.html:1035
+#: app/templates/staff/page-add-product.html:190
 msgid "Product Initial ModelType(s)"
 msgstr "产品初始型号"
 
-#: app/templates/staff/page-add-product.html:1043
-msgid "Model Name"
-msgstr "型号名称"
-
-#: app/templates/staff/page-add-product.html:1054
+#: app/templates/staff/page-add-product.html:212
 msgid "Enter Serial Number"
 msgstr "输入商品序列号"
 
-#: app/templates/staff/page-add-product.html:1054
+#: app/templates/staff/page-add-product.html:213
 msgid "Please Enter Serial Number."
 msgstr "请输入商品序列号"
 
-#: app/templates/staff/page-add-product.html:1064
+#: app/templates/staff/page-add-product.html:224
 msgid "Enter Price"
 msgstr "请输入价格"
 
-#: app/templates/staff/page-add-product.html:1064
+#: app/templates/staff/page-add-product.html:225
 msgid "Please Enter Price."
 msgstr "请输入价格"
 
-#: app/templates/staff/page-add-product.html:1073
+#: app/templates/staff/page-add-product.html:235
 msgid "Enter Stock"
 msgstr "请输入库存数量"
 
-#: app/templates/staff/page-add-product.html:1073
+#: app/templates/staff/page-add-product.html:236
 msgid "Please Enter Stock."
 msgstr "请输入库存数量"
 
-#: app/templates/staff/page-add-product.html:1081
+#: app/templates/staff/page-add-product.html:244
 msgid "Thumbnail"
 msgstr "商品序列图"
 
-#: app/templates/staff/page-add-product.html:1089
+#: app/templates/staff/page-add-product.html:254
 msgid "Product Pictures"
 msgstr "产品图片"
 
-#: app/templates/staff/page-add-product.html:1106
+#: app/templates/staff/page-add-product.html:275
 msgid "Add Model Type"
 msgstr "添加商品型号"
 
-#: app/templates/staff/page-list-product.html:1067
-msgid "Product List"
-msgstr "产品列表"
+#: app/templates/staff/page-list-journals.html:59
+#, fuzzy
+msgid "Journal List"
+msgstr "账目"
 
-#: app/templates/staff/page-list-product.html:1080
-#: app/templates/staff/page-list-product.html:1214
-msgid "Product"
-msgstr "产品"
+#: app/templates/staff/page-list-journals.html:61
+msgid ""
+"You can see all the journals in your shop here, and it's available to "
+"manage your\n"
+"                            journals."
+msgstr ""
 
-#: app/templates/staff/page-list-product.html:1081
-msgid "Model Type"
-msgstr "型号"
+#: app/templates/staff/page-list-journals.html:64
+msgid "Upload new journals and notifications!"
+msgstr ""
 
-#: app/templates/staff/page-list-product.html:1122
-#: app/templates/staff/page-list-product.html:1161
-#: app/templates/userinfo/temp_address_listing.html:79
-#: app/templates/userinfo/temp_address_listing.html:88
-#: app/templates/userinfo/user_profile.html:333
-#: app/templates/userinfo/user_profile.html:541
-msgid "Edit"
-msgstr "编辑"
+#: app/templates/staff/page-list-journals.html:68
+#, fuzzy
+msgid "Upload Journal"
+msgstr "上传商品"
 
-#: app/templates/staff/page-list-product.html:1152
-msgid "Number"
-msgstr "数量"
+#: app/templates/staff/page-list-journals.html:77
+#: app/templates/staff/page-list-orders.html:57
+#, fuzzy
+msgid "Date"
+msgstr "创建"
 
-#: app/templates/staff/page-list-product.html:1232
+#: app/templates/staff/page-list-journals.html:78
+msgid "Author"
+msgstr ""
+
+#: app/templates/staff/page-list-journals.html:79
+msgid "Journal Content"
+msgstr ""
+
+#: app/templates/staff/page-list-journals.html:80
+#: app/templates/staff/page-list-orders.html:64
+#, fuzzy
+msgid "Action"
+msgstr "品牌专区"
+
+#: app/templates/staff/page-list-journals.html:144
+msgid "Journal Quick View"
+msgstr ""
+
+#: app/templates/staff/page-list-journals.html:160
+#, fuzzy
+msgid ""
+"Last\n"
+"                                                                        "
+"Edit"
+msgstr "显示更多"
+
+#: app/templates/staff/page-list-journals.html:167
+#: app/templates/staff/page-list-orders.html:438
+msgid "Close"
+msgstr ""
+
+#: app/templates/staff/page-list-journals.html:188
+msgid "Edit This Journal"
+msgstr ""
+
+#: app/templates/staff/page-list-journals.html:201
+msgid ""
+"Virtual Digital Marketing Course every week\n"
+"                                                                        "
+"on Monday, Wednesday and\n"
+"                                                                        "
+"Saturday.Virtual Digital Marketing Course\n"
+"                                                                        "
+"every week on Monday"
+msgstr ""
+
+#: app/templates/staff/page-list-journals.html:213
+#: app/templates/staff/page-list-journals.html:259
 msgid "Save"
 msgstr "保存"
 
-#: app/templates/staff/page-modify-modeltype.html:863
+#: app/templates/staff/page-list-journals.html:252
+msgid ""
+"Virtual Digital Marketing Course every week on Monday, Wednesday and\n"
+"                                                Saturday.Virtual Digital "
+"Marketing Course every week on Monday"
+msgstr ""
+
+#: app/templates/staff/page-list-orders.html:42
+#, fuzzy
+msgid "Order List"
+msgstr "用户列表"
+
+#: app/templates/staff/page-list-orders.html:44
+msgid ""
+"This page effectively list all orders from clients and provides "
+"functionalities"
+msgstr ""
+
+#: app/templates/staff/page-list-orders.html:45
+msgid "for you to manage and update these orders."
+msgstr ""
+
+#: app/templates/staff/page-list-orders.html:58
+#, fuzzy
+msgid "Customer"
+msgstr "顾客"
+
+#: app/templates/staff/page-list-orders.html:60
+#, fuzzy
+msgid "Paid"
+msgstr "未支付"
+
+#: app/templates/staff/page-list-orders.html:61
+msgid "Status"
+msgstr ""
+
+#: app/templates/staff/page-list-orders.html:63
+msgid "Priority"
+msgstr ""
+
+#: app/templates/staff/page-list-orders.html:106
+msgid "Waiting"
+msgstr ""
+
+#: app/templates/staff/page-list-orders.html:143
+#, fuzzy
+msgid "Normal"
+msgstr "账目"
+
+#: app/templates/staff/page-list-orders.html:148
+msgid "Important"
+msgstr ""
+
+#: app/templates/staff/page-list-orders.html:153
+msgid "Significant"
+msgstr ""
+
+#: app/templates/staff/page-list-orders.html:260
+#, fuzzy
+msgid "Order Details"
+msgstr "用户详情"
+
+#: app/templates/staff/page-list-orders.html:455
+#, fuzzy
+msgid "Details"
+msgstr "用户详情"
+
+#: app/templates/staff/page-list-orders.html:628
+#, fuzzy
+msgid "Recipient Phone"
+msgstr "收货人姓名"
+
+#: app/templates/staff/page-list-orders.html:664
+#, fuzzy
+msgid "Change Address"
+msgstr "配送地址"
+
+#: app/templates/staff/page-list-orders.html:740
+#, fuzzy
+msgid ""
+"Change\n"
+"                                                                        "
+"Recipient"
+msgstr "显示更多"
+
+#: app/templates/staff/page-list-orders.html:757
+#, fuzzy
+msgid ""
+"Recipient\n"
+""
+"                                                                                    "
+"Name"
+msgstr "显示更多"
+
+#: app/templates/staff/page-list-orders.html:772
+#, fuzzy
+msgid ""
+"Recipient\n"
+""
+"                                                                                    "
+"Phone"
+msgstr "显示更多"
+
+#: app/templates/staff/page-list-product.html:53
+msgid "Model Serial"
+msgstr ""
+
+#: app/templates/staff/page-list-product.html:74
+msgid "Product List"
+msgstr "产品列表"
+
+#: app/templates/staff/page-list-product.html:76
+msgid "This page effectively list all commodities and provides functionalities"
+msgstr ""
+
+#: app/templates/staff/page-list-product.html:77
+msgid "for you to manage products and model types."
+msgstr ""
+
+#: app/templates/staff/page-list-product.html:89
+msgid "Product"
+msgstr "产品"
+
+#: app/templates/staff/page-list-product.html:90
+msgid "Model Type"
+msgstr "型号"
+
+#: app/templates/staff/page-list-product.html:168
+msgid "Serial"
+msgstr ""
+
+#: app/templates/staff/page-list-product.html:245
+msgid ""
+"Which kind of\n"
+""
+"                                                                                            "
+"media\n"
+""
+"                                                                                            "
+"to upload"
+msgstr ""
+
+#: app/templates/staff/page-list-product.html:267
+#, fuzzy
+msgid "Upload Video"
+msgstr "上传商品"
+
+#: app/templates/staff/page-list-product.html:276
+msgid "Upload Audio"
+msgstr ""
+
+#: app/templates/staff/page-list-product.html:285
+#, fuzzy
+msgid ""
+"Upload 3D\n"
+""
+"                                                                                                                "
+"Model"
+msgstr "显示更多"
+
+#: app/templates/staff/page-list-product.html:318
+#, fuzzy
+msgid ""
+"Upload a Video\n"
+""
+"                                                                                            "
+"File"
+msgstr "显示更多"
+
+#: app/templates/staff/page-list-product.html:349
+msgid ""
+"Choose\n"
+""
+"                                                                                                                    "
+"file\n"
+""
+"                                                                                                                    "
+"(MP4\n"
+""
+"                                                                                                                    "
+"Only)"
+msgstr ""
+
+#: app/templates/staff/page-list-product.html:389
+#, fuzzy
+msgid ""
+"Upload a Audio\n"
+""
+"                                                                                            "
+"File"
+msgstr "显示更多"
+
+#: app/templates/staff/page-list-product.html:420
+msgid ""
+"Choose\n"
+""
+"                                                                                                                    "
+"file\n"
+""
+"                                                                                                                    "
+"(MP3\n"
+""
+"                                                                                                                    "
+"Only)"
+msgstr ""
+
+#: app/templates/staff/page-list-product.html:459
+#, fuzzy
+msgid "Upload 3D Model"
+msgstr "上传商品"
+
+#: app/templates/staff/page-list-product.html:466
+#, fuzzy
+msgid ""
+"If no texture uploaded, a\n"
+""
+"                                                                                            "
+"default one will be given."
+msgstr "显示更多"
+
+#: app/templates/staff/page-list-product.html:491
+msgid ""
+"Choose\n"
+""
+"                                                                                                                    "
+"3d model\n"
+""
+"                                                                                                                    "
+"file\n"
+""
+"                                                                                                                    "
+"(.obj/.fbx\n"
+""
+"                                                                                                                    "
+"Only)"
+msgstr ""
+
+#: app/templates/staff/page-modify-journal.html:39
+msgid "Modify Your Journal"
+msgstr ""
+
+#: app/templates/staff/page-modify-modeltype.html:32
 msgid "Modify Model"
 msgstr "修改商品"
 
-#: app/templates/staff/page-upload-modeltype.html:863
+#: app/templates/staff/page-modify-product.html:132
+msgid "Cymbals"
+msgstr ""
+
+#: app/templates/staff/page-modify-product.html:165
+#, fuzzy
+msgid "No Extra Requirement"
+msgstr "额外要求"
+
+#: app/templates/staff/page-upload-modeltype.html:32
 msgid "Upload Model"
 msgstr "上传商品"
 
+#: app/templates/staff/staff-index.html:32
+msgid "Hi"
+msgstr ""
+
+#: app/templates/staff/staff-index.html:32
+msgid "Greetings"
+msgstr ""
+
+#: app/templates/staff/staff-index.html:34
+msgid ""
+"Dashboard gives you views of key performance of The Siren's recent "
+"business progress."
+msgstr ""
+
+#: app/templates/staff/staff-index.html:49
+msgid "Total Sales"
+msgstr ""
+
+#: app/templates/staff/staff-index.html:87
+#, fuzzy
+msgid "Product Sold"
+msgstr "产品"
+
+#: app/templates/staff/staff-index.html:104
+msgid "Overview"
+msgstr ""
+
+#: app/templates/staff/staff-index.html:110
+#: app/templates/staff/staff-index.html:136
+#: app/templates/staff/staff-index.html:162
+msgid "This Month"
+msgstr ""
+
+#: app/templates/staff/staff-index.html:114
+#: app/templates/staff/staff-index.html:166
+#: app/templates/staff/staff-index.html:333
+#: app/templates/staff/staff-index.html:358
+#: app/templates/staff/staff-index.html:383
+msgid "Year"
+msgstr ""
+
+#: app/templates/staff/staff-index.html:115
+#: app/templates/staff/staff-index.html:167
+#: app/templates/staff/staff-index.html:334
+#: app/templates/staff/staff-index.html:359
+#: app/templates/staff/staff-index.html:384
+msgid "Month"
+msgstr ""
+
+#: app/templates/staff/staff-index.html:116
+#: app/templates/staff/staff-index.html:168
+#: app/templates/staff/staff-index.html:335
+#: app/templates/staff/staff-index.html:360
+#: app/templates/staff/staff-index.html:385
+msgid "Week"
+msgstr ""
+
+#: app/templates/staff/staff-index.html:130
+msgid "Revenue Vs Cost"
+msgstr ""
+
+#: app/templates/staff/staff-index.html:140
+msgid "Yearly"
+msgstr ""
+
+#: app/templates/staff/staff-index.html:141
+msgid "Monthly"
+msgstr ""
+
+#: app/templates/staff/staff-index.html:142
+msgid "Weekly"
+msgstr ""
+
+#: app/templates/staff/staff-index.html:156
+#, fuzzy
+msgid "Top Products"
+msgstr "产品"
+
+#: app/templates/staff/staff-index.html:187
+msgid "Item"
+msgstr ""
+
+#: app/templates/staff/staff-index.html:258
+msgid "Best Item All Time"
+msgstr ""
+
+#: app/templates/staff/staff-index.html:278
+#, fuzzy
+msgid "Total Sell"
+msgstr "总计"
+
+#: app/templates/staff/staff-index.html:279
+msgid "Total Earned"
+msgstr ""
+
+#: app/templates/staff/staff-index.html:322
+msgid "Income"
+msgstr ""
+
+#: app/templates/staff/staff-index.html:405
+msgid "Average Orders"
+msgstr ""
+
+#: app/templates/staff/staff-index.html:421
+#, fuzzy
+msgid "Top Orders"
+msgstr "弹出框"
+
+#: app/templates/userinfo/edit_address_test.html:13
+#, fuzzy
+msgid "Add New Address"
+msgstr "添加地址"
+
+#: app/templates/userinfo/edit_address_test.html:16
+msgid "type here to search..."
+msgstr ""
+
+#: app/templates/userinfo/edit_address_test.html:20
+msgid "close"
+msgstr ""
+
 #: app/templates/userinfo/temp_address_listing.html:41
-#: app/templates/userinfo/user_profile.html:479
+#: app/templates/userinfo/user_profile.html:262
 msgid "Default"
 msgstr "默认"
-
-#: app/templates/userinfo/temp_address_listing.html:47
-msgid "Recipient Name"
-msgstr "收货人姓名"
 
 #: app/templates/userinfo/temp_address_listing.html:55
 msgid "Phone"
@@ -1529,89 +2752,142 @@ msgid ""
 "                                                    as Default"
 msgstr "设为默认"
 
-#: app/templates/userinfo/temp_address_listing.html:82
-#: app/templates/userinfo/temp_address_listing.html:91
-#: app/templates/userinfo/user_profile.html:551
-msgid "Delete"
-msgstr "删除"
-
-#: app/templates/userinfo/user_profile.html:280
+#: app/templates/userinfo/user_profile.html:52
 msgid "Information"
 msgstr "个人信息"
 
-#: app/templates/userinfo/user_profile.html:283
+#: app/templates/userinfo/user_profile.html:55
 msgid "Address"
 msgstr "地址"
 
-#: app/templates/userinfo/user_profile.html:286
+#: app/templates/userinfo/user_profile.html:58
 msgid "Followed Brand"
 msgstr "关注品牌"
 
-#: app/templates/userinfo/user_profile.html:289
+#: app/templates/userinfo/user_profile.html:61
 msgid "Followed Category"
 msgstr "关注分类"
 
-#: app/templates/userinfo/user_profile.html:292
-msgid "Prime"
-msgstr "我的会员"
-
-#: app/templates/userinfo/user_profile.html:296
+#: app/templates/userinfo/user_profile.html:75
 msgid "Order"
 msgstr "订单"
 
-#: app/templates/userinfo/user_profile.html:381
+#: app/templates/userinfo/user_profile.html:161
 msgid "Gender"
 msgstr "性别："
 
-#: app/templates/userinfo/user_profile.html:396
+#: app/templates/userinfo/user_profile.html:176
 msgid "Bio"
 msgstr "个性签名"
 
-#: app/templates/userinfo/user_profile.html:404
+#: app/templates/userinfo/user_profile.html:184
 msgid "Describe yourself..."
 msgstr "描述你自己。。。"
 
-#: app/templates/userinfo/user_profile.html:452
+#: app/templates/userinfo/user_profile.html:196
+#, fuzzy
+msgid "Default Address"
+msgstr "修改地址"
+
+#: app/templates/userinfo/user_profile.html:233
 msgid "Member since "
 msgstr "注册于"
 
-#: app/templates/userinfo/user_profile.html:460
+#: app/templates/userinfo/user_profile.html:241
 msgid "Your Address"
 msgstr "收货地址"
 
-#: app/templates/userinfo/user_profile.html:464
+#: app/templates/userinfo/user_profile.html:246
 msgid "Add"
 msgstr "添加"
 
-#: app/templates/userinfo/user_profile.html:489
+#: app/templates/userinfo/user_profile.html:272
 msgid "Set as Default"
 msgstr "设为默认"
 
-#: app/templates/userinfo/user_profile.html:571
-msgid "Brand section"
-msgstr "品牌专区"
-
-#: app/templates/userinfo/user_profile.html:576
-msgid "Category section"
-msgstr "分类专区"
-
-#: app/templates/userinfo/user_profile.html:581
-msgid "Prime section"
+#: app/templates/userinfo/user_profile.html:413
+#, fuzzy
+msgid "Premium section"
 msgstr "会员专区"
 
-#: app/templates/userinfo/user_profile.html:586
+#: app/templates/userinfo/user_profile.html:420
+msgid "Premium remain"
+msgstr ""
+
+#: app/templates/userinfo/user_profile.html:429
+#: app/templates/userinfo/user_profile.html:432
+msgid "day"
+msgstr ""
+
+#: app/templates/userinfo/user_profile.html:435
+msgid "days"
+msgstr ""
+
+#: app/templates/userinfo/user_profile.html:443
+msgid "Your Benefit"
+msgstr ""
+
+#: app/templates/userinfo/user_profile.html:450
+msgid "Free delivery"
+msgstr ""
+
+#: app/templates/userinfo/user_profile.html:457
+msgid "Get a "
+msgstr ""
+
+#: app/templates/userinfo/user_profile.html:457
+msgid "discount"
+msgstr ""
+
+#: app/templates/userinfo/user_profile.html:457
+#, python-format
+msgid " of 5% off in every order you placed"
+msgstr ""
+
+#: app/templates/userinfo/user_profile.html:464
+#, fuzzy
+msgid "Change "
+msgstr "更改目录"
+
+#: app/templates/userinfo/user_profile.html:464
+#, fuzzy
+msgid "shipping method"
+msgstr "配送方式"
+
+#: app/templates/userinfo/user_profile.html:464
+msgid ""
+"\n"
+"                                                        as you want"
+msgstr ""
+
+#: app/templates/userinfo/user_profile.html:472
+#, fuzzy
+msgid "Renew Premium"
+msgstr "成为会员"
+
+#: app/templates/userinfo/user_profile.html:480
 msgid "Order section"
 msgstr "订单专区"
 
-#: app/templates/userinfo/user_profile.html:721
+#: app/templates/userinfo/user_profile.html:485
+#, fuzzy
+msgid "Enter"
+msgstr "性别："
+
+#: app/templates/userinfo/user_profile.html:511
+#, fuzzy
+msgid "Change Avatar"
+msgstr "修改头像"
+
+#: app/templates/userinfo/user_profile.html:546
 msgid "Edit profile"
 msgstr "修改用户主页"
 
-#: app/templates/userinfo/user_profile.html:808
+#: app/templates/userinfo/user_profile.html:633
 msgid "Add address"
 msgstr "添加地址"
 
-#: app/templates/userinfo/user_profile.html:943
+#: app/templates/userinfo/user_profile.html:768
 msgid "Edit address"
 msgstr "修改地址"
 
@@ -1659,68 +2935,68 @@ msgstr "邮件"
 msgid "Username: "
 msgstr "用户名"
 
-#: app/userinfo/forms.py:40 app/userinfo/forms.py:43
+#: app/userinfo/forms.py:40
 msgid "About Me: "
 msgstr "个人资料："
 
-#: app/userinfo/forms.py:41 app/userinfo/forms.py:44
+#: app/userinfo/forms.py:41
 msgid "Gender: "
 msgstr "性别："
 
-#: app/userinfo/forms.py:41 app/userinfo/forms.py:44
+#: app/userinfo/forms.py:41
 msgid "Male"
 msgstr "男"
 
-#: app/userinfo/forms.py:41 app/userinfo/forms.py:44
+#: app/userinfo/forms.py:41
 msgid "Female"
 msgstr "女"
 
-#: app/userinfo/forms.py:41 app/userinfo/forms.py:44
+#: app/userinfo/forms.py:41
 msgid "Unknown"
 msgstr "未知"
 
-#: app/userinfo/forms.py:45
+#: app/userinfo/forms.py:42
 msgid "Update Profile"
 msgstr "修改个人主页"
 
-#: app/userinfo/forms.py:54
+#: app/userinfo/forms.py:51
 msgid "New username already used."
 msgstr "新用户名已被使用"
 
-#: app/userinfo/forms.py:59
+#: app/userinfo/forms.py:56
 msgid "New email address already used."
 msgstr "新邮件地址已被使用"
 
-#: app/userinfo/forms.py:63
+#: app/userinfo/forms.py:60
 msgid "Avatar: "
 msgstr "头像："
 
-#: app/userinfo/forms.py:71
+#: app/userinfo/forms.py:68
 msgid "Update Avatar"
 msgstr "修改头像"
 
-#: app/userinfo/views.py:41
+#: app/userinfo/views.py:42
 msgid "Profile update successfully!"
 msgstr "个人主页成功修改！"
 
-#: app/userinfo/views.py:68
+#: app/userinfo/views.py:69
 msgid "Avatar update successfully!"
 msgstr "头像成功修改！"
 
-#: app/userinfo/views.py:103
+#: app/userinfo/views.py:104
 msgid "Address added successfully!"
 msgstr "地址成功添加！"
 
-#: app/userinfo/views.py:124
+#: app/userinfo/views.py:125
 msgid "Address updated successfully!"
 msgstr "地址成功修改！"
 
-#: app/userinfo/views.py:328 app/userinfo/views.py:344
-#: app/userinfo/views.py:353
+#: app/userinfo/views.py:333 app/userinfo/views.py:349
+#: app/userinfo/views.py:358
 msgid "Address has been deleted!"
 msgstr "地址成功删除！"
 
-#: app/userinfo/views.py:392
+#: app/userinfo/views.py:397
 msgid "Default address changed successfully!"
 msgstr "默认地址修改成功！"
 
@@ -1810,4 +3086,43 @@ msgstr "默认地址修改成功！"
 
 #~ msgid "Cart"
 #~ msgstr "购物车"
+
+#~ msgid "Welcome to Verse – An E-Commerce template for brand curators."
+#~ msgstr "欢迎光临Verse - 品牌展测人的电子商务模版。"
+
+#~ msgid "View all templates here"
+#~ msgstr "浏览所有模版"
+
+#~ msgid "contact@website.com"
+#~ msgstr ""
+
+#~ msgid "(03) 92337 4627"
+#~ msgstr ""
+
+#~ msgid "Template"
+#~ msgstr "模版"
+
+#~ msgid "Style Guide"
+#~ msgstr "样式指导"
+
+#~ msgid "Getting Started"
+#~ msgstr "即刻开始"
+
+#~ msgid "Licenses"
+#~ msgstr "证书"
+
+#~ msgid "More Templates"
+#~ msgstr "更多模版"
+
+#~ msgid "Buy Now"
+#~ msgstr "现在购买"
+
+#~ msgid "Enter Name or Email"
+#~ msgstr "请输入姓名或邮箱"
+
+#~ msgid "Number"
+#~ msgstr "数量"
+
+#~ msgid "Category section"
+#~ msgstr "分类专区"
 

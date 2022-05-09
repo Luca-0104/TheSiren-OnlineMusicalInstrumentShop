@@ -1,10 +1,6 @@
 
-
 document.addEventListener('DOMContentLoaded', () => {
     var socket = io.connect('http://' + document.domain + ':' + location.port);
-
-    // let room = "Chat";
-    // let room = "Chat";
 
     joinRoom(chatroom_id);
 
@@ -39,8 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
             div_chat.setAttribute("class","direct-chat-msg right");
             span_username.setAttribute("class", "direct-chat-name pull-right");
             span_timestamp.setAttribute("class","direct-chat-timestamp pull-left");
-            img.setAttribute("src","https://img.icons8.com/color/36/000000/administrator-male.png");
-
+            img.setAttribute("src",data.avatar);
 
         } else if (data.username !== username && typeof data.username !== 'undefined') {
             console.log("inside if 2");
@@ -48,10 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
             div_chat.setAttribute("class","direct-chat-msg");
             span_username.setAttribute("class","direct-chat-name pull-left");
             span_timestamp.setAttribute("class","direct-chat-timestamp pull-right");
-            img.setAttribute("src","https://img.icons8.com/office/36/000000/person-female.png");
+            img.setAttribute("src",data.avatar);
         } else {
             console.log("inside if 3");
-            printSysMsg(data.msg)
+            printSysMsg(data.msg);
         }
 
         span_timestamp.innerHTML = data.time_stamp;
@@ -67,16 +62,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Send message
    $('#send_message').on("click", function(){
         if (document.querySelector('#user_message').value === ''){
-            console.log('Cannot use empty message!');
+
         }
         else {
         console.log(document.querySelector('#user_message').value);
         socket.send({'msg': document.querySelector('#user_message').value,
-        'username': username, 'room': chatroom_id, 'user': user });
+        'username': username, 'room': chatroom_id, 'avatar': avatar });
         // Clear input area
         document.querySelector('#user_message').value = '';
-        console.log(chatroom_id);
-        console.log(username);
+
         }
     });
 
@@ -87,28 +81,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Join room
-    // joinRoom(room, chat_id)    'room':room+chat_id
     function joinRoom(chatroom_id) {
-        console.log("3333333333");
-        console.log(chatroom_id);
+
         socket.emit('join', {'username': username, 'room': chatroom_id});
         // Clear message area
         document.querySelector('#chat-window').innerHTML = '';
 
-        $.post('/api/history', {
-            'chatroom_id': chatroom_id
-        }).done(function (response) {
-            let chat_history = response['history'];
-            let current_user = response['current_user'];
-            console.log("4444");
-             for(let i = 0; i < chat_history.length; i++){
-                 console.log(".....");
-                 console.log(chat_history[i]);
-                 socket.send({'msg': chat_history[i].msg,
-                'username': chat_history[i].username, 'room': chatroom_id, 'time_stamp': chat_history[i].time_stamp, 'user': chat_history[i].user });
-
-             }
-        })
+        socket.emit('history', {'room': chatroom_id})
+        // $.post('/api/history', {
+        //     'chatroom_id': chatroom_id
+        // }).done(function (response) {
+        //     let chat_history = response['history'];
+        //     let current_user = response['current_user'];
+        //
+        //      for(let i = 0; i < chat_history.length; i++){
+        //         console.log(i+1);
+        //         console.log(chat_history[i].message_id);
+        //         console.log("-------------------------------------")
+        //          socket.send({'msg': chat_history[i].msg,
+        //         'username': chat_history[i].username, 'room': chatroom_id, 'time_stamp': chat_history[i].time_stamp, 'avatar': chat_history[i].avatar
+        //              , 'message_id': chat_history[i].message_id });
+        //
+        //      }
+        // })
 
         // Autofocus on text box
         document.querySelector('#user_message').focus();
