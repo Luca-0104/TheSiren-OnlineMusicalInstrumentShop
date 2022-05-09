@@ -36,6 +36,9 @@
 
         {#  for scripts of javascript #}
         {% block scripts %}{% endblock %}
+
+        <!-- include flask moment here -->
+        {{ moment.include_moment() }}
     </head>
 
     <body>
