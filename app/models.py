@@ -1058,9 +1058,9 @@ class ModelType(BaseModel):
     views = db.Column(db.Integer, default=0)  # how many times its details page has been viewed
     serial_number = db.Column(db.String(128), nullable=False)
     release_time = db.Column(db.DateTime(), index=True, default=datetime.utcnow)
-    video_address = db.Column(db.String)  # video
-    three_d_model_address = db.Column(db.String)    # 3d model file
-    three_d_model_texture_address = db.Column(db.String)    # 3d model texture file
+    video_address = db.Column(db.String, default=None)  # video
+    three_d_model_address = db.Column(db.String, default=None)    # 3d model file
+    three_d_model_texture_address = db.Column(db.String, default=None)    # 3d model texture file
     # 1 model -> n addresses, 1 address -> 1 model
     audio_addresses = db.relationship('Audio', backref='model_type', lazy='dynamic')  # audio
     is_deleted = db.Column(db.Boolean, default=False)
@@ -1151,11 +1151,11 @@ class ModelType(BaseModel):
         has3d = False
         has_audio = False
         has_video = False
-        if self.three_d_model_address is not None:
+        if self.three_d_model_address is not None and self.three_d_model_address != "":
             has3d = True
         if self.audio_addresses.count() != 0:
             has_audio = True
-        if self.video_address is not None:
+        if self.video_address is not None and self.video_address != "":
             has_video = True
 
         if has3d and has_audio and has_video:

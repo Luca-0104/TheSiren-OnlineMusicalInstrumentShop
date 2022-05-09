@@ -296,12 +296,13 @@ function put_data(mt){
     let mtPrice = mt.price;
     let brandName = mt.brand_name;
     let firstPicAddress = mt.pictures[0].address;
+    let additionType = mt.addition_type;
 
     //put those info on to model card
     let cardHTML = '<div role="listitem" class="w-dyn-item commodity-card">'
                         + '<div>'
                             + '<a href="/product-details/' + mtID + '" class="product-preview-link w-inline-block">'
-                                + '<div>'
+                                + '<div class="commodity-pic commodity-pic' + additionType + '">'
                                     + '<img src="../../static/' + firstPicAddress + '"loading="lazy" alt="" class="product-thumbnail">'
                                 + '</div>'
                                 + '<div class="uppercase-text brand brand-row">' + brandName + '</div>'
