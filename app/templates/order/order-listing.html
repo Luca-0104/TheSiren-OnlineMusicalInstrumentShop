@@ -41,8 +41,8 @@
             <div class="main-container">
                 <div class="announcement-contents">
                     <div class="announcement-text">
-                        Welcome to Siren – Selects online music instrument shop for you.
-                        <a href="{{ url_for('main.go_all') }}" target="_blank">View instruments here</a>
+                        {{ _("Welcome to Siren – Selects online music instrument shop for you")}}.
+                        <a href="{{ url_for('main.go_all') }}" target="_blank">{{ _("View instruments here")}}</a>
                     </div>
                 </div>
             </div>
@@ -180,7 +180,7 @@
                                                                        data-commerce-sku-id="61a56467407a5a926e9ea7a7"
                                                                        cart-id="{{ cart_item.id }}">
                                                                         <div class="fine-print-text remove-link">
-                                                                            Remove
+                                                                            {{ _("Remove") }}
                                                                         </div>
                                                                     </a>
                                                                 </div>
@@ -358,7 +358,7 @@
                                                             </td>
                                                             <td id="order_num_{{ order.id }}"
                                                                 class="order_num small-text">
-                                                                Trade No.{{ order.out_trade_no }}
+                                                                {{ _("Trade") }} No.{{ order.out_trade_no }}
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -367,31 +367,31 @@
                                             <tr id="status_{{ order.id }}">
                                                 {% if order.status_code == 0 %}
                                                     <td colspan="3" class="status_col status_wp">
-                                                        Waiting for Payment
+                                                        {{ _("Waiting for Payment")}}
                                                     </td>
                                                 {% elif order.status_code == 1 %}
                                                     <td colspan="3" class="status_col status_p">
-                                                        Preparing
+                                                        {{ _("Preparing") }}
                                                     </td>
                                                 {% elif order.status_code == 2 %}
                                                     <td colspan="3" class="status_col status_od">
-                                                        On Delivery
+                                                        {{ _("On Delivery")}}
                                                     </td>
                                                 {% elif order.status_code == 3 %}
                                                     <td colspan="3" class="status_col status_wc">
-                                                        Waiting for Collection
+                                                        {{ _("Waiting for Collection")}}
                                                     </td>
                                                 {% elif order.status_code == 4 %}
                                                     <td colspan="3" class="status_col status_f">
-                                                        Finished
+                                                        {{ _("Finished") }}
                                                     </td>
                                                 {% elif order.status_code == 5 %}
                                                     <td colspan="3" class="status_col status_c">
-                                                        Canceled
+                                                        {{ _("Canceled") }}
                                                     </td>
                                                 {% elif order.status_code == 6 %}
                                                     <td colspan="3" class="status_col status_e">
-                                                        Expired
+                                                        {{ _("Expired") }}
                                                     </td>
                                                 {% endif %}
                                             </tr>

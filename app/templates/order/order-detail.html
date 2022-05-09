@@ -48,8 +48,8 @@
             <div class="main-container">
                 <div class="announcement-contents">
                     <div class="announcement-text">
-                        Welcome to Siren – Selects online music instrument shop for you.
-                        <a href="{{ url_for('main.go_all') }}" target="_blank">View instruments here</a>
+                        {{ _("Welcome to Siren – Selects online music instrument shop for you.")}}
+                        <a href="{{ url_for('main.go_all') }}" target="_blank">{{ _("View instruments here")}}</a>
                     </div>
                 </div>
             </div>
@@ -187,7 +187,7 @@
                                                                        data-commerce-sku-id="61a56467407a5a926e9ea7a7"
                                                                        cart-id="{{ cart_item.id }}">
                                                                         <div class="fine-print-text remove-link">
-                                                                            Remove
+                                                                            {{ _("Remove") }}
                                                                         </div>
                                                                     </a>
                                                                 </div>
@@ -326,31 +326,31 @@
                             <tr id="status_{{ order.id }}" style="text-align: center">
                                 {% if order.status_code == 0 %}
                                     <td colspan="3" class="status_col status_wp">
-                                        Waiting for Payment
+                                        {{ _("Waiting for Payment")}}
                                     </td>
                                 {% elif order.status_code == 1 %}
                                     <td colspan="3" class="status_col status_p">
-                                        Preparing
+                                        {{ _("Preparing") }}
                                     </td>
                                 {% elif order.status_code == 2 %}
                                     <td colspan="3" class="status_col status_od">
-                                        On Delivery
+                                        {{ _("On Delivery")}}
                                     </td>
                                 {% elif order.status_code == 3 %}
                                     <td colspan="3" class="status_col status_wc">
-                                        Waiting for Collection
+                                        {{ _("Waiting for Collection")}}
                                     </td>
                                 {% elif order.status_code == 4 %}
                                     <td colspan="3" class="status_col status_f">
-                                        Finished
+                                        {{ _("Finished") }}
                                     </td>
                                 {% elif order.status_code == 5 %}
                                     <td colspan="3" class="status_col status_c">
-                                        Canceled
+                                        {{ _("Canceled") }}
                                     </td>
                                 {% elif order.status_code == 6 %}
                                     <td colspan="3" class="status_col status_e">
-                                        Expired
+                                        {{ _("Expired") }}
                                     </td>
                                 {% endif %}
                             </tr>
@@ -361,14 +361,14 @@
                                     <table width="100%">
                                         <tr>
                                             <td class="title_indentation medium-heading border-1">
-                                                Basic Information
+                                                {{ _("Basic Information")}}
                                             </td>
                                             <td class="border-2 modify-section">
                                                 {% if current_user.is_premium %}
                                                     {% if order.status_code == 0 or order.status_code == 1 or order.status_code == 3 %}
                                                         <a href="#" id="modify-type-btn"
                                                            class="button small nav-button w-inline-block">
-                                                            <div>Modify Type</div>
+                                                            <div>{{ _("Modify Type")}}</div>
                                                         </a>
                                                     {% endif %}
                                                 {% endif %}
@@ -379,12 +379,12 @@
                                                 <table class="info_indentation" width="100%">
                                                     <tr>
                                                         <td colspan="2" class="order_num">
-                                                            Trade No.{{ order.out_trade_no }}
+                                                            {{ _("Trade") }} No.{{ order.out_trade_no }}
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td colspan="2" class="order_num">
-                                                            Payment No.{{ order.trade_no }}
+                                                            {{ _("Payment") }} No.{{ order.trade_no }}
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -394,18 +394,18 @@
                                                     </tr>
                                                     <tr>
                                                         <td class="left-cell">
-                                                            Order Type: {{ order.order_type }}
+                                                            {{ _("Order Type")}}: {{ order.order_type }}
                                                         </td>
                                                         <td>
-                                                            Delivery Cost: ￥{{ order.delivery_fee }}
+                                                            {{ _("Delivery Cost")}}: ￥{{ order.delivery_fee }}
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td class="left-cell">
-                                                            Total Cost: ￥{{ order.gross_payment }}
+                                                            {{ _("Total Cost")}}: ￥{{ order.gross_payment }}
                                                         </td>
                                                         <td class="left-cell">
-                                                            Actual Paid: ￥{{ order.paid_payment }}
+                                                            {{ _("Actual Paid")}}: ￥{{ order.paid_payment }}
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -414,9 +414,9 @@
                                         <tr>
                                             <td class="title_indentation top-indentation medium-heading extra-top-indentation border-1">
                                                 {% if order.order_type == "delivery" %}
-                                                    Address Information
+                                                {{ _("Address Information")}}
                                                 {% elif order.order_type == "self-collection" %}
-                                                    Recipient Information
+                                                {{ _("Recipient Information")}}
                                                 {% endif %}
                                             </td>
                                             <td class="border-2 top-indentation modify-section">
@@ -424,12 +424,12 @@
                                                     {% if order.order_type == "delivery" %}
                                                         <a href="#" id="modify-ar-btn"
                                                            class="button small nav-button w-inline-block">
-                                                            <div>Modify Address</div>
+                                                            <div>{{ _("Modify Address")}}</div>
                                                         </a>
                                                     {% elif order.order_type == "self-collection" %}
                                                         <a href="#" id="modify-ar-btn"
                                                            class="button small nav-button w-inline-block">
-                                                            <div>Modify Recipient</div>
+                                                            <div>{{ _("Modify Recipient")}}</div>
                                                         </a>
                                                     {% endif %}
                                                 {% endif %}
@@ -492,13 +492,13 @@
                                                             <p>1</p>
                                                             <i class="uil uil-check" style="color: #e2e1dc;"></i>
                                                         </div>
-                                                        <p class="text">Payment</p>
+                                                        <p class="text">{{ _("Payment") }}</p>
                                                     {% else %}
                                                         <div class="progress one">
                                                             <p>1</p>
                                                             <i class="uil uil-check" style="color: #e2e1dc;"></i>
                                                         </div>
-                                                        <p class="text">Payment</p>
+                                                        <p class="text">{{ _("Payment") }}</p>
                                                     {% endif %}
                                                 </li>
                                                 {% if order.order_type == 'delivery' %}
@@ -510,13 +510,13 @@
                                                                 <p>2</p>
                                                                 <i class="uil uil-check" style="color: #e2e1dc;"></i>
                                                             </div>
-                                                            <p class="text">Preparing</p>
+                                                            <p class="text">{{ _("Preparing") }}</p>
                                                         {% else %}
                                                             <div class="progress two">
                                                                 <p>2</p>
                                                                 <i class="uil uil-check" style="color: #e2e1dc;"></i>
                                                             </div>
-                                                            <p class="text">Preparing</p>
+                                                            <p class="text">{{ _("Preparing") }}</p>
                                                         {% endif %}
                                                     </li>
                                                     <li>
@@ -526,13 +526,13 @@
                                                                 <p>3</p>
                                                                 <i class="uil uil-check" style="color: #e2e1dc;"></i>
                                                             </div>
-                                                            <p class="text">On Delivery</p>
+                                                            <p class="text">{{ _("On Delivery")}}</p>
                                                         {% else %}
                                                             <div class="progress three">
                                                                 <p>3</p>
                                                                 <i class="uil uil-check" style="color: #e2e1dc;"></i>
                                                             </div>
-                                                            <p class="text">On Delivery</p>
+                                                            <p class="text">{{ _("On Delivery")}}</p>
                                                         {% endif %}
                                                     </li>
                                                     <li>
@@ -542,13 +542,13 @@
                                                                 <p>4</p>
                                                                 <i class="uil uil-check" style="color: #e2e1dc;"></i>
                                                             </div>
-                                                            <p class="text">Finished</p>
+                                                            <p class="text">{{ _("Finished") }}</p>
                                                         {% else %}
                                                             <div class="progress four">
                                                                 <p>4</p>
                                                                 <i class="uil uil-check" style="color: #e2e1dc;"></i>
                                                             </div>
-                                                            <p class="text">Finished</p>
+                                                            <p class="text">{{ _("Finished") }}</p>
                                                         {% endif %}
                                                     </li>
                                                 {% elif order.order_type == 'self-collection' %}
@@ -559,13 +559,13 @@
                                                                 <p>2</p>
                                                                 <i class="uil uil-check" style="color: #e2e1dc;"></i>
                                                             </div>
-                                                            <p class="text">Waiting For Collection</p>
+                                                            <p class="text">{{ _("Waiting For Collection")}}</p>
                                                         {% else %}
                                                             <div class="progress two">
                                                                 <p>2</p>
                                                                 <i class="uil uil-check" style="color: #e2e1dc;"></i>
                                                             </div>
-                                                            <p class="text">Waiting For Collection</p>
+                                                            <p class="text">{{ _("Waiting For Collection")}}</p>
                                                         {% endif %}
                                                     </li>
                                                     <li>
@@ -575,13 +575,13 @@
                                                                 <p>3</p>
                                                                 <i class="uil uil-check" style="color: #e2e1dc;"></i>
                                                             </div>
-                                                            <p class="text">Finished</p>
+                                                            <p class="text">{{ _("Finished") }}</p>
                                                         {% else %}
                                                             <div class="progress three">
                                                                 <p>3</p>
                                                                 <i class="uil uil-check" style="color: #e2e1dc;"></i>
                                                             </div>
-                                                            <p class="text">Finished</p>
+                                                            <p class="text">{{ _("Finished") }}</p>
                                                         {% endif %}
                                                     </li>
                                                 {% endif %}
@@ -690,7 +690,7 @@
                                                             <td class="model_comment_col">
                                                                 {% if order_model.is_commented %}
                                                                     <div class="commented-mark">
-                                                                        Commented
+                                                                        {{ _("Commented") }}
                                                                     </div>
                                                                 {% else %}
                                                                     <a href="/upload-comment/{{ order_model.id }}"
@@ -699,7 +699,7 @@
                                                                        data-wf-cart-action="remove-item"
                                                                        data-commerce-sku-id="61a56467407a5a926e9ea7a7">
                                                                         <div class="fine-print-text comment-link">
-                                                                            Comment
+                                                                            {{ _("Comment") }}
                                                                         </div>
                                                                     </a>
                                                                 {% endif %}
@@ -733,7 +733,8 @@
                                 <img src="../../static/images/White-logo-no-background.svg" loading="lazy" alt=""
                                      class="footer-logo">
                             </a>
-                            <div>China Beijing Chaoyang Distinct Pingleyuan No.100<br>Beijing University of Technology
+                            <div>{{ _("China Beijing Chaoyang Distinct Pingleyuan No.100")}}<br>{{ _("Beijing University of
+                                    Technology")}}
                             </div>
                             <div class="contact-links in-footer">
                                 <a href="#" class="small-text">group9@ucdconnect.ie</a>
@@ -751,19 +752,19 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="contact.html" class="list-link">Catagory</a>
+                                <a href="contact.html" class="list-link">{{ _("Catagory") }}</a>
                             </div>
                         </div>
                         <div>
                             <div class="uppercase-text links-grid-title">{{ _('Company') }}</div>
                             <div class="links-grid">
-                                <a href="about.html" class="list-link">About us</a>
-                                <a href="contact.html" class="list-link">Contect us</a>
-                                <a href="refund-policy.html" class="list-link">Premium</a>
+                                <a href="about.html" class="list-link">{{ _("About us")}}</a>
+                                <a href="contact.html" class="list-link">{{ _("Contact us")}}</a>
+                                <a href="refund-policy.html" class="list-link">{{ _("Premium") }}</a>
                             </div>
                         </div>
                         <div>
-                            <div class="uppercase-text links-grid-title">Franchising Brand</div>
+                            <div class="uppercase-text links-grid-title">{{ _("Franchising Brand")}}</div>
                             <div class="links-grid">
                                 <a href="about.html" class="list-link">Lowden</a>
                                 <a href="about.html" class="list-link">Gibson</a>
@@ -808,7 +809,7 @@
                 &times;
             </div>
             <div id="form_top_bar" class="medium-heading">
-                Modify Type
+                {{ _("Modify Type")}}
             </div>
             <form enctype="multipart/form-data" method="post" novalidate class="action-table-form">
                 <table class="action_table">
@@ -819,10 +820,10 @@
                                     <select id="select-type" name="select-type" data-name="field"
                                             class="select-field w-select">
                                         <option {% if order.order_type == "self-collection" %}selected="selected"{% endif %}>
-                                            Delivery
+                                            {{ _("Delivery") }}
                                         </option>
                                         <option {% if order.order_type == "delivery" %}selected="selected"{% endif %}>
-                                            Self-Collection
+                                            {{ _("Self-Collection") }}
                                         </option>
                                     </select>
                                 </div>
@@ -847,20 +848,20 @@
                                                     </div>
                                                     <br><br>
                                                     <div class="main-container">
-                                                        <span class="fine-print-text">Recipient Name:</span>
+                                                        <span class="fine-print-text">{{ _("Recipient Name")}}:</span>
                                                         <br>
                                                         <span class="address-name w-commerce-commerceboldtextblock">{{ address.recipient.recipient_name }}</span>
                                                     </div>
                                                     <br>
                                                     <div class="main-container">
-                                                        <span class="fine-print-text">Full Address:</span>
+                                                        <span class="fine-print-text">{{ _("Full Address")}}:</span>
                                                         <br>
                                                         <span class="address-address address-gray"
                                                               style="display:flex;">{{ address.get_address() }}</span>
 
                                                     </div>
                                                     {% if address.is_default %}
-                                                        <span id="address-default-sign">[default]</span>
+                                                        <span id="address-default-sign">[{{ _("default") }}]</span>
                                                     {% endif %}
                                                 </div>
                                             </li>
@@ -874,11 +875,11 @@
                         {% if order.order_type == "self-collection" %}style="display: none"{% endif %}>
                         <td>
                             <fieldset id="recipient-field-1" class="w-commerce-commercecheckoutblockcontent">
-                                <label class="w-commerce-commercecheckoutlabel">Recipient Name *</label>
+                                <label class="w-commerce-commercecheckoutlabel">{{ _("Recipient Name")}} *</label>
                                 <input id="recipient-field-1-name" type="text" name="recipient_name" required=""
                                        class="w-commerce-commercecheckoutemailinput">
 
-                                <label class="w-commerce-commercecheckoutlabel">Phone Number *</label>
+                                <label class="w-commerce-commercecheckoutlabel">{{ _("Phone Number")}} *</label>
                                 <input id="recipient-field-1-phone" type="text" name="phone" required=""
                                        class="w-commerce-commercecheckoutemailinput">
                             </fieldset>
@@ -888,7 +889,7 @@
                         <td>
                             <div class="middle submit_btn">
                                 <a href="#" id="update-type-btn" class="button bg-primary middle small">
-                                    Update
+                                    {{ _("Update") }}
                                 </a>
                             </div>
                         </td>
@@ -905,9 +906,9 @@
             </div>
             <div id="form_top_bar" class="medium-heading">
                 {% if order.order_type == "delivery" %}
-                    Modify Address
+                {{ _("Modify Address")}}
                 {% elif order.order_type == "self-collection" %}
-                    Modify Recipient
+                {{ _("Modify Recipient")}}
                 {% endif %}
             </div>
             <form method="post" class="action-table-form">
@@ -930,20 +931,20 @@
                                                     </div>
                                                     <br><br>
                                                     <div class="main-container">
-                                                        <span class="fine-print-text">Recipient Name:</span>
+                                                        <span class="fine-print-text">{{ _("Recipient Name")}}:</span>
                                                         <br>
                                                         <span class="address-name w-commerce-commerceboldtextblock">{{ address.recipient.recipient_name }}</span>
                                                     </div>
                                                     <br>
                                                     <div class="main-container">
-                                                        <span class="fine-print-text">Full Address:</span>
+                                                        <span class="fine-print-text">{{ _("Full Address")}}:</span>
                                                         <br>
                                                         <span class="address-address address-gray"
                                                               style="display:flex;">{{ address.get_address() }}</span>
 
                                                     </div>
                                                     {% if address.is_default %}
-                                                        <span id="address-default-sign">[default]</span>
+                                                        <span id="address-default-sign">[{{ _("default") }}]</span>
                                                     {% endif %}
                                                 </div>
                                             </li>
@@ -957,11 +958,11 @@
                         {% if order.order_type == "delivery" %}style="display: none"{% endif %}>
                         <td>
                             <fieldset id="recipient-field-2" class="w-commerce-commercecheckoutblockcontent">
-                                <label class="w-commerce-commercecheckoutlabel">Recipient Name *</label>
+                                <label class="w-commerce-commercecheckoutlabel">{{ _("Recipient Name")}} *</label>
                                 <input id="recipient-field-2-name" type="text" name="recipient_name" required=""
                                        class="w-commerce-commercecheckoutemailinput">
 
-                                <label class="w-commerce-commercecheckoutlabel">Phone Number *</label>
+                                <label class="w-commerce-commercecheckoutlabel">{{ _("Phone Number")}} *</label>
                                 <input id="recipient-field-2-phone" type="text" name="phone" required=""
                                        class="w-commerce-commercecheckoutemailinput">
                             </fieldset>
@@ -971,7 +972,7 @@
                         <td>
                             <div class="middle submit_btn">
                                 <a href="#" id="update-ar-btn" class="button bg-primary middle small">
-                                    Update
+                                    {{ _("Update") }}
                                 </a>
                             </div>
                         </td>
