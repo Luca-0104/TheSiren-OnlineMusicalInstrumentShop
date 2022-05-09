@@ -25,6 +25,7 @@ class Config:
 
     """ 3D Model file uploading """
     ALLOWED_3D_MODEL_SUFFIXES = {'fbx', 'obj'}
+    ALLOWED_3D_MODEL_TEXTURE_SUFFIXES = {'png'}
 
     """ Following define the directories used in this project """
     app_dir = os.path.join(basedir, 'app')
