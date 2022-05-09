@@ -33,186 +33,185 @@
 
 {# content #}
 {% block content %}
-    <div class="content-page">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="card">
-                                <div class="card-body chat-page p-0">
-                                    <div class="chat-data-block">
-                                        <div class="row">
-                                            <div class="col-lg-3 chat-data-left scroller">
-                                                <div class="chat-search pt-3 pl-3">
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="chat-profile mr-3">
-                                                            <img src="../../static/images/popo.jpg" alt="chat-user" class="avatar-60 ">
-                                                        </div>
-                                                        <div class="chat-caption">
-                                                            <h5 class="mb-0">{{ current_user.username }}</h5>
-                                                            <p class="m-0">Staff</p>
-                                                        </div>
-                                                        <button type="submit" class="close-btn-res p-3"><i class="ri-close-fill"></i></button>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body chat-page p-0">
+                        <div class="chat-data-block">
+                            <div class="row">
+                                <div class="col-lg-3 chat-data-left scroller">
+                                    <div class="chat-search pt-3 pl-3">
+                                        <div class="d-flex align-items-center">
+                                            <div class="chat-profile mr-3">
+                                                <img src="../../static/images/popo.jpg" alt="chat-user" class="avatar-60 ">
+                                            </div>
+                                            <div class="chat-caption">
+                                                <h5 class="mb-0">{{ current_user.username }}</h5>
+                                                <p class="m-0">Staff</p>
+                                            </div>
+                                            <button type="submit" class="close-btn-res p-3"><i class="ri-close-fill"></i></button>
+                                        </div>
+                                        <div id="user-detail-popup" class="scroller">
+                                            <div class="user-profile">
+                                                <button type="submit" class="close-popup p-3"><i class="ri-close-fill"></i></button>
+                                                <div class="user text-center mb-4">
+                                                    <a class="avatar m-0">
+                                                        <img src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg" class="avatar-100"
+                                                             alt="avatar">
+                                                    </a>
+                                                    <div class="user-name mt-4">
+                                                        <h4>Bni Jordan</h4>
                                                     </div>
-                                                    <div id="user-detail-popup" class="scroller">
-                                                        <div class="user-profile">
-                                                            <button type="submit" class="close-popup p-3"><i class="ri-close-fill"></i></button>
-                                                            <div class="user text-center mb-4">
-                                                                <a class="avatar m-0">
-                                                                    <img src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg" class="avatar-100"
-                                                                         alt="avatar">
-                                                                </a>
-                                                                <div class="user-name mt-4">
-                                                                    <h4>Bni Jordan</h4>
-                                                                </div>
-                                                                <div class="user-desc">
-                                                                    <p>Web Designer</p>
-                                                                </div>
-                                                            </div>
-                                                            <hr>
-                                                            <div class="user-detail text-left mt-4 pl-4 pr-4">
-                                                                <h5 class="mt-4 mb-4">About</h5>
-                                                                <p>It is long established fact that a reader will be distracted bt the reddable.</p>
-                                                                <h5 class="mt-3 mb-3">Status</h5>
-                                                                <ul class="user-status p-0">
-                                                                    <li class="mb-1"><i
-                                                                            class="ri-checkbox-blank-circle-fill text-success pr-1"></i><span>Online</span>
-                                                                    </li>
-                                                                    <li class="mb-1"><i
-                                                                            class="ri-checkbox-blank-circle-fill text-warning pr-1"></i><span>Away</span>
-                                                                    </li>
-                                                                    <li class="mb-1"><i
-                                                                            class="ri-checkbox-blank-circle-fill text-danger pr-1"></i><span>Do Not
-                                                   Disturb</span></li>
-                                                                    <li class="mb-1"><i
-                                                                            class="ri-checkbox-blank-circle-fill text-light pr-1"></i><span>Offline</span>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="chat-searchbar mt-4">
-                                                        <div class="form-group chat-search-data m-0">
-                                                            <input type="text" class="form-control round" id="chat-search" placeholder="{{ _("Search") }}">
-                                                            <i class="ri-search-line"></i>
-                                                        </div>
+                                                    <div class="user-desc">
+                                                        <p>Web Designer</p>
                                                     </div>
                                                 </div>
-                                                <div class="chat-sidebar-channel scroller mt-4 pl-3">
-                                                    <h5 class="mt-3">{{ _("Direct Message") }}</h5>
-                                                    <ul class="iq-chat-ui nav flex-column nav-pills">
-
-                                                        {% for room in rooms %}
-                                                            <!--Chatroom Listing Unit-->
-                                                            <li class="listing-group-item">
-                                                                <!--Chat Link href-->
-                                                                <a class="listing-item" id="{{ room.id }}" sn="{{ room.staff.username }}" data-toggle="pill"
-                                                                   href="#chatbox{{ room.id }}">
-                                                                    <div class="d-flex align-items-center">
-                                                                        <div class="avatar mr-2">
-                                                                            <img src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg"
-                                                                                 alt="chatuserimage"
-                                                                                 class="avatar-50 ">
-                                                                            <span class="avatar-status"><i
-                                                                                    class="ri-checkbox-blank-circle-fill text-dark"></i></span>
-                                                                        </div>
-                                                                        <div class="chat-sidebar-name">
-                                                                            <h6 class="mb-0">{{ room.customer.username }}</h6>
-                                                                            <span>{{ _("translation by") }}</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                        {% endfor %}
-
-
+                                                <hr>
+                                                <div class="user-detail text-left mt-4 pl-4 pr-4">
+                                                    <h5 class="mt-4 mb-4">About</h5>
+                                                    <p>It is long established fact that a reader will be distracted bt the reddable.</p>
+                                                    <h5 class="mt-3 mb-3">Status</h5>
+                                                    <ul class="user-status p-0">
+                                                        <li class="mb-1"><i
+                                                                class="ri-checkbox-blank-circle-fill text-success pr-1"></i><span>Online</span>
+                                                        </li>
+                                                        <li class="mb-1"><i
+                                                                class="ri-checkbox-blank-circle-fill text-warning pr-1"></i><span>Away</span>
+                                                        </li>
+                                                        <li class="mb-1"><i
+                                                                class="ri-checkbox-blank-circle-fill text-danger pr-1"></i><span>Do Not
+                                                   Disturb</span></li>
+                                                        <li class="mb-1"><i
+                                                                class="ri-checkbox-blank-circle-fill text-light pr-1"></i><span>Offline</span>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-9 chat-data p-0 chat-data-right">
-                                                <div class="tab-content h-100">
+                                        </div>
+                                        <div class="chat-searchbar mt-4">
+                                            <div class="form-group chat-search-data m-0">
+                                                <input type="text" class="form-control round" id="chat-search" placeholder="{{ _("Search") }}">
+                                                <i class="ri-search-line"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="chat-sidebar-channel scroller mt-4 pl-3">
+                                        <h5 class="mt-3">{{ _("Direct Message") }}</h5>
+                                        <ul class="iq-chat-ui nav flex-column nav-pills">
 
-                                                    <!--Chatting Start Notice-->
-                                                    <div class="tab-pane fade active show h-100" id="default-block" role="tabpanel">
-                                                        <div class="chat-start">
-                                                            <span class="iq-start-icon text-primary"><i class="ri-message-3-line"></i></span>
-                                                            <button id="chat-start" class="btn chat-button mt-3" disabled>{{ _("Start
-                                               Conversation By Choosing Chatroom!") }}</button>
+                                            {% for room in rooms %}
+                                                <!--Chatroom Listing Unit-->
+                                                <li class="listing-group-item">
+                                                    <!--Chat Link href-->
+                                                    <a class="listing-item" id="{{ room.id }}" sn="{{ room.staff.username }}" data-toggle="pill"
+                                                       href="#chatbox{{ room.id }}">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="avatar mr-2">
+                                                                <img src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg"
+                                                                     alt="chatuserimage"
+                                                                     class="avatar-50 ">
+                                                                <span class="avatar-status"><i
+                                                                        class="ri-checkbox-blank-circle-fill text-dark"></i></span>
+                                                            </div>
+                                                            <div class="chat-sidebar-name">
+                                                                <h6 class="mb-0">{{ room.customer.username }}</h6>
+                                                                <span>{{ _("translation by") }}</span>
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                    </a>
+                                                </li>
+                                            {% endfor %}
 
 
-                                                    {% for room in rooms %}
-                                                        <!--Chatbox Section-->
-                                                        <div class="tab-pane fade" id="chatbox{{ room.id }}" role="tabpanel">
-                                                            <div class="chat-head">
-                                                                <header
-                                                                        class="d-flex justify-content-between align-items-center bg-white pt-3 pl-3 pr-3 pb-3">
-                                                                    <div class="d-flex align-items-center">
-                                                                        <div class="sidebar-toggle">
-                                                                            <i class="ri-menu-3-line"></i>
-                                                                        </div>
-                                                                        <div class="avatar chat-user-profile m-0 mr-3">
-                                                                            <img src="../../static/images/popo.jpg" alt="avatar" class="avatar-50 ">
-                                                                            <span class="avatar-status"><i
-                                                                                    class="ri-checkbox-blank-circle-fill text-success"></i></span>
-                                                                        </div>
-                                                                        <h5 class="mb-0">{{ room.customer.username }}</h5>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-9 chat-data p-0 chat-data-right">
+                                    <div class="tab-content h-100">
+
+                                        <!--Chatting Start Notice-->
+                                        <div class="tab-pane fade active show h-100" id="default-block" role="tabpanel">
+                                            <div class="chat-start">
+                                                <span class="iq-start-icon text-primary"><i class="ri-message-3-line"></i></span>
+                                                <button id="chat-start" class="btn chat-button mt-3" disabled>{{ _("Start
+                                               Conversation By Choosing Chatroom!") }}</button>
+                                            </div>
+                                        </div>
+
+
+                                        {% for room in rooms %}
+                                            <!--Chatbox Section-->
+                                            <div class="tab-pane fade" id="chatbox{{ room.id }}" role="tabpanel">
+                                                <div class="chat-head">
+                                                    <header
+                                                            class="d-flex justify-content-between align-items-center bg-white pt-3 pl-3 pr-3 pb-3">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="sidebar-toggle">
+                                                                <i class="ri-menu-3-line"></i>
+                                                            </div>
+                                                            <div class="avatar chat-user-profile m-0 mr-3">
+                                                                <img src="../../static/images/popo.jpg" alt="avatar" class="avatar-50 ">
+                                                                <span class="avatar-status"><i
+                                                                        class="ri-checkbox-blank-circle-fill text-success"></i></span>
+                                                            </div>
+                                                            <h5 class="mb-0">{{ room.customer.username }}</h5>
+                                                        </div>
+                                                        <div class="chat-user-detail-popup scroller">
+                                                            <div class="user-profile text-center">
+                                                                <button type="submit" class="close-popup p-3"><i
+                                                                        class="ri-close-fill"></i></button>
+                                                                <div class="user mb-4">
+                                                                    <a class="avatar m-0">
+                                                                        <img src="../../static/images/popo.jpg" class="avatar-100" alt="avatar">
+                                                                    </a>
+                                                                    <div class="user-name mt-4">
+                                                                        <h4>Paul Molive</h4>
                                                                     </div>
-                                                                    <div class="chat-user-detail-popup scroller">
-                                                                        <div class="user-profile text-center">
-                                                                            <button type="submit" class="close-popup p-3"><i
-                                                                                    class="ri-close-fill"></i></button>
-                                                                            <div class="user mb-4">
-                                                                                <a class="avatar m-0">
-                                                                                    <img src="../../static/images/popo.jpg" class="avatar-100" alt="avatar">
-                                                                                </a>
-                                                                                <div class="user-name mt-4">
-                                                                                    <h4>Paul Molive</h4>
-                                                                                </div>
-                                                                                <div class="user-desc">
-                                                                                    <p>Cape Town, RSA</p>
-                                                                                </div>
-                                                                            </div>
-                                                                            <hr>
-                                                                            <div class="chatuser-detail text-left mt-4">
-                                                                                <div class="row">
-                                                                                    <div class="col-6 col-md-6 title">Bni Name:</div>
-                                                                                    <div class="col-6 col-md-6 text-right">Pau</div>
-                                                                                </div>
-                                                                                <hr>
-                                                                                <div class="row">
-                                                                                    <div class="col-6 col-md-6 title">Tel:</div>
-                                                                                    <div class="col-6 col-md-6 text-right">072 143 9920</div>
-                                                                                </div>
-                                                                                <hr>
-                                                                                <div class="row">
-                                                                                    <div class="col-6 col-md-6 title">Date Of Birth:</div>
-                                                                                    <div class="col-6 col-md-6 text-right">July 12, 1989</div>
-                                                                                </div>
-                                                                                <hr>
-                                                                                <div class="row">
-                                                                                    <div class="col-6 col-md-6 title">Gender:</div>
-                                                                                    <div class="col-6 col-md-6 text-right">Male</div>
-                                                                                </div>
-                                                                                <hr>
-                                                                                <div class="row">
-                                                                                    <div class="col-6 col-md-6 title">Language:</div>
-                                                                                    <div class="col-6 col-md-6 text-right">English</div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                                                                    <div class="user-desc">
+                                                                        <p>Cape Town, RSA</p>
                                                                     </div>
-                                                                    <div class="chat-header-icons d-flex">
-                                                                        <a href="javascript:void();" class="chat-icon-phone">
-                                                                            <i class="ri-phone-line"></i>
-                                                                        </a>
-                                                                        <a href="javascript:void();" class="chat-icon-video">
-                                                                            <i class="ri-vidicon-line"></i>
-                                                                        </a>
-                                                                        <a href="javascript:void();" class="chat-icon-delete">
-                                                                            <i class="ri-delete-bin-line"></i>
-                                                                        </a>
-                                                                        <span class="dropdown">
+                                                                </div>
+                                                                <hr>
+                                                                <div class="chatuser-detail text-left mt-4">
+                                                                    <div class="row">
+                                                                        <div class="col-6 col-md-6 title">Bni Name:</div>
+                                                                        <div class="col-6 col-md-6 text-right">Pau</div>
+                                                                    </div>
+                                                                    <hr>
+                                                                    <div class="row">
+                                                                        <div class="col-6 col-md-6 title">Tel:</div>
+                                                                        <div class="col-6 col-md-6 text-right">072 143 9920</div>
+                                                                    </div>
+                                                                    <hr>
+                                                                    <div class="row">
+                                                                        <div class="col-6 col-md-6 title">Date Of Birth:</div>
+                                                                        <div class="col-6 col-md-6 text-right">July 12, 1989</div>
+                                                                    </div>
+                                                                    <hr>
+                                                                    <div class="row">
+                                                                        <div class="col-6 col-md-6 title">Gender:</div>
+                                                                        <div class="col-6 col-md-6 text-right">Male</div>
+                                                                    </div>
+                                                                    <hr>
+                                                                    <div class="row">
+                                                                        <div class="col-6 col-md-6 title">Language:</div>
+                                                                        <div class="col-6 col-md-6 text-right">English</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="chat-header-icons d-flex">
+                                                            <a href="javascript:void();" class="chat-icon-phone">
+                                                                <i class="ri-phone-line"></i>
+                                                            </a>
+                                                            <a href="javascript:void();" class="chat-icon-video">
+                                                                <i class="ri-vidicon-line"></i>
+                                                            </a>
+                                                            <a href="javascript:void();" class="chat-icon-delete">
+                                                                <i class="ri-delete-bin-line"></i>
+                                                            </a>
+                                                            <span class="dropdown">
                                                 <i class="ri-more-2-line cursor-pointer dropdown-toggle nav-hide-arrow cursor-pointer"
                                                    id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true"
                                                    aria-expanded="false" role="menu"></i>
@@ -226,115 +225,112 @@
                                                                                                           aria-hidden="true"></i> Block</a>
                                                 </span>
                                              </span>
+                                                        </div>
+                                                    </header>
+                                                </div>
+
+                                                <!--Chat Window-->
+                                                <div id="chat-window" class="chat-content scroller">
+
+                                                    {% for message in messages %}
+
+                                                        {% if message.author_type == "customer" and role_id == 1 %}
+                                                            <!--Customer Chat box-->
+                                                            <div class="chat chat-left">
+                                                                <div class="chat-user">
+                                                                    <a class="avatar m-0">
+                                                                        <img src="../../static/images/popo.jpg" alt="avatar" class="avatar-35">
+                                                                    </a>
+                                                                    {#                                                  <div class="chat-sidebar-name">{{ room.customer.username }}</div>#}
+                                                                    {#                                                 <span class="chat-time mt-1">{{ moment(message.timestamp).format('YYYY-MM-DD HH:mm:ss') }}</span>#}
+                                                                </div>
+                                                                <div class="chat-detail">
+                                                                    <div class="chat-message">
+                                                                        <p>{{ message.content }}</p>
                                                                     </div>
-                                                                </header>
-                                                            </div>
-
-                                                            <!--Chat Window-->
-                                                            <div id="chat-window" class="chat-content scroller">
-
-                                                                {% for message in messages %}
-
-                                                                    {% if message.author_type == "customer" and role_id == 1 %}
-                                                                        <!--Customer Chat box-->
-                                                                        <div class="chat chat-left">
-                                                                            <div class="chat-user">
-                                                                                <a class="avatar m-0">
-                                                                                    <img src="../../static/images/popo.jpg" alt="avatar" class="avatar-35">
-                                                                                </a>
-                                                                                {#                                                  <div class="chat-sidebar-name">{{ room.customer.username }}</div>#}
-                                                                                {#                                                 <span class="chat-time mt-1">{{ moment(message.timestamp).format('YYYY-MM-DD HH:mm:ss') }}</span>#}
-                                                                            </div>
-                                                                            <div class="chat-detail">
-                                                                                <div class="chat-message">
-                                                                                    <p>{{ message.content }}</p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-                                                                    {% elif message.author_type == "staff" and role_id == 2 %}
-                                                                        <!--Staff chat box-->
-                                                                        <div class="chat">
-                                                                            <div class="chat-user">
-                                                                                <a class="avatar m-0">
-                                                                                    <img src="../assets/images/user/1.jpg" alt="avatar" class="avatar-35 ">
-                                                                                </a>
-                                                                                <div class="chat-sidebar-name">{{ room.staff.username }}</div>
-                                                                                <span class="chat-time mt-1">{{ moment(message.timestamp).format('YYYY-MM-DD HH:mm:ss') }}</span>
-                                                                            </div>
-                                                                            <div class="chat-detail">
-                                                                                <div class="chat-message">
-                                                                                    <p>{{ message.content }}</p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    {% endif %}
-
-                                                                    {% if message.author_type == "customer" and role_id == 2 %}
-                                                                        <!--Customer Chat box-->
-                                                                        <div class="chat chat-left">
-                                                                            <div class="chat-user">
-                                                                                <a class="avatar m-0">
-                                                                                    <img src="../assets/images/user/10.jpg" alt="avatar" class="avatar-35 ">
-                                                                                </a>
-                                                                                <div class="chat-sidebar-name">{{ room.customer.username }}</div>
-                                                                                <span class="chat-time mt-1">{{ moment(message.timestamp).format('YYYY-MM-DD HH:mm:ss') }}</span>
-                                                                            </div>
-                                                                            <div class="chat-detail">
-                                                                                <div class="chat-message">
-                                                                                    <p>{{ message.content }}</p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-                                                                    {% elif message.author_type == "staff" and role_id == 1 %}
-                                                                        <!--Staff chat box-->
-                                                                        <div class="chat">
-                                                                            <div class="chat-user">
-                                                                                <a class="avatar m-0">
-                                                                                    <img src="../assets/images/user/1.jpg" alt="avatar" class="avatar-35 ">
-                                                                                </a>
-                                                                                <div class="chat-sidebar-name">{{ room.staff.username }}</div>
-                                                                                <span class="chat-time mt-1">{{ moment(message.timestamp).format('YYYY-MM-DD HH:mm:ss') }}</span>
-                                                                            </div>
-                                                                            <div class="chat-detail">
-                                                                                <div class="chat-message">
-                                                                                    <p>{{ message.content }}</p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    {% endif %}
-
-                                                                {% endfor %}
-
-                                                            </div>
-                                                            <!--Chat Window end-->
-
-                                                            <!--Chat Input Message-->
-                                                            <div class="chat-footer p-3 bg-white">
-                                                                <div class="d-flex align-items-center">
-                                                                    <div class="chat-attagement d-flex">
-                                                                        <a href="javascript:void();"><i class="fa fa-smile-o pr-3"
-                                                                                                        aria-hidden="true"></i></a>
-                                                                        <a href="javascript:void();"><i class="fa fa-paperclip pr-3"
-                                                                                                        aria-hidden="true"></i></a>
-                                                                    </div>
-                                                                    <input id="user_message" type="text" class="form-control mr-3"
-                                                                           placeholder="{{ _("Type your message") }}">
-                                                                    <button id="send_message" type="submit"
-                                                                            class="btn btn-primary d-flex align-items-center p-2">
-                                                                        <span class="d-none d-lg-block ml-1">{{ _("Send") }}</span></button>
                                                                 </div>
                                                             </div>
-                                                            <!--Chat Input Message End-->
 
-                                                        </div>
-                                                        <!--Chatbox Section End-->
+                                                        {% elif message.author_type == "staff" and role_id == 2 %}
+                                                            <!--Staff chat box-->
+                                                            <div class="chat">
+                                                                <div class="chat-user">
+                                                                    <a class="avatar m-0">
+                                                                        <img src="../assets/images/user/1.jpg" alt="avatar" class="avatar-35 ">
+                                                                    </a>
+                                                                    <div class="chat-sidebar-name">{{ room.staff.username }}</div>
+                                                                    <span class="chat-time mt-1">{{ moment(message.timestamp).format('YYYY-MM-DD HH:mm:ss') }}</span>
+                                                                </div>
+                                                                <div class="chat-detail">
+                                                                    <div class="chat-message">
+                                                                        <p>{{ message.content }}</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+
+                                                        {% if message.author_type == "customer" and role_id == 2 %}
+                                                            <!--Customer Chat box-->
+                                                            <div class="chat chat-left">
+                                                                <div class="chat-user">
+                                                                    <a class="avatar m-0">
+                                                                        <img src="../assets/images/user/10.jpg" alt="avatar" class="avatar-35 ">
+                                                                    </a>
+                                                                    <div class="chat-sidebar-name">{{ room.customer.username }}</div>
+                                                                    <span class="chat-time mt-1">{{ moment(message.timestamp).format('YYYY-MM-DD HH:mm:ss') }}</span>
+                                                                </div>
+                                                                <div class="chat-detail">
+                                                                    <div class="chat-message">
+                                                                        <p>{{ message.content }}</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        {% elif message.author_type == "staff" and role_id == 1 %}
+                                                            <!--Staff chat box-->
+                                                            <div class="chat">
+                                                                <div class="chat-user">
+                                                                    <a class="avatar m-0">
+                                                                        <img src="../assets/images/user/1.jpg" alt="avatar" class="avatar-35 ">
+                                                                    </a>
+                                                                    <div class="chat-sidebar-name">{{ room.staff.username }}</div>
+                                                                    <span class="chat-time mt-1">{{ moment(message.timestamp).format('YYYY-MM-DD HH:mm:ss') }}</span>
+                                                                </div>
+                                                                <div class="chat-detail">
+                                                                    <div class="chat-message">
+                                                                        <p>{{ message.content }}</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+
                                                     {% endfor %}
 
                                                 </div>
+                                                <!--Chat Window end-->
+
+                                                <!--Chat Input Message-->
+                                                <div class="chat-footer p-3 bg-white">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="chat-attagement d-flex">
+                                                            <a href="javascript:void();"><i class="fa fa-smile-o pr-3"
+                                                                                            aria-hidden="true"></i></a>
+                                                            <a href="javascript:void();"><i class="fa fa-paperclip pr-3"
+                                                                                            aria-hidden="true"></i></a>
+                                                        </div>
+                                                        <input id="user_message" type="text" class="form-control mr-3"
+                                                               placeholder="{{ _("Type your message") }}">
+                                                        <button id="send_message" type="submit"
+                                                                class="btn btn-primary d-flex align-items-center p-2">
+                                                            <span class="d-none d-lg-block ml-1">{{ _("Send") }}</span></button>
+                                                    </div>
+                                                </div>
+                                                <!--Chat Input Message End-->
+
                                             </div>
-                                        </div>
+                                            <!--Chatbox Section End-->
+                                        {% endfor %}
+
                                     </div>
                                 </div>
                             </div>
@@ -342,6 +338,8 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 {% endblock %}
 
 
