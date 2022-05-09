@@ -1002,6 +1002,7 @@ class ModelTypePic(BaseModel):
 
 class ModelTypeIntroPic(BaseModel):
     """
+        (Abandoned)
         Each model type of a product can have a group of intro pictures.
         Intro pictures are the pictures in the detail pages, when you scroll down you can see them.
         Using the same technology as what JD company do.
