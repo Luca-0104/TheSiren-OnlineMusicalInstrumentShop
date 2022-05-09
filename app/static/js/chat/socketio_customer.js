@@ -88,22 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('#chat-window').innerHTML = '';
 
         socket.emit('history', {'room': chatroom_id})
-        // $.post('/api/history', {
-        //     'chatroom_id': chatroom_id
-        // }).done(function (response) {
-        //     let chat_history = response['history'];
-        //     let current_user = response['current_user'];
-        //
-        //      for(let i = 0; i < chat_history.length; i++){
-        //         console.log(i+1);
-        //         console.log(chat_history[i].message_id);
-        //         console.log("-------------------------------------")
-        //          socket.send({'msg': chat_history[i].msg,
-        //         'username': chat_history[i].username, 'room': chatroom_id, 'time_stamp': chat_history[i].time_stamp, 'avatar': chat_history[i].avatar
-        //              , 'message_id': chat_history[i].message_id });
-        //
-        //      }
-        // })
 
         // Autofocus on text box
         document.querySelector('#user_message').focus();

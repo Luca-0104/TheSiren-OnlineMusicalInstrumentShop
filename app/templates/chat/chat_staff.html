@@ -109,19 +109,26 @@
                                                        href="#chatbox{{ room.id }}">
                                                         <div class="d-flex align-items-center">
                                                             <div class="avatar mr-2">
-                                                                <img src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg"
+                                                                <img src="{{ url_for('static', filename=room.customer.avatar) }}"
                                                                      alt="chatuserimage"
                                                                      class="avatar-50 ">
                                                                 <span class="avatar-status"><i
                                                                         class="ri-checkbox-blank-circle-fill text-dark"></i></span>
                                                             </div>
                                                             <div class="chat-sidebar-name">
-                                                                <h6 class="mb-0">{{ room.customer.username }}</h6>
+                                                                <h6 id="customer_username" class="mb-0">{{ room.customer.username }}</h6>
                                                                 <span>{{ _("translation by") }}</span>
                                                             </div>
                                                         </div>
                                                     </a>
                                                 </li>
+
+                                                 <!--Avatar parameter for socketio.js-->
+                                                <div id="chatroom-avatar-{{ room.id }}" style="display: none;"
+                                                     avatar-customer="{{ url_for('static', filename=room.customer.avatar) }}"
+                                                     avatar-staff="{{ url_for('static', filename=room.staff.avatar) }}">
+
+                                                </div>
                                             {% endfor %}
 
 
@@ -152,7 +159,7 @@
                                                                 <i class="ri-menu-3-line"></i>
                                                             </div>
                                                             <div class="avatar chat-user-profile m-0 mr-3">
-                                                                <img src="../../static/images/popo.jpg" alt="avatar" class="avatar-50 ">
+                                                                <img src="{{ url_for('static', filename=room.customer.avatar) }}" alt="avatar" class="avatar-50 ">
                                                                 <span class="avatar-status"><i
                                                                         class="ri-checkbox-blank-circle-fill text-success"></i></span>
                                                             </div>
@@ -164,10 +171,10 @@
                                                                         class="ri-close-fill"></i></button>
                                                                 <div class="user mb-4">
                                                                     <a class="avatar m-0">
-                                                                        <img src="../../static/images/popo.jpg" class="avatar-100" alt="avatar">
+                                                                        <img src="{{ url_for('static', filename=room.customer.avatar) }}" class="avatar-100" alt="avatar">
                                                                     </a>
                                                                     <div class="user-name mt-4">
-                                                                        <h4>Paul Molive</h4>
+                                                                        <h4>{{ room.customer.username }}</h4>
                                                                     </div>
                                                                     <div class="user-desc">
                                                                         <p>Cape Town, RSA</p>
