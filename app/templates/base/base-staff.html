@@ -177,7 +177,6 @@
                                     </li>
                                 </ul>
                             </li>
-
                             <!-- Section of List Category & Add Category -->
                             <li id="sidebar-Categories" class="sidebar-selection ">
                                 <a href="#category" class="collapsed" data-toggle="collapse" aria-expanded="false">
@@ -248,7 +247,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <!-- Section of Customers & Add Customers & Users & Add Users & Suppliers & Add Suppliers -->
+                            <!-- Section of Communication -->
                             <li id="sidebar-People" class="sidebar-selection ">
                                 <a href="#people" class="collapsed" data-toggle="collapse" aria-expanded="false">
                                     <svg class="svg-icon" id="p-dash8" width="20" height="20"
@@ -270,40 +269,10 @@
                                     </svg>
                                 </a>
                                 <ul id="people" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                                    <!-- Customers -->
-                                    <li id="sidebar-Customers" super-selection="sidebar-People" class="sidebar-selection ">
-                                        <a href="../backend/page-list-customers.html">
-                                            <i class="las la-minus"></i><span>{{ _('Customers') }}</span>
-                                        </a>
-                                    </li>
-                                    <!-- Add Customers -->
-                                    <li id="sidebar-Add_Customers" super-selection="sidebar-People" class="sidebar-selection ">
-                                        <a href="../backend/page-add-customers.html">
-                                            <i class="las la-minus"></i><span>{{ _('Add Customers') }}</span>
-                                        </a>
-                                    </li>
-                                    <!-- Users -->
-                                    <li id="sidebar-Users" super-selection="sidebar-People" class="sidebar-selection ">
-                                        <a href="../backend/page-list-users.html">
-                                            <i class="las la-minus"></i><span>{{ _('Users') }}</span>
-                                        </a>
-                                    </li>
-                                    <!-- Add Users -->
-                                    <li id="sidebar-Add_Users" super-selection="sidebar-People" class="sidebar-selection ">
-                                        <a href="../backend/page-add-users.html">
-                                            <i class="las la-minus"></i><span>{{ _('Add Users') }}</span>
-                                        </a>
-                                    </li>
-                                    <!-- Suppliers -->
-                                    <li id="sidebar-Suppliers" super-selection="sidebar-People" class="sidebar-selection ">
-                                        <a href="../backend/page-list-suppliers.html">
-                                            <i class="las la-minus"></i><span>{{ _('Suppliers') }}</span>
-                                        </a>
-                                    </li>
-                                    <!-- Add Suppliers -->
-                                    <li id="sidebar-Add_Suppliers" super-selection="sidebar-People" class="sidebar-selection ">
-                                        <a href="../backend/page-add-supplier.html">
-                                            <i class="las la-minus"></i><span>{{ _('Add Suppliers') }}</span>
+                                    <!-- Communication -->
+                                    <li id="sidebar-Communication" super-selection="sidebar-People" class="sidebar-selection ">
+                                        <a href="{{ url_for('chat.chat_room') }}">
+                                            <i class="las la-minus"></i><span>Communication</span>
                                         </a>
                                     </li>
                                 </ul>
