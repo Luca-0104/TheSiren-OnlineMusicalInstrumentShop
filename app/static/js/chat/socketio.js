@@ -55,12 +55,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (data.username === username){
             console.log("inside if 1");
             div_chat.setAttribute("class","chat");
-            img.setAttribute("src", data.avatar);
+            img.setAttribute("src", $('#chatroom-avatar-'+chatroom_id).attr("avatar-staff"));
             document.querySelector('#chat-window').append(div_chat);
 
         } else if (data.username !== username && typeof data.username !== 'undefined') {
             console.log("inside if 2");
-            img.setAttribute("src", data.avatar);
+            img.setAttribute("src", $('#chatroom-avatar-'+chatroom_id).attr("avatar-customer"));
             div_chat.setAttribute("class","chat chat-left");
             document.querySelector('#chat-window').append(div_chat);
 

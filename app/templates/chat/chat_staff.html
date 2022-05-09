@@ -116,12 +116,19 @@
                                                                         class="ri-checkbox-blank-circle-fill text-dark"></i></span>
                                                             </div>
                                                             <div class="chat-sidebar-name">
-                                                                <h6 class="mb-0">{{ room.customer.username }}</h6>
+                                                                <h6 id="customer_username" class="mb-0">{{ room.customer.username }}</h6>
                                                                 <span>{{ _("translation by") }}</span>
                                                             </div>
                                                         </div>
                                                     </a>
                                                 </li>
+
+                                                 <!--Avatar parameter for socketio.js-->
+                                                <div id="chatroom-avatar-{{ room.id }}" style="display: none;"
+                                                     avatar-customer="{{ url_for('static', filename=room.customer.avatar) }}"
+                                                     avatar-staff="{{ url_for('static', filename=room.staff.avatar) }}">
+
+                                                </div>
                                             {% endfor %}
 
 
