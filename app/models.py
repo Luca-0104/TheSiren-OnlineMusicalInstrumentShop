@@ -424,7 +424,7 @@ class ChatRoom(BaseModel):
 
 class Message(BaseModel):
     """
-        (Chatting version 2 -> ChatRoom + Message)
+        (Chatting version 2 ->  + Message)
         Storing the chatting record of a customer and staff(staff role, not a specific staff)
     """
     __tablename__ = 'Messages'

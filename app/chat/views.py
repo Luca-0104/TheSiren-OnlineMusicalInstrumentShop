@@ -18,7 +18,6 @@ Payload.max_decode_packets = 9999
 @chat.route('/chat_room', methods=['GET', 'POST'])
 # @login_required
 def chat_room():
-    print("create")
     if session.get('username') is not None:
         if session["role_id"] == 1:
             rooms = ChatRoom.query.filter_by(customer_id=session['uid']).all()
@@ -133,6 +132,7 @@ def chat_history():
     # role is customer
     if role_id == 1:
         role = 'customer'
+        print("customer")
     if role_id == 2:
         role = 'staff'
 
@@ -141,6 +141,7 @@ def chat_history():
 
 
 def prepare_for_history_json(item, chat_id):
+    print("nice")
     room = ChatRoom.query.filter_by(id=chat_id).first()
     username = room.customer.username
     staffname = room.staff.username

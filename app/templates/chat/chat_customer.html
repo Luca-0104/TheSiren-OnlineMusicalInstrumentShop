@@ -11,6 +11,10 @@
 </head>
 <body>
 
+<div href="{{ url_for('main.index') }}"class="btn btn-warning">
+    <a href="{{ url_for('main.index') }}"><i class="fa fa-external-link"></i>Back</a>
+</div>
+
 <div class="page-content page-container" id="page-content">
     <div class="padding">
         <div class="row container d-flex justify-content-center">
@@ -33,7 +37,7 @@
 
                 <div class="box-body">
                   <!--chat window-->
-                  <div class="direct-chat-messages">
+                  <div id="chat-window" class="direct-chat-messages">
 
 
                     <!--staff chat-->
@@ -90,13 +94,17 @@
 
     <!-- Get username -->
     <script type="text/javascript">
-        let chatroom_id = '{{ current_user.chat_rooms_customer.first }}';
+        let chatroom_id = '{{ current_user.chat_rooms_customer.first().id }}';
         console.log(chatroom_id);
         let username = '{{ current_user.username }}';
     </script>
     <!--Customer Chat socket-->
     <script type="text/javascript" src="../../static/js/chat/socketio_customer.js"></script>
-
+     <!-- SocketIO JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+    <!--jquery-->
+    <script src="../../static/js/jquery-3.4.1.js"></script>
+    <script src="../../static/js/chat/chat_page.js"></script>
 </body>
 
 
