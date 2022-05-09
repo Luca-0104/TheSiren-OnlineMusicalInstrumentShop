@@ -376,7 +376,7 @@
 {#                        <div class="w-layout-grid grid-halves">#}
                             {# title of 3D view #}
 {#                            <div class="container">#}
-{#                                <h1 class="no-bottom-margin view-3d-title">3D view of {{ model.name }}</h1>#}
+{#                                <h1 class="no-bottom-margin view-3d-title">{{ _("3D view of")}} {{ model.name }}</h1>#}
 {#                            </div>#}
                             {# container of the 3D view #}
 {#                            <div class="container">#}
@@ -405,12 +405,14 @@
                         <div class="w-layout-grid grid-halves">
                             {# title of 3D view #}
                             <div class="container">
-                                <h1 class="no-bottom-margin view-3d-title">3D view of {{ model.name }}</h1>
+                                <h1 class="no-bottom-margin view-3d-title">{{ _("3D view of")}} {{ model.name }}</h1>
                                 <div>
                                     <br>
-                                    You can use mouse to move the camara around by dragging and use mouse wheel to move closer.<br>
-                                    If you cannot see the 3d model, please move the camara. <br>
-                                    You may wait for a moment before it finishes rendering, this may take several minuses.
+                                    {{ _("You can use mouse to move the camara around by dragging and use mouse wheel to move
+                                            closer.")}}<br>
+                                    {{ _("If you cannot see the 3d model, please move the camara.")}} <br>
+                                    {{ _("You may wait for a moment before it finishes rendering, this may take several
+                                            minuses.")}}
                                 </div>
                             </div>
                             {# container of the 3D view #}

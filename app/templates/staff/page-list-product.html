@@ -42,15 +42,15 @@
                         <i class="las">
                             &nbsp;
                             <span id="search-by">
-                                Model Name
+                                {{ _("Model Name")}}
                             </span>
                             &nbsp;
                             <i class="las la-angle-down"></i>
                         </i>
                     </button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="javascript:search_by(1);" style="color: #212529">Model Name</a>
-                        <a class="dropdown-item" href="javascript:search_by(2);" style="color: #212529">Model Serial</a>
+                        <a class="dropdown-item" href="javascript:search_by(1);" style="color: #212529">{{ _("Model Name")}}</a>
+                        <a class="dropdown-item" href="javascript:search_by(2);" style="color: #212529">{{ _("Model Serial")}}</a>
                     </div>
                 </div>
             </div>
@@ -73,8 +73,8 @@
                     <div>
                         <h4 class="mb-3">{{ _('Product List') }}</h4>
                         <p class="mb-0">
-                            This page effectively list all commodities and provides functionalities <br>
-                            for you to manage products and model types.
+                            {{ _("This page effectively list all commodities and provides functionalities")}} <br>
+                            {{ _("for you to manage products and model types.")}}
                         </p>
                     </div>
                     <a href="/upload-product" class="btn btn-primary add-list"><i
@@ -242,8 +242,9 @@
                                                                         <div class="modal-body">
                                                                             <div class="popup text-left">
                                                                                 <div class="media align-items-top justify-content-between">
-                                                                                    <h3 class="mb-3">Which kind of media
-                                                                                        to upload</h3>
+                                                                                    <h3 class="mb-3">{{ _("Which kind of
+                                                                                            media
+                                                                                            to upload")}}</h3>
                                                                                     <div class="btn-cancel p-0"
                                                                                          data-dismiss="modal"><i
                                                                                             class="las la-times"></i>
@@ -263,7 +264,7 @@
                                                                                                    data-target="#modal-media-video-{{ model.id }}">
                                                                                                     <div class="btn btn-primary mr-3"
                                                                                                          data-dismiss="modal">
-                                                                                                        Upload Video
+                                                                                                        {{ _("Upload Video")}}
                                                                                                     </div>
                                                                                                 </a>
 
@@ -272,7 +273,7 @@
                                                                                                    data-target="#modal-media-audio-{{ model.id }}">
                                                                                                     <div class="btn btn-primary mr-3"
                                                                                                          data-dismiss="modal">
-                                                                                                        Upload Audio
+                                                                                                        {{ _("Upload Audio")}}
                                                                                                     </div>
                                                                                                 </a>
 
@@ -281,7 +282,8 @@
                                                                                                    data-target="#modal-media-3d-file-{{ model.id }}">
                                                                                                     <div class="btn btn-primary mr-3"
                                                                                                          data-dismiss="modal">
-                                                                                                        Upload 3D Model
+                                                                                                        {{ _("Upload 3D
+                                                                                                                Model")}}
                                                                                                     </div>
                                                                                                 </a>
 
@@ -313,8 +315,8 @@
                                                                         <div class="modal-body">
                                                                             <div class="popup text-left">
                                                                                 <div class="media align-items-top justify-content-between">
-                                                                                    <h3 class="mb-3">Upload a Video
-                                                                                        File</h3>
+                                                                                    <h3 class="mb-3">{{ _("Upload a Video
+                                                                                            File")}}</h3>
                                                                                     <div class="btn-cancel p-0"
                                                                                          data-dismiss="modal"><i
                                                                                             class="las la-times"></i>
@@ -344,10 +346,10 @@
                                                                                                                    aria-describedby="inputGroupFileAddon01"
                                                                                                                    required="required">
                                                                                                             <label class="custom-file-label"
-                                                                                                                   for="input-upload-model-type-video">Choose
-                                                                                                                file
-                                                                                                                (MP4
-                                                                                                                Only)</label><br>
+                                                                                                                   for="input-upload-model-type-video">{{ _("Choose
+                                                                                                                    file
+                                                                                                                    (MP4
+                                                                                                                    Only)")}}</label><br>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
@@ -384,8 +386,8 @@
                                                                         <div class="modal-body">
                                                                             <div class="popup text-left">
                                                                                 <div class="media align-items-top justify-content-between">
-                                                                                    <h3 class="mb-3">Upload a Audio
-                                                                                        File</h3>
+                                                                                    <h3 class="mb-3">{{ _("Upload a Audio
+                                                                                            File")}}</h3>
                                                                                     <div class="btn-cancel p-0"
                                                                                          data-dismiss="modal"><i
                                                                                             class="las la-times"></i>
@@ -415,10 +417,10 @@
                                                                                                                    aria-describedby="inputGroupFileAddon01"
                                                                                                                    required="required">
                                                                                                             <label class="custom-file-label"
-                                                                                                                   for="input-upload-model-type-audio-{{ model.id }}">Choose
-                                                                                                                file
-                                                                                                                (MP3
-                                                                                                                Only)</label><br>
+                                                                                                                   for="input-upload-model-type-audio-{{ model.id }}">{{ _("Choose
+                                                                                                                    file
+                                                                                                                    (MP3
+                                                                                                                    Only)")}}</label><br>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
@@ -454,14 +456,15 @@
                                                                         <div class="modal-body">
                                                                             <div class="popup text-left">
                                                                                 <div class="media align-items-top justify-content-between">
-                                                                                    <h3 class="mb-3">Upload 3D Model</h3>
+                                                                                    <h3 class="mb-3">{{ _("Upload 3D Model")}}</h3>
                                                                                     <div class="btn-cancel p-0"
                                                                                          data-dismiss="modal"><i
                                                                                             class="las la-times"></i>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="content edit-notes">
-                                                                                    <div><i>If no texture uploaded, a default one will be given.</i></div>
+                                                                                    <div><i>{{ _("If no texture uploaded, a
+                                                                                            default one will be given.")}}</i></div>
                                                                                     <div class="card card-transparent card-block card-stretch event-note mb-0">
 
                                                                                         {# upload form (3dfile + texture file +submit) #}
@@ -485,10 +488,11 @@
                                                                                                                    aria-describedby="inputGroupFileAddon01"
                                                                                                                    required="required">
                                                                                                             <label class="custom-file-label"
-                                                                                                                   for="input-upload-model-type-3d-{{ model.id }}">Choose
-                                                                                                                3d model file
-                                                                                                                (.obj/.fbx
-                                                                                                                Only)</label><br>
+                                                                                                                   for="input-upload-model-type-3d-{{ model.id }}">{{ _("Choose
+                                                                                                                    3d model
+                                                                                                                    file
+                                                                                                                    (.obj/.fbx
+                                                                                                                    Only)")}}</label><br>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>

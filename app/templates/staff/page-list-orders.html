@@ -41,8 +41,8 @@
                     <div>
                         <h4 class="mb-3">{{ _('Order List') }}</h4>
                         <p class="mb-0">
-                            This page effectively list all orders from clients and provides functionalities <br>
-                            for you to manage and update these orders.
+                            {{ _("This page effectively list all orders from clients and provides functionalities")}} <br>
+                            {{ _("for you to manage and update these orders.")}}
                         </p>
                     </div>
                 </div>
@@ -54,14 +54,14 @@
                     <table class="data-table table mb-0 tbl-server-info">
                         <thead class="bg-white text-uppercase">
                         <tr class="ligth ligth-data">
-                            <th>Date</th>
-                            <th>Customer</th>
-                            <th>Total</th>
-                            <th>Paid</th>
-                            <th>Status</th>
-                            <th>Type</th>
-                            <th>Priority</th>
-                            <th>Action</th>
+                            <th>{{ _("Date") }}</th>
+                            <th>{{ _("Customer") }}</th>
+                            <th>{{ _("Total") }}</th>
+                            <th>{{ _("Paid") }}</th>
+                            <th>{{ _("Status") }}</th>
+                            <th>{{ _("Type") }}</th>
+                            <th>{{ _("Priority") }}</th>
+                            <th>{{ _("Action") }}</th>
                         </tr>
                         </thead>
                         <tbody class="ligth-body">
@@ -88,46 +88,46 @@
                                     {% if order.status_code == 0 %}
                                         <div class="badge badge-skyblue">
                                             <span style="display: none">0</span>
-                                            Unpaid
+                                            {{ _("Unpaid") }}
                                         </div>
                                     {% elif order.status_code == 1 %}
                                         <div class="badge badge-orange">
                                             <span style="display: none">1</span>
-                                            Preparing
+                                            {{ _("Preparing") }}
                                         </div>
                                     {% elif order.status_code == 2 %}
                                         <div class="badge badge-purple">
                                             <span style="display: none">2</span>
-                                            Delivering
+                                            {{ _("Delivering") }}
                                         </div>
                                     {% elif order.status_code == 3 %}
                                         <div class="badge badge-purple">
                                             <span style="display: none">3</span>
-                                            Waiting<br>Collection
+                                            {{ _("Waiting") }}<br>{{ _("Collection") }}
                                         </div>
                                     {% elif order.status_code == 4 %}
                                         <div class="badge badge-success">
                                             <span style="display: none">4</span>
-                                            Finished
+                                            {{ _("Finished") }}
                                         </div>
                                     {% elif order.status_code == 5 %}
                                         <div class="badge badge-light">
                                             <span style="display: none">5</span>
-                                            Canceled
+                                            {{ _("Canceled") }}
                                         </div>
                                     {% elif order.status_code == 6 %}
                                         <div class="badge badge-light">
                                             <span style="display: none">6</span>
-                                            Expired
+                                            {{ _("Expired") }}
                                         </div>
                                     {% endif %}
                                 </td>
                                 <!-- Type -->
                                 <td>
                                     {% if order.order_type == "delivery" %}
-                                        Delivery
+                                    {{ _("Delivery") }}
                                     {% else %}
-                                        Self-Collection
+                                    {{ _("Self-Collection") }}
                                     {% endif %}
                                 </td>
                                 <!-- Priority -->
@@ -140,17 +140,17 @@
                                         <option class="priority-option" pvalue="1"
                                                 {% if order.priority == 1 %}
                                                 selected="selected" {% endif %}>
-                                            Normal
+                                            {{ _("Normal") }}
                                         </option>
                                         <option class="priority-option" pvalue="2"
                                                 {% if order.priority == 2 %}
                                                 selected="selected" {% endif %}>
-                                            Important
+                                            {{ _("Important") }}
                                         </option>
                                         <option class="priority-option" pvalue="3"
                                                 {% if order.priority == 3 %}
                                                 selected="selected" {% endif %}>
-                                            Significant
+                                            {{ _("Significant") }}
                                         </option>
                                     </select>
                                 </td>
@@ -257,7 +257,7 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h4 class="modal-title" id="myModalLabel"
-                                                            style="float: left;">Order Details</h4>
+                                                            style="float: left;">{{ _("Order Details")}}</h4>
 
                                                         <button type="button" class="close"
                                                                 data-dismiss="modal" aria-hidden="true">
@@ -271,31 +271,31 @@
                                                             <tr id="status_{{ order.id }}" style="text-align: center">
                                                                 {% if order.status_code == 0 %}
                                                                     <td colspan="3" class="status_col status_wp">
-                                                                        Waiting for Payment
+                                                                        {{ _("Waiting for Payment")}}
                                                                     </td>
                                                                 {% elif order.status_code == 1 %}
                                                                     <td colspan="3" class="status_col status_p">
-                                                                        Preparing
+                                                                        {{ _("Preparing") }}
                                                                     </td>
                                                                 {% elif order.status_code == 2 %}
                                                                     <td colspan="3" class="status_col status_od">
-                                                                        On Delivery
+                                                                        {{ _("On Delivery")}}
                                                                     </td>
                                                                 {% elif order.status_code == 3 %}
                                                                     <td colspan="3" class="status_col status_wc">
-                                                                        Waiting for Collection
+                                                                        {{ _("Waiting for Collection")}}
                                                                     </td>
                                                                 {% elif order.status_code == 4 %}
                                                                     <td colspan="3" class="status_col status_f">
-                                                                        Finished
+                                                                        {{ _("Finished") }}
                                                                     </td>
                                                                 {% elif order.status_code == 5 %}
                                                                     <td colspan="3" class="status_col status_c">
-                                                                        Canceled
+                                                                        {{ _("Canceled") }}
                                                                     </td>
                                                                 {% elif order.status_code == 6 %}
                                                                     <td colspan="3" class="status_col status_e">
-                                                                        Expired
+                                                                        {{ _("Expired") }}
                                                                     </td>
                                                                 {% endif %}
                                                             </tr>
@@ -306,7 +306,7 @@
                                                                     <table width="100%">
                                                                         <tr>
                                                                             <td class="title_indentation medium-heading border-1">
-                                                                                Basic Information
+                                                                                {{ _("Basic Information")}}
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -316,14 +316,14 @@
                                                                                     <tr>
                                                                                         <td colspan="2"
                                                                                             class="order_num">
-                                                                                            Trade No.<br>
+                                                                                            {{ _("Trade") }} No.<br>
                                                                                             {{ order.out_trade_no }}
                                                                                         </td>
                                                                                     </tr>
                                                                                     <tr>
                                                                                         <td colspan="2"
                                                                                             class="order_num">
-                                                                                            Payment No.<br>
+                                                                                            {{ _("Payment") }} No.<br>
                                                                                             {{ order.trade_no }}
                                                                                         </td>
                                                                                     </tr>
@@ -334,21 +334,21 @@
                                                                                     </tr>
                                                                                     <tr>
                                                                                         <td class="left-cell">
-                                                                                            Order Type: <br>
+                                                                                            {{ _("Order Type")}}: <br>
                                                                                             {{ order.order_type }}
                                                                                         </td>
                                                                                         <td>
-                                                                                            Delivery Cost: <br>
+                                                                                            {{ _("Delivery Cost")}}: <br>
                                                                                             ￥{{ order.delivery_fee }}
                                                                                         </td>
                                                                                     </tr>
                                                                                     <tr>
                                                                                         <td class="left-cell">
-                                                                                            Total Cost: <br>
+                                                                                            {{ _("Total Cost")}}: <br>
                                                                                             ￥{{ order.gross_payment }}
                                                                                         </td>
                                                                                         <td class="left-cell">
-                                                                                            Actual Paid: <br>
+                                                                                            {{ _("Actual Paid")}}: <br>
                                                                                             ￥{{ order.paid_payment }}
                                                                                         </td>
                                                                                     </tr>
@@ -358,9 +358,9 @@
                                                                         <tr>
                                                                             <td class="title_indentation top-indentation medium-heading extra-top-indentation border-1">
                                                                                 {% if order.order_type == "delivery" %}
-                                                                                    Address Information
+                                                                                {{ _("Address Information")}}
                                                                                 {% elif order.order_type == "self-collection" %}
-                                                                                    Recipient Information
+                                                                                {{ _("Recipient Information")}}
                                                                                 {% endif %}
                                                                             </td>
                                                                         </tr>
@@ -435,7 +435,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-default"
-                                                                data-dismiss="modal">Close
+                                                                data-dismiss="modal">{{ _("Close") }}
                                                         </button>
                                                     </div>
                                                 </div><!-- /.modal-content -->
@@ -452,7 +452,7 @@
                                                         <div class="modal-header">
                                                             <h4 class="modal-title" id="myModalLabel"
                                                                 style="float: left;">
-                                                                Details
+                                                                {{ _("Details") }}
                                                             </h4>
                                                             <button type="button" class="close"
                                                                     data-dismiss="modal" aria-hidden="true">
@@ -464,7 +464,7 @@
                                                                 <!-- Type section -->
                                                                 <div class="col-md-12">
                                                                     <div class="form-group">
-                                                                        <label class="modal-label">Type *</label>
+                                                                        <label class="modal-label">{{ _("Type") }} *</label>
                                                                         {#                                                                                <select id="select-type-{{ order.id }}" name="select-type"#}
                                                                         {#                                                                                        orderId="{{ order.id }}"#}
                                                                         {#                                                                                        class="selectpicker form-control type-select" data-style="py-0">#}
@@ -486,12 +486,12 @@
                                                                                 <option sn="b1"
                                                                                         {% if order.order_type == "self-collection" %}
                                                                                         selected="selected" {% endif %}>
-                                                                                    Delivery
+                                                                                    {{ _("Delivery") }}
                                                                                 </option>
                                                                                 <option sn="b2"
                                                                                         {% if order.order_type == "delivery" %}
                                                                                         selected="selected" {% endif %}>
-                                                                                    Self-Collection
+                                                                                    {{ _("Self-Collection") }}
                                                                                 </option>
                                                                             </select>
                                                                             <button type="button" tabindex="-1"
@@ -508,9 +508,9 @@
                                                                                         <div id="select-type-display-{{ order.id }}"
                                                                                              class="filter-option-inner-inner">
                                                                                             {% if order.order_type == "self-collection" %}
-                                                                                                Delivery
+                                                                                            {{ _("Delivery") }}
                                                                                             {% elif order.order_type == "delivery" %}
-                                                                                                Self-Collection
+                                                                                            {{ _("Self-Collection") }}
                                                                                             {% endif %}
                                                                                         </div>
                                                                                     </div>
@@ -536,7 +536,7 @@
                                                                                                aria-selected="{{ order.order_type == "self-collection" }}"
                                                                                                orderId="{{ order.id }}"
                                                                                                selectType="Delivery">
-                                                                                                <span class="text">Delivery</span>
+                                                                                                <span class="text">{{ _("Delivery") }}</span>
                                                                                             </a>
                                                                                         </li>
                                                                                         <li class="selected active">
@@ -549,7 +549,7 @@
                                                                                                aria-selected="{{ order.order_type == "delivery" }}"
                                                                                                orderId="{{ order.id }}"
                                                                                                selectType="Self-Collection">
-                                                                                                <span class="text">Self-Collection</span>
+                                                                                                <span class="text">{{ _("Self-Collection") }}</span>
                                                                                             </a>
                                                                                         </li>
                                                                                     </ul>
@@ -580,20 +580,20 @@
                                                                                         </div>
                                                                                         <br><br>
                                                                                         <div class="main-container">
-                                                                                            <span class="fine-print-text">Recipient Name:</span>
+                                                                                            <span class="fine-print-text">{{ _("Recipient Name")}}:</span>
                                                                                             <br>
                                                                                             <span class="address-name w-commerce-commerceboldtextblock">{{ address.recipient.recipient_name }}</span>
                                                                                         </div>
                                                                                         <br>
                                                                                         <div class="main-container">
-                                                                                            <span class="fine-print-text">Full Address:</span>
+                                                                                            <span class="fine-print-text">{{ _("Full Address")}}:</span>
                                                                                             <br>
                                                                                             <span class="address-address address-gray"
                                                                                                   style="display:flex;">{{ address.get_address() }}</span>
 
                                                                                         </div>
                                                                                         {% if address.is_default %}
-                                                                                            <span id="address-default-sign">[default]</span>
+                                                                                            <span id="address-default-sign">[{{ _("default") }}]</span>
                                                                                         {% endif %}
                                                                                     </div>
                                                                                 </li>
@@ -608,7 +608,7 @@
                                                                         {% if order.order_type == "self-collection" %}
                                                                      style="display: none" {% endif %}>
                                                                     <div class="form-group">
-                                                                        <label class="modal-label">Recipient Name
+                                                                        <label class="modal-label">{{ _("Recipient Name")}}
                                                                             *</label>
                                                                         <input id="recipient-name-1-{{ order.id }}"
                                                                                type="text"
@@ -625,7 +625,7 @@
                                                                         {% if order.order_type == "self-collection" %}
                                                                      style="display: none" {% endif %}>
                                                                     <div class="form-group">
-                                                                        <label class="modal-label">Recipient Phone
+                                                                        <label class="modal-label">{{ _("Recipient Phone")}}
                                                                             *</label>
                                                                         <input id="recipient-phone-1-{{ order.id }}"
                                                                                type="text"
@@ -642,7 +642,7 @@
                                                             <button id="type-btn-{{ order.id }}"
                                                                     orderId="{{ order.id }}"
                                                                     type="button" class="btn btn-primary mr-2 type-btn">
-                                                                Update
+                                                                {{ _("Update") }}
                                                             </button>
                                                         </div>
                                                     </form>
@@ -661,7 +661,7 @@
                                                         <form class="modal-form">
                                                             <div class="modal-header">
                                                                 <h4 class="modal-title" id="myModalLabel"
-                                                                    style="float: left;">Change Address</h4>
+                                                                    style="float: left;">{{ _("Change Address")}}</h4>
                                                                 <table class="table-borderless">
 
                                                                 </table>
@@ -691,20 +691,20 @@
                                                                                             </div>
                                                                                             <br><br>
                                                                                             <div class="main-container">
-                                                                                                <span class="fine-print-text">Recipient Name:</span>
+                                                                                                <span class="fine-print-text">{{ _("Recipient Name")}}:</span>
                                                                                                 <br>
                                                                                                 <span class="address-name w-commerce-commerceboldtextblock">{{ address.recipient.recipient_name }}</span>
                                                                                             </div>
                                                                                             <br>
                                                                                             <div class="main-container">
-                                                                                                <span class="fine-print-text">Full Address:</span>
+                                                                                                <span class="fine-print-text">{{ _("Full Address")}}:</span>
                                                                                                 <br>
                                                                                                 <span class="address-address address-gray"
                                                                                                       style="display:flex;">{{ address.get_address() }}</span>
 
                                                                                             </div>
                                                                                             {% if address.is_default %}
-                                                                                                <span id="address-default-sign">[default]</span>
+                                                                                                <span id="address-default-sign">[{{ _("default") }}]</span>
                                                                                             {% endif %}
                                                                                         </div>
                                                                                     </li>
@@ -719,7 +719,7 @@
                                                                         orderId="{{ order.id }}"
                                                                         type="button"
                                                                         class="btn btn-primary mr-2 address-btn">
-                                                                    Update
+                                                                    {{ _("Update") }}
                                                                 </button>
                                                             </div>
                                                         </form>
@@ -737,8 +737,8 @@
                                                         <form class="modal-form">
                                                             <div class="modal-header">
                                                                 <h4 class="modal-title" id="myModalLabel"
-                                                                    style="float: left;">Change
-                                                                    Recipient</h4>
+                                                                    style="float: left;">{{ _("Change
+                                                                        Recipient")}}</h4>
                                                                 <table class="table-borderless">
 
                                                                 </table>
@@ -754,8 +754,8 @@
                                                                     <!-- Name section -->
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
-                                                                            <label class="modal-label">Recipient
-                                                                                Name *</label>
+                                                                            <label class="modal-label">{{ _("Recipient
+                                                                                    Name")}} *</label>
                                                                             <input id="recipient-name-2-{{ order.id }}"
                                                                                    type="text"
                                                                                    class="form-control"
@@ -769,8 +769,8 @@
                                                                     <!-- Phone section -->
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
-                                                                            <label class="modal-label">Recipient
-                                                                                Phone *</label>
+                                                                            <label class="modal-label">{{ _("Recipient
+                                                                                    Phone")}} *</label>
                                                                             <input id="recipient-phone-2-{{ order.id }}"
                                                                                    type="text"
                                                                                    class="form-control"
@@ -787,7 +787,7 @@
                                                                         orderId="{{ order.id }}"
                                                                         type="button"
                                                                         class="btn btn-primary mr-2 recipient-btn-2">
-                                                                    Update
+                                                                    {{ _("Update") }}
                                                                 </button>
                                                                 <button type="reset" class="btn btn-danger">
                                                                     {{ _('Reset') }}
