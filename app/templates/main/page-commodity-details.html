@@ -121,11 +121,11 @@
                             </div>
                             <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
                                 <span class="carousel-control-prev-icon btn-change-pic" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
+                                <span class="sr-only">{{ _("Previous") }}</span>
                             </button>
                             <button class="carousel-control-next" type="button" data-target="#carouselExampleIndicators" data-slide="next">
                                 <span class="carousel-control-next-icon btn-change-pic" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
+                                <span class="sr-only">{{ _("Next") }}</span>
                             </button>
                         </div>
 
@@ -139,7 +139,7 @@
                             <!-- Hierarchical table of content on the top -->
                             <div class="breadcrumbs">
                                 <!-- The whole shop -->
-                                <a href="{{ url_for("main.go_all") }}">Shop</a>
+                                <a href="{{ url_for("main.go_all") }}">{{ _("Shop") }}</a>
 
                                 <img src="{{ url_for("static", filename="images/icon-caret-right.svg") }}" loading="lazy" alt="" class="breadcrumb-arrow">
 
@@ -232,7 +232,7 @@
                             <div class="w-layout-grid product-details-grid">
                                 <!-- Description Section -->
                                 <div>
-                                    <h6 class="uppercase-text product-details-heading">Description</h6>
+                                    <h6 class="uppercase-text product-details-heading">{{ _("Description") }}</h6>
                                     <div>{{ model.description }}</div>
                                 </div>
 
@@ -251,26 +251,26 @@
 
                                 <!-- Specification Table Section -->
                                 <div>
-                                    <h6 class="uppercase-text product-details-heading">Specification Table</h6>
+                                    <h6 class="uppercase-text product-details-heading">{{ _("Specification Table")}}</h6>
                                     <div class="product-dimensions">
                                         <div>
-                                            <div class="dimensions-heading">Weight</div>
+                                            <div class="dimensions-heading">{{ _("Weight") }}</div>
                                             <div>{{ model.weight }} <i>kg</i></div>
                                         </div>
                                         <div>
-                                            <div class="dimensions-heading">Views</div>
+                                            <div class="dimensions-heading">{{ _("Views") }}</div>
                                             <div>{{ model.get_formatted_views() }}</div>
                                         </div>
                                         <div>
-                                            <div class="dimensions-heading">Sales</div>
-                                            <div>{{ model.get_formatted_sales() }} <i>times</i></div>
+                                            <div class="dimensions-heading">{{ _("Sales") }}</div>
+                                            <div>{{ model.get_formatted_sales() }} <i>{{ _("times") }}</i></div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <!-- Customization Section -->
                                 <div>
-                                    <h6 class="uppercase-text product-details-heading">Customization</h6>
+                                    <h6 class="uppercase-text product-details-heading">{{ _("Customization") }}</h6>
                                     <div class="form-group">
                                         <div class="select-wrapper">
                                             <select id="select-model-type" name="select-type" data-name="field" class="select-field w-select">
@@ -287,9 +287,10 @@
 
                                 <!-- Additional Info Section -->
                                 <div>
-                                    <h6 class="uppercase-text product-details-heading">Additional information</h6>
-                                    <div class="product-description">Please Notice that this is a consumable product and
-                                        cannot be refunded once sold after 7-days.
+                                    <h6 class="uppercase-text product-details-heading">{{ _("Additional information")}}</h6>
+                                    <div class="product-description">{{ _("Please Notice that this is a consumable product
+                                            and
+                                            cannot be refunded once sold after 7-days.")}}
                                     </div>
                                 </div>
 
@@ -301,7 +302,7 @@
                                                   class="w-commerce-commerceaddtocartform cart-default-state">
                                                 <div class="add-to-cart-form">
                                                     <div class="quantity-wrapper">
-                                                        <label for="quantity-6194caf15498d8612861f033e8278855" class="quantity-label">Quantity:</label>
+                                                        <label for="quantity-6194caf15498d8612861f033e8278855" class="quantity-label">{{ _("Quantity") }}:</label>
                                                         <input type="number" pattern="^[0-9]$"
                                                                inputmode="numeric"
                                                                id="quantity-6194caf15498d8612861f033e8278855"
@@ -317,23 +318,25 @@
                                                 <div id="btn-buy-now" model_id="{{ model.id }}" href="#"
                                                    data-node-type="commerce-buy-now-button" data-default-text="Buy It Now"
                                                    data-subscription-text="Subscribe now"
-                                                   class="w-commerce-commercebuynowbutton button no-top-margin bg-primary">Buy
-                                                    It Now</div>
+                                                   class="w-commerce-commercebuynowbutton button no-top-margin bg-primary">
+                                                    {{ _("Buy
+                                                            It Now")}}</div>
                                             </form>
 
                                         {% else %}
                                             <!-- Out of stock statement -->
                                             <div class="w-commerce-commerceaddtocartoutofstock empty-state">
-                                                <h1 class="uppercase-text large-text" style="color: darkred">This
-                                                    item runs out of stock.</h1>
+                                                <h1 class="uppercase-text large-text" style="color: darkred">{{ _("This
+                                                        item runs out of stock.")}}</h1>
                                             </div>
                                         {% endif %}
 
                                     {% else %}
                                         <!-- Sold out statement -->
                                         <div class="w-commerce-commerceaddtocartoutofstock empty-state">
-                                            <h1 class="uppercase-text product-details-heading" style="color: darkred">This
-                                                item is no longer available (Sold out).</h1>
+                                            <h1 class="uppercase-text product-details-heading" style="color: darkred">
+                                                {{ _("This
+                                                        item is no longer available (Sold out).")}}</h1>
                                         </div>
                                     {% endif %}
 
@@ -353,8 +356,9 @@
                                     {#                                </div>#}
 
                                 </div>
-                                <div class="fine-print-text muted">This product supports 7-days refund and the quality is
-                                    guaranteed.
+                                <div class="fine-print-text muted">{{ _("This product supports 7-days refund and the quality
+                                        is
+                                        guaranteed.")}}
                                 </div>
                             </div>
                         </div>
@@ -429,7 +433,7 @@
                         <div class="video-and-title-box">
                             {# the title (left) #}
                             <div class="container video-title">
-                                <h6 class="uppercase-text large-heading">Video for showing</h6>
+                                <h6 class="uppercase-text large-heading">{{ _("Video for showing")}}</h6>
                                 <h3 class="medium-heading"></h3>
                                 <div class="large-text"></div>
                             </div>
@@ -453,7 +457,7 @@
                         <div class="video-and-title-box">
                             {# the title (left) #}
                             <div class="container video-title">
-                                <h6 class="uppercase-text large-heading">Audio Samples</h6>
+                                <h6 class="uppercase-text large-heading">{{ _("Audio Samples")}}</h6>
                                 <h3 class="medium-heading"></h3>
                                 <div class="large-text"></div>
                             </div>
@@ -477,7 +481,7 @@
                 <div class="main-container">
                     <div class="">
                         <div>
-                            <h3 id="comment-section-title" class="no-bottom-margin">Comments</h3>
+                            <h3 id="comment-section-title" class="no-bottom-margin">{{ _("Comments") }}</h3>
                             <h3 class="medium-heading"></h3>
                             <div class="large-text"></div>
                         </div>
@@ -597,12 +601,12 @@
                 <div class="main-container">
                     <div class="w-layout-grid grid-halves">
                         <div class="container">
-                            <h6 class="uppercase-text product-details-heading">about the brand</h6>
+                            <h6 class="uppercase-text product-details-heading">{{ _("about the brand")}}</h6>
                             <h3 class="medium-heading"></h3>
                             <div class="large-text"></div>
                             <div class="button-row">
                                 <a href="#" class="button bg-white-faded w-inline-block">
-                                    <div>View Range</div>
+                                    <div>{{ _("View Range")}}</div>
                                 </a>
                             </div>
                         </div>
@@ -616,7 +620,7 @@
             {# more products from this brand #}
             <div class="section bg-primary-light wf-section">
                 <div class="main-container">
-                    <h3 class="no-bottom-margin">More from {{ model.product.brand.name }}</h3>
+                    <h3 class="no-bottom-margin">{{ _("More from ")}}{{ model.product.brand.name }}</h3>
                     <div class="w-dyn-list">
                         <div role="list" class="product-quarters-grid w-dyn-items">
 
@@ -640,7 +644,7 @@
 
                         </div>
                         <div class="empty-state bg-primary w-dyn-empty">
-                            <div>There are no more products from this brand yet.</div>
+                            <div>{{ _("There are no more products from this brand yet.")}}</div>
                         </div>
                     </div>
                 </div>
@@ -649,7 +653,7 @@
             <div class="section wf-section">
                 <div class="main-container">
                     <div class="section-title more-from-brand-title">
-                        <h3 class="no-bottom-margin">Related Recommendation</h3>
+                        <h3 class="no-bottom-margin">{{ _("Related Recommendation")}}</h3>
                         <div class="w-dyn-list">
                             <div role="list" class="w-dyn-items">
                                 <div role="listitem" class="w-dyn-item">
@@ -658,7 +662,7 @@
                             </div>
                             {% if model.name == none %}
                                 <div class="w-dyn-empty">
-                                    <div>No items found.</div>
+                                    <div>{{ _("No items found.")}}</div>
                                 </div>
                             {% endif %}
                         </div>
@@ -682,7 +686,7 @@
                             </div>
                         </div>
                         <div class="empty-state bg-primary w-dyn-empty">
-                            <div>There are no more products from this category yet.</div>
+                            <div>{{ _("There are no more products from this category yet.")}}</div>
                         </div>
                     </div>
                 </div>

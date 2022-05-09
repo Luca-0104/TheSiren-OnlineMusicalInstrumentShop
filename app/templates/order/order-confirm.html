@@ -126,15 +126,15 @@
                             <form data-node-type="commerce-checkout-customer-info-wrapper"
                                   class="w-commerce-commercecheckoutcustomerinfowrapper">
                                 <div class="w-commerce-commercecheckoutblockheader block-header">
-                                    <h4 class="checkout-heading">Recipient Info</h4>
-                                    <div class="fine-print-text">* Required</div>
+                                    <h4 class="checkout-heading">{{ _("Recipient Info")}}</h4>
+                                    <div class="fine-print-text">* {{ _("Required") }}</div>
                                 </div>
                                 <fieldset id="recipient-field" class="w-commerce-commercecheckoutblockcontent">
-                                    <label class="w-commerce-commercecheckoutlabel">Recipient Name *</label>
+                                    <label class="w-commerce-commercecheckoutlabel">{{ _("Recipient Name")}} *</label>
                                     <input id="recipient-name" type="text" name="recipient_name" required=""
                                            class="w-commerce-commercecheckoutemailinput">
 
-                                    <label class="w-commerce-commercecheckoutlabel">Phone Number *</label>
+                                    <label class="w-commerce-commercecheckoutlabel">{{ _("Phone Number")}} *</label>
                                     <input id="recipient-phone" type="text" name="phone" required=""
                                            class="w-commerce-commercecheckoutemailinput">
                                 </fieldset>
@@ -161,27 +161,27 @@
                                                     </div>
                                                     <br><br>
                                                     <div class="main-container">
-                                                        <span class="fine-print-text">Recipient Name:</span>
+                                                        <span class="fine-print-text">{{ _("Recipient Name")}}:</span>
                                                         <br>
                                                         <span class="address-name w-commerce-commerceboldtextblock">{{ address.recipient.recipient_name }}</span>
                                                     </div>
                                                     <br>
                                                     <div class="main-container">
-                                                        <span class="fine-print-text">Full Address:</span>
+                                                        <span class="fine-print-text">{{ _("Full Address")}}:</span>
                                                         <br>
                                                         <span class="address-address address-gray"
                                                               style="display:flex;">{{ address.get_address() }}</span>
 
                                                     </div>
                                                     {% if address.is_default %}
-                                                        <span id="address-default-sign">[default]</span>
+                                                        <span id="address-default-sign">[{{ _("default") }}]</span>
                                                     {% endif %}
                                                 </div>
                                                 <span class="w-inline-block"
                                                       style="display:flex; flex-direction: row-reverse; align-self:flex-end; margin:5%; margin-top:0%;">
-                                                <button class="edit_style bg-primary-dar btn-address-delete" style="justify-content:flex-start;">Delete</button>
+                                                <button class="edit_style bg-primary-dar btn-address-delete" style="justify-content:flex-start;">{{ _("Delete") }}</button>
                                                 &nbsp;&nbsp;
-                                                <button class="edit_style bg-primary-dar">Edit</button>
+                                                <button class="edit_style bg-primary-dar">{{ _("Edit") }}</button>
                                             </span>
                                             </li>
                                         {% endfor %}
@@ -197,16 +197,16 @@
                             <div class="w-commerce-commercecheckoutblockheader block-header">
                                 <h4 class="checkout-heading">{{ _('Shipping Method') }}</h4>
                                 {# The notice of epidemic mode #}
-                                {% if epidemic_mode_on %}<span>NOTICE: The self-collection is not available during epidemic time</span>{% endif %}
+                                {% if epidemic_mode_on %}<span>{{ _("NOTICE: The self-collection is not available during epidemic time")}}</span>{% endif %}
                             </div>
                             <fieldset id="shipping-method-field" class="w-commerce-commercecheckoutblockcontent">
                                 <ul class="shipping-method-list">
-                                    <li id="method-delivery" class="chosen-shipping-method shipping-method">delivery</li>
+                                    <li id="method-delivery" class="chosen-shipping-method shipping-method">{{ _("delivery") }}</li>
 
                                     {% if epidemic_mode_on %}
-                                        <li class="epidemic-ban">self-collecting</li>
+                                        <li class="epidemic-ban">{{ _("self-collecting") }}</li>
                                     {% else %}
-                                        <li id="method-self" class="shipping-method">self-collecting</li>
+                                        <li id="method-self" class="shipping-method">{{ _("self-collecting") }}</li>
                                     {% endif %}
                                 </ul>
                             </fieldset>
@@ -228,7 +228,7 @@
                                      data-wf-collection="database.commerceOrder.extraItems"
                                      data-wf-template-id="wf-template-619d8e8b85c224cbfbc36b420000000000a0">
                                     <div class="w-commerce-commercecheckoutordersummaryextraitemslistitem">
-                                        <div>Delivery Fee</div>
+                                        <div>{{ _("Delivery Fee")}}</div>
                                         <div><span>￥</span> <span id="pay-delivery"></span> <span>CNY</span></div>
                                     </div>
                                 </div>
@@ -239,7 +239,7 @@
                                 </div>
                                 {# payment -- should pay #}
                                 <div class="w-commerce-commercecheckoutsummarylineitem">
-                                    <div>Payment (after discount)</div>
+                                    <div>{{ _("Payment (after discount)")}}</div>
                                     <div class="w-commerce-commercecheckoutsummarytotal"><span>￥</span> <span id="pay-should"></span> <span>CNY</span></div>
                                 </div>
                             </fieldset>

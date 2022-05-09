@@ -187,7 +187,7 @@
                                                                        data-commerce-sku-id="61a56467407a5a926e9ea7a7"
                                                                        cart-id="{{ cart_item.id }}">
                                                                         <div class="fine-print-text remove-link">
-                                                                            Remove
+                                                                            {{ _("Remove") }}
                                                                         </div>
                                                                     </a>
                                                                 </div>
@@ -313,7 +313,7 @@
             <div class="main-container">
                 <!-- Order detail Heading -->
                 <div class="w-commerce-commercecartheader cart-header">
-                    <h4 class="w-commerce-commercecartheading">Comment</h4>
+                    <h4 class="w-commerce-commercecartheading">{{ _("Comment") }}</h4>
                     <a href="#" data-node-type="commerce-cart-close-link"
                        class="w-commerce-commercecartcloselink close-cart-button w-inline-block">
                         <img src="images/icon-cross-large.svg" loading="lazy" alt="">
@@ -327,7 +327,7 @@
                                     <table width="100%" class="model_listing_table">
                                         <tr>
                                             <td colspan="4" class="model_heading_col">
-                                                Your Purchase
+                                                {{ _("Your Purchase")}}
                                             </td>
                                         </tr>
                                         <tr id="model_row_{{ order_model.model_type.id }}">
@@ -418,7 +418,7 @@
                                             {{ form.hidden_tag() }}
                                             <tr>
                                                 <td class="main_heading">
-                                                    Your Comment
+                                                    {{ _("Your Comment")}}
                                                 </td>
                                             </tr>
                                             <tr>
@@ -489,7 +489,8 @@
                                 <img src="../../static/images/White-logo-no-background.svg" loading="lazy" alt=""
                                      class="footer-logo">
                             </a>
-                            <div>China Beijing Chaoyang Distinct Pingleyuan No.100<br>Beijing University of Technology
+                            <div>{{ _("China Beijing Chaoyang Distinct Pingleyuan No.100")}}<br>{{ _("Beijing University of
+                                    Technology")}}
                             </div>
                             <div class="contact-links in-footer">
                                 <a href="#" class="small-text">group9@ucdconnect.ie</a>
@@ -507,19 +508,19 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="contact.html" class="list-link">Catagory</a>
+                                <a href="contact.html" class="list-link">{{ _("Catagory") }}</a>
                             </div>
                         </div>
                         <div>
                             <div class="uppercase-text links-grid-title">{{ _('Company') }}</div>
                             <div class="links-grid">
-                                <a href="about.html" class="list-link">About us</a>
-                                <a href="contact.html" class="list-link">Contect us</a>
-                                <a href="refund-policy.html" class="list-link">Premium</a>
+                                <a href="about.html" class="list-link">{{ _("About us")}}</a>
+                                <a href="contact.html" class="list-link">{{ _("Contact us")}}</a>
+                                <a href="refund-policy.html" class="list-link">{{ _("Premium") }}</a>
                             </div>
                         </div>
                         <div>
-                            <div class="uppercase-text links-grid-title">Franchising Brand</div>
+                            <div class="uppercase-text links-grid-title">{{ _("Franchising Brand")}}</div>
                             <div class="links-grid">
                                 <a href="about.html" class="list-link">Lowden</a>
                                 <a href="about.html" class="list-link">Gibson</a>
