@@ -17,12 +17,27 @@ $(document).ready(function ()
         let repeat_model_description;
 
         console.log("#add-model-type clicked when counter is " + counter);
+        console.log(counter===1);
 
-        let prepend_content = "<div class=\"card-footer col-md-12\">\n" +
-            "                                       <div id=\"1_model\">\n" +
-            "                                            <h4 class=\"card-title\"> aaa" + counter + ".bbb</h4>\n" +
-            "                                       </div>\n" +
-            "                                   </div>"
+        let prepend_content = "";
+
+        if (counter === 1)
+        {
+            prepend_content = "<div class=\"card-footer col-md-12\">\n" +
+                "                                       <div id=\"1_model\">\n" +
+                "                                            <h4 class=\"card-title\">" + counter + ".</h4>\n" +
+                "                                       </div>\n" +
+                "                                   </div>"
+        }
+        else
+        {
+           prepend_content = "<div class=\"card-footer col-md-12\">\n" +
+               "                                       <div id=\"1_model\">\n" +
+               "                                            <h4 class=\"card-title\">" + (counter + 1) + ".</h4>\n" +
+               "                                       </div>\n" +
+               "                                   </div>"
+        }
+
         if (counter === 1)
         {
             repeat_model_type.before(prepend_content);
@@ -199,48 +214,49 @@ function serial_number_half_collection()
         + l + String(additional_selected.attr("sn"));
 
     console.log("current serial is " + serial)
-    $.post("/api/stock-management/upload-product/validate-serial-p",
+    $.post(
+        "/api/stock-management/upload-product/validate-serial-p",
         {
             "serial_prefix": serial
         }).done(function (response)
+    {
+        let returnValue = response['returnValue'];
+        let final_serial;
+
+        console.log("ajax recive: " + returnValue);
+
+        if (returnValue === 0)
         {
-            let returnValue = response['returnValue'];
-            let final_serial;
+            //success
+            final_serial = response["serial_number"].toString() + l;
+            $("#sn_model_type").html(final_serial);
+            console.log("final serical get as: " + final_serial);
 
-            console.log("ajax recive: " + returnValue);
+            let serial_break = final_serial.split("-");
+            console.log("serial break into: " + serial_break);
+            let serial_rank = serial_break[serial_break.length - 2];
+            console.log("serial rank: " + serial_rank);
 
-            if (returnValue === 0)
-            {
-                //success
-                final_serial = response["serial_number"].toString() + l;
-                $("#sn_model_type").html(final_serial);
-                console.log("final serical get as: " + final_serial);
+            serial =
+                String(brand_selected.attr("sn"))
+                + l + String(classification_selected.attr("sn"))
+                + l + String(type_selected.attr("sn"))
+                + l + String(additional_selected.attr("sn"));
 
-                let serial_break = final_serial.split("-");
-                console.log("serial break into: " + serial_break);
-                let serial_rank = serial_break[serial_break.length - 2];
-                console.log("serial rank: " + serial_rank);
+            console.log("new serial: " + serial);
 
-                serial =
-                    String(brand_selected.attr("sn"))
-                    + l + String(classification_selected.attr("sn"))
-                    + l + String(type_selected.attr("sn"))
-                    + l + String(additional_selected.attr("sn"));
+            product_form.attr("action", "/upload-product" + "?counter=" + counter + "&serial_prefix=" + serial + "&serial_rank=" + serial_rank);
+            console.log("puroduct_form's action set as: " + product_form.attr("action"));
+            serial_rank_g = serial_rank;
 
-                console.log("new serial: " + serial);
-
-                product_form.attr("action", "/upload-product" + "?counter=" + counter + "&serial_prefix=" + serial + "&serial_rank=" + serial_rank);
-                console.log("puroduct_form's action set as: " + product_form.attr("action"));
-                serial_rank_g = serial_rank;
-
-                console.log("+++++++++++++++++++++++++++++++++++");
-                console.log("");
-            }
-            else
-            {
-                //failed
-                return 0;
-            }
-        })
+            console.log("+++++++++++++++++++++++++++++++++++");
+            console.log("");
+        }
+        else
+        {
+            //failed
+            return 0;
+        }
+    })
     serial = "";
 }

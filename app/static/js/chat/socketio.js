@@ -39,7 +39,27 @@ document.addEventListener('DOMContentLoaded', () => {
         img.setAttribute("alt","avatar");
         //set and filling end
 
-        //message html generation
+
+
+         //generation end
+         console.log("near if");
+        if (data.username === username){
+            console.log("inside if 1");
+            div_chat.setAttribute("class","chat");
+            img.setAttribute("src", $('#chatroom-avatar-'+chatroom_id).attr("avatar-staff"));
+
+
+        } else if (data.username !== username && typeof data.username !== 'undefined') {
+            console.log("inside if 2");
+            img.setAttribute("src", $('#chatroom-avatar-'+chatroom_id).attr("avatar-customer"));
+            div_chat.setAttribute("class","chat chat-left");
+
+
+        } else {
+            console.log("inside if 3");
+            printSysMsg(data.msg)
+        }
+         //message html generation
           p.innerHTML=data.msg;
           a.innerHTML = img.outerHTML;
           div_chat_user.innerHTML = a.outerHTML + span_timestamp.outerHTML;
@@ -50,25 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
           div_chat_detail.innerHTML = div_chat_message.outerHTML;
 
           div_chat.innerHTML = div_chat_user.outerHTML + div_chat_detail.outerHTML;
-         //generation end
-         console.log("near if");
-        if (data.username === username){
-            console.log("inside if 1");
-            div_chat.setAttribute("class","chat");
-            img.setAttribute("src", data.avatar);
-            document.querySelector('#chat-window').append(div_chat);
-
-        } else if (data.username !== username && typeof data.username !== 'undefined') {
-            console.log("inside if 2");
-            img.setAttribute("src", data.avatar);
-            div_chat.setAttribute("class","chat chat-left");
-            document.querySelector('#chat-window').append(div_chat);
-
-        } else {
-            console.log("inside if 3");
-            printSysMsg(data.msg)
-        }
-
+          document.querySelector('#chat-window').append(div_chat);
     });
 
     // Send message
