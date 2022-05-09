@@ -424,7 +424,7 @@ class ChatRoom(BaseModel):
 
 class Message(BaseModel):
     """
-        (Chatting version 2 -> ChatRoom + Message)
+        (Chatting version 2 ->  + Message)
         Storing the chatting record of a customer and staff(staff role, not a specific staff)
     """
     __tablename__ = 'Messages'
@@ -1058,9 +1058,9 @@ class ModelType(BaseModel):
     views = db.Column(db.Integer, default=0)  # how many times its details page has been viewed
     serial_number = db.Column(db.String(128), nullable=False)
     release_time = db.Column(db.DateTime(), index=True, default=datetime.utcnow)
-    video_address = db.Column(db.String)  # video
-    three_d_model_address = db.Column(db.String)    # 3d model file
-    three_d_model_texture_address = db.Column(db.String)    # 3d model texture file
+    video_address = db.Column(db.String, default=None)  # video
+    three_d_model_address = db.Column(db.String, default=None)    # 3d model file
+    three_d_model_texture_address = db.Column(db.String, default=None)    # 3d model texture file
     # 1 model -> n addresses, 1 address -> 1 model
     audio_addresses = db.relationship('Audio', backref='model_type', lazy='dynamic')  # audio
     is_deleted = db.Column(db.Boolean, default=False)
@@ -1096,6 +1096,9 @@ class ModelType(BaseModel):
         # add brand name
         result["brand_name"] = self.product.brand.name
 
+        # add type id
+        result["addition_type"] = self.get_addition_type()
+
         # return result
         return Tools.delete_instance_state(result)
 
@@ -1130,6 +1133,47 @@ class ModelType(BaseModel):
         :return: A string of formatted sales number
         """
         return Tools.bytes_to_human_readable_str(self.sales)
+
+    def get_addition_type(self):
+        """
+        Tells the type of additional and return it
+        Types:
+                0: nothing
+                1: only 3d
+                2: only audio
+                3: only video
+                4: audio & video
+                5: 3d & video
+                6: 3d & audio
+                7: 3d & audio & video
+        :return: A integer representing the type of additional
+        """
+        has3d = False
+        has_audio = False
+        has_video = False
+        if self.three_d_model_address is not None and self.three_d_model_address != "":
+            has3d = True
+        if self.audio_addresses.count() != 0:
+            has_audio = True
+        if self.video_address is not None and self.video_address != "":
+            has_video = True
+
+        if has3d and has_audio and has_video:
+            return 7
+        elif has3d and has_audio and not has_video:
+            return 6
+        elif has3d and not has_audio and has_video:
+            return 5
+        elif not has3d and has_audio and has_video:
+            return 4
+        elif not has3d and not has_audio and has_video:
+            return 3
+        elif not has3d and has_audio and not has_video:
+            return 2
+        elif has3d and not has_audio and not has_video:
+            return 1
+        else:
+            return 0
 
     @staticmethod
     def insert_model_types():

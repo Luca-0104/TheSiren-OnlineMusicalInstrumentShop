@@ -6,7 +6,7 @@ let classification, type, additional, brand;
 let data;
 //This need to be modified if brand number is changed!!!
 //Every number is plus one compared to original because "see all" option.
-let checking_numbers = [7, 48, 5, 6];
+let checking_numbers = [7, 48, 5, 17];
 
 function initialize_checkbox(param) {
     let p = 0;
@@ -19,10 +19,15 @@ function initialize_checkbox(param) {
     } else if (param === "#check_brand_") {
         p = 3;
     }
+    console.log("Initializing p: " + p);
     for (let i = 1; i <= checking_numbers[p]; i++) {
         let init_select = $(param + i);
+        console.log("Checking i: " + i + " : " + init_select.prop('checked'));
         init_select.click();
+        console.log("Checked i: " + i + " : " + init_select.prop('checked'));
+        console.log("")
     }
+    console.log("+++++++++++++++++++++++++++++++++++++++++++++++");
 }
 
 $(document).ready(function () {
@@ -33,8 +38,10 @@ $(document).ready(function () {
     initialize_checkbox("#check_brand_");
 
     $('.category').on("change", function () {
-        console.log("here change: " + $(this).attr("id"));
         //for test
+        console.log($(this).attr('id'));
+
+        console.log($(this).prop('checked'));
 
         let p = $(this).attr('id').split('_').pop();
 
@@ -44,8 +51,9 @@ $(document).ready(function () {
                 if (p !== i) {
                     let cancel_select = $('#check_class_' + i);
                     cancel_select.attr("class", "checkbox category");
+                    // console.log("Before " + cancel_select.prop('checked'));
                     cancel_select.prop("checked", "off");
-
+                    // console.log("After " + cancel_select.prop('checked'));
                 }
             }
             $(this).attr("class", "checkbox w--redirected-checked category");
@@ -54,8 +62,8 @@ $(document).ready(function () {
             checked_value[0] = $(this).attr("name");
 
             classification = checked_value[0];
-            console.log($(this).attr("checked") + '2');
-            console.log(checked_value);
+            // console.log($(this).attr("checked") + '2');
+            // console.log(checked_value);
 
             //only show the "type" boxes of this class
             update_type_boxes($(this).attr("id"));
@@ -65,7 +73,7 @@ $(document).ready(function () {
     $('.type').on("change", function () {
         console.log($(this).attr('id'));
 
-        console.log($(this).attr("checked"));
+        console.log($(this).prop('checked'));
         let p = $(this).attr('id').split('_').pop();
         console.log(p);
 
@@ -92,7 +100,7 @@ $(document).ready(function () {
     $('.add').on("change", function () {
         console.log($(this).attr('id'));
 
-        console.log($(this).attr("checked"));
+        console.log($(this).prop('checked'));
         let p = $(this).attr('id').split('_').pop();
         console.log(p);
 
@@ -117,19 +125,23 @@ $(document).ready(function () {
     });
 
     $('.brands').on("change", function () {
+        console.log("==========================================");
+        console.log(checking_numbers[3]);
         console.log($(this).attr('id'));
 
-        console.log($(this).attr("checked"));
+        console.log($(this).prop('checked'));
         let p = $(this).attr('id').split('_').pop();
         console.log(p);
 
         if (!$(this).prop('checked')) {
-
             for (let i = 1; i <= checking_numbers[3]; i++) {
                 if (p !== i) {
                     let cancel_select = $('#check_brand_' + i);
                     cancel_select.attr("class", "checkbox brand");
+                    console.log(i + " Before " + cancel_select.prop('checked'));
                     cancel_select.prop("checked", "off");
+                    console.log(i + " After " + cancel_select.prop('checked'));
+                    console.log("");
                 }
             }
             $(this).attr("class", "checkbox w--redirected-checked brand");
@@ -138,7 +150,7 @@ $(document).ready(function () {
             checked_value[3] = $(this).attr("name");
 
             brand = checked_value[3];
-            console.log($(this).attr("checked") + '2');
+            console.log($(this).prop('checked') + '2');
             console.log(checked_value);
         }
     });
@@ -148,6 +160,8 @@ $(document).ready(function () {
         //get the search content
         //we need to sent it back to server to search again before filtering
         let searchContent = $("#search").val();
+
+        console.log("ajax")
 
         $.post("/api/filter-model-types",
             {
@@ -160,6 +174,8 @@ $(document).ready(function () {
             }).done(function (response) {
             // get from server
             let returnValue = response['returnValue'];
+
+            console.log("recived")
 
             if (returnValue === 0) {
                 //success
@@ -280,13 +296,16 @@ function put_data(mt){
     let mtPrice = mt.price;
     let brandName = mt.brand_name;
     let firstPicAddress = mt.pictures[0].address;
+    let additionType = mt.addition_type;
 
     //put those info on to model card
-    let cardHTML = '<div role="listitem" class="w-dyn-item">'
+    let cardHTML = '<div role="listitem" class="w-dyn-item commodity-card">'
                         + '<div>'
                             + '<a href="/product-details/' + mtID + '" class="product-preview-link w-inline-block">'
-                                + '<img src="../../static/' + firstPicAddress + '"loading="lazy" alt="" class="product-thumbnail">'
-                                + '<div class="uppercase-text brand">' + brandName + '</div>'
+                                + '<div class="commodity-pic commodity-pic' + additionType + '">'
+                                    + '<img src="../../static/' + firstPicAddress + '"loading="lazy" alt="" class="product-thumbnail">'
+                                + '</div>'
+                                + '<div class="uppercase-text brand brand-row">' + brandName + '</div>'
                                 + '<h5 class="no-bottom-margin">' + mtName + '</h5>'
                                 + '<div class="price-container">'
                                     + '<div class="old-price"><span>$</span>' + mtPrice + '</div>'

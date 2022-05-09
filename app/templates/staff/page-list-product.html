@@ -456,17 +456,18 @@
                                                                         <div class="modal-body">
                                                                             <div class="popup text-left">
                                                                                 <div class="media align-items-top justify-content-between">
-                                                                                    <h3 class="mb-3">{{ _("Upload 3D Model
-                                                                                            File")}}</h3>
+                                                                                    <h3 class="mb-3">{{ _("Upload 3D Model")}}</h3>
                                                                                     <div class="btn-cancel p-0"
                                                                                          data-dismiss="modal"><i
                                                                                             class="las la-times"></i>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="content edit-notes">
+                                                                                    <div><i>{{ _("If no texture uploaded, a
+                                                                                            default one will be given.")}}</i></div>
                                                                                     <div class="card card-transparent card-block card-stretch event-note mb-0">
 
-                                                                                        {# upload form (file+submit) #}
+                                                                                        {# upload form (3dfile + texture file +submit) #}
                                                                                         <form action="{{ url_for("product.upload_3d_file", mt_id=model.id) }}"
                                                                                               method="post"
                                                                                               enctype="multipart/form-data">
@@ -475,7 +476,8 @@
                                                                                                     <div class="quill-tool">
                                                                                                     </div>
                                                                                                 </div>
-                                                                                                {# form - file input #}
+
+                                                                                                <!-- input - 3d file -->
                                                                                                 <div id="quill-toolbar1">
                                                                                                     <div class="input-group mb-3">
                                                                                                         <div class="custom-file">
@@ -487,12 +489,32 @@
                                                                                                                    required="required">
                                                                                                             <label class="custom-file-label"
                                                                                                                    for="input-upload-model-type-3d-{{ model.id }}">{{ _("Choose
+                                                                                                                    3d model
                                                                                                                     file
                                                                                                                     (.obj/.fbx
                                                                                                                     Only)")}}</label><br>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
+
+                                                                                                <!-- input - texture file -->
+                                                                                                <div id="quill-toolbar2">
+                                                                                                    <div class="input-group mb-3">
+                                                                                                        <div class="custom-file">
+                                                                                                            <input type="file"
+                                                                                                                   name="three_d_texture_file"
+                                                                                                                   class="custom-file-input"
+                                                                                                                   id="input-upload-model-type-3d-texture-{{ model.id }}"
+                                                                                                                   aria-describedby="inputGroupFileAddon01"
+                                                                                                                   accept="image/png">
+                                                                                                            <label class="custom-file-label"
+                                                                                                                   for="input-upload-model-type-3d-texture-{{ model.id }}">Choose
+                                                                                                                texture file
+                                                                                                                (.png only)</label><br>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+
                                                                                             </div>
                                                                                             <div class="card-footer border-0">
                                                                                                 <div class="d-flex flex-wrap align-items-ceter justify-content-end">

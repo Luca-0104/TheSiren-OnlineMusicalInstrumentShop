@@ -71,6 +71,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Send message
     $('#send_message').on("click", function(){
+        if (document.querySelector('#user_message').value === ''){
+        }
+        else {
         console.log(document.querySelector('#user_message').value);
         socket.send({'msg': document.querySelector('#user_message').value,
         'username': username, 'room': chatroom_id });
@@ -78,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('#user_message').value = '';
         console.log(chatroom_id);
         console.log(username);
+        }
     });
 
     // Room selection

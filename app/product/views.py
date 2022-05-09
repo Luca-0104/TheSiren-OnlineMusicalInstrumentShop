@@ -749,11 +749,21 @@ def upload_3d_file(mt_id):
 
         # get 3d file from the form
         three_d_file = request.files.get("three_d_file")
+        # get texture file from the form
+        three_d_texture_file = request.files.get("three_d_texture_file")
 
         if three_d_file is None:
             current_app.logger.error("3d file not gotten from the request")
             return redirect(url_for('product.show_page_stock_management'))
 
+        # give the default texture if not uploaded one
+        is_default_texture = False
+        if three_d_texture_file.filename == "":
+            is_default_texture = True
+
+        """ 
+            Deal with 3D model file 
+        """
         filename = three_d_file.filename
         suffix = filename.rsplit('.')[-1]
 
@@ -775,9 +785,52 @@ def upload_3d_file(mt_id):
         ref_address = os.path.join(path, filename).replace('\\', '/')
         mt.three_d_model_address = ref_address
         db.session.add(mt)
-        db.session.commit()
 
-        flash("3D files uploaded successfully!")
+        """ 
+            Deal with texture file
+        """
+        # if a texture file is uploaded
+        if not is_default_texture:
+            texture_filename = three_d_texture_file.filename
+            suffix = texture_filename.rsplit('.')[-1]
+
+            # check the file type
+            if suffix not in Config.ALLOWED_3D_MODEL_TEXTURE_SUFFIXES:
+                flash("Failed! You should upload '.png' file only.")
+                current_app.logger.error("3d texture file type error!")
+                # rollback the db
+                db.session.rollback()
+                return redirect(url_for('product.show_page_stock_management'))
+
+            # make sure the name of 3d texture file is safe
+            texture_filename = generate_safe_pic_name(texture_filename)
+
+            # save 3d texture file in local directory
+            texture_file_path = os.path.join(Config.threeD_texture_dir, texture_filename).replace('\\', '/')
+            three_d_texture_file.save(texture_file_path)
+
+            # save the reference in database
+            t_path = 'upload/model_type/3d-model-texture-files'
+            texture_ref_address = os.path.join(t_path, texture_filename).replace('\\', '/')
+            mt.three_d_model_texture_address = texture_ref_address
+
+
+        # if no texture uploaded, we should give a default one
+        else:
+            mt.three_d_model_texture_address = "upload/model_type/3d-model-texture-files/pre-store/cello.png"
+
+        db.session.add(mt)
+
+        # commit to db
+        try:
+            db.session.commit()
+        except Exception as e:
+            current_app.logger.error(e)
+            db.session.rollback()
+            flash("3D model upload failed!")
+            return redirect(url_for('product.show_page_stock_management'))
+
+        flash("3D model uploaded successfully!")
 
     return redirect(url_for('product.show_page_stock_management'))
 
