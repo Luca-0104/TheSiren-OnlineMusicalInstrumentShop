@@ -366,6 +366,66 @@
                 </div>
             </div>
 
+
+
+            {# 3D view section #}
+            {% if model.id == 28 %}
+                <br>
+                <div id="modeltype-3d-model"  class="section bg-primary-dark wf-section">
+                    <div class="main-container">
+                        <div class="w-layout-grid grid-halves">
+                            {# title of 3D view #}
+                            <div class="container">
+                                <h1 class="no-bottom-margin view-3d-title">3D view of {{ model.name }}</h1>
+                            </div>
+                            {# container of the 3D view #}
+                            <div class="container">
+                                <div class="section-title more-from-brand-title view-3d">
+                                    <script id="3d_display_section" async
+                                            src="https://api.cappasity.com/api/player/cappasity-ai"></script>
+                                    <iframe width="100%" height="600px" frameborder="0" allowfullscreen
+                                            mozallowfullscreen="true"
+                                            webkitallowfullscreen="true" style="border:0;"
+                                            src="https://api.cappasity.com/api/player/e5ee3fda-6cff-4e34-972e-eeb8720ad538/embedded?autorun=0&closebutton=1&logo=0&analytics=1&uipadx=0&uipady=0&enablestoreurl=0&storeurl=&hidehints=0&language=&autorotate=0&autorotatetime=3.282909393310547&autorotatedelay=2&autorotatedir=1&hidefullscreen=1&hideautorotateopt=0&hidesettingsbtn=0&enableimagezoom=1&zoomquality=1&hidezoomopt=0&arbutton=1"></iframe>
+                                    <h3 class="no-bottom-margin"></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% elif model.three_d_model_address != None and model.three_d_model_address != "" %}
+                <br>
+                <div id="modeltype-3d-model" class="section bg-primary-dark wf-section"
+                     model-address="{{ url_for("static", filename=model.three_d_model_address) }}"
+{#                     model-texture-address="{{ url_for("static", filename=model.three_d_model_texture_address) }}"#}
+                >
+                    <div class="main-container">
+                        <div class="w-layout-grid grid-halves">
+                            {# title of 3D view #}
+                            <div class="container">
+                                <h1 class="no-bottom-margin view-3d-title">3D view of {{ model.name }}</h1>
+                                <div>
+                                    <br>
+                                    You can use mouse to move the camara around by dragging and use mouse wheel to move closer.<br>
+                                    If you cannot see the 3d model, please move the camara. <br>
+                                    You may wait for a moment before it finishes rendering, this may take several minuses.
+                                </div>
+                            </div>
+                            {# container of the 3D view #}
+                            <div class="container">
+                                <div class="section-title more-from-brand-title view-3d">
+                                    <div id="webgl-output" class="grab">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+
+
             {# video section about this model #}
             {% if model.video_address != None and model.video_address != "" %}
                 <div class="section bg-primary-dark wf-section">
@@ -555,60 +615,6 @@
                 </div>
             </div>
 
-            {# 3D view section #}
-            {% if model.id == 28 %}
-                <br>
-                <div id="modeltype-3d-model"  class="section bg-primary-dark wf-section">
-                    <div class="main-container">
-                        <div class="w-layout-grid grid-halves">
-                            {# title of 3D view #}
-                            <div class="container">
-                                <h1 class="no-bottom-margin view-3d-title">3D view of {{ model.name }}</h1>
-                            </div>
-                            {# container of the 3D view #}
-                            <div class="container">
-                                <div class="section-title more-from-brand-title view-3d">
-                                    <script id="3d_display_section" async
-                                            src="https://api.cappasity.com/api/player/cappasity-ai"></script>
-                                    <iframe width="100%" height="600px" frameborder="0" allowfullscreen
-                                            mozallowfullscreen="true"
-                                            webkitallowfullscreen="true" style="border:0;"
-                                            src="https://api.cappasity.com/api/player/e5ee3fda-6cff-4e34-972e-eeb8720ad538/embedded?autorun=0&closebutton=1&logo=0&analytics=1&uipadx=0&uipady=0&enablestoreurl=0&storeurl=&hidehints=0&language=&autorotate=0&autorotatetime=3.282909393310547&autorotatedelay=2&autorotatedir=1&hidefullscreen=1&hideautorotateopt=0&hidesettingsbtn=0&enableimagezoom=1&zoomquality=1&hidezoomopt=0&arbutton=1"></iframe>
-                                    <h3 class="no-bottom-margin"></h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {% elif model.three_d_model_address != None and model.three_d_model_address != "" %}
-                <br>
-                <div id="modeltype-3d-model" class="section bg-primary-dark wf-section"
-                     model-address="{{ url_for("static", filename=model.three_d_model_address) }}"
-                     model-texture-address="{{ url_for("static", filename=model.three_d_model_texture_address) }}">
-                    <div class="main-container">
-                        <div class="w-layout-grid grid-halves">
-                            {# title of 3D view #}
-                            <div class="container">
-                                <h1 class="no-bottom-margin view-3d-title">{{ _("3D view of")}} {{ model.name }}</h1>
-                                <div>
-                                    <br>
-                                    {{ _("You can use mouse to move the camara around by dragging and use mouse wheel to move
-                                            closer.")}}<br>
-                                    {{ _("If you cannot see the 3d model, please move the camara.")}}
-                                </div>
-                            </div>
-                            {# container of the 3D view #}
-                            <div class="container">
-                                <div class="section-title more-from-brand-title view-3d">
-                                    <div id="webgl-output" class="grab">
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {% endif %}
 
 
             {# more products from this brand #}
@@ -647,7 +653,7 @@
             <div class="section wf-section">
                 <div class="main-container">
                     <div class="section-title more-from-brand-title">
-                        <h3 class="no-bottom-margin">{{ _("More from ")}}{{ model.product.brand.name }}</h3>
+                        <h3 class="no-bottom-margin">{{ _("Related Recommendation")}}</h3>
                         <div class="w-dyn-list">
                             <div role="list" class="w-dyn-items">
                                 <div role="listitem" class="w-dyn-item">

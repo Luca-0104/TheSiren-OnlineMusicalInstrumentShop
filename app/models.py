@@ -55,6 +55,8 @@ class Tools:
         # ------
         # # products(100)  # 100 fake products
         # ModelType.insert_model_types()  # the constant model types for testing
+        # insert 3D files and texture files
+        Tools.insert_3d_for_mt()
         Comment.insert_comments(12)
         Cart.insert_carts()
         Order.insert_orders(20)
@@ -66,6 +68,21 @@ class Tools:
         Message.insert_messages(30)
         # init chat room
         ChatRoom.init_chat()
+
+    @staticmethod
+    def insert_3d_for_mt():
+        """
+        This should be called after calling all of the other insert functions
+        """
+        # insert the 3D model file and texture file for that cello model type (id=13)
+        cello = ModelType.query.get(13)
+        cello.three_d_model_texture_address = "upload/model_type/3d-model-texture-files/pre-store/cello.png"
+        cello.three_d_model_address = "upload/model_type/3d-model-files/pre-store/cello.fbx"
+        # to ensure this can be shown as the first several products
+        cello.views = 4685267
+        cello.sales = 1562
+        db.session.add(cello)
+        db.session.commit()
 
 
     @staticmethod
@@ -805,6 +822,16 @@ class Comment(BaseModel):
     def __repr__(self):
         return '<Comment %r>' % self.content[:10]
 
+    def to_dict(self):
+        """
+            Map the object to dictionary data structure
+        """
+        result = super(Comment, self).to_dict()
+        # add relations to the result dict
+        Tools.add_relation_to_dict(result, self.pictures.all(), "pictures")
+
+        return Tools.delete_instance_state(result)
+
     @staticmethod
     def insert_comments(count):
         content = "This is a testing comment. This is a testing comment. This is a testing comment. This is a testing comment. Pictures are also for testing. Pictures are also for testing. Pictures are also for testing. "
@@ -1060,7 +1087,7 @@ class ModelType(BaseModel):
         """
         result = super(ModelType, self).to_dict()
         # add relations to the result dict
-        Tools.add_relation_to_dict(result, self.comments.all(), "comments")
+        # Tools.add_relation_to_dict(result, self.comments.all(), "comments")
         Tools.add_relation_to_dict(result, self.pictures.all(), "pictures")
         # Tools.add_relation_to_dict(result, self.intro_pictures.all(), "intro_pictures")
         Tools.add_relation_to_dict(result, self.carts.all(), "carts")
@@ -1069,8 +1096,9 @@ class ModelType(BaseModel):
         # add brand name
         result["brand_name"] = self.product.brand.name
 
-        return Tools.delete_instance_state(result)
         # return result
+        return Tools.delete_instance_state(result)
+
 
     def delete(self):
         """
