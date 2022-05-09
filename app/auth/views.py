@@ -41,10 +41,8 @@ def register():
     current_app.logger.info("come in /register")
 
     form = RegisterForm()
-    print("test")
     # when the form is submitted legally (POST method)
     if form.validate_on_submit():
-        print("entered");
         # create a new user object
         user = User(email=form.email.data, username=form.username.data, password=form.password1.data,
                     role_id=1)
@@ -114,7 +112,6 @@ def login():
             else:
                 # if this is a staff account
                 return redirect(url_for("product.show_page_staff_index"))
-
 
         # logger
         current_app.logger.info("a user logs in failed")

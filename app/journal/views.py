@@ -75,7 +75,7 @@ def upload_journal():
         db.session.add(new_journal)
         db.session.commit()
 
-        flash("Journal upload success!")
+        flash("Journal upload successfully!")
         # back to journal listing page
         return redirect(url_for("journal.journal_management"))
 

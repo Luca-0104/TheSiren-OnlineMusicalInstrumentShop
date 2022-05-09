@@ -439,6 +439,7 @@ def upload_model_type(product_id):
                 new_model_type.categories.append(Category.query.get(cate_id))
 
             db.session.commit()
+            flash("Model Type Uploaded!")
 
             """
                 Dealing with the uploaded pictures (The model type pictures)
@@ -601,7 +602,7 @@ def modify_model_type(model_id):
                 flash(flash_str)
         # --------------------------------------------------
         db.session.commit()
-        flash(_('Model updated!'))
+        flash(_('Model Type updated!'))
         # back to the stock management page
         return redirect(url_for('product.show_page_stock_management'))
 
@@ -776,12 +777,13 @@ def upload_3d_file(mt_id):
         db.session.add(mt)
         db.session.commit()
 
-        flash("3D file uploaded successfully!")
+        flash("3D files uploaded successfully!")
 
     return redirect(url_for('product.show_page_stock_management'))
 
 # ------------------------------------------------ operations on 'categories' ------------------------------------------------
 # ------------------------------------------- may NOT be adopted! ------------------------------------------------------------------------------
+
 
 @product.route('/api/stock-management/add-category', methods=['POST'])
 @login_required

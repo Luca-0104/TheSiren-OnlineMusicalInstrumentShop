@@ -30,7 +30,7 @@ body {
 }
 
 .box.box-warning {
-    border-top-color: #8d8167;
+    border-top-color: #c6b38e;
 }
 
 .box {
@@ -87,7 +87,7 @@ body {
 }
 
 .bg-yellow, .callout.callout-warning, .alert-warning, .label-warning, .modal-warning .modal-body {
-    background-color: #8d8167 !important;
+    background-color: #c6b38e !important;
 }
 
 .bg-yellow{
@@ -251,8 +251,8 @@ body {
 }
 
 .direct-chat-warning .right>.direct-chat-text {
-    background: #8d8167;
-    border-color: #8d8167;
+    background: #c6b38e;
+    border-color: #c6b38e;
     color: #fff;
 }
 

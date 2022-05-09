@@ -66,6 +66,7 @@ def upload_comment(omt_id):
         db.session.add(omt)
 
         db.session.commit()
+        flash("Comment uploaded successfully!")
 
         """
            deal with the uploaded pictures

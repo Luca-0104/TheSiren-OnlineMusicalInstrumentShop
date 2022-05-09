@@ -140,6 +140,7 @@ def brand_intro(brand_id):
     # concatenate the prefix with brand name to get the template name
     template_name = "main/brand_intro/{}.html".format(brand.name.lower())
     try:
+        flash("Welcome to learn more about The " + brand.name)
         return render_template(template_name)
     except Exception as e:
         # traceback.print_exc()
@@ -153,6 +154,8 @@ def about_us():
     """
     # get all the journals form db
     journal_lst = Journal.query.order_by(Journal.timestamp.desc())
+
+    flash("Here, you can learn more about The Siren~")
     return render_template('main/about_siren.html', journal_lst=journal_lst)
 
 
@@ -183,6 +186,7 @@ def search():
             .order_by(ModelType.sales.desc(), ModelType.views.desc()) \
             .all()
 
+        flash("Following are the searching results about '{}'.".format(key_word))
         return render_template('main/page_all_commodities.html', mt_list=mt_list, key_word=key_word)  # see-all page
 
     return redirect(url_for('main.index'))
@@ -240,6 +244,8 @@ def products_in_brand(brand_name):
         mt_list += product.get_exist_model_types()
     # sort the model list by the sale numbers
     sort_db_models(mt_list, sort_key=take_sales, reverse=True)
+
+    flash("Following are the commodities of the brand - {}".format(brand_name))
     return render_template('main/page_all_commodities.html', mt_list=mt_list)  # see-all page
 
 
@@ -264,6 +270,8 @@ def products_in_category(cate_name):
         mt_list += product.get_exist_model_types()
     # sort the model list by the sale numbers
     sort_db_models(mt_list, sort_key=take_sales, reverse=True)
+
+    flash("Below are the products in category of '{}'.".format(cate_name))
     return render_template('main/page_all_commodities.html', mt_list=mt_list, cate_name=cate_name)  # see-all page
 
 
@@ -333,6 +341,7 @@ def model_listing(search_content):
     if search_content != "":
         mt_bq_lst = search_models_by_keyword(keyword=search_content)
         mt_lst = mt_bq_lst.all()
+        flash("Following are the searching results of '{}'.".format(search_content))
     else:
         # if com here by clicking on "go all"
         mt_lst = ModelType.query.all()
@@ -343,11 +352,20 @@ def model_listing(search_content):
 def change_language():
     # if the user already logged in, we change language setting both in db and session
     if current_user.is_authenticated:
+
+        # determine the redirect_target of this user according to their role_id
+        redirect_to = url_for("main.index")
+        if current_user.role_id == 2:   # staff
+            redirect_to = url_for("product.show_page_staff_index")
+
         # change setting in db
         if current_user.language == 'en':
             current_user.language = 'zh'
+            flash("已为您切换语言为 [中文]")
+
         elif current_user.language == 'zh':
             current_user.language = 'en'
+            flash("Language has been changed to [English]")
 
         db.session.add(current_user)
         db.session.commit()
@@ -355,18 +373,26 @@ def change_language():
         # change setting in session
         session["language"] = current_user.language
 
+        # redirect the user
+        return redirect(redirect_to)
+
     else:
         # if the user is anonymous, we only change the language setting in session
 
         # if the first time access the website, we should init the session of language first
         if session.get("language") is None:
             session["language"] = 'en'
+            flash("Language has been changed to [English]")
+            return redirect(url_for("main.index"))
 
         # change setting in the session
         if session["language"] == 'zh':
             session["language"] = 'en'
+            flash("Language has been changed to [English]")
+
         elif session["language"] == 'en':
             session["language"] = 'zh'
+            flash("已为您切换语言为 [中文]")
 
     return redirect(url_for("main.index"))
 
@@ -697,7 +723,9 @@ def switch_epidemic_mode():
         # reverse the current switch of epidemic_mode_on
         if switch_to == '0':
             siren.epidemic_mode_on = False
+            flash("Epidemic Mode turned off.")
         elif switch_to == '1':
+            flash("Epidemic Mode turned on.")
             siren.epidemic_mode_on = True
         else:
             current_app.logger.error("wrong value of 'switch_to' from Ajax")
