@@ -1221,6 +1221,9 @@
         {# handel the problem of activation of items in side nav bar #}
         <script src="../../static/js/staff/base-sidebar.js"></script>
         <script src="../../static/js/staff/epidemic-switch.js"></script>
+        {# for children templates to defined the js at the end of body, but every end #}
+        {% block scripts_very_end_of_body %}
+        {% endblock %}
 
     </body>
 
