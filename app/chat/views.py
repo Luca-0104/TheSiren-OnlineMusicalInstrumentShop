@@ -87,11 +87,11 @@ def message(data):
     if data.get("time_stamp") is not None:
         print('left?')
         send({'msg': data['msg'], 'username': data['username'],
-              'time_stamp': data["time_stamp"]}
+              'time_stamp': data["time_stamp"], 'user': data['user']}
              , room=data['room'])
     else:
         send({'msg': data['msg'], 'username': data['username'],
-              'time_stamp': time.strftime('%H:%M:%S', time.localtime())}
+              'time_stamp': time.strftime('%H:%M:%S', time.localtime()), 'user': data['user']}
              , room=data['room'])
         # print("message" + data['msg'])
         # check the identity of the current user
@@ -114,8 +114,8 @@ def join(data):
 @socketio.on('leave')
 def leave(data):
     leave_room(data['room'])
-    send({'msg': data['username'] + " has left the " + data['room'] + "room."},
-         room=data['room'])
+    # send({'msg': data['username'] + " has left the " + data['room'] + "room."},
+    #      room=data['room'])
 
 
 @chat.route('/api/history', methods=['POST'])
@@ -152,12 +152,14 @@ def prepare_for_history_json(item, chat_id):
     local_dt = item.timestamp.replace(tzinfo=local_zone)
     utc_time = local_dt.astimezone(utc_zone)
     if item.author_type == 'customer':
+        user = room.customer
         message = {'msg': item.content, 'username': username, 'time_stamp': utc_time.strftime('%H:%M:%S'),
-                   'author_type': 'customer'}
+                   'author_type': 'customer', 'user': user}
 
     if item.author_type == 'staff':
+        user = room.staff
         message = {'msg': item.content, 'username': staffname, 'time_stamp': utc_time.strftime('%H:%M:%S'),
-                   'author_type': 'staff'}
+                   'author_type': 'staff', 'user': user}
 
     return message
 
