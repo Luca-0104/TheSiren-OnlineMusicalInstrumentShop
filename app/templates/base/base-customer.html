@@ -14,7 +14,8 @@
         <link id="index" rel="stylesheet" href="../../static/css/flash-bar.css">
         <link href="../../static/css/loader.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.font.im/css?family=Montserrat" rel="stylesheet">
-
+        <link href="../../static/css/chat/index_chat.css" rel="stylesheet">
+         <link rel="stylesheet" href="https://cdn.staticfile.org/layui/2.6.8/css/layui.css">
         <!-- [if lt IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"
                 type="text/javascript"></script><![endif] -->
@@ -50,9 +51,9 @@
                 <div class="main-container">
                     <div class="announcement-contents">
                         <div class="announcement-text">
-                            Welcome to Siren – Selects online music instrument shop for you.
+                            {{ _("Welcome to Siren – Selects online music instrument shop for you.")}}
 {#                            别看啦，快去赶DDL ~   (by the way 睡前别忘打卡~)#}
-                            <a href="{{ url_for('main.go_all') }}" target="_blank">View instruments here</a>
+                            <a href="{{ url_for('main.go_all') }}" target="_blank">{{ _("View instruments here")}}</a>
                         </div>
                     </div>
                 </div>
@@ -122,18 +123,7 @@
                             </div>
                         {% endif %}
 
-                        <!--chat button-->
-                        {% if current_user.is_authenticated %}
-                            <div data-node-type="commerce-cart-wrapper" data-open-product=""
-                                 data-wf-cart-type="rightSidebar"
-                                 data-wf-cart-query="" data-wf-page-link-href-prefix=""
-                                 class="w-commerce-commerceuserwrapper" onclick="$('#chat_window').display = 'block'; console.log('www');">
-                                <a href="#"
-                                   class="w-commerce-commercecartopenlink nav-cart-button w-inline-block"><img
-                                        src="../../static/images/chat-icon.png" loading="eager" alt="">
-                                </a>
-                            </div>
-                        {% endif %}
+
 
                         <!-- Cart -->
                         {% if current_user.is_authenticated %}
@@ -220,7 +210,7 @@
                                                                        data-commerce-sku-id="61a56467407a5a926e9ea7a7"
                                                                        cart-id="{{ cart_item.id }}">
                                                                         <div class="fine-print-text remove-link">
-                                                                            Remove
+                                                                            {{ _("Remove") }}
                                                                         </div>
                                                                     </a>
                                                                 </div>
@@ -239,7 +229,7 @@
                                                                            oninput="value=value.replace(/[^\d]/g,'')"
                                                                            value="{{ cart_item.count }}">
                                                                 {% else %}
-                                                                    <span style="color: red">Out Of Stock</span>
+                                                                    <span style="color: red">{{ _("Out Of Stock")}}</span>
                                                                 {% endif %}
                                                             </div>
                                                         {% endfor %}
@@ -364,7 +354,8 @@
                                 <img src="../../static/images/White-logo-no-background.svg" loading="lazy" alt=""
                                      class="footer-logo">
                             </a>
-                            <div>China Beijing Chaoyang Distinct Pingleyuan No.100<br>Beijing University of Technology
+                            <div>{{ _("China Beijing Chaoyang Distinct Pingleyuan No.100")}}<br>{{ _("Beijing University of
+                                    Technology")}}
                             </div>
                             <div class="contact-links in-footer">
                                 <a href="#" class="small-text">group9@ucdconnect.ie</a>
@@ -382,7 +373,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="{{ url_for("main.go_all") }}" class="list-link">Catagory</a>
+                                <a href="{{ url_for("main.go_all") }}" class="list-link">{{ _("Catagory") }}</a>
                             </div>
                         </div>
                         <div>
@@ -394,7 +385,7 @@
                             </div>
                         </div>
                         <div>
-                            <div class="uppercase-text links-grid-title">Franchising Brand</div>
+                            <div class="uppercase-text links-grid-title">{{ _("Franchising Brand")}}</div>
                             <div class="links-grid">
                                 <a href="{{ url_for("main.brand_intro", brand_id=1) }}" class="list-link">Lowden</a>
                                 <a href="{{ url_for("main.brand_intro", brand_id=2) }}" class="list-link">Gibson</a>

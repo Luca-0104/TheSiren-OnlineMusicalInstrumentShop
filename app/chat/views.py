@@ -18,6 +18,7 @@ Payload.max_decode_packets = 9999
 @chat.route('/chat_room', methods=['GET', 'POST'])
 # @login_required
 def chat_room():
+    print("create")
     if session.get('username') is not None:
         if session["role_id"] == 1:
             rooms = ChatRoom.query.filter_by(customer_id=session['uid']).all()
@@ -33,7 +34,7 @@ def chat_room():
                 # the staff and the user more than one day has not contacted
                 if (current_time - last_chat_time).days > 1:
                     # find all staff
-                    staffs = User.query.filter_by(role_id=0).all()
+                    staffs = User.query.filter_by(role_id=2).all()
                     # pick up a staff randomly
                     staff_situation = random.randint(0, len(staffs) - 1)
                     # get the staff id
@@ -43,7 +44,7 @@ def chat_room():
                     db.session.add(rooms[0])
                     db.session.commit()
 
-            return redirect(url_for('chat_for_customer', rooms=rooms))
+            return redirect(url_for('chat.chat_for_customer', rooms=rooms))
 
             # current user is staff
         elif session["role_id"] == 2:
@@ -73,6 +74,7 @@ def chat_for_staff(chat_room_id):
 # @login_required
 def chat_for_customer():
     # gain the chat data
+    print("create")
     messages = Message.query.filter_by(chat_room_id=session['uid']).all()
     return render_template("chat/chat_customer.html", username=session['username'], room=session['uid'],
                            messages=messages, role_id=session['role_id'])

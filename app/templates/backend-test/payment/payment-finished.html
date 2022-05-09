@@ -277,11 +277,11 @@
         <!-- Inform section -->
         <div class="utility-page-wrap inform-section">
             <div class="utility-page-content w-form">
-                <h2>Payment Finished</h2>
-                <div>Your payment is successfully finished. Please click the button below to go back to home page.</div>
+                <h2>{{ _("Payment Finished") }}</h2>
+                <div>{{ _("Your payment is successfully finished. Please click the button below to go back to home page.")}}</div>
                 <div class="button-row justify-content-center">
                     <a href="{{ url_for('order.my_orders') }}" class="button w-inline-block">
-                        <div>Check Orders</div>
+                        <div>{{ _("Check Orders")}}</div>
                     </a>
                 </div>
             </div>
