@@ -1131,44 +1131,43 @@ class ModelType(BaseModel):
         """
         return Tools.bytes_to_human_readable_str(self.sales)
 
-    def get_additon_type(self):
+    def get_addition_type(self):
         """
-        Tells the type of additionals and return it
+        Tells the type of additional and return it
         Types:
                 0: nothing
                 1: only 3d
                 2: only audio
-                3: only vedio
-                4: audio & vedio
-                5: 3d & vedio
+                3: only video
+                4: audio & video
+                5: 3d & video
                 6: 3d & audio
-                7: 3d & audio & vedio
-        :return: A integer representing the type of additionals
+                7: 3d & audio & video
+        :return: A integer representing the type of additional
         """
-        type_id = -1
         has3d = False
-        hasAudio = False
-        hasVedio = False
-        if self.three_d_model_address != None:
+        has_audio = False
+        has_video = False
+        if self.three_d_model_address is not None:
             has3d = True
         if self.audio_addresses.count() != 0:
-            hasAudio = True
-        if self.video_address != None:
-            hasVedio = True
+            has_audio = True
+        if self.video_address is not None:
+            has_video = True
 
-        if has3d and hasAudio and hasVedio:
+        if has3d and has_audio and has_video:
             return 7
-        elif has3d and hasAudio and not hasVedio:
+        elif has3d and has_audio and not has_video:
             return 6
-        elif has3d and not hasAudio and hasVedio:
+        elif has3d and not has_audio and has_video:
             return 5
-        elif not has3d and hasAudio and hasVedio:
+        elif not has3d and has_audio and has_video:
             return 4
-        elif not has3d and not hasAudio and hasVedio:
+        elif not has3d and not has_audio and has_video:
             return 3
-        elif not has3d and hasAudio and not hasVedio:
+        elif not has3d and has_audio and not has_video:
             return 2
-        elif has3d and not hasAudio and not hasVedio:
+        elif has3d and not has_audio and not has_video:
             return 1
         else:
             return 0
