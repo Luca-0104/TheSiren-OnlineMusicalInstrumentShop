@@ -37,7 +37,7 @@ class Tools:
         """
         TheSiren.create_unique_instance()  # Create the global unique instance of this musical shop
         Role.insert_roles()  # roles of users
-        User.insert_users(50, 10)  # the constant user accounts for test
+        User.insert_users(50, 5)  # the constant user accounts for test
         Recipient.insert_recipients(100)  # the recipient info
         Address.insert_address()  # addresses for delivery
         # # users(100)  # 100 fake users
@@ -450,7 +450,7 @@ class Message(BaseModel):
             room_id = random.randint(1, 2)
             author_type_list = ['customer', 'staff']
             author_type = random.randint(0, 1)
-            new_message = Message(content=fake.text(), timestamp=fake.date_time_this_year(),
+            new_message = Message(content=fake.text(), timestamp=fake.past_datetime(),
                                   author_type=author_type_list[author_type], chat_room_id=room_id)
             db.session.add(new_message)
         db.session.commit()
