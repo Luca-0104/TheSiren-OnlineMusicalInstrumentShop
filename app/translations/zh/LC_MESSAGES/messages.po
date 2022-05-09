@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-09 18:01+0800\n"
+"POT-Creation-Date: 2022-05-09 22:13+0800\n"
 "PO-Revision-Date: 2022-03-23 16:06+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
@@ -34,7 +34,7 @@ msgstr "保持登录"
 
 #: app/auth/forms.py:16 app/templates/auth/register_new.html:44
 #: app/templates/backend-test/payment/payment-finished.html:66
-#: app/templates/base/base-customer.html:98
+#: app/templates/base/base-customer.html:94
 #: app/templates/base/base-staff.html:520 app/templates/comment/comment.html:80
 #: app/templates/order/order-detail.html:80
 #: app/templates/order/order-listing.html:73
@@ -103,11 +103,11 @@ msgstr "权限被拒绝！"
 
 #: app/order/views.py:589
 msgid "Error in Duration info!"
-msgstr "持续时间信息中出现错误！"
+msgstr "会员时间出现错误！"
 
 #: app/order/views.py:593
 msgid "No duration info!"
-msgstr "没有时间信息！"
+msgstr "没有会员时间信息！"
 
 #: app/order/views.py:601
 msgid "Error in payment info!"
@@ -140,11 +140,11 @@ msgstr "会员订单不存在！"
 #: app/product/forms.py:12 app/product/forms.py:40 app/product/forms.py:97
 #: app/templates/staff/page-list-product.html:165
 msgid "Name"
-msgstr "用户名"
+msgstr "名称"
 
 #: app/product/forms.py:17
 #: app/templates/backend-test/payment/payment-finished.html:255
-#: app/templates/base/base-customer.html:322
+#: app/templates/base/base-customer.html:318
 #: app/templates/comment/comment.html:293
 #: app/templates/order/order-detail.html:293
 #: app/templates/order/order-listing.html:286
@@ -161,7 +161,7 @@ msgstr "品牌"
 #: app/templates/staff/page-list-orders.html:790
 #, fuzzy
 msgid "Update"
-msgstr "型号已更新！"
+msgstr "提交！"
 
 #: app/product/forms.py:33 app/product/forms.py:123
 msgid "Serial Number already used."
@@ -175,13 +175,13 @@ msgstr "描述"
 #: app/product/forms.py:43 app/product/forms.py:100
 #: app/templates/cart/page-cart.html:52
 #: app/templates/staff/backup-staff-modify.html:1024
-#: app/templates/staff/page-add-product.html:222
+#: app/templates/staff/page-add-product.html:223
 #: app/templates/staff/page-list-product.html:171
 msgid "Price"
 msgstr "价格"
 
 #: app/product/forms.py:45 app/product/forms.py:102
-#: app/templates/staff/page-add-product.html:233
+#: app/templates/staff/page-add-product.html:234
 #: app/templates/staff/page-list-product.html:174
 msgid "Stock"
 msgstr "库存"
@@ -194,7 +194,7 @@ msgstr "商品序列号"
 
 #: app/product/forms.py:50 app/product/forms.py:106
 msgid "Pictures for exhibition"
-msgstr "展览图片"
+msgstr "展示图片"
 
 #: app/product/forms.py:53 app/product/forms.py:107
 msgid "Introduction Pictures"
@@ -211,28 +211,28 @@ msgstr "商品序列号已应用于该商品的另一型号！"
 #: app/product/forms.py:80 app/product/forms.py:90 app/product/forms.py:133
 #: app/product/forms.py:143
 msgid "Picture name cannot longer than 216 chars!"
-msgstr "图片名称不能超过216个字！"
+msgstr "图片名称不能超过216个字符！"
 
-#: app/product/views.py:265
+#: app/product/views.py:281
 msgid "New product and its models are uploaded successfully!"
 msgstr "成功上传新商品及其型号！"
 
-#: app/product/views.py:389
+#: app/product/views.py:405
 msgid "The product information updated!"
 msgstr "商品信息已更新！"
 
-#: app/product/views.py:491
+#: app/product/views.py:507
 msgid "Error! The product does not exist! Try it again!"
-msgstr "发生错误！商品不存在！请重试！"
+msgstr "发生错误！产品不存在！请重试！"
 
-#: app/product/views.py:605
+#: app/product/views.py:621
 #, fuzzy
 msgid "Model Type updated!"
 msgstr "型号已更新！"
 
 #: app/templates/auth/login_new.html:41
 msgid "Please login and explore more."
-msgstr "请登录以浏览更多。"
+msgstr "请登录以探索更多。"
 
 #: app/templates/auth/login_new.html:43
 msgid "New here?"
@@ -246,7 +246,7 @@ msgstr "哦不！在提交表单的时候发生了一些错误。"
 #: app/templates/auth/login_new.html:101
 #, fuzzy
 msgid "We will never share your personal information with third parties."
-msgstr "我们将保证您的隐私安全并不会与任何第三方共享您的信息"
+msgstr "我们将保护您的隐私安全并不会与任何第三方共享您的信息"
 
 #: app/templates/auth/register_new.html:40
 msgid "Join us now!"
@@ -254,7 +254,7 @@ msgstr "现在加入我们吧！"
 
 #: app/templates/auth/register_new.html:42
 msgid "Already have an account?"
-msgstr ""
+msgstr "已经有帐号了？"
 
 #: app/templates/auth/register_new.html:112
 msgid ""
@@ -263,7 +263,7 @@ msgid ""
 msgstr "我们将保证您的隐私安全并不会与任何第三方共享您的信息"
 
 #: app/templates/backend-test/payment/payment-finished.html:62
-#: app/templates/base/base-customer.html:94
+#: app/templates/base/base-customer.html:90
 #: app/templates/comment/comment.html:76
 #: app/templates/order/order-detail.html:76
 #: app/templates/order/order-listing.html:69
@@ -271,15 +271,15 @@ msgid "Logout"
 msgstr "退出登录"
 
 #: app/templates/backend-test/payment/payment-finished.html:109
-#: app/templates/base/base-customer.html:150
+#: app/templates/base/base-customer.html:146
 #: app/templates/cart/page-cart.html:30 app/templates/comment/comment.html:130
 #: app/templates/order/order-detail.html:130
 #: app/templates/order/order-listing.html:123
 msgid "Your Cart"
-msgstr "您的购物车"
+msgstr "购物车"
 
 #: app/templates/backend-test/payment/payment-finished.html:125
-#: app/templates/base/base-customer.html:242
+#: app/templates/base/base-customer.html:238
 #: app/templates/comment/comment.html:213
 #: app/templates/order/order-detail.html:213
 #: app/templates/order/order-listing.html:206
@@ -290,7 +290,7 @@ msgstr "小计"
 #: app/templates/order/order-confirm-premium.html:118
 #: app/templates/order/order-confirm.html:120
 msgid "Pay with browser."
-msgstr "使用浏览器支付"
+msgstr "在线支付"
 
 #: app/templates/backend-test/payment/payment-finished.html:190
 #: app/templates/cart/page-cart.html:151
@@ -298,16 +298,16 @@ msgid "Continue to Checkout"
 msgstr "继续支付"
 
 #: app/templates/backend-test/payment/payment-finished.html:195
-#: app/templates/base/base-customer.html:262
+#: app/templates/base/base-customer.html:258
 #: app/templates/comment/comment.html:233
 #: app/templates/main/page-commodity-details.html:669
 #: app/templates/order/order-detail.html:233
 #: app/templates/order/order-listing.html:226
 msgid "No items found."
-msgstr "没有找到商品。"
+msgstr "没有找到任何项目。"
 
 #: app/templates/backend-test/payment/payment-finished.html:205
-#: app/templates/base/base-customer.html:274
+#: app/templates/base/base-customer.html:270
 #: app/templates/comment/comment.html:245
 #: app/templates/order/order-detail.html:245
 #: app/templates/order/order-listing.html:238
@@ -315,7 +315,7 @@ msgid "Product is not available in this quantity."
 msgstr "产品数量不足！"
 
 #: app/templates/backend-test/payment/payment-finished.html:223
-#: app/templates/base/base-customer.html:294
+#: app/templates/base/base-customer.html:290
 #: app/templates/comment/comment.html:265
 #: app/templates/order/order-detail.html:265
 #: app/templates/order/order-listing.html:258
@@ -323,7 +323,7 @@ msgid "Search here"
 msgstr "搜索"
 
 #: app/templates/backend-test/payment/payment-finished.html:235
-#: app/templates/base/base-customer.html:306
+#: app/templates/base/base-customer.html:302
 #: app/templates/comment/comment.html:277
 #: app/templates/order/order-detail.html:277
 #: app/templates/order/order-listing.html:270
@@ -332,8 +332,8 @@ msgstr "菜单"
 
 #: app/templates/backend-test/payment/payment-finished.html:241
 #: app/templates/backend-test/payment/payment-finished.html:309
-#: app/templates/base/base-customer.html:312
-#: app/templates/base/base-customer.html:368
+#: app/templates/base/base-customer.html:308
+#: app/templates/base/base-customer.html:364
 #: app/templates/comment/comment.html:283
 #: app/templates/comment/comment.html:503
 #: app/templates/order/order-detail.html:283
@@ -350,8 +350,8 @@ msgstr "分类"
 
 #: app/templates/backend-test/payment/payment-finished.html:269
 #: app/templates/backend-test/payment/payment-finished.html:322
-#: app/templates/base/base-customer.html:332
-#: app/templates/comment/comment.html:303
+#: app/templates/base/base-customer.html:328
+#: app/templates/chat/chat_staff.html:73 app/templates/comment/comment.html:303
 #: app/templates/order/order-detail.html:303
 #: app/templates/order/order-listing.html:296
 msgid "About"
@@ -359,7 +359,7 @@ msgstr "关于"
 
 #: app/templates/backend-test/payment/payment-finished.html:270
 #: app/templates/backend-test/payment/payment-finished.html:324
-#: app/templates/base/base-customer.html:333
+#: app/templates/base/base-customer.html:329
 #: app/templates/chat/chat_page.html:13 app/templates/comment/comment.html:304
 #: app/templates/order/order-detail.html:304
 #: app/templates/order/order-listing.html:297
@@ -377,13 +377,13 @@ msgstr "没有支付信息！"
 msgid ""
 "Your payment is successfully finished. Please click the button below to "
 "go back to home page."
-msgstr ""
+msgstr "您已成功支付。请点击下方按钮返回主页"
 
 #: app/templates/backend-test/payment/payment-finished.html:284
 #: app/templates/order/payment-success.html:46
 #, fuzzy
 msgid "Check Orders"
-msgstr "下单"
+msgstr "查看订单"
 
 #: app/templates/backend-test/payment/payment-finished.html:300
 msgid "34 Market Street, South Melbourne"
@@ -394,7 +394,7 @@ msgid "Victoria 3009"
 msgstr "维多利亚3009号"
 
 #: app/templates/backend-test/payment/payment-finished.html:307
-#: app/templates/base/base-customer.html:366
+#: app/templates/base/base-customer.html:362
 #: app/templates/comment/comment.html:501
 #: app/templates/order/order-detail.html:745
 #: app/templates/order/order-listing.html:726
@@ -402,7 +402,7 @@ msgid "shop"
 msgstr "商店"
 
 #: app/templates/backend-test/payment/payment-finished.html:313
-#: app/templates/base/base-customer.html:372
+#: app/templates/base/base-customer.html:368
 #: app/templates/comment/comment.html:507
 #: app/templates/main/page_all_commodities.html:321
 #: app/templates/order/order-detail.html:751
@@ -411,7 +411,7 @@ msgid "Brands"
 msgstr "品牌"
 
 #: app/templates/backend-test/payment/payment-finished.html:320
-#: app/templates/base/base-customer.html:380
+#: app/templates/base/base-customer.html:376
 #: app/templates/comment/comment.html:515
 #: app/templates/order/order-detail.html:759
 #: app/templates/order/order-listing.html:740
@@ -420,55 +420,55 @@ msgstr "公司"
 
 #: app/templates/backend-test/payment/payment-finished.html:323
 msgid "Journal"
-msgstr "账目"
+msgstr "通知"
 
 #: app/templates/backend-test/payment/payment-finished.html:325
 msgid "Refund Policy"
 msgstr "退款政策"
 
-#: app/templates/base/base-customer.html:54
+#: app/templates/base/base-customer.html:50
 #: app/templates/order/order-detail.html:51
 msgid "Welcome to Siren – Selects online music instrument shop for you."
-msgstr ""
+msgstr "欢迎来到Siren - 为您精心挑选的在线乐器商店。"
 
-#: app/templates/base/base-customer.html:56
+#: app/templates/base/base-customer.html:52
 #: app/templates/order/order-detail.html:52
 #: app/templates/order/order-listing.html:45
 msgid "View instruments here"
-msgstr ""
+msgstr "浏览乐器"
 
-#: app/templates/base/base-customer.html:213
+#: app/templates/base/base-customer.html:209
 #: app/templates/cart/page-cart.html:129 app/templates/comment/comment.html:190
 #: app/templates/order/order-detail.html:190
 #: app/templates/order/order-listing.html:183
 msgid "Remove"
 msgstr "移除"
 
-#: app/templates/base/base-customer.html:232
+#: app/templates/base/base-customer.html:228
 msgid "Out Of Stock"
-msgstr ""
+msgstr "库存不足"
 
-#: app/templates/base/base-customer.html:253
+#: app/templates/base/base-customer.html:249
 #: app/templates/comment/comment.html:224
 #: app/templates/order/order-detail.html:224
 #: app/templates/order/order-listing.html:217
 msgid "Go to my cart"
 msgstr "我的购物车"
 
-#: app/templates/base/base-customer.html:318
+#: app/templates/base/base-customer.html:314
 #: app/templates/order/order-listing.html:736
 #: app/templates/staff/backup-staff-modify.html:1003
 msgid "Category"
 msgstr "分类"
 
-#: app/templates/base/base-customer.html:357
+#: app/templates/base/base-customer.html:353
 #: app/templates/comment/comment.html:492
 #: app/templates/order/order-detail.html:736
 #: app/templates/order/order-listing.html:717
 msgid "China Beijing Chaoyang Distinct Pingleyuan No.100"
-msgstr ""
+msgstr "中国北京市朝阳区平乐园100号"
 
-#: app/templates/base/base-customer.html:357
+#: app/templates/base/base-customer.html:353
 #: app/templates/comment/comment.html:492
 #: app/templates/order/order-detail.html:736
 #: app/templates/order/order-listing.html:717
@@ -476,9 +476,9 @@ msgstr ""
 msgid ""
 "Beijing University of\n"
 "                                    Technology"
-msgstr "设为默认"
+msgstr "北京工业大学"
 
-#: app/templates/base/base-customer.html:376
+#: app/templates/base/base-customer.html:372
 #: app/templates/comment/comment.html:289
 #: app/templates/comment/comment.html:511
 #: app/templates/order/order-detail.html:289
@@ -487,7 +487,7 @@ msgstr "设为默认"
 msgid "Catagory"
 msgstr "分类"
 
-#: app/templates/base/base-customer.html:382
+#: app/templates/base/base-customer.html:378
 #: app/templates/comment/comment.html:517
 #: app/templates/order/order-detail.html:761
 #: app/templates/order/order-listing.html:742
@@ -495,11 +495,11 @@ msgstr "分类"
 msgid "About us"
 msgstr "关于我们"
 
-#: app/templates/base/base-customer.html:383
+#: app/templates/base/base-customer.html:379
 msgid "Contect us"
-msgstr ""
+msgstr "联系我们"
 
-#: app/templates/base/base-customer.html:384
+#: app/templates/base/base-customer.html:380
 #: app/templates/comment/comment.html:519
 #: app/templates/order/order-detail.html:763
 #: app/templates/order/order-listing.html:744
@@ -509,21 +509,21 @@ msgstr ""
 msgid "Premium"
 msgstr "成为会员"
 
-#: app/templates/base/base-customer.html:388
+#: app/templates/base/base-customer.html:384
 #: app/templates/comment/comment.html:523
 #: app/templates/order/order-detail.html:767
 #: app/templates/order/order-listing.html:748
 msgid "Franchising Brand"
-msgstr ""
+msgstr "特许经营品牌"
 
 #: app/templates/base/base-staff.html:61
 msgid "STAFF&nbsp;TERMINAL"
-msgstr ""
+msgstr "职员终端"
 
 #: app/templates/base/base-staff.html:80
 #: app/templates/staff/backup-staff-modify.html:43
 msgid "Dashboards"
-msgstr "仪表盘"
+msgstr ""
 
 #: app/templates/base/base-staff.html:94
 #: app/templates/staff/backup-staff-modify.html:52
@@ -539,7 +539,7 @@ msgstr "产品列表"
 #: app/templates/staff/backup-staff-modify.html:66
 #: app/templates/staff/backup-staff-modify.html:1058
 #: app/templates/staff/page-add-product.html:32
-#: app/templates/staff/page-add-product.html:272
+#: app/templates/staff/page-add-product.html:273
 #: app/templates/staff/page-list-product.html:81
 msgid "Add Product"
 msgstr "添加商品"
@@ -552,21 +552,21 @@ msgstr "订单"
 #: app/templates/base/base-staff.html:141
 #, fuzzy
 msgid "List Orders"
-msgstr "返回列表"
+msgstr "订单列表"
 
 #: app/templates/base/base-staff.html:156
 #, fuzzy
 msgid "Journals"
-msgstr "账目"
+msgstr "通知"
 
 #: app/templates/base/base-staff.html:169
 #, fuzzy
 msgid "List Journals"
-msgstr "返回列表"
+msgstr "通知列表"
 
 #: app/templates/base/base-staff.html:175
 msgid "Upload Journals"
-msgstr ""
+msgstr "上传通知"
 
 #: app/templates/base/base-staff.html:190
 #: app/templates/staff/backup-staff-modify.html:76
@@ -587,17 +587,17 @@ msgstr "添加分类"
 #: app/templates/base/base-staff.html:226
 #: app/templates/staff/backup-staff-modify.html:145
 msgid "Returns"
-msgstr "返回列表"
+msgstr "退货"
 
 #: app/templates/base/base-staff.html:239
 #: app/templates/staff/backup-staff-modify.html:153
 msgid "List Returns"
-msgstr "返回列表"
+msgstr "退货列表"
 
 #: app/templates/base/base-staff.html:245
 #: app/templates/staff/backup-staff-modify.html:158
 msgid "Add Return"
-msgstr "添加返回"
+msgstr "添加退货"
 
 #: app/templates/base/base-staff.html:262
 #: app/templates/staff/backup-staff-modify.html:168
@@ -657,7 +657,7 @@ msgstr "标记"
 #: app/templates/base/base-staff.html:391
 #: app/templates/staff/backup-staff-modify.html:283
 msgid "Breadcrumb"
-msgstr "面包屑"
+msgstr "浏览记录"
 
 #: app/templates/base/base-staff.html:396
 #: app/templates/staff/backup-staff-modify.html:288
@@ -844,7 +844,7 @@ msgstr "表格树"
 #: app/templates/base/base-staff.html:658
 #: app/templates/staff/backup-staff-modify.html:507
 msgid "Pricing"
-msgstr "定价"
+msgstr "价格"
 
 #: app/templates/base/base-staff.html:692
 #: app/templates/staff/backup-staff-modify.html:530
@@ -878,7 +878,7 @@ msgid "Search here..."
 msgstr "搜索"
 
 #: app/templates/base/base-staff.html:812
-#: app/templates/staff/page-add-product.html:198
+#: app/templates/staff/page-add-product.html:199
 #: app/templates/staff/page-list-product.html:45
 #: app/templates/staff/page-list-product.html:52
 msgid "Model Name"
@@ -889,18 +889,18 @@ msgstr "型号名称"
 msgid ""
 "Model\n"
 "                                                        Name"
-msgstr "显示更多"
+msgstr "型号名称"
 
 #: app/templates/base/base-staff.html:818
 #, fuzzy
 msgid ""
 "Model\n"
 "                                                        Serial"
-msgstr "显示更多"
+msgstr "序列号"
 
 #: app/templates/base/base-staff.html:893
 msgid "Epidemic Mode"
-msgstr ""
+msgstr "疫情模式"
 
 #: app/templates/base/base-staff.html:938
 #: app/templates/staff/backup-staff-modify.html:680
@@ -915,7 +915,7 @@ msgstr "显示更多"
 
 #: app/templates/base/base-staff.html:1110
 msgid "Profile"
-msgstr "修改个人主页"
+msgstr "个人主页"
 
 #: app/templates/base/base-staff.html:1112
 msgid "Sign Out"
@@ -959,35 +959,72 @@ msgstr "全部消息"
 
 #: app/templates/chat/chat_customer.html:77
 msgid "Type Message ..."
-msgstr ""
+msgstr "输入消息..."
 
 #: app/templates/chat/chat_customer.html:79
-#: app/templates/chat/chat_staff.html:326
+#: app/templates/chat/chat_staff.html:327
 #, fuzzy
 msgid "Send"
-msgstr "性别："
+msgstr "发送"
 
-#: app/templates/chat/chat_staff.html:95
+#: app/templates/chat/chat_staff.html:52 app/templates/chat/chat_staff.html:68
+msgid "Staff"
+msgstr "工作人员"
+
+#: app/templates/chat/chat_staff.html:74
+#, fuzzy
+msgid ""
+"It is long established fact that a reader will be distracted bt\n"
+"                                                            the reddable."
+msgstr "长期以来的事实是，读者会被可读性分散注意力。"
+
+#: app/templates/chat/chat_staff.html:76
+#: app/templates/staff/page-list-orders.html:61
+msgid "Status"
+msgstr "状态"
+
+#: app/templates/chat/chat_staff.html:79
+#, fuzzy
+msgid "Online"
+msgstr "在线"
+
+#: app/templates/chat/chat_staff.html:82
+msgid "Away"
+msgstr "离线"
+
+#: app/templates/chat/chat_staff.html:85
+#, fuzzy
+msgid ""
+"Do Not\n"
+"                                                                Disturb"
+msgstr "免打扰"
+
+#: app/templates/chat/chat_staff.html:88
+#, fuzzy
+msgid "Offline"
+msgstr "离线"
+
+#: app/templates/chat/chat_staff.html:96
 msgid "Search"
-msgstr ""
+msgstr "搜索"
 
-#: app/templates/chat/chat_staff.html:101
+#: app/templates/chat/chat_staff.html:102
 msgid "Direct Message"
-msgstr ""
+msgstr "私信"
 
-#: app/templates/chat/chat_staff.html:120
+#: app/templates/chat/chat_staff.html:121
 msgid "translation by"
-msgstr ""
+msgstr "翻译："
 
-#: app/templates/chat/chat_staff.html:138
+#: app/templates/chat/chat_staff.html:139
 #, fuzzy
 msgid ""
 "Start\n"
 "                                               Conversation By Choosing "
 "Chatroom!"
-msgstr "设为默认"
+msgstr "选择聊天室开始聊天！"
 
-#: app/templates/chat/chat_staff.html:323
+#: app/templates/chat/chat_staff.html:324
 msgid "Type your message"
 msgstr ""
 
@@ -1000,12 +1037,12 @@ msgstr "评论"
 #: app/templates/comment/comment.html:330
 #, fuzzy
 msgid "Your Purchase"
-msgstr "添加购买"
+msgstr "购买历史"
 
 #: app/templates/comment/comment.html:421
 #, fuzzy
 msgid "Your Comment"
-msgstr "评论"
+msgstr "您的评论"
 
 #: app/templates/comment/comment.html:518
 #: app/templates/order/order-detail.html:762
@@ -1014,21 +1051,21 @@ msgstr "评论"
 msgid "Contact us"
 msgstr "联系客服"
 
-#: app/templates/main/404.html:33
+#: app/templates/errors/404.html:28
 msgid "Page Not Found"
-msgstr ""
+msgstr "页面未找到"
 
-#: app/templates/main/404.html:34
+#: app/templates/errors/404.html:29
 msgid "The page you are looking for doesn&#x27;t exist or may have been moved."
-msgstr ""
+msgstr "您搜寻的页面不存在或被移除。"
 
-#: app/templates/main/404.html:37
+#: app/templates/errors/404.html:32
 msgid "Back to Home"
-msgstr ""
+msgstr "返回主页"
 
 #: app/templates/main/about_siren.html:43
 msgid "A curated collection of timeless instruments"
-msgstr ""
+msgstr "精选的永恒乐器系列"
 
 #: app/templates/main/about_siren.html:46 app/templates/main/index_new.html:528
 msgid ""
@@ -1036,11 +1073,11 @@ msgid ""
 "services for\n"
 "                                        modern performers, numerous "
 "renowned brands are currently in cooperation."
-msgstr "Siren是一个在线乐器商务网站。我们为现代的表演者提供最新的服务目前有众多知名品牌正在合作"
+msgstr "Siren是一个在线乐器商务网站。我们为现代表演者提供最新的服务，目前有众多知名品牌正在与我们合作"
 
 #: app/templates/main/about_siren.html:66
 msgid "Timeless craft, handpicked"
-msgstr ""
+msgstr "永恒的工艺，精心挑选"
 
 #: app/templates/main/about_siren.html:67
 msgid ""
@@ -1048,16 +1085,16 @@ msgid ""
 "                                all of our instrument brands are "
 "handpicked by professionals to ensure\n"
 "                                the performance quality of each."
-msgstr ""
+msgstr "我们提供最先进的乐器保养服务，每一个品牌都经过专家的精心挑选以保证每件乐器的质量。"
 
 #: app/templates/main/about_siren.html:78
 msgid "Our Service"
-msgstr ""
+msgstr "我们的服务"
 
 #: app/templates/main/about_siren.html:81
 #, fuzzy
 msgid "Selection"
-msgstr "产品"
+msgstr "精心挑选"
 
 #: app/templates/main/about_siren.html:84
 msgid ""
@@ -1067,11 +1104,11 @@ msgid ""
 " its acoustic fidelity. We provide various kinds\n"
 "                                    of exquisite instruments from a dozen"
 " famous brands."
-msgstr ""
+msgstr "每一件乐器都是由我们的员工选择的。我们重视乐器的每一个细节，它的质量，它的风格和主题，以及它的声学保真度。我们提供来自十几个知名品牌的各种精美乐器。"
 
 #: app/templates/main/about_siren.html:90
 msgid "Partnership"
-msgstr ""
+msgstr "合作伙伴"
 
 #: app/templates/main/about_siren.html:91
 msgid ""
@@ -1080,7 +1117,7 @@ msgid ""
 "                                    instruments. Cooperating with those "
 "famous brands would allow us to provide you\n"
 "                                    dozens of instrument types."
-msgstr ""
+msgstr "我们正在与16个不同的品牌合作。每个品牌都有自己的特色乐器。与这些知名品牌合作将使我们能够为您提供数十种乐器类型。"
 
 #: app/templates/main/about_siren.html:97
 #: app/templates/order/order-detail.html:823
@@ -1090,7 +1127,7 @@ msgstr ""
 #: app/templates/staff/page-list-orders.html:539
 #, fuzzy
 msgid "Delivery"
-msgstr "快递"
+msgstr "邮寄"
 
 #: app/templates/main/about_siren.html:98
 msgid ""
@@ -1100,11 +1137,11 @@ msgid ""
 "instrument or wait for home delivery. Of course, due to\n"
 "                                    the COVID-19, we recommend express "
 "delivery."
-msgstr ""
+msgstr "我们提供自助取货和邮寄服务，您可前往我们的实体店挑选您的乐器或等待送货上门。当然，由于COVID-19的影响，我们建议选择邮寄服务。"
 
 #: app/templates/main/about_siren.html:104
 msgid "Support"
-msgstr ""
+msgstr "支持"
 
 #: app/templates/main/about_siren.html:105
 msgid ""
@@ -1119,7 +1156,7 @@ msgid ""
 "                                    change of product, repair or "
 "maintenance of instruments, and replaceable accessories,\n"
 "                                    etc."
-msgstr ""
+msgstr "我们提供您和我们训练有素的员工之间的在线一对一聊天服务。我们会在短时间内回答您在购买之前可能遇到的各种问题，这样您就不必等待我们的回复。此外，我们的售后服务将为您提供支持，以解决您可能遇到的任何问题，例如更换产品，维修或维护乐器以及可更换的配件等。"
 
 #: app/templates/main/about_siren.html:170
 #: app/templates/main/index_new.html:1083
@@ -1201,12 +1238,12 @@ msgstr "成为会员"
 #: app/templates/main/page-commodity-details.html:124
 #: app/templates/main/page_all_commodities.html:454
 msgid "Previous"
-msgstr ""
+msgstr "上一页"
 
 #: app/templates/main/page-commodity-details.html:128
 #: app/templates/main/page_all_commodities.html:457
 msgid "Next"
-msgstr ""
+msgstr "下一页"
 
 #: app/templates/main/page-commodity-details.html:142
 #, fuzzy
@@ -1220,11 +1257,11 @@ msgstr "分类"
 
 #: app/templates/main/page-commodity-details.html:257
 msgid "Weight"
-msgstr ""
+msgstr "重量"
 
 #: app/templates/main/page-commodity-details.html:261
 msgid "Views"
-msgstr ""
+msgstr "浏览次数"
 
 #: app/templates/main/page-commodity-details.html:265
 #, fuzzy
@@ -1746,6 +1783,590 @@ msgstr ""
 msgid "START YOUR PREMIUM JOURNEY."
 msgstr ""
 
+#: app/templates/main/brand_intro/coming-soon.html:42
+msgid "It's Around the Corner!"
+msgstr ""
+
+#: app/templates/main/brand_intro/coming-soon.html:44
+msgid "Coming Soon!"
+msgstr ""
+
+#: app/templates/main/brand_intro/coming-soon.html:45
+msgid "We are very sorry to tell you that the manufacturer"
+msgstr ""
+
+#: app/templates/main/brand_intro/coming-soon.html:46
+msgid ""
+"hasn't update their information to our shop,\n"
+"                        you can try to view other brands in the Home Page"
+" Brand Gallery."
+msgstr ""
+
+#: app/templates/main/brand_intro/coming-soon.html:51
+msgid "Back to Home Page"
+msgstr ""
+
+#: app/templates/main/brand_intro/hohner.html:41
+msgid "About Hohner"
+msgstr ""
+
+#: app/templates/main/brand_intro/hohner.html:43
+msgid ""
+"Enjoy music. Wherever you are, whenever you want. Explore our\n"
+"                                    product section and find your perfect"
+" Hohner instrument."
+msgstr ""
+
+#: app/templates/main/brand_intro/hohner.html:63
+#, fuzzy
+msgid "MEET HOHNER"
+msgstr "收货人姓名"
+
+#: app/templates/main/brand_intro/hohner.html:64
+msgid ""
+"For generations, Hohner has dedicated everything towards music for a "
+"simple reason: Music\n"
+"                                is a way of life. In fact, you could say "
+"it’s the best way of life. People who aren’t into\n"
+"                                music simply don’t know what they’re "
+"missing. Of course we would say that, wouldn’t we? But\n"
+"                                like countless musicians all over the "
+"world, from beginner to professional, we feel so\n"
+"                                strongly about music that we want to help"
+" open the door to this experience to everyone. With\n"
+"                                instruments designed to convey the joy "
+"and the passion which inspires everybody to improve\n"
+"                                their skills and develop further."
+msgstr ""
+
+#: app/templates/main/brand_intro/hohner.html:79
+msgid "Hohner Company"
+msgstr ""
+
+#: app/templates/main/brand_intro/hohner.html:82
+msgid "CULTURE"
+msgstr ""
+
+#: app/templates/main/brand_intro/hohner.html:83
+msgid ""
+"Here at Hohner, we live music every day. Which is why we want to offer "
+"you more than\n"
+"                                    just an instrument: We want to "
+"welcome you into the world of music and invite you to\n"
+"                                    join the ever-growing circle of "
+"musicians everywhere who are playing together, learning\n"
+"                                    from one another and just having a "
+"great time."
+msgstr ""
+
+#: app/templates/main/brand_intro/hohner.html:90
+#, fuzzy
+msgid "HERITAGE"
+msgstr "其他页面"
+
+#: app/templates/main/brand_intro/hohner.html:91
+msgid ""
+"A lot has happened since Matthias Hohner founded his company in "
+"Trossingen, Germany in\n"
+"                                    1857. HOHNER became the market leader"
+" in harmonicas and accordions with a worldwide\n"
+"                                    network of artists through consistent"
+" dedication to quality. Our instruments have\n"
+"                                    strongly influenced the development "
+"of the Blues, become a vital part of Folk music\n"
+"                                    traditions around the world, played a"
+" significant role in the ongoing evolution of Jazz\n"
+"                                    and found their place on the "
+"Classical concert stage. Today we continue to develop new\n"
+"                                    instruments and improve existing "
+"ones. Always with the intention to enable everyone,\n"
+"                                    everywhere to Enjoy music."
+msgstr ""
+
+#: app/templates/main/brand_intro/hohner.html:102
+msgid "CRAFTSMANSHIP"
+msgstr ""
+
+#: app/templates/main/brand_intro/hohner.html:103
+msgid ""
+"With over 160 years of technical expertise, a sympathetic ear for our "
+"customers, and\n"
+"                                    countless collaborations with "
+"musicians and teachers, we have continuously improved our\n"
+"                                    craft – and will continue to do so."
+msgstr ""
+
+#: app/templates/main/brand_intro/lowden.html:41
+msgid "About Lowden Guitars"
+msgstr ""
+
+#: app/templates/main/brand_intro/lowden.html:43
+msgid ""
+"The Lowden guitar is the result of unique design, workmanship and\n"
+"                                    assembly techniques along with our "
+"choice of woods."
+msgstr ""
+
+#: app/templates/main/brand_intro/lowden.html:63
+msgid "History of Lowden"
+msgstr ""
+
+#: app/templates/main/brand_intro/lowden.html:64
+msgid ""
+"In the late 1980’s George Lowden accepted an invitation to visit the main"
+" Lowden dealer\n"
+"                                for\n"
+"                                Switzerland, Servette Music in Geneva. "
+"Upon his arrival, co-proprietor Yves Imer thanked\n"
+"                                George for coming, because some of the "
+"Lowden customers he was to meet had not realised he\n"
+"                                actually existed – they thought “George "
+"Lowden” was merely the figment of some marketing\n"
+"                                man’s imagination – a leprechaun, in "
+"fact! This served to enlighten George to the principle\n"
+"                                that an ‘information vacuum’ will always "
+"be filled – sometimes benignly, sometimes\n"
+"                                bizarrely."
+msgstr ""
+
+#: app/templates/main/brand_intro/lowden.html:80
+msgid "Lowden's Guitar"
+msgstr ""
+
+#: app/templates/main/brand_intro/lowden.html:83
+msgid "Design"
+msgstr ""
+
+#: app/templates/main/brand_intro/lowden.html:84
+msgid ""
+"Curvy, smooth soundbox shapes combined with carefully voiced internal "
+"bracing and\n"
+"                                    soundbox profiles, and use of natural"
+" wood..."
+msgstr ""
+
+#: app/templates/main/brand_intro/lowden.html:89
+msgid "Workmanship"
+msgstr ""
+
+#: app/templates/main/brand_intro/lowden.html:90
+msgid ""
+"Introducing unplanned or unmitigated stress into any musical instrument "
+"deadens the\n"
+"                                    tonal response. Our assembly "
+"techniques...\n"
+"\n"
+"                                    close\n"
+"                                    involve the use of hand tools to "
+"improve the quality of all joints and enable the\n"
+"                                    “Dolphin Profile” voicing of the "
+"soundboard bracing. This and many more design and\n"
+"                                    technique factors ensure that "
+"sustain, volume and balance are not hindered in any way.\n"
+"                                    No short cuts are possible, just "
+"great workmanship and attention to detail!"
+msgstr ""
+
+#: app/templates/main/brand_intro/lowden.html:101
+msgid "Wood"
+msgstr ""
+
+#: app/templates/main/brand_intro/lowden.html:102
+msgid ""
+"We still hand-split our bracing stock and re-grade soundboard wood. We "
+"scour the world\n"
+"                                    for the best (and often most "
+"decorative)...\n"
+"\n"
+"                                    close\n"
+"                                    tonewoods which are the real ‘stars’ "
+"of our guitars, and not man made. It is this\n"
+"                                    combination of many details which "
+"determines how our guitars sound, feel, and play.\n"
+"                                    Today more than ever, I am constantly"
+" evaluating our guitars and striving to further\n"
+"                                    adjust the voicing, the feel and the "
+"playability. To make Lowden guitars we need\n"
+"                                    individuals with a talent for focus "
+"and an eye for detail plus a passionate commitment\n"
+"                                    to no compromise. We have built a "
+"team of real craftsmen who build Lowden guitars by\n"
+"                                    hand using Japanese chisels, planes, "
+"knives and spokeshaves. We are currently building a\n"
+"                                    state of the art jig and tool "
+"department to ensure our craftsmen can fine tune their\n"
+"                                    skills and understanding of wood, and"
+" in so doing create guitars which feel and sound\n"
+"                                    like individual ‘works of art’."
+msgstr ""
+
+#: app/templates/main/brand_intro/martin.html:41
+msgid "About Martin Guitars"
+msgstr ""
+
+#: app/templates/main/brand_intro/martin.html:43
+msgid ""
+"Martin guitars and strings are known for more than their unrivaled\n"
+"                                    quality, craftsmanship, and tone. "
+"They are backed by our unwavering commitment to\n"
+"                                    environmental sustainability and "
+"responsible manufacturing practices."
+msgstr ""
+
+#: app/templates/main/brand_intro/martin.html:64
+msgid "TWO CENTURIES OF HISTORY"
+msgstr ""
+
+#: app/templates/main/brand_intro/martin.html:65
+msgid ""
+" Martin isn’t just a guitar. It’s playable history; part of a long line "
+"of legendary\n"
+"                                instruments stretching back to the "
+"company’s beginnings in 1833. Our guitars were strummed\n"
+"                                by Civil War soldiers around campfires, "
+"helped shape the sound of modern music at the turn\n"
+"                                of the 20th century, and were played by "
+"music’s first superstars like Jimmie Rodgers and\n"
+"                                Gene Autry. Decades later, Martins "
+"floored the crowd at Woodstock, then took center stage on\n"
+"                                MTV Unplugged, and can be heard on "
+"countless classic and contemporary songs across all\n"
+"                                genres of music. Artists like Hank "
+"Williams, Elvis Presley, Bob Dylan, John Lennon, Neil\n"
+"                                Young, Ed Sheeran, John Mayer, Seth "
+"Avett, and many others all played Martins, creating much\n"
+"                                of the soundtrack of the last century. "
+"And who knows? With one of our instruments in your\n"
+"                                hand, you could help write the soundtrack"
+" for the next century."
+msgstr ""
+
+#: app/templates/main/brand_intro/martin.html:83
+msgid "SUSTAINABILITY"
+msgstr ""
+
+#: app/templates/main/brand_intro/martin.html:86
+#, fuzzy
+msgid "REFORESTATION"
+msgstr "个人信息"
+
+#: app/templates/main/brand_intro/martin.html:87
+msgid ""
+"Martin planted tens of thousands of birch and maple trees to support "
+"Wildlands\n"
+"                                    Conservancy in Pennsylvania. We also "
+"planted tens of thousands of mahogany, cedar,\n"
+"                                    cocobolo, rosewood, and teak trees in"
+" Nicaragua."
+msgstr ""
+
+#: app/templates/main/brand_intro/martin.html:93
+msgid "PLASTIC REDUCTION INITIATIVES"
+msgstr ""
+
+#: app/templates/main/brand_intro/martin.html:94
+msgid ""
+"Martin reduced single-use plastic stretch wrap for shipping guitar "
+"pallets by\n"
+"                                    replacing\n"
+"                                    them with reusable canvas pallet "
+"wraps. In 2021, 2.5 tons of stretch wrap were\n"
+"                                    eliminated."
+msgstr ""
+
+#: app/templates/main/brand_intro/martin.html:101
+msgid "THE MARTIN JOURNAL OF ACOUSTIC GUITARS"
+msgstr ""
+
+#: app/templates/main/brand_intro/martin.html:102
+msgid ""
+"In 2021, we devoted an entire issue of our journal to Martin’s "
+"sustainability efforts.\n"
+"                                    In support of this, we encouraged "
+"readers to enjoy the digital version of the journal,\n"
+"                                    and we reduced the number of paper "
+"journals produced by 70%, saving 1.4 million sheets\n"
+"                                    of paper."
+msgstr ""
+
+#: app/templates/main/brand_intro/meinl.html:41
+msgid "ABOUT MEINL"
+msgstr ""
+
+#: app/templates/main/brand_intro/meinl.html:43
+msgid ""
+"Meinl company is a family-owned manufacturer and distributor of\n"
+"                                    musical instruments based in "
+"Gutenstetten, Germany. The brand portfolio of Meinl\n"
+"                                    comprises Meinl Cymbals, Meinl "
+"Percussion, Nino Percussion, Meinl Sonic Energy, Meinl\n"
+"                                    Stick & Brush and Ortega\n"
+"                                    Guitars."
+msgstr ""
+
+#: app/templates/main/brand_intro/meinl.html:66
+msgid "ABOUT MEINL CYMBALS"
+msgstr ""
+
+#: app/templates/main/brand_intro/meinl.html:67
+#, python-format
+msgid ""
+"One of the great things about being a drummer is the opportunity to\n"
+"                                be different...to be yourself. When you "
+"listen to all the greats, they're not like\n"
+"                            everybody else. They're themselves. We like "
+"that.\n"
+"                                Today it is difficult to be totally "
+"original or 100% unique, but that does not mean you\n"
+"                                must be like all the others. At MEINL we "
+"do our own thing. That's just who we are. And\n"
+"                            we like to think you want to be who you are, "
+"too. There's a freedom that comes with\n"
+"                                that."
+msgstr ""
+
+#: app/templates/main/brand_intro/meinl.html:82
+msgid "About Meinl Company"
+msgstr ""
+
+#: app/templates/main/brand_intro/meinl.html:85
+#, fuzzy
+msgid "IDEOLOGY"
+msgstr "视频"
+
+#: app/templates/main/brand_intro/meinl.html:86
+msgid ""
+"Drummers continually tell us how they become inspired by playing MEINL "
+"cymbals. They\n"
+"                                    are inspired by the new sounds that "
+"they hear and feel, which at the same time hones and\n"
+"                                    shapes their personal drum style. "
+"This is the biggest compliment for us, as well as the\n"
+"                                    driving force behind all our "
+"activities! It encourages us to develop new sounds and to\n"
+"                                    push our creativity farther forward."
+msgstr ""
+
+#: app/templates/main/brand_intro/meinl.html:94
+msgid "FROM DRUMMERS FOR DRUMMERS!"
+msgstr ""
+
+#: app/templates/main/brand_intro/meinl.html:95
+msgid ""
+"Experienced and motivated individuals, who are all drummers themselves, "
+"form our\n"
+"                                    executive and creative team. This "
+"team plans all of our activities, manages our\n"
+"                                    promotional campaigns and creates "
+"inspiring cymbal sounds. Some of our top artists take\n"
+"                                    part in this process also. We are "
+"proud to say that we are drummers first!"
+msgstr ""
+
+#: app/templates/main/brand_intro/meinl.html:102
+msgid "AND KNOW-HOW"
+msgstr ""
+
+#: app/templates/main/brand_intro/meinl.html:103
+msgid ""
+"Only MEINL uses 6 different alloys for crafting cymbals, which is more "
+"than any other\n"
+"                                    cymbal maker is using today. Because "
+"of that, we are able to offer the widest selection\n"
+"                                    of basic cymbal sound characteristics"
+" available. Striving for the realization of any\n"
+"                                    possible sound idea makes it "
+"necessary to have this diversity, the background in and\n"
+"                                    knowledge of all those different "
+"materials."
+msgstr ""
+
+#: app/templates/main/brand_intro/steinway.html:41
+msgid "About Steinway's Piano"
+msgstr ""
+
+#: app/templates/main/brand_intro/steinway.html:43
+msgid ""
+"For over 160 years, STEINWAY & SONS has been dedicated to making\n"
+"                                    the\n"
+"                                    finest pianos in the world. Our "
+"pioneering handcrafted methods are still employed today\n"
+"                                    to ensure our uncompromising "
+"standards of quality, in turn ensuring that the STEINWAY\n"
+"                                    remains the peerless instrument of "
+"uncompromising expression."
+msgstr ""
+
+#: app/templates/main/brand_intro/steinway.html:66
+msgid "Having a Steinway Piano"
+msgstr ""
+
+#: app/templates/main/brand_intro/steinway.html:67
+msgid ""
+"To call a genuine grand or upright of STEINWAY & SONS one’s own is an "
+"overwhelming\n"
+"                                feeling.\n"
+"                                Far more than just an exquisite "
+"instrument, it is an instrument of the highest expression\n"
+"                                and creativity. A STEINWAY intimately "
+"connects artist and listener, and invites its owner to\n"
+"                                join a tradition of musical perfection, "
+"making it an invaluable investment."
+msgstr ""
+
+#: app/templates/main/brand_intro/steinway.html:80
+msgid "About Steinway"
+msgstr ""
+
+#: app/templates/main/brand_intro/steinway.html:83
+msgid "Steinway Today"
+msgstr ""
+
+#: app/templates/main/brand_intro/steinway.html:84
+msgid ""
+"Master to apprentice, generation after generation, every STEINWAY is\n"
+"                                    built with experience decades in the "
+"making — by artisans who take pride and time to\n"
+"                                    humanize a piano still made by hand, "
+"who strive for and achieve continuous innovation\n"
+"                                    and improvement. Every STEINWAY & "
+"SONS grand and upright is a masterpiece of\n"
+"                                    craftsmanship and a consummate work "
+"of art. Each STEINWAY, consisting of more than\n"
+"                                    12,000 individual parts, has its own "
+"musical character and is as unique as the\n"
+"                                    individual who plays it."
+msgstr ""
+
+#: app/templates/main/brand_intro/steinway.html:94
+msgid "Steinway Tomorrow"
+msgstr ""
+
+#: app/templates/main/brand_intro/steinway.html:95
+msgid ""
+"The very first STEINWAY & SONS patent was granted in 1857, and since that"
+" time the\n"
+"                                    company\n"
+"                                    has been granted more than 150 "
+"additional patents, positioning the STEINWAY as the piano\n"
+"                                    by\n"
+"                                    which all others are judged. Our "
+"latest innovation, the STEINWAY & SONS SPIRIO, is the\n"
+"                                    world’s finest high resolution player"
+" piano. A masterpiece of craftsmanship, technology\n"
+"                                    and\n"
+"                                    artistry, SPIRIO provides an "
+"unrivaled musical experience, indistinguishable from a live\n"
+"                                    performance."
+msgstr ""
+
+#: app/templates/main/brand_intro/steinway.html:107
+msgid "Steinway in History"
+msgstr ""
+
+#: app/templates/main/brand_intro/steinway.html:108
+msgid ""
+"STEINWAY & SONS was founded in 1853 by German immigrant Henry Engelhard "
+"Steinway in a\n"
+"                                    Manhattan loft on Varick Street. Over"
+" the next thirty years, Henry and his sons\n"
+"                                    developed the modern piano. They "
+"built their instruments one at a time, applying skills\n"
+"                                    that have been handed down from "
+"master to apprentice, generation after generation, ever\n"
+"                                    since. The STEINWAY became the choice"
+" for approximately ninety-seven percent of\n"
+"                                    concertizing artists, none of whom "
+"are compensated to endorse the instrument. The\n"
+"                                    STEINWAY earned a reputation as an "
+"investment for the owner in the legacy of future\n"
+"                                    generations."
+msgstr ""
+
+#: app/templates/main/brand_intro/taylor.html:41
+msgid "Meet Taylor's Class of 2022"
+msgstr ""
+
+#: app/templates/main/brand_intro/taylor.html:43
+msgid ""
+"This year's new models include a trio of compact GT guitars, a\n"
+"                                mahogany Grand Concert and our first all-"
+"maple Grand Pacific."
+msgstr ""
+
+#: app/templates/main/brand_intro/taylor.html:63
+msgid "About Taylor Guitars"
+msgstr ""
+
+#: app/templates/main/brand_intro/taylor.html:64
+msgid ""
+"Taylor Guitars was founded in 1974 by Bob Taylor and Kurt Listug, and has"
+" grown into the\n"
+"        leading global builder of premium acoustic guitars. Renowned for "
+"blending modern, innovative\n"
+"        manufacturing techniques with a master craftsman's attention to "
+"detail, Taylor acoustic\n"
+"                            guitars are widely considered among the best-"
+"sounding and easiest to play in the world. The\n"
+"                            company is a pioneer in the use of computer "
+"mills, lasers and other high-tech tools and\n"
+"                            proprietary machinery, and today, Bob Taylor "
+"is widely recognized throughout the musical\n"
+"                            instrument industry as the visionary acoustic"
+" guitar manufacturer."
+msgstr ""
+
+#: app/templates/main/brand_intro/taylor.html:79
+msgid "The Taylor Difference"
+msgstr ""
+
+#: app/templates/main/brand_intro/taylor.html:82
+msgid "Sustainability Leadership"
+msgstr ""
+
+#: app/templates/main/brand_intro/taylor.html:83
+msgid ""
+"We are deeply committed to safeguarding the future of the natural "
+"resources we use.\n"
+"                                    This has led us to pioneer many eco-"
+"sustainability initiatives around the world. When\n"
+"                                    you purchase a Taylor guitar, you are"
+" supporting the highest levels of ethical,\n"
+"                                    eco-conscious business."
+msgstr ""
+
+#: app/templates/main/brand_intro/taylor.html:90
+msgid "Playable NecksWorkmanship"
+msgstr ""
+
+#: app/templates/main/brand_intro/taylor.html:91
+msgid ""
+"Taylor guitar necks are the most playable in the industry, thanks to our "
+"patented neck\n"
+"                                    joint design and sleek neck profile. "
+"Our precise neck/body assembly process allows every\n"
+"                                    neck angle to be set with extreme "
+"accuracy and easily maintained throughout the life of\n"
+"                                    the guitar."
+msgstr ""
+
+#: app/templates/main/brand_intro/taylor.html:98
+msgid "Precision Craftsmanship"
+msgstr ""
+
+#: app/templates/main/brand_intro/taylor.html:99
+msgid ""
+"We’ve set the standard for modern-day craftsmanship to create the best "
+"possible\n"
+"                                    playing\n"
+"                                    experience. Our blend of innovative "
+"manufacturing technology with impeccable\n"
+"                                    hand-craftsmanship has led to "
+"unmatched quality and consistency in the production of our\n"
+"                                    guitars, and helped us develop game-"
+"changers like V-Class bracing."
+msgstr ""
+
 #: app/templates/order/order-confirm-premium.html:126
 msgid "Choose Your Premium Plan"
 msgstr "选择您的会员计划"
@@ -2194,13 +2815,13 @@ msgid "Image"
 msgstr "图片"
 
 #: app/templates/staff/backup-staff-modify.html:1053
-#: app/templates/staff/page-add-product.html:264
+#: app/templates/staff/page-add-product.html:265
 msgid "Description / Product Details"
 msgstr "描述/商品详情"
 
 #: app/templates/staff/backup-staff-modify.html:1059
 #: app/templates/staff/page-add-journal.html:82
-#: app/templates/staff/page-add-product.html:273
+#: app/templates/staff/page-add-product.html:274
 #: app/templates/staff/page-list-orders.html:793
 #: app/templates/staff/page-modify-journal.html:82
 #: app/templates/staff/page-modify-modeltype.html:150
@@ -2218,12 +2839,12 @@ msgid "Product Name"
 msgstr "产品名"
 
 #: app/templates/staff/page-add-product.html:46
-#: app/templates/staff/page-add-product.html:200
+#: app/templates/staff/page-add-product.html:201
 msgid "Enter Name"
 msgstr "请输入用户名"
 
 #: app/templates/staff/page-add-product.html:47
-#: app/templates/staff/page-add-product.html:201
+#: app/templates/staff/page-add-product.html:202
 msgid "Please Enter Name."
 msgstr "请输入商品名称"
 
@@ -2240,39 +2861,39 @@ msgstr "附加规格"
 msgid "Product Initial ModelType(s)"
 msgstr "产品初始型号"
 
-#: app/templates/staff/page-add-product.html:212
+#: app/templates/staff/page-add-product.html:213
 msgid "Enter Serial Number"
 msgstr "输入商品序列号"
 
-#: app/templates/staff/page-add-product.html:213
+#: app/templates/staff/page-add-product.html:214
 msgid "Please Enter Serial Number."
 msgstr "请输入商品序列号"
 
-#: app/templates/staff/page-add-product.html:224
+#: app/templates/staff/page-add-product.html:225
 msgid "Enter Price"
 msgstr "请输入价格"
 
-#: app/templates/staff/page-add-product.html:225
+#: app/templates/staff/page-add-product.html:226
 msgid "Please Enter Price."
 msgstr "请输入价格"
 
-#: app/templates/staff/page-add-product.html:235
+#: app/templates/staff/page-add-product.html:236
 msgid "Enter Stock"
 msgstr "请输入库存数量"
 
-#: app/templates/staff/page-add-product.html:236
+#: app/templates/staff/page-add-product.html:237
 msgid "Please Enter Stock."
 msgstr "请输入库存数量"
 
-#: app/templates/staff/page-add-product.html:244
+#: app/templates/staff/page-add-product.html:245
 msgid "Thumbnail"
 msgstr "商品序列图"
 
-#: app/templates/staff/page-add-product.html:254
+#: app/templates/staff/page-add-product.html:255
 msgid "Product Pictures"
 msgstr "产品图片"
 
-#: app/templates/staff/page-add-product.html:275
+#: app/templates/staff/page-add-product.html:276
 msgid "Add Model Type"
 msgstr "添加商品型号"
 
@@ -2385,10 +3006,6 @@ msgstr "顾客"
 #, fuzzy
 msgid "Paid"
 msgstr "未支付"
-
-#: app/templates/staff/page-list-orders.html:61
-msgid "Status"
-msgstr ""
 
 #: app/templates/staff/page-list-orders.html:63
 msgid "Priority"
@@ -2840,54 +3457,57 @@ msgid "discount"
 msgstr ""
 
 #: app/templates/userinfo/user_profile.html:457
-#, python-format
-msgid " of 5% off in every order you placed"
+msgid "of"
 msgstr ""
 
-#: app/templates/userinfo/user_profile.html:464
+#: app/templates/userinfo/user_profile.html:458
+msgid "off in every order you placed"
+msgstr ""
+
+#: app/templates/userinfo/user_profile.html:465
 #, fuzzy
 msgid "Change "
 msgstr "更改目录"
 
-#: app/templates/userinfo/user_profile.html:464
+#: app/templates/userinfo/user_profile.html:465
 #, fuzzy
 msgid "shipping method"
 msgstr "配送方式"
 
-#: app/templates/userinfo/user_profile.html:464
+#: app/templates/userinfo/user_profile.html:465
 msgid ""
 "\n"
 "                                                        as you want"
 msgstr ""
 
-#: app/templates/userinfo/user_profile.html:472
+#: app/templates/userinfo/user_profile.html:473
 #, fuzzy
 msgid "Renew Premium"
 msgstr "成为会员"
 
-#: app/templates/userinfo/user_profile.html:480
+#: app/templates/userinfo/user_profile.html:481
 msgid "Order section"
 msgstr "订单专区"
 
-#: app/templates/userinfo/user_profile.html:485
+#: app/templates/userinfo/user_profile.html:486
 #, fuzzy
 msgid "Enter"
 msgstr "性别："
 
-#: app/templates/userinfo/user_profile.html:511
+#: app/templates/userinfo/user_profile.html:512
 #, fuzzy
 msgid "Change Avatar"
 msgstr "修改头像"
 
-#: app/templates/userinfo/user_profile.html:546
+#: app/templates/userinfo/user_profile.html:547
 msgid "Edit profile"
 msgstr "修改用户主页"
 
-#: app/templates/userinfo/user_profile.html:633
+#: app/templates/userinfo/user_profile.html:634
 msgid "Add address"
 msgstr "添加地址"
 
-#: app/templates/userinfo/user_profile.html:768
+#: app/templates/userinfo/user_profile.html:769
 msgid "Edit address"
 msgstr "修改地址"
 
@@ -3125,4 +3745,713 @@ msgstr "默认地址修改成功！"
 
 #~ msgid "Category section"
 #~ msgstr "分类专区"
+
+#~ msgid " of 5% off in every order you placed"
+#~ msgstr ""
+
+#~ msgid "Staff"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "It is long established fact that a reader will be distracted bt\n"
+#~ "                                                            the"
+#~ " reddable."
+#~ msgstr "显示更多"
+
+#~ msgid "Online"
+#~ msgstr "成为会员"
+
+#~ msgid "Away"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Do Not\n"
+#~ "                                                                Disturb"
+#~ msgstr "显示更多"
+
+#~ msgid "Offline"
+#~ msgstr "成为会员"
+
+#~ msgid "It's Around the Corner!"
+#~ msgstr ""
+
+#~ msgid "Coming Soon!"
+#~ msgstr ""
+
+#~ msgid "We are very sorry to tell you that the manufacturer"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "hasn't update their information to our shop,\n"
+#~ "                        you can try to "
+#~ "view other brands in the Home Page"
+#~ " Brand Gallery."
+#~ msgstr ""
+
+#~ msgid "Back to Home Page"
+#~ msgstr ""
+
+#~ msgid "About Hohner"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Enjoy music. Wherever you are, whenever you want. Explore our\n"
+#~ "                                    product section "
+#~ "and find your perfect Hohner instrument."
+#~ msgstr ""
+
+#~ msgid "MEET HOHNER"
+#~ msgstr "收货人姓名"
+
+#~ msgid ""
+#~ "For generations, Hohner has dedicated "
+#~ "everything towards music for a simple"
+#~ " reason: Music\n"
+#~ "                                is a way of"
+#~ " life. In fact, you could say "
+#~ "it’s the best way of life. People"
+#~ " who aren’t into\n"
+#~ "                                music simply don’t"
+#~ " know what they’re missing. Of course"
+#~ " we would say that, wouldn’t we? "
+#~ "But\n"
+#~ "                                like countless "
+#~ "musicians all over the world, from "
+#~ "beginner to professional, we feel so"
+#~ "\n"
+#~ "                                strongly about music"
+#~ " that we want to help open the"
+#~ " door to this experience to everyone."
+#~ " With\n"
+#~ "                                instruments designed "
+#~ "to convey the joy and the passion"
+#~ " which inspires everybody to improve\n"
+#~ ""
+#~ "                                their skills and develop further."
+#~ msgstr ""
+
+#~ msgid "Hohner Company"
+#~ msgstr ""
+
+#~ msgid "CULTURE"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Here at Hohner, we live music "
+#~ "every day. Which is why we want"
+#~ " to offer you more than\n"
+#~ "                                    just an "
+#~ "instrument: We want to welcome you "
+#~ "into the world of music and invite"
+#~ " you to\n"
+#~ "                                    join the "
+#~ "ever-growing circle of musicians everywhere"
+#~ " who are playing together, learning\n"
+#~ "                                    from one another"
+#~ " and just having a great time."
+#~ msgstr ""
+
+#~ msgid "HERITAGE"
+#~ msgstr "其他页面"
+
+#~ msgid ""
+#~ "A lot has happened since Matthias "
+#~ "Hohner founded his company in "
+#~ "Trossingen, Germany in\n"
+#~ "                                    1857. HOHNER "
+#~ "became the market leader in harmonicas"
+#~ " and accordions with a worldwide\n"
+#~ "                                    network of "
+#~ "artists through consistent dedication to "
+#~ "quality. Our instruments have\n"
+#~ "                                    strongly influenced"
+#~ " the development of the Blues, become"
+#~ " a vital part of Folk music\n"
+#~ "                                    traditions around "
+#~ "the world, played a significant role "
+#~ "in the ongoing evolution of Jazz\n"
+#~ "                                    and found their"
+#~ " place on the Classical concert "
+#~ "stage. Today we continue to develop "
+#~ "new\n"
+#~ "                                    instruments and "
+#~ "improve existing ones. Always with the"
+#~ " intention to enable everyone,\n"
+#~ "                                    everywhere to Enjoy music."
+#~ msgstr ""
+
+#~ msgid "CRAFTSMANSHIP"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "With over 160 years of technical "
+#~ "expertise, a sympathetic ear for our "
+#~ "customers, and\n"
+#~ "                                    countless "
+#~ "collaborations with musicians and teachers,"
+#~ " we have continuously improved our\n"
+#~ "                                    craft – and will continue to do so."
+#~ msgstr ""
+
+#~ msgid "About Lowden Guitars"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The Lowden guitar is the result of unique design, workmanship and\n"
+#~ "                                    assembly techniques"
+#~ " along with our choice of woods."
+#~ msgstr ""
+
+#~ msgid "History of Lowden"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "In the late 1980’s George Lowden "
+#~ "accepted an invitation to visit the "
+#~ "main Lowden dealer\n"
+#~ "                                for\n"
+#~ "                                Switzerland, Servette "
+#~ "Music in Geneva. Upon his arrival, "
+#~ "co-proprietor Yves Imer thanked\n"
+#~ "                                George for coming,"
+#~ " because some of the Lowden customers"
+#~ " he was to meet had not "
+#~ "realised he\n"
+#~ "                                actually existed –"
+#~ " they thought “George Lowden” was "
+#~ "merely the figment of some marketing"
+#~ "\n"
+#~ "                                man’s imagination –"
+#~ " a leprechaun, in fact! This served"
+#~ " to enlighten George to the principle"
+#~ "\n"
+#~ "                                that an ‘information"
+#~ " vacuum’ will always be filled – "
+#~ "sometimes benignly, sometimes\n"
+#~ "                                bizarrely."
+#~ msgstr ""
+
+#~ msgid "Lowden's Guitar"
+#~ msgstr ""
+
+#~ msgid "Design"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Curvy, smooth soundbox shapes combined "
+#~ "with carefully voiced internal bracing "
+#~ "and\n"
+#~ "                                    soundbox profiles, "
+#~ "and use of natural wood..."
+#~ msgstr ""
+
+#~ msgid "Workmanship"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Introducing unplanned or unmitigated stress"
+#~ " into any musical instrument deadens "
+#~ "the\n"
+#~ "                                    tonal response. "
+#~ "Our assembly techniques...\n"
+#~ "\n"
+#~ "                                    close\n"
+#~ "                                    involve the use"
+#~ " of hand tools to improve the "
+#~ "quality of all joints and enable "
+#~ "the\n"
+#~ "                                    “Dolphin Profile” "
+#~ "voicing of the soundboard bracing. This"
+#~ " and many more design and\n"
+#~ "                                    technique factors "
+#~ "ensure that sustain, volume and balance"
+#~ " are not hindered in any way.\n"
+#~ "                                    No short cuts"
+#~ " are possible, just great workmanship "
+#~ "and attention to detail!"
+#~ msgstr ""
+
+#~ msgid "Wood"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "We still hand-split our bracing "
+#~ "stock and re-grade soundboard wood. "
+#~ "We scour the world\n"
+#~ "                                    for the best "
+#~ "(and often most decorative)...\n"
+#~ "\n"
+#~ "                                    close\n"
+#~ "                                    tonewoods which "
+#~ "are the real ‘stars’ of our "
+#~ "guitars, and not man made. It is"
+#~ " this\n"
+#~ "                                    combination of "
+#~ "many details which determines how our"
+#~ " guitars sound, feel, and play.\n"
+#~ "                                    Today more than"
+#~ " ever, I am constantly evaluating our"
+#~ " guitars and striving to further\n"
+#~ "                                    adjust the "
+#~ "voicing, the feel and the playability."
+#~ " To make Lowden guitars we need\n"
+#~ ""
+#~ "                                    individuals with "
+#~ "a talent for focus and an eye "
+#~ "for detail plus a passionate commitment"
+#~ "\n"
+#~ "                                    to no "
+#~ "compromise. We have built a team "
+#~ "of real craftsmen who build Lowden "
+#~ "guitars by\n"
+#~ "                                    hand using "
+#~ "Japanese chisels, planes, knives and "
+#~ "spokeshaves. We are currently building a"
+#~ "\n"
+#~ "                                    state of the "
+#~ "art jig and tool department to "
+#~ "ensure our craftsmen can fine tune "
+#~ "their\n"
+#~ "                                    skills and "
+#~ "understanding of wood, and in so "
+#~ "doing create guitars which feel and "
+#~ "sound\n"
+#~ "                                    like individual ‘works of art’."
+#~ msgstr ""
+
+#~ msgid "About Martin Guitars"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Martin guitars and strings are known for more than their unrivaled\n"
+#~ "                                    quality, "
+#~ "craftsmanship, and tone. They are backed"
+#~ " by our unwavering commitment to\n"
+#~ "                                    environmental "
+#~ "sustainability and responsible manufacturing "
+#~ "practices."
+#~ msgstr ""
+
+#~ msgid "TWO CENTURIES OF HISTORY"
+#~ msgstr ""
+
+#~ msgid ""
+#~ " Martin isn’t just a guitar. It’s"
+#~ " playable history; part of a long "
+#~ "line of legendary\n"
+#~ "                                instruments stretching "
+#~ "back to the company’s beginnings in "
+#~ "1833. Our guitars were strummed\n"
+#~ "                                by Civil War "
+#~ "soldiers around campfires, helped shape "
+#~ "the sound of modern music at the"
+#~ " turn\n"
+#~ "                                of the 20th "
+#~ "century, and were played by music’s "
+#~ "first superstars like Jimmie Rodgers and"
+#~ "\n"
+#~ "                                Gene Autry. Decades"
+#~ " later, Martins floored the crowd at"
+#~ " Woodstock, then took center stage on"
+#~ "\n"
+#~ "                                MTV Unplugged, and"
+#~ " can be heard on countless classic"
+#~ " and contemporary songs across all\n"
+#~ "                                genres of music. "
+#~ "Artists like Hank Williams, Elvis "
+#~ "Presley, Bob Dylan, John Lennon, Neil"
+#~ "\n"
+#~ "                                Young, Ed Sheeran,"
+#~ " John Mayer, Seth Avett, and many "
+#~ "others all played Martins, creating much"
+#~ "\n"
+#~ "                                of the soundtrack"
+#~ " of the last century. And who "
+#~ "knows? With one of our instruments "
+#~ "in your\n"
+#~ "                                hand, you could "
+#~ "help write the soundtrack for the "
+#~ "next century."
+#~ msgstr ""
+
+#~ msgid "SUSTAINABILITY"
+#~ msgstr ""
+
+#~ msgid "REFORESTATION"
+#~ msgstr "个人信息"
+
+#~ msgid ""
+#~ "Martin planted tens of thousands of "
+#~ "birch and maple trees to support "
+#~ "Wildlands\n"
+#~ "                                    Conservancy in "
+#~ "Pennsylvania. We also planted tens of"
+#~ " thousands of mahogany, cedar,\n"
+#~ "                                    cocobolo, rosewood,"
+#~ " and teak trees in Nicaragua."
+#~ msgstr ""
+
+#~ msgid "PLASTIC REDUCTION INITIATIVES"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Martin reduced single-use plastic "
+#~ "stretch wrap for shipping guitar pallets"
+#~ " by\n"
+#~ "                                    replacing\n"
+#~ "                                    them with "
+#~ "reusable canvas pallet wraps. In 2021,"
+#~ " 2.5 tons of stretch wrap were\n"
+#~ ""
+#~ "                                    eliminated."
+#~ msgstr ""
+
+#~ msgid "THE MARTIN JOURNAL OF ACOUSTIC GUITARS"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "In 2021, we devoted an entire "
+#~ "issue of our journal to Martin’s "
+#~ "sustainability efforts.\n"
+#~ "                                    In support of"
+#~ " this, we encouraged readers to enjoy"
+#~ " the digital version of the journal,"
+#~ "\n"
+#~ "                                    and we reduced"
+#~ " the number of paper journals "
+#~ "produced by 70%, saving 1.4 million "
+#~ "sheets\n"
+#~ "                                    of paper."
+#~ msgstr ""
+
+#~ msgid "ABOUT MEINL"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Meinl company is a family-owned manufacturer and distributor of\n"
+#~ "                                    musical instruments"
+#~ " based in Gutenstetten, Germany. The "
+#~ "brand portfolio of Meinl\n"
+#~ "                                    comprises Meinl "
+#~ "Cymbals, Meinl Percussion, Nino Percussion,"
+#~ " Meinl Sonic Energy, Meinl\n"
+#~ "                                    Stick & Brush and Ortega\n"
+#~ "                                    Guitars."
+#~ msgstr ""
+
+#~ msgid "ABOUT MEINL CYMBALS"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "One of the great things about being a drummer is the opportunity to\n"
+#~ "                                be different...to be"
+#~ " yourself. When you listen to all "
+#~ "the greats, they're not like\n"
+#~ "                            everybody else. They're"
+#~ " themselves. We like that.\n"
+#~ "                                Today it is "
+#~ "difficult to be totally original or "
+#~ "100% unique, but that does not "
+#~ "mean you\n"
+#~ "                                must be like "
+#~ "all the others. At MEINL we do "
+#~ "our own thing. That's just who we"
+#~ " are. And\n"
+#~ "                            we like to think"
+#~ " you want to be who you are,"
+#~ " too. There's a freedom that comes"
+#~ " with\n"
+#~ "                                that."
+#~ msgstr ""
+
+#~ msgid "About Meinl Company"
+#~ msgstr ""
+
+#~ msgid "IDEOLOGY"
+#~ msgstr "视频"
+
+#~ msgid ""
+#~ "Drummers continually tell us how they"
+#~ " become inspired by playing MEINL "
+#~ "cymbals. They\n"
+#~ "                                    are inspired by"
+#~ " the new sounds that they hear "
+#~ "and feel, which at the same time"
+#~ " hones and\n"
+#~ "                                    shapes their "
+#~ "personal drum style. This is the "
+#~ "biggest compliment for us, as well "
+#~ "as the\n"
+#~ "                                    driving force "
+#~ "behind all our activities! It encourages"
+#~ " us to develop new sounds and "
+#~ "to\n"
+#~ "                                    push our "
+#~ "creativity farther forward."
+#~ msgstr ""
+
+#~ msgid "FROM DRUMMERS FOR DRUMMERS!"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Experienced and motivated individuals, who "
+#~ "are all drummers themselves, form our"
+#~ "\n"
+#~ "                                    executive and "
+#~ "creative team. This team plans all "
+#~ "of our activities, manages our\n"
+#~ "                                    promotional campaigns"
+#~ " and creates inspiring cymbal sounds. "
+#~ "Some of our top artists take\n"
+#~ "                                    part in this "
+#~ "process also. We are proud to say"
+#~ " that we are drummers first!"
+#~ msgstr ""
+
+#~ msgid "AND KNOW-HOW"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Only MEINL uses 6 different alloys "
+#~ "for crafting cymbals, which is more "
+#~ "than any other\n"
+#~ "                                    cymbal maker is"
+#~ " using today. Because of that, we "
+#~ "are able to offer the widest "
+#~ "selection\n"
+#~ "                                    of basic cymbal"
+#~ " sound characteristics available. Striving "
+#~ "for the realization of any\n"
+#~ "                                    possible sound "
+#~ "idea makes it necessary to have "
+#~ "this diversity, the background in and"
+#~ "\n"
+#~ "                                    knowledge of all"
+#~ " those different materials."
+#~ msgstr ""
+
+#~ msgid "About Steinway's Piano"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "For over 160 years, STEINWAY & SONS has been dedicated to making\n"
+#~ "                                    the\n"
+#~ "                                    finest pianos in"
+#~ " the world. Our pioneering handcrafted "
+#~ "methods are still employed today\n"
+#~ "                                    to ensure our"
+#~ " uncompromising standards of quality, in"
+#~ " turn ensuring that the STEINWAY\n"
+#~ "                                    remains the "
+#~ "peerless instrument of uncompromising "
+#~ "expression."
+#~ msgstr ""
+
+#~ msgid "Having a Steinway Piano"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "To call a genuine grand or upright"
+#~ " of STEINWAY & SONS one’s own "
+#~ "is an overwhelming\n"
+#~ "                                feeling.\n"
+#~ "                                Far more than "
+#~ "just an exquisite instrument, it is "
+#~ "an instrument of the highest expression"
+#~ "\n"
+#~ "                                and creativity. A"
+#~ " STEINWAY intimately connects artist and"
+#~ " listener, and invites its owner to"
+#~ "\n"
+#~ "                                join a tradition "
+#~ "of musical perfection, making it an "
+#~ "invaluable investment."
+#~ msgstr ""
+
+#~ msgid "About Steinway"
+#~ msgstr ""
+
+#~ msgid "Steinway Today"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Master to apprentice, generation after generation, every STEINWAY is\n"
+#~ "                                    built with "
+#~ "experience decades in the making — "
+#~ "by artisans who take pride and "
+#~ "time to\n"
+#~ "                                    humanize a piano"
+#~ " still made by hand, who strive "
+#~ "for and achieve continuous innovation\n"
+#~ "                                    and improvement. "
+#~ "Every STEINWAY & SONS grand and "
+#~ "upright is a masterpiece of\n"
+#~ "                                    craftsmanship and "
+#~ "a consummate work of art. Each "
+#~ "STEINWAY, consisting of more than\n"
+#~ "                                    12,000 individual "
+#~ "parts, has its own musical character "
+#~ "and is as unique as the\n"
+#~ "                                    individual who plays it."
+#~ msgstr ""
+
+#~ msgid "Steinway Tomorrow"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The very first STEINWAY & SONS "
+#~ "patent was granted in 1857, and "
+#~ "since that time the\n"
+#~ "                                    company\n"
+#~ "                                    has been granted"
+#~ " more than 150 additional patents, "
+#~ "positioning the STEINWAY as the piano"
+#~ "\n"
+#~ "                                    by\n"
+#~ "                                    which all others"
+#~ " are judged. Our latest innovation, "
+#~ "the STEINWAY & SONS SPIRIO, is the"
+#~ "\n"
+#~ "                                    world’s finest "
+#~ "high resolution player piano. A "
+#~ "masterpiece of craftsmanship, technology\n"
+#~ "                                    and\n"
+#~ "                                    artistry, SPIRIO "
+#~ "provides an unrivaled musical experience, "
+#~ "indistinguishable from a live\n"
+#~ "                                    performance."
+#~ msgstr ""
+
+#~ msgid "Steinway in History"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "STEINWAY & SONS was founded in "
+#~ "1853 by German immigrant Henry Engelhard"
+#~ " Steinway in a\n"
+#~ "                                    Manhattan loft "
+#~ "on Varick Street. Over the next "
+#~ "thirty years, Henry and his sons\n"
+#~ "                                    developed the "
+#~ "modern piano. They built their "
+#~ "instruments one at a time, applying "
+#~ "skills\n"
+#~ "                                    that have been"
+#~ " handed down from master to "
+#~ "apprentice, generation after generation, ever"
+#~ "\n"
+#~ "                                    since. The "
+#~ "STEINWAY became the choice for "
+#~ "approximately ninety-seven percent of\n"
+#~ "                                    concertizing artists,"
+#~ " none of whom are compensated to "
+#~ "endorse the instrument. The\n"
+#~ "                                    STEINWAY earned "
+#~ "a reputation as an investment for "
+#~ "the owner in the legacy of future"
+#~ "\n"
+#~ "                                    generations."
+#~ msgstr ""
+
+#~ msgid "Meet Taylor's Class of 2022"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This year's new models include a trio of compact GT guitars, a\n"
+#~ "                                mahogany Grand "
+#~ "Concert and our first all-maple "
+#~ "Grand Pacific."
+#~ msgstr ""
+
+#~ msgid "About Taylor Guitars"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Taylor Guitars was founded in 1974 "
+#~ "by Bob Taylor and Kurt Listug, and"
+#~ " has grown into the\n"
+#~ "        leading global builder of "
+#~ "premium acoustic guitars. Renowned for "
+#~ "blending modern, innovative\n"
+#~ "        manufacturing techniques with a "
+#~ "master craftsman's attention to detail, "
+#~ "Taylor acoustic\n"
+#~ "                            guitars are widely "
+#~ "considered among the best-sounding and"
+#~ " easiest to play in the world. "
+#~ "The\n"
+#~ "                            company is a "
+#~ "pioneer in the use of computer "
+#~ "mills, lasers and other high-tech "
+#~ "tools and\n"
+#~ "                            proprietary machinery, "
+#~ "and today, Bob Taylor is widely "
+#~ "recognized throughout the musical\n"
+#~ "                            instrument industry as"
+#~ " the visionary acoustic guitar "
+#~ "manufacturer."
+#~ msgstr ""
+
+#~ msgid "The Taylor Difference"
+#~ msgstr ""
+
+#~ msgid "Sustainability Leadership"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "We are deeply committed to safeguarding"
+#~ " the future of the natural resources"
+#~ " we use.\n"
+#~ "                                    This has led "
+#~ "us to pioneer many eco-sustainability"
+#~ " initiatives around the world. When\n"
+#~ "                                    you purchase a"
+#~ " Taylor guitar, you are supporting "
+#~ "the highest levels of ethical,\n"
+#~ "                                    eco-conscious business."
+#~ msgstr ""
+
+#~ msgid "Playable NecksWorkmanship"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Taylor guitar necks are the most "
+#~ "playable in the industry, thanks to "
+#~ "our patented neck\n"
+#~ "                                    joint design and"
+#~ " sleek neck profile. Our precise "
+#~ "neck/body assembly process allows every\n"
+#~ ""
+#~ "                                    neck angle to"
+#~ " be set with extreme accuracy and "
+#~ "easily maintained throughout the life of"
+#~ "\n"
+#~ "                                    the guitar."
+#~ msgstr ""
+
+#~ msgid "Precision Craftsmanship"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "We’ve set the standard for modern-"
+#~ "day craftsmanship to create the best "
+#~ "possible\n"
+#~ "                                    playing\n"
+#~ "                                    experience. Our "
+#~ "blend of innovative manufacturing technology"
+#~ " with impeccable\n"
+#~ "                                    hand-craftsmanship "
+#~ "has led to unmatched quality and "
+#~ "consistency in the production of our"
+#~ "\n"
+#~ "                                    guitars, and "
+#~ "helped us develop game-changers like "
+#~ "V-Class bracing."
+#~ msgstr ""
+
+#~ msgid "of"
+#~ msgstr ""
+
+#~ msgid "off in every order you placed"
+#~ msgstr ""
 
