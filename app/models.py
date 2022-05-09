@@ -822,6 +822,16 @@ class Comment(BaseModel):
     def __repr__(self):
         return '<Comment %r>' % self.content[:10]
 
+    def to_dict(self):
+        """
+            Map the object to dictionary data structure
+        """
+        result = super(Comment, self).to_dict()
+        # add relations to the result dict
+        Tools.add_relation_to_dict(result, self.pictures.all(), "pictures")
+
+        return Tools.delete_instance_state(result)
+
     @staticmethod
     def insert_comments(count):
         content = "This is a testing comment. This is a testing comment. This is a testing comment. This is a testing comment. Pictures are also for testing. Pictures are also for testing. Pictures are also for testing. "
@@ -1077,7 +1087,7 @@ class ModelType(BaseModel):
         """
         result = super(ModelType, self).to_dict()
         # add relations to the result dict
-        Tools.add_relation_to_dict(result, self.comments.all(), "comments")
+        # Tools.add_relation_to_dict(result, self.comments.all(), "comments")
         Tools.add_relation_to_dict(result, self.pictures.all(), "pictures")
         # Tools.add_relation_to_dict(result, self.intro_pictures.all(), "intro_pictures")
         Tools.add_relation_to_dict(result, self.carts.all(), "carts")
@@ -1086,8 +1096,9 @@ class ModelType(BaseModel):
         # add brand name
         result["brand_name"] = self.product.brand.name
 
-        return Tools.delete_instance_state(result)
         # return result
+        return Tools.delete_instance_state(result)
+
 
     def delete(self):
         """
