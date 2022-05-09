@@ -87,11 +87,11 @@ def message(data):
     if data.get("time_stamp") is not None:
         print('left?')
         send({'msg': data['msg'], 'username': data['username'],
-              'time_stamp': data["time_stamp"], 'user': data['user']}
+              'time_stamp': data["time_stamp"], 'avatar': data['avatar']}
              , room=data['room'])
     else:
         send({'msg': data['msg'], 'username': data['username'],
-              'time_stamp': time.strftime('%H:%M:%S', time.localtime()), 'user': data['user']}
+              'time_stamp': time.strftime('%H:%M:%S', time.localtime()), 'avatar': data['avatar']}
              , room=data['room'])
         # print("message" + data['msg'])
         # check the identity of the current user
@@ -122,7 +122,7 @@ def leave(data):
 def chat_history():
     chat_room_id = request.form['chatroom_id']
 
-    past_messages = Message.query.filter_by(chat_room_id=chat_room_id).order_by(Message.timestamp.asc()).all()
+    past_messages = Message.query.filter_by(chat_room_id=chat_room_id).order_by(Message.id.asc()).all()
     chat_history = []
     for past_message in past_messages:
         dic = prepare_for_history_json(past_message, chat_room_id)
@@ -152,14 +152,14 @@ def prepare_for_history_json(item, chat_id):
     local_dt = item.timestamp.replace(tzinfo=local_zone)
     utc_time = local_dt.astimezone(utc_zone)
     if item.author_type == 'customer':
-        user = room.customer
+        avatar = room.customer.avatar
         message = {'msg': item.content, 'username': username, 'time_stamp': utc_time.strftime('%H:%M:%S'),
-                   'author_type': 'customer', 'user': user}
+                   'author_type': 'customer', 'avatar': avatar}
 
     if item.author_type == 'staff':
-        user = room.staff
+        avatar = room.staff.avatar
         message = {'msg': item.content, 'username': staffname, 'time_stamp': utc_time.strftime('%H:%M:%S'),
-                   'author_type': 'staff', 'user': user}
+                   'author_type': 'staff', 'avatar': avatar}
 
     return message
 
