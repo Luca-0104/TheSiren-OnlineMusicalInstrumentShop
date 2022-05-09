@@ -1,12 +1,13 @@
-//add modeltype
+// intitial add modeltype
 let repeat_model_type = $("#one-model-type");
 let product_form = $("#product_form")
 let counter = 1;
+
+// add listener to add-model-type button when the window is ready
 $(document).ready(function ()
 {
     $("#add-model-type").click(function ()
     {
-
         let repeat_model_name;
         let repeat_model_number;
         let repeat_model_price;
@@ -15,9 +16,11 @@ $(document).ready(function ()
         let repeat_model_pic;
         let repeat_model_description;
 
+        console.log("#add-model-type clicked when counter is " + counter);
+
         let prepend_content = "<div class=\"card-footer col-md-12\">\n" +
             "                                       <div id=\"1_model\">\n" +
-            "                                            <h4 class=\"card-title\">" + counter + ".</h4>\n" +
+            "                                            <h4 class=\"card-title\"> aaa" + counter + ".bbb</h4>\n" +
             "                                       </div>\n" +
             "                                   </div>"
         if (counter === 1)
@@ -78,6 +81,7 @@ $(document).ready(function ()
             repeat_model_type.before(repeat_model_name + repeat_model_number + repeat_model_price
                 + repeat_model_stock + repeat_model_intro_pic + repeat_model_pic +
                 repeat_model_description);
+            console.log("current counter 1: " + counter);
             repeat_model_type.before(prepend_content);
             product_form.attr("action", "/upload-product" + "?counter=" + counter + "&serial_prefix=" + serial + "&serial_rank=" + serial_rank_g);
         }
@@ -133,6 +137,7 @@ $(document).ready(function ()
             repeat_model_type.before(repeat_model_name + repeat_model_number + repeat_model_price
                 + repeat_model_stock + repeat_model_intro_pic + repeat_model_pic +
                 repeat_model_description);
+            console.log("current counter 2: " + counter);
             repeat_model_type.before(prepend_content);
             product_form.attr("action", "/upload-product" + "?counter=" + counter + "&serial_prefix=" + serial + "&serial_rank=" + serial_rank_g);
         }
@@ -140,14 +145,16 @@ $(document).ready(function ()
 });
 
 
-//Serial collection
+// initial Serial collection
 let classification = $("#classification");
 let type = $("#type");
 let additional = $("#additional");
 let brand = $("#brand");
+
 let serial = "";
 let serial_rank_g;
 
+// add listener to any of these to perform serial_number_half_collection()
 classification.change(function ()
 {
     serial_number_half_collection()
@@ -168,13 +175,18 @@ brand.change(function ()
     serial_number_half_collection()
 });
 
+// perform serial_number_half_collection() when the window is ready
 $(document).ready(function ()
 {
+    console.log("document ready");
     serial_number_half_collection();
 })
 
 function serial_number_half_collection()
 {
+    console.log("");
+    console.log("+++++++++++++++++++++++++++++++++++");
+    console.log("serial_number_half_collection() run");
     let classification_selected = $("#classification option:selected");
     let type_selected = $("#type option:selected");
     let additional_selected = $("#additional option:selected");
@@ -186,48 +198,49 @@ function serial_number_half_collection()
         + l + String(type_selected.attr("sn"))
         + l + String(additional_selected.attr("sn"));
 
-    console.log(serial)
-    $.post("/api/stock-management/upload-product/validate-serial-p", {
-
-        "serial_prefix": serial
-
-    }).done(function (response)
-    {
-
-        console.log("server got serial number.");
-        let returnValue = response['returnValue'];
-        let final_serial;
-
-        console.log(returnValue);
-
-        if (returnValue === 0)
+    console.log("current serial is " + serial)
+    $.post("/api/stock-management/upload-product/validate-serial-p",
         {
-            //success
-
-            final_serial = response["serial_number"].toString() + l;
-            $("#sn_model_type").html(final_serial);
-            console.log(final_serial);
-
-            let serial_break = final_serial.split("-");
-            console.log(serial_break);
-            let serial_rank = serial_break[serial_break.length - 2];
-
-            serial =
-                String(brand_selected.attr("sn"))
-                + l + String(classification_selected.attr("sn"))
-                + l + String(type_selected.attr("sn"))
-                + l + String(additional_selected.attr("sn"));
-
-            product_form.attr("action", "/upload-product" + "?counter=" + counter + "&serial_prefix=" + serial + "&serial_rank=" + serial_rank);
-            serial_rank_g = serial_rank;
-        }
-        else
+            "serial_prefix": serial
+        }).done(function (response)
         {
-            //failed
-            return 0;
-        }
-    })
+            let returnValue = response['returnValue'];
+            let final_serial;
 
+            console.log("ajax recive: " + returnValue);
+
+            if (returnValue === 0)
+            {
+                //success
+                final_serial = response["serial_number"].toString() + l;
+                $("#sn_model_type").html(final_serial);
+                console.log("final serical get as: " + final_serial);
+
+                let serial_break = final_serial.split("-");
+                console.log("serial break into: " + serial_break);
+                let serial_rank = serial_break[serial_break.length - 2];
+                console.log("serial rank: " + serial_rank);
+
+                serial =
+                    String(brand_selected.attr("sn"))
+                    + l + String(classification_selected.attr("sn"))
+                    + l + String(type_selected.attr("sn"))
+                    + l + String(additional_selected.attr("sn"));
+
+                console.log("new serial: " + serial);
+
+                product_form.attr("action", "/upload-product" + "?counter=" + counter + "&serial_prefix=" + serial + "&serial_rank=" + serial_rank);
+                console.log("puroduct_form's action set as: " + product_form.attr("action"));
+                serial_rank_g = serial_rank;
+
+                console.log("+++++++++++++++++++++++++++++++++++");
+                console.log("");
+            }
+            else
+            {
+                //failed
+                return 0;
+            }
+        })
     serial = "";
 }
-

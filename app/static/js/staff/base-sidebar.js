@@ -1,7 +1,7 @@
 $(document).ready(function ()
 {
     let sidebar_anchor = $("#sidebar-anchor").attr("sidebar-anchor");
-    console.log(sidebar_anchor);
+    // console.log(sidebar_anchor);
     $(".sidebar-selection").removeClass("active");
     let target_sidebar = $("#sidebar-"+sidebar_anchor);
     let super_sidebar_anchor = target_sidebar.attr("super-selection");
