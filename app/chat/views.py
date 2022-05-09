@@ -15,6 +15,7 @@ from ..models import ChatRoom, Message, User
 from engineio.payload import Payload
 Payload.max_decode_packets = 9999
 
+
 @chat.route('/chat_room', methods=['GET', 'POST'])
 # @login_required
 def chat_room():
