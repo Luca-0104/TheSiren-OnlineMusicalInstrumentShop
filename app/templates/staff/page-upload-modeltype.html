@@ -57,7 +57,7 @@
                                         <!--<label>Serial Number *</label>
                                         <input type="text" class="form-control" placeholder="Enter Serial Number" data-errors="Please Enter Serial Number." required>-->
                                         {{ form.serial_number.label }}
-                                        {{ form.serial_number(class="form-control", placeholder="Enter Serial Number") }}
+                                        {{ form.serial_number(class="form-control", placeholder='{{ _("Enter Serial Number") }}') }}
                                         {% for error in form.serial_number.errors %}
                                             <span>{{ error }}</span>
                                         {% endfor %}
@@ -85,7 +85,7 @@
                                         <!--<label>Stock *</label>
                                         <input type="text" class="form-control" placeholder="Enter Stock" data-errors="Please Enter Stock." required>-->
                                         {{ form.stock.label }}
-                                        {{ form.stock(class="form-control", placeholder="Enter Stock") }}
+                                        {{ form.stock(class="form-control", placeholder='{{ _("Enter Stock") }}') }}
                                         {% for error in form.stock.errors %}
                                             <span>{{ error }}</span>
                                         {% endfor %}
@@ -127,7 +127,7 @@
                                         <!--<label>Description / Product Details</label>
                                         <textarea class="form-control" rows="4"></textarea>-->
                                         {{ form.description.label }}
-                                        {{ form.description(class="form-control", placeholder="Enter Description") }}
+                                        {{ form.description(class="form-control", placeholder='{{ _("Enter Description") }}') }}
                                         {% for error in form.description.errors %}
                                             <span>{{ error }}</span>
                                         {% endfor %}

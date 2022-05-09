@@ -62,12 +62,12 @@
                                     </li>
                                     {% if user.is_premium == true %}
                                         <li class="nav-item hover-item clickable" id="prime_btn">
-                                            <a class="button nav nav-button w-inline-block">Premium</a>
+                                            <a class="button nav nav-button w-inline-block">{{ _("Premium") }}</a>
                                         </li>
                                     {% else %}
                                         <li class="nav-item hover-item clickable">
                                             <a class="button nav nav-button w-inline-block"
-                                               href="{{ url_for("main.premium_intro") }}">Premium</a>
+                                               href="{{ url_for("main.premium_intro") }}">{{ _("Premium") }}</a>
                                         </li>
                                     {% endif %}
                                     <li class="nav-item hover-item clickable" id="Order_btn">
@@ -193,7 +193,7 @@
                                             <tr>
                                                 <td>
                                                     <div class="info-title da-title small-text">
-                                                        Default Address
+                                                        {{ _("Default Address")}}
                                                     </div>
                                                 </td>
                                             </tr>
@@ -381,7 +381,7 @@
                                 <!-- 4. Category section -->
                                 <div class="topic_container" id="category_container" style="display: none">
                                     <div class="cart-header text-middle">
-                                        <h4 class="w-commerce-commercecartheading">Categories</h4>
+                                        <h4 class="w-commerce-commercecartheading">{{ _("Categories") }}</h4>
                                     </div>
                                     <table class="tag_table">
                                         {% for i in range(0, 14) %}
@@ -417,7 +417,7 @@
                                         <tr>
                                             <td>
                                                 <div class="info-title small-text">
-                                                    Premium remain
+                                                    {{ _("Premium remain")}}
                                                 </div>
                                             </td>
                                         </tr>
@@ -425,11 +425,14 @@
                                             <td>
                                                 <div class="info-content large-text">
                                                     {% if user.premium_left_days == 1 %}
-                                                        <span class="highlight-content">{{ user.premium_left_days }}</span> day
+                                                        <span class="highlight-content">{{ user.premium_left_days }}</span>
+                                                    {{ _("day") }}
                                                     {% elif user.premium_left_days == 1 %}
-                                                        <span class="highlight-content">{{ user.premium_left_days }}</span> day
+                                                        <span class="highlight-content">{{ user.premium_left_days }}</span>
+                                                    {{ _("day") }}
                                                     {% else %}
-                                                        <span class="highlight-content">{{ user.premium_left_days }}</span> days
+                                                        <span class="highlight-content">{{ user.premium_left_days }}</span>
+                                                    {{ _("days") }}
                                                     {% endif %}
                                                 </div>
                                             </td>
@@ -437,35 +440,36 @@
                                         <tr>
                                             <td>
                                                 <div class="info-title small-text">
-                                                    Your Benefit
+                                                    {{ _("Your Benefit")}}
                                                 </div>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <div class="info-content large-text">
-                                                    <span class="highlight-content">Free dilivery</span>
+                                                    <span class="highlight-content">{{ _("Free delivery")}}</span>
                                                 </div>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <div class="info-content large-text">
-                                                    Get a <span class="highlight-content">discount</span> of 5% off in every order you placed
+                                                    {{ _("Get a ")}}<span class="highlight-content">{{ _("discount") }}</span>{{_(" of 5% off in every order you placed")}}
                                                 </div>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <div class="info-content large-text">
-                                                    Change <span class="highlight-content">shipping method</span> as you want
+                                                    {{ _("Change ")}}<span class="highlight-content">{{ _("shipping method")}}</span>{{_("
+                                                        as you want")}}
                                                 </div>
                                             </td>
                                         </tr>
                                     </table>
                                     <div class="text-middle">
                                         <a href="{{ url_for("order.order_confirm_premium") }}" class="button w-inline-block">
-                                            <div class="premium-button">Renew Premium</div>
+                                            <div class="premium-button">{{ _("Renew Premium")}}</div>
                                         </a>
                                     </div>
                                 </div>
@@ -478,7 +482,7 @@
                                     <div class="">
                                         <a href="{{ url_for('order.my_orders') }}"
                                            class="button small nav-button w-inline-block">
-                                            <div>Enter</div>
+                                            <div>{{ _("Enter") }}</div>
                                         </a>
                                     </div>
                                 </div>
@@ -504,7 +508,7 @@
                     &times;
                 </div>
                 <div id="form_top_bar" class="medium-heading">
-                    Change Avatar
+                    {{ _("Change Avatar")}}
                 </div>
                 <form enctype="multipart/form-data" method="post" novalidate class="action-table-form">
                     <table class="action_table">
