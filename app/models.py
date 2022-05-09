@@ -65,7 +65,7 @@ class Tools:
         Journal.insert_journals(50)
 
         # chat message
-        # Message.insert_messages(30)
+        Message.insert_messages(30)
         # init chat room
         ChatRoom.init_chat()
 
@@ -443,17 +443,17 @@ class Message(BaseModel):
     def __repr__(self):
         return '<Chat %r>' % self.content[:10]
 
-    # @staticmethod
-    # def insert_messages(count):
-    #     fake = Faker()
-    #     for i in range(count):
-    #         room_id = random.randint(1, 2)
-    #         author_type_list = ['customer', 'staff']
-    #         author_type = random.randint(0, 1)
-    #         new_message = Message(content=fake.text(), timestamp=fake.past_datetime(),
-    #                               author_type=author_type_list[author_type], chat_room_id=room_id)
-    #         db.session.add(new_message)
-    #     db.session.commit()
+    @staticmethod
+    def insert_messages(count):
+        fake = Faker()
+        for i in range(count):
+            room_id = random.randint(1, 2)
+            author_type_list = ['customer', 'staff']
+            author_type = random.randint(0, 1)
+            new_message = Message(content=fake.text(), timestamp=fake.past_datetime(),
+                                  author_type=author_type_list[author_type], chat_room_id=room_id)
+            db.session.add(new_message)
+        db.session.commit()
 
     # def to_dict(self):
     #     """ Map the object to dictionary data structure """

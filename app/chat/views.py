@@ -1,6 +1,7 @@
 import datetime
 import random
 import time
+import queue
 # from time import strftime, localtime, time
 from dateutil import tz
 import pytz
@@ -13,7 +14,10 @@ from app import socketio
 from flask_socketio import emit, send, join_room, leave_room
 from ..models import ChatRoom, Message, User
 from engineio.payload import Payload
+
 Payload.max_decode_packets = 9999
+
+msg_queue = queue.Queue()
 
 
 @chat.route('/chat_room', methods=['GET', 'POST'])
@@ -118,27 +122,43 @@ def leave(data):
     #      room=data['room'])
 
 
-@chat.route('/api/history', methods=['POST'])
-def chat_history():
-    chat_room_id = request.form['chatroom_id']
+# @chat.route('/api/history', methods=['POST'])
+# def chat_history():
+#     chat_room_id = request.form['chatroom_id']
+#
+#     past_messages = Message.query.filter_by(chat_room_id=chat_room_id).order_by(Message.id.asc()).all()
+#     chat_history = []
+#     for past_message in past_messages:
+#         dic = prepare_for_history_json(past_message, chat_room_id)
+#         chat_history.append(dic)
+#
+#     user = User.query.filter_by(id=current_user.id).first()
+#     role_id = user.role_id
+#     # role is customer
+#     if role_id == 1:
+#         role = 'customer'
+#         print("customer")
+#     if role_id == 2:
+#         role = 'staff'
+#
+#     return jsonify({"history": chat_history,
+#                     "current_user": role})
 
-    past_messages = Message.query.filter_by(chat_room_id=chat_room_id).order_by(Message.id.asc()).all()
+
+@socketio.on('history')
+def history(data):
+    chat_room_id = data['room']
+
+    past_messages = Message.query.filter_by(chat_room_id=chat_room_id).order_by(Message.timestamp.asc()).all()
     chat_history = []
     for past_message in past_messages:
         dic = prepare_for_history_json(past_message, chat_room_id)
         chat_history.append(dic)
 
-    user = User.query.filter_by(id=current_user.id).first()
-    role_id = user.role_id
-    # role is customer
-    if role_id == 1:
-        role = 'customer'
-        print("customer")
-    if role_id == 2:
-        role = 'staff'
-
-    return jsonify({"history": chat_history,
-                    "current_user": role})
+    for msg in chat_history:
+        send({'msg': msg['msg'], 'username': msg['username'],
+              'time_stamp': msg['time_stamp'], 'avatar': msg['avatar']}
+             , room=chat_room_id)
 
 
 def prepare_for_history_json(item, chat_id):
@@ -154,12 +174,12 @@ def prepare_for_history_json(item, chat_id):
     if item.author_type == 'customer':
         avatar = room.customer.avatar
         message = {'msg': item.content, 'username': username, 'time_stamp': utc_time.strftime('%H:%M:%S'),
-                   'author_type': 'customer', 'avatar': avatar}
+                   'author_type': 'customer', 'avatar': avatar, 'message_id': item.id}
 
     if item.author_type == 'staff':
         avatar = room.staff.avatar
         message = {'msg': item.content, 'username': staffname, 'time_stamp': utc_time.strftime('%H:%M:%S'),
-                   'author_type': 'staff', 'avatar': avatar}
+                   'author_type': 'staff', 'avatar': avatar, 'message_id': item.id}
 
     return message
 

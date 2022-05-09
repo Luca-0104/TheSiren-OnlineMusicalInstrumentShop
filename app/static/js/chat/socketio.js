@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         else {
         console.log(document.querySelector('#user_message').value);
         socket.send({'msg': document.querySelector('#user_message').value,
-        'username': username, 'room': chatroom_id, 'avatar': user.avatar });
+        'username': username, 'room': chatroom_id, 'avatar': avatar });
         // Clear input area
         document.querySelector('#user_message').value = '';
         console.log(chatroom_id);
@@ -118,20 +118,21 @@ document.addEventListener('DOMContentLoaded', () => {
         // Clear message area
         document.querySelector('#chat-window').innerHTML = '';
 
-        $.post('/api/history', {
-            'chatroom_id': chatroom_id
-        }).done(function (response) {
-            let chat_history = response['history'];
-            let current_user = response['current_user'];
-
-             for(let i = 0; i < chat_history.length; i++){
-                 console.log(".....");
-                 console.log(chat_history.length);
-                 socket.send({'msg': chat_history[i].msg,
-                'username': chat_history[i].username, 'room': chatroom_id, 'time_stamp': chat_history[i].time_stamp,'avatar': chat_history[i].avatar });
-
-             }
-        })
+        socket.emit('history', {'room': chatroom_id})
+        // $.post('/api/history', {
+        //     'chatroom_id': chatroom_id
+        // }).done(function (response) {
+        //     let chat_history = response['history'];
+        //     let current_user = response['current_user'];
+        //
+        //      for(let i = 0; i < chat_history.length; i++){
+        //          console.log(".....");
+        //          console.log(chat_history.length);
+        //          socket.send({'msg': chat_history[i].msg,
+        //         'username': chat_history[i].username, 'room': chatroom_id, 'time_stamp': chat_history[i].time_stamp,'avatar': chat_history[i].avatar });
+        //
+        //      }
+        // })
 
         // Autofocus on text box
         document.querySelector('#user_message').focus();
