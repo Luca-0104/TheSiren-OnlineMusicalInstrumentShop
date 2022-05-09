@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         else {
         console.log(document.querySelector('#user_message').value);
         socket.send({'msg': document.querySelector('#user_message').value,
-        'username': username, 'room': chatroom_id });
+        'username': username, 'room': chatroom_id, 'user': user });
         // Clear input area
         document.querySelector('#user_message').value = '';
         console.log(chatroom_id);
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
                  console.log(".....");
                  console.log(chat_history[i]);
                  socket.send({'msg': chat_history[i].msg,
-                'username': chat_history[i].username, 'room': chatroom_id, 'time_stamp': chat_history[i].time_stamp });
+                'username': chat_history[i].username, 'room': chatroom_id, 'time_stamp': chat_history[i].time_stamp, 'user': chat_history[i].user });
 
              }
         })

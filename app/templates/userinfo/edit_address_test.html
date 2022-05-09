@@ -10,14 +10,14 @@
     </head>
     <body>
     <div id="show_triger" class="bg-dark">
-            Add New Address
+        {{ _("Add New Address")}}
         </div>
 
-        <input type="text" placeholder="type here to search...">
+        <input type="text" placeholder="{{ _("type here to search...")}}">
 
         <div id="address_form" class="middle-floating bg-dark" >
             <div id="close_triger" class="bg-primary">
-                close
+                {{ _("close") }}
             </div>
             <form method="post">
                 {{ form.hidden_tag() }}

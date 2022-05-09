@@ -97,6 +97,7 @@
         let chatroom_id = '{{ current_user.chat_rooms_customer.first().id }}';
         console.log(chatroom_id);
         let username = '{{ current_user.username }}';
+        let user = '{{ current_user }}';
     </script>
     <!--Customer Chat socket-->
     <script type="text/javascript" src="../../static/js/chat/socketio_customer.js"></script>
