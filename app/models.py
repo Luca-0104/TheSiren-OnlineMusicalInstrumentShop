@@ -1096,6 +1096,9 @@ class ModelType(BaseModel):
         # add brand name
         result["brand_name"] = self.product.brand.name
 
+        # add type id
+        result["addition_type"] = self.get_addition_type()
+
         # return result
         return Tools.delete_instance_state(result)
 
