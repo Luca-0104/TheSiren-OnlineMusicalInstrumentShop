@@ -37,7 +37,7 @@ class Tools:
         """
         TheSiren.create_unique_instance()  # Create the global unique instance of this musical shop
         Role.insert_roles()  # roles of users
-        User.insert_users()  # the constant user accounts for test
+        User.insert_users(50, 5)  # the constant user accounts for test
         Recipient.insert_recipients(100)  # the recipient info
         Address.insert_address()  # addresses for delivery
         # # users(100)  # 100 fake users
@@ -450,7 +450,7 @@ class Message(BaseModel):
             room_id = random.randint(1, 2)
             author_type_list = ['customer', 'staff']
             author_type = random.randint(0, 1)
-            new_message = Message(content=fake.text(), timestamp=fake.date_time_this_year(),
+            new_message = Message(content=fake.text(), timestamp=fake.past_datetime(),
                                   author_type=author_type_list[author_type], chat_room_id=room_id)
             db.session.add(new_message)
         db.session.commit()
@@ -1524,7 +1524,7 @@ class User(UserMixin, BaseModel):
     username = db.Column(db.String(64), unique=True, index=True)
     password_hash = db.Column(db.String(128))
     start_datetime = db.Column(db.DateTime(), default=datetime.utcnow)
-    avatar = db.Column(db.String(256), default='upload/avatar/default__0__.jpg')  # The avatar
+    avatar = db.Column(db.String(256), default='upload/avatar/default-avatars/default__9__.jpg')  # The avatar
     background_pic = db.Column(db.String(256), default='upload/user-background/default__0__.png')  # The avatar
     theme = db.Column(db.String(16), default='light')  # the user preferred theme of our website
     language = db.Column(db.String(16), default='en')
@@ -1597,21 +1597,47 @@ class User(UserMixin, BaseModel):
         return self.exp // 100
 
     @staticmethod
-    def insert_users():
+    def insert_users(count_customer: int, count_staff: int):
         """
-        This is a method for inserting the testing user information, which means fulling the User table.
+        This is a method for inserting the testing user information
         This should be used in the console only a single time.
         """
-        for user_info in user_list:
-            email = user_info[0]
-            username = user_info[1]
-            password = user_info[2]
-            role_id = user_info[3]
-
-            new_user = User(email=email, username=username, password=password, role_id=role_id)
-
+        # insert customers first (customers must be the first)
+        for i in range(count_customer):
+            email = "Customer{}@163.com".format(i+1)
+            username = "Customer{}".format(i+1)
+            password = "12345678"
+            role_id = 1
+            # random avatar for customers
+            default_avatars = [
+                "upload/avatar/default-avatars/default__1__.jpg",
+                "upload/avatar/default-avatars/default__2__.jpg",
+                "upload/avatar/default-avatars/default__3__.jpg",
+                "upload/avatar/default-avatars/default__4__.jpg",
+                "upload/avatar/default-avatars/default__5__.jpg",
+                "upload/avatar/default-avatars/default__6__.jpg",
+                "upload/avatar/default-avatars/default__7__.jpg",
+                "upload/avatar/default-avatars/default__8__.jpg",
+                "upload/avatar/default-avatars/default__9__.jpg",
+            ]
+            avatar = default_avatars[random.randint(0, len(default_avatars)-1)]
+            new_user = User(email=email, username=username, password=password, role_id=role_id, avatar=avatar)
             db.session.add(new_user)
         db.session.commit()
+
+        # then insert staff users (staffs must be after the customers)
+        for i in range(count_staff):
+            email = "Staff{}@163.com".format(i + 1)
+            username = "Staff{}".format(i + 1)
+            password = "12345678"
+            role_id = 2
+            # same default avatar for all staffs
+            avatar = "upload/avatar/default-avatars/default__0__.jpg"
+            new_user = User(email=email, username=username, password=password, role_id=role_id, avatar=avatar)
+            db.session.add(new_user)
+        db.session.commit()
+
+
 
     # ----- use Werkzeug to generate and check the password hash of the user password (learned from the book) -----
     # book: 'Flask Web Development: Developing Web Applications with Python, Second Edition'
