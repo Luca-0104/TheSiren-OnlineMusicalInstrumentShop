@@ -19,10 +19,15 @@ function initialize_checkbox(param) {
     } else if (param === "#check_brand_") {
         p = 3;
     }
+    console.log("Initializing p: " + p);
     for (let i = 1; i <= checking_numbers[p]; i++) {
         let init_select = $(param + i);
+        console.log("Checking i: " + i + " : " + init_select.prop('checked'));
         init_select.click();
+        console.log("Checked i: " + i + " : " + init_select.prop('checked'));
+        console.log("")
     }
+    console.log("+++++++++++++++++++++++++++++++++++++++++++++++");
 }
 
 $(document).ready(function () {
@@ -44,8 +49,9 @@ $(document).ready(function () {
                 if (p !== i) {
                     let cancel_select = $('#check_class_' + i);
                     cancel_select.attr("class", "checkbox category");
+                    console.log("Before " + cancel_select.prop('checked'));
                     cancel_select.prop("checked", "off");
-
+                    console.log("After " + cancel_select.prop('checked'));
                 }
             }
             $(this).attr("class", "checkbox w--redirected-checked category");
@@ -149,6 +155,8 @@ $(document).ready(function () {
         //we need to sent it back to server to search again before filtering
         let searchContent = $("#search").val();
 
+        console.log("ajax")
+
         $.post("/api/filter-model-types",
             {
                 "c": classification,
@@ -160,6 +168,8 @@ $(document).ready(function () {
             }).done(function (response) {
             // get from server
             let returnValue = response['returnValue'];
+
+            console.log("recived")
 
             if (returnValue === 0) {
                 //success
