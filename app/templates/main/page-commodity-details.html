@@ -313,7 +313,7 @@
                                                     </div>
                                                     <input id="btn-add-to-cart" type="submit"
                                                            data-node-type="commerce-add-to-cart-button"
-                                                           data-loading-text="Adding to cart..." value="Add to Cart"
+                                                           data-loading-text="Adding to cart..." value="{{ _("Add to Cart") }}"
                                                            class="w-commerce-commerceaddtocartbutton button small">
                                                 </div>
                                                 <div id="btn-buy-now" model_id="{{ model.id }}" href="#"
@@ -605,7 +605,7 @@
                 <div class="main-container">
                     <div class="w-layout-grid grid-halves">
                         <div class="container">
-                            <h6 class="uppercase-text large-heading">{{ _("about this brand - ")}}{{ model.product.brand.name }}</h6>
+                            <h6 class="uppercase-text large-heading">{{ _("About this brand - ")}}{{ model.product.brand.name }}</h6>
                             <h3 class="medium-heading"></h3>
                             <div class="large-text"></div>
                             <div class="button-row">
