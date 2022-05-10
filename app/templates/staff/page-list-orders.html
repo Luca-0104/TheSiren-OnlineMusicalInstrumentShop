@@ -225,7 +225,7 @@
                                                 </div>
                                             {% else %}
                                                 <div class="mr-2" data-toggle="modal"
-                                                     data-target="#inform-ricipient-modal-{{ order.id }}">
+                                                     data-target="#inform-address-modal-{{ order.id }}">
                                                     <a class="badge bg-light" data-toggle="tooltip"
                                                        data-original-title="Modify Address" title=""
                                                        href="#">
@@ -513,7 +513,7 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h4 class="modal-title" id="myModalLabel"
-                                                            style="float: left;">Modification Reject</h4>
+                                                            style="float: left;">{{ _("Modification Reject")}}</h4>
 
                                                         <button type="button" class="close"
                                                                 data-dismiss="modal" aria-hidden="true">
@@ -522,7 +522,7 @@
 
                                                     </div>
                                                     <div class="modal-body">
-                                                        Type of orders in
+                                                        {{ _("Type of orders in") }}
                                                             {% if order.status_code == 0 %}{{ _("Unpaid") }}
                                                             {% elif order.status_code == 1 %}{{ _("Preparing") }}
                                                             {% elif order.status_code == 2 %}{{ _("Delivering") }}
@@ -531,7 +531,7 @@
                                                             {% elif order.status_code == 5 %}{{ _("Canceled") }}
                                                             {% elif order.status_code == 6 %}{{ _("Expired") }}
                                                             {% endif %}
-                                                        status is not allowed to be modified.
+                                                        {{ _("status is not allowed to be modified.")}}
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-default"
@@ -550,7 +550,7 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h4 class="modal-title" id="myModalLabel"
-                                                            style="float: left;">Modification Reject</h4>
+                                                            style="float: left;">{{ _("Modification Reject") }}</h4>
 
                                                         <button type="button" class="close"
                                                                 data-dismiss="modal" aria-hidden="true">
@@ -559,7 +559,7 @@
 
                                                     </div>
                                                     <div class="modal-body">
-                                                        Address of orders in
+                                                        {{ _("Address of orders in")}}
                                                             {% if order.status_code == 0 %}{{ _("Unpaid") }}
                                                             {% elif order.status_code == 1 %}{{ _("Preparing") }}
                                                             {% elif order.status_code == 2 %}{{ _("Delivering") }}
@@ -568,7 +568,7 @@
                                                             {% elif order.status_code == 5 %}{{ _("Canceled") }}
                                                             {% elif order.status_code == 6 %}{{ _("Expired") }}
                                                             {% endif %}
-                                                        status is not allowed to be modified.
+                                                        {{ _("status is not allowed to be modified. ")}}
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-default"
@@ -587,7 +587,7 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h4 class="modal-title" id="myModalLabel"
-                                                            style="float: left;">Modification Reject</h4>
+                                                            style="float: left;">{{ _("Modification Reject")}}</h4>
 
                                                         <button type="button" class="close"
                                                                 data-dismiss="modal" aria-hidden="true">
@@ -596,7 +596,7 @@
 
                                                     </div>
                                                     <div class="modal-body">
-                                                        Recipient of orders in
+                                                        {{ _("Recipient of orders in")}}
                                                             {% if order.status_code == 0 %}{{ _("Unpaid") }}
                                                             {% elif order.status_code == 1 %}{{ _("Preparing") }}
                                                             {% elif order.status_code == 2 %}{{ _("Delivering") }}
@@ -605,7 +605,7 @@
                                                             {% elif order.status_code == 5 %}{{ _("Canceled") }}
                                                             {% elif order.status_code == 6 %}{{ _("Expired") }}
                                                             {% endif %}
-                                                        status is not allowed to be modified.
+                                                        {{ _("status is not allowed to be modified.  ")}}
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-default"
@@ -626,7 +626,7 @@
                                                         <div class="modal-header">
                                                             <h4 class="modal-title" id="myModalLabel"
                                                                 style="float: left;">
-                                                                Modify Type
+                                                                {{ _("Modify Type")}}
                                                             </h4>
                                                             <button type="button" class="close"
                                                                     data-dismiss="modal" aria-hidden="true">
