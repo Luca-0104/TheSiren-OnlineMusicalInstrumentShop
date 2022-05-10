@@ -65,7 +65,11 @@ function buy_now(modelID, count){
             let url = "/product-details/" + modelID;
             location.href = url;
         }
-
+        else if (returnValue === 318)
+        {
+            let targetURL = response['redirectURL'];
+            window.location.href = targetURL;
+        }
     });
 }
 
@@ -98,6 +102,11 @@ function add_to_cart(modelID, count){
             //     sidebar_cart.attr('open_',"opened");
             // }
         }
+        else if (returnValue === 318)
+        {
+            let targetURL = response['redirectURL'];
+            window.location.href = targetURL;
+        }
     });
 }
 
@@ -124,6 +133,10 @@ function check_stock(modelID, count){
             let url = "/product-details/" + modelID;
             location.href = url;
         }
-
+        else if (returnValue === 318)
+        {
+            let targetURL = response['redirectURL'];
+            window.location.href = targetURL;
+        }
     });
 }

@@ -73,7 +73,11 @@ function create_premium_order(duration, payment){
             //send an Ajax request to pay for the order
             pay_for_premium_order(pOrderID);
         }
-
+        else if (returnValue === 318)
+        {
+            let targetURL = response['redirectURL'];
+            window.location.href = targetURL;
+        }
     });
 }
 
@@ -90,6 +94,10 @@ function pay_for_premium_order(pOrderID){
             let paymentURL = response['paymentURL']
             location.href = paymentURL;
         }
-
+        else if (returnValue === 318)
+        {
+            let targetURL = response['redirectURL'];
+            window.location.href = targetURL;
+        }
     });
 }

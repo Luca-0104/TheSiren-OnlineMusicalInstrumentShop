@@ -34,6 +34,11 @@ function follow_brand(brand_id)
                         brand_space.addClass('followed');
                     }
                 }
+                else if (returnValue === 318)
+                {
+                    let targetURL = response['redirectURL'];
+                    window.location.href = targetURL;
+                }
             });
 }
 
@@ -57,6 +62,11 @@ function unfollow_brand(brand_id)
                         console.log("remove");
                         brand_space.removeClass('followed');
                     }
+                }
+                else if (returnValue === 318)
+                {
+                    let targetURL = response['redirectURL'];
+                    window.location.href = targetURL;
                 }
             });
 }

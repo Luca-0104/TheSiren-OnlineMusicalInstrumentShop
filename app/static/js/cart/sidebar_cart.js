@@ -76,6 +76,11 @@ function remove_cart_relation(cartID){
             /* update the total payment */
             update_payment_display();
         }
+        else if (returnValue === 318)
+        {
+            let targetURL = response['redirectURL'];
+            window.location.href = targetURL;
+        }
     });
 }
 
@@ -107,6 +112,11 @@ function update_item_count(modelID, newCount, quantityInput){
 
             // refresh
 
+        }
+        else if (returnValue === 318)
+        {
+            let targetURL = response['redirectURL'];
+            window.location.href = targetURL;
         }
     });
 }

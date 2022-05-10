@@ -193,6 +193,11 @@ $(document).ready(function () {
                 //failure
 
             }
+            else if (returnValue === 318)
+            {
+                let targetURL = response['redirectURL'];
+                window.location.href = targetURL;
+            }
         });
     })
 
