@@ -897,7 +897,7 @@ msgstr "产品"
 
 #: app/templates/staff/page-list-orders.html:106
 msgid "Collection "
-msgstr "产品"
+msgstr "自提"
 
 #: app/templates/main/index_new.html:231 app/templates/main/index_new.html:389
 #: app/templates/main/index_new.html:566
@@ -3110,7 +3110,7 @@ msgstr "优先级"
 
 #: app/templates/staff/page-list-orders.html:106
 msgid "Waiting"
-msgstr "等待自提"
+msgstr "等待"
 
 #: app/templates/staff/page-list-orders.html:143
 msgid "Normal"
