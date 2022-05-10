@@ -160,7 +160,7 @@ pm_lst = [
                 3900,  # m price
                 3.5,  # kg
                 [
-                    'g-p5m1-1.jpg',
+                    'g-p5m1-1.png',
                     'g-p5m1-2.jpg',
                     'g-p5m1-3.jpg',
                     'g-p5m1-4.jpg'
@@ -174,7 +174,7 @@ pm_lst = [
                 4200,  # m price
                 3.5,  # kg
                 [
-                    'g-p5m2-1.jpg',
+                    'g-p5m2-1.png',
                     'g-p5m2-2.jpg',
                     'g-p5m2-3.jpg'
                 ]
@@ -187,7 +187,7 @@ pm_lst = [
                 4600,  # m price
                 3.7,  # kg
                 [
-                    'g-p5m3-1.jpg',
+                    'g-p5m3-1.png',
                     'g-p5m3-2.jpg'
                 ]
             ]
