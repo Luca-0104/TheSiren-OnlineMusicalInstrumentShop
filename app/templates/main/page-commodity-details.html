@@ -616,7 +616,7 @@
                         </div>
                         <div class="container">
                             {% if model.product.brand.logo %}
-                                <img src="{{ model.product.brand.logo }}" loading="lazy" alt="" class="img-brand-logo-in-mt-details-page">
+                                <img src="{{ url_for("static", filename=model.product.brand.logo) }}" loading="lazy" alt="" class="img-brand-logo-in-mt-details-page">
                             {% endif %}
                         </div>
                     </div>
