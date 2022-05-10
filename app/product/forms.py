@@ -47,12 +47,10 @@ class ModelUploadForm(FlaskForm):
     # serial_number = StringField('Serial Number', validators=[DataRequired(), Length(1, 128)],
     #                             render_kw={"data-errors": 'Please Enter Serial Number.'})
     serial_number = StringField(_l('Serial Number'), validators=[DataRequired(), Length(1, 128)])
-    pictures = MultipleFileField(_l('Pictures for exhibition'), validators=[DataRequired(), Length(1, 10,
-                                                                                               'You must give 1-10 pictures of this commodity')],
+    pictures = MultipleFileField(_l('Pictures for exhibition'), validators=[DataRequired(), Length(1, 10, 'You must give 1-10 pictures of this commodity')],
                                  render_kw={"accept": 'image/*'})
-    intro_pictures = MultipleFileField(_l('Introduction Pictures'), validators=[DataRequired(), Length(1, 10,
-                                                                                                   'You must give 1-10 introduction pictures')],
-                                       render_kw={"accept": 'image/*'})
+    # intro_pictures = MultipleFileField(_l('Introduction Pictures'), validators=[DataRequired(), Length(1, 10, 'You must give 1-10 introduction pictures')],
+    #                                    render_kw={"accept": 'image/*'})
     submit = SubmitField(_l('Submit'))
 
     # instance variables (those are not in the form)
@@ -79,15 +77,15 @@ class ModelUploadForm(FlaskForm):
             if len(pic.filename) > 214:
                 raise ValidationError(_l('Picture name cannot longer than 216 chars!'))
 
-    def validate_intro_pictures(self, field):
-        """
-        validate whether the length of the names of intro pictures are out of bound
-        This function will be called on picture field automatically
-        :param field: intro_pictures
-        """
-        for pic in field.data:
-            if len(pic.filename) > 214:
-                raise ValidationError(_l('Picture name cannot longer than 216 chars!'))
+    # def validate_intro_pictures(self, field):
+    #     """
+    #     validate whether the length of the names of intro pictures are out of bound
+    #     This function will be called on picture field automatically
+    #     :param field: intro_pictures
+    #     """
+    #     for pic in field.data:
+    #         if len(pic.filename) > 214:
+    #             raise ValidationError(_l('Picture name cannot longer than 216 chars!'))
 
 
 class ModelModifyForm(FlaskForm):
@@ -104,7 +102,7 @@ class ModelModifyForm(FlaskForm):
     serial_number = StringField(_l('Serial Number'), validators=[DataRequired(), Length(1, 128)],
                                 render_kw={"data-errors": 'Please Enter Serial Number.'})
     pictures = MultipleFileField(_l('Pictures for exhibition'), validators=[Length(0, 10, 'You must give 1-10 pictures of this commodity')])
-    intro_pictures = MultipleFileField(_l('Introduction Pictures'), validators=[Length(0, 10, 'You must give 1-10 introduction pictures')])
+    # intro_pictures = MultipleFileField(_l('Introduction Pictures'), validators=[Length(0, 10, 'You must give 1-10 introduction pictures')])
     submit = SubmitField(_l('Submit'))
 
     # get the model_id of the
@@ -132,12 +130,12 @@ class ModelModifyForm(FlaskForm):
             if len(pic.filename) > 214:
                 raise ValidationError(_l('Picture name cannot longer than 216 chars!'))
 
-    def validate_intro_pictures(self, field):
-        """
-        validate whether the length of the names of intro pictures are out of bound
-        This function will be called on picture field automatically
-        :param field: intro_pictures
-        """
-        for pic in field.data:
-            if len(pic.filename) > 214:
-                raise ValidationError(_l('Picture name cannot longer than 216 chars!'))
+    # def validate_intro_pictures(self, field):
+    #     """
+    #     validate whether the length of the names of intro pictures are out of bound
+    #     This function will be called on picture field automatically
+    #     :param field: intro_pictures
+    #     """
+    #     for pic in field.data:
+    #         if len(pic.filename) > 214:
+    #             raise ValidationError(_l('Picture name cannot longer than 216 chars!'))

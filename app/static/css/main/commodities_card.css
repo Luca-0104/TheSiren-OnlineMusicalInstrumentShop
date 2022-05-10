@@ -1,0 +1,140 @@
+.commodity-card {
+    position: relative;
+    transition: 0.25s;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+}
+
+.commodity-card:before {
+    content: "";
+    /*z-index: -1;*/
+    position: absolute;
+    right: -12px;
+    width: 12px;
+    height: 12px;
+    background-color: #8e8267;
+    transition: 2s;
+    transition: 0.25s;
+}
+
+.commodity-card:hover {
+    /*border-left: 1px solid #9c9c9c54;*/
+    /*border-right: 1px solid #9c9c9c54;*/
+    border-top: 1px solid #9c9c9c54;
+    /*border-bottom: 1px solid #9c9c9c54;*/
+}
+
+.commodity-card:hover:before {
+    /*border-right: 1px solid #9c9c9c54;*/
+    height: 60%;
+    background-color: #edcb79;
+}
+
+.commodity-pic {
+    position: relative;
+}
+
+.commodity-pic1:after {
+    content: "";
+    z-index: 20;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 50px;
+    background: url('../../images/icon-3d.png') no-repeat;
+    background-size:30px 30px;
+    background-position: 50% 50%;
+    background-color: #34343426;
+}
+
+.commodity-pic2:after {
+    content: "";
+    z-index: 20;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 50px;
+    background: url('../../images/icon-audio.png') no-repeat;
+    background-size:30px 30px;
+    background-position: 50% 50%;
+    background-color: #34343426;
+}
+
+.commodity-pic3:after {
+    content: "";
+    z-index: 20;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 50px;
+    background: url('../../images/icon-vedio.png') no-repeat;
+    background-size:30px 30px;
+    background-position: 50% 50%;
+    background-color: #34343426;
+}
+
+.commodity-pic4:after {
+    content: "";
+    z-index: 20;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 100px;
+    background: url('../../images/icon-audio.png') no-repeat,
+            url('../../images/icon-vedio.png') no-repeat;
+    background-size:30px 30px, 30px 30px;
+    background-position: 50% 17%, 50% 83%;
+    background-color: #34343426;
+}
+
+.commodity-pic5:after {
+    content: "";
+    z-index: 20;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 100px;
+    background: url('../../images/icon-3d.png') no-repeat,
+            url('../../images/icon-vedio.png') no-repeat;
+    background-size:30px 30px, 30px 30px;
+    background-position: 50% 17%, 50% 83%;
+    background-color: #34343426;
+}
+
+.commodity-pic6:after {
+    content: "";
+    z-index: 20;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 100px;
+    background: url('../../images/icon-3d.png') no-repeat,
+            url('../../images/icon-audio.png') no-repeat;
+    background-size:30px 30px, 30px 30px;
+    background-position: 50% 17%, 50% 83%;
+    background-color: #34343426;
+}
+
+.commodity-pic7:after{
+    content: "";
+    z-index: 20;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 150px;
+    background: url('../../images/icon-3d.png') no-repeat,
+            url('../../images/icon-audio.png') no-repeat,
+            url('../../images/icon-vedio.png') no-repeat;
+    background-size:30px 30px, 30px 30px, 30px 30px;
+    background-position: 50% 10%, 50% 50%, 50% 90%;
+    background-color: #34343426;
+}

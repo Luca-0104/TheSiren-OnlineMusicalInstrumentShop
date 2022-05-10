@@ -48,10 +48,24 @@
 /*
     Other things
 */
-.btn-change-pic{
+.btn-change-pic {
     background-color: #8e8267;
 }
 
-.carousel-indicators li{
+.carousel-indicators li {
     background-color: #8e8267;
+}
+
+/* Title of each section in the commodity detail page */
+.section-title-in-mt-detail-page {
+    font-size: 280%;
+    font-weight: 700;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: 1%;
+}
+
+/* the logo pictures of brands in the commodity details page */
+.img-brand-logo-in-mt-details-page{
+    width: 100%;
 }

@@ -291,45 +291,64 @@ def model_type_details(mt_id):
         return redirect(url_for('main.index'))
 
     # check if the model type exists
-    if mt is not None:
-        # increase the views number
-        mt.views = mt.views + 1
-        db.session.add(mt)
-        db.session.commit()
-
-        # record the user browsing history
-        if current_user.is_authenticated:
-            # check if the user has viewed this model before
-            bh = BrowsingHistory.query.filter_by(user=current_user, model_type=mt).first()
-            if bh:
-                # update the count and time
-                bh.count = bh.count + 1
-                bh.timestamp = datetime.utcnow()
-                db.session.add(bh)
-            else:
-                # record this new history
-                new_bh = BrowsingHistory(user=current_user, model_type=mt)
-                db.session.add(new_bh)
-            try:
-                db.session.commit()
-            except Exception as e:
-                current_app.logger.error(e)
-                db.session.rollback()
-
-        # get the recommended related models (models in same cate with high popularity)
-        related_mt_lst = []
-        for cate in mt.product.categories:
-            for p in cate.products:
-                related_mt_lst += p.model_types.all()
-        # sort the related list
-        sort_db_models(related_mt_lst, sort_key=take_sales, reverse=True)
-        # limit the number of mt in related list
-        related_mt_lst = related_mt_lst[:10]
-
-        return render_template('main/page-commodity-details.html', model=mt, related_mt_lst=related_mt_lst)
-    else:
+    if mt is None:
         flash(_('No such commodity!'))
+        current_app.logger.error("No such model type with this id")
         return redirect(url_for('main.index'))
+
+    # increase the views number
+    mt.views = mt.views + 1
+    db.session.add(mt)
+    db.session.commit()
+
+    # record the user browsing history
+    if current_user.is_authenticated:
+        # check if the user has viewed this model before
+        bh = BrowsingHistory.query.filter_by(user=current_user, model_type=mt).first()
+        if bh:
+            # update the count and time
+            bh.count = bh.count + 1
+            bh.timestamp = datetime.utcnow()
+            db.session.add(bh)
+        else:
+            # record this new history
+            new_bh = BrowsingHistory(user=current_user, model_type=mt)
+            db.session.add(new_bh)
+        try:
+            db.session.commit()
+        except Exception as e:
+            current_app.logger.error(e)
+            db.session.rollback()
+
+    """ get the recommended related models (models in same cate with high popularity) """
+    related_mt_lst = []
+    for cate in mt.product.categories:
+        # do not use "additional requirements" for recommendation
+        if cate.id not in range(53, 57):
+            for p in cate.products:
+                related_mt_lst += p.get_exist_model_types()
+    # sort the related list
+    sort_db_models(related_mt_lst, sort_key=take_sales, reverse=True)
+    # limit the number of mt in related list
+    related_mt_lst = related_mt_lst[:12]
+
+    """ get the recommendation of 'more from this brand' """
+    more_mt_this_brand = []
+    brand = mt.product.brand
+    if brand is None:
+        current_app.logger.error(e)
+    else:
+        # loop through all the products in this brand
+        for p in brand.products:
+            # put all the model types into the lst
+            more_mt_this_brand += p.get_exist_model_types()
+        # sort the lst
+        sort_db_models(more_mt_this_brand, sort_key=take_sales, reverse=True)
+        # limit the number of mt in lst
+        more_mt_this_brand = more_mt_this_brand[:12]
+
+    return render_template('main/page-commodity-details.html', model=mt, related_mt_lst=related_mt_lst, more_mt_this_brand=more_mt_this_brand)
+
 
 
 @main.route('/model-listing/<string:search_content>')

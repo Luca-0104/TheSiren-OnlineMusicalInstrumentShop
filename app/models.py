@@ -1002,6 +1002,7 @@ class ModelTypePic(BaseModel):
 
 class ModelTypeIntroPic(BaseModel):
     """
+        (Abandoned)
         Each model type of a product can have a group of intro pictures.
         Intro pictures are the pictures in the detail pages, when you scroll down you can see them.
         Using the same technology as what JD company do.
@@ -1248,6 +1249,7 @@ class Brand(BaseModel):
     __tablename__ = 'brands'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(32), unique=True, nullable=False)
+    logo = db.Column(db.String(256))    # the address of logo picture
     products = db.relationship('Product', backref='brand', lazy='dynamic')  # 1 brand --> n product
 
     def __repr__(self):
@@ -1267,8 +1269,10 @@ class Brand(BaseModel):
             This should be used a single time in the terminal.
             This should be called before calling the Product.insert_products()
         """
-        for brand_name in brand_list:
-            new_brand = Brand(name=brand_name)
+        for brand_info in brand_list:
+            name = brand_info[0]
+            logo = brand_info[1]
+            new_brand = Brand(name=name, logo=logo)
             db.session.add(new_brand)
         db.session.commit()
 

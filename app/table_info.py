@@ -27,25 +27,25 @@ product_list = [
 ]
 
 # brands
-# brand_list = ['brand1', 'brand2', 'brand3', 'brand4', 'brand5']
+# brand_list = [['brand1', 'logo address'], ['brand2', 'logo address'], ...]
 brand_list = [
-      "Lowden",
-      "Gibson",
-      "Orange",
-      "Stentor",
-      "Martin",
-      "Buffet Crampon",
-      "Besson London",
-      "Hohner",
-      "Marshall",
-      "Meinl",
-      "Henri Selmer Paris",
-      "Steinway",
-      "Boss",
-      "Fender",
-      "Taylor",
-      "Yamaha",
-      "others"
+      ["Lowden", "images/brand_logo/001.jpg"],
+      ["Gibson", "images/brand_logo/002.svg"],
+      ["Orange", "images/brand_logo/003.jpg"],
+      ["Stentor", "images/brand_logo/004.png"],
+      ["Martin", "images/brand_logo/005.svg"],
+      ["Buffet Crampon", "images/brand_logo/006.png"],
+      ["Besson London", "images/brand_logo/007.jpg"],
+      ["Hohner", "images/brand_logo/008.png"],
+      ["Marshall", "images/brand_logo/009.png"],
+      ["Meinl", "images/brand_logo/010.jpg"],
+      ["Henri Selmer Paris", "images/brand_logo/011.jpg"],
+      ["Steinway", "images/brand_logo/012.jpg"],
+      ["Boss", "images/brand_logo/013.jpg"],
+      ["Fender", "images/brand_logo/014.png"],
+      ["Taylor", "images/brand_logo/015.svg"],
+      ["Yamaha", "images/brand_logo/016.svg"],
+      ["others", None]
 ]
 
 '''
