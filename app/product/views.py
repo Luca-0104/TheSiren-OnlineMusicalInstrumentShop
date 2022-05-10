@@ -152,22 +152,16 @@ def upload_product():
     # if the form is submitted
     if request.method == 'POST':
         p_name = request.form.get('product_name')
-        print(p_name)
         cate_lst = request.values.getlist('categories[]')
-        print(cate_lst)
         brand_name = request.form.get('product_brand')
-        print(brand_name)
         # get the brand object by its name
         brand = Brand.query.filter_by(name=brand_name).first()
 
         # 'get' requests
         # the number count of init model types
         mt_count = int(request.args.get('counter'))
-        print(mt_count)
         serial_prefix = request.args.get('serial_prefix')
-        print(serial_prefix)
         serial_rank = request.args.get('serial_rank')
-        print(serial_rank)
 
         # print('---------------------------------- product ----------------------------------')
         # print('p_name: ', p_name)
@@ -196,10 +190,8 @@ def upload_product():
         """
             store all the following model types of this product into db
         """
-        print("+++++++++++++++++++++++++++++++++++++++")
         # loop through all the init model types
         for i in range(1, mt_count + 1):
-            print("This is no."+str(i))
             # the 'name' attribute of <input/>s of this model
             key_name = str(i) + '_model_name'
             key_description = str(i) + '_model_description'
@@ -211,20 +203,12 @@ def upload_product():
 
             # get the information of this model from frontend form
             m_name = request.form.get(key_name)
-            print(m_name)
             m_description = request.form.get(key_description)
-            print(m_description)
             m_price = request.form.get(key_price)
-            print(m_price)
             m_stock = request.form.get(key_stock)
-            print(m_stock)
             m_serial_number = request.form.get(key_serial_number)
-            print(m_serial_number)
             m_pics_lst = request.files.getlist(key_pics)
-            print(m_pics_lst)
             m_pics_intro_lst = request.files.getlist(key_pics_intro)
-            print(m_pics_intro_lst)
-            print()
 
             # print('---------------------------------- models ----------------------------------')
             # print('m_name: ', m_name)
