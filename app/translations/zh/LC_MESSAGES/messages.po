@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-09 22:13+0800\n"
+"POT-Creation-Date: 2022-05-10 10:03+0800\n"
 "PO-Revision-Date: 2022-03-23 16:06+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
@@ -34,8 +34,8 @@ msgstr "保持登录"
 
 #: app/auth/forms.py:16 app/templates/auth/register_new.html:44
 #: app/templates/backend-test/payment/payment-finished.html:66
-#: app/templates/base/base-customer.html:94
-#: app/templates/base/base-staff.html:520 app/templates/comment/comment.html:80
+#: app/templates/base/base-customer.html:97
+#: app/templates/base/base-staff.html:523 app/templates/comment/comment.html:80
 #: app/templates/order/order-detail.html:80
 #: app/templates/order/order-listing.html:73
 #: app/templates/staff/backup-staff-modify.html:401
@@ -59,7 +59,7 @@ msgid "Confirm your password"
 msgstr "确认密码"
 
 #: app/auth/forms.py:48 app/templates/auth/login_new.html:46
-#: app/templates/base/base-staff.html:525
+#: app/templates/base/base-staff.html:528
 #: app/templates/staff/backup-staff-modify.html:406
 msgid "Register"
 msgstr "注册"
@@ -85,55 +85,55 @@ msgstr "登录成功！"
 msgid "Login Failed! Check your username or password."
 msgstr "登录失败！检查您的用户名或密码！"
 
-#: app/main/views.py:330
+#: app/main/views.py:331
 msgid "No such commodity!"
 msgstr "没有这件商品！"
 
-#: app/order/views.py:54 app/order/views.py:111
+#: app/order/views.py:57 app/order/views.py:116
 msgid "Order created!"
 msgstr "订单已创建！"
 
-#: app/order/views.py:58
+#: app/order/views.py:61
 msgid "Order generation failed!"
 msgstr "订单生成失败！"
 
-#: app/order/views.py:138
+#: app/order/views.py:144
 msgid "Permission denied!"
 msgstr "权限被拒绝！"
 
-#: app/order/views.py:589
+#: app/order/views.py:600
 msgid "Error in Duration info!"
 msgstr "会员时间出现错误！"
 
-#: app/order/views.py:593
+#: app/order/views.py:604
 msgid "No duration info!"
 msgstr "没有会员时间信息！"
 
-#: app/order/views.py:601
+#: app/order/views.py:612
 msgid "Error in payment info!"
 msgstr "支付信息中出现错误！"
 
-#: app/order/views.py:605
+#: app/order/views.py:616
 msgid "No payment info!"
 msgstr "没有支付信息！"
 
-#: app/payment/views.py:42 app/payment/views.py:91
+#: app/payment/views.py:44 app/payment/views.py:94
 msgid "You cannot pay for the same order second time!"
 msgstr "您不能重复支付相同的订单！"
 
-#: app/payment/views.py:48
+#: app/payment/views.py:50
 msgid "This is not your order, you cannot pay for it!"
 msgstr "您不能支付不属于您的订单！"
 
-#: app/payment/views.py:52
+#: app/payment/views.py:54
 msgid "Order does not exist!"
 msgstr "订单不存在！"
 
-#: app/payment/views.py:97
+#: app/payment/views.py:100
 msgid "This is not your premiumOrder, you cannot pay for it!"
 msgstr "您不能支付不属于您的会员订单！"
 
-#: app/payment/views.py:101
+#: app/payment/views.py:104
 msgid "premiumOrder does not exist!"
 msgstr "会员订单不存在！"
 
@@ -144,7 +144,7 @@ msgstr "名称"
 
 #: app/product/forms.py:17
 #: app/templates/backend-test/payment/payment-finished.html:255
-#: app/templates/base/base-customer.html:318
+#: app/templates/base/base-customer.html:321
 #: app/templates/comment/comment.html:293
 #: app/templates/order/order-detail.html:293
 #: app/templates/order/order-listing.html:286
@@ -159,7 +159,6 @@ msgstr "品牌"
 #: app/templates/staff/page-list-orders.html:645
 #: app/templates/staff/page-list-orders.html:722
 #: app/templates/staff/page-list-orders.html:790
-#, fuzzy
 msgid "Update"
 msgstr "提交！"
 
@@ -213,20 +212,19 @@ msgstr "商品序列号已应用于该商品的另一型号！"
 msgid "Picture name cannot longer than 216 chars!"
 msgstr "图片名称不能超过216个字符！"
 
-#: app/product/views.py:281
+#: app/product/views.py:285
 msgid "New product and its models are uploaded successfully!"
 msgstr "成功上传新商品及其型号！"
 
-#: app/product/views.py:405
+#: app/product/views.py:411
 msgid "The product information updated!"
 msgstr "商品信息已更新！"
 
-#: app/product/views.py:507
+#: app/product/views.py:514
 msgid "Error! The product does not exist! Try it again!"
 msgstr "发生错误！产品不存在！请重试！"
 
-#: app/product/views.py:621
-#, fuzzy
+#: app/product/views.py:630
 msgid "Model Type updated!"
 msgstr "型号已更新！"
 
@@ -244,7 +242,6 @@ msgid "Oops! Something went wrong while submitting the form."
 msgstr "哦不！在提交表单的时候发生了一些错误。"
 
 #: app/templates/auth/login_new.html:101
-#, fuzzy
 msgid "We will never share your personal information with third parties."
 msgstr "我们将保护您的隐私安全并不会与任何第三方共享您的信息"
 
@@ -263,7 +260,7 @@ msgid ""
 msgstr "我们将保证您的隐私安全并不会与任何第三方共享您的信息"
 
 #: app/templates/backend-test/payment/payment-finished.html:62
-#: app/templates/base/base-customer.html:90
+#: app/templates/base/base-customer.html:93
 #: app/templates/comment/comment.html:76
 #: app/templates/order/order-detail.html:76
 #: app/templates/order/order-listing.html:69
@@ -271,7 +268,7 @@ msgid "Logout"
 msgstr "退出登录"
 
 #: app/templates/backend-test/payment/payment-finished.html:109
-#: app/templates/base/base-customer.html:146
+#: app/templates/base/base-customer.html:149
 #: app/templates/cart/page-cart.html:30 app/templates/comment/comment.html:130
 #: app/templates/order/order-detail.html:130
 #: app/templates/order/order-listing.html:123
@@ -279,7 +276,7 @@ msgid "Your Cart"
 msgstr "购物车"
 
 #: app/templates/backend-test/payment/payment-finished.html:125
-#: app/templates/base/base-customer.html:238
+#: app/templates/base/base-customer.html:241
 #: app/templates/comment/comment.html:213
 #: app/templates/order/order-detail.html:213
 #: app/templates/order/order-listing.html:206
@@ -298,7 +295,7 @@ msgid "Continue to Checkout"
 msgstr "继续支付"
 
 #: app/templates/backend-test/payment/payment-finished.html:195
-#: app/templates/base/base-customer.html:258
+#: app/templates/base/base-customer.html:261
 #: app/templates/comment/comment.html:233
 #: app/templates/main/page-commodity-details.html:669
 #: app/templates/order/order-detail.html:233
@@ -307,7 +304,7 @@ msgid "No items found."
 msgstr "没有找到任何项目。"
 
 #: app/templates/backend-test/payment/payment-finished.html:205
-#: app/templates/base/base-customer.html:270
+#: app/templates/base/base-customer.html:273
 #: app/templates/comment/comment.html:245
 #: app/templates/order/order-detail.html:245
 #: app/templates/order/order-listing.html:238
@@ -315,7 +312,7 @@ msgid "Product is not available in this quantity."
 msgstr "产品数量不足！"
 
 #: app/templates/backend-test/payment/payment-finished.html:223
-#: app/templates/base/base-customer.html:290
+#: app/templates/base/base-customer.html:293
 #: app/templates/comment/comment.html:265
 #: app/templates/order/order-detail.html:265
 #: app/templates/order/order-listing.html:258
@@ -323,7 +320,7 @@ msgid "Search here"
 msgstr "搜索"
 
 #: app/templates/backend-test/payment/payment-finished.html:235
-#: app/templates/base/base-customer.html:302
+#: app/templates/base/base-customer.html:305
 #: app/templates/comment/comment.html:277
 #: app/templates/order/order-detail.html:277
 #: app/templates/order/order-listing.html:270
@@ -332,8 +329,8 @@ msgstr "菜单"
 
 #: app/templates/backend-test/payment/payment-finished.html:241
 #: app/templates/backend-test/payment/payment-finished.html:309
-#: app/templates/base/base-customer.html:308
-#: app/templates/base/base-customer.html:364
+#: app/templates/base/base-customer.html:311
+#: app/templates/base/base-customer.html:367
 #: app/templates/comment/comment.html:283
 #: app/templates/comment/comment.html:503
 #: app/templates/order/order-detail.html:283
@@ -350,8 +347,8 @@ msgstr "分类"
 
 #: app/templates/backend-test/payment/payment-finished.html:269
 #: app/templates/backend-test/payment/payment-finished.html:322
-#: app/templates/base/base-customer.html:328
-#: app/templates/chat/chat_staff.html:73 app/templates/comment/comment.html:303
+#: app/templates/base/base-customer.html:331
+#: app/templates/chat/chat_staff.html:67 app/templates/comment/comment.html:303
 #: app/templates/order/order-detail.html:303
 #: app/templates/order/order-listing.html:296
 msgid "About"
@@ -359,7 +356,7 @@ msgstr "关于"
 
 #: app/templates/backend-test/payment/payment-finished.html:270
 #: app/templates/backend-test/payment/payment-finished.html:324
-#: app/templates/base/base-customer.html:329
+#: app/templates/base/base-customer.html:332
 #: app/templates/chat/chat_page.html:13 app/templates/comment/comment.html:304
 #: app/templates/order/order-detail.html:304
 #: app/templates/order/order-listing.html:297
@@ -368,7 +365,6 @@ msgstr "联系客服"
 
 #: app/templates/backend-test/payment/payment-finished.html:280
 #: app/templates/order/payment-success.html:42
-#, fuzzy
 msgid "Payment Finished"
 msgstr "没有支付信息！"
 
@@ -381,7 +377,6 @@ msgstr "您已成功支付。请点击下方按钮返回主页"
 
 #: app/templates/backend-test/payment/payment-finished.html:284
 #: app/templates/order/payment-success.html:46
-#, fuzzy
 msgid "Check Orders"
 msgstr "查看订单"
 
@@ -394,7 +389,7 @@ msgid "Victoria 3009"
 msgstr "维多利亚3009号"
 
 #: app/templates/backend-test/payment/payment-finished.html:307
-#: app/templates/base/base-customer.html:362
+#: app/templates/base/base-customer.html:365
 #: app/templates/comment/comment.html:501
 #: app/templates/order/order-detail.html:745
 #: app/templates/order/order-listing.html:726
@@ -402,7 +397,7 @@ msgid "shop"
 msgstr "商店"
 
 #: app/templates/backend-test/payment/payment-finished.html:313
-#: app/templates/base/base-customer.html:368
+#: app/templates/base/base-customer.html:371
 #: app/templates/comment/comment.html:507
 #: app/templates/main/page_all_commodities.html:321
 #: app/templates/order/order-detail.html:751
@@ -411,7 +406,7 @@ msgid "Brands"
 msgstr "品牌"
 
 #: app/templates/backend-test/payment/payment-finished.html:320
-#: app/templates/base/base-customer.html:376
+#: app/templates/base/base-customer.html:379
 #: app/templates/comment/comment.html:515
 #: app/templates/order/order-detail.html:759
 #: app/templates/order/order-listing.html:740
@@ -426,59 +421,58 @@ msgstr "通知"
 msgid "Refund Policy"
 msgstr "退款政策"
 
-#: app/templates/base/base-customer.html:50
+#: app/templates/base/base-customer.html:53
 #: app/templates/order/order-detail.html:51
 msgid "Welcome to Siren – Selects online music instrument shop for you."
 msgstr "欢迎来到Siren - 为您精心挑选的在线乐器商店。"
 
-#: app/templates/base/base-customer.html:52
+#: app/templates/base/base-customer.html:55
 #: app/templates/order/order-detail.html:52
 #: app/templates/order/order-listing.html:45
 msgid "View instruments here"
 msgstr "浏览乐器"
 
-#: app/templates/base/base-customer.html:209
+#: app/templates/base/base-customer.html:212
 #: app/templates/cart/page-cart.html:129 app/templates/comment/comment.html:190
 #: app/templates/order/order-detail.html:190
 #: app/templates/order/order-listing.html:183
 msgid "Remove"
 msgstr "移除"
 
-#: app/templates/base/base-customer.html:228
+#: app/templates/base/base-customer.html:231
 msgid "Out Of Stock"
 msgstr "库存不足"
 
-#: app/templates/base/base-customer.html:249
+#: app/templates/base/base-customer.html:252
 #: app/templates/comment/comment.html:224
 #: app/templates/order/order-detail.html:224
 #: app/templates/order/order-listing.html:217
 msgid "Go to my cart"
 msgstr "我的购物车"
 
-#: app/templates/base/base-customer.html:314
+#: app/templates/base/base-customer.html:317
 #: app/templates/order/order-listing.html:736
 #: app/templates/staff/backup-staff-modify.html:1003
 msgid "Category"
 msgstr "分类"
 
-#: app/templates/base/base-customer.html:353
+#: app/templates/base/base-customer.html:356
 #: app/templates/comment/comment.html:492
 #: app/templates/order/order-detail.html:736
 #: app/templates/order/order-listing.html:717
 msgid "China Beijing Chaoyang Distinct Pingleyuan No.100"
 msgstr "中国北京市朝阳区平乐园100号"
 
-#: app/templates/base/base-customer.html:353
+#: app/templates/base/base-customer.html:356
 #: app/templates/comment/comment.html:492
 #: app/templates/order/order-detail.html:736
 #: app/templates/order/order-listing.html:717
-#, fuzzy
 msgid ""
 "Beijing University of\n"
 "                                    Technology"
 msgstr "北京工业大学"
 
-#: app/templates/base/base-customer.html:372
+#: app/templates/base/base-customer.html:375
 #: app/templates/comment/comment.html:289
 #: app/templates/comment/comment.html:511
 #: app/templates/order/order-detail.html:289
@@ -487,55 +481,53 @@ msgstr "北京工业大学"
 msgid "Catagory"
 msgstr "分类"
 
-#: app/templates/base/base-customer.html:378
+#: app/templates/base/base-customer.html:381
 #: app/templates/comment/comment.html:517
 #: app/templates/order/order-detail.html:761
 #: app/templates/order/order-listing.html:742
-#, fuzzy
 msgid "About us"
 msgstr "关于我们"
 
-#: app/templates/base/base-customer.html:379
+#: app/templates/base/base-customer.html:382
 msgid "Contect us"
 msgstr "联系我们"
 
-#: app/templates/base/base-customer.html:380
+#: app/templates/base/base-customer.html:383
 #: app/templates/comment/comment.html:519
 #: app/templates/order/order-detail.html:763
 #: app/templates/order/order-listing.html:744
 #: app/templates/userinfo/user_profile.html:65
 #: app/templates/userinfo/user_profile.html:70
-#, fuzzy
 msgid "Premium"
 msgstr "成为会员"
 
-#: app/templates/base/base-customer.html:384
+#: app/templates/base/base-customer.html:387
 #: app/templates/comment/comment.html:523
 #: app/templates/order/order-detail.html:767
 #: app/templates/order/order-listing.html:748
 msgid "Franchising Brand"
 msgstr "特许经营品牌"
 
-#: app/templates/base/base-staff.html:61
+#: app/templates/base/base-staff.html:64
 msgid "STAFF&nbsp;TERMINAL"
 msgstr "职员终端"
 
-#: app/templates/base/base-staff.html:80
+#: app/templates/base/base-staff.html:83
 #: app/templates/staff/backup-staff-modify.html:43
 msgid "Dashboards"
 msgstr ""
 
-#: app/templates/base/base-staff.html:94
+#: app/templates/base/base-staff.html:97
 #: app/templates/staff/backup-staff-modify.html:52
 msgid "Products"
 msgstr "产品"
 
-#: app/templates/base/base-staff.html:107
+#: app/templates/base/base-staff.html:110
 #: app/templates/staff/backup-staff-modify.html:61
 msgid "List Product"
 msgstr "产品列表"
 
-#: app/templates/base/base-staff.html:113
+#: app/templates/base/base-staff.html:116
 #: app/templates/staff/backup-staff-modify.html:66
 #: app/templates/staff/backup-staff-modify.html:1058
 #: app/templates/staff/page-add-product.html:32
@@ -544,332 +536,328 @@ msgstr "产品列表"
 msgid "Add Product"
 msgstr "添加商品"
 
-#: app/templates/base/base-staff.html:128
-#, fuzzy
+#: app/templates/base/base-staff.html:131
 msgid "Orders"
 msgstr "订单"
 
-#: app/templates/base/base-staff.html:141
-#, fuzzy
+#: app/templates/base/base-staff.html:144
 msgid "List Orders"
 msgstr "订单列表"
 
-#: app/templates/base/base-staff.html:156
-#, fuzzy
+#: app/templates/base/base-staff.html:159
 msgid "Journals"
 msgstr "通知"
 
-#: app/templates/base/base-staff.html:169
-#, fuzzy
+#: app/templates/base/base-staff.html:172
 msgid "List Journals"
 msgstr "通知列表"
 
-#: app/templates/base/base-staff.html:175
+#: app/templates/base/base-staff.html:178
 msgid "Upload Journals"
 msgstr "上传通知"
 
-#: app/templates/base/base-staff.html:190
+#: app/templates/base/base-staff.html:193
 #: app/templates/staff/backup-staff-modify.html:76
 #: app/templates/userinfo/user_profile.html:384
 msgid "Categories"
 msgstr "分类"
 
-#: app/templates/base/base-staff.html:203
+#: app/templates/base/base-staff.html:206
 #: app/templates/staff/backup-staff-modify.html:84
 msgid "List Category"
 msgstr "分类列表"
 
-#: app/templates/base/base-staff.html:209
+#: app/templates/base/base-staff.html:212
 #: app/templates/staff/backup-staff-modify.html:89
 msgid "Add Category"
 msgstr "添加分类"
 
-#: app/templates/base/base-staff.html:226
+#: app/templates/base/base-staff.html:229
 #: app/templates/staff/backup-staff-modify.html:145
 msgid "Returns"
 msgstr "退货"
 
-#: app/templates/base/base-staff.html:239
+#: app/templates/base/base-staff.html:242
 #: app/templates/staff/backup-staff-modify.html:153
 msgid "List Returns"
 msgstr "退货列表"
 
-#: app/templates/base/base-staff.html:245
+#: app/templates/base/base-staff.html:248
 #: app/templates/staff/backup-staff-modify.html:158
 msgid "Add Return"
 msgstr "添加退货"
 
-#: app/templates/base/base-staff.html:262
+#: app/templates/base/base-staff.html:265
 #: app/templates/staff/backup-staff-modify.html:168
 msgid "People"
 msgstr "群组"
 
-#: app/templates/base/base-staff.html:293
+#: app/templates/base/base-staff.html:296
 #: app/templates/staff/backup-staff-modify.html:211
 msgid "Reports"
 msgstr "报告"
 
-#: app/templates/base/base-staff.html:309
+#: app/templates/base/base-staff.html:312
 #: app/templates/staff/backup-staff-modify.html:221
 msgid "other page"
 msgstr "其他页面"
 
-#: app/templates/base/base-staff.html:329
+#: app/templates/base/base-staff.html:332
 #: app/templates/staff/backup-staff-modify.html:232
 msgid "User Details"
 msgstr "用户详情"
 
-#: app/templates/base/base-staff.html:341
+#: app/templates/base/base-staff.html:344
 #: app/templates/staff/backup-staff-modify.html:240
 msgid "User Profile"
 msgstr "用户主页"
 
-#: app/templates/base/base-staff.html:346
+#: app/templates/base/base-staff.html:349
 #: app/templates/staff/backup-staff-modify.html:245
 msgid "User Add"
 msgstr "添加用户"
 
-#: app/templates/base/base-staff.html:351
+#: app/templates/base/base-staff.html:354
 #: app/templates/staff/backup-staff-modify.html:250
 msgid "User List"
 msgstr "用户列表"
 
-#: app/templates/base/base-staff.html:364
+#: app/templates/base/base-staff.html:367
 #: app/templates/staff/backup-staff-modify.html:260
 msgid "UI Elements"
 msgstr "UI组件"
 
-#: app/templates/base/base-staff.html:376
+#: app/templates/base/base-staff.html:379
 #: app/templates/staff/backup-staff-modify.html:268
 msgid "Avatars"
 msgstr "头像"
 
-#: app/templates/base/base-staff.html:381
+#: app/templates/base/base-staff.html:384
 #: app/templates/staff/backup-staff-modify.html:273
 msgid "Alerts"
 msgstr "警告"
 
-#: app/templates/base/base-staff.html:386
+#: app/templates/base/base-staff.html:389
 #: app/templates/staff/backup-staff-modify.html:278
 msgid "Badges"
 msgstr "标记"
 
-#: app/templates/base/base-staff.html:391
+#: app/templates/base/base-staff.html:394
 #: app/templates/staff/backup-staff-modify.html:283
 msgid "Breadcrumb"
 msgstr "浏览记录"
 
-#: app/templates/base/base-staff.html:396
+#: app/templates/base/base-staff.html:399
 #: app/templates/staff/backup-staff-modify.html:288
 msgid "Buttons"
 msgstr "按钮"
 
-#: app/templates/base/base-staff.html:401
+#: app/templates/base/base-staff.html:404
 #: app/templates/staff/backup-staff-modify.html:293
 msgid "Buttons Group"
 msgstr "按钮群组"
 
-#: app/templates/base/base-staff.html:406
+#: app/templates/base/base-staff.html:409
 #: app/templates/staff/backup-staff-modify.html:298
 msgid "Box Shadow"
 msgstr "选择框阴影"
 
-#: app/templates/base/base-staff.html:411
+#: app/templates/base/base-staff.html:414
 #: app/templates/staff/backup-staff-modify.html:303
 msgid "Colors"
 msgstr "颜色"
 
-#: app/templates/base/base-staff.html:416
+#: app/templates/base/base-staff.html:419
 #: app/templates/staff/backup-staff-modify.html:308
 msgid "Cards"
 msgstr "卡片"
 
-#: app/templates/base/base-staff.html:421
+#: app/templates/base/base-staff.html:424
 #: app/templates/staff/backup-staff-modify.html:313
 msgid "Carousel"
 msgstr "轮播图"
 
-#: app/templates/base/base-staff.html:426
+#: app/templates/base/base-staff.html:429
 #: app/templates/staff/backup-staff-modify.html:318
 msgid "Grid"
 msgstr "网格"
 
-#: app/templates/base/base-staff.html:431
+#: app/templates/base/base-staff.html:434
 #: app/templates/staff/backup-staff-modify.html:323
 msgid "Helper classes"
 msgstr "帮助类"
 
-#: app/templates/base/base-staff.html:436
+#: app/templates/base/base-staff.html:439
 #: app/templates/staff/backup-staff-modify.html:328
 msgid "Images"
 msgstr "图片"
 
-#: app/templates/base/base-staff.html:441
+#: app/templates/base/base-staff.html:444
 #: app/templates/staff/backup-staff-modify.html:333
 msgid "list Group"
 msgstr "群组列表"
 
-#: app/templates/base/base-staff.html:446
+#: app/templates/base/base-staff.html:449
 #: app/templates/staff/backup-staff-modify.html:338
 msgid "Media"
 msgstr "媒体"
 
-#: app/templates/base/base-staff.html:451
+#: app/templates/base/base-staff.html:454
 #: app/templates/staff/backup-staff-modify.html:343
 msgid "Modal"
 msgstr "模式"
 
-#: app/templates/base/base-staff.html:456
-#: app/templates/base/base-staff.html:1024
+#: app/templates/base/base-staff.html:459
+#: app/templates/base/base-staff.html:1027
 #: app/templates/staff/backup-staff-modify.html:348
 #: app/templates/staff/backup-staff-modify.html:749
 msgid "Notifications"
 msgstr "通知"
 
-#: app/templates/base/base-staff.html:461
+#: app/templates/base/base-staff.html:464
 #: app/templates/staff/backup-staff-modify.html:353
 msgid "Pagination"
 msgstr "页码"
 
-#: app/templates/base/base-staff.html:466
+#: app/templates/base/base-staff.html:469
 #: app/templates/staff/backup-staff-modify.html:358
 msgid "Popovers"
 msgstr "弹出框"
 
-#: app/templates/base/base-staff.html:471
+#: app/templates/base/base-staff.html:474
 #: app/templates/staff/backup-staff-modify.html:363
 msgid "Progressbars"
 msgstr "进度条"
 
-#: app/templates/base/base-staff.html:476
+#: app/templates/base/base-staff.html:479
 #: app/templates/staff/backup-staff-modify.html:368
 msgid "Typography"
 msgstr "印刷"
 
-#: app/templates/base/base-staff.html:481
+#: app/templates/base/base-staff.html:484
 #: app/templates/staff/backup-staff-modify.html:373
 msgid "Tabs"
 msgstr "标号"
 
-#: app/templates/base/base-staff.html:486
+#: app/templates/base/base-staff.html:489
 #: app/templates/staff/backup-staff-modify.html:378
 msgid "Tooltips"
 msgstr "工具提示"
 
-#: app/templates/base/base-staff.html:491
+#: app/templates/base/base-staff.html:494
 #: app/templates/staff/backup-staff-modify.html:383
 msgid "Video"
 msgstr "视频"
 
-#: app/templates/base/base-staff.html:508
+#: app/templates/base/base-staff.html:511
 #: app/templates/staff/backup-staff-modify.html:393
 msgid "Authentication"
 msgstr "鉴定"
 
-#: app/templates/base/base-staff.html:530
+#: app/templates/base/base-staff.html:533
 #: app/templates/staff/backup-staff-modify.html:411
 msgid "Recover Password"
 msgstr "密码错误！"
 
-#: app/templates/base/base-staff.html:535
+#: app/templates/base/base-staff.html:538
 #: app/templates/staff/backup-staff-modify.html:416
 msgid "Confirm Mail"
 msgstr "确认邮件地址"
 
-#: app/templates/base/base-staff.html:540
+#: app/templates/base/base-staff.html:543
 #: app/templates/staff/backup-staff-modify.html:421
 msgid "Lock Screen"
 msgstr "锁屏"
 
-#: app/templates/base/base-staff.html:555
+#: app/templates/base/base-staff.html:558
 #: app/templates/staff/backup-staff-modify.html:431
 msgid "Forms"
 msgstr "表单"
 
-#: app/templates/base/base-staff.html:568
+#: app/templates/base/base-staff.html:571
 #: app/templates/staff/backup-staff-modify.html:439
 msgid "Form Elements"
 msgstr "表单元素"
 
-#: app/templates/base/base-staff.html:574
+#: app/templates/base/base-staff.html:577
 #: app/templates/staff/backup-staff-modify.html:444
 msgid "Form Input"
 msgstr "表单输入"
 
-#: app/templates/base/base-staff.html:580
+#: app/templates/base/base-staff.html:583
 #: app/templates/staff/backup-staff-modify.html:449
 msgid "Form Validation"
 msgstr "表单验证"
 
-#: app/templates/base/base-staff.html:586
+#: app/templates/base/base-staff.html:589
 #: app/templates/staff/backup-staff-modify.html:454
 msgid "Form Switch"
 msgstr "表单切换"
 
-#: app/templates/base/base-staff.html:592
+#: app/templates/base/base-staff.html:595
 #: app/templates/staff/backup-staff-modify.html:459
 msgid "Form Checkbox"
 msgstr "表单勾选框"
 
-#: app/templates/base/base-staff.html:598
+#: app/templates/base/base-staff.html:601
 #: app/templates/staff/backup-staff-modify.html:464
 msgid "Form Radio"
 msgstr "表单选择框"
 
-#: app/templates/base/base-staff.html:604
+#: app/templates/base/base-staff.html:607
 #: app/templates/staff/backup-staff-modify.html:469
 msgid "Form Textarea"
 msgstr "表单文本"
 
-#: app/templates/base/base-staff.html:620
+#: app/templates/base/base-staff.html:623
 #: app/templates/staff/backup-staff-modify.html:479
 msgid "Table"
 msgstr "表格"
 
-#: app/templates/base/base-staff.html:632
+#: app/templates/base/base-staff.html:635
 #: app/templates/staff/backup-staff-modify.html:487
 msgid "Basic Tables"
 msgstr "基础表格"
 
-#: app/templates/base/base-staff.html:637
+#: app/templates/base/base-staff.html:640
 #: app/templates/staff/backup-staff-modify.html:492
 msgid "Data Table"
 msgstr "数据表格"
 
-#: app/templates/base/base-staff.html:642
+#: app/templates/base/base-staff.html:645
 #: app/templates/staff/backup-staff-modify.html:497
 msgid "Table Tree"
 msgstr "表格树"
 
-#: app/templates/base/base-staff.html:658
+#: app/templates/base/base-staff.html:661
 #: app/templates/staff/backup-staff-modify.html:507
 msgid "Pricing"
 msgstr "价格"
 
-#: app/templates/base/base-staff.html:692
+#: app/templates/base/base-staff.html:695
 #: app/templates/staff/backup-staff-modify.html:530
 msgid "Invoice"
 msgstr "发票"
 
-#: app/templates/base/base-staff.html:706
+#: app/templates/base/base-staff.html:709
 #: app/templates/staff/backup-staff-modify.html:538
 msgid "Error"
 msgstr "错误"
 
-#: app/templates/base/base-staff.html:737
+#: app/templates/base/base-staff.html:740
 #: app/templates/staff/backup-staff-modify.html:561
 msgid "Blank Page"
 msgstr "空白页"
 
-#: app/templates/base/base-staff.html:748
+#: app/templates/base/base-staff.html:751
 #: app/templates/staff/backup-staff-modify.html:569
 msgid "Maintenance"
 msgstr "维护"
 
-#: app/templates/base/base-staff.html:788
 #: app/templates/base/base-staff.html:791
-#: app/templates/base/base-staff.html:796
-#: app/templates/base/base-staff.html:800
+#: app/templates/base/base-staff.html:794
+#: app/templates/base/base-staff.html:799
+#: app/templates/base/base-staff.html:803
 #: app/templates/staff/page-list-journals.html:29
 #: app/templates/staff/page-list-journals.html:34
 #: app/templates/staff/page-list-product.html:25
@@ -877,56 +865,54 @@ msgstr "维护"
 msgid "Search here..."
 msgstr "搜索"
 
-#: app/templates/base/base-staff.html:812
+#: app/templates/base/base-staff.html:815
 #: app/templates/staff/page-add-product.html:199
 #: app/templates/staff/page-list-product.html:45
 #: app/templates/staff/page-list-product.html:52
 msgid "Model Name"
 msgstr "型号名称"
 
-#: app/templates/base/base-staff.html:816
-#, fuzzy
+#: app/templates/base/base-staff.html:819
 msgid ""
 "Model\n"
 "                                                        Name"
 msgstr "型号名称"
 
-#: app/templates/base/base-staff.html:818
-#, fuzzy
+#: app/templates/base/base-staff.html:821
 msgid ""
 "Model\n"
 "                                                        Serial"
 msgstr "序列号"
 
-#: app/templates/base/base-staff.html:893
+#: app/templates/base/base-staff.html:896
 msgid "Epidemic Mode"
 msgstr "疫情模式"
 
-#: app/templates/base/base-staff.html:938
+#: app/templates/base/base-staff.html:941
 #: app/templates/staff/backup-staff-modify.html:680
 msgid "All Messages"
 msgstr "全部消息"
 
-#: app/templates/base/base-staff.html:998
-#: app/templates/base/base-staff.html:1084
+#: app/templates/base/base-staff.html:1001
+#: app/templates/base/base-staff.html:1087
 #: app/templates/staff/staff-index.html:261
 msgid "View All"
 msgstr "显示更多"
 
-#: app/templates/base/base-staff.html:1110
+#: app/templates/base/base-staff.html:1113
 msgid "Profile"
 msgstr "个人主页"
 
-#: app/templates/base/base-staff.html:1112
+#: app/templates/base/base-staff.html:1115
 msgid "Sign Out"
 msgstr "退出登录"
 
-#: app/templates/base/base-staff.html:1157
+#: app/templates/base/base-staff.html:1160
 #: app/templates/staff/backup-staff-modify.html:1078
 msgid "Privacy Policy"
 msgstr "隐私政策"
 
-#: app/templates/base/base-staff.html:1159
+#: app/templates/base/base-staff.html:1162
 #: app/templates/staff/backup-staff-modify.html:1079
 msgid "Terms of Use"
 msgstr "使用术语"
@@ -953,7 +939,6 @@ msgid "Total Cost"
 msgstr "总计"
 
 #: app/templates/chat/chat_customer.html:25
-#, fuzzy
 msgid "Chat Messages"
 msgstr "全部消息"
 
@@ -962,106 +947,113 @@ msgid "Type Message ..."
 msgstr "输入消息..."
 
 #: app/templates/chat/chat_customer.html:79
-#: app/templates/chat/chat_staff.html:327
-#, fuzzy
+#: app/templates/chat/chat_staff.html:328
 msgid "Send"
 msgstr "发送"
 
-#: app/templates/chat/chat_staff.html:52 app/templates/chat/chat_staff.html:68
+#: app/templates/chat/chat_staff.html:46 app/templates/chat/chat_staff.html:62
 msgid "Staff"
 msgstr "工作人员"
 
-#: app/templates/chat/chat_staff.html:74
-#, fuzzy
+#: app/templates/chat/chat_staff.html:68
 msgid ""
 "It is long established fact that a reader will be distracted bt\n"
 "                                                            the reddable."
 msgstr "长期以来的事实是，读者会被可读性分散注意力。"
 
-#: app/templates/chat/chat_staff.html:76
+#: app/templates/chat/chat_staff.html:70
 #: app/templates/staff/page-list-orders.html:61
 msgid "Status"
 msgstr "状态"
 
-#: app/templates/chat/chat_staff.html:79
-#, fuzzy
+#: app/templates/chat/chat_staff.html:73
 msgid "Online"
 msgstr "在线"
 
-#: app/templates/chat/chat_staff.html:82
+#: app/templates/chat/chat_staff.html:76
 msgid "Away"
 msgstr "离线"
 
-#: app/templates/chat/chat_staff.html:85
-#, fuzzy
+#: app/templates/chat/chat_staff.html:79
 msgid ""
 "Do Not\n"
 "                                                                Disturb"
 msgstr "免打扰"
 
-#: app/templates/chat/chat_staff.html:88
-#, fuzzy
+#: app/templates/chat/chat_staff.html:82
 msgid "Offline"
 msgstr "离线"
 
-#: app/templates/chat/chat_staff.html:96
+#: app/templates/chat/chat_staff.html:90
 msgid "Search"
 msgstr "搜索"
 
-#: app/templates/chat/chat_staff.html:102
+#: app/templates/chat/chat_staff.html:96
 msgid "Direct Message"
 msgstr "私信"
 
-#: app/templates/chat/chat_staff.html:121
+#: app/templates/chat/chat_staff.html:115
 msgid "translation by"
 msgstr "翻译："
 
-#: app/templates/chat/chat_staff.html:139
-#, fuzzy
+#: app/templates/chat/chat_staff.html:140
 msgid ""
 "Start\n"
 "                                               Conversation By Choosing "
 "Chatroom!"
 msgstr "选择聊天室开始聊天！"
 
-#: app/templates/chat/chat_staff.html:324
+#: app/templates/chat/chat_staff.html:325
 msgid "Type your message"
-msgstr ""
+msgstr "输入消息"
 
 #: app/templates/comment/comment.html:316
 #: app/templates/order/order-detail.html:702
-#, fuzzy
 msgid "Comment"
 msgstr "评论"
 
 #: app/templates/comment/comment.html:330
-#, fuzzy
 msgid "Your Purchase"
 msgstr "购买历史"
 
 #: app/templates/comment/comment.html:421
-#, fuzzy
 msgid "Your Comment"
 msgstr "您的评论"
 
 #: app/templates/comment/comment.html:518
 #: app/templates/order/order-detail.html:762
 #: app/templates/order/order-listing.html:743
-#, fuzzy
 msgid "Contact us"
-msgstr "联系客服"
+msgstr "联系我们"
 
-#: app/templates/errors/404.html:28
+#: app/templates/errors/403.html:42
+msgid "Forbidden"
+msgstr "访问被禁止"
+
+#: app/templates/errors/403.html:43
+msgid "You do not have the permission to access this function."
+msgstr "您没有进入该功能的权限。"
+
+#: app/templates/errors/403.html:46 app/templates/errors/404.html:57
+#: app/templates/errors/500.html:46
+msgid "Back to Home"
+msgstr "返回主页"
+
+#: app/templates/errors/404.html:53
 msgid "Page Not Found"
 msgstr "页面未找到"
 
-#: app/templates/errors/404.html:29
+#: app/templates/errors/404.html:54
 msgid "The page you are looking for doesn&#x27;t exist or may have been moved."
 msgstr "您搜寻的页面不存在或被移除。"
 
-#: app/templates/errors/404.html:32
-msgid "Back to Home"
-msgstr "返回主页"
+#: app/templates/errors/500.html:42
+msgid "Internal Server Error"
+msgstr "服务器内部错误"
+
+#: app/templates/errors/500.html:43
+msgid "Something wrong in the server, this would be fixed soon."
+msgstr "服务器发生错误，稍后这些错误将被修复"
 
 #: app/templates/main/about_siren.html:43
 msgid "A curated collection of timeless instruments"
@@ -1092,7 +1084,6 @@ msgid "Our Service"
 msgstr "我们的服务"
 
 #: app/templates/main/about_siren.html:81
-#, fuzzy
 msgid "Selection"
 msgstr "精心挑选"
 
@@ -1125,7 +1116,6 @@ msgstr "我们正在与16个不同的品牌合作。每个品牌都有自己的�
 #: app/templates/staff/page-list-orders.html:489
 #: app/templates/staff/page-list-orders.html:511
 #: app/templates/staff/page-list-orders.html:539
-#, fuzzy
 msgid "Delivery"
 msgstr "邮寄"
 
@@ -1228,7 +1218,7 @@ msgid ""
 "                                great benefits. Regular sales and "
 "exclusive limited editions will be available\n"
 "                                and only for members."
-msgstr "加入我们以获取更多优惠。定期销售和独家限量版将仅限适用于会员"
+msgstr "加入我们以获取更多优惠。限时销售和独家限量版商品将仅适用于会员"
 
 #: app/templates/main/index_new.html:719 app/templates/main/premium.html:70
 #: app/templates/staff/backup-staff-modify.html:582
@@ -1246,12 +1236,10 @@ msgid "Next"
 msgstr "下一页"
 
 #: app/templates/main/page-commodity-details.html:142
-#, fuzzy
 msgid "Shop"
 msgstr "商店"
 
 #: app/templates/main/page-commodity-details.html:254
-#, fuzzy
 msgid "Specification Table"
 msgstr "分类"
 
@@ -1264,23 +1252,20 @@ msgid "Views"
 msgstr "浏览次数"
 
 #: app/templates/main/page-commodity-details.html:265
-#, fuzzy
 msgid "Sales"
 msgstr "售卖"
 
 #: app/templates/main/page-commodity-details.html:266
-#, fuzzy
 msgid "times"
-msgstr "我的会员"
+msgstr "次"
 
 #: app/templates/main/page-commodity-details.html:273
 msgid "Customization"
-msgstr ""
+msgstr "定制化"
 
 #: app/templates/main/page-commodity-details.html:290
-#, fuzzy
 msgid "Additional information"
-msgstr "附加规格"
+msgstr "附加信息"
 
 #: app/templates/main/page-commodity-details.html:291
 msgid ""
@@ -1288,99 +1273,94 @@ msgid ""
 "                                            and\n"
 "                                            cannot be refunded once sold "
 "after 7-days."
-msgstr ""
+msgstr "请您注意，由于乐器属于消耗品，一旦售出超过7天将不能退款。"
 
 #: app/templates/main/page-commodity-details.html:322
-#, fuzzy
 msgid ""
 "Buy\n"
 "                                                            It Now"
-msgstr "显示更多"
+msgstr "现在购买"
 
 #: app/templates/main/page-commodity-details.html:329
-#, fuzzy
 msgid ""
 "This\n"
 "                                                        item runs out of "
 "stock."
-msgstr "显示更多"
+msgstr "该商品库存不足"
 
 #: app/templates/main/page-commodity-details.html:338
-#, fuzzy
 msgid ""
 "This\n"
 "                                                        item is no longer"
 " available (Sold out)."
-msgstr "显示更多"
+msgstr "该商品不再售卖（售完）"
 
 #: app/templates/main/page-commodity-details.html:359
 msgid ""
 "This product supports 7-days refund and the quality\n"
 "                                        is\n"
 "                                        guaranteed."
-msgstr ""
+msgstr "该商品支持7天无理由退换以及质量保证。"
 
 #: app/templates/main/page-commodity-details.html:408
 msgid "3D view of"
-msgstr ""
+msgstr "3D 视角 -"
 
 #: app/templates/main/page-commodity-details.html:411
 msgid ""
 "You can use mouse to move the camara around by dragging and use mouse "
 "wheel to move\n"
 "                                            closer."
-msgstr ""
+msgstr "您可以使用鼠标移动镜头以及伸缩视角。"
 
 #: app/templates/main/page-commodity-details.html:413
 msgid "If you cannot see the 3d model, please move the camara."
-msgstr ""
+msgstr "如果您没有看到模型请尝试移动镜头。"
 
 #: app/templates/main/page-commodity-details.html:414
 msgid ""
 "You may wait for a moment before it finishes rendering, this may take "
 "several\n"
 "                                            minuses."
-msgstr ""
+msgstr "您可能需要等待数秒以完成模型加载。"
 
 #: app/templates/main/page-commodity-details.html:440
 msgid "Video for showing"
-msgstr ""
+msgstr "展示视频"
 
 #: app/templates/main/page-commodity-details.html:464
 msgid "Audio Samples"
-msgstr ""
+msgstr "声音样本"
 
 #: app/templates/main/page-commodity-details.html:488
-#, fuzzy
 msgid "Comments"
 msgstr "评论"
 
 #: app/templates/main/page-commodity-details.html:608
 msgid "about the brand"
-msgstr ""
+msgstr "关于品牌"
 
 #: app/templates/main/page-commodity-details.html:613
 msgid "View Range"
-msgstr ""
+msgstr "查看更多"
 
 #: app/templates/main/page-commodity-details.html:627
 msgid "More from "
-msgstr ""
+msgstr "更多关于"
 
 #: app/templates/main/page-commodity-details.html:651
 msgid "There are no more products from this brand yet."
-msgstr ""
+msgstr "没有更多该品牌商品了(╯﹏╰）"
 
 #: app/templates/main/page-commodity-details.html:660
 msgid "Related Recommendation"
-msgstr ""
+msgstr "相关推荐"
 
 #: app/templates/main/page-commodity-details.html:693
 msgid "There are no more products from this category yet."
-msgstr ""
+msgstr "该分类没有更多商品了(╯﹏╰）"
 
 #: app/templates/main/page_all_commodities.html:54
-#, fuzzy
 msgid "By Category"
 msgstr "分类"
 
@@ -1396,45 +1376,43 @@ msgstr "分类"
 #: app/templates/main/page_all_commodities.html:300
 #: app/templates/main/page_all_commodities.html:327
 msgid "See All"
-msgstr ""
+msgstr "查看更多"
 
 #: app/templates/main/page_all_commodities.html:66
-#, fuzzy
 msgid "String"
-msgstr "定价"
+msgstr "弦乐器"
 
 #: app/templates/main/page_all_commodities.html:70
 #: app/templates/staff/page-add-product.html:60
 #: app/templates/staff/page-modify-product.html:75
 msgid "Woodwinds"
-msgstr ""
+msgstr "木管乐器"
 
 #: app/templates/main/page_all_commodities.html:74
 #: app/templates/staff/page-add-product.html:61
 #: app/templates/staff/page-modify-product.html:76
 msgid "Brass"
-msgstr ""
+msgstr "铜管乐器"
 
 #: app/templates/main/page_all_commodities.html:78
 #: app/templates/staff/page-add-product.html:62
 #: app/templates/staff/page-modify-product.html:77
 msgid "Percussion"
-msgstr ""
+msgstr "打击乐器"
 
 #: app/templates/main/page_all_commodities.html:82
 #: app/templates/staff/page-add-product.html:63
 #: app/templates/staff/page-modify-product.html:78
 msgid "Keyboard"
-msgstr ""
+msgstr "键盘乐器"
 
 #: app/templates/main/page_all_commodities.html:86
 #: app/templates/main/page_all_commodities.html:316
 #: app/templates/staff/page-add-product.html:64
 #: app/templates/staff/page-add-product.html:152
 #: app/templates/staff/page-modify-product.html:79
-#, fuzzy
 msgid "Accessories"
-msgstr "分类"
+msgstr "配件"
 
 #: app/templates/main/page_all_commodities.html:92
 #: app/templates/staff/backup-staff-modify.html:903
@@ -1448,244 +1426,239 @@ msgstr "类型"
 #: app/templates/main/page_all_commodities.html:103
 #: app/templates/staff/page-add-product.html:76
 #: app/templates/staff/page-modify-product.html:90
-#, fuzzy
 msgid "Violin"
-msgstr "成为会员"
+msgstr "小提琴"
 
 #: app/templates/main/page_all_commodities.html:107
 #: app/templates/staff/page-add-product.html:77
 #: app/templates/staff/page-modify-product.html:91
 msgid "Viola"
-msgstr ""
+msgstr "中提琴"
 
 #: app/templates/main/page_all_commodities.html:111
 #: app/templates/staff/page-add-product.html:78
 #: app/templates/staff/page-modify-product.html:92
 msgid "Cello"
-msgstr ""
+msgstr "大提琴"
 
 #: app/templates/main/page_all_commodities.html:115
 #: app/templates/staff/page-add-product.html:79
 #: app/templates/staff/page-modify-product.html:93
 msgid "Double Bass"
-msgstr ""
+msgstr "低音贝斯"
 
 #: app/templates/main/page_all_commodities.html:119
 #: app/templates/staff/page-add-product.html:80
 #: app/templates/staff/page-modify-product.html:94
 msgid "Guitar"
-msgstr ""
+msgstr "吉他"
 
 #: app/templates/main/page_all_commodities.html:123
 #: app/templates/staff/page-add-product.html:81
 #: app/templates/staff/page-modify-product.html:95
 msgid "Bass"
-msgstr ""
+msgstr "贝斯"
 
 #: app/templates/main/page_all_commodities.html:127
 #: app/templates/staff/page-add-product.html:82
 #: app/templates/staff/page-modify-product.html:96
 msgid "Ukulele"
-msgstr ""
+msgstr "尤克里里"
 
 #: app/templates/main/page_all_commodities.html:131
 #: app/templates/staff/page-add-product.html:83
 #: app/templates/staff/page-modify-product.html:97
 msgid "Harp"
-msgstr ""
+msgstr "竖琴"
 
 #: app/templates/main/page_all_commodities.html:135
 #: app/templates/staff/page-add-product.html:84
 #: app/templates/staff/page-modify-product.html:98
 msgid "Erhu"
-msgstr ""
+msgstr "二胡"
 
 #: app/templates/main/page_all_commodities.html:139
 #: app/templates/staff/page-add-product.html:85
 #: app/templates/staff/page-modify-product.html:99
 msgid "Guzheng"
-msgstr ""
+msgstr "古筝"
 
 #: app/templates/main/page_all_commodities.html:143
 #: app/templates/staff/page-add-product.html:86
 #: app/templates/staff/page-modify-product.html:100
-#, fuzzy
 msgid "Guqin"
-msgstr "登录"
+msgstr "古琴"
 
 #: app/templates/main/page_all_commodities.html:147
 #: app/templates/staff/page-add-product.html:87
 #: app/templates/staff/page-modify-product.html:101
 msgid "Pipa"
-msgstr ""
+msgstr "琵琶"
 
 #: app/templates/main/page_all_commodities.html:151
 #: app/templates/staff/page-add-product.html:91
 #: app/templates/staff/page-modify-product.html:105
 msgid "Flute"
-msgstr ""
+msgstr "长笛"
 
 #: app/templates/main/page_all_commodities.html:155
 #: app/templates/staff/page-add-product.html:92
 #: app/templates/staff/page-modify-product.html:106
 msgid "Clarinet"
-msgstr ""
+msgstr "单簧管"
 
 #: app/templates/main/page_all_commodities.html:159
 #: app/templates/staff/page-add-product.html:93
 #: app/templates/staff/page-modify-product.html:107
 msgid "Oboe"
-msgstr ""
+msgstr "双簧管"
 
 #: app/templates/main/page_all_commodities.html:163
 #: app/templates/staff/page-add-product.html:94
 #: app/templates/staff/page-modify-product.html:108
 msgid "Piccolo"
-msgstr ""
+msgstr "短笛"
 
 #: app/templates/main/page_all_commodities.html:167
 #: app/templates/staff/page-add-product.html:95
 #: app/templates/staff/page-modify-product.html:109
 msgid "Saxophone"
-msgstr ""
+msgstr "萨克斯"
 
 #: app/templates/main/page_all_commodities.html:171
 #: app/templates/staff/page-add-product.html:96
 #: app/templates/staff/page-modify-product.html:110
 msgid "English Horn"
-msgstr ""
+msgstr "英国号"
 
 #: app/templates/main/page_all_commodities.html:175
 #: app/templates/staff/page-add-product.html:97
 #: app/templates/staff/page-modify-product.html:111
 msgid "Bassoon"
-msgstr ""
+msgstr "巴松"
 
 #: app/templates/main/page_all_commodities.html:179
 #: app/templates/staff/page-add-product.html:98
 #: app/templates/staff/page-modify-product.html:112
-#, fuzzy
 msgid "Recorder"
-msgstr "订单"
+msgstr "竖笛"
 
 #: app/templates/main/page_all_commodities.html:183
 #: app/templates/staff/page-add-product.html:99
 #: app/templates/staff/page-modify-product.html:113
 msgid "Bagpipes"
-msgstr ""
+msgstr "风笛"
 
 #: app/templates/main/page_all_commodities.html:187
 #: app/templates/staff/page-add-product.html:100
 #: app/templates/staff/page-modify-product.html:114
 msgid "Suona Horn"
-msgstr ""
+msgstr "唢呐"
 
 #: app/templates/main/page_all_commodities.html:191
 #: app/templates/staff/page-add-product.html:101
 #: app/templates/staff/page-modify-product.html:115
 msgid "Sheng"
-msgstr ""
+msgstr "笙"
 
 #: app/templates/main/page_all_commodities.html:195
 #: app/templates/staff/page-add-product.html:105
 #: app/templates/staff/page-modify-product.html:119
 msgid "Trumpet"
-msgstr ""
+msgstr "小号"
 
 #: app/templates/main/page_all_commodities.html:199
 #: app/templates/staff/page-add-product.html:106
 #: app/templates/staff/page-modify-product.html:120
 msgid "Trombone"
-msgstr ""
+msgstr "长号"
 
 #: app/templates/main/page_all_commodities.html:203
 #: app/templates/staff/page-add-product.html:107
 #: app/templates/staff/page-modify-product.html:121
 msgid "French Horn"
-msgstr ""
+msgstr "法国号"
 
 #: app/templates/main/page_all_commodities.html:207
 #: app/templates/staff/page-add-product.html:108
 #: app/templates/staff/page-modify-product.html:122
 msgid "Tuba"
-msgstr ""
+msgstr "大号"
 
 #: app/templates/main/page_all_commodities.html:211
 #: app/templates/staff/page-add-product.html:109
 #: app/templates/staff/page-modify-product.html:123
 msgid "Euphonium"
-msgstr ""
+msgstr "上低音号"
 
 #: app/templates/main/page_all_commodities.html:215
 #: app/templates/staff/page-add-product.html:110
 #: app/templates/staff/page-modify-product.html:124
 msgid "Harmonica"
-msgstr ""
+msgstr "口琴"
 
 #: app/templates/main/page_all_commodities.html:219
 #: app/templates/staff/page-add-product.html:114
 #: app/templates/staff/page-modify-product.html:128
 msgid "Timpani"
-msgstr ""
+msgstr "定音鼓"
 
 #: app/templates/main/page_all_commodities.html:223
 #: app/templates/staff/page-add-product.html:115
 #: app/templates/staff/page-modify-product.html:129
 msgid "Bass Drum"
-msgstr ""
+msgstr "低音鼓"
 
 #: app/templates/main/page_all_commodities.html:227
 #: app/templates/staff/page-add-product.html:116
 #: app/templates/staff/page-modify-product.html:130
-#, fuzzy
 msgid "Snare"
-msgstr "用户名"
+msgstr "小军鼓"
 
 #: app/templates/main/page_all_commodities.html:231
 #: app/templates/staff/page-add-product.html:117
 #: app/templates/staff/page-modify-product.html:131
 msgid "Cajon"
-msgstr ""
+msgstr "卡宏鼓"
 
 #: app/templates/main/page_all_commodities.html:235
 #: app/templates/staff/page-add-product.html:118
 msgid "SoundBox"
-msgstr ""
+msgstr "音响"
 
 #: app/templates/main/page_all_commodities.html:239
 #: app/templates/staff/page-add-product.html:119
 #: app/templates/staff/page-modify-product.html:133
 msgid "Tam-tam"
-msgstr ""
+msgstr "铜锣"
 
 #: app/templates/main/page_all_commodities.html:243
 #: app/templates/staff/page-add-product.html:120
 #: app/templates/staff/page-modify-product.html:134
 msgid "Tambourine"
-msgstr ""
+msgstr "手鼓"
 
 #: app/templates/main/page_all_commodities.html:247
 #: app/templates/staff/page-add-product.html:121
 #: app/templates/staff/page-modify-product.html:135
 msgid "Marimba & Xylophone"
-msgstr ""
+msgstr "马林巴和木琴"
 
 #: app/templates/main/page_all_commodities.html:251
 #: app/templates/staff/page-add-product.html:122
 #: app/templates/staff/page-modify-product.html:136
 msgid "Vibraphone"
-msgstr ""
+msgstr "电颤琴"
 
 #: app/templates/main/page_all_commodities.html:255
 #: app/templates/staff/page-add-product.html:123
 #: app/templates/staff/page-modify-product.html:137
 msgid "Drum Kit"
-msgstr ""
+msgstr "架子鼓"
 
 #: app/templates/main/page_all_commodities.html:259
 #: app/templates/staff/page-add-product.html:124
 #: app/templates/staff/page-modify-product.html:138
-#, fuzzy
 msgid "Other Percussion"
 msgstr "其他页面"
 
@@ -1693,47 +1666,45 @@ msgstr "其他页面"
 #: app/templates/staff/page-add-product.html:128
 #: app/templates/staff/page-modify-product.html:142
 msgid "Piano"
-msgstr ""
+msgstr "钢琴"
 
 #: app/templates/main/page_all_commodities.html:267
 #: app/templates/staff/page-add-product.html:129
 #: app/templates/staff/page-modify-product.html:143
 msgid "Accordion"
-msgstr ""
+msgstr "手风琴"
 
 #: app/templates/main/page_all_commodities.html:271
 #: app/templates/staff/page-add-product.html:130
 #: app/templates/staff/page-modify-product.html:144
 msgid "Launchpad"
-msgstr ""
+msgstr "打击垫"
 
 #: app/templates/main/page_all_commodities.html:275
 #: app/templates/staff/page-add-product.html:134
 #: app/templates/staff/page-modify-product.html:148
-#, fuzzy
 msgid "Effects"
-msgstr "选择"
+msgstr "效果器"
 
 #: app/templates/main/page_all_commodities.html:279
 #: app/templates/staff/page-add-product.html:135
 #: app/templates/staff/page-modify-product.html:149
 msgid "Synthesizer"
-msgstr ""
+msgstr "合成器"
 
 #: app/templates/main/page_all_commodities.html:283
 #: app/templates/staff/page-add-product.html:136
 #: app/templates/staff/page-modify-product.html:150
 msgid "Microphone"
-msgstr ""
+msgstr "麦克风"
 
 #: app/templates/main/page_all_commodities.html:287
 #: app/templates/staff/page-add-product.html:137
 #: app/templates/staff/page-modify-product.html:151
 msgid "Monitor Headphone"
-msgstr ""
+msgstr "监听耳机"
 
 #: app/templates/main/page_all_commodities.html:293
-#, fuzzy
 msgid "Additional Requirements"
 msgstr "额外要求"
 
@@ -1741,86 +1712,234 @@ msgstr "额外要求"
 #: app/templates/staff/page-add-product.html:149
 #: app/templates/staff/page-modify-product.html:162
 msgid "Acoustic Only"
-msgstr ""
+msgstr "原声"
 
 #: app/templates/main/page_all_commodities.html:308
 #: app/templates/staff/page-add-product.html:150
 #: app/templates/staff/page-modify-product.html:163
 msgid "Electricity Required"
-msgstr ""
+msgstr "插电"
 
 #: app/templates/main/page_all_commodities.html:312
 #: app/templates/staff/page-add-product.html:151
 #: app/templates/staff/page-modify-product.html:164
 msgid "Electricity Support"
-msgstr ""
+msgstr "插电支持"
 
 #: app/templates/main/premium.html:42
 msgid "SELECTED INSTRUMENT."
-msgstr ""
+msgstr "精选乐器"
 
 #: app/templates/main/premium.html:45
 msgid "FOCUS ON PERFORMING."
-msgstr ""
+msgstr "注重表现"
 
 #: app/templates/main/premium.html:50
 msgid "WORRY NOT ABOUT ANY OTHER."
-msgstr ""
+msgstr "无所畏惧"
 
 #: app/templates/main/premium.html:53
 msgid "LEAVE THE TRIVIAS TO US."
-msgstr ""
+msgstr "不惧繁琐"
 
 #: app/templates/main/premium.html:58
 msgid "STAGE QUALITY GUARENTEED."
-msgstr ""
+msgstr "舞台质量保证"
 
 #: app/templates/main/premium.html:61
 msgid "CUSTOM SALES ENSURED."
-msgstr ""
+msgstr "可定制销售"
 
 #: app/templates/main/premium.html:66
 msgid "START YOUR PREMIUM JOURNEY."
-msgstr ""
+msgstr "开始您的会员旅程"
 
 #: app/templates/main/brand_intro/coming-soon.html:42
 msgid "It's Around the Corner!"
-msgstr ""
+msgstr "即将开放"
 
 #: app/templates/main/brand_intro/coming-soon.html:44
 msgid "Coming Soon!"
-msgstr ""
+msgstr "推出在即"
 
 #: app/templates/main/brand_intro/coming-soon.html:45
 msgid "We are very sorry to tell you that the manufacturer"
-msgstr ""
+msgstr "我们很遗憾的告知您，由于制造商"
 
 #: app/templates/main/brand_intro/coming-soon.html:46
 msgid ""
 "hasn't update their information to our shop,\n"
 "                        you can try to view other brands in the Home Page"
 " Brand Gallery."
-msgstr ""
+msgstr "还未在我们的商店更新他们的信息，您可以尝试在主页的品牌专区浏览其他品牌。"
 
 #: app/templates/main/brand_intro/coming-soon.html:51
 msgid "Back to Home Page"
+msgstr "返回主页"
+
+#: app/templates/main/brand_intro/fender.html:41
+#: app/templates/main/brand_intro/fender.html:73
+msgid "About Fender"
+msgstr "关于Fender"
+
+#: app/templates/main/brand_intro/fender.html:43
+msgid ""
+"FENDER MUSICAL INSTRUMENTS CORPORATION THE WORLD'S LEADING GUITAR "
+"MANUFACTURER"
+msgstr "FENDER乐器公司世界领先的吉他制造商"
+
+#: app/templates/main/brand_intro/fender.html:62
+msgid "Fender's History"
+msgstr "Fender的历史"
+
+#: app/templates/main/brand_intro/fender.html:63
+msgid ""
+"Fender Musical Instruments Corporation is the world’s foremost "
+"manufacturer of guitars, basses, amplifiers and related equipment.\n"
+"With an illustrious history dating back to 1946, Fender has touched and "
+"transformed music worldwide and in nearly every genre: rock ‘n’ roll, "
+"country and western, jazz, rhythm and blues, and many others. Everyone "
+"from beginners and hobbyists to the world’s most acclaimed artists and "
+"performers have used Fender instruments and amps, and legendary Fender "
+"instruments such as the Telecaster® and Stratocaster® guitars and "
+"Precision® and Jazz® bass guitars are universally acclaimed as design "
+"classics."
+msgstr "Fender乐器公司是全球首屈一指的吉他、贝斯、放大器及相关设备制造商。Fender拥有可追溯到1946年的辉煌历史，它触动并改变了全球音乐，几乎涵盖了所有流派：摇滚乐，乡村和西部音乐，爵士乐，节奏和蓝调等等。从初学者和业余爱好者到世界上最受赞誉的艺术家和表演者，每个人都使用过Fender乐器和放大器，而传奇的Fender乐器，如Telecaster®和Stratocaster®吉他以及Precision®和Jazz®低音吉他，被普遍认为是设计经典。"
+
+#: app/templates/main/brand_intro/fender.html:76
+msgid "Synonymous with all things rock 'n' roll"
+msgstr "摇滚乐的代名词"
+
+#: app/templates/main/brand_intro/fender.html:77
+msgid ""
+"Today, FMIC brands include Fender®, Squier®, Gretsch®, Jackson®, Charvel®"
+" and EVH® among others. With an illustrious history dating back to 1946, "
+"Fender has touched and transformed music worldwide and in nearly every "
+"genre: rock ‘n’ roll, country and western, jazz, rhythm and blues and "
+"many others."
+msgstr "如今，FMIC品牌包括Fender®，Squier®，Gretsch®，Jackson®，Charvel®和EVH®等。Fender拥有可追溯到1946年的辉煌历史，它触动并改变了全球音乐，几乎涵盖了所有流派：摇滚乐，乡村和西部音乐，爵士乐，节奏和蓝调等等。"
+
+#: app/templates/main/brand_intro/fender.html:81
+msgid "Transforming Music One Guitar at a Time"
+msgstr "用一把吉他演凑不同风格的音乐"
+
+#: app/templates/main/brand_intro/fender.html:82
+msgid ""
+"Leo Fender wanted to craft an instrument that was as functional as it was"
+" easy to use. It was a primitive-looking object that was tough as nails, "
+"its powerful name inspired by another groundbreaking invention: the "
+"television. And with its revolutionary electrified tone, it would change "
+"the way music was made—forever. When someone asks, “Why Fender "
+"electrics?” the answer is clear. Fender guitars were designed to be "
+"louder, and exciting tones they produced are still engrained into our "
+"cultural DNA."
+msgstr "Leo Fender希望制作一种既实用又易于使用的仪器。这是一个原始的物体，像钉子一样坚硬，它强大的名字灵感来自另一个突破性的发明：电视。凭借其革命性的电气化音调，它将永远改变音乐的制作方式。当有人问“为什么选择Fende electrics？”答案很清楚。Fender吉他被设计得更响亮，它们产生的令人兴奋的音调仍然根深蒂固地融入我们的文化DNA。"
+
+#: app/templates/main/brand_intro/fender.html:86
+msgid "The First Word in Electric Bass"
+msgstr "电贝斯的第一个音符"
+
+#: app/templates/main/brand_intro/fender.html:87
+msgid ""
+"In 1951, we wanted to liberate musicians from the confines of the upright"
+" bass. And we did it by introducing a brand-new instrument with a bold, "
+"new sound. That instrument was the Precision Bass®, a name that would not"
+" only become synonymous with rock ‘n’ roll, but also shape its very "
+"being. As time went on, we created new instruments to cater to a new, "
+"evolving type of musician: the electric bassist. Each one was and still "
+"is a driving force behind the greatest moment in music—of every era, of "
+"every genre. Period."
+msgstr "1951年，我们想把音乐家从直立低音的束缚中解放出来。我们通过引入一种具有大胆，新声音的全新乐器来做到这一点。这种乐器就是Precision Bass®，这个名字不仅成为摇滚乐的代名词，而且还塑造了它的存在。随着时间的流逝，我们创造了新的乐器，以迎合一种新的，不断发展的音乐家类型：电贝斯手。每一个过去和现在都是音乐中最伟大的时刻背后的驱动力 - 每个时代，每个流派。时期。"
+
+#: app/templates/main/brand_intro/gibson.html:41
+msgid "Gibson"
 msgstr ""
+
+#: app/templates/main/brand_intro/gibson.html:43
+msgid ""
+"Try out a guitar, take a lesson, learn about Gibson's history, or see a "
+"live show on our stage."
+msgstr "尝试吉他，学习吉他，了解吉布森的历史，或在我们的平台上观看现场表演。"
+
+#: app/templates/main/brand_intro/gibson.html:62
+msgid "ABOUT GIBSON"
+msgstr "关于GIBSON"
+
+#: app/templates/main/brand_intro/gibson.html:63
+msgid ""
+"Gibson Brands, the world’s most iconic guitar brand, has shaped the "
+"sounds of generations of musicians and music lovers across genres for "
+"more than 100 years. Founded in 1894 and headquartered in Nashville, TN, "
+"Gibson Brands has a legacy of world-class craftsmanship, legendary music "
+"partnerships, and progressive product evolution that is unrivaled among "
+"musical instrument companies. The Gibson Brands portfolio includes "
+"Gibson, the number one guitar brand, as well as many of the most beloved "
+"and recognizable music brands, including Epiphone, Kramer, Steinberger, "
+"MESA/Boogie, and the Gibson Pro Audio division, KRK Systems. Gibson "
+"Brands is dedicated to quality, innovation, and sound excellence so that "
+"music lovers for generations to come will continue to experience music "
+"shaped by Gibson Brands. Learn more at Gibson.com and follow us on "
+"Twitter, Facebook and Instagram."
+msgstr "Gibson Brands是世界上最具标志性的吉他品牌，100多年来一直塑造着几代音乐家和音乐爱好者的声音。Gibson Brands成立于1894年，总部位于田纳西州纳什维尔，拥有世界级的工艺，传奇的音乐合作伙伴关系和先进的产品发展，在乐器公司中无与伦比。Gibson Brands的产品组合包括排名第一的吉他品牌Gibson，以及许多最受喜爱和识别的音乐品牌，包括Epiphone，Kramer，Steinberger，MESA / Boogie和Gibson Pro Audio部门KRK Systems。Gibson Brands致力于质量，创新和卓越音质，以便子孙后代的音乐爱好者将继续体验由Gibson Brands塑造的音乐。在 Gibson.com 了解更多信息，并在Twitter，Facebook和Instagram上关注我们。"
+
+#: app/templates/main/brand_intro/gibson.html:72
+msgid "Gibson Leadership"
+msgstr "Gibson引领者"
+
+#: app/templates/main/brand_intro/gibson.html:75
+msgid "James “JC” Curleigh Biography"
+msgstr "詹姆斯“JC”柯利传记"
+
+#: app/templates/main/brand_intro/gibson.html:76
+msgid ""
+"James “JC” Curleigh is Gibson's president and chief executive officer, "
+"where he leads the Gibson senior team of proven executives with broad "
+"experience in global brand building, finance and product development. JC "
+"is a guitar enthusiast and has been a proud owner of both Gibson and "
+"Epiphone guitars over the years, including his latest addition – a Gibson"
+" 1960’s J-45 acoustic guitar."
+msgstr "James “JC” Curleigh是Gibson的总裁兼首席执行官，他领导Gibson高级团队，该团队由在全球品牌建设，财务和产品开发方面拥有丰富经验的成熟高管组成。JC是一位吉他爱好者，多年来一直是Gibson和Epiphone吉他的骄傲拥有者，包括他最新添加的Gibson 1960的J-45原声吉他。"
+
+#: app/templates/main/brand_intro/gibson.html:80
+msgid "Cesar Gueikian Biography"
+msgstr "塞萨尔·盖基安传记"
+
+#: app/templates/main/brand_intro/gibson.html:81
+msgid ""
+"Cesar Gueikian is Gibson's brand president overseeing product and its "
+"evolution, music solutions artist relations and marketing strategies. His"
+" role with Gibson melds his 20 years of experience as an entrepreneur and"
+" financier, investing in companies around the world, with his life-long "
+"passion for music, guitars and especially Gibson guitars."
+msgstr "Cesar Gueikian是Gibson的品牌总裁，负责监督产品及其演变，音乐解决方案艺术家关系和营销策略。他与吉布森的角色融合了他作为企业家和金融家的20年经验，投资于世界各地的公司，以及他对音乐，吉他，尤其是吉布森吉他的毕生热情。"
+
+#: app/templates/main/brand_intro/gibson.html:85
+msgid "Armin Boehm Biography"
+msgstr "阿尔明·贝姆传记"
+
+#: app/templates/main/brand_intro/gibson.html:86
+msgid ""
+"Armin Boehm is Gibson's chief commercial officer (CCO) overseeing "
+"commercial strategy, sales execution and customer service. He is "
+"responsible for establishing organization effectiveness across our BDM "
+"(business development managers), RM (relationship managers), and DPS "
+"(dealer product specialist) teams."
+msgstr "Armin Boehm是Gibson的首席商务官（CCO），负责监督商业战略，销售执行和客户服务。他负责在我们的 BDM（业务开发经理）、RM（客户经理）和 DPS（经销商产品专家）团队中建立组织效率。"
 
 #: app/templates/main/brand_intro/hohner.html:41
 msgid "About Hohner"
-msgstr ""
+msgstr "关于Hohner"
 
 #: app/templates/main/brand_intro/hohner.html:43
 msgid ""
 "Enjoy music. Wherever you are, whenever you want. Explore our\n"
 "                                    product section and find your perfect"
 " Hohner instrument."
-msgstr ""
+msgstr "无论你身处何地，无论你所求何物，尽情享受音乐吧。浏览我们的商品并找寻最适合您的Hohner乐器。"
 
 #: app/templates/main/brand_intro/hohner.html:63
-#, fuzzy
 msgid "MEET HOHNER"
-msgstr "收货人姓名"
+msgstr "遇见HONNER"
 
 #: app/templates/main/brand_intro/hohner.html:64
 msgid ""
@@ -1837,15 +1956,15 @@ msgid ""
 "                                instruments designed to convey the joy "
 "and the passion which inspires everybody to improve\n"
 "                                their skills and develop further."
-msgstr ""
+msgstr "几代人以来，Hohner一直致力于音乐，原因很简单：音乐是一种生活方式。事实上，你可以说这是最好的生活方式。不喜欢音乐的人根本不知道他们错过了什么。我们当然会这么说，不是吗？但就像世界各地无数的音乐家一样，从初学者到专业人士，我们对音乐的感受如此强烈，以至于我们希望帮助每个人打开这种体验的大门。使用旨在传达快乐和激情的乐器，激励每个人提高技能并进一步发展"
 
 #: app/templates/main/brand_intro/hohner.html:79
 msgid "Hohner Company"
-msgstr ""
+msgstr "Hohner公司"
 
 #: app/templates/main/brand_intro/hohner.html:82
 msgid "CULTURE"
-msgstr ""
+msgstr "文化"
 
 #: app/templates/main/brand_intro/hohner.html:83
 msgid ""
@@ -1857,12 +1976,11 @@ msgid ""
 "musicians everywhere who are playing together, learning\n"
 "                                    from one another and just having a "
 "great time."
-msgstr ""
+msgstr "在Hohner，我们每天都有现场音乐表演。这就是为什么我们想为您提供的不仅仅是一种乐器：我们希望欢迎您进入音乐世界，并邀请您加入世界各地不断壮大的音乐家圈子，他们一起演奏，互相学习，玩得开心。"
 
 #: app/templates/main/brand_intro/hohner.html:90
-#, fuzzy
 msgid "HERITAGE"
-msgstr "其他页面"
+msgstr "传统"
 
 #: app/templates/main/brand_intro/hohner.html:91
 msgid ""
@@ -1882,10 +2000,12 @@ msgid ""
 "ones. Always with the intention to enable everyone,\n"
 "                                    everywhere to Enjoy music."
 msgstr ""
+"自从Matthias "
+"Hohner于1857年在德国特罗辛根创立他的公司以来，发生了很多事情。HOHNER通过对质量的一贯奉献，成为口琴和手风琴的市场领导者，拥有全球艺术家网络。我们的乐器强烈影响了蓝调的发展，成为世界各地民间音乐传统的重要组成部分，在爵士乐的持续发展中发挥了重要作用，并在古典音乐会舞台上找到了自己的位置。今天，我们继续开发新乐器并改进现有乐器。始终致力于使每个人，无论身在何处都能享受音乐。"
 
 #: app/templates/main/brand_intro/hohner.html:102
 msgid "CRAFTSMANSHIP"
-msgstr ""
+msgstr "技能"
 
 #: app/templates/main/brand_intro/hohner.html:103
 msgid ""
@@ -1894,22 +2014,22 @@ msgid ""
 "                                    countless collaborations with "
 "musicians and teachers, we have continuously improved our\n"
 "                                    craft – and will continue to do so."
-msgstr ""
+msgstr "凭借160多年的技术专长，对客户的同情，以及与音乐家和教师的无数合作，我们不断改进我们的工艺 - 并将继续这样做。"
 
 #: app/templates/main/brand_intro/lowden.html:41
 msgid "About Lowden Guitars"
-msgstr ""
+msgstr "关于Lowden吉他"
 
 #: app/templates/main/brand_intro/lowden.html:43
 msgid ""
 "The Lowden guitar is the result of unique design, workmanship and\n"
 "                                    assembly techniques along with our "
 "choice of woods."
-msgstr ""
+msgstr "Lowden吉他是独特设计，工艺和组装技术以及我们选择的木材的结果。"
 
 #: app/templates/main/brand_intro/lowden.html:63
 msgid "History of Lowden"
-msgstr ""
+msgstr "Lowden历史"
 
 #: app/templates/main/brand_intro/lowden.html:64
 msgid ""
@@ -1927,15 +2047,15 @@ msgid ""
 "                                that an ‘information vacuum’ will always "
 "be filled – sometimes benignly, sometimes\n"
 "                                bizarrely."
-msgstr ""
+msgstr "“在1980年代后期，乔治·洛登接受了邀请，访问了瑞士的主要劳登经销商，日内瓦的Servette Music。在他到达时，共同所有者伊夫·伊默尔（Yves Imer）感谢乔治的到来，因为他要遇到的一些洛登顾客并没有意识到他确实存在 - 他们认为“乔治”，“洛登”只是一些营销人员想象力的虚构 - 事实上是一只妖精！这启发了乔治的原则，即'信息真空'将永远被填补 - 有时是良性的，有时是奇怪的。"
 
 #: app/templates/main/brand_intro/lowden.html:80
 msgid "Lowden's Guitar"
-msgstr ""
+msgstr "Lowden吉他"
 
 #: app/templates/main/brand_intro/lowden.html:83
 msgid "Design"
-msgstr ""
+msgstr "设计"
 
 #: app/templates/main/brand_intro/lowden.html:84
 msgid ""
@@ -1943,11 +2063,11 @@ msgid ""
 "bracing and\n"
 "                                    soundbox profiles, and use of natural"
 " wood..."
-msgstr ""
+msgstr "弯曲、光滑的音箱形状与精心配音的内部支撑和音箱轮廓相结合，并使用天然木材..."
 
 #: app/templates/main/brand_intro/lowden.html:89
 msgid "Workmanship"
-msgstr ""
+msgstr "技艺"
 
 #: app/templates/main/brand_intro/lowden.html:90
 msgid ""
@@ -1965,11 +2085,11 @@ msgid ""
 "sustain, volume and balance are not hindered in any way.\n"
 "                                    No short cuts are possible, just "
 "great workmanship and attention to detail!"
-msgstr ""
+msgstr "在任何乐器中引入计划外或未减轻的压力会使音调反应死亡。我们的装配技术...关闭涉及使用手动工具来提高所有关节的质量，并使音板支撑的“海豚轮廓”发声。这以及更多的设计和技术因素确保了延音，音量和平衡不会受到任何阻碍。没有捷径可走，只有精湛的工艺和对细节的关注！"
 
 #: app/templates/main/brand_intro/lowden.html:101
 msgid "Wood"
-msgstr ""
+msgstr "木质"
 
 #: app/templates/main/brand_intro/lowden.html:102
 msgid ""
@@ -1998,11 +2118,11 @@ msgid ""
 "                                    skills and understanding of wood, and"
 " in so doing create guitars which feel and sound\n"
 "                                    like individual ‘works of art’."
-msgstr ""
+msgstr "我们仍然手工分割我们的支撑材料并重新分级音板木材。我们在世界各地寻找最好的（通常是最具装饰性的）... 紧密的音木是我们吉他的真正“明星”，而不是人造的。正是这种许多细节的结合决定了我们的吉他的声音，感觉和演奏方式。今天，我比以往任何时候都更在不断地评估我们的吉他，并努力进一步调整发声，感觉和可玩性。要制作Lowden吉他，我们需要具有专注天赋和注重细节以及不妥协的热情承诺的个人。我们建立了一支真正的工匠团队，他们使用日本凿子，飞机，刀具和辐条手工制作Lowden吉他。我们目前正在建立一个最先进的夹具和工具部门，以确保我们的工匠能够微调他们的技能和对木材的理解，并在此过程中创造出感觉和听起来像个人“艺术品”的吉他。"
 
 #: app/templates/main/brand_intro/martin.html:41
 msgid "About Martin Guitars"
-msgstr ""
+msgstr "关于Martin吉他"
 
 #: app/templates/main/brand_intro/martin.html:43
 msgid ""
@@ -2011,11 +2131,11 @@ msgid ""
 "They are backed by our unwavering commitment to\n"
 "                                    environmental sustainability and "
 "responsible manufacturing practices."
-msgstr ""
+msgstr "马丁吉他和弦乐以其无与伦比的品质，工艺和音色而闻名。我们坚定不移地致力于环境可持续性和负责任的制造实践，为他们提供了支持。"
 
 #: app/templates/main/brand_intro/martin.html:64
 msgid "TWO CENTURIES OF HISTORY"
-msgstr ""
+msgstr "两个世纪的历史"
 
 #: app/templates/main/brand_intro/martin.html:65
 msgid ""
@@ -2039,16 +2159,15 @@ msgid ""
 "And who knows? With one of our instruments in your\n"
 "                                hand, you could help write the soundtrack"
 " for the next century."
-msgstr ""
+msgstr "马丁不仅仅是一把吉他。这是可玩的历史;一长串传奇乐器的一部分，可以追溯到1833年公司成立之初。我们的吉他被内战士兵在篝火旁弹奏，在20世纪初帮助塑造了现代音乐的声音，并由吉米·罗杰斯（Jimmie Rodgers）和吉恩·奥特里（Gene Autry）等音乐界的第一批超级巨星演奏。几十年后，马丁斯在伍德斯托克（Woodstock）吸引了观众，然后在MTV Unplugged上占据了中心舞台，并且可以在各种音乐流派的无数经典和当代歌曲中听到。像Hank Williams，Elvis Presley，Bob Dylan，John Lennon，Neil Young，Ed Sheeran，John Mayer，Seth Avett等艺术家都演奏了Martins，创造了上个世纪的大部分配乐。谁知道呢？有了我们手中的乐器之一，您就可以帮助编写下个世纪的配乐。"
 
 #: app/templates/main/brand_intro/martin.html:83
 msgid "SUSTAINABILITY"
-msgstr ""
+msgstr "持久"
 
 #: app/templates/main/brand_intro/martin.html:86
-#, fuzzy
 msgid "REFORESTATION"
-msgstr "个人信息"
+msgstr "再造林"
 
 #: app/templates/main/brand_intro/martin.html:87
 msgid ""
@@ -2058,11 +2177,11 @@ msgid ""
 "planted tens of thousands of mahogany, cedar,\n"
 "                                    cocobolo, rosewood, and teak trees in"
 " Nicaragua."
-msgstr ""
+msgstr "马丁种植了数万棵白桦树和枫树，以支持宾夕法尼亚州的荒地保护协会。我们还在尼加拉瓜种植了数以万计的桃花心木，雪松，椰子树，红木和柚木。"
 
 #: app/templates/main/brand_intro/martin.html:93
 msgid "PLASTIC REDUCTION INITIATIVES"
-msgstr ""
+msgstr "减少塑料的举措"
 
 #: app/templates/main/brand_intro/martin.html:94
 msgid ""
@@ -2072,11 +2191,11 @@ msgid ""
 "                                    them with reusable canvas pallet "
 "wraps. In 2021, 2.5 tons of stretch wrap were\n"
 "                                    eliminated."
-msgstr ""
+msgstr "Martin 减少了用于运输吉他托盘的一次性塑料拉伸膜，取而代之的是可重复使用的帆布托盘包装。2021年，2.5吨拉伸裹敷被淘汰。"
 
 #: app/templates/main/brand_intro/martin.html:101
 msgid "THE MARTIN JOURNAL OF ACOUSTIC GUITARS"
-msgstr ""
+msgstr "马丁原声吉他日志"
 
 #: app/templates/main/brand_intro/martin.html:102
 msgid ""
@@ -2085,13 +2204,13 @@ msgid ""
 "                                    In support of this, we encouraged "
 "readers to enjoy the digital version of the journal,\n"
 "                                    and we reduced the number of paper "
-"journals produced by 70%, saving 1.4 million sheets\n"
+"journals produced by 70 persent, saving 1.4 million sheets\n"
 "                                    of paper."
-msgstr ""
+msgstr "2021 年，我们用了一整期期刊来介绍 Martin 的可持续发展工作。为了支持这一点，我们鼓励读者享受该期刊的数字版本，我们将纸质期刊的数量减少了70份，节省了140万张纸。"
 
 #: app/templates/main/brand_intro/meinl.html:41
 msgid "ABOUT MEINL"
-msgstr ""
+msgstr "关于MEINL"
 
 #: app/templates/main/brand_intro/meinl.html:43
 msgid ""
@@ -2102,14 +2221,13 @@ msgid ""
 "Percussion, Nino Percussion, Meinl Sonic Energy, Meinl\n"
 "                                    Stick & Brush and Ortega\n"
 "                                    Guitars."
-msgstr ""
+msgstr "Meinl公司是一家家族式乐器制造商和分销商，总部位于德国古滕施泰滕。Meinl的品牌组合包括Meinl Cymbals，Meinl Percussion，Nino Percussion，Meinl Sonic Energy，Meinl Stick &amp; Brush和Ortega Guitars。"
 
 #: app/templates/main/brand_intro/meinl.html:66
 msgid "ABOUT MEINL CYMBALS"
-msgstr ""
+msgstr "关于 MEINL 镲片"
 
 #: app/templates/main/brand_intro/meinl.html:67
-#, python-format
 msgid ""
 "One of the great things about being a drummer is the opportunity to\n"
 "                                be different...to be yourself. When you "
@@ -2117,22 +2235,21 @@ msgid ""
 "                            everybody else. They're themselves. We like "
 "that.\n"
 "                                Today it is difficult to be totally "
-"original or 100% unique, but that does not mean you\n"
+"original or 100 percent unique, but that does not mean you\n"
 "                                must be like all the others. At MEINL we "
 "do our own thing. That's just who we are. And\n"
 "                            we like to think you want to be who you are, "
 "too. There's a freedom that comes with\n"
 "                                that."
-msgstr ""
+msgstr "成为鼓手的一大好处就是有机会变得与众不同……做你自己。当您聆听所有伟大的音乐时，他们与其他人不同。他们是他们自己。我们喜欢这样。今天很难做到完全原创或 100% 独一无二，但这并不意味着你必须像所有其他人一样。在 MEINL，我们做自己的事情。这就是我们。我们喜欢认为你也想成为你自己。随之而来的是自由。”"
 
 #: app/templates/main/brand_intro/meinl.html:82
 msgid "About Meinl Company"
-msgstr ""
+msgstr "关于Meinl公司"
 
 #: app/templates/main/brand_intro/meinl.html:85
-#, fuzzy
 msgid "IDEOLOGY"
-msgstr "视频"
+msgstr "观念"
 
 #: app/templates/main/brand_intro/meinl.html:86
 msgid ""
@@ -2145,11 +2262,11 @@ msgid ""
 "                                    driving force behind all our "
 "activities! It encourages us to develop new sounds and to\n"
 "                                    push our creativity farther forward."
-msgstr ""
+msgstr "鼓手不断告诉我们他们如何通过演奏MEINL钹而获得灵感。他们的灵感来自他们听到和感受到的新声音，这些声音同时磨练和塑造了他们的个人鼓风格。这是我们最大的赞美，也是我们所有活动背后的驱动力！它鼓励我们开发新的声音，并将我们的创造力推向更远的地方。"
 
 #: app/templates/main/brand_intro/meinl.html:94
 msgid "FROM DRUMMERS FOR DRUMMERS!"
-msgstr ""
+msgstr "从鼓手中来，到鼓手中去！"
 
 #: app/templates/main/brand_intro/meinl.html:95
 msgid ""
@@ -2161,11 +2278,11 @@ msgid ""
 "inspiring cymbal sounds. Some of our top artists take\n"
 "                                    part in this process also. We are "
 "proud to say that we are drummers first!"
-msgstr ""
+msgstr "经验丰富且积极进取的个人，他们自己都是鼓手，组成了我们的执行和创意团队。这个团队计划我们所有的活动，管理我们的促销活动，并创造鼓舞人心的钹声音。我们的一些顶级艺术家也参与了这个过程。我们很自豪地说，我们首先是鼓手！"
 
 #: app/templates/main/brand_intro/meinl.html:102
 msgid "AND KNOW-HOW"
-msgstr ""
+msgstr "专有技术"
 
 #: app/templates/main/brand_intro/meinl.html:103
 msgid ""
@@ -2179,11 +2296,11 @@ msgid ""
 "necessary to have this diversity, the background in and\n"
 "                                    knowledge of all those different "
 "materials."
-msgstr ""
+msgstr "只有 MEINL 使用 6 种不同的合金来制作镲片，这比当今任何其他镲片制造商使用的都要多。因此，我们能够提供最广泛的基本钹声音特性选择。努力实现任何可能的合理想法使得有必要拥有这种多样性，所有这些不同材料的背景和知识。"
 
 #: app/templates/main/brand_intro/steinway.html:41
 msgid "About Steinway's Piano"
-msgstr ""
+msgstr "关于Steinway钢琴"
 
 #: app/templates/main/brand_intro/steinway.html:43
 msgid ""
@@ -2195,11 +2312,11 @@ msgid ""
 "standards of quality, in turn ensuring that the STEINWAY\n"
 "                                    remains the peerless instrument of "
 "uncompromising expression."
-msgstr ""
+msgstr "160多年来，STEINWAY & SONS一直致力于制造世界上最好的钢琴。我们开创性的手工制作方法至今仍在使用，以确保我们毫不妥协的质量标准，从而确保施坦威仍然是无与伦比的不妥协表达工具。"
 
 #: app/templates/main/brand_intro/steinway.html:66
 msgid "Having a Steinway Piano"
-msgstr ""
+msgstr "拥有一个Steinway钢琴"
 
 #: app/templates/main/brand_intro/steinway.html:67
 msgid ""
@@ -2212,15 +2329,15 @@ msgid ""
 "connects artist and listener, and invites its owner to\n"
 "                                join a tradition of musical perfection, "
 "making it an invaluable investment."
-msgstr ""
+msgstr "称施坦威父子的真正宏伟或正直是一种压倒性的感觉。它远不止是一件精致的乐器，更是一件表达和创造力最高的乐器。施坦威将艺术家和听众紧密联系在一起，并邀请其所有者加入音乐完美的传统，使其成为一项无价的投资。"
 
 #: app/templates/main/brand_intro/steinway.html:80
 msgid "About Steinway"
-msgstr ""
+msgstr "关于Steinway"
 
 #: app/templates/main/brand_intro/steinway.html:83
 msgid "Steinway Today"
-msgstr ""
+msgstr "关于现在"
 
 #: app/templates/main/brand_intro/steinway.html:84
 msgid ""
@@ -2236,11 +2353,11 @@ msgid ""
 "                                    12,000 individual parts, has its own "
 "musical character and is as unique as the\n"
 "                                    individual who plays it."
-msgstr ""
+msgstr "从师傅到学徒，一代又一代，每一个施坦威都是在几十年的制作过程中积累经验的工匠们建造的——他们以手工制作的钢琴为傲，花时间将其人性化，并努力实现不断的创新和改进。每一位施坦威父子公司的大人物都是一件工艺杰作，也是一件完美的艺术作品。每个施坦威由12000多个单独的部分组成，都有自己的音乐特征，并且与演奏者一样独特。"
 
 #: app/templates/main/brand_intro/steinway.html:94
 msgid "Steinway Tomorrow"
-msgstr ""
+msgstr "Steinway的明天"
 
 #: app/templates/main/brand_intro/steinway.html:95
 msgid ""
@@ -2258,11 +2375,11 @@ msgid ""
 "                                    artistry, SPIRIO provides an "
 "unrivaled musical experience, indistinguishable from a live\n"
 "                                    performance."
-msgstr ""
+msgstr "STEINWAY & SONS的第一项专利于1857年获得批准，从那时起，该公司已获得150多项其他专利，将施坦威定位为评判所有其他钢琴的钢琴。我们最新的创新，施坦威父子SPIRIO，是世界上最好的高分辨率钢琴。作为工艺、技术和艺术的杰作，SPIRIO 提供了无与伦比的音乐体验，与现场表演无异。"
 
 #: app/templates/main/brand_intro/steinway.html:107
 msgid "Steinway in History"
-msgstr ""
+msgstr "Steinway的历史"
 
 #: app/templates/main/brand_intro/steinway.html:108
 msgid ""
@@ -2281,22 +2398,22 @@ msgid ""
 "                                    STEINWAY earned a reputation as an "
 "investment for the owner in the legacy of future\n"
 "                                    generations."
-msgstr ""
+msgstr "STEINWAY & SONS由德国移民Henry Engelhard Steinway于1853年在Varick Street的曼哈顿阁楼上创立。在接下来的三十年里，亨利和他的儿子们发展了现代钢琴。他们一次制造一个乐器，应用从大师到学徒传下来的技能，一代又一代。施坦威成为大约百分之九十七的音乐会艺术家的选择，他们中没有一个人得到报酬来支持这种乐器。施坦威作为业主对子孙后代遗产的投资而赢得了声誉。"
 
 #: app/templates/main/brand_intro/taylor.html:41
 msgid "Meet Taylor's Class of 2022"
-msgstr ""
+msgstr "认识泰勒的2022年款式"
 
 #: app/templates/main/brand_intro/taylor.html:43
 msgid ""
 "This year's new models include a trio of compact GT guitars, a\n"
 "                                mahogany Grand Concert and our first all-"
 "maple Grand Pacific."
-msgstr ""
+msgstr "今年的新型号包括三把紧凑型 GT 吉他、桃花心木 Grand Concert 和我们的第一款全枫木 Grand Pacific。"
 
 #: app/templates/main/brand_intro/taylor.html:63
 msgid "About Taylor Guitars"
-msgstr ""
+msgstr "关于Taylor吉他"
 
 #: app/templates/main/brand_intro/taylor.html:64
 msgid ""
@@ -2314,15 +2431,15 @@ msgid ""
 "is widely recognized throughout the musical\n"
 "                            instrument industry as the visionary acoustic"
 " guitar manufacturer."
-msgstr ""
+msgstr "Taylor Guitars 由 Bob Taylor 和 Kurt Listug 于 1974 年创立，现已发展成为全球领先的优质原声吉他制造商。 Taylor 原声吉他以融合现代创新制造技术和大师级工匠对细节的关注而闻名，被广泛认为是世界上音质最好、最容易演奏的吉他之一。该公司是使用计算机研磨机、激光和其他高科技工具和专有机械的先驱，如今，鲍勃·泰勒在整个乐器行业被广泛认可为有远见的原声吉他制造商。"
 
 #: app/templates/main/brand_intro/taylor.html:79
 msgid "The Taylor Difference"
-msgstr ""
+msgstr "Taylor的不同之处"
 
 #: app/templates/main/brand_intro/taylor.html:82
 msgid "Sustainability Leadership"
-msgstr ""
+msgstr "持续的领导力"
 
 #: app/templates/main/brand_intro/taylor.html:83
 msgid ""
@@ -2333,11 +2450,11 @@ msgid ""
 "                                    you purchase a Taylor guitar, you are"
 " supporting the highest levels of ethical,\n"
 "                                    eco-conscious business."
-msgstr ""
+msgstr "我们坚定地致力于保护我们使用的自然资源的未来。这促使我们在世界各地开创了许多生态可持续性倡议。当您购买泰勒吉他时，您正在支持最高水平的道德，生态意识业务。"
 
 #: app/templates/main/brand_intro/taylor.html:90
 msgid "Playable NecksWorkmanship"
-msgstr ""
+msgstr "演奏性强的的琴颈工艺"
 
 #: app/templates/main/brand_intro/taylor.html:91
 msgid ""
@@ -2348,11 +2465,11 @@ msgid ""
 "                                    neck angle to be set with extreme "
 "accuracy and easily maintained throughout the life of\n"
 "                                    the guitar."
-msgstr ""
+msgstr "泰勒吉他琴颈是业内最具可演奏性的，这要归功于我们获得专利的颈关节设计和时尚的琴颈轮廓。我们精确的琴颈/琴身装配工艺允许以极高的精度设置每个琴颈角度，并在吉他的整个使用寿命期间轻松维护。"
 
 #: app/templates/main/brand_intro/taylor.html:98
 msgid "Precision Craftsmanship"
-msgstr ""
+msgstr "精密的制作工艺"
 
 #: app/templates/main/brand_intro/taylor.html:99
 msgid ""
@@ -2365,7 +2482,7 @@ msgid ""
 "unmatched quality and consistency in the production of our\n"
 "                                    guitars, and helped us develop game-"
 "changers like V-Class bracing."
-msgstr ""
+msgstr "我们为现代工艺设定了标准，以创造最佳的演奏体验。我们将创新的制造技术与无可挑剔的手工工艺相结合，为我们的吉他生产带来了无与伦比的质量和一致性，并帮助我们开发了 V-Class 音梁等改变游戏规则的产品。"
 
 #: app/templates/order/order-confirm-premium.html:126
 msgid "Choose Your Premium Plan"
@@ -2373,19 +2490,19 @@ msgstr "选择您的会员计划"
 
 #: app/templates/order/order-confirm-premium.html:130
 msgid "30days"
-msgstr ""
+msgstr "30天"
 
 #: app/templates/order/order-confirm-premium.html:131
 msgid "90days"
-msgstr ""
+msgstr "90天"
 
 #: app/templates/order/order-confirm-premium.html:132
 msgid "180days"
-msgstr ""
+msgstr "180天"
 
 #: app/templates/order/order-confirm-premium.html:133
 msgid "360days"
-msgstr ""
+msgstr "360天"
 
 #: app/templates/order/order-confirm-premium.html:143
 #: app/templates/order/order-confirm.html:218
@@ -2395,7 +2512,7 @@ msgstr "订单综述"
 
 #: app/templates/order/order-confirm-premium.html:148
 msgid "Total Payment"
-msgstr "没有支付信息！"
+msgstr "总计"
 
 #: app/templates/order/order-confirm-premium.html:157
 #: app/templates/order/order-confirm.html:250
@@ -2408,10 +2525,9 @@ msgid ""
 "There was an error processing your customer info. Please try again, or "
 "contact us if you\n"
 "                                continue to have problems."
-msgstr "处理您的用户信息时出错，请您重新尝试。如果您仍有问题请联系我们。"
+msgstr "处理您的用户信息时出错，请重新尝试。如果您仍有问题请联系我们。"
 
 #: app/templates/order/order-confirm.html:129
-#, fuzzy
 msgid "Recipient Info"
 msgstr "收货人姓名"
 
@@ -2437,7 +2553,7 @@ msgstr "收货人姓名"
 #: app/templates/order/order-detail.html:882
 #: app/templates/order/order-detail.html:965
 msgid "Phone Number"
-msgstr ""
+msgstr "电话号码"
 
 #: app/templates/order/order-confirm.html:148
 msgid "Shipping Address"
@@ -2448,7 +2564,6 @@ msgstr "配送地址"
 #: app/templates/order/order-detail.html:940
 #: app/templates/staff/page-list-orders.html:589
 #: app/templates/staff/page-list-orders.html:700
-#, fuzzy
 msgid "Full Address"
 msgstr "添加地址"
 
@@ -2457,7 +2572,6 @@ msgstr "添加地址"
 #: app/templates/order/order-detail.html:947
 #: app/templates/staff/page-list-orders.html:596
 #: app/templates/staff/page-list-orders.html:707
-#, fuzzy
 msgid "default"
 msgstr "默认"
 
@@ -2484,16 +2598,14 @@ msgstr "配送方式"
 
 #: app/templates/order/order-confirm.html:200
 msgid "NOTICE: The self-collection is not available during epidemic time"
-msgstr ""
+msgstr "注意：在疫情期间自提服务将暂停支持"
 
 #: app/templates/order/order-confirm.html:204
-#, fuzzy
 msgid "delivery"
 msgstr "快递"
 
 #: app/templates/order/order-confirm.html:207
 #: app/templates/order/order-confirm.html:209
-#, fuzzy
 msgid "self-collecting"
 msgstr "产品"
 
@@ -2503,7 +2615,7 @@ msgstr "小计（不包含运费）"
 
 #: app/templates/order/order-confirm.html:231
 msgid "Delivery Fee"
-msgstr ""
+msgstr "运费"
 
 #: app/templates/order/order-confirm.html:237
 #: app/templates/staff/page-list-orders.html:59
@@ -2512,19 +2624,19 @@ msgstr "小计"
 
 #: app/templates/order/order-confirm.html:242
 msgid "Payment (after discount)"
-msgstr ""
+msgstr "共需支付（折后）"
 
 #: app/templates/order/order-detail.html:316
 #: app/templates/order/order-listing.html:309
 #: app/templates/userinfo/temp_address_listing.html:23
 msgid "Your Order"
-msgstr "我的订单"
+msgstr "您的订单"
 
 #: app/templates/order/order-detail.html:329
 #: app/templates/order/order-listing.html:370
 #: app/templates/staff/page-list-orders.html:274
 msgid "Waiting for Payment"
-msgstr ""
+msgstr "等待支付"
 
 #: app/templates/order/order-detail.html:333
 #: app/templates/order/order-detail.html:513
@@ -2533,7 +2645,7 @@ msgstr ""
 #: app/templates/staff/page-list-orders.html:96
 #: app/templates/staff/page-list-orders.html:278
 msgid "Preparing"
-msgstr ""
+msgstr "准备中"
 
 #: app/templates/order/order-detail.html:337
 #: app/templates/order/order-detail.html:529
@@ -2541,14 +2653,13 @@ msgstr ""
 #: app/templates/order/order-listing.html:378
 #: app/templates/staff/page-list-orders.html:282
 msgid "On Delivery"
-msgstr ""
+msgstr "配送中"
 
 #: app/templates/order/order-detail.html:341
 #: app/templates/order/order-listing.html:382
 #: app/templates/staff/page-list-orders.html:286
-#, fuzzy
 msgid "Waiting for Collection"
-msgstr "等待整理"
+msgstr "等待发货"
 
 #: app/templates/order/order-detail.html:345
 #: app/templates/order/order-detail.html:545
@@ -2560,7 +2671,7 @@ msgstr "等待整理"
 #: app/templates/staff/page-list-orders.html:111
 #: app/templates/staff/page-list-orders.html:290
 msgid "Finished"
-msgstr "完成"
+msgstr "已完成"
 
 #: app/templates/order/order-detail.html:349
 #: app/templates/order/order-listing.html:322
@@ -2574,100 +2685,87 @@ msgstr "已取消"
 #: app/templates/order/order-listing.html:394
 #: app/templates/staff/page-list-orders.html:121
 #: app/templates/staff/page-list-orders.html:298
-#, fuzzy
 msgid "Expired"
-msgstr "必填"
+msgstr "已过期"
 
 #: app/templates/order/order-detail.html:364
 #: app/templates/staff/page-list-orders.html:309
-#, fuzzy
 msgid "Basic Information"
-msgstr "个人信息"
+msgstr "基本信息"
 
 #: app/templates/order/order-detail.html:371
 #: app/templates/order/order-detail.html:812
-#, fuzzy
 msgid "Modify Type"
-msgstr "修改商品"
+msgstr "修改商品型号"
 
 #: app/templates/order/order-detail.html:382
 #: app/templates/order/order-listing.html:361
 #: app/templates/staff/page-list-orders.html:319
-#, fuzzy
 msgid "Trade"
-msgstr "订单"
+msgstr "交易"
 
 #: app/templates/order/order-detail.html:387
 #: app/templates/order/order-detail.html:495
 #: app/templates/order/order-detail.html:501
 #: app/templates/staff/page-list-orders.html:326
-#, fuzzy
 msgid "Payment"
-msgstr "没有支付信息！"
+msgstr "支付"
 
 #: app/templates/order/order-detail.html:397
 #: app/templates/staff/page-list-orders.html:337
-#, fuzzy
 msgid "Order Type"
 msgstr "型号"
 
 #: app/templates/order/order-detail.html:400
 #: app/templates/staff/page-list-orders.html:341
 msgid "Delivery Cost"
-msgstr ""
+msgstr "快递费"
 
 #: app/templates/order/order-detail.html:408
 #: app/templates/staff/page-list-orders.html:351
 msgid "Actual Paid"
-msgstr ""
+msgstr "实际付款"
 
 #: app/templates/order/order-detail.html:417
 #: app/templates/staff/page-list-orders.html:361
-#, fuzzy
 msgid "Address Information"
-msgstr "个人信息"
+msgstr "地址信息"
 
 #: app/templates/order/order-detail.html:419
 #: app/templates/staff/page-list-orders.html:363
-#, fuzzy
 msgid "Recipient Information"
-msgstr "个人信息"
+msgstr "收获人信息"
 
 #: app/templates/order/order-detail.html:427
 #: app/templates/order/order-detail.html:909
-#, fuzzy
 msgid "Modify Address"
 msgstr "修改地址"
 
 #: app/templates/order/order-detail.html:432
 #: app/templates/order/order-detail.html:911
-#, fuzzy
 msgid "Modify Recipient"
-msgstr "修改商品"
+msgstr "修改收货人"
 
 #: app/templates/order/order-detail.html:562
 #: app/templates/order/order-detail.html:568
-#, fuzzy
 msgid "Waiting For Collection"
-msgstr "等待整理"
+msgstr "等待收货"
 
 #: app/templates/order/order-detail.html:693
-#, fuzzy
 msgid "Commented"
-msgstr "评论"
+msgstr "已评论"
 
 #: app/templates/order/order-detail.html:826
 #: app/templates/staff/page-list-orders.html:130
 #: app/templates/staff/page-list-orders.html:494
 #: app/templates/staff/page-list-orders.html:513
 #: app/templates/staff/page-list-orders.html:552
-#, fuzzy
 msgid "Self-Collection"
-msgstr "产品"
+msgstr "自提"
 
 #: app/templates/order/order-listing.html:44
 msgid "Welcome to Siren – Selects online music instrument shop for you"
-msgstr ""
+msgstr "欢迎来到Siren - 为您精心挑选的在线乐器商店"
 
 #: app/templates/order/order-listing.html:326
 #: app/templates/staff/page-list-orders.html:91
@@ -2677,25 +2775,23 @@ msgstr "未支付"
 #: app/templates/order/order-listing.html:330
 #: app/templates/staff/page-list-orders.html:101
 msgid "Delivering"
-msgstr "快递"
+msgstr "配送中"
 
 #: app/templates/order/order-listing.html:334
 msgid "Wait for Collection"
-msgstr "等待整理"
+msgstr "等待收货"
 
 #: app/templates/order/order-listing.html:432
 msgid "View All & Details"
-msgstr ""
+msgstr "查看详情"
 
 #: app/templates/order/order-listing.html:483
-#, fuzzy
 msgid "View Details"
-msgstr "用户详情"
+msgstr "查看详情"
 
 #: app/templates/order/order-listing.html:542
-#, fuzzy
 msgid "Pay"
-msgstr "公司"
+msgstr "支付"
 
 #: app/templates/order/order-listing.html:548
 #: app/templates/staff/backup-staff-modify.html:845
@@ -2711,20 +2807,19 @@ msgstr "取消"
 #: app/templates/order/order-listing.html:555
 #: app/templates/order/order-listing.html:562
 msgid "View Progress"
-msgstr ""
+msgstr "查看进度"
 
 #: app/templates/order/order-listing.html:568
-#, fuzzy
 msgid "Confirm"
-msgstr "确认邮件地址"
+msgstr "确认"
 
 #: app/templates/order/order-listing.html:575
 msgid "After Sale Service"
-msgstr ""
+msgstr "售后服务"
 
 #: app/templates/staff/backup-staff-modify.html:29
 msgid "Siren Management"
-msgstr "塞壬管理"
+msgstr "Siren管理"
 
 #: app/templates/staff/backup-staff-modify.html:99
 msgid "Sale"
@@ -2776,7 +2871,7 @@ msgstr "添加供应商"
 
 #: app/templates/staff/backup-staff-modify.html:581
 msgid "Get More Feature by Upgrading"
-msgstr "更新以获得更多特征"
+msgstr "升级以获得更多特征"
 
 #: app/templates/staff/backup-staff-modify.html:797
 msgid ""
@@ -2832,7 +2927,7 @@ msgstr "重置"
 
 #: app/templates/staff/page-add-journal.html:39
 msgid "Upload New Journal"
-msgstr ""
+msgstr "上传新日志"
 
 #: app/templates/staff/page-add-product.html:44
 msgid "Product Name"
@@ -2851,7 +2946,7 @@ msgstr "请输入商品名称"
 #: app/templates/staff/page-add-product.html:59
 #: app/templates/staff/page-modify-product.html:74
 msgid "Strings"
-msgstr ""
+msgstr "弦乐器"
 
 #: app/templates/staff/page-add-product.html:146
 msgid "Additional Specifications"
@@ -2898,66 +2993,61 @@ msgid "Add Model Type"
 msgstr "添加商品型号"
 
 #: app/templates/staff/page-list-journals.html:59
-#, fuzzy
 msgid "Journal List"
-msgstr "账目"
+msgstr "日志列表"
 
 #: app/templates/staff/page-list-journals.html:61
 msgid ""
 "You can see all the journals in your shop here, and it's available to "
 "manage your\n"
 "                            journals."
-msgstr ""
+msgstr "您可以在这里看到您的商店的全部日志并且可以管理它们。"
 
 #: app/templates/staff/page-list-journals.html:64
 msgid "Upload new journals and notifications!"
-msgstr ""
+msgstr "上传新的日志和通知"
 
 #: app/templates/staff/page-list-journals.html:68
-#, fuzzy
 msgid "Upload Journal"
-msgstr "上传商品"
+msgstr "上传日志"
 
 #: app/templates/staff/page-list-journals.html:77
 #: app/templates/staff/page-list-orders.html:57
-#, fuzzy
 msgid "Date"
-msgstr "创建"
+msgstr "日期"
 
 #: app/templates/staff/page-list-journals.html:78
 msgid "Author"
-msgstr ""
+msgstr "作者"
 
 #: app/templates/staff/page-list-journals.html:79
 msgid "Journal Content"
-msgstr ""
+msgstr "日志内容"
 
 #: app/templates/staff/page-list-journals.html:80
 #: app/templates/staff/page-list-orders.html:64
-#, fuzzy
 msgid "Action"
-msgstr "品牌专区"
+msgstr "操作"
 
 #: app/templates/staff/page-list-journals.html:144
 msgid "Journal Quick View"
-msgstr ""
+msgstr "日志快速浏览"
 
 #: app/templates/staff/page-list-journals.html:160
-#, fuzzy
 msgid ""
 "Last\n"
 "                                                                        "
 "Edit"
-msgstr "显示更多"
+msgstr "最近编辑"
 
 #: app/templates/staff/page-list-journals.html:167
 #: app/templates/staff/page-list-orders.html:438
 msgid "Close"
-msgstr ""
+msgstr "关闭"
 
 #: app/templates/staff/page-list-journals.html:188
 msgid "Edit This Journal"
-msgstr ""
+msgstr "编辑当前日志"
 
 #: app/templates/staff/page-list-journals.html:201
 msgid ""
@@ -2983,100 +3073,89 @@ msgid ""
 msgstr ""
 
 #: app/templates/staff/page-list-orders.html:42
-#, fuzzy
 msgid "Order List"
-msgstr "用户列表"
+msgstr "订单列表"
 
 #: app/templates/staff/page-list-orders.html:44
 msgid ""
 "This page effectively list all orders from clients and provides "
 "functionalities"
-msgstr ""
+msgstr "本页面高效地列出了来自客户的所有订单并提供您对应的功能"
 
 #: app/templates/staff/page-list-orders.html:45
 msgid "for you to manage and update these orders."
-msgstr ""
+msgstr "去管理和更新这些订单。"
 
 #: app/templates/staff/page-list-orders.html:58
-#, fuzzy
 msgid "Customer"
 msgstr "顾客"
 
 #: app/templates/staff/page-list-orders.html:60
-#, fuzzy
 msgid "Paid"
-msgstr "未支付"
+msgstr "支付"
 
 #: app/templates/staff/page-list-orders.html:63
 msgid "Priority"
-msgstr ""
+msgstr "优先级"
 
 #: app/templates/staff/page-list-orders.html:106
 msgid "Waiting"
-msgstr ""
+msgstr "等待中"
 
 #: app/templates/staff/page-list-orders.html:143
-#, fuzzy
 msgid "Normal"
 msgstr "账目"
 
 #: app/templates/staff/page-list-orders.html:148
 msgid "Important"
-msgstr ""
+msgstr "重要"
 
 #: app/templates/staff/page-list-orders.html:153
 msgid "Significant"
-msgstr ""
+msgstr "重要的"
 
 #: app/templates/staff/page-list-orders.html:260
-#, fuzzy
 msgid "Order Details"
-msgstr "用户详情"
+msgstr "订单详情"
 
 #: app/templates/staff/page-list-orders.html:455
-#, fuzzy
 msgid "Details"
-msgstr "用户详情"
+msgstr "详情"
 
 #: app/templates/staff/page-list-orders.html:628
-#, fuzzy
 msgid "Recipient Phone"
-msgstr "收货人姓名"
+msgstr "收货人电话"
 
 #: app/templates/staff/page-list-orders.html:664
-#, fuzzy
 msgid "Change Address"
-msgstr "配送地址"
+msgstr "更改地址"
 
 #: app/templates/staff/page-list-orders.html:740
-#, fuzzy
 msgid ""
 "Change\n"
 "                                                                        "
 "Recipient"
-msgstr "显示更多"
+msgstr "更换收货人"
 
 #: app/templates/staff/page-list-orders.html:757
-#, fuzzy
 msgid ""
 "Recipient\n"
 ""
 "                                                                                    "
 "Name"
-msgstr "显示更多"
+msgstr "收货人姓名"
 
 #: app/templates/staff/page-list-orders.html:772
-#, fuzzy
 msgid ""
 "Recipient\n"
 ""
 "                                                                                    "
 "Phone"
-msgstr "显示更多"
+msgstr "收货人电话"
 
 #: app/templates/staff/page-list-product.html:53
 msgid "Model Serial"
-msgstr ""
+msgstr "产品序列号"
 
 #: app/templates/staff/page-list-product.html:74
 msgid "Product List"
@@ -3084,11 +3163,11 @@ msgstr "产品列表"
 
 #: app/templates/staff/page-list-product.html:76
 msgid "This page effectively list all commodities and provides functionalities"
-msgstr ""
+msgstr "本页面高效地向您了罗列了所有商品并提供了对应的功能"
 
 #: app/templates/staff/page-list-product.html:77
 msgid "for you to manage products and model types."
-msgstr ""
+msgstr "让您能够管理产品和型号"
 
 #: app/templates/staff/page-list-product.html:89
 msgid "Product"
@@ -3100,7 +3179,7 @@ msgstr "型号"
 
 #: app/templates/staff/page-list-product.html:168
 msgid "Serial"
-msgstr ""
+msgstr "序列号"
 
 #: app/templates/staff/page-list-product.html:245
 msgid ""
@@ -3111,34 +3190,31 @@ msgid ""
 ""
 "                                                                                            "
 "to upload"
-msgstr ""
+msgstr "上传何种媒体"
 
 #: app/templates/staff/page-list-product.html:267
-#, fuzzy
 msgid "Upload Video"
-msgstr "上传商品"
+msgstr "上传视频"
 
 #: app/templates/staff/page-list-product.html:276
 msgid "Upload Audio"
-msgstr ""
+msgstr "上传音频"
 
 #: app/templates/staff/page-list-product.html:285
-#, fuzzy
 msgid ""
 "Upload 3D\n"
 ""
 "                                                                                                                "
 "Model"
-msgstr "显示更多"
+msgstr "上传3D模型"
 
 #: app/templates/staff/page-list-product.html:318
-#, fuzzy
 msgid ""
 "Upload a Video\n"
 ""
 "                                                                                            "
 "File"
-msgstr "显示更多"
+msgstr "上传视频文件"
 
 #: app/templates/staff/page-list-product.html:349
 msgid ""
@@ -3152,16 +3228,15 @@ msgid ""
 ""
 "                                                                                                                    "
 "Only)"
-msgstr ""
+msgstr "选择文件（仅支持MP4）"
 
 #: app/templates/staff/page-list-product.html:389
-#, fuzzy
 msgid ""
 "Upload a Audio\n"
 ""
 "                                                                                            "
 "File"
-msgstr "显示更多"
+msgstr "上传音频文件"
 
 #: app/templates/staff/page-list-product.html:420
 msgid ""
@@ -3175,21 +3250,19 @@ msgid ""
 ""
 "                                                                                                                    "
 "Only)"
-msgstr ""
+msgstr "选择文件（仅支持MP3）"
 
 #: app/templates/staff/page-list-product.html:459
-#, fuzzy
 msgid "Upload 3D Model"
-msgstr "上传商品"
+msgstr "上传3D模型"
 
 #: app/templates/staff/page-list-product.html:466
-#, fuzzy
 msgid ""
 "If no texture uploaded, a\n"
 ""
 "                                                                                            "
 "default one will be given."
-msgstr "显示更多"
+msgstr "如果不上传贴图材质，默认材质将会作为贴图采用。"
 
 #: app/templates/staff/page-list-product.html:491
 msgid ""
@@ -3206,61 +3279,59 @@ msgid ""
 ""
 "                                                                                                                    "
 "Only)"
-msgstr ""
+msgstr "选择3D模型文件（仅支持obj/fbx文件）"
 
 #: app/templates/staff/page-modify-journal.html:39
 msgid "Modify Your Journal"
-msgstr ""
+msgstr "修改您的日志"
 
 #: app/templates/staff/page-modify-modeltype.html:32
 msgid "Modify Model"
-msgstr "修改商品"
+msgstr "修改商品型号"
 
 #: app/templates/staff/page-modify-product.html:132
 msgid "Cymbals"
 msgstr ""
 
 #: app/templates/staff/page-modify-product.html:165
-#, fuzzy
 msgid "No Extra Requirement"
-msgstr "额外要求"
+msgstr "无额外要求"
 
 #: app/templates/staff/page-upload-modeltype.html:32
 msgid "Upload Model"
-msgstr "上传商品"
+msgstr "上传商品型号"
 
 #: app/templates/staff/staff-index.html:32
 msgid "Hi"
-msgstr ""
+msgstr "你好"
 
 #: app/templates/staff/staff-index.html:32
 msgid "Greetings"
-msgstr ""
+msgstr "欢迎回来"
 
 #: app/templates/staff/staff-index.html:34
 msgid ""
 "Dashboard gives you views of key performance of The Siren's recent "
 "business progress."
-msgstr ""
+msgstr "Dashboard为您提供了Siren最近业务进展的关键性能视图。"
 
 #: app/templates/staff/staff-index.html:49
 msgid "Total Sales"
-msgstr ""
+msgstr "共售出"
 
 #: app/templates/staff/staff-index.html:87
-#, fuzzy
 msgid "Product Sold"
-msgstr "产品"
+msgstr "产品售出"
 
 #: app/templates/staff/staff-index.html:104
 msgid "Overview"
-msgstr ""
+msgstr "总览"
 
 #: app/templates/staff/staff-index.html:110
 #: app/templates/staff/staff-index.html:136
 #: app/templates/staff/staff-index.html:162
 msgid "This Month"
-msgstr ""
+msgstr "本月"
 
 #: app/templates/staff/staff-index.html:114
 #: app/templates/staff/staff-index.html:166
@@ -3268,7 +3339,7 @@ msgstr ""
 #: app/templates/staff/staff-index.html:358
 #: app/templates/staff/staff-index.html:383
 msgid "Year"
-msgstr ""
+msgstr "年"
 
 #: app/templates/staff/staff-index.html:115
 #: app/templates/staff/staff-index.html:167
@@ -3276,7 +3347,7 @@ msgstr ""
 #: app/templates/staff/staff-index.html:359
 #: app/templates/staff/staff-index.html:384
 msgid "Month"
-msgstr ""
+msgstr "月"
 
 #: app/templates/staff/staff-index.html:116
 #: app/templates/staff/staff-index.html:168
@@ -3284,71 +3355,68 @@ msgstr ""
 #: app/templates/staff/staff-index.html:360
 #: app/templates/staff/staff-index.html:385
 msgid "Week"
-msgstr ""
+msgstr "周"
 
 #: app/templates/staff/staff-index.html:130
 msgid "Revenue Vs Cost"
-msgstr ""
+msgstr "收入与成本"
 
 #: app/templates/staff/staff-index.html:140
 msgid "Yearly"
-msgstr ""
+msgstr "年化"
 
 #: app/templates/staff/staff-index.html:141
 msgid "Monthly"
-msgstr ""
+msgstr "周化"
 
 #: app/templates/staff/staff-index.html:142
 msgid "Weekly"
-msgstr ""
+msgstr "每周"
 
 #: app/templates/staff/staff-index.html:156
-#, fuzzy
+
 msgid "Top Products"
-msgstr "产品"
+msgstr "热门产品"
 
 #: app/templates/staff/staff-index.html:187
 msgid "Item"
-msgstr ""
+msgstr "项目"
 
 #: app/templates/staff/staff-index.html:258
 msgid "Best Item All Time"
-msgstr ""
+msgstr "有史以来最好的项目"
 
 #: app/templates/staff/staff-index.html:278
-#, fuzzy
 msgid "Total Sell"
-msgstr "总计"
+msgstr "总销售"
 
 #: app/templates/staff/staff-index.html:279
 msgid "Total Earned"
-msgstr ""
+msgstr "总收入"
 
 #: app/templates/staff/staff-index.html:322
 msgid "Income"
-msgstr ""
+msgstr "收入"
 
 #: app/templates/staff/staff-index.html:405
 msgid "Average Orders"
-msgstr ""
+msgstr "平均订单"
 
 #: app/templates/staff/staff-index.html:421
-#, fuzzy
 msgid "Top Orders"
-msgstr "弹出框"
+msgstr "热门订单"
 
 #: app/templates/userinfo/edit_address_test.html:13
-#, fuzzy
 msgid "Add New Address"
 msgstr "添加地址"
 
 #: app/templates/userinfo/edit_address_test.html:16
 msgid "type here to search..."
-msgstr ""
+msgstr "在这里搜索..."
 
 #: app/templates/userinfo/edit_address_test.html:20
 msgid "close"
-msgstr ""
+msgstr "关闭"
 
 #: app/templates/userinfo/temp_address_listing.html:41
 #: app/templates/userinfo/user_profile.html:262
@@ -3402,7 +3470,6 @@ msgid "Describe yourself..."
 msgstr "描述你自己。。。"
 
 #: app/templates/userinfo/user_profile.html:196
-#, fuzzy
 msgid "Default Address"
 msgstr "修改地址"
 
@@ -3423,54 +3490,51 @@ msgid "Set as Default"
 msgstr "设为默认"
 
 #: app/templates/userinfo/user_profile.html:413
-#, fuzzy
 msgid "Premium section"
 msgstr "会员专区"
 
 #: app/templates/userinfo/user_profile.html:420
 msgid "Premium remain"
-msgstr ""
+msgstr "会员剩余时长"
 
 #: app/templates/userinfo/user_profile.html:429
 #: app/templates/userinfo/user_profile.html:432
 msgid "day"
-msgstr ""
+msgstr "天"
 
 #: app/templates/userinfo/user_profile.html:435
 msgid "days"
-msgstr ""
+msgstr "天"
 
 #: app/templates/userinfo/user_profile.html:443
 msgid "Your Benefit"
-msgstr ""
+msgstr "您的特权"
 
 #: app/templates/userinfo/user_profile.html:450
 msgid "Free delivery"
-msgstr ""
+msgstr "免费邮寄"
 
 #: app/templates/userinfo/user_profile.html:457
 msgid "Get a "
-msgstr ""
+msgstr "您的每个订单都将获得"
 
 #: app/templates/userinfo/user_profile.html:457
 msgid "discount"
-msgstr ""
+msgstr "95折"
 
 #: app/templates/userinfo/user_profile.html:457
-msgid "of"
+msgid "of 5 percent "
 msgstr ""
 
 #: app/templates/userinfo/user_profile.html:458
 msgid "off in every order you placed"
-msgstr ""
+msgstr "的折扣"
 
 #: app/templates/userinfo/user_profile.html:465
-#, fuzzy
 msgid "Change "
-msgstr "更改目录"
+msgstr "更改您想要的"
 
 #: app/templates/userinfo/user_profile.html:465
-#, fuzzy
 msgid "shipping method"
 msgstr "配送方式"
 
@@ -3481,21 +3545,18 @@ msgid ""
 msgstr ""
 
 #: app/templates/userinfo/user_profile.html:473
-#, fuzzy
 msgid "Renew Premium"
-msgstr "成为会员"
+msgstr "续订会员"
 
 #: app/templates/userinfo/user_profile.html:481
 msgid "Order section"
-msgstr "订单专区"
+msgstr "订单"
 
 #: app/templates/userinfo/user_profile.html:486
-#, fuzzy
 msgid "Enter"
-msgstr "性别："
+msgstr "请输入"
 
 #: app/templates/userinfo/user_profile.html:512
-#, fuzzy
 msgid "Change Avatar"
 msgstr "修改头像"
 
@@ -3595,863 +3656,27 @@ msgstr "头像："
 msgid "Update Avatar"
 msgstr "修改头像"
 
-#: app/userinfo/views.py:42
+#: app/userinfo/views.py:45
 msgid "Profile update successfully!"
 msgstr "个人主页成功修改！"
 
-#: app/userinfo/views.py:69
+#: app/userinfo/views.py:72
 msgid "Avatar update successfully!"
 msgstr "头像成功修改！"
 
-#: app/userinfo/views.py:104
+#: app/userinfo/views.py:107
 msgid "Address added successfully!"
 msgstr "地址成功添加！"
 
-#: app/userinfo/views.py:125
+#: app/userinfo/views.py:128
 msgid "Address updated successfully!"
 msgstr "地址成功修改！"
 
-#: app/userinfo/views.py:333 app/userinfo/views.py:349
-#: app/userinfo/views.py:358
+#: app/userinfo/views.py:337 app/userinfo/views.py:353
+#: app/userinfo/views.py:362
 msgid "Address has been deleted!"
 msgstr "地址成功删除！"
 
-#: app/userinfo/views.py:397
+#: app/userinfo/views.py:402
 msgid "Default address changed successfully!"
 msgstr "默认地址修改成功！"
-
-#~ msgid "Start Browsing"
-#~ msgstr "开始浏览"
-
-#~ msgid "Follow us for inspiration"
-#~ msgstr "关注我们以获得更多灵感"
-
-#~ msgid "Follow Now"
-#~ msgstr "现在关注"
-
-#~ msgid ""
-#~ "Set\n"
-#~ "                                                                "
-#~ "as Default"
-#~ msgstr "设为默认"
-
-#~ msgid "Full Name"
-#~ msgstr "姓名"
-
-#~ msgid "Street Address"
-#~ msgstr "街道地址"
-
-#~ msgid "City"
-#~ msgstr "城市"
-
-#~ msgid "State/Province"
-#~ msgstr "州/省"
-
-#~ msgid "Zip/Postal Code"
-#~ msgstr "邮政编码"
-
-#~ msgid "Country"
-#~ msgstr "国家或地区"
-
-#~ msgid "Featured"
-#~ msgstr "特征"
-
-#~ msgid "Collection"
-#~ msgstr "集合"
-
-#~ msgid "Get In Touch"
-#~ msgstr "联系"
-
-#~ msgid "No shipping methods are available for the address given."
-#~ msgstr "您所在的地区不支持选中的配送方式"
-
-#~ msgid "Items in Order"
-#~ msgstr "订单详情"
-
-#~ msgid "Models"
-#~ msgstr "型号"
-
-#~ msgid "Status"
-#~ msgstr "状态"
-
-#~ msgid "Order ID"
-#~ msgstr "订单ID"
-
-#~ msgid "Contact Phone"
-#~ msgstr "联系客服"
-
-#~ msgid "Time Stamp"
-#~ msgstr "时间"
-
-#~ msgid "Waiting for Payment"
-#~ msgstr "等待支付"
-
-#~ msgid "Pay"
-#~ msgstr "支付"
-
-#~ msgid "Preparing"
-#~ msgstr "准备中"
-
-#~ msgid "On Delivery"
-#~ msgstr "运送中"
-
-#~ msgid "Comfirmed"
-#~ msgstr "确认收货"
-
-#~ msgid "Waiting for Collection"
-#~ msgstr "等待整理"
-
-#~ msgid "Expired"
-#~ msgstr "已过期"
-
-#~ msgid "Cart"
-#~ msgstr "购物车"
-
-#~ msgid "Welcome to Verse – An E-Commerce template for brand curators."
-#~ msgstr "欢迎光临Verse - 品牌展测人的电子商务模版。"
-
-#~ msgid "View all templates here"
-#~ msgstr "浏览所有模版"
-
-#~ msgid "contact@website.com"
-#~ msgstr ""
-
-#~ msgid "(03) 92337 4627"
-#~ msgstr ""
-
-#~ msgid "Template"
-#~ msgstr "模版"
-
-#~ msgid "Style Guide"
-#~ msgstr "样式指导"
-
-#~ msgid "Getting Started"
-#~ msgstr "即刻开始"
-
-#~ msgid "Licenses"
-#~ msgstr "证书"
-
-#~ msgid "More Templates"
-#~ msgstr "更多模版"
-
-#~ msgid "Buy Now"
-#~ msgstr "现在购买"
-
-#~ msgid "Enter Name or Email"
-#~ msgstr "请输入姓名或邮箱"
-
-#~ msgid "Number"
-#~ msgstr "数量"
-
-#~ msgid "Category section"
-#~ msgstr "分类专区"
-
-#~ msgid " of 5% off in every order you placed"
-#~ msgstr ""
-
-#~ msgid "Staff"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "It is long established fact that a reader will be distracted bt\n"
-#~ "                                                            the"
-#~ " reddable."
-#~ msgstr "显示更多"
-
-#~ msgid "Online"
-#~ msgstr "成为会员"
-
-#~ msgid "Away"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Do Not\n"
-#~ "                                                                Disturb"
-#~ msgstr "显示更多"
-
-#~ msgid "Offline"
-#~ msgstr "成为会员"
-
-#~ msgid "It's Around the Corner!"
-#~ msgstr ""
-
-#~ msgid "Coming Soon!"
-#~ msgstr ""
-
-#~ msgid "We are very sorry to tell you that the manufacturer"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "hasn't update their information to our shop,\n"
-#~ "                        you can try to "
-#~ "view other brands in the Home Page"
-#~ " Brand Gallery."
-#~ msgstr ""
-
-#~ msgid "Back to Home Page"
-#~ msgstr ""
-
-#~ msgid "About Hohner"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Enjoy music. Wherever you are, whenever you want. Explore our\n"
-#~ "                                    product section "
-#~ "and find your perfect Hohner instrument."
-#~ msgstr ""
-
-#~ msgid "MEET HOHNER"
-#~ msgstr "收货人姓名"
-
-#~ msgid ""
-#~ "For generations, Hohner has dedicated "
-#~ "everything towards music for a simple"
-#~ " reason: Music\n"
-#~ "                                is a way of"
-#~ " life. In fact, you could say "
-#~ "it’s the best way of life. People"
-#~ " who aren’t into\n"
-#~ "                                music simply don’t"
-#~ " know what they’re missing. Of course"
-#~ " we would say that, wouldn’t we? "
-#~ "But\n"
-#~ "                                like countless "
-#~ "musicians all over the world, from "
-#~ "beginner to professional, we feel so"
-#~ "\n"
-#~ "                                strongly about music"
-#~ " that we want to help open the"
-#~ " door to this experience to everyone."
-#~ " With\n"
-#~ "                                instruments designed "
-#~ "to convey the joy and the passion"
-#~ " which inspires everybody to improve\n"
-#~ ""
-#~ "                                their skills and develop further."
-#~ msgstr ""
-
-#~ msgid "Hohner Company"
-#~ msgstr ""
-
-#~ msgid "CULTURE"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Here at Hohner, we live music "
-#~ "every day. Which is why we want"
-#~ " to offer you more than\n"
-#~ "                                    just an "
-#~ "instrument: We want to welcome you "
-#~ "into the world of music and invite"
-#~ " you to\n"
-#~ "                                    join the "
-#~ "ever-growing circle of musicians everywhere"
-#~ " who are playing together, learning\n"
-#~ "                                    from one another"
-#~ " and just having a great time."
-#~ msgstr ""
-
-#~ msgid "HERITAGE"
-#~ msgstr "其他页面"
-
-#~ msgid ""
-#~ "A lot has happened since Matthias "
-#~ "Hohner founded his company in "
-#~ "Trossingen, Germany in\n"
-#~ "                                    1857. HOHNER "
-#~ "became the market leader in harmonicas"
-#~ " and accordions with a worldwide\n"
-#~ "                                    network of "
-#~ "artists through consistent dedication to "
-#~ "quality. Our instruments have\n"
-#~ "                                    strongly influenced"
-#~ " the development of the Blues, become"
-#~ " a vital part of Folk music\n"
-#~ "                                    traditions around "
-#~ "the world, played a significant role "
-#~ "in the ongoing evolution of Jazz\n"
-#~ "                                    and found their"
-#~ " place on the Classical concert "
-#~ "stage. Today we continue to develop "
-#~ "new\n"
-#~ "                                    instruments and "
-#~ "improve existing ones. Always with the"
-#~ " intention to enable everyone,\n"
-#~ "                                    everywhere to Enjoy music."
-#~ msgstr ""
-
-#~ msgid "CRAFTSMANSHIP"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "With over 160 years of technical "
-#~ "expertise, a sympathetic ear for our "
-#~ "customers, and\n"
-#~ "                                    countless "
-#~ "collaborations with musicians and teachers,"
-#~ " we have continuously improved our\n"
-#~ "                                    craft – and will continue to do so."
-#~ msgstr ""
-
-#~ msgid "About Lowden Guitars"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "The Lowden guitar is the result of unique design, workmanship and\n"
-#~ "                                    assembly techniques"
-#~ " along with our choice of woods."
-#~ msgstr ""
-
-#~ msgid "History of Lowden"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "In the late 1980’s George Lowden "
-#~ "accepted an invitation to visit the "
-#~ "main Lowden dealer\n"
-#~ "                                for\n"
-#~ "                                Switzerland, Servette "
-#~ "Music in Geneva. Upon his arrival, "
-#~ "co-proprietor Yves Imer thanked\n"
-#~ "                                George for coming,"
-#~ " because some of the Lowden customers"
-#~ " he was to meet had not "
-#~ "realised he\n"
-#~ "                                actually existed –"
-#~ " they thought “George Lowden” was "
-#~ "merely the figment of some marketing"
-#~ "\n"
-#~ "                                man’s imagination –"
-#~ " a leprechaun, in fact! This served"
-#~ " to enlighten George to the principle"
-#~ "\n"
-#~ "                                that an ‘information"
-#~ " vacuum’ will always be filled – "
-#~ "sometimes benignly, sometimes\n"
-#~ "                                bizarrely."
-#~ msgstr ""
-
-#~ msgid "Lowden's Guitar"
-#~ msgstr ""
-
-#~ msgid "Design"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Curvy, smooth soundbox shapes combined "
-#~ "with carefully voiced internal bracing "
-#~ "and\n"
-#~ "                                    soundbox profiles, "
-#~ "and use of natural wood..."
-#~ msgstr ""
-
-#~ msgid "Workmanship"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Introducing unplanned or unmitigated stress"
-#~ " into any musical instrument deadens "
-#~ "the\n"
-#~ "                                    tonal response. "
-#~ "Our assembly techniques...\n"
-#~ "\n"
-#~ "                                    close\n"
-#~ "                                    involve the use"
-#~ " of hand tools to improve the "
-#~ "quality of all joints and enable "
-#~ "the\n"
-#~ "                                    “Dolphin Profile” "
-#~ "voicing of the soundboard bracing. This"
-#~ " and many more design and\n"
-#~ "                                    technique factors "
-#~ "ensure that sustain, volume and balance"
-#~ " are not hindered in any way.\n"
-#~ "                                    No short cuts"
-#~ " are possible, just great workmanship "
-#~ "and attention to detail!"
-#~ msgstr ""
-
-#~ msgid "Wood"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "We still hand-split our bracing "
-#~ "stock and re-grade soundboard wood. "
-#~ "We scour the world\n"
-#~ "                                    for the best "
-#~ "(and often most decorative)...\n"
-#~ "\n"
-#~ "                                    close\n"
-#~ "                                    tonewoods which "
-#~ "are the real ‘stars’ of our "
-#~ "guitars, and not man made. It is"
-#~ " this\n"
-#~ "                                    combination of "
-#~ "many details which determines how our"
-#~ " guitars sound, feel, and play.\n"
-#~ "                                    Today more than"
-#~ " ever, I am constantly evaluating our"
-#~ " guitars and striving to further\n"
-#~ "                                    adjust the "
-#~ "voicing, the feel and the playability."
-#~ " To make Lowden guitars we need\n"
-#~ ""
-#~ "                                    individuals with "
-#~ "a talent for focus and an eye "
-#~ "for detail plus a passionate commitment"
-#~ "\n"
-#~ "                                    to no "
-#~ "compromise. We have built a team "
-#~ "of real craftsmen who build Lowden "
-#~ "guitars by\n"
-#~ "                                    hand using "
-#~ "Japanese chisels, planes, knives and "
-#~ "spokeshaves. We are currently building a"
-#~ "\n"
-#~ "                                    state of the "
-#~ "art jig and tool department to "
-#~ "ensure our craftsmen can fine tune "
-#~ "their\n"
-#~ "                                    skills and "
-#~ "understanding of wood, and in so "
-#~ "doing create guitars which feel and "
-#~ "sound\n"
-#~ "                                    like individual ‘works of art’."
-#~ msgstr ""
-
-#~ msgid "About Martin Guitars"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Martin guitars and strings are known for more than their unrivaled\n"
-#~ "                                    quality, "
-#~ "craftsmanship, and tone. They are backed"
-#~ " by our unwavering commitment to\n"
-#~ "                                    environmental "
-#~ "sustainability and responsible manufacturing "
-#~ "practices."
-#~ msgstr ""
-
-#~ msgid "TWO CENTURIES OF HISTORY"
-#~ msgstr ""
-
-#~ msgid ""
-#~ " Martin isn’t just a guitar. It’s"
-#~ " playable history; part of a long "
-#~ "line of legendary\n"
-#~ "                                instruments stretching "
-#~ "back to the company’s beginnings in "
-#~ "1833. Our guitars were strummed\n"
-#~ "                                by Civil War "
-#~ "soldiers around campfires, helped shape "
-#~ "the sound of modern music at the"
-#~ " turn\n"
-#~ "                                of the 20th "
-#~ "century, and were played by music’s "
-#~ "first superstars like Jimmie Rodgers and"
-#~ "\n"
-#~ "                                Gene Autry. Decades"
-#~ " later, Martins floored the crowd at"
-#~ " Woodstock, then took center stage on"
-#~ "\n"
-#~ "                                MTV Unplugged, and"
-#~ " can be heard on countless classic"
-#~ " and contemporary songs across all\n"
-#~ "                                genres of music. "
-#~ "Artists like Hank Williams, Elvis "
-#~ "Presley, Bob Dylan, John Lennon, Neil"
-#~ "\n"
-#~ "                                Young, Ed Sheeran,"
-#~ " John Mayer, Seth Avett, and many "
-#~ "others all played Martins, creating much"
-#~ "\n"
-#~ "                                of the soundtrack"
-#~ " of the last century. And who "
-#~ "knows? With one of our instruments "
-#~ "in your\n"
-#~ "                                hand, you could "
-#~ "help write the soundtrack for the "
-#~ "next century."
-#~ msgstr ""
-
-#~ msgid "SUSTAINABILITY"
-#~ msgstr ""
-
-#~ msgid "REFORESTATION"
-#~ msgstr "个人信息"
-
-#~ msgid ""
-#~ "Martin planted tens of thousands of "
-#~ "birch and maple trees to support "
-#~ "Wildlands\n"
-#~ "                                    Conservancy in "
-#~ "Pennsylvania. We also planted tens of"
-#~ " thousands of mahogany, cedar,\n"
-#~ "                                    cocobolo, rosewood,"
-#~ " and teak trees in Nicaragua."
-#~ msgstr ""
-
-#~ msgid "PLASTIC REDUCTION INITIATIVES"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Martin reduced single-use plastic "
-#~ "stretch wrap for shipping guitar pallets"
-#~ " by\n"
-#~ "                                    replacing\n"
-#~ "                                    them with "
-#~ "reusable canvas pallet wraps. In 2021,"
-#~ " 2.5 tons of stretch wrap were\n"
-#~ ""
-#~ "                                    eliminated."
-#~ msgstr ""
-
-#~ msgid "THE MARTIN JOURNAL OF ACOUSTIC GUITARS"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "In 2021, we devoted an entire "
-#~ "issue of our journal to Martin’s "
-#~ "sustainability efforts.\n"
-#~ "                                    In support of"
-#~ " this, we encouraged readers to enjoy"
-#~ " the digital version of the journal,"
-#~ "\n"
-#~ "                                    and we reduced"
-#~ " the number of paper journals "
-#~ "produced by 70%, saving 1.4 million "
-#~ "sheets\n"
-#~ "                                    of paper."
-#~ msgstr ""
-
-#~ msgid "ABOUT MEINL"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Meinl company is a family-owned manufacturer and distributor of\n"
-#~ "                                    musical instruments"
-#~ " based in Gutenstetten, Germany. The "
-#~ "brand portfolio of Meinl\n"
-#~ "                                    comprises Meinl "
-#~ "Cymbals, Meinl Percussion, Nino Percussion,"
-#~ " Meinl Sonic Energy, Meinl\n"
-#~ "                                    Stick & Brush and Ortega\n"
-#~ "                                    Guitars."
-#~ msgstr ""
-
-#~ msgid "ABOUT MEINL CYMBALS"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "One of the great things about being a drummer is the opportunity to\n"
-#~ "                                be different...to be"
-#~ " yourself. When you listen to all "
-#~ "the greats, they're not like\n"
-#~ "                            everybody else. They're"
-#~ " themselves. We like that.\n"
-#~ "                                Today it is "
-#~ "difficult to be totally original or "
-#~ "100% unique, but that does not "
-#~ "mean you\n"
-#~ "                                must be like "
-#~ "all the others. At MEINL we do "
-#~ "our own thing. That's just who we"
-#~ " are. And\n"
-#~ "                            we like to think"
-#~ " you want to be who you are,"
-#~ " too. There's a freedom that comes"
-#~ " with\n"
-#~ "                                that."
-#~ msgstr ""
-
-#~ msgid "About Meinl Company"
-#~ msgstr ""
-
-#~ msgid "IDEOLOGY"
-#~ msgstr "视频"
-
-#~ msgid ""
-#~ "Drummers continually tell us how they"
-#~ " become inspired by playing MEINL "
-#~ "cymbals. They\n"
-#~ "                                    are inspired by"
-#~ " the new sounds that they hear "
-#~ "and feel, which at the same time"
-#~ " hones and\n"
-#~ "                                    shapes their "
-#~ "personal drum style. This is the "
-#~ "biggest compliment for us, as well "
-#~ "as the\n"
-#~ "                                    driving force "
-#~ "behind all our activities! It encourages"
-#~ " us to develop new sounds and "
-#~ "to\n"
-#~ "                                    push our "
-#~ "creativity farther forward."
-#~ msgstr ""
-
-#~ msgid "FROM DRUMMERS FOR DRUMMERS!"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Experienced and motivated individuals, who "
-#~ "are all drummers themselves, form our"
-#~ "\n"
-#~ "                                    executive and "
-#~ "creative team. This team plans all "
-#~ "of our activities, manages our\n"
-#~ "                                    promotional campaigns"
-#~ " and creates inspiring cymbal sounds. "
-#~ "Some of our top artists take\n"
-#~ "                                    part in this "
-#~ "process also. We are proud to say"
-#~ " that we are drummers first!"
-#~ msgstr ""
-
-#~ msgid "AND KNOW-HOW"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Only MEINL uses 6 different alloys "
-#~ "for crafting cymbals, which is more "
-#~ "than any other\n"
-#~ "                                    cymbal maker is"
-#~ " using today. Because of that, we "
-#~ "are able to offer the widest "
-#~ "selection\n"
-#~ "                                    of basic cymbal"
-#~ " sound characteristics available. Striving "
-#~ "for the realization of any\n"
-#~ "                                    possible sound "
-#~ "idea makes it necessary to have "
-#~ "this diversity, the background in and"
-#~ "\n"
-#~ "                                    knowledge of all"
-#~ " those different materials."
-#~ msgstr ""
-
-#~ msgid "About Steinway's Piano"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "For over 160 years, STEINWAY & SONS has been dedicated to making\n"
-#~ "                                    the\n"
-#~ "                                    finest pianos in"
-#~ " the world. Our pioneering handcrafted "
-#~ "methods are still employed today\n"
-#~ "                                    to ensure our"
-#~ " uncompromising standards of quality, in"
-#~ " turn ensuring that the STEINWAY\n"
-#~ "                                    remains the "
-#~ "peerless instrument of uncompromising "
-#~ "expression."
-#~ msgstr ""
-
-#~ msgid "Having a Steinway Piano"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "To call a genuine grand or upright"
-#~ " of STEINWAY & SONS one’s own "
-#~ "is an overwhelming\n"
-#~ "                                feeling.\n"
-#~ "                                Far more than "
-#~ "just an exquisite instrument, it is "
-#~ "an instrument of the highest expression"
-#~ "\n"
-#~ "                                and creativity. A"
-#~ " STEINWAY intimately connects artist and"
-#~ " listener, and invites its owner to"
-#~ "\n"
-#~ "                                join a tradition "
-#~ "of musical perfection, making it an "
-#~ "invaluable investment."
-#~ msgstr ""
-
-#~ msgid "About Steinway"
-#~ msgstr ""
-
-#~ msgid "Steinway Today"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Master to apprentice, generation after generation, every STEINWAY is\n"
-#~ "                                    built with "
-#~ "experience decades in the making — "
-#~ "by artisans who take pride and "
-#~ "time to\n"
-#~ "                                    humanize a piano"
-#~ " still made by hand, who strive "
-#~ "for and achieve continuous innovation\n"
-#~ "                                    and improvement. "
-#~ "Every STEINWAY & SONS grand and "
-#~ "upright is a masterpiece of\n"
-#~ "                                    craftsmanship and "
-#~ "a consummate work of art. Each "
-#~ "STEINWAY, consisting of more than\n"
-#~ "                                    12,000 individual "
-#~ "parts, has its own musical character "
-#~ "and is as unique as the\n"
-#~ "                                    individual who plays it."
-#~ msgstr ""
-
-#~ msgid "Steinway Tomorrow"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "The very first STEINWAY & SONS "
-#~ "patent was granted in 1857, and "
-#~ "since that time the\n"
-#~ "                                    company\n"
-#~ "                                    has been granted"
-#~ " more than 150 additional patents, "
-#~ "positioning the STEINWAY as the piano"
-#~ "\n"
-#~ "                                    by\n"
-#~ "                                    which all others"
-#~ " are judged. Our latest innovation, "
-#~ "the STEINWAY & SONS SPIRIO, is the"
-#~ "\n"
-#~ "                                    world’s finest "
-#~ "high resolution player piano. A "
-#~ "masterpiece of craftsmanship, technology\n"
-#~ "                                    and\n"
-#~ "                                    artistry, SPIRIO "
-#~ "provides an unrivaled musical experience, "
-#~ "indistinguishable from a live\n"
-#~ "                                    performance."
-#~ msgstr ""
-
-#~ msgid "Steinway in History"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "STEINWAY & SONS was founded in "
-#~ "1853 by German immigrant Henry Engelhard"
-#~ " Steinway in a\n"
-#~ "                                    Manhattan loft "
-#~ "on Varick Street. Over the next "
-#~ "thirty years, Henry and his sons\n"
-#~ "                                    developed the "
-#~ "modern piano. They built their "
-#~ "instruments one at a time, applying "
-#~ "skills\n"
-#~ "                                    that have been"
-#~ " handed down from master to "
-#~ "apprentice, generation after generation, ever"
-#~ "\n"
-#~ "                                    since. The "
-#~ "STEINWAY became the choice for "
-#~ "approximately ninety-seven percent of\n"
-#~ "                                    concertizing artists,"
-#~ " none of whom are compensated to "
-#~ "endorse the instrument. The\n"
-#~ "                                    STEINWAY earned "
-#~ "a reputation as an investment for "
-#~ "the owner in the legacy of future"
-#~ "\n"
-#~ "                                    generations."
-#~ msgstr ""
-
-#~ msgid "Meet Taylor's Class of 2022"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "This year's new models include a trio of compact GT guitars, a\n"
-#~ "                                mahogany Grand "
-#~ "Concert and our first all-maple "
-#~ "Grand Pacific."
-#~ msgstr ""
-
-#~ msgid "About Taylor Guitars"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Taylor Guitars was founded in 1974 "
-#~ "by Bob Taylor and Kurt Listug, and"
-#~ " has grown into the\n"
-#~ "        leading global builder of "
-#~ "premium acoustic guitars. Renowned for "
-#~ "blending modern, innovative\n"
-#~ "        manufacturing techniques with a "
-#~ "master craftsman's attention to detail, "
-#~ "Taylor acoustic\n"
-#~ "                            guitars are widely "
-#~ "considered among the best-sounding and"
-#~ " easiest to play in the world. "
-#~ "The\n"
-#~ "                            company is a "
-#~ "pioneer in the use of computer "
-#~ "mills, lasers and other high-tech "
-#~ "tools and\n"
-#~ "                            proprietary machinery, "
-#~ "and today, Bob Taylor is widely "
-#~ "recognized throughout the musical\n"
-#~ "                            instrument industry as"
-#~ " the visionary acoustic guitar "
-#~ "manufacturer."
-#~ msgstr ""
-
-#~ msgid "The Taylor Difference"
-#~ msgstr ""
-
-#~ msgid "Sustainability Leadership"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "We are deeply committed to safeguarding"
-#~ " the future of the natural resources"
-#~ " we use.\n"
-#~ "                                    This has led "
-#~ "us to pioneer many eco-sustainability"
-#~ " initiatives around the world. When\n"
-#~ "                                    you purchase a"
-#~ " Taylor guitar, you are supporting "
-#~ "the highest levels of ethical,\n"
-#~ "                                    eco-conscious business."
-#~ msgstr ""
-
-#~ msgid "Playable NecksWorkmanship"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Taylor guitar necks are the most "
-#~ "playable in the industry, thanks to "
-#~ "our patented neck\n"
-#~ "                                    joint design and"
-#~ " sleek neck profile. Our precise "
-#~ "neck/body assembly process allows every\n"
-#~ ""
-#~ "                                    neck angle to"
-#~ " be set with extreme accuracy and "
-#~ "easily maintained throughout the life of"
-#~ "\n"
-#~ "                                    the guitar."
-#~ msgstr ""
-
-#~ msgid "Precision Craftsmanship"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "We’ve set the standard for modern-"
-#~ "day craftsmanship to create the best "
-#~ "possible\n"
-#~ "                                    playing\n"
-#~ "                                    experience. Our "
-#~ "blend of innovative manufacturing technology"
-#~ " with impeccable\n"
-#~ "                                    hand-craftsmanship "
-#~ "has led to unmatched quality and "
-#~ "consistency in the production of our"
-#~ "\n"
-#~ "                                    guitars, and "
-#~ "helped us develop game-changers like "
-#~ "V-Class bracing."
-#~ msgstr ""
-
-#~ msgid "of"
-#~ msgstr ""
-
-#~ msgid "off in every order you placed"
-#~ msgstr ""
-

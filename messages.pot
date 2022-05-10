@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-09 22:13+0800\n"
+"POT-Creation-Date: 2022-05-10 10:03+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,8 +33,8 @@ msgstr ""
 
 #: app/auth/forms.py:16 app/templates/auth/register_new.html:44
 #: app/templates/backend-test/payment/payment-finished.html:66
-#: app/templates/base/base-customer.html:94
-#: app/templates/base/base-staff.html:520 app/templates/comment/comment.html:80
+#: app/templates/base/base-customer.html:97
+#: app/templates/base/base-staff.html:523 app/templates/comment/comment.html:80
 #: app/templates/order/order-detail.html:80
 #: app/templates/order/order-listing.html:73
 #: app/templates/staff/backup-staff-modify.html:401
@@ -58,7 +58,7 @@ msgid "Confirm your password"
 msgstr ""
 
 #: app/auth/forms.py:48 app/templates/auth/login_new.html:46
-#: app/templates/base/base-staff.html:525
+#: app/templates/base/base-staff.html:528
 #: app/templates/staff/backup-staff-modify.html:406
 msgid "Register"
 msgstr ""
@@ -84,55 +84,55 @@ msgstr ""
 msgid "Login Failed! Check your username or password."
 msgstr ""
 
-#: app/main/views.py:330
+#: app/main/views.py:331
 msgid "No such commodity!"
 msgstr ""
 
-#: app/order/views.py:54 app/order/views.py:111
+#: app/order/views.py:57 app/order/views.py:116
 msgid "Order created!"
 msgstr ""
 
-#: app/order/views.py:58
+#: app/order/views.py:61
 msgid "Order generation failed!"
 msgstr ""
 
-#: app/order/views.py:138
+#: app/order/views.py:144
 msgid "Permission denied!"
 msgstr ""
 
-#: app/order/views.py:589
+#: app/order/views.py:600
 msgid "Error in Duration info!"
 msgstr ""
 
-#: app/order/views.py:593
+#: app/order/views.py:604
 msgid "No duration info!"
 msgstr ""
 
-#: app/order/views.py:601
+#: app/order/views.py:612
 msgid "Error in payment info!"
 msgstr ""
 
-#: app/order/views.py:605
+#: app/order/views.py:616
 msgid "No payment info!"
 msgstr ""
 
-#: app/payment/views.py:42 app/payment/views.py:91
+#: app/payment/views.py:44 app/payment/views.py:94
 msgid "You cannot pay for the same order second time!"
 msgstr ""
 
-#: app/payment/views.py:48
+#: app/payment/views.py:50
 msgid "This is not your order, you cannot pay for it!"
 msgstr ""
 
-#: app/payment/views.py:52
+#: app/payment/views.py:54
 msgid "Order does not exist!"
 msgstr ""
 
-#: app/payment/views.py:97
+#: app/payment/views.py:100
 msgid "This is not your premiumOrder, you cannot pay for it!"
 msgstr ""
 
-#: app/payment/views.py:101
+#: app/payment/views.py:104
 msgid "premiumOrder does not exist!"
 msgstr ""
 
@@ -143,7 +143,7 @@ msgstr ""
 
 #: app/product/forms.py:17
 #: app/templates/backend-test/payment/payment-finished.html:255
-#: app/templates/base/base-customer.html:318
+#: app/templates/base/base-customer.html:321
 #: app/templates/comment/comment.html:293
 #: app/templates/order/order-detail.html:293
 #: app/templates/order/order-listing.html:286
@@ -211,19 +211,19 @@ msgstr ""
 msgid "Picture name cannot longer than 216 chars!"
 msgstr ""
 
-#: app/product/views.py:281
+#: app/product/views.py:285
 msgid "New product and its models are uploaded successfully!"
 msgstr ""
 
-#: app/product/views.py:405
+#: app/product/views.py:411
 msgid "The product information updated!"
 msgstr ""
 
-#: app/product/views.py:507
+#: app/product/views.py:514
 msgid "Error! The product does not exist! Try it again!"
 msgstr ""
 
-#: app/product/views.py:621
+#: app/product/views.py:630
 msgid "Model Type updated!"
 msgstr ""
 
@@ -259,7 +259,7 @@ msgid ""
 msgstr ""
 
 #: app/templates/backend-test/payment/payment-finished.html:62
-#: app/templates/base/base-customer.html:90
+#: app/templates/base/base-customer.html:93
 #: app/templates/comment/comment.html:76
 #: app/templates/order/order-detail.html:76
 #: app/templates/order/order-listing.html:69
@@ -267,7 +267,7 @@ msgid "Logout"
 msgstr ""
 
 #: app/templates/backend-test/payment/payment-finished.html:109
-#: app/templates/base/base-customer.html:146
+#: app/templates/base/base-customer.html:149
 #: app/templates/cart/page-cart.html:30 app/templates/comment/comment.html:130
 #: app/templates/order/order-detail.html:130
 #: app/templates/order/order-listing.html:123
@@ -275,7 +275,7 @@ msgid "Your Cart"
 msgstr ""
 
 #: app/templates/backend-test/payment/payment-finished.html:125
-#: app/templates/base/base-customer.html:238
+#: app/templates/base/base-customer.html:241
 #: app/templates/comment/comment.html:213
 #: app/templates/order/order-detail.html:213
 #: app/templates/order/order-listing.html:206
@@ -294,7 +294,7 @@ msgid "Continue to Checkout"
 msgstr ""
 
 #: app/templates/backend-test/payment/payment-finished.html:195
-#: app/templates/base/base-customer.html:258
+#: app/templates/base/base-customer.html:261
 #: app/templates/comment/comment.html:233
 #: app/templates/main/page-commodity-details.html:669
 #: app/templates/order/order-detail.html:233
@@ -303,7 +303,7 @@ msgid "No items found."
 msgstr ""
 
 #: app/templates/backend-test/payment/payment-finished.html:205
-#: app/templates/base/base-customer.html:270
+#: app/templates/base/base-customer.html:273
 #: app/templates/comment/comment.html:245
 #: app/templates/order/order-detail.html:245
 #: app/templates/order/order-listing.html:238
@@ -311,7 +311,7 @@ msgid "Product is not available in this quantity."
 msgstr ""
 
 #: app/templates/backend-test/payment/payment-finished.html:223
-#: app/templates/base/base-customer.html:290
+#: app/templates/base/base-customer.html:293
 #: app/templates/comment/comment.html:265
 #: app/templates/order/order-detail.html:265
 #: app/templates/order/order-listing.html:258
@@ -319,7 +319,7 @@ msgid "Search here"
 msgstr ""
 
 #: app/templates/backend-test/payment/payment-finished.html:235
-#: app/templates/base/base-customer.html:302
+#: app/templates/base/base-customer.html:305
 #: app/templates/comment/comment.html:277
 #: app/templates/order/order-detail.html:277
 #: app/templates/order/order-listing.html:270
@@ -328,8 +328,8 @@ msgstr ""
 
 #: app/templates/backend-test/payment/payment-finished.html:241
 #: app/templates/backend-test/payment/payment-finished.html:309
-#: app/templates/base/base-customer.html:308
-#: app/templates/base/base-customer.html:364
+#: app/templates/base/base-customer.html:311
+#: app/templates/base/base-customer.html:367
 #: app/templates/comment/comment.html:283
 #: app/templates/comment/comment.html:503
 #: app/templates/order/order-detail.html:283
@@ -346,8 +346,8 @@ msgstr ""
 
 #: app/templates/backend-test/payment/payment-finished.html:269
 #: app/templates/backend-test/payment/payment-finished.html:322
-#: app/templates/base/base-customer.html:328
-#: app/templates/chat/chat_staff.html:73 app/templates/comment/comment.html:303
+#: app/templates/base/base-customer.html:331
+#: app/templates/chat/chat_staff.html:67 app/templates/comment/comment.html:303
 #: app/templates/order/order-detail.html:303
 #: app/templates/order/order-listing.html:296
 msgid "About"
@@ -355,7 +355,7 @@ msgstr ""
 
 #: app/templates/backend-test/payment/payment-finished.html:270
 #: app/templates/backend-test/payment/payment-finished.html:324
-#: app/templates/base/base-customer.html:329
+#: app/templates/base/base-customer.html:332
 #: app/templates/chat/chat_page.html:13 app/templates/comment/comment.html:304
 #: app/templates/order/order-detail.html:304
 #: app/templates/order/order-listing.html:297
@@ -388,7 +388,7 @@ msgid "Victoria 3009"
 msgstr ""
 
 #: app/templates/backend-test/payment/payment-finished.html:307
-#: app/templates/base/base-customer.html:362
+#: app/templates/base/base-customer.html:365
 #: app/templates/comment/comment.html:501
 #: app/templates/order/order-detail.html:745
 #: app/templates/order/order-listing.html:726
@@ -396,7 +396,7 @@ msgid "shop"
 msgstr ""
 
 #: app/templates/backend-test/payment/payment-finished.html:313
-#: app/templates/base/base-customer.html:368
+#: app/templates/base/base-customer.html:371
 #: app/templates/comment/comment.html:507
 #: app/templates/main/page_all_commodities.html:321
 #: app/templates/order/order-detail.html:751
@@ -405,7 +405,7 @@ msgid "Brands"
 msgstr ""
 
 #: app/templates/backend-test/payment/payment-finished.html:320
-#: app/templates/base/base-customer.html:376
+#: app/templates/base/base-customer.html:379
 #: app/templates/comment/comment.html:515
 #: app/templates/order/order-detail.html:759
 #: app/templates/order/order-listing.html:740
@@ -420,49 +420,49 @@ msgstr ""
 msgid "Refund Policy"
 msgstr ""
 
-#: app/templates/base/base-customer.html:50
+#: app/templates/base/base-customer.html:53
 #: app/templates/order/order-detail.html:51
 msgid "Welcome to Siren – Selects online music instrument shop for you."
 msgstr ""
 
-#: app/templates/base/base-customer.html:52
+#: app/templates/base/base-customer.html:55
 #: app/templates/order/order-detail.html:52
 #: app/templates/order/order-listing.html:45
 msgid "View instruments here"
 msgstr ""
 
-#: app/templates/base/base-customer.html:209
+#: app/templates/base/base-customer.html:212
 #: app/templates/cart/page-cart.html:129 app/templates/comment/comment.html:190
 #: app/templates/order/order-detail.html:190
 #: app/templates/order/order-listing.html:183
 msgid "Remove"
 msgstr ""
 
-#: app/templates/base/base-customer.html:228
+#: app/templates/base/base-customer.html:231
 msgid "Out Of Stock"
 msgstr ""
 
-#: app/templates/base/base-customer.html:249
+#: app/templates/base/base-customer.html:252
 #: app/templates/comment/comment.html:224
 #: app/templates/order/order-detail.html:224
 #: app/templates/order/order-listing.html:217
 msgid "Go to my cart"
 msgstr ""
 
-#: app/templates/base/base-customer.html:314
+#: app/templates/base/base-customer.html:317
 #: app/templates/order/order-listing.html:736
 #: app/templates/staff/backup-staff-modify.html:1003
 msgid "Category"
 msgstr ""
 
-#: app/templates/base/base-customer.html:353
+#: app/templates/base/base-customer.html:356
 #: app/templates/comment/comment.html:492
 #: app/templates/order/order-detail.html:736
 #: app/templates/order/order-listing.html:717
 msgid "China Beijing Chaoyang Distinct Pingleyuan No.100"
 msgstr ""
 
-#: app/templates/base/base-customer.html:353
+#: app/templates/base/base-customer.html:356
 #: app/templates/comment/comment.html:492
 #: app/templates/order/order-detail.html:736
 #: app/templates/order/order-listing.html:717
@@ -471,7 +471,7 @@ msgid ""
 "                                    Technology"
 msgstr ""
 
-#: app/templates/base/base-customer.html:372
+#: app/templates/base/base-customer.html:375
 #: app/templates/comment/comment.html:289
 #: app/templates/comment/comment.html:511
 #: app/templates/order/order-detail.html:289
@@ -480,18 +480,18 @@ msgstr ""
 msgid "Catagory"
 msgstr ""
 
-#: app/templates/base/base-customer.html:378
+#: app/templates/base/base-customer.html:381
 #: app/templates/comment/comment.html:517
 #: app/templates/order/order-detail.html:761
 #: app/templates/order/order-listing.html:742
 msgid "About us"
 msgstr ""
 
-#: app/templates/base/base-customer.html:379
+#: app/templates/base/base-customer.html:382
 msgid "Contect us"
 msgstr ""
 
-#: app/templates/base/base-customer.html:380
+#: app/templates/base/base-customer.html:383
 #: app/templates/comment/comment.html:519
 #: app/templates/order/order-detail.html:763
 #: app/templates/order/order-listing.html:744
@@ -500,33 +500,33 @@ msgstr ""
 msgid "Premium"
 msgstr ""
 
-#: app/templates/base/base-customer.html:384
+#: app/templates/base/base-customer.html:387
 #: app/templates/comment/comment.html:523
 #: app/templates/order/order-detail.html:767
 #: app/templates/order/order-listing.html:748
 msgid "Franchising Brand"
 msgstr ""
 
-#: app/templates/base/base-staff.html:61
+#: app/templates/base/base-staff.html:64
 msgid "STAFF&nbsp;TERMINAL"
 msgstr ""
 
-#: app/templates/base/base-staff.html:80
+#: app/templates/base/base-staff.html:83
 #: app/templates/staff/backup-staff-modify.html:43
 msgid "Dashboards"
 msgstr ""
 
-#: app/templates/base/base-staff.html:94
+#: app/templates/base/base-staff.html:97
 #: app/templates/staff/backup-staff-modify.html:52
 msgid "Products"
 msgstr ""
 
-#: app/templates/base/base-staff.html:107
+#: app/templates/base/base-staff.html:110
 #: app/templates/staff/backup-staff-modify.html:61
 msgid "List Product"
 msgstr ""
 
-#: app/templates/base/base-staff.html:113
+#: app/templates/base/base-staff.html:116
 #: app/templates/staff/backup-staff-modify.html:66
 #: app/templates/staff/backup-staff-modify.html:1058
 #: app/templates/staff/page-add-product.html:32
@@ -535,328 +535,328 @@ msgstr ""
 msgid "Add Product"
 msgstr ""
 
-#: app/templates/base/base-staff.html:128
+#: app/templates/base/base-staff.html:131
 msgid "Orders"
 msgstr ""
 
-#: app/templates/base/base-staff.html:141
+#: app/templates/base/base-staff.html:144
 msgid "List Orders"
 msgstr ""
 
-#: app/templates/base/base-staff.html:156
+#: app/templates/base/base-staff.html:159
 msgid "Journals"
 msgstr ""
 
-#: app/templates/base/base-staff.html:169
+#: app/templates/base/base-staff.html:172
 msgid "List Journals"
 msgstr ""
 
-#: app/templates/base/base-staff.html:175
+#: app/templates/base/base-staff.html:178
 msgid "Upload Journals"
 msgstr ""
 
-#: app/templates/base/base-staff.html:190
+#: app/templates/base/base-staff.html:193
 #: app/templates/staff/backup-staff-modify.html:76
 #: app/templates/userinfo/user_profile.html:384
 msgid "Categories"
 msgstr ""
 
-#: app/templates/base/base-staff.html:203
+#: app/templates/base/base-staff.html:206
 #: app/templates/staff/backup-staff-modify.html:84
 msgid "List Category"
 msgstr ""
 
-#: app/templates/base/base-staff.html:209
+#: app/templates/base/base-staff.html:212
 #: app/templates/staff/backup-staff-modify.html:89
 msgid "Add Category"
 msgstr ""
 
-#: app/templates/base/base-staff.html:226
+#: app/templates/base/base-staff.html:229
 #: app/templates/staff/backup-staff-modify.html:145
 msgid "Returns"
 msgstr ""
 
-#: app/templates/base/base-staff.html:239
+#: app/templates/base/base-staff.html:242
 #: app/templates/staff/backup-staff-modify.html:153
 msgid "List Returns"
 msgstr ""
 
-#: app/templates/base/base-staff.html:245
+#: app/templates/base/base-staff.html:248
 #: app/templates/staff/backup-staff-modify.html:158
 msgid "Add Return"
 msgstr ""
 
-#: app/templates/base/base-staff.html:262
+#: app/templates/base/base-staff.html:265
 #: app/templates/staff/backup-staff-modify.html:168
 msgid "People"
 msgstr ""
 
-#: app/templates/base/base-staff.html:293
+#: app/templates/base/base-staff.html:296
 #: app/templates/staff/backup-staff-modify.html:211
 msgid "Reports"
 msgstr ""
 
-#: app/templates/base/base-staff.html:309
+#: app/templates/base/base-staff.html:312
 #: app/templates/staff/backup-staff-modify.html:221
 msgid "other page"
 msgstr ""
 
-#: app/templates/base/base-staff.html:329
+#: app/templates/base/base-staff.html:332
 #: app/templates/staff/backup-staff-modify.html:232
 msgid "User Details"
 msgstr ""
 
-#: app/templates/base/base-staff.html:341
+#: app/templates/base/base-staff.html:344
 #: app/templates/staff/backup-staff-modify.html:240
 msgid "User Profile"
 msgstr ""
 
-#: app/templates/base/base-staff.html:346
+#: app/templates/base/base-staff.html:349
 #: app/templates/staff/backup-staff-modify.html:245
 msgid "User Add"
 msgstr ""
 
-#: app/templates/base/base-staff.html:351
+#: app/templates/base/base-staff.html:354
 #: app/templates/staff/backup-staff-modify.html:250
 msgid "User List"
 msgstr ""
 
-#: app/templates/base/base-staff.html:364
+#: app/templates/base/base-staff.html:367
 #: app/templates/staff/backup-staff-modify.html:260
 msgid "UI Elements"
 msgstr ""
 
-#: app/templates/base/base-staff.html:376
+#: app/templates/base/base-staff.html:379
 #: app/templates/staff/backup-staff-modify.html:268
 msgid "Avatars"
 msgstr ""
 
-#: app/templates/base/base-staff.html:381
+#: app/templates/base/base-staff.html:384
 #: app/templates/staff/backup-staff-modify.html:273
 msgid "Alerts"
 msgstr ""
 
-#: app/templates/base/base-staff.html:386
+#: app/templates/base/base-staff.html:389
 #: app/templates/staff/backup-staff-modify.html:278
 msgid "Badges"
 msgstr ""
 
-#: app/templates/base/base-staff.html:391
+#: app/templates/base/base-staff.html:394
 #: app/templates/staff/backup-staff-modify.html:283
 msgid "Breadcrumb"
 msgstr ""
 
-#: app/templates/base/base-staff.html:396
+#: app/templates/base/base-staff.html:399
 #: app/templates/staff/backup-staff-modify.html:288
 msgid "Buttons"
 msgstr ""
 
-#: app/templates/base/base-staff.html:401
+#: app/templates/base/base-staff.html:404
 #: app/templates/staff/backup-staff-modify.html:293
 msgid "Buttons Group"
 msgstr ""
 
-#: app/templates/base/base-staff.html:406
+#: app/templates/base/base-staff.html:409
 #: app/templates/staff/backup-staff-modify.html:298
 msgid "Box Shadow"
 msgstr ""
 
-#: app/templates/base/base-staff.html:411
+#: app/templates/base/base-staff.html:414
 #: app/templates/staff/backup-staff-modify.html:303
 msgid "Colors"
 msgstr ""
 
-#: app/templates/base/base-staff.html:416
+#: app/templates/base/base-staff.html:419
 #: app/templates/staff/backup-staff-modify.html:308
 msgid "Cards"
 msgstr ""
 
-#: app/templates/base/base-staff.html:421
+#: app/templates/base/base-staff.html:424
 #: app/templates/staff/backup-staff-modify.html:313
 msgid "Carousel"
 msgstr ""
 
-#: app/templates/base/base-staff.html:426
+#: app/templates/base/base-staff.html:429
 #: app/templates/staff/backup-staff-modify.html:318
 msgid "Grid"
 msgstr ""
 
-#: app/templates/base/base-staff.html:431
+#: app/templates/base/base-staff.html:434
 #: app/templates/staff/backup-staff-modify.html:323
 msgid "Helper classes"
 msgstr ""
 
-#: app/templates/base/base-staff.html:436
+#: app/templates/base/base-staff.html:439
 #: app/templates/staff/backup-staff-modify.html:328
 msgid "Images"
 msgstr ""
 
-#: app/templates/base/base-staff.html:441
+#: app/templates/base/base-staff.html:444
 #: app/templates/staff/backup-staff-modify.html:333
 msgid "list Group"
 msgstr ""
 
-#: app/templates/base/base-staff.html:446
+#: app/templates/base/base-staff.html:449
 #: app/templates/staff/backup-staff-modify.html:338
 msgid "Media"
 msgstr ""
 
-#: app/templates/base/base-staff.html:451
+#: app/templates/base/base-staff.html:454
 #: app/templates/staff/backup-staff-modify.html:343
 msgid "Modal"
 msgstr ""
 
-#: app/templates/base/base-staff.html:456
-#: app/templates/base/base-staff.html:1024
+#: app/templates/base/base-staff.html:459
+#: app/templates/base/base-staff.html:1027
 #: app/templates/staff/backup-staff-modify.html:348
 #: app/templates/staff/backup-staff-modify.html:749
 msgid "Notifications"
 msgstr ""
 
-#: app/templates/base/base-staff.html:461
+#: app/templates/base/base-staff.html:464
 #: app/templates/staff/backup-staff-modify.html:353
 msgid "Pagination"
 msgstr ""
 
-#: app/templates/base/base-staff.html:466
+#: app/templates/base/base-staff.html:469
 #: app/templates/staff/backup-staff-modify.html:358
 msgid "Popovers"
 msgstr ""
 
-#: app/templates/base/base-staff.html:471
+#: app/templates/base/base-staff.html:474
 #: app/templates/staff/backup-staff-modify.html:363
 msgid "Progressbars"
 msgstr ""
 
-#: app/templates/base/base-staff.html:476
+#: app/templates/base/base-staff.html:479
 #: app/templates/staff/backup-staff-modify.html:368
 msgid "Typography"
 msgstr ""
 
-#: app/templates/base/base-staff.html:481
+#: app/templates/base/base-staff.html:484
 #: app/templates/staff/backup-staff-modify.html:373
 msgid "Tabs"
 msgstr ""
 
-#: app/templates/base/base-staff.html:486
+#: app/templates/base/base-staff.html:489
 #: app/templates/staff/backup-staff-modify.html:378
 msgid "Tooltips"
 msgstr ""
 
-#: app/templates/base/base-staff.html:491
+#: app/templates/base/base-staff.html:494
 #: app/templates/staff/backup-staff-modify.html:383
 msgid "Video"
 msgstr ""
 
-#: app/templates/base/base-staff.html:508
+#: app/templates/base/base-staff.html:511
 #: app/templates/staff/backup-staff-modify.html:393
 msgid "Authentication"
 msgstr ""
 
-#: app/templates/base/base-staff.html:530
+#: app/templates/base/base-staff.html:533
 #: app/templates/staff/backup-staff-modify.html:411
 msgid "Recover Password"
 msgstr ""
 
-#: app/templates/base/base-staff.html:535
+#: app/templates/base/base-staff.html:538
 #: app/templates/staff/backup-staff-modify.html:416
 msgid "Confirm Mail"
 msgstr ""
 
-#: app/templates/base/base-staff.html:540
+#: app/templates/base/base-staff.html:543
 #: app/templates/staff/backup-staff-modify.html:421
 msgid "Lock Screen"
 msgstr ""
 
-#: app/templates/base/base-staff.html:555
+#: app/templates/base/base-staff.html:558
 #: app/templates/staff/backup-staff-modify.html:431
 msgid "Forms"
 msgstr ""
 
-#: app/templates/base/base-staff.html:568
+#: app/templates/base/base-staff.html:571
 #: app/templates/staff/backup-staff-modify.html:439
 msgid "Form Elements"
 msgstr ""
 
-#: app/templates/base/base-staff.html:574
+#: app/templates/base/base-staff.html:577
 #: app/templates/staff/backup-staff-modify.html:444
 msgid "Form Input"
 msgstr ""
 
-#: app/templates/base/base-staff.html:580
+#: app/templates/base/base-staff.html:583
 #: app/templates/staff/backup-staff-modify.html:449
 msgid "Form Validation"
 msgstr ""
 
-#: app/templates/base/base-staff.html:586
+#: app/templates/base/base-staff.html:589
 #: app/templates/staff/backup-staff-modify.html:454
 msgid "Form Switch"
 msgstr ""
 
-#: app/templates/base/base-staff.html:592
+#: app/templates/base/base-staff.html:595
 #: app/templates/staff/backup-staff-modify.html:459
 msgid "Form Checkbox"
 msgstr ""
 
-#: app/templates/base/base-staff.html:598
+#: app/templates/base/base-staff.html:601
 #: app/templates/staff/backup-staff-modify.html:464
 msgid "Form Radio"
 msgstr ""
 
-#: app/templates/base/base-staff.html:604
+#: app/templates/base/base-staff.html:607
 #: app/templates/staff/backup-staff-modify.html:469
 msgid "Form Textarea"
 msgstr ""
 
-#: app/templates/base/base-staff.html:620
+#: app/templates/base/base-staff.html:623
 #: app/templates/staff/backup-staff-modify.html:479
 msgid "Table"
 msgstr ""
 
-#: app/templates/base/base-staff.html:632
+#: app/templates/base/base-staff.html:635
 #: app/templates/staff/backup-staff-modify.html:487
 msgid "Basic Tables"
 msgstr ""
 
-#: app/templates/base/base-staff.html:637
+#: app/templates/base/base-staff.html:640
 #: app/templates/staff/backup-staff-modify.html:492
 msgid "Data Table"
 msgstr ""
 
-#: app/templates/base/base-staff.html:642
+#: app/templates/base/base-staff.html:645
 #: app/templates/staff/backup-staff-modify.html:497
 msgid "Table Tree"
 msgstr ""
 
-#: app/templates/base/base-staff.html:658
+#: app/templates/base/base-staff.html:661
 #: app/templates/staff/backup-staff-modify.html:507
 msgid "Pricing"
 msgstr ""
 
-#: app/templates/base/base-staff.html:692
+#: app/templates/base/base-staff.html:695
 #: app/templates/staff/backup-staff-modify.html:530
 msgid "Invoice"
 msgstr ""
 
-#: app/templates/base/base-staff.html:706
+#: app/templates/base/base-staff.html:709
 #: app/templates/staff/backup-staff-modify.html:538
 msgid "Error"
 msgstr ""
 
-#: app/templates/base/base-staff.html:737
+#: app/templates/base/base-staff.html:740
 #: app/templates/staff/backup-staff-modify.html:561
 msgid "Blank Page"
 msgstr ""
 
-#: app/templates/base/base-staff.html:748
+#: app/templates/base/base-staff.html:751
 #: app/templates/staff/backup-staff-modify.html:569
 msgid "Maintenance"
 msgstr ""
 
-#: app/templates/base/base-staff.html:788
 #: app/templates/base/base-staff.html:791
-#: app/templates/base/base-staff.html:796
-#: app/templates/base/base-staff.html:800
+#: app/templates/base/base-staff.html:794
+#: app/templates/base/base-staff.html:799
+#: app/templates/base/base-staff.html:803
 #: app/templates/staff/page-list-journals.html:29
 #: app/templates/staff/page-list-journals.html:34
 #: app/templates/staff/page-list-product.html:25
@@ -864,54 +864,54 @@ msgstr ""
 msgid "Search here..."
 msgstr ""
 
-#: app/templates/base/base-staff.html:812
+#: app/templates/base/base-staff.html:815
 #: app/templates/staff/page-add-product.html:199
 #: app/templates/staff/page-list-product.html:45
 #: app/templates/staff/page-list-product.html:52
 msgid "Model Name"
 msgstr ""
 
-#: app/templates/base/base-staff.html:816
+#: app/templates/base/base-staff.html:819
 msgid ""
 "Model\n"
 "                                                        Name"
 msgstr ""
 
-#: app/templates/base/base-staff.html:818
+#: app/templates/base/base-staff.html:821
 msgid ""
 "Model\n"
 "                                                        Serial"
 msgstr ""
 
-#: app/templates/base/base-staff.html:893
+#: app/templates/base/base-staff.html:896
 msgid "Epidemic Mode"
 msgstr ""
 
-#: app/templates/base/base-staff.html:938
+#: app/templates/base/base-staff.html:941
 #: app/templates/staff/backup-staff-modify.html:680
 msgid "All Messages"
 msgstr ""
 
-#: app/templates/base/base-staff.html:998
-#: app/templates/base/base-staff.html:1084
+#: app/templates/base/base-staff.html:1001
+#: app/templates/base/base-staff.html:1087
 #: app/templates/staff/staff-index.html:261
 msgid "View All"
 msgstr ""
 
-#: app/templates/base/base-staff.html:1110
+#: app/templates/base/base-staff.html:1113
 msgid "Profile"
 msgstr ""
 
-#: app/templates/base/base-staff.html:1112
+#: app/templates/base/base-staff.html:1115
 msgid "Sign Out"
 msgstr ""
 
-#: app/templates/base/base-staff.html:1157
+#: app/templates/base/base-staff.html:1160
 #: app/templates/staff/backup-staff-modify.html:1078
 msgid "Privacy Policy"
 msgstr ""
 
-#: app/templates/base/base-staff.html:1159
+#: app/templates/base/base-staff.html:1162
 #: app/templates/staff/backup-staff-modify.html:1079
 msgid "Terms of Use"
 msgstr ""
@@ -946,63 +946,63 @@ msgid "Type Message ..."
 msgstr ""
 
 #: app/templates/chat/chat_customer.html:79
-#: app/templates/chat/chat_staff.html:327
+#: app/templates/chat/chat_staff.html:328
 msgid "Send"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:52 app/templates/chat/chat_staff.html:68
+#: app/templates/chat/chat_staff.html:46 app/templates/chat/chat_staff.html:62
 msgid "Staff"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:74
+#: app/templates/chat/chat_staff.html:68
 msgid ""
 "It is long established fact that a reader will be distracted bt\n"
 "                                                            the reddable."
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:76
+#: app/templates/chat/chat_staff.html:70
 #: app/templates/staff/page-list-orders.html:61
 msgid "Status"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:79
+#: app/templates/chat/chat_staff.html:73
 msgid "Online"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:82
+#: app/templates/chat/chat_staff.html:76
 msgid "Away"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:85
+#: app/templates/chat/chat_staff.html:79
 msgid ""
 "Do Not\n"
 "                                                                Disturb"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:88
+#: app/templates/chat/chat_staff.html:82
 msgid "Offline"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:96
+#: app/templates/chat/chat_staff.html:90
 msgid "Search"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:102
+#: app/templates/chat/chat_staff.html:96
 msgid "Direct Message"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:121
+#: app/templates/chat/chat_staff.html:115
 msgid "translation by"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:139
+#: app/templates/chat/chat_staff.html:140
 msgid ""
 "Start\n"
 "                                               Conversation By Choosing "
 "Chatroom!"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:324
+#: app/templates/chat/chat_staff.html:325
 msgid "Type your message"
 msgstr ""
 
@@ -1025,16 +1025,33 @@ msgstr ""
 msgid "Contact us"
 msgstr ""
 
-#: app/templates/errors/404.html:28
+#: app/templates/errors/403.html:42
+msgid "Forbidden"
+msgstr ""
+
+#: app/templates/errors/403.html:43
+msgid "You do not have the permission to access this function."
+msgstr ""
+
+#: app/templates/errors/403.html:46 app/templates/errors/404.html:57
+#: app/templates/errors/500.html:46
+msgid "Back to Home"
+msgstr ""
+
+#: app/templates/errors/404.html:53
 msgid "Page Not Found"
 msgstr ""
 
-#: app/templates/errors/404.html:29
+#: app/templates/errors/404.html:54
 msgid "The page you are looking for doesn&#x27;t exist or may have been moved."
 msgstr ""
 
-#: app/templates/errors/404.html:32
-msgid "Back to Home"
+#: app/templates/errors/500.html:42
+msgid "Internal Server Error"
+msgstr ""
+
+#: app/templates/errors/500.html:43
+msgid "Something wrong in the server, this would be fixed soon."
 msgstr ""
 
 #: app/templates/main/about_siren.html:43
@@ -1759,6 +1776,155 @@ msgstr ""
 msgid "Back to Home Page"
 msgstr ""
 
+#: app/templates/main/brand_intro/fender.html:41
+#: app/templates/main/brand_intro/fender.html:73
+msgid "About Fender"
+msgstr ""
+
+#: app/templates/main/brand_intro/fender.html:43
+msgid ""
+"FENDER MUSICAL INSTRUMENTS CORPORATION THE WORLD'S LEADING GUITAR "
+"MANUFACTURER"
+msgstr ""
+
+#: app/templates/main/brand_intro/fender.html:62
+msgid "Fender's History"
+msgstr ""
+
+#: app/templates/main/brand_intro/fender.html:63
+msgid ""
+"Fender Musical Instruments Corporation is the world’s foremost "
+"manufacturer of guitars, basses, amplifiers and related equipment.\n"
+"With an illustrious history dating back to 1946, Fender has touched and "
+"transformed music worldwide and in nearly every genre: rock ‘n’ roll, "
+"country and western, jazz, rhythm and blues, and many others. Everyone "
+"from beginners and hobbyists to the world’s most acclaimed artists and "
+"performers have used Fender instruments and amps, and legendary Fender "
+"instruments such as the Telecaster® and Stratocaster® guitars and "
+"Precision® and Jazz® bass guitars are universally acclaimed as design "
+"classics."
+msgstr ""
+
+#: app/templates/main/brand_intro/fender.html:76
+msgid "Synonymous with all things rock 'n' roll"
+msgstr ""
+
+#: app/templates/main/brand_intro/fender.html:77
+msgid ""
+"Today, FMIC brands include Fender®, Squier®, Gretsch®, Jackson®, Charvel®"
+" and EVH® among others. With an illustrious history dating back to 1946, "
+"Fender has touched and transformed music worldwide and in nearly every "
+"genre: rock ‘n’ roll, country and western, jazz, rhythm and blues and "
+"many others."
+msgstr ""
+
+#: app/templates/main/brand_intro/fender.html:81
+msgid "Transforming Music One Guitar at a Time"
+msgstr ""
+
+#: app/templates/main/brand_intro/fender.html:82
+msgid ""
+"Leo Fender wanted to craft an instrument that was as functional as it was"
+" easy to use. It was a primitive-looking object that was tough as nails, "
+"its powerful name inspired by another groundbreaking invention: the "
+"television. And with its revolutionary electrified tone, it would change "
+"the way music was made—forever. When someone asks, “Why Fender "
+"electrics?” the answer is clear. Fender guitars were designed to be "
+"louder, and exciting tones they produced are still engrained into our "
+"cultural DNA."
+msgstr ""
+
+#: app/templates/main/brand_intro/fender.html:86
+msgid "The First Word in Electric Bass"
+msgstr ""
+
+#: app/templates/main/brand_intro/fender.html:87
+msgid ""
+"In 1951, we wanted to liberate musicians from the confines of the upright"
+" bass. And we did it by introducing a brand-new instrument with a bold, "
+"new sound. That instrument was the Precision Bass®, a name that would not"
+" only become synonymous with rock ‘n’ roll, but also shape its very "
+"being. As time went on, we created new instruments to cater to a new, "
+"evolving type of musician: the electric bassist. Each one was and still "
+"is a driving force behind the greatest moment in music—of every era, of "
+"every genre. Period."
+msgstr ""
+
+#: app/templates/main/brand_intro/gibson.html:41
+msgid "Gibson"
+msgstr ""
+
+#: app/templates/main/brand_intro/gibson.html:43
+msgid ""
+"Try out a guitar, take a lesson, learn about Gibson's history, or see a "
+"live show on our stage."
+msgstr ""
+
+#: app/templates/main/brand_intro/gibson.html:62
+msgid "ABOUT GIBSON"
+msgstr ""
+
+#: app/templates/main/brand_intro/gibson.html:63
+msgid ""
+"Gibson Brands, the world’s most iconic guitar brand, has shaped the "
+"sounds of generations of musicians and music lovers across genres for "
+"more than 100 years. Founded in 1894 and headquartered in Nashville, TN, "
+"Gibson Brands has a legacy of world-class craftsmanship, legendary music "
+"partnerships, and progressive product evolution that is unrivaled among "
+"musical instrument companies. The Gibson Brands portfolio includes "
+"Gibson, the number one guitar brand, as well as many of the most beloved "
+"and recognizable music brands, including Epiphone, Kramer, Steinberger, "
+"MESA/Boogie, and the Gibson Pro Audio division, KRK Systems. Gibson "
+"Brands is dedicated to quality, innovation, and sound excellence so that "
+"music lovers for generations to come will continue to experience music "
+"shaped by Gibson Brands. Learn more at Gibson.com and follow us on "
+"Twitter, Facebook and Instagram."
+msgstr ""
+
+#: app/templates/main/brand_intro/gibson.html:72
+msgid "Gibson Leadership"
+msgstr ""
+
+#: app/templates/main/brand_intro/gibson.html:75
+msgid "James “JC” Curleigh Biography"
+msgstr ""
+
+#: app/templates/main/brand_intro/gibson.html:76
+msgid ""
+"James “JC” Curleigh is Gibson's president and chief executive officer, "
+"where he leads the Gibson senior team of proven executives with broad "
+"experience in global brand building, finance and product development. JC "
+"is a guitar enthusiast and has been a proud owner of both Gibson and "
+"Epiphone guitars over the years, including his latest addition – a Gibson"
+" 1960’s J-45 acoustic guitar."
+msgstr ""
+
+#: app/templates/main/brand_intro/gibson.html:80
+msgid "Cesar Gueikian Biography"
+msgstr ""
+
+#: app/templates/main/brand_intro/gibson.html:81
+msgid ""
+"Cesar Gueikian is Gibson's brand president overseeing product and its "
+"evolution, music solutions artist relations and marketing strategies. His"
+" role with Gibson melds his 20 years of experience as an entrepreneur and"
+" financier, investing in companies around the world, with his life-long "
+"passion for music, guitars and especially Gibson guitars."
+msgstr ""
+
+#: app/templates/main/brand_intro/gibson.html:85
+msgid "Armin Boehm Biography"
+msgstr ""
+
+#: app/templates/main/brand_intro/gibson.html:86
+msgid ""
+"Armin Boehm is Gibson's chief commercial officer (CCO) overseeing "
+"commercial strategy, sales execution and customer service. He is "
+"responsible for establishing organization effectiveness across our BDM "
+"(business development managers), RM (relationship managers), and DPS "
+"(dealer product specialist) teams."
+msgstr ""
+
 #: app/templates/main/brand_intro/hohner.html:41
 msgid "About Hohner"
 msgstr ""
@@ -2035,7 +2201,7 @@ msgid ""
 "                                    In support of this, we encouraged "
 "readers to enjoy the digital version of the journal,\n"
 "                                    and we reduced the number of paper "
-"journals produced by 70%, saving 1.4 million sheets\n"
+"journals produced by 70 persent, saving 1.4 million sheets\n"
 "                                    of paper."
 msgstr ""
 
@@ -2059,7 +2225,6 @@ msgid "ABOUT MEINL CYMBALS"
 msgstr ""
 
 #: app/templates/main/brand_intro/meinl.html:67
-#, python-format
 msgid ""
 "One of the great things about being a drummer is the opportunity to\n"
 "                                be different...to be yourself. When you "
@@ -2067,7 +2232,7 @@ msgid ""
 "                            everybody else. They're themselves. We like "
 "that.\n"
 "                                Today it is difficult to be totally "
-"original or 100% unique, but that does not mean you\n"
+"original or 100 percent unique, but that does not mean you\n"
 "                                must be like all the others. At MEINL we "
 "do our own thing. That's just who we are. And\n"
 "                            we like to think you want to be who you are, "
@@ -3487,28 +3652,28 @@ msgstr ""
 msgid "Update Avatar"
 msgstr ""
 
-#: app/userinfo/views.py:42
+#: app/userinfo/views.py:45
 msgid "Profile update successfully!"
 msgstr ""
 
-#: app/userinfo/views.py:69
+#: app/userinfo/views.py:72
 msgid "Avatar update successfully!"
 msgstr ""
 
-#: app/userinfo/views.py:104
+#: app/userinfo/views.py:107
 msgid "Address added successfully!"
 msgstr ""
 
-#: app/userinfo/views.py:125
+#: app/userinfo/views.py:128
 msgid "Address updated successfully!"
 msgstr ""
 
-#: app/userinfo/views.py:333 app/userinfo/views.py:349
-#: app/userinfo/views.py:358
+#: app/userinfo/views.py:337 app/userinfo/views.py:353
+#: app/userinfo/views.py:362
 msgid "Address has been deleted!"
 msgstr ""
 
-#: app/userinfo/views.py:397
+#: app/userinfo/views.py:402
 msgid "Default address changed successfully!"
 msgstr ""
 
