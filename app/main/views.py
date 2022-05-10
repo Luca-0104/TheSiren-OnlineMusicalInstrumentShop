@@ -323,12 +323,14 @@ def model_type_details(mt_id):
     """ get the recommended related models (models in same cate with high popularity) """
     related_mt_lst = []
     for cate in mt.product.categories:
-        for p in cate.products:
-            related_mt_lst += p.get_exist_model_types()
+        # do not use "additional requirements" for recommendation
+        if cate.id not in range(53, 57):
+            for p in cate.products:
+                related_mt_lst += p.get_exist_model_types()
     # sort the related list
     sort_db_models(related_mt_lst, sort_key=take_sales, reverse=True)
     # limit the number of mt in related list
-    related_mt_lst = related_mt_lst[:10]
+    related_mt_lst = related_mt_lst[:12]
 
     """ get the recommendation of 'more from this brand' """
     more_mt_this_brand = []
@@ -343,7 +345,7 @@ def model_type_details(mt_id):
         # sort the lst
         sort_db_models(more_mt_this_brand, sort_key=take_sales, reverse=True)
         # limit the number of mt in lst
-        more_mt_this_brand = more_mt_this_brand[:10]
+        more_mt_this_brand = more_mt_this_brand[:12]
 
     return render_template('main/page-commodity-details.html', model=mt, related_mt_lst=related_mt_lst, more_mt_this_brand=more_mt_this_brand)
 
