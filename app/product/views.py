@@ -13,6 +13,7 @@ from config import Config
 from . import product
 from .forms import ModelUploadForm, ModelModifyForm, ProductModifyForm
 from .. import db
+from ..decorators import staff_only
 
 from ..models import Product, ModelType, Category, Brand, Audio
 from ..public_tools import upload_picture, get_unique_shop_instance, get_epidemic_mode_status, generate_safe_pic_name
@@ -21,6 +22,7 @@ from ..public_tools import upload_picture, get_unique_shop_instance, get_epidemi
 # ------------------------------------------------ render the page  of stock management ------------------------------------------------
 @product.route('/staff-index')
 @login_required
+@staff_only()
 def show_page_staff_index():
     """
         This function renders the page of DashBoard
@@ -36,6 +38,7 @@ def show_page_staff_index():
 
 @product.route('/stock-management', methods=['GET', 'POST'])
 @login_required
+@staff_only()
 def show_page_stock_management():
     """
     This function has integrated the function of searching and rendering the stock management page
@@ -138,6 +141,7 @@ def search_stock(key_word, search_type):
 
 @product.route('/upload-product', methods=['GET', 'POST'])
 @login_required
+@staff_only()
 def upload_product():
     """
         This method uses the frontend form
@@ -333,6 +337,7 @@ def validate_model_serial():
 
 @product.route('/api/stock-management/remove-product', methods=['POST'])
 @login_required
+@staff_only()
 def remove_product():
     """
     (Using Ajax)
@@ -352,6 +357,7 @@ def remove_product():
 
 @product.route('/modify-product/<int:product_id>', methods=['GET', 'POST'])
 @login_required
+@staff_only()
 def modify_product(product_id):
     """
         (Backend forms needed, 'categories' are not in backend form)
@@ -405,6 +411,7 @@ def modify_product(product_id):
 
 @product.route('/upload-model-type/<int:product_id>', methods=['GET', 'POST'])
 @login_required
+@staff_only()
 def upload_model_type(product_id):
     """
         (Backend forms needed)
@@ -500,6 +507,7 @@ def upload_model_type(product_id):
 
 @product.route('/api/stock-management/remove-model-type', methods=['POST'])
 @login_required
+@staff_only()
 def remove_model_type():
     """
         (Using Ajax)
@@ -529,6 +537,7 @@ def remove_model_type():
 
 @product.route('/modify-model-type/<int:model_id>', methods=['GET', 'POST'])
 @login_required
+@staff_only()
 def modify_model_type(model_id):
     """
         (Backend forms needed)
@@ -619,6 +628,7 @@ def modify_model_type(model_id):
 
 @product.route('/stock-management/upload-video/<int:mt_id>', methods=['GET', 'POST'])
 @login_required
+@staff_only()
 def upload_video(mt_id):
     """
     This is a function for staffs uploading video file for a specific model type
@@ -674,6 +684,7 @@ def upload_video(mt_id):
 
 @product.route('/stock-management/upload-audio/<int:mt_id>', methods=['GET', 'POST'])
 @login_required
+@staff_only()
 def upload_audio(mt_id):
     """
     This is a function for staffs uploading audio file for a specific model type
@@ -729,6 +740,7 @@ def upload_audio(mt_id):
 
 @product.route('/stock-management/upload-3d-file/<int:mt_id>', methods=['GET', 'POST'])
 @login_required
+@staff_only()
 def upload_3d_file(mt_id):
     """
     This is a function for staffs uploading 3D model file for a specific model type
@@ -840,6 +852,7 @@ def upload_3d_file(mt_id):
 
 @product.route('/api/stock-management/add-category', methods=['POST'])
 @login_required
+@staff_only()
 def add_category():
     """
     (Using Ajax)
@@ -869,6 +882,7 @@ def add_category():
 
 @product.route('/api/stock-management/remove-category', methods=['POST'])
 @login_required
+@staff_only()
 def remove_category():
     """
     (Using Ajax)
@@ -882,6 +896,7 @@ def remove_category():
 
 @product.route('/api/stock-management/add-brand', methods=['POST'])
 @login_required
+@staff_only()
 def add_brand():
     """
     (Using Ajax)
@@ -911,6 +926,7 @@ def add_brand():
 
 @product.route('/api/stock-management/remove-brand', methods=['POST'])
 @login_required
+@staff_only()
 def remove_brand():
     """
     (Using Ajax)

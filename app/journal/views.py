@@ -4,6 +4,7 @@ from flask_login import current_user, login_required
 from sqlalchemy import or_
 
 from app import db
+from app.decorators import staff_only
 from app.journal import journal
 from flask import render_template, redirect, url_for, request, current_app, jsonify, flash
 
@@ -14,6 +15,7 @@ from app.public_tools import get_epidemic_mode_status
 
 @journal.route("/journal-management", methods=['GET', 'POST'])
 @login_required
+@staff_only()
 def journal_management():
     """
     The function for rendering the page of journal management
@@ -55,6 +57,7 @@ def journal_management():
 
 @journal.route("/journal-management/upload-journal", methods=['GET', 'POST'])
 @login_required
+@staff_only()
 def upload_journal():
     """
     The function for staffs to upload journals
@@ -84,6 +87,7 @@ def upload_journal():
 
 @journal.route("/journal-management/edit-journal/<int:journal_id>", methods=['GET', 'POST'])
 @login_required
+@staff_only()
 def edit_journal(journal_id):
     """
     The function for editing the journals
@@ -131,6 +135,7 @@ def edit_journal(journal_id):
 
 @journal.route("/api/journal-management/delete-journal", methods=['POST'])
 @login_required
+@staff_only()
 def delete_journal():
     """
     (Using Ajax)

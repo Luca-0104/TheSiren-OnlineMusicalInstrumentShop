@@ -35,6 +35,9 @@
         <script type="text/javascript" src="../../static/js/jquery-3.4.1.js"></script>
         {#  for scripts of javascript #}
         {% block scripts %}{% endblock %}
+
+        <!-- include flask moment here -->
+        {{ moment.include_moment() }}
     </head>
 
 
