@@ -8,7 +8,7 @@ from app.order import order
 
 from datetime import datetime
 
-from ..decorators import customer_only, staff_only
+from ..decorators import customer_only, staff_only, login_required_for_ajax
 from ..public_tools import get_unique_shop_instance, get_epidemic_mode_status
 
 
@@ -16,7 +16,7 @@ from ..public_tools import get_unique_shop_instance, get_epidemic_mode_status
 
 
 @order.route('/generate-order-from-cart', methods=['GET', 'POST'])
-@login_required
+@login_required_for_ajax()
 @customer_only(is_ajax=True)
 def generate_order_from_cart():
     """
@@ -64,7 +64,7 @@ def generate_order_from_cart():
 
 
 @order.route('/generate-order-from-buy-now', methods=['POST'])
-@login_required
+@login_required_for_ajax()
 @customer_only(is_ajax=True)
 def generate_order_from_buy_now():
     """
@@ -159,7 +159,7 @@ def order_confirm_premium():
 # -------------------------------------- Ajax in order confirm page --------------------------------------
 
 @order.route('/api/get-order-payment', methods=['POST'])
-@login_required
+@login_required_for_ajax()
 def get_order_payment():
     """
     This functions query the order payment info
@@ -187,7 +187,7 @@ def get_order_payment():
 
 
 @order.route('/api/update-order-address', methods=['POST'])
-@login_required
+@login_required_for_ajax()
 def update_order_address():
     """
     (Using Ajax)
@@ -234,7 +234,7 @@ def update_order_address():
 
 
 @order.route('/api/update-order-shipping', methods=['POST'])
-@login_required
+@login_required_for_ajax()
 def update_order_shipping():
     """
     (Using Ajax)
@@ -290,7 +290,7 @@ def update_order_shipping():
 
 
 @order.route('/api/update-order-recipient', methods=['POST'])
-@login_required
+@login_required_for_ajax()
 def update_order_recipient():
     """
     This function updates the recipient info of the given order
@@ -333,9 +333,10 @@ def update_order_recipient():
 
 
 @order.route('/api/cus-modify-order/change-order-to-delivery', methods=['POST'])
-@login_required
+@login_required_for_ajax()
 def change_order_to_delivery():
     """
+    (Using Ajax)
     This function is for customer to modify the order type of their order,
     when the type is going to be changed to "delivery".
     Both the type and address will be updated.
@@ -372,8 +373,10 @@ def change_order_to_delivery():
 
 @order.route('/api/cus-modify-order/change-order-to-collection', methods=['POST'])
 @login_required
+@login_required_for_ajax()
 def change_order_to_collection():
     """
+    (Using Ajax)
     This function is for customer to modify the order type of their order,
     when the type is going to be changed to "self-collection".
     Both the type and recipient will be updated.
@@ -449,7 +452,7 @@ def order_details(order_id):
 
 
 @order.route('/api/order/my-orders/filter-orders', methods=['POST'])
-@login_required
+@login_required_for_ajax()
 @customer_only(is_ajax=True)
 def filter_orders():
     """
@@ -477,7 +480,7 @@ def filter_orders():
 
 
 @order.route('/api/order/my-orders/change-status', methods=['POST'])
-@login_required
+@login_required_for_ajax()
 def change_status():
     """
     (Using Ajax)
@@ -576,7 +579,7 @@ def change_status():
 # -------------------------------------------- Premium orders --------------------------------------------
 
 @order.route('/api/generate-premium-order', methods=['POST'])
-@login_required
+@login_required_for_ajax()
 @customer_only(is_ajax=True)
 def generate_premium_order():
     """
@@ -648,7 +651,7 @@ def order_management():
 
 
 @order.route('/api/order-management/update-priority', methods=['POST'])
-@login_required
+@login_required_for_ajax()
 @staff_only(is_ajax=True)
 def update_priority():
     """

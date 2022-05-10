@@ -4,7 +4,7 @@ from flask_login import current_user, login_required
 from sqlalchemy import or_
 
 from app import db
-from app.decorators import staff_only
+from app.decorators import staff_only, login_required_for_ajax
 from app.journal import journal
 from flask import render_template, redirect, url_for, request, current_app, jsonify, flash
 
@@ -134,7 +134,7 @@ def edit_journal(journal_id):
 
 
 @journal.route("/api/journal-management/delete-journal", methods=['POST'])
-@login_required
+@login_required_for_ajax()
 @staff_only(is_ajax=True)
 def delete_journal():
     """

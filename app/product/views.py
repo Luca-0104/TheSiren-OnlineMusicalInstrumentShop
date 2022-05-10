@@ -13,7 +13,7 @@ from config import Config
 from . import product
 from .forms import ModelUploadForm, ModelModifyForm, ProductModifyForm
 from .. import db
-from ..decorators import staff_only
+from ..decorators import staff_only, login_required_for_ajax
 
 from ..models import Product, ModelType, Category, Brand, Audio
 from ..public_tools import upload_picture, get_unique_shop_instance, get_epidemic_mode_status, generate_safe_pic_name
@@ -337,7 +337,7 @@ def validate_model_serial():
 
 
 @product.route('/api/stock-management/remove-product', methods=['POST'])
-@login_required
+@login_required_for_ajax()
 @staff_only(is_ajax=True)
 def remove_product():
     """
@@ -508,7 +508,7 @@ def upload_model_type(product_id):
 
 
 @product.route('/api/stock-management/remove-model-type', methods=['POST'])
-@login_required
+@login_required_for_ajax()
 @staff_only(is_ajax=True)
 def remove_model_type():
     """
@@ -855,7 +855,7 @@ def upload_3d_file(mt_id):
 
 
 @product.route('/api/stock-management/add-category', methods=['POST'])
-@login_required
+@login_required_for_ajax()
 @staff_only(is_ajax=True)
 def add_category():
     """
@@ -885,7 +885,7 @@ def add_category():
 
 
 @product.route('/api/stock-management/remove-category', methods=['POST'])
-@login_required
+@login_required_for_ajax()
 @staff_only(is_ajax=True)
 def remove_category():
     """
@@ -899,7 +899,7 @@ def remove_category():
 # ------------------------------------------------ operations on 'brands' ------------------------------------------------
 
 @product.route('/api/stock-management/add-brand', methods=['POST'])
-@login_required
+@login_required_for_ajax()
 @staff_only(is_ajax=True)
 def add_brand():
     """
@@ -929,7 +929,7 @@ def add_brand():
 
 
 @product.route('/api/stock-management/remove-brand', methods=['POST'])
-@login_required
+@login_required_for_ajax()
 @staff_only(is_ajax=True)
 def remove_brand():
     """

@@ -4,7 +4,7 @@ import json
 
 from app import db
 from app.cart import cart
-from app.decorators import customer_only
+from app.decorators import customer_only, login_required_for_ajax
 from app.main import main
 from app.models import Cart, ModelType
 
@@ -25,7 +25,7 @@ def show_my_cart():
 
 
 @cart.route('/api/cart/add-to-cart', methods=['POST'])
-@login_required
+@login_required_for_ajax()
 @customer_only(is_ajax=True)
 def add_to_cart():
     """
@@ -76,7 +76,7 @@ def add_to_cart():
 
 
 @cart.route('/api/cart/update-cart-count', methods=['POST'])
-@login_required
+@login_required_for_ajax()
 @customer_only(is_ajax=True)
 def update_cart_count():
     """
@@ -115,7 +115,7 @@ def update_cart_count():
 
 
 @cart.route('/api/cart/remove-cart-relation', methods=['POST'])
-@login_required
+@login_required_for_ajax()
 @customer_only(is_ajax=True)
 def remove_cart_relation():
     """

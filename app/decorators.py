@@ -53,3 +53,21 @@ def customer_only(is_ajax=False):
         return decorated_function
     return decorator
 
+
+def login_required_for_ajax():
+    """
+    This decorator has the same functionalities as "flask - login_required",
+    BUT,  this is the decorator used for the functions using ajax, cuz we cannot abort request in an ajax backend function.
+    This is the decorator to limit the functions that can only be used by authenticated users.
+    If the user does not log in, they will be redirect to the login page.
+    :return: a jsonify to ajax request
+    """
+    def decorator(f):
+        @wraps(f)
+        def decorated_function(*args, **kwargs):
+            # if the user does not login, we let them log in first
+            if not current_user.is_authenticated:
+                return jsonify({"returnValue": 318, "redirectURL": url_for("auth.login")})
+            return f(*args, **kwargs)
+        return decorated_function
+    return decorator
