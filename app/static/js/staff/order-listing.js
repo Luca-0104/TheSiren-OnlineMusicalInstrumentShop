@@ -8,6 +8,7 @@ $(document).ready(function ()
 // update priority //////////////////////////////////////////////////////////////////////////////////////////////////
 $(".priority-select").change(function ()
 {
+    console.log("priority-select");
     let orderId = $(this).attr("orderId");
     let checkValue = $(this).val();
     let priority_sort = $("#priority-sort-" + orderId);
@@ -16,20 +17,26 @@ $(".priority-select").change(function ()
     $(this).removeClass("btn-info");
     $(this).removeClass("btn-secondary");
 
+    console.log("removed");
+    console.log("removed");
+
     if (checkValue === 'Normal')
     {
+        console.log("to normal");
         $(this).addClass("btn-light");
         priority_sort.html(1);
         update_priority(orderId, 1);
     }
     else if (checkValue === 'Important')
     {
+        console.log("to important");
         $(this).addClass("btn-info");
         priority_sort.html(2);
         update_priority(orderId, 2);
     }
     else if (checkValue === 'Significant')
     {
+        console.log("to significant");
         $(this).addClass("btn-secondary");
         priority_sort.html(3);
         update_priority(orderId, 3);
@@ -109,8 +116,7 @@ $(".select-type-a").on("click", function ()
     console.log(".select-type-a clicked");
     let orderId = $(this).attr("orderId");
     let selectType = $(this).attr("selectType");
-    console.log(orderId);
-    console.log(selectType);
+    let selectText = $(this).text();
 
     // get element of the select's mask
     let select_type = $("#select-type-"+orderId);
@@ -125,7 +131,7 @@ $(".select-type-a").on("click", function ()
     {
         // change select's mask
         select_type.val("Delivery");
-        select_type_display.html("Delivery");
+        select_type_display.html(selectText);
         $("#select-type-a-delivery-"+orderId).attr("aria-selected",true);
         $("#select-type-a-collection-"+orderId).attr("aria-selected",false);
 
@@ -138,7 +144,7 @@ $(".select-type-a").on("click", function ()
     {
         // change select's mask
         select_type.val("Self-Collection");
-        select_type_display.html("Self-Collection");
+        select_type_display.html(selectText);
         $("#select-type-a-collection-"+orderId).attr("aria-selected",true);
         $("#select-type-a-delivery-"+orderId).attr("aria-selected",false);
 

@@ -132,22 +132,26 @@
                                 </td>
                                 <!-- Priority -->
                                 <td>
-                                                    <span id="priority-sort-{{ order.id }}"
-                                                          style="display: none">{{ order.priority }}</span>
+                                    <span id="priority-sort-{{ order.id }}" style="display: none">
+                                        {{ order.priority }}
+                                    </span>
                                     <select id="priority-select-{{ order.id }}" data-style="py-0"
                                             class="btn priority-select {% if order.priority == 1 %}btn-light{% elif order.priority == 2 %}btn-info{% elif order.priority == 3 %}btn-secondary{% endif %}"
                                             orderId="{{ order.id }}">
                                         <option class="priority-option" pvalue="1"
+                                                value="Normal"
                                                 {% if order.priority == 1 %}
                                                 selected="selected" {% endif %}>
                                             {{ _("Normal") }}
                                         </option>
                                         <option class="priority-option" pvalue="2"
+                                                value="Important"
                                                 {% if order.priority == 2 %}
                                                 selected="selected" {% endif %}>
                                             {{ _("Important") }}
                                         </option>
                                         <option class="priority-option" pvalue="3"
+                                                value="Significant"
                                                 {% if order.priority == 3 %}
                                                 selected="selected" {% endif %}>
                                             {{ _("Significant") }}
@@ -483,12 +487,12 @@
                                                                                     orderId="{{ order.id }}"
                                                                                     class="form-control type-select"
                                                                                     data-style="py-0">
-                                                                                <option sn="b1"
+                                                                                <option sn="b1" value="Delivery"
                                                                                         {% if order.order_type == "self-collection" %}
                                                                                         selected="selected" {% endif %}>
                                                                                     {{ _("Delivery") }}
                                                                                 </option>
-                                                                                <option sn="b2"
+                                                                                <option sn="b2" value="Self-Collection"
                                                                                         {% if order.order_type == "delivery" %}
                                                                                         selected="selected" {% endif %}>
                                                                                     {{ _("Self-Collection") }}
