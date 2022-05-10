@@ -70,12 +70,13 @@ $(document).ready(function ()
                 "                                            <div class=\"help-block with-errors\"></div>",
                 "                                        </div>",
                 "                                    </div>"].join("");
-            repeat_model_intro_pic = ["<div class=\"col-md-12\">",
-                "                                        <div class=\"form-group\">",
-                "                                            <label>Thumbnail *</label>",
-                "                                            <input name=\"", counter, "_model_intro_pic\" type=\"file\" class=\"form-control image-file\" name=\"pic\" accept=\"image/*\" multiple=\"multiple\">",
-                "                                        </div>",
-                "                                    </div>"].join("");
+            repeat_model_intro_pic = "";
+            // repeat_model_intro_pic = ["<div class=\"col-md-12\">",
+            //     "                                        <div class=\"form-group\">",
+            //     "                                            <label>Thumbnail *</label>",
+            //     "                                            <input name=\"", counter, "_model_intro_pic\" type=\"file\" class=\"form-control image-file\" name=\"pic\" accept=\"image/*\" multiple=\"multiple\">",
+            //     "                                        </div>",
+            //     "                                    </div>"].join("");
             repeat_model_pic = ["<div class=\"col-md-12\">",
                 "                                        <div class=\"form-group\">",
                 "                                            <label>Product Pictures *</label>",
@@ -92,7 +93,7 @@ $(document).ready(function ()
                 "                                       <div id=\"1_model\">\n" +
                 "                                            <h4 class=\"card-title\">" + counter + ".</h4>\n" +
                 "                                       </div>\n" +
-                "                                   </div>"
+                "                                   </div>";
             repeat_model_type.before(repeat_model_name + repeat_model_number + repeat_model_price
                 + repeat_model_stock + repeat_model_intro_pic + repeat_model_pic +
                 repeat_model_description);
@@ -131,12 +132,13 @@ $(document).ready(function ()
                 "                                            <div class=\"help-block with-errors\"></div>",
                 "                                        </div>",
                 "                                    </div>"].join("");
-            repeat_model_intro_pic = ["<div class=\"col-md-12\">",
-                "                                        <div class=\"form-group\">",
-                "                                            <label>Thumbnail *</label>",
-                "                                            <input name=\"", counter, "_model_intro_pic\" type=\"file\" class=\"form-control image-file\" name=\"pic\" accept=\"image/*\" multiple=\"multiple\">",
-                "                                        </div>",
-                "                                    </div>"].join("");
+            repeat_model_intro_pic = "";
+            // repeat_model_intro_pic = ["<div class=\"col-md-12\">",
+            //     "                                        <div class=\"form-group\">",
+            //     "                                            <label>Thumbnail *</label>",
+            //     "                                            <input name=\"", counter, "_model_intro_pic\" type=\"file\" class=\"form-control image-file\" name=\"pic\" accept=\"image/*\" multiple=\"multiple\">",
+            //     "                                        </div>",
+            //     "                                    </div>"].join("");
             repeat_model_pic = ["<div class=\"col-md-12\">",
                 "                                        <div class=\"form-group\">",
                 "                                            <label>Product Pictures *</label>",

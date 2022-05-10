@@ -22,6 +22,7 @@
     <link href="../../static/css/main/detail_video.css" rel="stylesheet" type="text/css">
     <link href="../../static/css/main/detail_3d_view.css" rel="stylesheet" type="text/css">
     <link href="../../static/css/main/comment-display.css" rel="stylesheet" type="text/css">
+    <link href="../../static/css/main/commodities_card.css" rel="stylesheet" type="text/css">
     <!-- [if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"
             type="text/javascript"></script><![endif] -->
@@ -368,7 +369,7 @@
 
 
 
-            <!-- old 3d implementation -->
+            <!-- 3d implementation for testing-->
 {#            {% if model.id == 28 %}#}
 {#                <br>#}
 {#                <div id="modeltype-3d-model"  class="section bg-primary-dark wf-section">#}
@@ -399,8 +400,7 @@
                 <br>
                 <div id="modeltype-3d-model" class="section bg-primary-dark wf-section"
                      model-address="{{ url_for("static", filename=model.three_d_model_address) }}"
-                     model-texture-address="{{ url_for("static", filename=model.three_d_model_texture_address) }}"
-                >
+                     model-texture-address="{{ url_for("static", filename=model.three_d_model_texture_address) }}">
                     <div class="main-container">
                         <div class="w-layout-grid grid-halves">
                             {# title of 3D view #}
@@ -409,10 +409,10 @@
                                 <div>
                                     <br>
                                     {{ _("You can use mouse to move the camara around by dragging and use mouse wheel to move
-                                            closer.")}}<br>
-                                    {{ _("If you cannot see the 3d model, please move the camara.")}} <br>
-                                    {{ _("You may wait for a moment before it finishes rendering, this may take several
-                                            minuses.")}}
+                                            closer.")}} <br><br>
+                                    {{ _("You may wait for a moment before the source download is finished, this may take several
+                                            minuses.")}} <br><br>
+                                    {{ _("If you cannot see the 3d model when the source is ready, please move the camara.")}}
                                 </div>
                             </div>
                             {# container of the 3D view #}
@@ -627,29 +627,64 @@
                     <h3 class="no-bottom-margin">{{ _("More from ")}}{{ model.product.brand.name }}</h3>
                     <div class="w-dyn-list">
                         <div role="list" class="product-quarters-grid w-dyn-items">
-
-                            {% for related in related_mt_lst %}
-                                <div role="listitem" class="w-dyn-item">
-                                    <div>
-                                        <a href="#" class="product-preview-link w-inline-block"><img
-                                                src="{{ url_for('static', filename=related.pictures.first().address) }}"
-                                                loading="lazy" alt="" class="product-thumbnail">
-                                            <div class="uppercase-text brand"></div>
-                                            <h5 class="no-bottom-margin"></h5>
-                                            <div class="price-container">
-                                                <div class="old-price"></div>
-                                                <div></div>
-                                                <div></div>
-                                            </div>
-                                        </a>
+                            {% if related_mt_lst|length >= 1 %}
+                                {% for mt in related_mt_lst %}
+{#                                    <div role="listitem" class="w-dyn-item">#}
+{#                                        <div>#}
+{#                                            <a href="#" class="product-preview-link w-inline-block"><img#}
+{#                                                    src="{{ url_for('static', filename=related.pictures.first().address) }}"#}
+{#                                                    loading="lazy" alt="" class="product-thumbnail">#}
+{#                                                <div class="uppercase-text brand"></div>#}
+{#                                                <h5 class="no-bottom-margin"></h5>#}
+{#                                                <div class="price-container">#}
+{#                                                    <div class="old-price"></div>#}
+{#                                                    <div></div>#}
+{#                                                    <div></div>#}
+{#                                                </div>#}
+{#                                            </a>#}
+{#                                        </div>#}
+{#                                    </div>#}
+                                    <div role="listitem" class="w-dyn-item commodity-card">
+                                        <div>
+                                            {#                          <a href="{{ url_for("main.model_type_details", mt_id=mt.id) }}" class="product-preview-link w-inline-block">#}
+                                            <a href="/product-details/{{ mt.id }}" class="product-preview-link w-inline-block">
+                                                {#                              <img src="{{ url_for("static",filename=mt.pictures.first().address) }}" loading="lazy" alt="" class="product-thumbnail">#}
+                                                <div class="commodity-pic
+                                                     {% if (mt.video_address == None or mt.video_address == "") and (mt.audio_addresses.count() == 0) and (mt.three_d_model_address != None and mt.three_d_model_address != "") %}
+                                                        commodity-pic1
+                                                     {% elif (mt.video_address == None or mt.video_address == "") and (mt.audio_addresses.count() != 0) and (mt.three_d_model_address == None or mt.three_d_model_address == "") %}
+                                                        commodity-pic2
+                                                     {% elif (mt.video_address != None and mt.video_address != "") and (mt.audio_addresses.count() == 0) and (mt.three_d_model_address == None or mt.three_d_model_address == "") %}
+                                                        commodity-pic3
+                                                     {% elif (mt.video_address != None and mt.video_address != "") and (mt.audio_addresses.count() != 0) and (mt.three_d_model_address == None or mt.three_d_model_address == "") %}
+                                                        commodity-pic4
+                                                     {% elif (mt.video_address != None and mt.video_address != "") and (mt.audio_addresses.count() == 0) and (mt.three_d_model_address != None and mt.three_d_model_address != "") %}
+                                                        commodity-pic5
+                                                     {% elif (mt.video_address == None or mt.video_address == "") and (mt.audio_addresses.count() != 0) and (mt.three_d_model_address != None and mt.three_d_model_address != "") %}
+                                                        commodity-pic6
+                                                     {% elif (mt.video_address != None and mt.video_address != "") and (mt.audio_addresses.count() != 0) and (mt.three_d_model_address != None and mt.three_d_model_address != "") %}
+                                                        commodity-pic7
+                                                     {% endif %}">
+                                                    <img src="../../static/{{ mt.pictures.first().address }}"
+                                                         loading="lazy" alt="" class="product-thumbnail">
+                                                </div>
+                                                <div class="uppercase-text brand brand-row">{{ mt.product.brand.name }}</div>
+                                                <h5 class="no-bottom-margin">{{ mt.name }}</h5>
+                                                <div class="price-container">
+                                                    <div class="old-price"><span>￥</span>{{ mt.price*2 }}</div>
+                                                    <div><span>￥</span>{{ mt.price }}</div>
+                                                </div>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                            {% endfor %}
-
+                                {% endfor %}
+                            {% endif %}
                         </div>
-                        <div class="empty-state bg-primary w-dyn-empty">
-                            <div>{{ _("There are no more products from this brand yet.")}}</div>
-                        </div>
+                        {% if related_mt_lst|length == 1 %}
+                            <div class="empty-state bg-primary w-dyn-empty">
+                                <div>{{ _("There are no more products from this brand yet.")}}</div>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -673,25 +708,64 @@
                     </div>
                     <div class="w-dyn-list">
                         <div role="list" class="product-quarters-grid w-dyn-items">
-                            <div role="listitem" class="w-dyn-item">
-                                <div>
-                                    <a href="#" class="product-preview-link w-inline-block"><img src="" loading="lazy"
-                                                                                                 alt=""
-                                                                                                 class="product-thumbnail">
-                                        <div class="uppercase-text brand"></div>
-                                        <h5 class="no-bottom-margin"></h5>
-                                        <div class="price-container">
-                                            <div class="old-price"></div>
-                                            <div></div>
-                                            <div></div>
+                            {% if related_mt_lst|length >= 1 %}
+                                {% for mt in related_mt_lst %}
+{#                                    <div role="listitem" class="w-dyn-item">#}
+{#                                        <div>#}
+{#                                            <a href="#" class="product-preview-link w-inline-block"><img#}
+{#                                                    src="{{ url_for('static', filename=related.pictures.first().address) }}"#}
+{#                                                    loading="lazy" alt="" class="product-thumbnail">#}
+{#                                                <div class="uppercase-text brand"></div>#}
+{#                                                <h5 class="no-bottom-margin"></h5>#}
+{#                                                <div class="price-container">#}
+{#                                                    <div class="old-price"></div>#}
+{#                                                    <div></div>#}
+{#                                                    <div></div>#}
+{#                                                </div>#}
+{#                                            </a>#}
+{#                                        </div>#}
+{#                                    </div>#}
+                                    <div role="listitem" class="w-dyn-item commodity-card">
+                                        <div>
+                                            {#                          <a href="{{ url_for("main.model_type_details", mt_id=mt.id) }}" class="product-preview-link w-inline-block">#}
+                                            <a href="/product-details/{{ mt.id }}" class="product-preview-link w-inline-block">
+                                                {#                              <img src="{{ url_for("static",filename=mt.pictures.first().address) }}" loading="lazy" alt="" class="product-thumbnail">#}
+                                                <div class="commodity-pic
+                                                     {% if (mt.video_address == None or mt.video_address == "") and (mt.audio_addresses.count() == 0) and (mt.three_d_model_address != None and mt.three_d_model_address != "") %}
+                                                        commodity-pic1
+                                                     {% elif (mt.video_address == None or mt.video_address == "") and (mt.audio_addresses.count() != 0) and (mt.three_d_model_address == None or mt.three_d_model_address == "") %}
+                                                        commodity-pic2
+                                                     {% elif (mt.video_address != None and mt.video_address != "") and (mt.audio_addresses.count() == 0) and (mt.three_d_model_address == None or mt.three_d_model_address == "") %}
+                                                        commodity-pic3
+                                                     {% elif (mt.video_address != None and mt.video_address != "") and (mt.audio_addresses.count() != 0) and (mt.three_d_model_address == None or mt.three_d_model_address == "") %}
+                                                        commodity-pic4
+                                                     {% elif (mt.video_address != None and mt.video_address != "") and (mt.audio_addresses.count() == 0) and (mt.three_d_model_address != None and mt.three_d_model_address != "") %}
+                                                        commodity-pic5
+                                                     {% elif (mt.video_address == None or mt.video_address == "") and (mt.audio_addresses.count() != 0) and (mt.three_d_model_address != None and mt.three_d_model_address != "") %}
+                                                        commodity-pic6
+                                                     {% elif (mt.video_address != None and mt.video_address != "") and (mt.audio_addresses.count() != 0) and (mt.three_d_model_address != None and mt.three_d_model_address != "") %}
+                                                        commodity-pic7
+                                                     {% endif %}">
+                                                    <img src="../../static/{{ mt.pictures.first().address }}"
+                                                         loading="lazy" alt="" class="product-thumbnail">
+                                                </div>
+                                                <div class="uppercase-text brand brand-row">{{ mt.product.brand.name }}</div>
+                                                <h5 class="no-bottom-margin">{{ mt.name }}</h5>
+                                                <div class="price-container">
+                                                    <div class="old-price"><span>￥</span>{{ mt.price*2 }}</div>
+                                                    <div><span>￥</span>{{ mt.price }}</div>
+                                                </div>
+                                            </a>
                                         </div>
-                                    </a>
-                                </div>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        {% if related_mt_lst|length == 1 %}
+                            <div class="empty-state bg-primary w-dyn-empty">
+                                <div>{{ _("There are no more products from this category yet.")}}</div>
                             </div>
-                        </div>
-                        <div class="empty-state bg-primary w-dyn-empty">
-                            <div>{{ _("There are no more products from this category yet.")}}</div>
-                        </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
