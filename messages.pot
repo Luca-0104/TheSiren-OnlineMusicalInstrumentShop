@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-10 17:19+0800\n"
+"POT-Creation-Date: 2022-05-10 18:00+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,7 +34,7 @@ msgstr ""
 #: app/auth/forms.py:16 app/templates/auth/register_new.html:44
 #: app/templates/backend-test/payment/payment-finished.html:66
 #: app/templates/base/base-customer.html:97
-#: app/templates/base/base-staff.html:523 app/templates/comment/comment.html:80
+#: app/templates/comment/comment.html:80
 #: app/templates/order/order-detail.html:80
 #: app/templates/order/order-listing.html:73
 #: app/templates/staff/backup-staff-modify.html:401
@@ -58,7 +58,6 @@ msgid "Confirm your password"
 msgstr ""
 
 #: app/auth/forms.py:48 app/templates/auth/login_new.html:46
-#: app/templates/base/base-staff.html:528
 #: app/templates/staff/backup-staff-modify.html:406
 msgid "Register"
 msgstr ""
@@ -554,302 +553,9 @@ msgstr ""
 msgid "Upload Journals"
 msgstr ""
 
-#: app/templates/base/base-staff.html:193
-#: app/templates/staff/backup-staff-modify.html:76
-#: app/templates/userinfo/user_profile.html:384
-msgid "Categories"
-msgstr ""
-
-#: app/templates/base/base-staff.html:206
-#: app/templates/staff/backup-staff-modify.html:84
-msgid "List Category"
-msgstr ""
-
-#: app/templates/base/base-staff.html:212
-#: app/templates/staff/backup-staff-modify.html:89
-msgid "Add Category"
-msgstr ""
-
-#: app/templates/base/base-staff.html:229
-#: app/templates/staff/backup-staff-modify.html:145
-msgid "Returns"
-msgstr ""
-
-#: app/templates/base/base-staff.html:242
-#: app/templates/staff/backup-staff-modify.html:153
-msgid "List Returns"
-msgstr ""
-
-#: app/templates/base/base-staff.html:248
-#: app/templates/staff/backup-staff-modify.html:158
-msgid "Add Return"
-msgstr ""
-
 #: app/templates/base/base-staff.html:265
 #: app/templates/staff/backup-staff-modify.html:168
 msgid "People"
-msgstr ""
-
-#: app/templates/base/base-staff.html:296
-#: app/templates/staff/backup-staff-modify.html:211
-msgid "Reports"
-msgstr ""
-
-#: app/templates/base/base-staff.html:312
-#: app/templates/staff/backup-staff-modify.html:221
-msgid "other page"
-msgstr ""
-
-#: app/templates/base/base-staff.html:332
-#: app/templates/staff/backup-staff-modify.html:232
-msgid "User Details"
-msgstr ""
-
-#: app/templates/base/base-staff.html:344
-#: app/templates/staff/backup-staff-modify.html:240
-msgid "User Profile"
-msgstr ""
-
-#: app/templates/base/base-staff.html:349
-#: app/templates/staff/backup-staff-modify.html:245
-msgid "User Add"
-msgstr ""
-
-#: app/templates/base/base-staff.html:354
-#: app/templates/staff/backup-staff-modify.html:250
-msgid "User List"
-msgstr ""
-
-#: app/templates/base/base-staff.html:367
-#: app/templates/staff/backup-staff-modify.html:260
-msgid "UI Elements"
-msgstr ""
-
-#: app/templates/base/base-staff.html:379
-#: app/templates/staff/backup-staff-modify.html:268
-msgid "Avatars"
-msgstr ""
-
-#: app/templates/base/base-staff.html:384
-#: app/templates/staff/backup-staff-modify.html:273
-msgid "Alerts"
-msgstr ""
-
-#: app/templates/base/base-staff.html:389
-#: app/templates/staff/backup-staff-modify.html:278
-msgid "Badges"
-msgstr ""
-
-#: app/templates/base/base-staff.html:394
-#: app/templates/staff/backup-staff-modify.html:283
-msgid "Breadcrumb"
-msgstr ""
-
-#: app/templates/base/base-staff.html:399
-#: app/templates/staff/backup-staff-modify.html:288
-msgid "Buttons"
-msgstr ""
-
-#: app/templates/base/base-staff.html:404
-#: app/templates/staff/backup-staff-modify.html:293
-msgid "Buttons Group"
-msgstr ""
-
-#: app/templates/base/base-staff.html:409
-#: app/templates/staff/backup-staff-modify.html:298
-msgid "Box Shadow"
-msgstr ""
-
-#: app/templates/base/base-staff.html:414
-#: app/templates/staff/backup-staff-modify.html:303
-msgid "Colors"
-msgstr ""
-
-#: app/templates/base/base-staff.html:419
-#: app/templates/staff/backup-staff-modify.html:308
-msgid "Cards"
-msgstr ""
-
-#: app/templates/base/base-staff.html:424
-#: app/templates/staff/backup-staff-modify.html:313
-msgid "Carousel"
-msgstr ""
-
-#: app/templates/base/base-staff.html:429
-#: app/templates/staff/backup-staff-modify.html:318
-msgid "Grid"
-msgstr ""
-
-#: app/templates/base/base-staff.html:434
-#: app/templates/staff/backup-staff-modify.html:323
-msgid "Helper classes"
-msgstr ""
-
-#: app/templates/base/base-staff.html:439
-#: app/templates/staff/backup-staff-modify.html:328
-msgid "Images"
-msgstr ""
-
-#: app/templates/base/base-staff.html:444
-#: app/templates/staff/backup-staff-modify.html:333
-msgid "list Group"
-msgstr ""
-
-#: app/templates/base/base-staff.html:449
-#: app/templates/staff/backup-staff-modify.html:338
-msgid "Media"
-msgstr ""
-
-#: app/templates/base/base-staff.html:454
-#: app/templates/staff/backup-staff-modify.html:343
-msgid "Modal"
-msgstr ""
-
-#: app/templates/base/base-staff.html:459
-#: app/templates/base/base-staff.html:1027
-#: app/templates/staff/backup-staff-modify.html:348
-#: app/templates/staff/backup-staff-modify.html:749
-msgid "Notifications"
-msgstr ""
-
-#: app/templates/base/base-staff.html:464
-#: app/templates/staff/backup-staff-modify.html:353
-msgid "Pagination"
-msgstr ""
-
-#: app/templates/base/base-staff.html:469
-#: app/templates/staff/backup-staff-modify.html:358
-msgid "Popovers"
-msgstr ""
-
-#: app/templates/base/base-staff.html:474
-#: app/templates/staff/backup-staff-modify.html:363
-msgid "Progressbars"
-msgstr ""
-
-#: app/templates/base/base-staff.html:479
-#: app/templates/staff/backup-staff-modify.html:368
-msgid "Typography"
-msgstr ""
-
-#: app/templates/base/base-staff.html:484
-#: app/templates/staff/backup-staff-modify.html:373
-msgid "Tabs"
-msgstr ""
-
-#: app/templates/base/base-staff.html:489
-#: app/templates/staff/backup-staff-modify.html:378
-msgid "Tooltips"
-msgstr ""
-
-#: app/templates/base/base-staff.html:494
-#: app/templates/staff/backup-staff-modify.html:383
-msgid "Video"
-msgstr ""
-
-#: app/templates/base/base-staff.html:511
-#: app/templates/staff/backup-staff-modify.html:393
-msgid "Authentication"
-msgstr ""
-
-#: app/templates/base/base-staff.html:533
-#: app/templates/staff/backup-staff-modify.html:411
-msgid "Recover Password"
-msgstr ""
-
-#: app/templates/base/base-staff.html:538
-#: app/templates/staff/backup-staff-modify.html:416
-msgid "Confirm Mail"
-msgstr ""
-
-#: app/templates/base/base-staff.html:543
-#: app/templates/staff/backup-staff-modify.html:421
-msgid "Lock Screen"
-msgstr ""
-
-#: app/templates/base/base-staff.html:558
-#: app/templates/staff/backup-staff-modify.html:431
-msgid "Forms"
-msgstr ""
-
-#: app/templates/base/base-staff.html:571
-#: app/templates/staff/backup-staff-modify.html:439
-msgid "Form Elements"
-msgstr ""
-
-#: app/templates/base/base-staff.html:577
-#: app/templates/staff/backup-staff-modify.html:444
-msgid "Form Input"
-msgstr ""
-
-#: app/templates/base/base-staff.html:583
-#: app/templates/staff/backup-staff-modify.html:449
-msgid "Form Validation"
-msgstr ""
-
-#: app/templates/base/base-staff.html:589
-#: app/templates/staff/backup-staff-modify.html:454
-msgid "Form Switch"
-msgstr ""
-
-#: app/templates/base/base-staff.html:595
-#: app/templates/staff/backup-staff-modify.html:459
-msgid "Form Checkbox"
-msgstr ""
-
-#: app/templates/base/base-staff.html:601
-#: app/templates/staff/backup-staff-modify.html:464
-msgid "Form Radio"
-msgstr ""
-
-#: app/templates/base/base-staff.html:607
-#: app/templates/staff/backup-staff-modify.html:469
-msgid "Form Textarea"
-msgstr ""
-
-#: app/templates/base/base-staff.html:623
-#: app/templates/staff/backup-staff-modify.html:479
-msgid "Table"
-msgstr ""
-
-#: app/templates/base/base-staff.html:635
-#: app/templates/staff/backup-staff-modify.html:487
-msgid "Basic Tables"
-msgstr ""
-
-#: app/templates/base/base-staff.html:640
-#: app/templates/staff/backup-staff-modify.html:492
-msgid "Data Table"
-msgstr ""
-
-#: app/templates/base/base-staff.html:645
-#: app/templates/staff/backup-staff-modify.html:497
-msgid "Table Tree"
-msgstr ""
-
-#: app/templates/base/base-staff.html:661
-#: app/templates/staff/backup-staff-modify.html:507
-msgid "Pricing"
-msgstr ""
-
-#: app/templates/base/base-staff.html:695
-#: app/templates/staff/backup-staff-modify.html:530
-msgid "Invoice"
-msgstr ""
-
-#: app/templates/base/base-staff.html:709
-#: app/templates/staff/backup-staff-modify.html:538
-msgid "Error"
-msgstr ""
-
-#: app/templates/base/base-staff.html:740
-#: app/templates/staff/backup-staff-modify.html:561
-msgid "Blank Page"
-msgstr ""
-
-#: app/templates/base/base-staff.html:751
-#: app/templates/staff/backup-staff-modify.html:569
-msgid "Maintenance"
 msgstr ""
 
 #: app/templates/base/base-staff.html:791
@@ -897,6 +603,12 @@ msgstr ""
 msgid "View All"
 msgstr ""
 
+#: app/templates/base/base-staff.html:1027
+#: app/templates/staff/backup-staff-modify.html:348
+#: app/templates/staff/backup-staff-modify.html:749
+msgid "Notifications"
+msgstr ""
+
 #: app/templates/base/base-staff.html:1113
 msgid "Profile"
 msgstr ""
@@ -940,12 +652,12 @@ msgstr ""
 msgid "Chat Messages"
 msgstr ""
 
-#: app/templates/chat/chat_customer.html:77
+#: app/templates/chat/chat_customer.html:84
 msgid "Type Message ..."
 msgstr ""
 
-#: app/templates/chat/chat_customer.html:79
-#: app/templates/chat/chat_staff.html:328
+#: app/templates/chat/chat_customer.html:86
+#: app/templates/chat/chat_staff.html:327
 msgid "Send"
 msgstr ""
 
@@ -994,14 +706,14 @@ msgstr ""
 msgid "translation by"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:140
+#: app/templates/chat/chat_staff.html:139
 msgid ""
 "Start\n"
 "                                               Conversation By Choosing "
 "Chatroom!"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:325
+#: app/templates/chat/chat_staff.html:324
 msgid "Type your message"
 msgstr ""
 
@@ -2827,6 +2539,19 @@ msgstr ""
 msgid "Siren Management"
 msgstr ""
 
+#: app/templates/staff/backup-staff-modify.html:76
+#: app/templates/userinfo/user_profile.html:384
+msgid "Categories"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:84
+msgid "List Category"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:89
+msgid "Add Category"
+msgstr ""
+
 #: app/templates/staff/backup-staff-modify.html:99
 msgid "Sale"
 msgstr ""
@@ -2851,6 +2576,18 @@ msgstr ""
 msgid "Add purchase"
 msgstr ""
 
+#: app/templates/staff/backup-staff-modify.html:145
+msgid "Returns"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:153
+msgid "List Returns"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:158
+msgid "Add Return"
+msgstr ""
+
 #: app/templates/staff/backup-staff-modify.html:176
 msgid "Customers"
 msgstr ""
@@ -2873,6 +2610,210 @@ msgstr ""
 
 #: app/templates/staff/backup-staff-modify.html:201
 msgid "Add Suppliers"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:211
+msgid "Reports"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:221
+msgid "other page"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:232
+msgid "User Details"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:240
+msgid "User Profile"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:245
+msgid "User Add"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:250
+msgid "User List"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:260
+msgid "UI Elements"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:268
+msgid "Avatars"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:273
+msgid "Alerts"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:278
+msgid "Badges"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:283
+msgid "Breadcrumb"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:288
+msgid "Buttons"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:293
+msgid "Buttons Group"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:298
+msgid "Box Shadow"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:303
+msgid "Colors"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:308
+msgid "Cards"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:313
+msgid "Carousel"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:318
+msgid "Grid"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:323
+msgid "Helper classes"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:328
+msgid "Images"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:333
+msgid "list Group"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:338
+msgid "Media"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:343
+msgid "Modal"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:353
+msgid "Pagination"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:358
+msgid "Popovers"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:363
+msgid "Progressbars"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:368
+msgid "Typography"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:373
+msgid "Tabs"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:378
+msgid "Tooltips"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:383
+msgid "Video"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:393
+msgid "Authentication"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:411
+msgid "Recover Password"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:416
+msgid "Confirm Mail"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:421
+msgid "Lock Screen"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:431
+msgid "Forms"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:439
+msgid "Form Elements"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:444
+msgid "Form Input"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:449
+msgid "Form Validation"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:454
+msgid "Form Switch"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:459
+msgid "Form Checkbox"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:464
+msgid "Form Radio"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:469
+msgid "Form Textarea"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:479
+msgid "Table"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:487
+msgid "Basic Tables"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:492
+msgid "Data Table"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:497
+msgid "Table Tree"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:507
+msgid "Pricing"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:530
+msgid "Invoice"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:538
+msgid "Error"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:561
+msgid "Blank Page"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:569
+msgid "Maintenance"
 msgstr ""
 
 #: app/templates/staff/backup-staff-modify.html:581
