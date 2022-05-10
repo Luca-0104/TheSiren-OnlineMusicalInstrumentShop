@@ -624,11 +624,11 @@
             {# more products from this brand #}
             <div class="section bg-primary-light wf-section">
                 <div class="main-container">
-                    <h3 class="no-bottom-margin">{{ _("More from ")}}{{ model.product.brand.name }}</h3>
+                    <h3 class="no-bottom-margin section-title-in-mt-detail-page">{{ _("More from ")}}{{ model.product.brand.name }}</h3>
                     <div class="w-dyn-list">
                         <div role="list" class="product-quarters-grid w-dyn-items">
-                            {% if related_mt_lst|length >= 1 %}
-                                {% for mt in related_mt_lst %}
+                            {% if more_mt_this_brand|length >= 1 %}
+                                {% for mt in more_mt_this_brand %}
 {#                                    <div role="listitem" class="w-dyn-item">#}
 {#                                        <div>#}
 {#                                            <a href="#" class="product-preview-link w-inline-block"><img#}
@@ -680,7 +680,7 @@
                                 {% endfor %}
                             {% endif %}
                         </div>
-                        {% if related_mt_lst|length == 1 %}
+                        {% if more_mt_this_brand|length == 0 %}
                             <div class="empty-state bg-primary w-dyn-empty">
                                 <div>{{ _("There are no more products from this brand yet.")}}</div>
                             </div>
@@ -689,10 +689,12 @@
                 </div>
             </div>
 
+
+            <!-- Related Recommendation Section -->
             <div class="section wf-section">
                 <div class="main-container">
                     <div class="section-title more-from-brand-title">
-                        <h3 class="no-bottom-margin">{{ _("Related Recommendation")}}</h3>
+                        <h3 class="no-bottom-margin section-title-in-mt-detail-page">{{ _("Related Recommendation")}}</h3>
                         <div class="w-dyn-list">
                             <div role="list" class="w-dyn-items">
                                 <div role="listitem" class="w-dyn-item">
@@ -761,7 +763,7 @@
                                 {% endfor %}
                             {% endif %}
                         </div>
-                        {% if related_mt_lst|length == 1 %}
+                        {% if related_mt_lst|length == 0 %}
                             <div class="empty-state bg-primary w-dyn-empty">
                                 <div>{{ _("There are no more products from this category yet.")}}</div>
                             </div>
