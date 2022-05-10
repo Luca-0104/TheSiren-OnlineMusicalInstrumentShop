@@ -28,7 +28,7 @@
 
 .commodity-card:hover:before {
     /*border-right: 1px solid #9c9c9c54;*/
-    height: 50%;
+    height: 60%;
     background-color: #edcb79;
 }
 
