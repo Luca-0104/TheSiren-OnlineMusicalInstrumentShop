@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-10 18:00+0800\n"
+"POT-Creation-Date: 2022-05-10 20:40+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -74,12 +74,12 @@ msgstr ""
 msgid "Register Successfully! You can go for login now!"
 msgstr ""
 
-#: app/auth/views.py:103 app/templates/auth/login_new.html:94
+#: app/auth/views.py:104 app/templates/auth/login_new.html:94
 #: app/templates/auth/register_new.html:106
 msgid "Login success!"
 msgstr ""
 
-#: app/auth/views.py:120
+#: app/auth/views.py:121
 msgid "Login Failed! Check your username or password."
 msgstr ""
 
@@ -152,11 +152,11 @@ msgstr ""
 msgid "Brand"
 msgstr ""
 
-#: app/product/forms.py:18 app/templates/order/order-detail.html:892
-#: app/templates/order/order-detail.html:975
-#: app/templates/staff/page-list-orders.html:645
-#: app/templates/staff/page-list-orders.html:722
-#: app/templates/staff/page-list-orders.html:790
+#: app/product/forms.py:18 app/templates/order/order-detail.html:894
+#: app/templates/order/order-detail.html:977
+#: app/templates/staff/page-list-orders.html:819
+#: app/templates/staff/page-list-orders.html:896
+#: app/templates/staff/page-list-orders.html:964
 msgid "Update"
 msgstr ""
 
@@ -331,7 +331,7 @@ msgstr ""
 #: app/templates/comment/comment.html:283
 #: app/templates/comment/comment.html:503
 #: app/templates/order/order-detail.html:283
-#: app/templates/order/order-detail.html:747
+#: app/templates/order/order-detail.html:749
 #: app/templates/order/order-listing.html:276
 #: app/templates/order/order-listing.html:318
 #: app/templates/order/order-listing.html:728
@@ -388,7 +388,7 @@ msgstr ""
 #: app/templates/backend-test/payment/payment-finished.html:307
 #: app/templates/base/base-customer.html:365
 #: app/templates/comment/comment.html:501
-#: app/templates/order/order-detail.html:745
+#: app/templates/order/order-detail.html:747
 #: app/templates/order/order-listing.html:726
 msgid "shop"
 msgstr ""
@@ -397,7 +397,7 @@ msgstr ""
 #: app/templates/base/base-customer.html:371
 #: app/templates/comment/comment.html:507
 #: app/templates/main/page_all_commodities.html:322
-#: app/templates/order/order-detail.html:751
+#: app/templates/order/order-detail.html:753
 #: app/templates/order/order-listing.html:732
 msgid "Brands"
 msgstr ""
@@ -405,7 +405,7 @@ msgstr ""
 #: app/templates/backend-test/payment/payment-finished.html:320
 #: app/templates/base/base-customer.html:379
 #: app/templates/comment/comment.html:515
-#: app/templates/order/order-detail.html:759
+#: app/templates/order/order-detail.html:761
 #: app/templates/order/order-listing.html:740
 msgid "Company"
 msgstr ""
@@ -455,14 +455,14 @@ msgstr ""
 
 #: app/templates/base/base-customer.html:356
 #: app/templates/comment/comment.html:492
-#: app/templates/order/order-detail.html:736
+#: app/templates/order/order-detail.html:738
 #: app/templates/order/order-listing.html:717
 msgid "China Beijing Chaoyang Distinct Pingleyuan No.100"
 msgstr ""
 
 #: app/templates/base/base-customer.html:356
 #: app/templates/comment/comment.html:492
-#: app/templates/order/order-detail.html:736
+#: app/templates/order/order-detail.html:738
 #: app/templates/order/order-listing.html:717
 msgid ""
 "Beijing University of\n"
@@ -473,14 +473,14 @@ msgstr ""
 #: app/templates/comment/comment.html:289
 #: app/templates/comment/comment.html:511
 #: app/templates/order/order-detail.html:289
-#: app/templates/order/order-detail.html:755
+#: app/templates/order/order-detail.html:757
 #: app/templates/order/order-listing.html:282
 msgid "Catagory"
 msgstr ""
 
 #: app/templates/base/base-customer.html:381
 #: app/templates/comment/comment.html:517
-#: app/templates/order/order-detail.html:761
+#: app/templates/order/order-detail.html:763
 #: app/templates/order/order-listing.html:742
 msgid "About us"
 msgstr ""
@@ -491,16 +491,14 @@ msgstr ""
 
 #: app/templates/base/base-customer.html:383
 #: app/templates/comment/comment.html:519
-#: app/templates/order/order-detail.html:763
+#: app/templates/order/order-detail.html:765
 #: app/templates/order/order-listing.html:744
-#: app/templates/userinfo/user_profile.html:65
-#: app/templates/userinfo/user_profile.html:70
 msgid "Premium"
 msgstr ""
 
 #: app/templates/base/base-customer.html:387
 #: app/templates/comment/comment.html:523
-#: app/templates/order/order-detail.html:767
+#: app/templates/order/order-detail.html:769
 #: app/templates/order/order-listing.html:748
 msgid "Franchising Brand"
 msgstr ""
@@ -643,7 +641,7 @@ msgstr ""
 
 #: app/templates/cart/page-cart.html:140
 #: app/templates/order/order-detail.html:405
-#: app/templates/staff/page-list-orders.html:347
+#: app/templates/staff/page-list-orders.html:410
 #: app/templates/staff/staff-index.html:68
 msgid "Total Cost"
 msgstr ""
@@ -718,7 +716,7 @@ msgid "Type your message"
 msgstr ""
 
 #: app/templates/comment/comment.html:316
-#: app/templates/order/order-detail.html:702
+#: app/templates/order/order-detail.html:703
 msgid "Comment"
 msgstr ""
 
@@ -731,7 +729,7 @@ msgid "Your Comment"
 msgstr ""
 
 #: app/templates/comment/comment.html:518
-#: app/templates/order/order-detail.html:762
+#: app/templates/order/order-detail.html:764
 #: app/templates/order/order-listing.html:743
 msgid "Contact us"
 msgstr ""
@@ -821,11 +819,11 @@ msgid ""
 msgstr ""
 
 #: app/templates/main/about_siren.html:97
-#: app/templates/order/order-detail.html:823
+#: app/templates/order/order-detail.html:825
 #: app/templates/staff/page-list-orders.html:128
-#: app/templates/staff/page-list-orders.html:489
-#: app/templates/staff/page-list-orders.html:511
-#: app/templates/staff/page-list-orders.html:539
+#: app/templates/staff/page-list-orders.html:663
+#: app/templates/staff/page-list-orders.html:685
+#: app/templates/staff/page-list-orders.html:713
 msgid "Delivery"
 msgstr ""
 
@@ -888,7 +886,9 @@ msgid "Featured"
 msgstr ""
 
 #: app/templates/main/index_new.html:207
-#: app/templates/staff/page-list-orders.html:106
+#: app/templates/staff/page-list-orders.html:529
+#: app/templates/staff/page-list-orders.html:566
+#: app/templates/staff/page-list-orders.html:603
 msgid "Collection"
 msgstr ""
 
@@ -1133,7 +1133,7 @@ msgstr ""
 #: app/templates/staff/backup-staff-modify.html:903
 #: app/templates/staff/page-add-product.html:72
 #: app/templates/staff/page-list-orders.html:62
-#: app/templates/staff/page-list-orders.html:467
+#: app/templates/staff/page-list-orders.html:641
 #: app/templates/staff/page-modify-product.html:86
 msgid "Type"
 msgstr ""
@@ -2256,20 +2256,20 @@ msgstr ""
 
 #: app/templates/order/order-confirm.html:133
 #: app/templates/order/order-confirm.html:164
-#: app/templates/order/order-detail.html:851
-#: app/templates/order/order-detail.html:878
-#: app/templates/order/order-detail.html:934
-#: app/templates/order/order-detail.html:961
-#: app/templates/staff/page-list-orders.html:583
-#: app/templates/staff/page-list-orders.html:611
-#: app/templates/staff/page-list-orders.html:694
+#: app/templates/order/order-detail.html:853
+#: app/templates/order/order-detail.html:880
+#: app/templates/order/order-detail.html:936
+#: app/templates/order/order-detail.html:963
+#: app/templates/staff/page-list-orders.html:757
+#: app/templates/staff/page-list-orders.html:785
+#: app/templates/staff/page-list-orders.html:868
 #: app/templates/userinfo/temp_address_listing.html:47
 msgid "Recipient Name"
 msgstr ""
 
 #: app/templates/order/order-confirm.html:137
-#: app/templates/order/order-detail.html:882
-#: app/templates/order/order-detail.html:965
+#: app/templates/order/order-detail.html:884
+#: app/templates/order/order-detail.html:967
 msgid "Phone Number"
 msgstr ""
 
@@ -2278,18 +2278,18 @@ msgid "Shipping Address"
 msgstr ""
 
 #: app/templates/order/order-confirm.html:170
-#: app/templates/order/order-detail.html:857
-#: app/templates/order/order-detail.html:940
-#: app/templates/staff/page-list-orders.html:589
-#: app/templates/staff/page-list-orders.html:700
+#: app/templates/order/order-detail.html:859
+#: app/templates/order/order-detail.html:942
+#: app/templates/staff/page-list-orders.html:763
+#: app/templates/staff/page-list-orders.html:874
 msgid "Full Address"
 msgstr ""
 
 #: app/templates/order/order-confirm.html:177
-#: app/templates/order/order-detail.html:864
-#: app/templates/order/order-detail.html:947
-#: app/templates/staff/page-list-orders.html:596
-#: app/templates/staff/page-list-orders.html:707
+#: app/templates/order/order-detail.html:866
+#: app/templates/order/order-detail.html:949
+#: app/templates/staff/page-list-orders.html:770
+#: app/templates/staff/page-list-orders.html:881
 msgid "default"
 msgstr ""
 
@@ -2352,7 +2352,7 @@ msgstr ""
 
 #: app/templates/order/order-detail.html:329
 #: app/templates/order/order-listing.html:370
-#: app/templates/staff/page-list-orders.html:274
+#: app/templates/staff/page-list-orders.html:337
 msgid "Waiting for Payment"
 msgstr ""
 
@@ -2361,7 +2361,10 @@ msgstr ""
 #: app/templates/order/order-detail.html:519
 #: app/templates/order/order-listing.html:374
 #: app/templates/staff/page-list-orders.html:96
-#: app/templates/staff/page-list-orders.html:278
+#: app/templates/staff/page-list-orders.html:341
+#: app/templates/staff/page-list-orders.html:527
+#: app/templates/staff/page-list-orders.html:564
+#: app/templates/staff/page-list-orders.html:601
 msgid "Preparing"
 msgstr ""
 
@@ -2369,13 +2372,13 @@ msgstr ""
 #: app/templates/order/order-detail.html:529
 #: app/templates/order/order-detail.html:535
 #: app/templates/order/order-listing.html:378
-#: app/templates/staff/page-list-orders.html:282
+#: app/templates/staff/page-list-orders.html:345
 msgid "On Delivery"
 msgstr ""
 
 #: app/templates/order/order-detail.html:341
 #: app/templates/order/order-listing.html:382
-#: app/templates/staff/page-list-orders.html:286
+#: app/templates/staff/page-list-orders.html:349
 msgid "Waiting for Collection"
 msgstr ""
 
@@ -2387,7 +2390,10 @@ msgstr ""
 #: app/templates/order/order-listing.html:338
 #: app/templates/order/order-listing.html:386
 #: app/templates/staff/page-list-orders.html:111
-#: app/templates/staff/page-list-orders.html:290
+#: app/templates/staff/page-list-orders.html:353
+#: app/templates/staff/page-list-orders.html:530
+#: app/templates/staff/page-list-orders.html:567
+#: app/templates/staff/page-list-orders.html:604
 msgid "Finished"
 msgstr ""
 
@@ -2395,72 +2401,80 @@ msgstr ""
 #: app/templates/order/order-listing.html:322
 #: app/templates/order/order-listing.html:390
 #: app/templates/staff/page-list-orders.html:116
-#: app/templates/staff/page-list-orders.html:294
+#: app/templates/staff/page-list-orders.html:357
+#: app/templates/staff/page-list-orders.html:531
+#: app/templates/staff/page-list-orders.html:568
+#: app/templates/staff/page-list-orders.html:605
 msgid "Canceled"
 msgstr ""
 
 #: app/templates/order/order-detail.html:353
 #: app/templates/order/order-listing.html:394
 #: app/templates/staff/page-list-orders.html:121
-#: app/templates/staff/page-list-orders.html:298
+#: app/templates/staff/page-list-orders.html:361
+#: app/templates/staff/page-list-orders.html:532
+#: app/templates/staff/page-list-orders.html:569
+#: app/templates/staff/page-list-orders.html:606
 msgid "Expired"
 msgstr ""
 
 #: app/templates/order/order-detail.html:364
-#: app/templates/staff/page-list-orders.html:309
+#: app/templates/staff/page-list-orders.html:372
 msgid "Basic Information"
 msgstr ""
 
 #: app/templates/order/order-detail.html:371
-#: app/templates/order/order-detail.html:812
+#: app/templates/order/order-detail.html:814
+#: app/templates/staff/page-list-orders.html:629
 msgid "Modify Type"
 msgstr ""
 
 #: app/templates/order/order-detail.html:382
 #: app/templates/order/order-listing.html:361
-#: app/templates/staff/page-list-orders.html:319
+#: app/templates/staff/page-list-orders.html:382
 msgid "Trade"
 msgstr ""
 
 #: app/templates/order/order-detail.html:387
 #: app/templates/order/order-detail.html:495
 #: app/templates/order/order-detail.html:501
-#: app/templates/staff/page-list-orders.html:326
+#: app/templates/staff/page-list-orders.html:389
 msgid "Payment"
 msgstr ""
 
 #: app/templates/order/order-detail.html:397
-#: app/templates/staff/page-list-orders.html:337
+#: app/templates/staff/page-list-orders.html:400
 msgid "Order Type"
 msgstr ""
 
 #: app/templates/order/order-detail.html:400
-#: app/templates/staff/page-list-orders.html:341
+#: app/templates/staff/page-list-orders.html:404
 msgid "Delivery Cost"
 msgstr ""
 
 #: app/templates/order/order-detail.html:408
-#: app/templates/staff/page-list-orders.html:351
+#: app/templates/staff/page-list-orders.html:414
 msgid "Actual Paid"
 msgstr ""
 
 #: app/templates/order/order-detail.html:417
-#: app/templates/staff/page-list-orders.html:361
+#: app/templates/staff/page-list-orders.html:424
 msgid "Address Information"
 msgstr ""
 
 #: app/templates/order/order-detail.html:419
-#: app/templates/staff/page-list-orders.html:363
+#: app/templates/staff/page-list-orders.html:426
 msgid "Recipient Information"
 msgstr ""
 
 #: app/templates/order/order-detail.html:427
-#: app/templates/order/order-detail.html:909
+#: app/templates/order/order-detail.html:911
+#: app/templates/staff/page-list-orders.html:838
 msgid "Modify Address"
 msgstr ""
 
 #: app/templates/order/order-detail.html:432
-#: app/templates/order/order-detail.html:911
+#: app/templates/order/order-detail.html:913
 msgid "Modify Recipient"
 msgstr ""
 
@@ -2469,15 +2483,15 @@ msgstr ""
 msgid "Waiting For Collection"
 msgstr ""
 
-#: app/templates/order/order-detail.html:693
+#: app/templates/order/order-detail.html:694
 msgid "Commented"
 msgstr ""
 
-#: app/templates/order/order-detail.html:826
+#: app/templates/order/order-detail.html:828
 #: app/templates/staff/page-list-orders.html:130
-#: app/templates/staff/page-list-orders.html:494
-#: app/templates/staff/page-list-orders.html:513
-#: app/templates/staff/page-list-orders.html:552
+#: app/templates/staff/page-list-orders.html:668
+#: app/templates/staff/page-list-orders.html:687
+#: app/templates/staff/page-list-orders.html:726
 msgid "Self-Collection"
 msgstr ""
 
@@ -2487,11 +2501,17 @@ msgstr ""
 
 #: app/templates/order/order-listing.html:326
 #: app/templates/staff/page-list-orders.html:91
+#: app/templates/staff/page-list-orders.html:526
+#: app/templates/staff/page-list-orders.html:563
+#: app/templates/staff/page-list-orders.html:600
 msgid "Unpaid"
 msgstr ""
 
 #: app/templates/order/order-listing.html:330
 #: app/templates/staff/page-list-orders.html:101
+#: app/templates/staff/page-list-orders.html:528
+#: app/templates/staff/page-list-orders.html:565
+#: app/templates/staff/page-list-orders.html:602
 msgid "Delivering"
 msgstr ""
 
@@ -2864,7 +2884,7 @@ msgstr ""
 #: app/templates/staff/backup-staff-modify.html:1059
 #: app/templates/staff/page-add-journal.html:82
 #: app/templates/staff/page-add-product.html:274
-#: app/templates/staff/page-list-orders.html:793
+#: app/templates/staff/page-list-orders.html:967
 #: app/templates/staff/page-modify-journal.html:82
 #: app/templates/staff/page-modify-modeltype.html:150
 #: app/templates/staff/page-modify-product.html:194
@@ -2988,7 +3008,10 @@ msgid ""
 msgstr ""
 
 #: app/templates/staff/page-list-journals.html:167
-#: app/templates/staff/page-list-orders.html:438
+#: app/templates/staff/page-list-orders.html:501
+#: app/templates/staff/page-list-orders.html:538
+#: app/templates/staff/page-list-orders.html:575
+#: app/templates/staff/page-list-orders.html:612
 msgid "Close"
 msgstr ""
 
@@ -3046,45 +3069,68 @@ msgid "Priority"
 msgstr ""
 
 #: app/templates/staff/page-list-orders.html:106
+#: app/templates/staff/page-list-orders.html:529
+#: app/templates/staff/page-list-orders.html:566
+#: app/templates/staff/page-list-orders.html:603
 msgid "Waiting"
 msgstr ""
 
-#: app/templates/staff/page-list-orders.html:143
+#: app/templates/staff/page-list-orders.html:106
+msgid "Collection "
+msgstr ""
+
+#: app/templates/staff/page-list-orders.html:145
 msgid "Normal"
 msgstr ""
 
-#: app/templates/staff/page-list-orders.html:148
+#: app/templates/staff/page-list-orders.html:151
 msgid "Important"
 msgstr ""
 
-#: app/templates/staff/page-list-orders.html:153
+#: app/templates/staff/page-list-orders.html:157
 msgid "Significant"
 msgstr ""
 
-#: app/templates/staff/page-list-orders.html:260
+#: app/templates/staff/page-list-orders.html:323
 msgid "Order Details"
 msgstr ""
 
-#: app/templates/staff/page-list-orders.html:455
-msgid "Details"
+#: app/templates/staff/page-list-orders.html:516
+#: app/templates/staff/page-list-orders.html:553
+#: app/templates/staff/page-list-orders.html:590
+msgid "Modification Reject"
 msgstr ""
 
-#: app/templates/staff/page-list-orders.html:628
+#: app/templates/staff/page-list-orders.html:525
+msgid "Type of orders in"
+msgstr ""
+
+#: app/templates/staff/page-list-orders.html:534
+#: app/templates/staff/page-list-orders.html:571
+#: app/templates/staff/page-list-orders.html:608
+msgid "status is not allowed to be modified."
+msgstr ""
+
+#: app/templates/staff/page-list-orders.html:562
+msgid "Address of orders in"
+msgstr ""
+
+#: app/templates/staff/page-list-orders.html:599
+msgid "Recipient of orders in"
+msgstr ""
+
+#: app/templates/staff/page-list-orders.html:802
 msgid "Recipient Phone"
 msgstr ""
 
-#: app/templates/staff/page-list-orders.html:664
-msgid "Change Address"
-msgstr ""
-
-#: app/templates/staff/page-list-orders.html:740
+#: app/templates/staff/page-list-orders.html:914
 msgid ""
-"Change\n"
+"Modify\n"
 "                                                                        "
 "Recipient"
 msgstr ""
 
-#: app/templates/staff/page-list-orders.html:757
+#: app/templates/staff/page-list-orders.html:931
 msgid ""
 "Recipient\n"
 ""
@@ -3092,7 +3138,7 @@ msgid ""
 "Name"
 msgstr ""
 
-#: app/templates/staff/page-list-orders.html:772
+#: app/templates/staff/page-list-orders.html:946
 msgid ""
 "Recipient\n"
 ""
@@ -3393,6 +3439,11 @@ msgstr ""
 
 #: app/templates/userinfo/user_profile.html:61
 msgid "Followed Category"
+msgstr ""
+
+#: app/templates/userinfo/user_profile.html:65
+#: app/templates/userinfo/user_profile.html:70
+msgid "Premium "
 msgstr ""
 
 #: app/templates/userinfo/user_profile.html:75
