@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-10 20:40+0800\n"
+"POT-Creation-Date: 2022-05-10 22:19+0800\n"
 "PO-Revision-Date: 2022-03-23 16:06+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
@@ -83,6 +83,58 @@ msgstr "登录成功！"
 #: app/auth/views.py:121
 msgid "Login Failed! Check your username or password."
 msgstr "登录失败！检查您的用户名或密码！"
+
+#: app/comment/forms.py:13
+msgid "Leave your comment here"
+msgstr "在这里留下您的评论"
+
+#: app/comment/forms.py:13
+msgid "You must give some text comment."
+msgstr "您必须输入文本作为评论。"
+
+#: app/comment/forms.py:14
+msgid "Upload some pictures"
+msgstr "上传图片"
+
+#: app/comment/forms.py:14
+msgid "You must give 2-5 pictures"
+msgstr "您必须提供2至5张图"
+
+#: app/comment/forms.py:15
+msgid "Rate"
+msgstr "评分"
+
+#: app/comment/forms.py:15
+msgid "You should rate it."
+msgstr "您需要对此商品进行评分。"
+
+#: app/comment/forms.py:16 app/templates/order/order-listing.html:568
+msgid "Confirm"
+msgstr "确认"
+
+#: app/journal/forms.py:11
+msgid "Give a title for your journal"
+msgstr "请给您的日志或通知添加一个标题"
+
+#: app/journal/forms.py:12
+msgid "Write down your journal here"
+msgstr "在这里写下您的日志或通知"
+
+#: app/journal/forms.py:13
+msgid "Broadcast"
+msgstr "发送"
+
+#: app/journal/forms.py:20
+msgid "Modify title here"
+msgstr "请在此修改标题"
+
+#: app/journal/forms.py:21
+msgid "Modify your journal body here"
+msgstr "请在此修改您的日志及通知的内容"
+
+#: app/journal/forms.py:22 app/product/forms.py:54 app/product/forms.py:106
+msgid "Submit"
+msgstr "提交"
 
 #: app/main/views.py:295
 msgid "No such commodity!"
@@ -193,10 +245,6 @@ msgstr "商品序列号"
 #: app/product/forms.py:50 app/product/forms.py:104
 msgid "Pictures for exhibition"
 msgstr "展示图片"
-
-#: app/product/forms.py:54 app/product/forms.py:106
-msgid "Submit"
-msgstr "提交"
 
 #: app/product/forms.py:68
 msgid "Serial Number already used in other model of this product!"
@@ -330,7 +378,7 @@ msgstr "菜单"
 #: app/templates/base/base-customer.html:311
 #: app/templates/base/base-customer.html:367
 #: app/templates/comment/comment.html:283
-#: app/templates/comment/comment.html:503
+#: app/templates/comment/comment.html:515
 #: app/templates/order/order-detail.html:283
 #: app/templates/order/order-detail.html:749
 #: app/templates/order/order-listing.html:276
@@ -388,7 +436,7 @@ msgstr "维多利亚3009号"
 
 #: app/templates/backend-test/payment/payment-finished.html:307
 #: app/templates/base/base-customer.html:365
-#: app/templates/comment/comment.html:501
+#: app/templates/comment/comment.html:513
 #: app/templates/order/order-detail.html:747
 #: app/templates/order/order-listing.html:726
 msgid "shop"
@@ -396,7 +444,7 @@ msgstr "商店"
 
 #: app/templates/backend-test/payment/payment-finished.html:313
 #: app/templates/base/base-customer.html:371
-#: app/templates/comment/comment.html:507
+#: app/templates/comment/comment.html:519
 #: app/templates/main/page_all_commodities.html:322
 #: app/templates/order/order-detail.html:753
 #: app/templates/order/order-listing.html:732
@@ -405,7 +453,7 @@ msgstr "品牌"
 
 #: app/templates/backend-test/payment/payment-finished.html:320
 #: app/templates/base/base-customer.html:379
-#: app/templates/comment/comment.html:515
+#: app/templates/comment/comment.html:527
 #: app/templates/order/order-detail.html:761
 #: app/templates/order/order-listing.html:740
 msgid "Company"
@@ -455,14 +503,14 @@ msgid "Category"
 msgstr "分类"
 
 #: app/templates/base/base-customer.html:356
-#: app/templates/comment/comment.html:492
+#: app/templates/comment/comment.html:504
 #: app/templates/order/order-detail.html:738
 #: app/templates/order/order-listing.html:717
 msgid "China Beijing Chaoyang Distinct Pingleyuan No.100"
 msgstr "中国北京市朝阳区平乐园100号"
 
 #: app/templates/base/base-customer.html:356
-#: app/templates/comment/comment.html:492
+#: app/templates/comment/comment.html:504
 #: app/templates/order/order-detail.html:738
 #: app/templates/order/order-listing.html:717
 msgid ""
@@ -472,7 +520,7 @@ msgstr "北京工业大学"
 
 #: app/templates/base/base-customer.html:375
 #: app/templates/comment/comment.html:289
-#: app/templates/comment/comment.html:511
+#: app/templates/comment/comment.html:523
 #: app/templates/order/order-detail.html:289
 #: app/templates/order/order-detail.html:757
 #: app/templates/order/order-listing.html:282
@@ -480,7 +528,7 @@ msgid "Catagory"
 msgstr "分类"
 
 #: app/templates/base/base-customer.html:381
-#: app/templates/comment/comment.html:517
+#: app/templates/comment/comment.html:529
 #: app/templates/order/order-detail.html:763
 #: app/templates/order/order-listing.html:742
 msgid "About us"
@@ -491,14 +539,14 @@ msgid "Contect us"
 msgstr "联系我们"
 
 #: app/templates/base/base-customer.html:383
-#: app/templates/comment/comment.html:519
+#: app/templates/comment/comment.html:531
 #: app/templates/order/order-detail.html:765
 #: app/templates/order/order-listing.html:744
 msgid "Premium"
 msgstr "成为会员"
 
 #: app/templates/base/base-customer.html:387
-#: app/templates/comment/comment.html:523
+#: app/templates/comment/comment.html:535
 #: app/templates/order/order-detail.html:769
 #: app/templates/order/order-listing.html:748
 msgid "Franchising Brand"
@@ -729,7 +777,7 @@ msgstr "购买历史"
 msgid "Your Comment"
 msgstr "您的评论"
 
-#: app/templates/comment/comment.html:518
+#: app/templates/comment/comment.html:530
 #: app/templates/order/order-detail.html:764
 #: app/templates/order/order-listing.html:743
 msgid "Contact us"
@@ -1077,16 +1125,20 @@ msgstr "相关推荐"
 msgid "There are no more products from this category yet."
 msgstr "该分类没有更多商品了(╯﹏╰）"
 
+#: app/templates/main/page_all_commodities.html:44
+msgid "All Products"
+msgstr "全部产品"
+
 #: app/templates/main/page_all_commodities.html:55
-msgid "By Category"
-msgstr "分类"
+msgid "Filters"
+msgstr "在此筛选"
 
 #: app/templates/main/page_all_commodities.html:56
 #: app/templates/staff/backup-staff-modify.html:889
 #: app/templates/staff/page-add-product.html:56
 #: app/templates/staff/page-modify-product.html:71
 msgid "Classification"
-msgstr "分类"
+msgstr "种类"
 
 #: app/templates/main/page_all_commodities.html:63
 #: app/templates/main/page_all_commodities.html:100
@@ -2604,10 +2656,6 @@ msgstr "取消"
 msgid "View Progress"
 msgstr "查看进度"
 
-#: app/templates/order/order-listing.html:568
-msgid "Confirm"
-msgstr "确认"
-
 #: app/templates/order/order-listing.html:575
 msgid "After Sale Service"
 msgstr "售后服务"
@@ -3166,21 +3214,21 @@ msgstr "注意："
 msgid "status is not allowed to be modified."
 msgstr "状态下的订单，配送方式无法被修改"
 
-#: app/templates/staff/page-list-orders.html:571
-msgid "status is not allowed to be modified. "
-msgstr "状态下的订单，地址无法被修改"
-
-#: app/templates/staff/page-list-orders.html:608
-msgid "status is not allowed to be modified.  "
-msgstr "状态下的订单，收货人信息无法被修改"
-
 #: app/templates/staff/page-list-orders.html:562
 msgid "Address of orders in"
 msgstr "注意："
 
+#: app/templates/staff/page-list-orders.html:571
+msgid "status is not allowed to be modified. "
+msgstr "状态下的订单，地址无法被修改"
+
 #: app/templates/staff/page-list-orders.html:599
 msgid "Recipient of orders in"
 msgstr "注意："
+
+#: app/templates/staff/page-list-orders.html:608
+msgid "status is not allowed to be modified.  "
+msgstr "状态下的订单，收货人信息无法被修改"
 
 #: app/templates/staff/page-list-orders.html:802
 msgid "Recipient Phone"
@@ -3736,3 +3784,4 @@ msgstr "地址成功删除！"
 #: app/userinfo/views.py:402
 msgid "Default address changed successfully!"
 msgstr "默认地址修改成功！"
+
