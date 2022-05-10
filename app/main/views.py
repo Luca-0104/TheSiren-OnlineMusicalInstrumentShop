@@ -698,7 +698,7 @@ def validate_model_count():
 
 @main.route('/api/the-siren/switch-epidemic-mode', methods=['POST'])
 @login_required
-@staff_only()
+@staff_only(is_ajax=True)
 def switch_epidemic_mode():
     """
     (Using Ajax)

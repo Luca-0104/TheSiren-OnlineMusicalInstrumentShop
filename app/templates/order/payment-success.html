@@ -69,7 +69,14 @@
                 // no call back function needed here
                 $.post('/api/payment-notify', {
                     "notify_data": alipayNotificationData
-                })
+                }).done(function (response){
+                    //get response from server
+                    let returnValue = response['returnValue'];
+                    if (returnValue === 318) {
+                        let targetURL = response['redirectURL'];
+                        window.location.href = targetURL;
+                    }
+                });
             });
         </script>
     </body>

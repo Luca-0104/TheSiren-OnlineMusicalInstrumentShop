@@ -135,7 +135,7 @@ def edit_journal(journal_id):
 
 @journal.route("/api/journal-management/delete-journal", methods=['POST'])
 @login_required
-@staff_only()
+@staff_only(is_ajax=True)
 def delete_journal():
     """
     (Using Ajax)

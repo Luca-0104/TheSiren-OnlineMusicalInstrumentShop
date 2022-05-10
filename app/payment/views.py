@@ -15,7 +15,7 @@ from alipay import AliPay, AliPayConfig
 
 @payment.route('/api/pay-for-order/instrument', methods=['POST'])
 @login_required
-@customer_only()
+@customer_only(is_ajax=True)
 def pay_for_order_instrument():
     """
         (Using Ajax)
@@ -61,7 +61,7 @@ def pay_for_order_instrument():
 
 @payment.route('/api/pay-for-order/premium', methods=['POST'])
 @login_required
-@customer_only()
+@customer_only(is_ajax=True)
 def pay_for_order_premium():
     """
         (Using Ajax)
@@ -184,6 +184,8 @@ def get_alipay_instance():
 
 
 @payment.route('/payment-finished', methods=['GET'])
+@login_required
+@customer_only()
 def payment_finished():
     """
     Render the page of 'payment finished',
@@ -193,6 +195,8 @@ def payment_finished():
 
 
 @payment.route('/api/payment-notify', methods=['POST'])
+@login_required
+@customer_only(is_ajax=True)
 def payment_notify():
     """
     (Using Ajax)

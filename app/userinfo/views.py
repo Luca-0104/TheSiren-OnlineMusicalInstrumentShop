@@ -307,7 +307,7 @@ def user_profile(uid):
 
 @userinfo.route('/api/remove-address', methods=['POST'])
 @login_required
-@customer_only()
+@customer_only(is_ajax=True)
 def remove_address():
     """
     (Using Ajax)
@@ -368,7 +368,7 @@ def remove_address():
 
 @userinfo.route('/api/change-default-address', methods=['POST'])
 @login_required
-@customer_only()
+@customer_only(is_ajax=True)
 def change_default_address():
     if request.method == 'POST':
         # get the address id from ajax
@@ -423,7 +423,7 @@ def address_prepare_for_json(address_obj):
 
 @userinfo.route('/api/userinfo/brand-section/follow-brand', methods=['POST'])
 @login_required
-@customer_only()
+@customer_only(is_ajax=True)
 def follow_brand():
     """
         (Using Ajax)
@@ -457,7 +457,7 @@ def follow_brand():
 
 @userinfo.route('/api/userinfo/brand-section/unfollow-brand', methods=['POST'])
 @login_required
-@customer_only()
+@customer_only(is_ajax=True)
 def unfollow_brand():
     """
         (Using Ajax)
@@ -499,7 +499,7 @@ def unfollow_brand():
 
 @userinfo.route('/api/userinfo/category-section/follow-category', methods=['POST'])
 @login_required
-@customer_only()
+@customer_only(is_ajax=True)
 def follow_category():
     """
         (Using Ajax)
@@ -533,7 +533,7 @@ def follow_category():
 
 @userinfo.route('/api/userinfo/brand-section/unfollow-category', methods=['POST'])
 @login_required
-@customer_only()
+@customer_only(is_ajax=True)
 def unfollow_category():
     """
         (Using Ajax)

@@ -338,7 +338,7 @@ def validate_model_serial():
 
 @product.route('/api/stock-management/remove-product', methods=['POST'])
 @login_required
-@staff_only()
+@staff_only(is_ajax=True)
 def remove_product():
     """
     (Using Ajax)
@@ -509,7 +509,7 @@ def upload_model_type(product_id):
 
 @product.route('/api/stock-management/remove-model-type', methods=['POST'])
 @login_required
-@staff_only()
+@staff_only(is_ajax=True)
 def remove_model_type():
     """
         (Using Ajax)
@@ -856,7 +856,7 @@ def upload_3d_file(mt_id):
 
 @product.route('/api/stock-management/add-category', methods=['POST'])
 @login_required
-@staff_only()
+@staff_only(is_ajax=True)
 def add_category():
     """
     (Using Ajax)
@@ -886,7 +886,7 @@ def add_category():
 
 @product.route('/api/stock-management/remove-category', methods=['POST'])
 @login_required
-@staff_only()
+@staff_only(is_ajax=True)
 def remove_category():
     """
     (Using Ajax)
@@ -900,7 +900,7 @@ def remove_category():
 
 @product.route('/api/stock-management/add-brand', methods=['POST'])
 @login_required
-@staff_only()
+@staff_only(is_ajax=True)
 def add_brand():
     """
     (Using Ajax)
@@ -930,7 +930,7 @@ def add_brand():
 
 @product.route('/api/stock-management/remove-brand', methods=['POST'])
 @login_required
-@staff_only()
+@staff_only(is_ajax=True)
 def remove_brand():
     """
     (Using Ajax)

@@ -17,7 +17,7 @@ from ..public_tools import get_unique_shop_instance, get_epidemic_mode_status
 
 @order.route('/generate-order-from-cart', methods=['GET', 'POST'])
 @login_required
-@customer_only()
+@customer_only(is_ajax=True)
 def generate_order_from_cart():
     """
         (Using Ajax)
@@ -65,7 +65,7 @@ def generate_order_from_cart():
 
 @order.route('/generate-order-from-buy-now', methods=['POST'])
 @login_required
-@customer_only()
+@customer_only(is_ajax=True)
 def generate_order_from_buy_now():
     """
     (Using Ajax)
@@ -283,7 +283,7 @@ def update_order_shipping():
         db.session.add(o)
         db.session.commit()
 
-        flash("Shipping method updated!")
+        # flash("Shipping method updated!")
         return jsonify({"returnValue": 0, "payTotal": o.gross_payment, "deliveryFee": o.delivery_fee,
                         "paidPayment": o.paid_payment})
     return jsonify({"returnValue": 1})
@@ -450,7 +450,7 @@ def order_details(order_id):
 
 @order.route('/api/order/my-orders/filter-orders', methods=['POST'])
 @login_required
-@customer_only()
+@customer_only(is_ajax=True)
 def filter_orders():
     """
     (Using ajax)
@@ -577,14 +577,13 @@ def change_status():
 
 @order.route('/api/generate-premium-order', methods=['POST'])
 @login_required
-@customer_only()
+@customer_only(is_ajax=True)
 def generate_premium_order():
     """
     (Using Ajax)
     This function works like the function 'order_confirm'.
     For the premium order, we order generation and confirm can be integrated together,
     because no status of "waiting for payment" for premium orders.
-    :return:
     """
     if request.method == 'POST':
         # get order info from Ajax
@@ -650,7 +649,7 @@ def order_management():
 
 @order.route('/api/order-management/update-priority', methods=['POST'])
 @login_required
-@staff_only()
+@staff_only(is_ajax=True)
 def update_priority():
     """
     (Using Ajax)
