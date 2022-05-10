@@ -22,6 +22,11 @@ function remove_product(product_id)
                     console.log("Product " + product_id + "removed");
                     target.remove();
                 }
+                else if (returnValue === 318)
+                {
+                    let targetURL = response['redirectURL'];
+                    window.location.href = targetURL;
+                }
             });
 }
 
@@ -56,6 +61,11 @@ function remove_model_type(model_type_id, product_id)
                     //success and there is no modeltype in is product
                     console.log("ModelType " + model_type_id + "removed");
                     remove_product(product_id);
+                }
+                else if (returnValue === 318)
+                {
+                    let targetURL = response['redirectURL'];
+                    window.location.href = targetURL;
                 }
             });
 }

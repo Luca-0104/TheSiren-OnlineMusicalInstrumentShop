@@ -254,6 +254,11 @@ function serial_number_half_collection()
             console.log("+++++++++++++++++++++++++++++++++++");
             console.log("");
         }
+        else if (returnValue === 318)
+        {
+            let targetURL = response['redirectURL'];
+            window.location.href = targetURL;
+        }
         else
         {
             //failed

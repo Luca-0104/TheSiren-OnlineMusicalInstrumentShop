@@ -123,6 +123,11 @@ function update_payment_info(orderId){
             $("#pay-delivery").text(deliveryFee)
             $("#pay-should").text(shouldPay)
         }
+        else if (returnValue === 318)
+        {
+            let targetURL = response['redirectURL'];
+            window.location.href = targetURL;
+        }
     });
 }
 
@@ -147,6 +152,11 @@ function update_order_address(orderId, addressId){
             $(".address").removeClass("chosen-address");
             let id = "#address-" + addressId
             $(id).addClass("chosen-address");
+        }
+        else if (returnValue === 318)
+        {
+            let targetURL = response['redirectURL'];
+            window.location.href = targetURL;
         }
     });
 }
@@ -186,6 +196,11 @@ function update_order_shipping(orderId, shippingMethod){
                 $("#recipient-section").removeClass("hidden-field");
             }
         }
+        else if (returnValue === 318)
+        {
+            let targetURL = response['redirectURL'];
+            window.location.href = targetURL;
+        }
     });
 }
 
@@ -209,7 +224,11 @@ function update_order_recipient(orderId, recipientName, recipientPhone){
             //if success, we can send another Ajax for paying
             pay_for_order(orderId);
         }
-
+        else if (returnValue === 318)
+        {
+            let targetURL = response['redirectURL'];
+            window.location.href = targetURL;
+        }
     });
 }
 
@@ -229,6 +248,11 @@ function pay_for_order(orderId){
             // get payment URL then redirect to that URL
             let paymentURL = response['paymentURL']
             location.href = paymentURL;
+        }
+        else if (returnValue === 318)
+        {
+            let targetURL = response['redirectURL'];
+            window.location.href = targetURL;
         }
     });
 }
@@ -250,6 +274,11 @@ function delete_address(orderID, addressId){
             // refresh this page
             let url = "/order-confirm/" + orderID;
             location.href = url;
+        }
+        else if (returnValue === 318)
+        {
+            let targetURL = response['redirectURL'];
+            window.location.href = targetURL;
         }
     });
 }

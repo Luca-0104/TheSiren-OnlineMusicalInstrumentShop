@@ -490,7 +490,7 @@
                             <div class="large-text"></div>
                         </div>
                         <table class="comments-table">
-                            {% for comment in model.comments %}
+                            {% for comment in model.comments.order_by(Comment.timestamp.desc()) %}
                                 <tr class="comment-row">
                                     <td class="tight-wrapper-col">
                                         <table class="author-table">

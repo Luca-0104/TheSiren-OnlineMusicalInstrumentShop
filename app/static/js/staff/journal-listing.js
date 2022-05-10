@@ -47,5 +47,10 @@ function deleteJournal(journalId){
             //notify the user
             window.alert(response['msg']);
         }
+        else if (returnValue === 318)
+        {
+            let targetURL = response['redirectURL'];
+            window.location.href = targetURL;
+        }
     });
 }

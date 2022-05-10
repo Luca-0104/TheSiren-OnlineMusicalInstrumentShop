@@ -70,6 +70,11 @@ function remove_address(address_id)
                 {
                     targetRow.remove();
                 }
+                else if (returnValue === 318)
+                {
+                    let targetURL = response['redirectURL'];
+                    window.location.href = targetURL;
+                }
             });
 }
 
@@ -110,6 +115,11 @@ function set_default(address_id)
                     newDefaulta.addClass("unclickable");
                     newDefaulta.attr("href", "");
                     newDefaulta.text('Default');
+                }
+                else if (returnValue === 318)
+                {
+                    let targetURL = response['redirectURL'];
+                    window.location.href = targetURL;
                 }
             });
 }
@@ -190,6 +200,11 @@ function update_address()
                 {
                     //success
 
+                }
+                else if (returnValue === 318)
+                {
+                    let targetURL = response['redirectURL'];
+                    window.location.href = targetURL;
                 }
             });
 }
