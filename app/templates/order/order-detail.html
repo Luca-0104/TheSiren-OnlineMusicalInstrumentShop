@@ -686,25 +686,27 @@
                                                             </td>
                                                         </tr>
                                                         <!-- Comment entrance -->
-                                                        <tr>
-                                                            <td class="model_comment_col">
-                                                                {% if order_model.is_commented %}
-                                                                    <div class="commented-mark">
-                                                                        {{ _("Commented") }}
-                                                                    </div>
-                                                                {% else %}
-                                                                    <a href="/upload-comment/{{ order_model.id }}"
-                                                                       data-wf-bindings="%5B%7B%22data-commerce-sku-id%22%3A%7B%22type%22%3A%22ItemRef%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.sku.id%22%7D%7D%5D"
-                                                                       class="w-inline-block cart-item-remove-btn"
-                                                                       data-wf-cart-action="remove-item"
-                                                                       data-commerce-sku-id="61a56467407a5a926e9ea7a7">
-                                                                        <div class="fine-print-text comment-link">
-                                                                            {{ _("Comment") }}
+                                                        {% if order.status_code == 4%}
+                                                            <tr>
+                                                                <td class="model_comment_col">
+                                                                    {% if order_model.is_commented %}
+                                                                        <div class="commented-mark">
+                                                                            {{ _("Commented") }}
                                                                         </div>
-                                                                    </a>
-                                                                {% endif %}
-                                                            </td>
-                                                        </tr>
+                                                                    {% else %}
+                                                                        <a href="/upload-comment/{{ order_model.id }}"
+                                                                           data-wf-bindings="%5B%7B%22data-commerce-sku-id%22%3A%7B%22type%22%3A%22ItemRef%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.sku.id%22%7D%7D%5D"
+                                                                           class="w-inline-block cart-item-remove-btn"
+                                                                           data-wf-cart-action="remove-item"
+                                                                           data-commerce-sku-id="61a56467407a5a926e9ea7a7">
+                                                                            <div class="fine-print-text comment-link">
+                                                                                {{ _("Comment") }}
+                                                                            </div>
+                                                                        </a>
+                                                                    {% endif %}
+                                                                </td>
+                                                            </tr>
+                                                        {% endif %}
                                                     </table>
                                                 </td>
                                                 <!-- quantity of this model in this order -->
