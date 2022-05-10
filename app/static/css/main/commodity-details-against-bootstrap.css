@@ -64,3 +64,8 @@
     margin-bottom: 5%;
     margin-left: 1%;
 }
+
+/* the logo pictures of brands in the commodity details page */
+.img-brand-logo-in-mt-details-page{
+    width: 100%;
+}

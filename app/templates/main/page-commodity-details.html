@@ -605,16 +605,20 @@
                 <div class="main-container">
                     <div class="w-layout-grid grid-halves">
                         <div class="container">
-                            <h6 class="uppercase-text product-details-heading">{{ _("about the brand")}}</h6>
+                            <h6 class="uppercase-text large-heading">{{ _("about this brand - ")}}{{ model.product.brand.name }}</h6>
                             <h3 class="medium-heading"></h3>
                             <div class="large-text"></div>
                             <div class="button-row">
-                                <a href="#" class="button bg-white-faded w-inline-block">
-                                    <div>{{ _("View Range")}}</div>
+                                <a href="{{ url_for("main.brand_intro", brand_id=model.product.brand.id) }}" class="button bg-white-faded w-inline-block">
+                                    <div>{{ _("Learn More")}}</div>
                                 </a>
                             </div>
                         </div>
-                        <div class="container"><img src="" loading="lazy" alt=""></div>
+                        <div class="container">
+                            {% if model.product.brand.logo %}
+                                <img src="{{ model.product.brand.logo }}" loading="lazy" alt="" class="img-brand-logo-in-mt-details-page">
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
             </div>
