@@ -1,6 +1,6 @@
 import os
 
-from flask import render_template, request, jsonify, flash, redirect, url_for, current_app
+from flask import render_template, request, jsonify, flash, redirect, url_for, current_app, abort
 from flask_login import login_required, current_user
 from flask_babel import _
 
@@ -17,6 +17,11 @@ from .. import db
 @login_required
 @customer_only()
 def user_profile(uid):
+    # customers can only access their own profiles
+    if current_user.id != uid:
+        flash(_("Permission Denied! You cannot access the profile of other users!"))
+        abort(403)
+
     user = User.query.get(uid)
     edit_profile_form = EditProfileForm(current_user)
     update_avatar_form = UpdateAvatarForm()
