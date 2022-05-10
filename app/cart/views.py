@@ -26,7 +26,7 @@ def show_my_cart():
 
 @cart.route('/api/cart/add-to-cart', methods=['POST'])
 @login_required
-@customer_only()
+@customer_only(is_ajax=True)
 def add_to_cart():
     """
     (Using Ajax)
