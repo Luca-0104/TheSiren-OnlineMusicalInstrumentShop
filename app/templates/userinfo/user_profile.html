@@ -62,12 +62,12 @@
                                     </li>
                                     {% if user.is_premium == true %}
                                         <li class="nav-item hover-item clickable" id="prime_btn">
-                                            <a class="button nav nav-button w-inline-block">{{ _("Premium") }}</a>
+                                            <a class="button nav nav-button w-inline-block">{{ _("Premium ") }}</a>
                                         </li>
                                     {% else %}
                                         <li class="nav-item hover-item clickable">
                                             <a class="button nav nav-button w-inline-block"
-                                               href="{{ url_for("main.premium_intro") }}">{{ _("Premium") }}</a>
+                                               href="{{ url_for("main.premium_intro") }}">{{ _("Premium ") }}</a>
                                         </li>
                                     {% endif %}
                                     <li class="nav-item hover-item clickable" id="Order_btn">

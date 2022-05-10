@@ -494,10 +494,13 @@ msgstr "联系我们"
 #: app/templates/comment/comment.html:519
 #: app/templates/order/order-detail.html:763
 #: app/templates/order/order-listing.html:744
-#: app/templates/userinfo/user_profile.html:65
-#: app/templates/userinfo/user_profile.html:70
 msgid "Premium"
 msgstr "成为会员"
+
+#: app/templates/userinfo/user_profile.html:65
+#: app/templates/userinfo/user_profile.html:70
+msgid "Premium "
+msgstr "我的会员中心"
 
 #: app/templates/base/base-customer.html:387
 #: app/templates/comment/comment.html:523
@@ -889,8 +892,11 @@ msgid "Featured"
 msgstr "热销"
 
 #: app/templates/main/index_new.html:207
-#: app/templates/staff/page-list-orders.html:106
 msgid "Collection"
+msgstr "产品"
+
+#: app/templates/staff/page-list-orders.html:106
+msgid "Collection "
 msgstr "产品"
 
 #: app/templates/main/index_new.html:231 app/templates/main/index_new.html:389
@@ -1093,7 +1099,7 @@ msgstr "分类"
 #: app/templates/main/page_all_commodities.html:301
 #: app/templates/main/page_all_commodities.html:328
 msgid "See All"
-msgstr "查看更多"
+msgstr "查看全部"
 
 #: app/templates/main/page_all_commodities.html:67
 msgid "String"
@@ -2471,7 +2477,7 @@ msgstr "基本信息"
 #: app/templates/order/order-detail.html:371
 #: app/templates/order/order-detail.html:812
 msgid "Modify Type"
-msgstr "修改商品型号"
+msgstr "修改订单类型"
 
 #: app/templates/order/order-detail.html:382
 #: app/templates/order/order-listing.html:361
@@ -2509,17 +2515,17 @@ msgstr "地址信息"
 #: app/templates/order/order-detail.html:419
 #: app/templates/staff/page-list-orders.html:363
 msgid "Recipient Information"
-msgstr "收获人信息"
+msgstr "收货人信息"
 
 #: app/templates/order/order-detail.html:427
 #: app/templates/order/order-detail.html:909
 msgid "Modify Address"
-msgstr "修改地址"
+msgstr "修改配送地址"
 
 #: app/templates/order/order-detail.html:432
 #: app/templates/order/order-detail.html:911
 msgid "Modify Recipient"
-msgstr "修改收货人"
+msgstr "修改收货人信息"
 
 #: app/templates/order/order-detail.html:562
 #: app/templates/order/order-detail.html:568
@@ -3104,7 +3110,7 @@ msgstr "优先级"
 
 #: app/templates/staff/page-list-orders.html:106
 msgid "Waiting"
-msgstr "等待中"
+msgstr "等待自提"
 
 #: app/templates/staff/page-list-orders.html:143
 msgid "Normal"
@@ -3291,7 +3297,7 @@ msgstr "修改您的日志及通知"
 
 #: app/templates/staff/page-modify-modeltype.html:32
 msgid "Modify Model"
-msgstr "修改商品型号"
+msgstr "修改订单类型"
 
 #: app/templates/staff/page-modify-product.html:132
 msgid "Cymbals"
@@ -3470,7 +3476,7 @@ msgstr "描述你自己。。。"
 
 #: app/templates/userinfo/user_profile.html:196
 msgid "Default Address"
-msgstr "修改地址"
+msgstr "默认地址"
 
 #: app/templates/userinfo/user_profile.html:233
 msgid "Member since "
