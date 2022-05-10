@@ -429,6 +429,10 @@
                                             <tr>
                                                 <td class="form-col">
                                                     {{ form.content(class="form-input text-area w-input comment-content") }}
+
+                                                    {% for error in form.content.errors %}
+                                                        <span style="color: red">[{{ error }}]</span>
+                                                    {% endfor %}
                                                 </td>
                                             </tr>
                                             <tr>
@@ -439,6 +443,10 @@
                                             <tr>
                                                 <td class="form-col">
                                                     {{ form.pictures() }}
+
+                                                    {% for error in form.pictures.errors %}
+                                                        <span style="color: red">[{{ error }}]</span>
+                                                    {% endfor %}
                                                 </td>
                                             </tr>
                                             <tr>
@@ -457,6 +465,10 @@
                                                             <li id="star_5" class="star star-dark clickable" star-level="5">&#9733</li>
                                                         </ul>
                                                     </div>
+
+                                                    {% for error in form.rate.errors %}
+                                                        <span style="color: red">[{{ error }}]</span>
+                                                    {% endfor %}
                                                 </td>
                                             </tr>
                                             <tr>
