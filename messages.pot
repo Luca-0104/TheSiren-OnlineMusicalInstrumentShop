@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-10 20:40+0800\n"
+"POT-Creation-Date: 2022-05-10 22:19+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,6 +81,58 @@ msgstr ""
 
 #: app/auth/views.py:121
 msgid "Login Failed! Check your username or password."
+msgstr ""
+
+#: app/comment/forms.py:13
+msgid "Leave your comment here"
+msgstr ""
+
+#: app/comment/forms.py:13
+msgid "You must give some text comment."
+msgstr ""
+
+#: app/comment/forms.py:14
+msgid "Upload some pictures"
+msgstr ""
+
+#: app/comment/forms.py:14
+msgid "You must give 2-5 pictures"
+msgstr ""
+
+#: app/comment/forms.py:15
+msgid "Rate"
+msgstr ""
+
+#: app/comment/forms.py:15
+msgid "You should rate it."
+msgstr ""
+
+#: app/comment/forms.py:16 app/templates/order/order-listing.html:568
+msgid "Confirm"
+msgstr ""
+
+#: app/journal/forms.py:11
+msgid "Give a title for your journal"
+msgstr ""
+
+#: app/journal/forms.py:12
+msgid "Write down your journal here"
+msgstr ""
+
+#: app/journal/forms.py:13
+msgid "Broadcast"
+msgstr ""
+
+#: app/journal/forms.py:20
+msgid "Modify title here"
+msgstr ""
+
+#: app/journal/forms.py:21
+msgid "Modify your journal body here"
+msgstr ""
+
+#: app/journal/forms.py:22 app/product/forms.py:54 app/product/forms.py:106
+msgid "Submit"
 msgstr ""
 
 #: app/main/views.py:295
@@ -191,10 +243,6 @@ msgstr ""
 
 #: app/product/forms.py:50 app/product/forms.py:104
 msgid "Pictures for exhibition"
-msgstr ""
-
-#: app/product/forms.py:54 app/product/forms.py:106
-msgid "Submit"
 msgstr ""
 
 #: app/product/forms.py:68
@@ -329,7 +377,7 @@ msgstr ""
 #: app/templates/base/base-customer.html:311
 #: app/templates/base/base-customer.html:367
 #: app/templates/comment/comment.html:283
-#: app/templates/comment/comment.html:503
+#: app/templates/comment/comment.html:515
 #: app/templates/order/order-detail.html:283
 #: app/templates/order/order-detail.html:749
 #: app/templates/order/order-listing.html:276
@@ -387,7 +435,7 @@ msgstr ""
 
 #: app/templates/backend-test/payment/payment-finished.html:307
 #: app/templates/base/base-customer.html:365
-#: app/templates/comment/comment.html:501
+#: app/templates/comment/comment.html:513
 #: app/templates/order/order-detail.html:747
 #: app/templates/order/order-listing.html:726
 msgid "shop"
@@ -395,7 +443,7 @@ msgstr ""
 
 #: app/templates/backend-test/payment/payment-finished.html:313
 #: app/templates/base/base-customer.html:371
-#: app/templates/comment/comment.html:507
+#: app/templates/comment/comment.html:519
 #: app/templates/main/page_all_commodities.html:322
 #: app/templates/order/order-detail.html:753
 #: app/templates/order/order-listing.html:732
@@ -404,7 +452,7 @@ msgstr ""
 
 #: app/templates/backend-test/payment/payment-finished.html:320
 #: app/templates/base/base-customer.html:379
-#: app/templates/comment/comment.html:515
+#: app/templates/comment/comment.html:527
 #: app/templates/order/order-detail.html:761
 #: app/templates/order/order-listing.html:740
 msgid "Company"
@@ -454,14 +502,14 @@ msgid "Category"
 msgstr ""
 
 #: app/templates/base/base-customer.html:356
-#: app/templates/comment/comment.html:492
+#: app/templates/comment/comment.html:504
 #: app/templates/order/order-detail.html:738
 #: app/templates/order/order-listing.html:717
 msgid "China Beijing Chaoyang Distinct Pingleyuan No.100"
 msgstr ""
 
 #: app/templates/base/base-customer.html:356
-#: app/templates/comment/comment.html:492
+#: app/templates/comment/comment.html:504
 #: app/templates/order/order-detail.html:738
 #: app/templates/order/order-listing.html:717
 msgid ""
@@ -471,7 +519,7 @@ msgstr ""
 
 #: app/templates/base/base-customer.html:375
 #: app/templates/comment/comment.html:289
-#: app/templates/comment/comment.html:511
+#: app/templates/comment/comment.html:523
 #: app/templates/order/order-detail.html:289
 #: app/templates/order/order-detail.html:757
 #: app/templates/order/order-listing.html:282
@@ -479,7 +527,7 @@ msgid "Catagory"
 msgstr ""
 
 #: app/templates/base/base-customer.html:381
-#: app/templates/comment/comment.html:517
+#: app/templates/comment/comment.html:529
 #: app/templates/order/order-detail.html:763
 #: app/templates/order/order-listing.html:742
 msgid "About us"
@@ -490,14 +538,14 @@ msgid "Contect us"
 msgstr ""
 
 #: app/templates/base/base-customer.html:383
-#: app/templates/comment/comment.html:519
+#: app/templates/comment/comment.html:531
 #: app/templates/order/order-detail.html:765
 #: app/templates/order/order-listing.html:744
 msgid "Premium"
 msgstr ""
 
 #: app/templates/base/base-customer.html:387
-#: app/templates/comment/comment.html:523
+#: app/templates/comment/comment.html:535
 #: app/templates/order/order-detail.html:769
 #: app/templates/order/order-listing.html:748
 msgid "Franchising Brand"
@@ -728,7 +776,7 @@ msgstr ""
 msgid "Your Comment"
 msgstr ""
 
-#: app/templates/comment/comment.html:518
+#: app/templates/comment/comment.html:530
 #: app/templates/order/order-detail.html:764
 #: app/templates/order/order-listing.html:743
 msgid "Contact us"
@@ -1076,8 +1124,12 @@ msgstr ""
 msgid "There are no more products from this category yet."
 msgstr ""
 
+#: app/templates/main/page_all_commodities.html:44
+msgid "All Products"
+msgstr ""
+
 #: app/templates/main/page_all_commodities.html:55
-msgid "By Category"
+msgid "Filters"
 msgstr ""
 
 #: app/templates/main/page_all_commodities.html:56
@@ -2547,10 +2599,6 @@ msgstr ""
 msgid "View Progress"
 msgstr ""
 
-#: app/templates/order/order-listing.html:568
-msgid "Confirm"
-msgstr ""
-
 #: app/templates/order/order-listing.html:575
 msgid "After Sale Service"
 msgstr ""
@@ -3106,8 +3154,6 @@ msgid "Type of orders in"
 msgstr ""
 
 #: app/templates/staff/page-list-orders.html:534
-#: app/templates/staff/page-list-orders.html:571
-#: app/templates/staff/page-list-orders.html:608
 msgid "status is not allowed to be modified."
 msgstr ""
 
@@ -3115,8 +3161,16 @@ msgstr ""
 msgid "Address of orders in"
 msgstr ""
 
+#: app/templates/staff/page-list-orders.html:571
+msgid "status is not allowed to be modified. "
+msgstr ""
+
 #: app/templates/staff/page-list-orders.html:599
 msgid "Recipient of orders in"
+msgstr ""
+
+#: app/templates/staff/page-list-orders.html:608
+msgid "status is not allowed to be modified.  "
 msgstr ""
 
 #: app/templates/staff/page-list-orders.html:802

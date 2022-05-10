@@ -84,8 +84,9 @@ def chat_for_customer():
     # gain the chat data
     print("create")
     messages = Message.query.filter_by(chat_room_id=session['uid']).order_by(Message.timestamp.asc()).all()
+    chat_room = ChatRoom.query.filter_by(id=session['uid']).first()
     return render_template("chat/chat_customer.html", username=session['username'], room=session['uid'],
-                           messages=messages, role_id=session['role_id'])
+                           messages=messages, role_id=session['role_id'], rooms=chat_room)
 
 
 @socketio.on('message')
