@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-10 10:03+0800\n"
+"POT-Creation-Date: 2022-05-10 17:19+0800\n"
 "PO-Revision-Date: 2022-03-23 16:06+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
@@ -85,7 +85,7 @@ msgstr "登录成功！"
 msgid "Login Failed! Check your username or password."
 msgstr "登录失败！检查您的用户名或密码！"
 
-#: app/main/views.py:331
+#: app/main/views.py:295
 msgid "No such commodity!"
 msgstr "没有这件商品！"
 
@@ -137,7 +137,7 @@ msgstr "您不能支付不属于您的会员订单！"
 msgid "premiumOrder does not exist!"
 msgstr "会员订单不存在！"
 
-#: app/product/forms.py:12 app/product/forms.py:40 app/product/forms.py:97
+#: app/product/forms.py:12 app/product/forms.py:40 app/product/forms.py:95
 #: app/templates/staff/page-list-product.html:165
 msgid "Name"
 msgstr "名称"
@@ -160,18 +160,18 @@ msgstr "品牌"
 #: app/templates/staff/page-list-orders.html:722
 #: app/templates/staff/page-list-orders.html:790
 msgid "Update"
-msgstr "提交！"
+msgstr "提交"
 
-#: app/product/forms.py:33 app/product/forms.py:123
+#: app/product/forms.py:33 app/product/forms.py:121
 msgid "Serial Number already used."
 msgstr "序列号已存在"
 
-#: app/product/forms.py:42 app/product/forms.py:99
-#: app/templates/main/page-commodity-details.html:235
+#: app/product/forms.py:42 app/product/forms.py:97
+#: app/templates/main/page-commodity-details.html:236
 msgid "Description"
 msgstr "描述"
 
-#: app/product/forms.py:43 app/product/forms.py:100
+#: app/product/forms.py:43 app/product/forms.py:98
 #: app/templates/cart/page-cart.html:52
 #: app/templates/staff/backup-staff-modify.html:1024
 #: app/templates/staff/page-add-product.html:223
@@ -179,52 +179,51 @@ msgstr "描述"
 msgid "Price"
 msgstr "价格"
 
-#: app/product/forms.py:45 app/product/forms.py:102
+#: app/product/forms.py:45 app/product/forms.py:100
 #: app/templates/staff/page-add-product.html:234
 #: app/templates/staff/page-list-product.html:174
 msgid "Stock"
 msgstr "库存"
 
-#: app/product/forms.py:49 app/product/forms.py:104
+#: app/product/forms.py:49 app/product/forms.py:102
 #: app/templates/staff/backup-staff-modify.html:880
 #: app/templates/staff/page-list-product.html:116
 msgid "Serial Number"
 msgstr "商品序列号"
 
-#: app/product/forms.py:50 app/product/forms.py:106
+#: app/product/forms.py:50 app/product/forms.py:104
 msgid "Pictures for exhibition"
 msgstr "展示图片"
 
-#: app/product/forms.py:53 app/product/forms.py:107
-msgid "Introduction Pictures"
-msgstr "介绍图片"
-
-#: app/product/forms.py:56 app/product/forms.py:108
+#: app/product/forms.py:54 app/product/forms.py:106
 msgid "Submit"
 msgstr "提交"
 
-#: app/product/forms.py:70
+#: app/product/forms.py:68
 msgid "Serial Number already used in other model of this product!"
 msgstr "商品序列号已应用于该商品的另一型号！"
 
-#: app/product/forms.py:80 app/product/forms.py:90 app/product/forms.py:133
-#: app/product/forms.py:143
+#: app/product/forms.py:78 app/product/forms.py:131
 msgid "Picture name cannot longer than 216 chars!"
 msgstr "图片名称不能超过216个字符！"
 
-#: app/product/views.py:285
+#: app/product/views.py:247 app/product/views.py:474 app/product/views.py:589
+msgid "Part of the pictures are failed to be uploaded! Check their suffix!"
+msgstr "部分文件上传失败！请检查文件后缀！"
+
+#: app/product/views.py:270
 msgid "New product and its models are uploaded successfully!"
 msgstr "成功上传新商品及其型号！"
 
-#: app/product/views.py:411
+#: app/product/views.py:396
 msgid "The product information updated!"
 msgstr "商品信息已更新！"
 
-#: app/product/views.py:514
+#: app/product/views.py:500
 msgid "Error! The product does not exist! Try it again!"
 msgstr "发生错误！产品不存在！请重试！"
 
-#: app/product/views.py:630
+#: app/product/views.py:618
 msgid "Model Type updated!"
 msgstr "型号已更新！"
 
@@ -297,7 +296,7 @@ msgstr "继续支付"
 #: app/templates/backend-test/payment/payment-finished.html:195
 #: app/templates/base/base-customer.html:261
 #: app/templates/comment/comment.html:233
-#: app/templates/main/page-commodity-details.html:669
+#: app/templates/main/page-commodity-details.html:710
 #: app/templates/order/order-detail.html:233
 #: app/templates/order/order-listing.html:226
 msgid "No items found."
@@ -399,7 +398,7 @@ msgstr "商店"
 #: app/templates/backend-test/payment/payment-finished.html:313
 #: app/templates/base/base-customer.html:371
 #: app/templates/comment/comment.html:507
-#: app/templates/main/page_all_commodities.html:321
+#: app/templates/main/page_all_commodities.html:322
 #: app/templates/order/order-detail.html:751
 #: app/templates/order/order-listing.html:732
 msgid "Brands"
@@ -415,7 +414,7 @@ msgstr "公司"
 
 #: app/templates/backend-test/payment/payment-finished.html:323
 msgid "Journal"
-msgstr "通知"
+msgstr "日志及通知"
 
 #: app/templates/backend-test/payment/payment-finished.html:325
 msgid "Refund Policy"
@@ -546,15 +545,15 @@ msgstr "订单列表"
 
 #: app/templates/base/base-staff.html:159
 msgid "Journals"
-msgstr "通知"
+msgstr "日志及通知"
 
 #: app/templates/base/base-staff.html:172
 msgid "List Journals"
-msgstr "通知列表"
+msgstr "日志及通知列表"
 
 #: app/templates/base/base-staff.html:178
 msgid "Upload Journals"
-msgstr "上传通知"
+msgstr "上传日志及通知"
 
 #: app/templates/base/base-staff.html:193
 #: app/templates/staff/backup-staff-modify.html:76
@@ -757,7 +756,7 @@ msgstr "鉴定"
 #: app/templates/base/base-staff.html:533
 #: app/templates/staff/backup-staff-modify.html:411
 msgid "Recover Password"
-msgstr "密码错误！"
+msgstr "恢复密码"
 
 #: app/templates/base/base-staff.html:538
 #: app/templates/staff/backup-staff-modify.html:416
@@ -863,7 +862,7 @@ msgstr "维护"
 #: app/templates/staff/page-list-product.html:25
 #: app/templates/staff/page-list-product.html:30
 msgid "Search here..."
-msgstr "搜索"
+msgstr "请在此输入搜索内容"
 
 #: app/templates/base/base-staff.html:815
 #: app/templates/staff/page-add-product.html:199
@@ -882,7 +881,7 @@ msgstr "型号名称"
 msgid ""
 "Model\n"
 "                                                        Serial"
-msgstr "序列号"
+msgstr "型号"
 
 #: app/templates/base/base-staff.html:896
 msgid "Epidemic Mode"
@@ -915,7 +914,7 @@ msgstr "隐私政策"
 #: app/templates/base/base-staff.html:1162
 #: app/templates/staff/backup-staff-modify.html:1079
 msgid "Terms of Use"
-msgstr "使用术语"
+msgstr "使用条款"
 
 #: app/templates/cart/page-cart.html:43
 msgid "Select"
@@ -926,7 +925,7 @@ msgid "Model Info"
 msgstr "型号信息"
 
 #: app/templates/cart/page-cart.html:49
-#: app/templates/main/page-commodity-details.html:305
+#: app/templates/main/page-commodity-details.html:306
 #: app/templates/staff/backup-staff-modify.html:1040
 msgid "Quantity"
 msgstr "数量"
@@ -1150,22 +1149,22 @@ msgstr "我们提供您和我们训练有素的员工之间的在线一对一聊
 
 #: app/templates/main/about_siren.html:170
 #: app/templates/main/index_new.html:1083
-#: app/templates/main/page-commodity-details.html:709
-#: app/templates/main/page_all_commodities.html:476
+#: app/templates/main/page-commodity-details.html:789
+#: app/templates/main/page_all_commodities.html:477
 msgid "Music should strike fire from the heart of man."
 msgstr "音乐的魔力使人们激情燃烧"
 
 #: app/templates/main/about_siren.html:171
 #: app/templates/main/index_new.html:1084
-#: app/templates/main/page-commodity-details.html:710
-#: app/templates/main/page_all_commodities.html:477
+#: app/templates/main/page-commodity-details.html:790
+#: app/templates/main/page_all_commodities.html:478
 msgid "Beethoven"
 msgstr "贝多芬"
 
 #: app/templates/main/about_siren.html:175
 #: app/templates/main/index_new.html:1088
-#: app/templates/main/page-commodity-details.html:714
-#: app/templates/main/page_all_commodities.html:481
+#: app/templates/main/page-commodity-details.html:794
+#: app/templates/main/page_all_commodities.html:482
 msgid "Start Voyage"
 msgstr "开始徜徉在音乐的海洋"
 
@@ -1225,49 +1224,49 @@ msgstr "加入我们以获取更多优惠。限时销售和独家限量版商品
 msgid "Go Premium"
 msgstr "成为会员"
 
-#: app/templates/main/page-commodity-details.html:124
-#: app/templates/main/page_all_commodities.html:454
+#: app/templates/main/page-commodity-details.html:125
+#: app/templates/main/page_all_commodities.html:455
 msgid "Previous"
 msgstr "上一页"
 
-#: app/templates/main/page-commodity-details.html:128
-#: app/templates/main/page_all_commodities.html:457
+#: app/templates/main/page-commodity-details.html:129
+#: app/templates/main/page_all_commodities.html:458
 msgid "Next"
 msgstr "下一页"
 
-#: app/templates/main/page-commodity-details.html:142
+#: app/templates/main/page-commodity-details.html:143
 msgid "Shop"
 msgstr "商店"
 
-#: app/templates/main/page-commodity-details.html:254
+#: app/templates/main/page-commodity-details.html:255
 msgid "Specification Table"
 msgstr "分类"
 
-#: app/templates/main/page-commodity-details.html:257
+#: app/templates/main/page-commodity-details.html:258
 msgid "Weight"
 msgstr "重量"
 
-#: app/templates/main/page-commodity-details.html:261
+#: app/templates/main/page-commodity-details.html:262
 msgid "Views"
 msgstr "浏览次数"
 
-#: app/templates/main/page-commodity-details.html:265
+#: app/templates/main/page-commodity-details.html:266
 msgid "Sales"
 msgstr "售卖"
 
-#: app/templates/main/page-commodity-details.html:266
+#: app/templates/main/page-commodity-details.html:267
 msgid "times"
 msgstr "次"
 
-#: app/templates/main/page-commodity-details.html:273
+#: app/templates/main/page-commodity-details.html:274
 msgid "Customization"
 msgstr "定制化"
 
-#: app/templates/main/page-commodity-details.html:290
+#: app/templates/main/page-commodity-details.html:291
 msgid "Additional information"
 msgstr "附加信息"
 
-#: app/templates/main/page-commodity-details.html:291
+#: app/templates/main/page-commodity-details.html:292
 msgid ""
 "Please Notice that this is a consumable product\n"
 "                                            and\n"
@@ -1275,27 +1274,31 @@ msgid ""
 "after 7-days."
 msgstr "请您注意，由于乐器属于消耗品，一旦售出超过7天将不能退款。"
 
-#: app/templates/main/page-commodity-details.html:322
+#: app/templates/main/page-commodity-details.html:316
+msgid "Add to Cart"
+msgstr "我的购物车"
+
+#: app/templates/main/page-commodity-details.html:323
 msgid ""
 "Buy\n"
 "                                                            It Now"
 msgstr "现在购买"
 
-#: app/templates/main/page-commodity-details.html:329
+#: app/templates/main/page-commodity-details.html:330
 msgid ""
 "This\n"
 "                                                        item runs out of "
 "stock."
 msgstr "该商品库存不足"
 
-#: app/templates/main/page-commodity-details.html:338
+#: app/templates/main/page-commodity-details.html:339
 msgid ""
 "This\n"
 "                                                        item is no longer"
 " available (Sold out)."
 msgstr "该商品不再售卖（售完）"
 
-#: app/templates/main/page-commodity-details.html:359
+#: app/templates/main/page-commodity-details.html:360
 msgid ""
 "This product supports 7-days refund and the quality\n"
 "                                        is\n"
@@ -1314,15 +1317,17 @@ msgid ""
 msgstr "您可以使用鼠标移动镜头以及伸缩视角。"
 
 #: app/templates/main/page-commodity-details.html:413
-msgid "If you cannot see the 3d model, please move the camara."
-msgstr "如果您没有看到模型请尝试移动镜头。"
-
-#: app/templates/main/page-commodity-details.html:414
 msgid ""
-"You may wait for a moment before it finishes rendering, this may take "
-"several\n"
+"You may wait for a moment before the source download is finished, this "
+"may take several\n"
 "                                            minuses."
 msgstr "您可能需要等待数秒以完成模型加载。"
+
+#: app/templates/main/page-commodity-details.html:415
+msgid ""
+"If you cannot see the 3d model when the source is ready, please move the "
+"camara."
+msgstr "如果您没有看到模型请尝试移动镜头。"
 
 #: app/templates/main/page-commodity-details.html:440
 msgid "Video for showing"
@@ -1337,84 +1342,83 @@ msgid "Comments"
 msgstr "评论"
 
 #: app/templates/main/page-commodity-details.html:608
-msgid "about the brand"
+msgid "About this brand - "
 msgstr "关于品牌"
 
 #: app/templates/main/page-commodity-details.html:613
-msgid "View Range"
-msgstr "查看更多"
+msgid "Learn More"
+msgstr "了解更多"
 
-#: app/templates/main/page-commodity-details.html:627
+#: app/templates/main/page-commodity-details.html:631
 msgid "More from "
 msgstr "更多关于"
 
-#: app/templates/main/page-commodity-details.html:651
+#: app/templates/main/page-commodity-details.html:689
 msgid "There are no more products from this brand yet."
 msgstr "没有更多该品牌商品了(╯﹏╰）"
 
-#: app/templates/main/page-commodity-details.html:660
+#: app/templates/main/page-commodity-details.html:701
 msgid "Related Recommendation"
 msgstr "相关推荐"
 
-#: app/templates/main/page-commodity-details.html:693
+#: app/templates/main/page-commodity-details.html:772
 msgid "There are no more products from this category yet."
 msgstr "该分类没有更多商品了(╯﹏╰）"
 
-#: app/templates/main/page_all_commodities.html:54
+#: app/templates/main/page_all_commodities.html:55
 msgid "By Category"
 msgstr "分类"
 
-#: app/templates/main/page_all_commodities.html:55
+#: app/templates/main/page_all_commodities.html:56
 #: app/templates/staff/backup-staff-modify.html:889
 #: app/templates/staff/page-add-product.html:56
 #: app/templates/staff/page-modify-product.html:71
 msgid "Classification"
 msgstr "分类"
 
-#: app/templates/main/page_all_commodities.html:62
-#: app/templates/main/page_all_commodities.html:99
-#: app/templates/main/page_all_commodities.html:300
-#: app/templates/main/page_all_commodities.html:327
+#: app/templates/main/page_all_commodities.html:63
+#: app/templates/main/page_all_commodities.html:100
+#: app/templates/main/page_all_commodities.html:301
+#: app/templates/main/page_all_commodities.html:328
 msgid "See All"
 msgstr "查看更多"
 
-#: app/templates/main/page_all_commodities.html:66
+#: app/templates/main/page_all_commodities.html:67
 msgid "String"
 msgstr "弦乐器"
 
-#: app/templates/main/page_all_commodities.html:70
+#: app/templates/main/page_all_commodities.html:71
 #: app/templates/staff/page-add-product.html:60
 #: app/templates/staff/page-modify-product.html:75
 msgid "Woodwinds"
 msgstr "木管乐器"
 
-#: app/templates/main/page_all_commodities.html:74
+#: app/templates/main/page_all_commodities.html:75
 #: app/templates/staff/page-add-product.html:61
 #: app/templates/staff/page-modify-product.html:76
 msgid "Brass"
 msgstr "铜管乐器"
 
-#: app/templates/main/page_all_commodities.html:78
+#: app/templates/main/page_all_commodities.html:79
 #: app/templates/staff/page-add-product.html:62
 #: app/templates/staff/page-modify-product.html:77
 msgid "Percussion"
 msgstr "打击乐器"
 
-#: app/templates/main/page_all_commodities.html:82
+#: app/templates/main/page_all_commodities.html:83
 #: app/templates/staff/page-add-product.html:63
 #: app/templates/staff/page-modify-product.html:78
 msgid "Keyboard"
 msgstr "键盘乐器"
 
-#: app/templates/main/page_all_commodities.html:86
-#: app/templates/main/page_all_commodities.html:316
+#: app/templates/main/page_all_commodities.html:87
 #: app/templates/staff/page-add-product.html:64
 #: app/templates/staff/page-add-product.html:152
 #: app/templates/staff/page-modify-product.html:79
 msgid "Accessories"
 msgstr "配件"
 
-#: app/templates/main/page_all_commodities.html:92
+#: app/templates/main/page_all_commodities.html:93
 #: app/templates/staff/backup-staff-modify.html:903
 #: app/templates/staff/page-add-product.html:72
 #: app/templates/staff/page-list-orders.html:62
@@ -1423,308 +1427,313 @@ msgstr "配件"
 msgid "Type"
 msgstr "类型"
 
-#: app/templates/main/page_all_commodities.html:103
+#: app/templates/main/page_all_commodities.html:104
 #: app/templates/staff/page-add-product.html:76
 #: app/templates/staff/page-modify-product.html:90
 msgid "Violin"
 msgstr "小提琴"
 
-#: app/templates/main/page_all_commodities.html:107
+#: app/templates/main/page_all_commodities.html:108
 #: app/templates/staff/page-add-product.html:77
 #: app/templates/staff/page-modify-product.html:91
 msgid "Viola"
 msgstr "中提琴"
 
-#: app/templates/main/page_all_commodities.html:111
+#: app/templates/main/page_all_commodities.html:112
 #: app/templates/staff/page-add-product.html:78
 #: app/templates/staff/page-modify-product.html:92
 msgid "Cello"
 msgstr "大提琴"
 
-#: app/templates/main/page_all_commodities.html:115
+#: app/templates/main/page_all_commodities.html:116
 #: app/templates/staff/page-add-product.html:79
 #: app/templates/staff/page-modify-product.html:93
 msgid "Double Bass"
 msgstr "低音贝斯"
 
-#: app/templates/main/page_all_commodities.html:119
+#: app/templates/main/page_all_commodities.html:120
 #: app/templates/staff/page-add-product.html:80
 #: app/templates/staff/page-modify-product.html:94
 msgid "Guitar"
 msgstr "吉他"
 
-#: app/templates/main/page_all_commodities.html:123
+#: app/templates/main/page_all_commodities.html:124
 #: app/templates/staff/page-add-product.html:81
 #: app/templates/staff/page-modify-product.html:95
 msgid "Bass"
 msgstr "贝斯"
 
-#: app/templates/main/page_all_commodities.html:127
+#: app/templates/main/page_all_commodities.html:128
 #: app/templates/staff/page-add-product.html:82
 #: app/templates/staff/page-modify-product.html:96
 msgid "Ukulele"
 msgstr "尤克里里"
 
-#: app/templates/main/page_all_commodities.html:131
+#: app/templates/main/page_all_commodities.html:132
 #: app/templates/staff/page-add-product.html:83
 #: app/templates/staff/page-modify-product.html:97
 msgid "Harp"
 msgstr "竖琴"
 
-#: app/templates/main/page_all_commodities.html:135
+#: app/templates/main/page_all_commodities.html:136
 #: app/templates/staff/page-add-product.html:84
 #: app/templates/staff/page-modify-product.html:98
 msgid "Erhu"
 msgstr "二胡"
 
-#: app/templates/main/page_all_commodities.html:139
+#: app/templates/main/page_all_commodities.html:140
 #: app/templates/staff/page-add-product.html:85
 #: app/templates/staff/page-modify-product.html:99
 msgid "Guzheng"
 msgstr "古筝"
 
-#: app/templates/main/page_all_commodities.html:143
+#: app/templates/main/page_all_commodities.html:144
 #: app/templates/staff/page-add-product.html:86
 #: app/templates/staff/page-modify-product.html:100
 msgid "Guqin"
 msgstr "古琴"
 
-#: app/templates/main/page_all_commodities.html:147
+#: app/templates/main/page_all_commodities.html:148
 #: app/templates/staff/page-add-product.html:87
 #: app/templates/staff/page-modify-product.html:101
 msgid "Pipa"
 msgstr "琵琶"
 
-#: app/templates/main/page_all_commodities.html:151
+#: app/templates/main/page_all_commodities.html:152
 #: app/templates/staff/page-add-product.html:91
 #: app/templates/staff/page-modify-product.html:105
 msgid "Flute"
 msgstr "长笛"
 
-#: app/templates/main/page_all_commodities.html:155
+#: app/templates/main/page_all_commodities.html:156
 #: app/templates/staff/page-add-product.html:92
 #: app/templates/staff/page-modify-product.html:106
 msgid "Clarinet"
 msgstr "单簧管"
 
-#: app/templates/main/page_all_commodities.html:159
+#: app/templates/main/page_all_commodities.html:160
 #: app/templates/staff/page-add-product.html:93
 #: app/templates/staff/page-modify-product.html:107
 msgid "Oboe"
 msgstr "双簧管"
 
-#: app/templates/main/page_all_commodities.html:163
+#: app/templates/main/page_all_commodities.html:164
 #: app/templates/staff/page-add-product.html:94
 #: app/templates/staff/page-modify-product.html:108
 msgid "Piccolo"
 msgstr "短笛"
 
-#: app/templates/main/page_all_commodities.html:167
+#: app/templates/main/page_all_commodities.html:168
 #: app/templates/staff/page-add-product.html:95
 #: app/templates/staff/page-modify-product.html:109
 msgid "Saxophone"
 msgstr "萨克斯"
 
-#: app/templates/main/page_all_commodities.html:171
+#: app/templates/main/page_all_commodities.html:172
 #: app/templates/staff/page-add-product.html:96
 #: app/templates/staff/page-modify-product.html:110
 msgid "English Horn"
 msgstr "英国号"
 
-#: app/templates/main/page_all_commodities.html:175
+#: app/templates/main/page_all_commodities.html:176
 #: app/templates/staff/page-add-product.html:97
 #: app/templates/staff/page-modify-product.html:111
 msgid "Bassoon"
 msgstr "巴松"
 
-#: app/templates/main/page_all_commodities.html:179
+#: app/templates/main/page_all_commodities.html:180
 #: app/templates/staff/page-add-product.html:98
 #: app/templates/staff/page-modify-product.html:112
 msgid "Recorder"
 msgstr "竖笛"
 
-#: app/templates/main/page_all_commodities.html:183
+#: app/templates/main/page_all_commodities.html:184
 #: app/templates/staff/page-add-product.html:99
 #: app/templates/staff/page-modify-product.html:113
 msgid "Bagpipes"
 msgstr "风笛"
 
-#: app/templates/main/page_all_commodities.html:187
+#: app/templates/main/page_all_commodities.html:188
 #: app/templates/staff/page-add-product.html:100
 #: app/templates/staff/page-modify-product.html:114
 msgid "Suona Horn"
 msgstr "唢呐"
 
-#: app/templates/main/page_all_commodities.html:191
+#: app/templates/main/page_all_commodities.html:192
 #: app/templates/staff/page-add-product.html:101
 #: app/templates/staff/page-modify-product.html:115
 msgid "Sheng"
 msgstr "笙"
 
-#: app/templates/main/page_all_commodities.html:195
+#: app/templates/main/page_all_commodities.html:196
 #: app/templates/staff/page-add-product.html:105
 #: app/templates/staff/page-modify-product.html:119
 msgid "Trumpet"
 msgstr "小号"
 
-#: app/templates/main/page_all_commodities.html:199
+#: app/templates/main/page_all_commodities.html:200
 #: app/templates/staff/page-add-product.html:106
 #: app/templates/staff/page-modify-product.html:120
 msgid "Trombone"
 msgstr "长号"
 
-#: app/templates/main/page_all_commodities.html:203
+#: app/templates/main/page_all_commodities.html:204
 #: app/templates/staff/page-add-product.html:107
 #: app/templates/staff/page-modify-product.html:121
 msgid "French Horn"
 msgstr "法国号"
 
-#: app/templates/main/page_all_commodities.html:207
+#: app/templates/main/page_all_commodities.html:208
 #: app/templates/staff/page-add-product.html:108
 #: app/templates/staff/page-modify-product.html:122
 msgid "Tuba"
 msgstr "大号"
 
-#: app/templates/main/page_all_commodities.html:211
+#: app/templates/main/page_all_commodities.html:212
 #: app/templates/staff/page-add-product.html:109
 #: app/templates/staff/page-modify-product.html:123
 msgid "Euphonium"
 msgstr "上低音号"
 
-#: app/templates/main/page_all_commodities.html:215
+#: app/templates/main/page_all_commodities.html:216
 #: app/templates/staff/page-add-product.html:110
 #: app/templates/staff/page-modify-product.html:124
 msgid "Harmonica"
 msgstr "口琴"
 
-#: app/templates/main/page_all_commodities.html:219
+#: app/templates/main/page_all_commodities.html:220
 #: app/templates/staff/page-add-product.html:114
 #: app/templates/staff/page-modify-product.html:128
 msgid "Timpani"
 msgstr "定音鼓"
 
-#: app/templates/main/page_all_commodities.html:223
+#: app/templates/main/page_all_commodities.html:224
 #: app/templates/staff/page-add-product.html:115
 #: app/templates/staff/page-modify-product.html:129
 msgid "Bass Drum"
 msgstr "低音鼓"
 
-#: app/templates/main/page_all_commodities.html:227
+#: app/templates/main/page_all_commodities.html:228
 #: app/templates/staff/page-add-product.html:116
 #: app/templates/staff/page-modify-product.html:130
 msgid "Snare"
 msgstr "小军鼓"
 
-#: app/templates/main/page_all_commodities.html:231
+#: app/templates/main/page_all_commodities.html:232
 #: app/templates/staff/page-add-product.html:117
 #: app/templates/staff/page-modify-product.html:131
 msgid "Cajon"
 msgstr "卡宏鼓"
 
-#: app/templates/main/page_all_commodities.html:235
+#: app/templates/main/page_all_commodities.html:236
 #: app/templates/staff/page-add-product.html:118
 msgid "SoundBox"
 msgstr "音响"
 
-#: app/templates/main/page_all_commodities.html:239
+#: app/templates/main/page_all_commodities.html:240
 #: app/templates/staff/page-add-product.html:119
 #: app/templates/staff/page-modify-product.html:133
 msgid "Tam-tam"
 msgstr "铜锣"
 
-#: app/templates/main/page_all_commodities.html:243
+#: app/templates/main/page_all_commodities.html:244
 #: app/templates/staff/page-add-product.html:120
 #: app/templates/staff/page-modify-product.html:134
 msgid "Tambourine"
 msgstr "手鼓"
 
-#: app/templates/main/page_all_commodities.html:247
+#: app/templates/main/page_all_commodities.html:248
 #: app/templates/staff/page-add-product.html:121
 #: app/templates/staff/page-modify-product.html:135
 msgid "Marimba & Xylophone"
 msgstr "马林巴和木琴"
 
-#: app/templates/main/page_all_commodities.html:251
+#: app/templates/main/page_all_commodities.html:252
 #: app/templates/staff/page-add-product.html:122
 #: app/templates/staff/page-modify-product.html:136
 msgid "Vibraphone"
 msgstr "电颤琴"
 
-#: app/templates/main/page_all_commodities.html:255
+#: app/templates/main/page_all_commodities.html:256
 #: app/templates/staff/page-add-product.html:123
 #: app/templates/staff/page-modify-product.html:137
 msgid "Drum Kit"
 msgstr "架子鼓"
 
-#: app/templates/main/page_all_commodities.html:259
+#: app/templates/main/page_all_commodities.html:260
 #: app/templates/staff/page-add-product.html:124
 #: app/templates/staff/page-modify-product.html:138
 msgid "Other Percussion"
 msgstr "其他页面"
 
-#: app/templates/main/page_all_commodities.html:263
+#: app/templates/main/page_all_commodities.html:264
 #: app/templates/staff/page-add-product.html:128
 #: app/templates/staff/page-modify-product.html:142
 msgid "Piano"
 msgstr "钢琴"
 
-#: app/templates/main/page_all_commodities.html:267
+#: app/templates/main/page_all_commodities.html:268
 #: app/templates/staff/page-add-product.html:129
 #: app/templates/staff/page-modify-product.html:143
 msgid "Accordion"
 msgstr "手风琴"
 
-#: app/templates/main/page_all_commodities.html:271
+#: app/templates/main/page_all_commodities.html:272
 #: app/templates/staff/page-add-product.html:130
 #: app/templates/staff/page-modify-product.html:144
 msgid "Launchpad"
 msgstr "打击垫"
 
-#: app/templates/main/page_all_commodities.html:275
+#: app/templates/main/page_all_commodities.html:276
 #: app/templates/staff/page-add-product.html:134
 #: app/templates/staff/page-modify-product.html:148
 msgid "Effects"
 msgstr "效果器"
 
-#: app/templates/main/page_all_commodities.html:279
+#: app/templates/main/page_all_commodities.html:280
 #: app/templates/staff/page-add-product.html:135
 #: app/templates/staff/page-modify-product.html:149
 msgid "Synthesizer"
 msgstr "合成器"
 
-#: app/templates/main/page_all_commodities.html:283
+#: app/templates/main/page_all_commodities.html:284
 #: app/templates/staff/page-add-product.html:136
 #: app/templates/staff/page-modify-product.html:150
 msgid "Microphone"
 msgstr "麦克风"
 
-#: app/templates/main/page_all_commodities.html:287
+#: app/templates/main/page_all_commodities.html:288
 #: app/templates/staff/page-add-product.html:137
 #: app/templates/staff/page-modify-product.html:151
 msgid "Monitor Headphone"
 msgstr "监听耳机"
 
-#: app/templates/main/page_all_commodities.html:293
+#: app/templates/main/page_all_commodities.html:294
 msgid "Additional Requirements"
 msgstr "额外要求"
 
-#: app/templates/main/page_all_commodities.html:304
+#: app/templates/main/page_all_commodities.html:305
 #: app/templates/staff/page-add-product.html:149
 #: app/templates/staff/page-modify-product.html:162
 msgid "Acoustic Only"
 msgstr "原声"
 
-#: app/templates/main/page_all_commodities.html:308
+#: app/templates/main/page_all_commodities.html:309
 #: app/templates/staff/page-add-product.html:150
 #: app/templates/staff/page-modify-product.html:163
 msgid "Electricity Required"
 msgstr "插电"
 
-#: app/templates/main/page_all_commodities.html:312
+#: app/templates/main/page_all_commodities.html:313
 #: app/templates/staff/page-add-product.html:151
 #: app/templates/staff/page-modify-product.html:164
 msgid "Electricity Support"
 msgstr "插电支持"
+
+#: app/templates/main/page_all_commodities.html:317
+#: app/templates/staff/page-modify-product.html:165
+msgid "No Extra Requirement"
+msgstr "无额外要求"
 
 #: app/templates/main/premium.html:42
 msgid "SELECTED INSTRUMENT."
@@ -1833,7 +1842,10 @@ msgid ""
 "electrics?” the answer is clear. Fender guitars were designed to be "
 "louder, and exciting tones they produced are still engrained into our "
 "cultural DNA."
-msgstr "Leo Fender希望制作一种既实用又易于使用的仪器。这是一个原始的物体，像钉子一样坚硬，它强大的名字灵感来自另一个突破性的发明：电视。凭借其革命性的电气化音调，它将永远改变音乐的制作方式。当有人问“为什么选择Fende electrics？”答案很清楚。Fender吉他被设计得更响亮，它们产生的令人兴奋的音调仍然根深蒂固地融入我们的文化DNA。"
+msgstr ""
+"Leo "
+"Fender希望制作一种既实用又易于使用的仪器。这是一个原始的物体，像钉子一样坚硬，它强大的名字灵感来自另一个突破性的发明：电视。凭借其革命性的电气化音调，它将永远改变音乐的制作方式。当有人问“为什么选择Fende"
+" electrics？”答案很清楚。Fender吉他被设计得更响亮，它们产生的令人兴奋的音调仍然根深蒂固地融入我们的文化DNA。"
 
 #: app/templates/main/brand_intro/fender.html:86
 msgid "The First Word in Electric Bass"
@@ -1849,7 +1861,10 @@ msgid ""
 "evolving type of musician: the electric bassist. Each one was and still "
 "is a driving force behind the greatest moment in music—of every era, of "
 "every genre. Period."
-msgstr "1951年，我们想把音乐家从直立低音的束缚中解放出来。我们通过引入一种具有大胆，新声音的全新乐器来做到这一点。这种乐器就是Precision Bass®，这个名字不仅成为摇滚乐的代名词，而且还塑造了它的存在。随着时间的流逝，我们创造了新的乐器，以迎合一种新的，不断发展的音乐家类型：电贝斯手。每一个过去和现在都是音乐中最伟大的时刻背后的驱动力 - 每个时代，每个流派。时期。"
+msgstr ""
+"1951年，我们想把音乐家从直立低音的束缚中解放出来。我们通过引入一种具有大胆，新声音的全新乐器来做到这一点。这种乐器就是Precision "
+"Bass®，这个名字不仅成为摇滚乐的代名词，而且还塑造了它的存在。随着时间的流逝，我们创造了新的乐器，以迎合一种新的，不断发展的音乐家类型：电贝斯手。每一个过去和现在都是音乐中最伟大的时刻背后的驱动力"
+" - 每个时代，每个流派。时期。"
 
 #: app/templates/main/brand_intro/gibson.html:41
 msgid "Gibson"
@@ -1880,7 +1895,14 @@ msgid ""
 "music lovers for generations to come will continue to experience music "
 "shaped by Gibson Brands. Learn more at Gibson.com and follow us on "
 "Twitter, Facebook and Instagram."
-msgstr "Gibson Brands是世界上最具标志性的吉他品牌，100多年来一直塑造着几代音乐家和音乐爱好者的声音。Gibson Brands成立于1894年，总部位于田纳西州纳什维尔，拥有世界级的工艺，传奇的音乐合作伙伴关系和先进的产品发展，在乐器公司中无与伦比。Gibson Brands的产品组合包括排名第一的吉他品牌Gibson，以及许多最受喜爱和识别的音乐品牌，包括Epiphone，Kramer，Steinberger，MESA / Boogie和Gibson Pro Audio部门KRK Systems。Gibson Brands致力于质量，创新和卓越音质，以便子孙后代的音乐爱好者将继续体验由Gibson Brands塑造的音乐。在 Gibson.com 了解更多信息，并在Twitter，Facebook和Instagram上关注我们。"
+msgstr ""
+"Gibson Brands是世界上最具标志性的吉他品牌，100多年来一直塑造着几代音乐家和音乐爱好者的声音。Gibson "
+"Brands成立于1894年，总部位于田纳西州纳什维尔，拥有世界级的工艺，传奇的音乐合作伙伴关系和先进的产品发展，在乐器公司中无与伦比。Gibson"
+" "
+"Brands的产品组合包括排名第一的吉他品牌Gibson，以及许多最受喜爱和识别的音乐品牌，包括Epiphone，Kramer，Steinberger，MESA"
+" / Boogie和Gibson Pro Audio部门KRK Systems。Gibson "
+"Brands致力于质量，创新和卓越音质，以便子孙后代的音乐爱好者将继续体验由Gibson Brands塑造的音乐。在 Gibson.com "
+"了解更多信息，并在Twitter，Facebook和Instagram上关注我们。"
 
 #: app/templates/main/brand_intro/gibson.html:72
 msgid "Gibson Leadership"
@@ -1898,7 +1920,10 @@ msgid ""
 "is a guitar enthusiast and has been a proud owner of both Gibson and "
 "Epiphone guitars over the years, including his latest addition – a Gibson"
 " 1960’s J-45 acoustic guitar."
-msgstr "James “JC” Curleigh是Gibson的总裁兼首席执行官，他领导Gibson高级团队，该团队由在全球品牌建设，财务和产品开发方面拥有丰富经验的成熟高管组成。JC是一位吉他爱好者，多年来一直是Gibson和Epiphone吉他的骄傲拥有者，包括他最新添加的Gibson 1960的J-45原声吉他。"
+msgstr ""
+"James “JC” "
+"Curleigh是Gibson的总裁兼首席执行官，他领导Gibson高级团队，该团队由在全球品牌建设，财务和产品开发方面拥有丰富经验的成熟高管组成。JC是一位吉他爱好者，多年来一直是Gibson和Epiphone吉他的骄傲拥有者，包括他最新添加的Gibson"
+" 1960的J-45原声吉他。"
 
 #: app/templates/main/brand_intro/gibson.html:80
 msgid "Cesar Gueikian Biography"
@@ -1911,7 +1936,9 @@ msgid ""
 " role with Gibson melds his 20 years of experience as an entrepreneur and"
 " financier, investing in companies around the world, with his life-long "
 "passion for music, guitars and especially Gibson guitars."
-msgstr "Cesar Gueikian是Gibson的品牌总裁，负责监督产品及其演变，音乐解决方案艺术家关系和营销策略。他与吉布森的角色融合了他作为企业家和金融家的20年经验，投资于世界各地的公司，以及他对音乐，吉他，尤其是吉布森吉他的毕生热情。"
+msgstr ""
+"Cesar "
+"Gueikian是Gibson的品牌总裁，负责监督产品及其演变，音乐解决方案艺术家关系和营销策略。他与吉布森的角色融合了他作为企业家和金融家的20年经验，投资于世界各地的公司，以及他对音乐，吉他，尤其是吉布森吉他的毕生热情。"
 
 #: app/templates/main/brand_intro/gibson.html:85
 msgid "Armin Boehm Biography"
@@ -1924,7 +1951,9 @@ msgid ""
 "responsible for establishing organization effectiveness across our BDM "
 "(business development managers), RM (relationship managers), and DPS "
 "(dealer product specialist) teams."
-msgstr "Armin Boehm是Gibson的首席商务官（CCO），负责监督商业战略，销售执行和客户服务。他负责在我们的 BDM（业务开发经理）、RM（客户经理）和 DPS（经销商产品专家）团队中建立组织效率。"
+msgstr ""
+"Armin Boehm是Gibson的首席商务官（CCO），负责监督商业战略，销售执行和客户服务。他负责在我们的 "
+"BDM（业务开发经理）、RM（客户经理）和 DPS（经销商产品专家）团队中建立组织效率。"
 
 #: app/templates/main/brand_intro/hohner.html:41
 msgid "About Hohner"
@@ -2047,7 +2076,11 @@ msgid ""
 "                                that an ‘information vacuum’ will always "
 "be filled – sometimes benignly, sometimes\n"
 "                                bizarrely."
-msgstr "“在1980年代后期，乔治·洛登接受了邀请，访问了瑞士的主要劳登经销商，日内瓦的Servette Music。在他到达时，共同所有者伊夫·伊默尔（Yves Imer）感谢乔治的到来，因为他要遇到的一些洛登顾客并没有意识到他确实存在 - 他们认为“乔治”，“洛登”只是一些营销人员想象力的虚构 - 事实上是一只妖精！这启发了乔治的原则，即'信息真空'将永远被填补 - 有时是良性的，有时是奇怪的。"
+msgstr ""
+"“在1980年代后期，乔治·洛登接受了邀请，访问了瑞士的主要劳登经销商，日内瓦的Servette "
+"Music。在他到达时，共同所有者伊夫·伊默尔（Yves Imer）感谢乔治的到来，因为他要遇到的一些洛登顾客并没有意识到他确实存在 - "
+"他们认为“乔治”，“洛登”只是一些营销人员想象力的虚构 - 事实上是一只妖精！这启发了乔治的原则，即'信息真空'将永远被填补 - "
+"有时是良性的，有时是奇怪的。"
 
 #: app/templates/main/brand_intro/lowden.html:80
 msgid "Lowden's Guitar"
@@ -2118,7 +2151,9 @@ msgid ""
 "                                    skills and understanding of wood, and"
 " in so doing create guitars which feel and sound\n"
 "                                    like individual ‘works of art’."
-msgstr "我们仍然手工分割我们的支撑材料并重新分级音板木材。我们在世界各地寻找最好的（通常是最具装饰性的）... 紧密的音木是我们吉他的真正“明星”，而不是人造的。正是这种许多细节的结合决定了我们的吉他的声音，感觉和演奏方式。今天，我比以往任何时候都更在不断地评估我们的吉他，并努力进一步调整发声，感觉和可玩性。要制作Lowden吉他，我们需要具有专注天赋和注重细节以及不妥协的热情承诺的个人。我们建立了一支真正的工匠团队，他们使用日本凿子，飞机，刀具和辐条手工制作Lowden吉他。我们目前正在建立一个最先进的夹具和工具部门，以确保我们的工匠能够微调他们的技能和对木材的理解，并在此过程中创造出感觉和听起来像个人“艺术品”的吉他。"
+msgstr ""
+"我们仍然手工分割我们的支撑材料并重新分级音板木材。我们在世界各地寻找最好的（通常是最具装饰性的）... "
+"紧密的音木是我们吉他的真正“明星”，而不是人造的。正是这种许多细节的结合决定了我们的吉他的声音，感觉和演奏方式。今天，我比以往任何时候都更在不断地评估我们的吉他，并努力进一步调整发声，感觉和可玩性。要制作Lowden吉他，我们需要具有专注天赋和注重细节以及不妥协的热情承诺的个人。我们建立了一支真正的工匠团队，他们使用日本凿子，飞机，刀具和辐条手工制作Lowden吉他。我们目前正在建立一个最先进的夹具和工具部门，以确保我们的工匠能够微调他们的技能和对木材的理解，并在此过程中创造出感觉和听起来像个人“艺术品”的吉他。"
 
 #: app/templates/main/brand_intro/martin.html:41
 msgid "About Martin Guitars"
@@ -2159,7 +2194,13 @@ msgid ""
 "And who knows? With one of our instruments in your\n"
 "                                hand, you could help write the soundtrack"
 " for the next century."
-msgstr "马丁不仅仅是一把吉他。这是可玩的历史;一长串传奇乐器的一部分，可以追溯到1833年公司成立之初。我们的吉他被内战士兵在篝火旁弹奏，在20世纪初帮助塑造了现代音乐的声音，并由吉米·罗杰斯（Jimmie Rodgers）和吉恩·奥特里（Gene Autry）等音乐界的第一批超级巨星演奏。几十年后，马丁斯在伍德斯托克（Woodstock）吸引了观众，然后在MTV Unplugged上占据了中心舞台，并且可以在各种音乐流派的无数经典和当代歌曲中听到。像Hank Williams，Elvis Presley，Bob Dylan，John Lennon，Neil Young，Ed Sheeran，John Mayer，Seth Avett等艺术家都演奏了Martins，创造了上个世纪的大部分配乐。谁知道呢？有了我们手中的乐器之一，您就可以帮助编写下个世纪的配乐。"
+msgstr ""
+"马丁不仅仅是一把吉他。这是可玩的历史;一长串传奇乐器的一部分，可以追溯到1833年公司成立之初。我们的吉他被内战士兵在篝火旁弹奏，在20世纪初帮助塑造了现代音乐的声音，并由吉米·罗杰斯（Jimmie"
+" Rodgers）和吉恩·奥特里（Gene "
+"Autry）等音乐界的第一批超级巨星演奏。几十年后，马丁斯在伍德斯托克（Woodstock）吸引了观众，然后在MTV "
+"Unplugged上占据了中心舞台，并且可以在各种音乐流派的无数经典和当代歌曲中听到。像Hank Williams，Elvis "
+"Presley，Bob Dylan，John Lennon，Neil Young，Ed Sheeran，John Mayer，Seth "
+"Avett等艺术家都演奏了Martins，创造了上个世纪的大部分配乐。谁知道呢？有了我们手中的乐器之一，您就可以帮助编写下个世纪的配乐。"
 
 #: app/templates/main/brand_intro/martin.html:83
 msgid "SUSTAINABILITY"
@@ -2206,7 +2247,9 @@ msgid ""
 "                                    and we reduced the number of paper "
 "journals produced by 70 persent, saving 1.4 million sheets\n"
 "                                    of paper."
-msgstr "2021 年，我们用了一整期期刊来介绍 Martin 的可持续发展工作。为了支持这一点，我们鼓励读者享受该期刊的数字版本，我们将纸质期刊的数量减少了70份，节省了140万张纸。"
+msgstr ""
+"2021 年，我们用了一整期期刊来介绍 Martin "
+"的可持续发展工作。为了支持这一点，我们鼓励读者享受该期刊的数字版本，我们将纸质期刊的数量减少了70份，节省了140万张纸。"
 
 #: app/templates/main/brand_intro/meinl.html:41
 msgid "ABOUT MEINL"
@@ -2221,7 +2264,10 @@ msgid ""
 "Percussion, Nino Percussion, Meinl Sonic Energy, Meinl\n"
 "                                    Stick & Brush and Ortega\n"
 "                                    Guitars."
-msgstr "Meinl公司是一家家族式乐器制造商和分销商，总部位于德国古滕施泰滕。Meinl的品牌组合包括Meinl Cymbals，Meinl Percussion，Nino Percussion，Meinl Sonic Energy，Meinl Stick &amp; Brush和Ortega Guitars。"
+msgstr ""
+"Meinl公司是一家家族式乐器制造商和分销商，总部位于德国古滕施泰滕。Meinl的品牌组合包括Meinl Cymbals，Meinl "
+"Percussion，Nino Percussion，Meinl Sonic Energy，Meinl Stick &amp; "
+"Brush和Ortega Guitars。"
 
 #: app/templates/main/brand_intro/meinl.html:66
 msgid "ABOUT MEINL CYMBALS"
@@ -2241,7 +2287,10 @@ msgid ""
 "                            we like to think you want to be who you are, "
 "too. There's a freedom that comes with\n"
 "                                that."
-msgstr "成为鼓手的一大好处就是有机会变得与众不同……做你自己。当您聆听所有伟大的音乐时，他们与其他人不同。他们是他们自己。我们喜欢这样。今天很难做到完全原创或 100% 独一无二，但这并不意味着你必须像所有其他人一样。在 MEINL，我们做自己的事情。这就是我们。我们喜欢认为你也想成为你自己。随之而来的是自由。”"
+msgstr ""
+"成为鼓手的一大好处就是有机会变得与众不同……做你自己。当您聆听所有伟大的音乐时，他们与其他人不同。他们是他们自己。我们喜欢这样。今天很难做到完全原创或"
+" 100% 独一无二，但这并不意味着你必须像所有其他人一样。在 "
+"MEINL，我们做自己的事情。这就是我们。我们喜欢认为你也想成为你自己。随之而来的是自由。”"
 
 #: app/templates/main/brand_intro/meinl.html:82
 msgid "About Meinl Company"
@@ -2296,7 +2345,9 @@ msgid ""
 "necessary to have this diversity, the background in and\n"
 "                                    knowledge of all those different "
 "materials."
-msgstr "只有 MEINL 使用 6 种不同的合金来制作镲片，这比当今任何其他镲片制造商使用的都要多。因此，我们能够提供最广泛的基本钹声音特性选择。努力实现任何可能的合理想法使得有必要拥有这种多样性，所有这些不同材料的背景和知识。"
+msgstr ""
+"只有 MEINL 使用 6 "
+"种不同的合金来制作镲片，这比当今任何其他镲片制造商使用的都要多。因此，我们能够提供最广泛的基本钹声音特性选择。努力实现任何可能的合理想法使得有必要拥有这种多样性，所有这些不同材料的背景和知识。"
 
 #: app/templates/main/brand_intro/steinway.html:41
 msgid "About Steinway's Piano"
@@ -2312,7 +2363,9 @@ msgid ""
 "standards of quality, in turn ensuring that the STEINWAY\n"
 "                                    remains the peerless instrument of "
 "uncompromising expression."
-msgstr "160多年来，STEINWAY & SONS一直致力于制造世界上最好的钢琴。我们开创性的手工制作方法至今仍在使用，以确保我们毫不妥协的质量标准，从而确保施坦威仍然是无与伦比的不妥协表达工具。"
+msgstr ""
+"160多年来，STEINWAY & "
+"SONS一直致力于制造世界上最好的钢琴。我们开创性的手工制作方法至今仍在使用，以确保我们毫不妥协的质量标准，从而确保施坦威仍然是无与伦比的不妥协表达工具。"
 
 #: app/templates/main/brand_intro/steinway.html:66
 msgid "Having a Steinway Piano"
@@ -2375,7 +2428,10 @@ msgid ""
 "                                    artistry, SPIRIO provides an "
 "unrivaled musical experience, indistinguishable from a live\n"
 "                                    performance."
-msgstr "STEINWAY & SONS的第一项专利于1857年获得批准，从那时起，该公司已获得150多项其他专利，将施坦威定位为评判所有其他钢琴的钢琴。我们最新的创新，施坦威父子SPIRIO，是世界上最好的高分辨率钢琴。作为工艺、技术和艺术的杰作，SPIRIO 提供了无与伦比的音乐体验，与现场表演无异。"
+msgstr ""
+"STEINWAY & "
+"SONS的第一项专利于1857年获得批准，从那时起，该公司已获得150多项其他专利，将施坦威定位为评判所有其他钢琴的钢琴。我们最新的创新，施坦威父子SPIRIO，是世界上最好的高分辨率钢琴。作为工艺、技术和艺术的杰作，SPIRIO"
+" 提供了无与伦比的音乐体验，与现场表演无异。"
 
 #: app/templates/main/brand_intro/steinway.html:107
 msgid "Steinway in History"
@@ -2398,7 +2454,9 @@ msgid ""
 "                                    STEINWAY earned a reputation as an "
 "investment for the owner in the legacy of future\n"
 "                                    generations."
-msgstr "STEINWAY & SONS由德国移民Henry Engelhard Steinway于1853年在Varick Street的曼哈顿阁楼上创立。在接下来的三十年里，亨利和他的儿子们发展了现代钢琴。他们一次制造一个乐器，应用从大师到学徒传下来的技能，一代又一代。施坦威成为大约百分之九十七的音乐会艺术家的选择，他们中没有一个人得到报酬来支持这种乐器。施坦威作为业主对子孙后代遗产的投资而赢得了声誉。"
+msgstr ""
+"STEINWAY & SONS由德国移民Henry Engelhard Steinway于1853年在Varick "
+"Street的曼哈顿阁楼上创立。在接下来的三十年里，亨利和他的儿子们发展了现代钢琴。他们一次制造一个乐器，应用从大师到学徒传下来的技能，一代又一代。施坦威成为大约百分之九十七的音乐会艺术家的选择，他们中没有一个人得到报酬来支持这种乐器。施坦威作为业主对子孙后代遗产的投资而赢得了声誉。"
 
 #: app/templates/main/brand_intro/taylor.html:41
 msgid "Meet Taylor's Class of 2022"
@@ -2431,7 +2489,10 @@ msgid ""
 "is widely recognized throughout the musical\n"
 "                            instrument industry as the visionary acoustic"
 " guitar manufacturer."
-msgstr "Taylor Guitars 由 Bob Taylor 和 Kurt Listug 于 1974 年创立，现已发展成为全球领先的优质原声吉他制造商。 Taylor 原声吉他以融合现代创新制造技术和大师级工匠对细节的关注而闻名，被广泛认为是世界上音质最好、最容易演奏的吉他之一。该公司是使用计算机研磨机、激光和其他高科技工具和专有机械的先驱，如今，鲍勃·泰勒在整个乐器行业被广泛认可为有远见的原声吉他制造商。"
+msgstr ""
+"Taylor Guitars 由 Bob Taylor 和 Kurt Listug 于 1974 "
+"年创立，现已发展成为全球领先的优质原声吉他制造商。 Taylor "
+"原声吉他以融合现代创新制造技术和大师级工匠对细节的关注而闻名，被广泛认为是世界上音质最好、最容易演奏的吉他之一。该公司是使用计算机研磨机、激光和其他高科技工具和专有机械的先驱，如今，鲍勃·泰勒在整个乐器行业被广泛认可为有远见的原声吉他制造商。"
 
 #: app/templates/main/brand_intro/taylor.html:79
 msgid "The Taylor Difference"
@@ -2482,7 +2543,9 @@ msgid ""
 "unmatched quality and consistency in the production of our\n"
 "                                    guitars, and helped us develop game-"
 "changers like V-Class bracing."
-msgstr "我们为现代工艺设定了标准，以创造最佳的演奏体验。我们将创新的制造技术与无可挑剔的手工工艺相结合，为我们的吉他生产带来了无与伦比的质量和一致性，并帮助我们开发了 V-Class 音梁等改变游戏规则的产品。"
+msgstr ""
+"我们为现代工艺设定了标准，以创造最佳的演奏体验。我们将创新的制造技术与无可挑剔的手工工艺相结合，为我们的吉他生产带来了无与伦比的质量和一致性，并帮助我们开发了"
+" V-Class 音梁等改变游戏规则的产品。"
 
 #: app/templates/order/order-confirm-premium.html:126
 msgid "Choose Your Premium Plan"
@@ -3009,7 +3072,7 @@ msgstr "上传新的日志和通知"
 
 #: app/templates/staff/page-list-journals.html:68
 msgid "Upload Journal"
-msgstr "上传日志"
+msgstr "上传日志及通知"
 
 #: app/templates/staff/page-list-journals.html:77
 #: app/templates/staff/page-list-orders.html:57
@@ -3022,7 +3085,7 @@ msgstr "作者"
 
 #: app/templates/staff/page-list-journals.html:79
 msgid "Journal Content"
-msgstr "日志内容"
+msgstr "日志及通知内容"
 
 #: app/templates/staff/page-list-journals.html:80
 #: app/templates/staff/page-list-orders.html:64
@@ -3031,7 +3094,7 @@ msgstr "操作"
 
 #: app/templates/staff/page-list-journals.html:144
 msgid "Journal Quick View"
-msgstr "日志快速浏览"
+msgstr "日志及通知快速浏览"
 
 #: app/templates/staff/page-list-journals.html:160
 msgid ""
@@ -3047,7 +3110,7 @@ msgstr "关闭"
 
 #: app/templates/staff/page-list-journals.html:188
 msgid "Edit This Journal"
-msgstr "编辑当前日志"
+msgstr "编辑当前日志及通知"
 
 #: app/templates/staff/page-list-journals.html:201
 msgid ""
@@ -3283,7 +3346,7 @@ msgstr "选择3D模型文件（仅支持obj/fbx文件）"
 
 #: app/templates/staff/page-modify-journal.html:39
 msgid "Modify Your Journal"
-msgstr "修改您的日志"
+msgstr "修改您的日志及通知"
 
 #: app/templates/staff/page-modify-modeltype.html:32
 msgid "Modify Model"
@@ -3292,10 +3355,6 @@ msgstr "修改商品型号"
 #: app/templates/staff/page-modify-product.html:132
 msgid "Cymbals"
 msgstr ""
-
-#: app/templates/staff/page-modify-product.html:165
-msgid "No Extra Requirement"
-msgstr "无额外要求"
 
 #: app/templates/staff/page-upload-modeltype.html:32
 msgid "Upload Model"
@@ -3374,7 +3433,6 @@ msgid "Weekly"
 msgstr "每周"
 
 #: app/templates/staff/staff-index.html:156
-
 msgid "Top Products"
 msgstr "热门产品"
 
@@ -3680,3 +3738,10 @@ msgstr "地址成功删除！"
 #: app/userinfo/views.py:402
 msgid "Default address changed successfully!"
 msgstr "默认地址修改成功！"
+
+#~ msgid "Introduction Pictures"
+#~ msgstr "介绍图片"
+
+#~ msgid "View Range"
+#~ msgstr "查看更多"
+
