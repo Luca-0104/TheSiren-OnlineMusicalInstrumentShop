@@ -30,11 +30,9 @@ def user_profile(uid):
 
     # user submit the edit profile form
     if edit_profile_form.edit_profile_submit.data and edit_profile_form.validate():
-        print('get into profile')
         user.username = edit_profile_form.edit_profile_username.data
         user.email = edit_profile_form.edit_profile_email.data
         user.about_me = edit_profile_form.edit_profile_about_me.data
-        print(edit_profile_form.edit_profile_gender.data)
         if edit_profile_form.edit_profile_gender.data == 0:
             user.gender = 'Male'
         elif edit_profile_form.edit_profile_gender.data == 1:
@@ -42,8 +40,6 @@ def user_profile(uid):
         else:
             user.gender = 'Unknown'
 
-        # print('form gender data')
-        # print(form.gender.data)
         db.session.add(user)
         db.session.commit()
 
@@ -117,7 +113,6 @@ def user_profile(uid):
     if edit_address_form.edit_address_submit.data and edit_address_form.validate():
         # address_id = request.form.get("address_id")
         address_id = edit_address_form.edit_address_id.data
-        print(edit_address_form.edit_recipient_name.data)
         address = Address.query.get(address_id)
         address.recipient.recipient_name = edit_address_form.edit_recipient_name.data
         address.recipient.phone = edit_address_form.edit_phone.data
