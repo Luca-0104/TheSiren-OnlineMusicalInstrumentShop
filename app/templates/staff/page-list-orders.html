@@ -170,35 +170,94 @@
                                                 <i class="ri-eye-line mr-0"></i>
                                             </a>
                                         </div>
-                                        <div class="mr-2" data-toggle="modal"
-                                             data-target="#modify-modal-{{ order.id }}">
-                                            <a class="badge bg-success" data-toggle="tooltip"
-                                               data-original-title="Modify Type" title=""
-                                               href="#">
-                                                <i class="ri-pencil-line mr-0"></i>
-                                            </a>
-                                        </div>
+                                        <!-- change type button -->
                                         {% if order.order_type == "delivery" %}
-                                            <div class="mr-2" data-toggle="modal"
-                                                 data-target="#address-modal-{{ order.id }}">
-                                                <a class="badge bg-success" data-toggle="tooltip"
-                                                   data-original-title="Modify Address" title=""
-                                                   href="#">
-                                                    <i class="ri-home-4-line mr-0"></i>
-                                                </a>
-                                            </div>
+                                            {% if order.status_code == 0 or order.status_code == 1 %}
+                                                <div class="mr-2" data-toggle="modal"
+                                                     data-target="#modify-modal-{{ order.id }}">
+                                                    <a class="badge bg-success" data-toggle="tooltip"
+                                                       data-original-title="Modify Type" title=""
+                                                       href="#">
+                                                        <i class="ri-pencil-line mr-0"></i>
+                                                    </a>
+                                                </div>
+                                            {% else %}
+                                                <div class="mr-2" data-toggle="modal"
+                                                     data-target="#inform-type-modal-{{ order.id }}">
+                                                    <a class="badge bg-light" data-toggle="tooltip"
+                                                       data-original-title="Modify Type" title=""
+                                                       href="#">
+                                                        <i class="ri-pencil-line mr-0"></i>
+                                                    </a>
+                                                </div>
+                                            {% endif %}
                                         {% else %}
-                                            <div class="mr-2" data-toggle="modal"
-                                                 data-target="#recipient-modal-{{ order.id }}">
-                                                <a class="badge bg-success" data-toggle="tooltip"
-                                                   data-original-title="Modify Recipient"
-                                                   title=""
-                                                   href="#">
-                                                    <i class="ri-user-3-fill mr-0"></i>
-                                                </a>
-                                            </div>
+                                            {% if order.status_code == 0 or order.status_code == 1 or order.status_code == 3 %}
+                                                <div class="mr-2" data-toggle="modal"
+                                                     data-target="#modify-modal-{{ order.id }}">
+                                                    <a class="badge bg-success" data-toggle="tooltip"
+                                                       data-original-title="Modify Type" title=""
+                                                       href="#">
+                                                        <i class="ri-pencil-line mr-0"></i>
+                                                    </a>
+                                                </div>
+                                            {% else %}
+                                                <div class="mr-2" data-toggle="modal"
+                                                     data-target="#inform-type-modal-{{ order.id }}">
+                                                    <a class="badge bg-light" data-toggle="tooltip"
+                                                       data-original-title="Modify Type" title=""
+                                                       href="#">
+                                                        <i class="ri-pencil-line mr-0"></i>
+                                                    </a>
+                                                </div>
+                                            {% endif %}
                                         {% endif %}
-
+                                        <!-- modify address button -->
+                                        {% if order.order_type == "delivery" %}
+                                            {% if order.status_code == 0 or order.status_code == 1 %}
+                                                <div class="mr-2" data-toggle="modal"
+                                                     data-target="#address-modal-{{ order.id }}">
+                                                    <a class="badge bg-success" data-toggle="tooltip"
+                                                       data-original-title="Modify Address" title=""
+                                                       href="#">
+                                                        <i class="ri-home-4-line mr-0"></i>
+                                                    </a>
+                                                </div>
+                                            {% else %}
+                                                <div class="mr-2" data-toggle="modal"
+                                                     data-target="#inform-ricipient-modal-{{ order.id }}">
+                                                    <a class="badge bg-light" data-toggle="tooltip"
+                                                       data-original-title="Modify Address" title=""
+                                                       href="#">
+                                                        <i class="ri-home-4-line mr-0"></i>
+                                                    </a>
+                                                </div>
+                                            {% endif %}
+                                        <!-- modify recipient button -->
+                                        {% else %}
+                                            {% if order.status_code == 0 or order.status_code == 1 or order.status_code == 3 %}
+                                                <div class="mr-2" data-toggle="modal"
+                                                     data-target="#recipient-modal-{{ order.id }}">
+                                                    <a class="badge bg-success" data-toggle="tooltip"
+                                                       data-original-title="Modify Recipient"
+                                                       title=""
+                                                       href="#">
+                                                        <i class="ri-user-3-fill mr-0"></i>
+                                                    </a>
+                                                </div>
+                                            {% else %}
+                                                <div class="mr-2" data-toggle="modal"
+                                                     data-target="#inform-recipient-modal-{{ order.id }}">
+                                                    <a class="badge bg-light" data-toggle="tooltip"
+                                                       data-original-title="Modify Recipient"
+                                                       title=""
+                                                       href="#">
+                                                        <i class="ri-user-3-fill mr-0"></i>
+                                                    </a>
+                                                </div>
+                                            {% endif %}
+                                        {% endif %}
+                                        <!-- update button -->
                                         {% if order.status_code == 0 %}
                                             <a class="badge bg-dark mr-2" data-toggle="tooltip"
                                                data-placement="top" title=""
@@ -446,6 +505,117 @@
                                             </div><!-- /.modal -->
                                         </div>
 
+                                        <!-- Inform type Modal -->
+                                        <div class="modal fade" id="inform-type-modal-{{ order.id }}"
+                                             tabindex="-1" role="dialog"
+                                             aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="myModalLabel"
+                                                            style="float: left;">Modification Reject</h4>
+
+                                                        <button type="button" class="close"
+                                                                data-dismiss="modal" aria-hidden="true">
+                                                            &times;
+                                                        </button>
+
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Type of orders in
+                                                            {% if order.status_code == 0 %}{{ _("Unpaid") }}
+                                                            {% elif order.status_code == 1 %}{{ _("Preparing") }}
+                                                            {% elif order.status_code == 2 %}{{ _("Delivering") }}
+                                                            {% elif order.status_code == 3 %}{{ _("Waiting") }}{{ _("Collection") }}
+                                                            {% elif order.status_code == 4 %}{{ _("Finished") }}
+                                                            {% elif order.status_code == 5 %}{{ _("Canceled") }}
+                                                            {% elif order.status_code == 6 %}{{ _("Expired") }}
+                                                            {% endif %}
+                                                        status is not allowed to be modified.
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default"
+                                                                data-dismiss="modal">{{ _("Close") }}
+                                                        </button>
+                                                    </div>
+                                                </div><!-- /.modal-content -->
+                                            </div><!-- /.modal -->
+                                        </div>
+
+                                        <!-- Inform address Modal -->
+                                        <div class="modal fade" id="inform-address-modal-{{ order.id }}"
+                                             tabindex="-1" role="dialog"
+                                             aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="myModalLabel"
+                                                            style="float: left;">Modification Reject</h4>
+
+                                                        <button type="button" class="close"
+                                                                data-dismiss="modal" aria-hidden="true">
+                                                            &times;
+                                                        </button>
+
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Address of orders in
+                                                            {% if order.status_code == 0 %}{{ _("Unpaid") }}
+                                                            {% elif order.status_code == 1 %}{{ _("Preparing") }}
+                                                            {% elif order.status_code == 2 %}{{ _("Delivering") }}
+                                                            {% elif order.status_code == 3 %}{{ _("Waiting") }}{{ _("Collection") }}
+                                                            {% elif order.status_code == 4 %}{{ _("Finished") }}
+                                                            {% elif order.status_code == 5 %}{{ _("Canceled") }}
+                                                            {% elif order.status_code == 6 %}{{ _("Expired") }}
+                                                            {% endif %}
+                                                        status is not allowed to be modified.
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default"
+                                                                data-dismiss="modal">{{ _("Close") }}
+                                                        </button>
+                                                    </div>
+                                                </div><!-- /.modal-content -->
+                                            </div><!-- /.modal -->
+                                        </div>
+
+                                        <!-- Inform recipient Modal -->
+                                        <div class="modal fade" id="inform-recipient-modal-{{ order.id }}"
+                                             tabindex="-1" role="dialog"
+                                             aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="myModalLabel"
+                                                            style="float: left;">Modification Reject</h4>
+
+                                                        <button type="button" class="close"
+                                                                data-dismiss="modal" aria-hidden="true">
+                                                            &times;
+                                                        </button>
+
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Recipient of orders in
+                                                            {% if order.status_code == 0 %}{{ _("Unpaid") }}
+                                                            {% elif order.status_code == 1 %}{{ _("Preparing") }}
+                                                            {% elif order.status_code == 2 %}{{ _("Delivering") }}
+                                                            {% elif order.status_code == 3 %}{{ _("Waiting") }}{{ _("Collection") }}
+                                                            {% elif order.status_code == 4 %}{{ _("Finished") }}
+                                                            {% elif order.status_code == 5 %}{{ _("Canceled") }}
+                                                            {% elif order.status_code == 6 %}{{ _("Expired") }}
+                                                            {% endif %}
+                                                        status is not allowed to be modified.
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default"
+                                                                data-dismiss="modal">{{ _("Close") }}
+                                                        </button>
+                                                    </div>
+                                                </div><!-- /.modal-content -->
+                                            </div><!-- /.modal -->
+                                        </div>
+
                                         <!-- Type Modal -->
                                         <div class="modal fade" id="modify-modal-{{ order.id }}"
                                              tabindex="-1" role="dialog"
@@ -456,7 +626,7 @@
                                                         <div class="modal-header">
                                                             <h4 class="modal-title" id="myModalLabel"
                                                                 style="float: left;">
-                                                                {{ _("Details") }}
+                                                                Modify Type
                                                             </h4>
                                                             <button type="button" class="close"
                                                                     data-dismiss="modal" aria-hidden="true">
@@ -665,7 +835,7 @@
                                                         <form class="modal-form">
                                                             <div class="modal-header">
                                                                 <h4 class="modal-title" id="myModalLabel"
-                                                                    style="float: left;">{{ _("Change Address")}}</h4>
+                                                                    style="float: left;">{{ _("Modify Address")}}</h4>
                                                                 <table class="table-borderless">
 
                                                                 </table>
@@ -741,7 +911,7 @@
                                                         <form class="modal-form">
                                                             <div class="modal-header">
                                                                 <h4 class="modal-title" id="myModalLabel"
-                                                                    style="float: left;">{{ _("Change
+                                                                    style="float: left;">{{ _("Modify
                                                                         Recipient")}}</h4>
                                                                 <table class="table-borderless">
 
