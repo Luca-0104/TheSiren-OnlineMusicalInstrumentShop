@@ -77,7 +77,7 @@ def add_to_cart():
 
 @cart.route('/api/cart/update-cart-count', methods=['POST'])
 @login_required
-@customer_only()
+@customer_only(is_ajax=True)
 def update_cart_count():
     """
         (Using Ajax)
@@ -116,7 +116,7 @@ def update_cart_count():
 
 @cart.route('/api/cart/remove-cart-relation', methods=['POST'])
 @login_required
-@customer_only()
+@customer_only(is_ajax=True)
 def remove_cart_relation():
     """
         (Using Ajax)
