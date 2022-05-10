@@ -40,6 +40,11 @@ function changeStatusTo(order_id, new_code)
                         actionTable.html(Action);
                     }
                 }
+                else if (returnValue === 318)
+                {
+                    let targetURL = response['redirectURL'];
+                    window.location.href = targetURL;
+                }
                 else
                 {
                     let returnmsg = response['msg'];

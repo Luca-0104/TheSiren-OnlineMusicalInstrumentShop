@@ -34,6 +34,11 @@ function follow_category(category_id)
                         category_space.addClass('followed');
                     }
                 }
+                else if (returnValue === 318)
+                {
+                    let targetURL = response['redirectURL'];
+                    window.location.href = targetURL;
+                }
             });
 }
 
@@ -57,6 +62,11 @@ function unfollow_category(category_id)
                         console.log("remove");
                         category_space.removeClass('followed');
                     }
+                }
+                else if (returnValue === 318)
+                {
+                    let targetURL = response['redirectURL'];
+                    window.location.href = targetURL;
                 }
             });
 }

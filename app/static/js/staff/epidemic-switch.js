@@ -41,7 +41,13 @@ function switchEpidemicMode(switchTo) {
 
         if (returnValue === 0) { //success
 
-        } else {
+        }
+        else if (returnValue === 318)
+        {
+            let targetURL = response['redirectURL'];
+            window.location.href = targetURL;
+        }
+        else {
             //failed
             //notify the user
             window.alert("Permission Denied!");

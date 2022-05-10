@@ -19,9 +19,9 @@ $(".star ").on("click",function()
 });
 
 //This part is newly added
-$('#comment_send').on('click', function(){
-    console.log("send comment");
-    $.post('',
-
-    )
-});
+// $('#comment_send').on('click', function(){
+//     console.log("send comment");
+//     $.post('',
+//
+//     )
+// });

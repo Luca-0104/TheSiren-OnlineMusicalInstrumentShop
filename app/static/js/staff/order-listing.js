@@ -60,6 +60,11 @@ function update_priority(orderId, newPriority)
             //success
             location.reload();
         }
+        else if (returnValue === 318)
+        {
+            let targetURL = response['redirectURL'];
+            window.location.href = targetURL;
+        }
     });
 }
 
@@ -81,6 +86,11 @@ function changeStatusTo(order_id, new_code)
         {
             //success
             location.reload();
+        }
+        else if (returnValue === 318)
+        {
+            let targetURL = response['redirectURL'];
+            window.location.href = targetURL;
         }
     });
 }
@@ -230,6 +240,11 @@ function update_to_delivery(orderId, addressId)
                 //success
                 location.reload();
             }
+            else if (returnValue === 318)
+            {
+                let targetURL = response['redirectURL'];
+                window.location.href = targetURL;
+            }
         });
 }
 
@@ -250,6 +265,11 @@ function update_to_selfCollection(orderId, recipientName, recipientPhone)
                 console.log('successed');
                 //success
                 location.reload();
+            }
+            else if (returnValue === 318)
+            {
+                let targetURL = response['redirectURL'];
+                window.location.href = targetURL;
             }
         });
 }
@@ -302,6 +322,11 @@ function update_order_address(orderId, addressId)
                 //success
                 location.reload();
             }
+            else if (returnValue === 318)
+            {
+                let targetURL = response['redirectURL'];
+                window.location.href = targetURL;
+            }
         });
 }
 
@@ -331,6 +356,11 @@ function update_order_recipient(orderId, recipientName, recipientPhone)
                 console.log('successed');
                 //success
                 location.reload();
+            }
+            else if (returnValue === 318)
+            {
+                let targetURL = response['redirectURL'];
+                window.location.href = targetURL;
             }
         });
 }
