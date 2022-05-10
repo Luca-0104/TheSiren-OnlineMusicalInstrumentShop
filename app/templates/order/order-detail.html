@@ -819,10 +819,10 @@
                                 <div class="select-wrapper">
                                     <select id="select-type" name="select-type" data-name="field"
                                             class="select-field w-select">
-                                        <option {% if order.order_type == "self-collection" %}selected="selected"{% endif %}>
+                                        <option value="Delivery" {% if order.order_type == "self-collection" %}selected="selected"{% endif %}>
                                             {{ _("Delivery") }}
                                         </option>
-                                        <option {% if order.order_type == "delivery" %}selected="selected"{% endif %}>
+                                        <option value="Self-Collection" {% if order.order_type == "delivery" %}selected="selected"{% endif %}>
                                             {{ _("Self-Collection") }}
                                         </option>
                                     </select>
