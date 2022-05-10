@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
             div_chat.setAttribute("class","direct-chat-msg right");
             span_username.setAttribute("class", "direct-chat-name pull-right");
             span_timestamp.setAttribute("class","direct-chat-timestamp pull-left");
-            img.setAttribute("src",data.avatar);
+            img.setAttribute("src", $('#chatroom-avatar-' + chatroom_id).attr('avatar-customer'));
 
         } else if (data.username !== username && typeof data.username !== 'undefined') {
             console.log("inside if 2");
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
             div_chat.setAttribute("class","direct-chat-msg");
             span_username.setAttribute("class","direct-chat-name pull-left");
             span_timestamp.setAttribute("class","direct-chat-timestamp pull-right");
-            img.setAttribute("src",data.avatar);
+            img.setAttribute("src", $('#chatroom-avatar-' + chatroom_id).attr('avatar-staff'));
         } else {
             console.log("inside if 3");
             printSysMsg(data.msg);
