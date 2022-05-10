@@ -37,7 +37,7 @@ class Tools:
         """
         TheSiren.create_unique_instance()  # Create the global unique instance of this musical shop
         Role.insert_roles()  # roles of users
-        User.insert_users(50, 5)  # the constant user accounts for test
+        User.insert_users(50, 2)  # the constant user accounts for test
         Recipient.insert_recipients(100)  # the recipient info
         Address.insert_address()  # addresses for delivery
         # # users(100)  # 100 fake users
@@ -1632,6 +1632,15 @@ class User(UserMixin, BaseModel):
             db.session.add(new_user)
         db.session.commit()
 
+        # assign all customers users their initial chat room
+        for cus in User.query.filter_by(role_id=1):
+            # assign a random staff to this chat room
+            staffs = User.query.filter_by(role_id=2).all()
+            rand_staff = staffs[random.randint(0, len(staffs)-1)]
+            # create chat room for this customer
+            new_chatroom = ChatRoom(customer_id=cus.id, staff_id=rand_staff.id)
+            db.session.add(new_chatroom)
+        db.session.commit()
 
 
     # ----- use Werkzeug to generate and check the password hash of the user password (learned from the book) -----
