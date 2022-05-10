@@ -3108,7 +3108,7 @@ msgstr "等待中"
 
 #: app/templates/staff/page-list-orders.html:143
 msgid "Normal"
-msgstr "账目"
+msgstr "普通"
 
 #: app/templates/staff/page-list-orders.html:148
 msgid "Important"
@@ -3116,7 +3116,7 @@ msgstr "重要"
 
 #: app/templates/staff/page-list-orders.html:153
 msgid "Significant"
-msgstr "重要的"
+msgstr "极其重要"
 
 #: app/templates/staff/page-list-orders.html:260
 msgid "Order Details"
