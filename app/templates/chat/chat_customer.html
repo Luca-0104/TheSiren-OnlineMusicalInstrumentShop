@@ -68,6 +68,13 @@
                         </div>
                     </div>
 
+                      {% for room in rooms %}
+                    <!--get avatar for socketio_customer-->
+                          <div id="chatroom-avatar-{{ room.id }}" style="display: none;"
+                               avatar-customer="{{ url_for('static', filename=room.customer.avatar) }}"
+                               avatar-staff="{{ url_for('static', filename=room.staff.avatar) }}">
+                          </div>
+                      {% endfor %}
                   </div>
                 </div>
 

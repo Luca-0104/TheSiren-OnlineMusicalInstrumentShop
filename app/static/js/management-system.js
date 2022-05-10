@@ -107,7 +107,7 @@ $(document).ready(function ()
             repeat_model_name = ["<div class=\"col-md-12\">",
                 "      <div class=\"form-group\">",
                 "              <label>Model Name *</label>",
-                "                     <input name=\"", counter, "_model_name\" type=\"text\" class=\"form-control\" placeholder=\"Enter Name\" data-errors=\"Please Enter Name.\">",
+                "                     <input name=\"", counter+1, "_model_name\" type=\"text\" class=\"form-control\" placeholder=\"Enter Name\" data-errors=\"Please Enter Name.\">",
                 "                      <div class=\"help-block with-errors\"></div>",
                 "        </div>",
                 "  </div>"].join("");
