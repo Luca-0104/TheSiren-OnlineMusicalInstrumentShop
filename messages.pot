@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-11 10:56+0800\n"
+"POT-Creation-Date: 2022-05-11 14:24+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -731,7 +731,7 @@ msgid "Type Message ..."
 msgstr ""
 
 #: app/templates/chat/chat_customer.html:82
-#: app/templates/chat/chat_staff.html:327
+#: app/templates/chat/chat_staff.html:332
 msgid "Send"
 msgstr ""
 
@@ -780,18 +780,18 @@ msgstr ""
 msgid "Direct Message"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:115
-msgid "translation by"
+#: app/templates/chat/chat_staff.html:118
+msgid "No messages so far"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:139
+#: app/templates/chat/chat_staff.html:143
 msgid ""
 "Start\n"
 "                                               Conversation By Choosing "
 "Chatroom!"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:324
+#: app/templates/chat/chat_staff.html:328
 msgid "Type your message"
 msgstr ""
 
