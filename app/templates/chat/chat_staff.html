@@ -324,8 +324,8 @@
                                                             <a href="javascript:void();"><i class="fa fa-paperclip pr-3"
                                                                                             aria-hidden="true"></i></a>
                                                         </div>
-                                                        <input id="user-message-{{ room.id }}" type="text" class="form-control mr-3"
-                                                               placeholder="{{ _("Type your message") }}">
+                                                        <input id="user-message-{{ room.id }}" type="text" class="form-control mr-3 user-message-input-blank"
+                                                               placeholder="{{ _("Type your message") }}" room-id="{{ room.id }}">
                                                         <button id="send-message-{{ room.id }}" type="submit"
                                                                 class="btn btn-primary d-flex align-items-center p-2 btn-send-message"
                                                                 room-id="{{ room.id }}">
