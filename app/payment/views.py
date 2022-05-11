@@ -6,7 +6,7 @@ from flask_login import login_required, current_user
 from flask_babel import _
 
 from app import db
-from app.decorators import customer_only
+from app.decorators import customer_only, login_required_for_ajax
 from app.models import Order, PremiumOrder
 from app.payment import payment
 
@@ -14,8 +14,8 @@ from alipay import AliPay, AliPayConfig
 
 
 @payment.route('/api/pay-for-order/instrument', methods=['POST'])
-@login_required
-@customer_only()
+@login_required_for_ajax()
+@customer_only(is_ajax=True)
 def pay_for_order_instrument():
     """
         (Using Ajax)
@@ -60,8 +60,8 @@ def pay_for_order_instrument():
 
 
 @payment.route('/api/pay-for-order/premium', methods=['POST'])
-@login_required
-@customer_only()
+@login_required_for_ajax()
+@customer_only(is_ajax=True)
 def pay_for_order_premium():
     """
         (Using Ajax)
@@ -184,6 +184,8 @@ def get_alipay_instance():
 
 
 @payment.route('/payment-finished', methods=['GET'])
+@login_required
+@customer_only()
 def payment_finished():
     """
     Render the page of 'payment finished',
@@ -193,6 +195,8 @@ def payment_finished():
 
 
 @payment.route('/api/payment-notify', methods=['POST'])
+@login_required_for_ajax()
+@customer_only(is_ajax=True)
 def payment_notify():
     """
     (Using Ajax)
@@ -303,6 +307,3 @@ def payment_notify():
         else:
             current_app.logger.warning('payment failed!')
             return 'failure'
-
-
-

@@ -7,7 +7,7 @@ from sqlalchemy import and_
 
 from . import main
 from .. import db
-from ..decorators import customer_only, staff_only
+from ..decorators import customer_only, staff_only, login_required_for_ajax
 from ..models import Product, ModelType, Category, Brand, BrowsingHistory, Journal
 from ..public_tools import get_unique_shop_instance
 
@@ -697,8 +697,8 @@ def validate_model_count():
 
 
 @main.route('/api/the-siren/switch-epidemic-mode', methods=['POST'])
-@login_required
-@staff_only()
+@login_required_for_ajax()
+@staff_only(is_ajax=True)
 def switch_epidemic_mode():
     """
     (Using Ajax)

@@ -31,12 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
          console.log("near if");
         if (data.username === username){
             console.log("inside if 1");
-
+            console.log(chatroom_id);
             div_chat.setAttribute("class","direct-chat-msg right");
             span_username.setAttribute("class", "direct-chat-name pull-right");
             span_timestamp.setAttribute("class","direct-chat-timestamp pull-left");
             img.setAttribute("src", $('#chatroom-avatar-' + chatroom_id).attr('avatar-customer'));
-
         } else if (data.username !== username && typeof data.username !== 'undefined') {
             console.log("inside if 2");
 

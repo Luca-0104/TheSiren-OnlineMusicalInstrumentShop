@@ -68,15 +68,11 @@
                         </div>
                     </div>
 
-                      {% for room in rooms %}
-                    <!--get avatar for socketio_customer-->
-                          <div id="chatroom-avatar-{{ room.id }}" style="display: none;"
-                               avatar-customer="{{ url_for('static', filename=room.customer.avatar) }}"
-                               avatar-staff="{{ url_for('static', filename=room.staff.avatar) }}">
-                          </div>
-                      {% endfor %}
+
                   </div>
                 </div>
+
+
 
                 <div class="box-footer">
                   <form action="#" method="post">
@@ -88,6 +84,14 @@
                     </div>
                   </form>
                 </div>
+
+
+                    <!--get avatar for socketio_customer-->
+                          <div id="chatroom-avatar-{{ rooms.id }}" style="display: none;"
+                               avatar-customer="{{ url_for('static', filename=rooms.customer.avatar) }}"
+                               avatar-staff="{{ url_for('static', filename=rooms.staff.avatar) }}">
+                          </div>
+
 
               </div>
 

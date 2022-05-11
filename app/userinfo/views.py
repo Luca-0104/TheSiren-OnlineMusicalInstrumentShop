@@ -1,12 +1,12 @@
 import os
 
-from flask import render_template, request, jsonify, flash, redirect, url_for, current_app
+from flask import render_template, request, jsonify, flash, redirect, url_for, current_app, abort
 from flask_login import login_required, current_user
 from flask_babel import _
 
 from config import Config
 from . import userinfo
-from ..decorators import customer_only
+from ..decorators import customer_only, login_required_for_ajax
 from ..public_tools import generate_safe_pic_name
 from ..userinfo.forms import EditProfileForm, AddAddressForm, EditAddressForm, UpdateAvatarForm
 from ..models import User, Address, Recipient, Brand, Category
@@ -17,6 +17,11 @@ from .. import db
 @login_required
 @customer_only()
 def user_profile(uid):
+    # customers can only access their own profiles
+    if current_user.id != uid:
+        flash(_("Permission Denied! You cannot access the profile of other users!"))
+        abort(403)
+
     user = User.query.get(uid)
     edit_profile_form = EditProfileForm(current_user)
     update_avatar_form = UpdateAvatarForm()
@@ -25,11 +30,9 @@ def user_profile(uid):
 
     # user submit the edit profile form
     if edit_profile_form.edit_profile_submit.data and edit_profile_form.validate():
-        print('get into profile')
         user.username = edit_profile_form.edit_profile_username.data
         user.email = edit_profile_form.edit_profile_email.data
         user.about_me = edit_profile_form.edit_profile_about_me.data
-        print(edit_profile_form.edit_profile_gender.data)
         if edit_profile_form.edit_profile_gender.data == 0:
             user.gender = 'Male'
         elif edit_profile_form.edit_profile_gender.data == 1:
@@ -37,8 +40,6 @@ def user_profile(uid):
         else:
             user.gender = 'Unknown'
 
-        # print('form gender data')
-        # print(form.gender.data)
         db.session.add(user)
         db.session.commit()
 
@@ -112,7 +113,6 @@ def user_profile(uid):
     if edit_address_form.edit_address_submit.data and edit_address_form.validate():
         # address_id = request.form.get("address_id")
         address_id = edit_address_form.edit_address_id.data
-        print(edit_address_form.edit_recipient_name.data)
         address = Address.query.get(address_id)
         address.recipient.recipient_name = edit_address_form.edit_recipient_name.data
         address.recipient.phone = edit_address_form.edit_phone.data
@@ -306,8 +306,8 @@ def user_profile(uid):
 
 
 @userinfo.route('/api/remove-address', methods=['POST'])
-@login_required
-@customer_only()
+@login_required_for_ajax()
+@customer_only(is_ajax=True)
 def remove_address():
     """
     (Using Ajax)
@@ -367,8 +367,8 @@ def remove_address():
 
 
 @userinfo.route('/api/change-default-address', methods=['POST'])
-@login_required
-@customer_only()
+@login_required_for_ajax()
+@customer_only(is_ajax=True)
 def change_default_address():
     if request.method == 'POST':
         # get the address id from ajax
@@ -422,8 +422,8 @@ def address_prepare_for_json(address_obj):
 # ---------------------------------------- Brand section ----------------------------------------
 
 @userinfo.route('/api/userinfo/brand-section/follow-brand', methods=['POST'])
-@login_required
-@customer_only()
+@login_required_for_ajax()
+@customer_only(is_ajax=True)
 def follow_brand():
     """
         (Using Ajax)
@@ -456,8 +456,8 @@ def follow_brand():
 
 
 @userinfo.route('/api/userinfo/brand-section/unfollow-brand', methods=['POST'])
-@login_required
-@customer_only()
+@login_required_for_ajax()
+@customer_only(is_ajax=True)
 def unfollow_brand():
     """
         (Using Ajax)
@@ -498,8 +498,8 @@ def unfollow_brand():
 
 
 @userinfo.route('/api/userinfo/category-section/follow-category', methods=['POST'])
-@login_required
-@customer_only()
+@login_required_for_ajax()
+@customer_only(is_ajax=True)
 def follow_category():
     """
         (Using Ajax)
@@ -532,8 +532,8 @@ def follow_category():
 
 
 @userinfo.route('/api/userinfo/brand-section/unfollow-category', methods=['POST'])
-@login_required
-@customer_only()
+@login_required_for_ajax()
+@customer_only(is_ajax=True)
 def unfollow_category():
     """
         (Using Ajax)

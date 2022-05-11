@@ -48,12 +48,10 @@ document.addEventListener('DOMContentLoaded', () => {
             div_chat.setAttribute("class","chat");
             img.setAttribute("src", $('#chatroom-avatar-'+chatroom_id).attr("avatar-staff"));
 
-
         } else if (data.username !== username && typeof data.username !== 'undefined') {
             console.log("inside if 2");
             img.setAttribute("src", $('#chatroom-avatar-'+chatroom_id).attr("avatar-customer"));
             div_chat.setAttribute("class","chat chat-left");
-
 
         } else {
             console.log("inside if 3");
@@ -71,6 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
           div_chat.innerHTML = div_chat_user.outerHTML + div_chat_detail.outerHTML;
           document.querySelector('#chat-window').append(div_chat);
+
+          $('#chat-window').scrollTop = $('#chat-window').scrollHeight;
     });
 
     // Send message
@@ -121,20 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('#chat-window').innerHTML = '';
 
         socket.emit('history', {'room': chatroom_id})
-        // $.post('/api/history', {
-        //     'chatroom_id': chatroom_id
-        // }).done(function (response) {
-        //     let chat_history = response['history'];
-        //     let current_user = response['current_user'];
-        //
-        //      for(let i = 0; i < chat_history.length; i++){
-        //          console.log(".....");
-        //          console.log(chat_history.length);
-        //          socket.send({'msg': chat_history[i].msg,
-        //         'username': chat_history[i].username, 'room': chatroom_id, 'time_stamp': chat_history[i].time_stamp,'avatar': chat_history[i].avatar });
-        //
-        //      }
-        // })
 
         // Autofocus on text box
         document.querySelector('#user_message').focus();

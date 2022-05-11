@@ -77,6 +77,10 @@ def create_app(config_name):
     from .journal import journal as journal_blueprint
     app.register_blueprint(journal_blueprint)
 
+    # register blueprint - errors
+    from .errors import errors as errors_blueprint
+    app.register_blueprint(errors_blueprint)
+
     return app
 
 
