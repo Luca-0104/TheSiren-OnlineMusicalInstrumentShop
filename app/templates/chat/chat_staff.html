@@ -113,9 +113,9 @@
                                                             <div class="chat-sidebar-name">
                                                                 <h6 id="customer-username-{{ room.customer.id }}" class="mb-0">{{ room.customer.username }}</h6>
                                                                 {% if room.messages.order_by(Message.timestamp.desc()).first() %}
-                                                                    <span style="overflow: hidden">{{ room.messages.order_by(Message.timestamp.desc()).first().content }}</span>
+                                                                    <span style="max-lines: 1; overflow: hidden">{{ room.messages.order_by(Message.timestamp.desc()).first().content }}</span>
                                                                 {% else %}
-                                                                    <span style="overflow: hidden">{{ _("No messages so far") }}</span>
+                                                                    <span style="max-lines: 1; overflow: hidden">{{ _("No messages so far") }}</span>
                                                                 {% endif %}
                                                             </div>
                                                         </div>
