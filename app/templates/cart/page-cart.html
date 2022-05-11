@@ -37,7 +37,7 @@
                     <form data-node-type="commerce-cart-form" class="w-commerce-commercecartform">
                         <!-- List of Cart -->
                         <div class="w-commerce-commercecartlist cart-list">
-                            <table border="1" id="cart_table" total_row="{{ length }}">
+                            <table id="cart_table" total_row="{{ length }}">
                                 <tr>
                                     <th class="table-head bg-primary-light select-head">
                                         {{ _('Select') }}
@@ -68,11 +68,11 @@
                                             {% if cart.model_type.pictures.first() == None %}
                                                 <img src="../../static/images/example/yamaha_yep621s.jpg" loading="lazy"
                                                      alt=""
-                                                     class="w-commerce-commercecartitemimage cart-item-image product-thumbnail">
+                                                     class="w-commerce-commercecartitemimage cart-item-image product-thumbnail no-border">
                                             {% else %}
                                                 <img src="{{ url_for("static",filename=cart.model_type.pictures.first().address) }}"
                                                      loading="lazy" alt=""
-                                                     class="w-commerce-commercecartitemimage cart-item-image product-thumbnail">
+                                                     class="w-commerce-commercecartitemimage cart-item-image product-thumbnail no-border">
                                             {% endif %}
                                         </td>
                                         <td class="buttom-border">
