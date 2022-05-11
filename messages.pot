@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-11 10:44+0800\n"
+"POT-Creation-Date: 2022-05-11 10:56+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,14 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
+
+#: app/decorators.py:18
+msgid "Permission Denied! This function is only provided for Siren staffs!"
+msgstr ""
+
+#: app/decorators.py:43
+msgid "Permission Denied! This function is only provided for customers!"
+msgstr ""
 
 #: app/auth/forms.py:13 app/auth/forms.py:45
 #: app/templates/staff/backup-staff-modify.html:840
@@ -151,19 +159,19 @@ msgstr ""
 msgid "Permission denied!"
 msgstr ""
 
-#: app/order/views.py:600
+#: app/order/views.py:602
 msgid "Error in Duration info!"
 msgstr ""
 
-#: app/order/views.py:604
+#: app/order/views.py:606
 msgid "No duration info!"
 msgstr ""
 
-#: app/order/views.py:612
+#: app/order/views.py:614
 msgid "Error in payment info!"
 msgstr ""
 
-#: app/order/views.py:616
+#: app/order/views.py:618
 msgid "No payment info!"
 msgstr ""
 
@@ -718,11 +726,11 @@ msgstr ""
 msgid "Chat Messages"
 msgstr ""
 
-#: app/templates/chat/chat_customer.html:84
+#: app/templates/chat/chat_customer.html:80
 msgid "Type Message ..."
 msgstr ""
 
-#: app/templates/chat/chat_customer.html:86
+#: app/templates/chat/chat_customer.html:82
 #: app/templates/chat/chat_staff.html:327
 msgid "Send"
 msgstr ""
@@ -3815,15 +3823,19 @@ msgstr ""
 msgid "Update Avatar"
 msgstr ""
 
-#: app/userinfo/views.py:45
+#: app/userinfo/views.py:22
+msgid "Permission Denied! You cannot access the profile of other users!"
+msgstr ""
+
+#: app/userinfo/views.py:46
 msgid "Profile update successfully!"
 msgstr ""
 
-#: app/userinfo/views.py:72
+#: app/userinfo/views.py:73
 msgid "Avatar update successfully!"
 msgstr ""
 
-#: app/userinfo/views.py:107
+#: app/userinfo/views.py:108
 msgid "Address added successfully!"
 msgstr ""
 

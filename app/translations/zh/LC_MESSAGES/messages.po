@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-11 10:44+0800\n"
+"POT-Creation-Date: 2022-05-11 10:56+0800\n"
 "PO-Revision-Date: 2022-03-23 16:06+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
@@ -17,6 +17,14 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
+
+#: app/decorators.py:18
+msgid "Permission Denied! This function is only provided for Siren staffs!"
+msgstr "权限被拒绝！本功能仅面向工作人员！"
+
+#: app/decorators.py:43
+msgid "Permission Denied! This function is only provided for customers!"
+msgstr "权限被拒绝！本功能仅面向顾客！"
 
 #: app/auth/forms.py:13 app/auth/forms.py:45
 #: app/templates/staff/backup-staff-modify.html:840
@@ -152,19 +160,19 @@ msgstr "订单生成失败！"
 msgid "Permission denied!"
 msgstr "权限被拒绝！"
 
-#: app/order/views.py:600
+#: app/order/views.py:602
 msgid "Error in Duration info!"
 msgstr "会员时间出现错误！"
 
-#: app/order/views.py:604
+#: app/order/views.py:606
 msgid "No duration info!"
 msgstr "没有会员时间信息！"
 
-#: app/order/views.py:612
+#: app/order/views.py:614
 msgid "Error in payment info!"
 msgstr "支付信息中出现错误！"
 
-#: app/order/views.py:616
+#: app/order/views.py:618
 msgid "No payment info!"
 msgstr "没有支付信息！"
 
@@ -719,11 +727,11 @@ msgstr "在线客服"
 msgid "Chat Messages"
 msgstr "全部消息"
 
-#: app/templates/chat/chat_customer.html:84
+#: app/templates/chat/chat_customer.html:80
 msgid "Type Message ..."
 msgstr "输入消息..."
 
-#: app/templates/chat/chat_customer.html:86
+#: app/templates/chat/chat_customer.html:82
 #: app/templates/chat/chat_staff.html:327
 msgid "Send"
 msgstr "发送"
@@ -3872,15 +3880,19 @@ msgstr "头像："
 msgid "Update Avatar"
 msgstr "修改头像"
 
-#: app/userinfo/views.py:45
+#: app/userinfo/views.py:22
+msgid "Permission Denied! You cannot access the profile of other users!"
+msgstr "权限被拒绝！您不能访问其他用户的个人主页！"
+
+#: app/userinfo/views.py:46
 msgid "Profile update successfully!"
 msgstr "个人主页成功修改！"
 
-#: app/userinfo/views.py:72
+#: app/userinfo/views.py:73
 msgid "Avatar update successfully!"
 msgstr "头像成功修改！"
 
-#: app/userinfo/views.py:107
+#: app/userinfo/views.py:108
 msgid "Address added successfully!"
 msgstr "地址成功添加！"
 
