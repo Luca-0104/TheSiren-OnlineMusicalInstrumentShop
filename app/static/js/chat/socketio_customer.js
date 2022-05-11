@@ -59,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Send message
-    console.log( "upon click, chatroom_id: " + chatroom_id );
    $('#send-message-' + chatroom_id).on("click", function(){
         if (document.querySelector('#user_message').value === ''){
 
