@@ -99,7 +99,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 // printSysMsg(msg);
             } else {
                 console.log("??");
-                leaveRoom(chatroom_id);
+
+                if (chatroom_id != undefined){
+                    leaveRoom(chatroom_id);
+                }
+
                 joinRoom(newRoom);
                 chatroom_id = newRoom;
             }
