@@ -59,7 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Send message
-   $('#send_message').on("click", function(){
+    console.log( "upon click, chatroom_id: " + chatroom_id );
+   $('#send-message-' + chatroom_id).on("click", function(){
         if (document.querySelector('#user_message').value === ''){
 
         }
@@ -81,7 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Join room
     function joinRoom(chatroom_id) {
-
         socket.emit('join', {'username': username, 'room': chatroom_id});
         // Clear message area
         document.querySelector('#chat-window').innerHTML = '';
