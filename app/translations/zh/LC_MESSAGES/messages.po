@@ -2480,7 +2480,7 @@ msgstr "配送地址"
 #: app/templates/staff/page-list-orders.html:763
 #: app/templates/staff/page-list-orders.html:874
 msgid "Full Address"
-msgstr "全部地址"
+msgstr "详细地址"
 
 #: app/templates/order/order-confirm.html:177
 #: app/templates/order/order-detail.html:866
