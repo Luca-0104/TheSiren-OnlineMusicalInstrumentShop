@@ -93,24 +93,60 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Room selection
-    document.querySelectorAll('.listing-item').forEach(a => {
-        a.onclick = () => {
-            let newRoom = a.getAttribute('id');
+    // document.querySelectorAll('.listing-item').forEach(a => {
+    //     a.onclick = () => {
+    //         let newRoom = a.getAttribute('id');
+    //
+    //         // determine whether the current staff is belong to this clicked room
+    //         let roomStaffId = a.attr("room-staff-id");
+    //         let currentStaffId = a.attr("current-staff-id");
+    //         console.log("roomStaffId: " + roomStaffId);
+    //         console.log("currentStaffId: " + currentStaffId);
+    //
+    //         console.log(chatroom_id);
+    //         if (newRoom === chatroom_id) {
+    //             // msg = `You are already in ${room} room.`
+    //             // printSysMsg(msg);
+    //         } else {
+    //             console.log("??");
+    //
+    //             if (chatroom_id !== undefined){
+    //                 leaveRoom(chatroom_id);
+    //             }
+    //
+    //             joinRoom(newRoom);
+    //             chatroom_id = newRoom;
+    //         }
+    //     }
+    // });
 
-            console.log(chatroom_id);
-            if (newRoom == chatroom_id) {
-                // msg = `You are already in ${room} room.`
-                // printSysMsg(msg);
-            } else {
-                console.log("??");
+    /* Room selection */
+    $(".listing-item").on('click', function (){
 
-                if (chatroom_id != undefined){
-                    leaveRoom(chatroom_id);
-                }
+        // the id of the selected room
+        let newRoomId = $(this).attr("id");
 
-                joinRoom(newRoom);
-                chatroom_id = newRoom;
+        // determine whether the current staff is belong to this clicked room
+        let roomStaffId = $(this).attr("room-staff-id");
+        let currentStaffId = $(this).attr("current-staff-id");
+        if (roomStaffId !== currentStaffId){
+            // get the aborting request url
+            let redirectURL = $(this).attr("redirect-URL");
+            window.location.href = redirectURL;
+        }
+
+        // determine whether the selected room is already shown on the right side
+        if (newRoomId === chatroom_id) {
+            // msg = `You are already in ${room} room.`
+            // printSysMsg(msg);
+        } else {
+
+            if (chatroom_id !== undefined){
+                leaveRoom(chatroom_id);
             }
+
+            joinRoom(newRoomId);
+            chatroom_id = newRoomId;
         }
     });
 

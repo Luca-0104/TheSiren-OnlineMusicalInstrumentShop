@@ -100,7 +100,7 @@
                                                 <!--Chatroom Listing Unit-->
                                                 <li class="listing-group-item">
                                                     <!--Chat Link href-->
-                                                    <a class="listing-item" id="{{ room.id }}" sn="{{ room.staff.username }}" data-toggle="pill"
+                                                    <a class="listing-item" id="{{ room.id }}" sn="{{ room.staff.username }}" room-staff-id="{{ room.staff.id }}" current-staff-id="{{ current_user.id }}" redirect-URL="{{ url_for("errors.abort_403") }}" data-toggle="pill"
                                                        href="#chatbox{{ room.id }}">
                                                         <div class="d-flex align-items-center">
                                                             <div class="avatar mr-2">
