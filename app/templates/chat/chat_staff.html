@@ -1,7 +1,7 @@
 {% extends 'base/base-staff.html' %}
 
 
-{% block title %}{{ _("Siren Management - Quality Communication")}}{% endblock %}
+{% block title %}{{ _("Siren Management - Quality Communication") }}{% endblock %}
 
 
 {# blocks for 'meta' tags #}
@@ -66,7 +66,7 @@
                                                 <div class="user-detail text-left mt-4 pl-4 pr-4">
                                                     <h5 class="mt-4 mb-4">{{ _("About") }}</h5>
                                                     <p>{{ _("It is long established fact that a reader will be distracted bt
-                                                            the reddable.")}}</p>
+                                                            the reddable.") }}</p>
                                                     <h5 class="mt-3 mb-3">{{ _("Status") }}</h5>
                                                     <ul class="user-status p-0">
                                                         <li class="mb-1"><i
@@ -77,7 +77,7 @@
                                                         </li>
                                                         <li class="mb-1"><i
                                                                 class="ri-checkbox-blank-circle-fill text-danger pr-1"></i><span>{{ _("Do Not
-                                                                Disturb")}}</span></li>
+                                                                Disturb") }}</span></li>
                                                         <li class="mb-1"><i
                                                                 class="ri-checkbox-blank-circle-fill text-light pr-1"></i><span>{{ _("Offline") }}</span>
                                                         </li>
@@ -100,7 +100,9 @@
                                                 <!--Chatroom Listing Unit-->
                                                 <li class="listing-group-item">
                                                     <!--Chat Link href-->
-                                                    <a class="listing-item" id="{{ room.id }}" sn="{{ room.staff.username }}" room-staff-id="{{ room.staff.id }}" current-staff-id="{{ current_user.id }}" redirect-URL="{{ url_for("errors.abort_403") }}" data-toggle="pill"
+                                                    <a class="listing-item" id="{{ room.id }}" sn="{{ room.staff.username }}"
+                                                       room-staff-id="{{ room.staff.id }}" current-staff-id="{{ current_user.id }}"
+                                                       redirect-URL="{{ url_for("errors.abort_403") }}" data-toggle="pill"
                                                        href="#chatbox{{ room.id }}">
                                                         <div class="d-flex align-items-center">
                                                             <div class="avatar mr-2">
@@ -113,16 +115,16 @@
                                                             <div class="chat-sidebar-name">
                                                                 <h6 id="customer-username-{{ room.customer.id }}" class="mb-0">{{ room.customer.username }}</h6>
                                                                 {% if room.messages.order_by(Message.timestamp.desc()).first() %}
-                                                                    <span style="max-lines: 1; overflow: hidden">{{ room.messages.order_by(Message.timestamp.desc()).first().content }}</span>
+                                                                    <span style="display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; overflow: hidden;">{{ room.messages.order_by(Message.timestamp.desc()).first().content }}</span>
                                                                 {% else %}
-                                                                    <span style="max-lines: 1; overflow: hidden">{{ _("No messages so far") }}</span>
+                                                                    <span style="display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; overflow: hidden;">{{ _("No messages so far") }}</span>
                                                                 {% endif %}
                                                             </div>
                                                         </div>
                                                     </a>
                                                 </li>
 
-                                                 <!--Avatar parameter for socketio.js-->
+                                                <!--Avatar parameter for socketio.js-->
                                                 <div id="chatroom-avatar-{{ room.id }}" style="display: none;"
                                                      avatar-customer="{{ url_for('static', filename=room.customer.avatar) }}"
                                                      avatar-staff="{{ url_for('static', filename=room.staff.avatar) }}">
@@ -157,7 +159,8 @@
                                                                 <i class="ri-menu-3-line"></i>
                                                             </div>
                                                             <div class="avatar chat-user-profile m-0 mr-3">
-                                                                <img src="{{ url_for('static', filename=room.customer.avatar) }}" alt="avatar" class="avatar-50 ">
+                                                                <img src="{{ url_for('static', filename=room.customer.avatar) }}" alt="avatar"
+                                                                     class="avatar-50 ">
                                                                 <span class="avatar-status"><i
                                                                         class="ri-checkbox-blank-circle-fill text-success"></i></span>
                                                             </div>
@@ -169,7 +172,8 @@
                                                                         class="ri-close-fill"></i></button>
                                                                 <div class="user mb-4">
                                                                     <a class="avatar m-0">
-                                                                        <img src="{{ url_for('static', filename=room.customer.avatar) }}" class="avatar-100" alt="avatar">
+                                                                        <img src="{{ url_for('static', filename=room.customer.avatar) }}" class="avatar-100"
+                                                                             alt="avatar">
                                                                     </a>
                                                                     <div class="user-name mt-4">
                                                                         <h4>{{ room.customer.username }}</h4>
