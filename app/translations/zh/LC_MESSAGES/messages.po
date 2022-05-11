@@ -1113,7 +1113,7 @@ msgid ""
 "This\n"
 "                                                        item is no longer"
 " available (Sold out)."
-msgstr "该商品不再售卖（售完）"
+msgstr "该商品不再售卖（已下架）"
 
 #: app/templates/main/page-commodity-details.html:360
 msgid ""
