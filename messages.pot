@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-10 22:19+0800\n"
+"POT-Creation-Date: 2022-05-11 10:44+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -231,6 +231,7 @@ msgstr ""
 
 #: app/product/forms.py:45 app/product/forms.py:100
 #: app/templates/staff/page-add-product.html:234
+#: app/templates/staff/page-list-product.html:4
 #: app/templates/staff/page-list-product.html:174
 msgid "Stock"
 msgstr ""
@@ -273,6 +274,10 @@ msgstr ""
 msgid "Model Type updated!"
 msgstr ""
 
+#: app/templates/auth/login_new.html:3
+msgid "The Siren - Login"
+msgstr ""
+
 #: app/templates/auth/login_new.html:41
 msgid "Please login and explore more."
 msgstr ""
@@ -288,6 +293,10 @@ msgstr ""
 
 #: app/templates/auth/login_new.html:101
 msgid "We will never share your personal information with third parties."
+msgstr ""
+
+#: app/templates/auth/register_new.html:3
+msgid "The Siren - Register"
 msgstr ""
 
 #: app/templates/auth/register_new.html:40
@@ -580,6 +589,8 @@ msgid "Add Product"
 msgstr ""
 
 #: app/templates/base/base-staff.html:131
+#: app/templates/order/order-listing.html:4
+#: app/templates/staff/page-list-orders.html:10
 msgid "Orders"
 msgstr ""
 
@@ -588,6 +599,7 @@ msgid "List Orders"
 msgstr ""
 
 #: app/templates/base/base-staff.html:159
+#: app/templates/staff/page-list-journals.html:4
 msgid "Journals"
 msgstr ""
 
@@ -673,6 +685,10 @@ msgstr ""
 msgid "Terms of Use"
 msgstr ""
 
+#: app/templates/cart/page-cart.html:3
+msgid "The Siren - Cart"
+msgstr ""
+
 #: app/templates/cart/page-cart.html:43
 msgid "Select"
 msgstr ""
@@ -694,6 +710,10 @@ msgstr ""
 msgid "Total Cost"
 msgstr ""
 
+#: app/templates/chat/chat_customer.html:5
+msgid "Chat"
+msgstr ""
+
 #: app/templates/chat/chat_customer.html:25
 msgid "Chat Messages"
 msgstr ""
@@ -705,6 +725,10 @@ msgstr ""
 #: app/templates/chat/chat_customer.html:86
 #: app/templates/chat/chat_staff.html:327
 msgid "Send"
+msgstr ""
+
+#: app/templates/chat/chat_staff.html:4
+msgid "Siren Management - Quality Communication"
 msgstr ""
 
 #: app/templates/chat/chat_staff.html:46 app/templates/chat/chat_staff.html:62
@@ -763,6 +787,10 @@ msgstr ""
 msgid "Type your message"
 msgstr ""
 
+#: app/templates/comment/comment.html:4
+msgid "Siren - Comment"
+msgstr ""
+
 #: app/templates/comment/comment.html:316
 #: app/templates/order/order-detail.html:703
 msgid "Comment"
@@ -782,6 +810,10 @@ msgstr ""
 msgid "Contact us"
 msgstr ""
 
+#: app/templates/errors/403.html:3
+msgid "The Siren - 403 Forbidden"
+msgstr ""
+
 #: app/templates/errors/403.html:42
 msgid "Forbidden"
 msgstr ""
@@ -795,6 +827,10 @@ msgstr ""
 msgid "Back to Home"
 msgstr ""
 
+#: app/templates/errors/404.html:3
+msgid "The Siren - 404 Page Not Found"
+msgstr ""
+
 #: app/templates/errors/404.html:53
 msgid "Page Not Found"
 msgstr ""
@@ -803,12 +839,21 @@ msgstr ""
 msgid "The page you are looking for doesn&#x27;t exist or may have been moved."
 msgstr ""
 
+#: app/templates/errors/500.html:3
+msgid "The Siren - 500 Internal Server Error"
+msgstr ""
+
 #: app/templates/errors/500.html:42
 msgid "Internal Server Error"
 msgstr ""
 
 #: app/templates/errors/500.html:43
 msgid "Something wrong in the server, this would be fixed soon."
+msgstr ""
+
+#: app/templates/main/about_siren.html:3 app/templates/main/index_new.html:526
+#: app/templates/main/index_new.html:533
+msgid "About Us"
 msgstr ""
 
 #: app/templates/main/about_siren.html:43
@@ -925,6 +970,10 @@ msgstr ""
 msgid "Start Voyage"
 msgstr ""
 
+#: app/templates/main/index_new.html:3
+msgid "Home"
+msgstr ""
+
 #: app/templates/main/index_new.html:160
 msgid "Start Browsing"
 msgstr ""
@@ -958,10 +1007,6 @@ msgstr ""
 msgid "Interests"
 msgstr ""
 
-#: app/templates/main/index_new.html:526 app/templates/main/index_new.html:533
-msgid "About Us"
-msgstr ""
-
 #: app/templates/main/index_new.html:545
 msgid "Just Arrived"
 msgstr ""
@@ -981,6 +1026,10 @@ msgstr ""
 #: app/templates/main/index_new.html:719 app/templates/main/premium.html:70
 #: app/templates/staff/backup-staff-modify.html:582
 msgid "Go Premium"
+msgstr ""
+
+#: app/templates/main/page-commodity-details.html:3
+msgid "Commodity Detail"
 msgstr ""
 
 #: app/templates/main/page-commodity-details.html:125
@@ -1122,6 +1171,10 @@ msgstr ""
 
 #: app/templates/main/page-commodity-details.html:772
 msgid "There are no more products from this category yet."
+msgstr ""
+
+#: app/templates/main/page_all_commodities.html:3
+msgid "All Commodities"
 msgstr ""
 
 #: app/templates/main/page_all_commodities.html:44
@@ -1498,6 +1551,10 @@ msgstr ""
 msgid "No Extra Requirement"
 msgstr ""
 
+#: app/templates/main/premium.html:4
+msgid "Get Premium Membership"
+msgstr ""
+
 #: app/templates/main/premium.html:42
 msgid "SELECTED INSTRUMENT."
 msgstr ""
@@ -1526,6 +1583,10 @@ msgstr ""
 msgid "START YOUR PREMIUM JOURNEY."
 msgstr ""
 
+#: app/templates/main/brand_intro/coming-soon.html:3
+msgid "Coming Soon"
+msgstr ""
+
 #: app/templates/main/brand_intro/coming-soon.html:42
 msgid "It's Around the Corner!"
 msgstr ""
@@ -1547,6 +1608,17 @@ msgstr ""
 
 #: app/templates/main/brand_intro/coming-soon.html:51
 msgid "Back to Home Page"
+msgstr ""
+
+#: app/templates/main/brand_intro/fender.html:3
+#: app/templates/main/brand_intro/gibson.html:3
+#: app/templates/main/brand_intro/hohner.html:3
+#: app/templates/main/brand_intro/lowden.html:3
+#: app/templates/main/brand_intro/martin.html:3
+#: app/templates/main/brand_intro/meinl.html:3
+#: app/templates/main/brand_intro/steinway.html:3
+#: app/templates/main/brand_intro/taylor.html:3
+msgid "Franchise Brand"
 msgstr ""
 
 #: app/templates/main/brand_intro/fender.html:41
@@ -2254,6 +2326,10 @@ msgid ""
 "changers like V-Class bracing."
 msgstr ""
 
+#: app/templates/order/order-confirm-premium.html:3
+msgid "Premium order confirmation"
+msgstr ""
+
 #: app/templates/order/order-confirm-premium.html:126
 msgid "Choose Your Premium Plan"
 msgstr ""
@@ -2295,6 +2371,10 @@ msgid ""
 "There was an error processing your customer info. Please try again, or "
 "contact us if you\n"
 "                                continue to have problems."
+msgstr ""
+
+#: app/templates/order/order-confirm.html:3
+msgid "Order Confirmation"
 msgstr ""
 
 #: app/templates/order/order-confirm.html:129
@@ -2394,6 +2474,10 @@ msgstr ""
 
 #: app/templates/order/order-confirm.html:242
 msgid "Payment (after discount)"
+msgstr ""
+
+#: app/templates/order/order-detail.html:4
+msgid "Order Detail"
 msgstr ""
 
 #: app/templates/order/order-detail.html:316
@@ -2603,6 +2687,14 @@ msgstr ""
 msgid "After Sale Service"
 msgstr ""
 
+#: app/templates/order/payment-success.html:3
+msgid "Payment Success"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:4
+msgid "Modify"
+msgstr ""
+
 #: app/templates/staff/backup-staff-modify.html:29
 msgid "Siren Management"
 msgstr ""
@@ -2693,6 +2785,7 @@ msgid "User Details"
 msgstr ""
 
 #: app/templates/staff/backup-staff-modify.html:240
+#: app/templates/userinfo/user_profile.html:3
 msgid "User Profile"
 msgstr ""
 
@@ -2903,6 +2996,7 @@ msgid "Create"
 msgstr ""
 
 #: app/templates/staff/backup-staff-modify.html:862
+#: app/templates/staff/page-modify-product.html:4
 #: app/templates/staff/page-modify-product.html:33
 msgid "Modify Product"
 msgstr ""
@@ -2940,8 +3034,18 @@ msgstr ""
 msgid "Reset"
 msgstr ""
 
+#: app/templates/staff/page-add-journal.html:4
+#: app/templates/staff/page-list-journals.html:68
+#: app/templates/staff/page-modify-journal.html:4
+msgid "Upload Journal"
+msgstr ""
+
 #: app/templates/staff/page-add-journal.html:39
 msgid "Upload New Journal"
+msgstr ""
+
+#: app/templates/staff/page-add-product.html:4
+msgid "Upload Product"
 msgstr ""
 
 #: app/templates/staff/page-add-product.html:44
@@ -3020,10 +3124,6 @@ msgstr ""
 
 #: app/templates/staff/page-list-journals.html:64
 msgid "Upload new journals and notifications!"
-msgstr ""
-
-#: app/templates/staff/page-list-journals.html:68
-msgid "Upload Journal"
 msgstr ""
 
 #: app/templates/staff/page-list-journals.html:77
@@ -3332,6 +3432,10 @@ msgstr ""
 msgid "Modify Your Journal"
 msgstr ""
 
+#: app/templates/staff/page-modify-modeltype.html:4
+msgid "Modify ModelType"
+msgstr ""
+
 #: app/templates/staff/page-modify-modeltype.html:32
 msgid "Modify Model"
 msgstr ""
@@ -3340,8 +3444,16 @@ msgstr ""
 msgid "Cymbals"
 msgstr ""
 
+#: app/templates/staff/page-upload-modeltype.html:4
+msgid "Upload ModelType"
+msgstr ""
+
 #: app/templates/staff/page-upload-modeltype.html:32
 msgid "Upload Model"
+msgstr ""
+
+#: app/templates/staff/staff-index.html:4
+msgid "Management"
 msgstr ""
 
 #: app/templates/staff/staff-index.html:32

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-10 22:19+0800\n"
+"POT-Creation-Date: 2022-05-11 10:44+0800\n"
 "PO-Revision-Date: 2022-03-23 16:06+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
@@ -232,6 +232,7 @@ msgstr "价格"
 
 #: app/product/forms.py:45 app/product/forms.py:100
 #: app/templates/staff/page-add-product.html:234
+#: app/templates/staff/page-list-product.html:4
 #: app/templates/staff/page-list-product.html:174
 msgid "Stock"
 msgstr "库存"
@@ -274,6 +275,10 @@ msgstr "发生错误！产品不存在！请重试！"
 msgid "Model Type updated!"
 msgstr "型号已更新！"
 
+#: app/templates/auth/login_new.html:3
+msgid "The Siren - Login"
+msgstr "The Siren - 登录"
+
 #: app/templates/auth/login_new.html:41
 msgid "Please login and explore more."
 msgstr "请登录以探索更多。"
@@ -290,6 +295,10 @@ msgstr "哦不！在提交表单的时候发生了一些错误。"
 #: app/templates/auth/login_new.html:101
 msgid "We will never share your personal information with third parties."
 msgstr "我们将保护您的隐私安全并不会与任何第三方共享您的信息"
+
+#: app/templates/auth/register_new.html:3
+msgid "The Siren - Register"
+msgstr "The Siren - 注册"
 
 #: app/templates/auth/register_new.html:40
 msgid "Join us now!"
@@ -412,7 +421,7 @@ msgstr "联系客服"
 #: app/templates/backend-test/payment/payment-finished.html:280
 #: app/templates/order/payment-success.html:42
 msgid "Payment Finished"
-msgstr "没有支付信息！"
+msgstr "支付成功！"
 
 #: app/templates/backend-test/payment/payment-finished.html:281
 #: app/templates/order/payment-success.html:43
@@ -581,6 +590,8 @@ msgid "Add Product"
 msgstr "添加商品"
 
 #: app/templates/base/base-staff.html:131
+#: app/templates/order/order-listing.html:4
+#: app/templates/staff/page-list-orders.html:10
 msgid "Orders"
 msgstr "订单"
 
@@ -589,6 +600,7 @@ msgid "List Orders"
 msgstr "订单列表"
 
 #: app/templates/base/base-staff.html:159
+#: app/templates/staff/page-list-journals.html:4
 msgid "Journals"
 msgstr "日志及通知"
 
@@ -674,6 +686,10 @@ msgstr "隐私政策"
 msgid "Terms of Use"
 msgstr "使用条款"
 
+#: app/templates/cart/page-cart.html:3
+msgid "The Siren - Cart"
+msgstr "The Siren - 购物车"
+
 #: app/templates/cart/page-cart.html:43
 msgid "Select"
 msgstr "选择"
@@ -695,6 +711,10 @@ msgstr "数量"
 msgid "Total Cost"
 msgstr "总计"
 
+#: app/templates/chat/chat_customer.html:5
+msgid "Chat"
+msgstr "在线客服"
+
 #: app/templates/chat/chat_customer.html:25
 msgid "Chat Messages"
 msgstr "全部消息"
@@ -707,6 +727,10 @@ msgstr "输入消息..."
 #: app/templates/chat/chat_staff.html:327
 msgid "Send"
 msgstr "发送"
+
+#: app/templates/chat/chat_staff.html:4
+msgid "Siren Management - Quality Communication"
+msgstr "Siren管理页面 - 客户服务"
 
 #: app/templates/chat/chat_staff.html:46 app/templates/chat/chat_staff.html:62
 msgid "Staff"
@@ -764,6 +788,10 @@ msgstr "选择聊天室开始聊天！"
 msgid "Type your message"
 msgstr "输入消息"
 
+#: app/templates/comment/comment.html:4
+msgid "Siren - Comment"
+msgstr "Siren - 评论"
+
 #: app/templates/comment/comment.html:316
 #: app/templates/order/order-detail.html:703
 msgid "Comment"
@@ -783,6 +811,10 @@ msgstr "您的评论"
 msgid "Contact us"
 msgstr "联系我们"
 
+#: app/templates/errors/403.html:3
+msgid "The Siren - 403 Forbidden"
+msgstr "The Siren - 403 访问被禁止"
+
 #: app/templates/errors/403.html:42
 msgid "Forbidden"
 msgstr "访问被禁止"
@@ -796,6 +828,10 @@ msgstr "您没有进入该功能的权限。"
 msgid "Back to Home"
 msgstr "返回主页"
 
+#: app/templates/errors/404.html:3
+msgid "The Siren - 404 Page Not Found"
+msgstr "The Siren - 404 页面未找到"
+
 #: app/templates/errors/404.html:53
 msgid "Page Not Found"
 msgstr "页面未找到"
@@ -804,6 +840,10 @@ msgstr "页面未找到"
 msgid "The page you are looking for doesn&#x27;t exist or may have been moved."
 msgstr "您搜寻的页面不存在或被移除。"
 
+#: app/templates/errors/500.html:3
+msgid "The Siren - 500 Internal Server Error"
+msgstr "The Siren - 500 服务器内部错误"
+
 #: app/templates/errors/500.html:42
 msgid "Internal Server Error"
 msgstr "服务器内部错误"
@@ -811,6 +851,11 @@ msgstr "服务器内部错误"
 #: app/templates/errors/500.html:43
 msgid "Something wrong in the server, this would be fixed soon."
 msgstr "服务器发生错误，稍后这些错误将被修复"
+
+#: app/templates/main/about_siren.html:3 app/templates/main/index_new.html:526
+#: app/templates/main/index_new.html:533
+msgid "About Us"
+msgstr "关于我们"
 
 #: app/templates/main/about_siren.html:43
 msgid "A curated collection of timeless instruments"
@@ -926,9 +971,13 @@ msgstr "贝多芬"
 msgid "Start Voyage"
 msgstr "开始徜徉在音乐的海洋"
 
+#: app/templates/main/index_new.html:3
+msgid "Home"
+msgstr "主页"
+
 #: app/templates/main/index_new.html:160
 msgid "Start Browsing"
-msgstr "开始浏览"
+msgstr "了解详情"
 
 #: app/templates/main/index_new.html:207
 msgid "Featured"
@@ -959,10 +1008,6 @@ msgstr "猜"
 msgid "Interests"
 msgstr "您喜欢"
 
-#: app/templates/main/index_new.html:526 app/templates/main/index_new.html:533
-msgid "About Us"
-msgstr "关于我们"
-
 #: app/templates/main/index_new.html:545
 msgid "Just Arrived"
 msgstr "最新到货"
@@ -983,6 +1028,10 @@ msgstr "加入我们以获取更多优惠。限时销售和独家限量版商品
 #: app/templates/staff/backup-staff-modify.html:582
 msgid "Go Premium"
 msgstr "成为会员"
+
+#: app/templates/main/page-commodity-details.html:3
+msgid "Commodity Detail"
+msgstr "商品详情"
 
 #: app/templates/main/page-commodity-details.html:125
 #: app/templates/main/page_all_commodities.html:455
@@ -1036,7 +1085,7 @@ msgstr "请您注意，由于乐器属于消耗品，一旦售出超过7天将�
 
 #: app/templates/main/page-commodity-details.html:316
 msgid "Add to Cart"
-msgstr "我的购物车"
+msgstr "添加到购物车"
 
 #: app/templates/main/page-commodity-details.html:323
 msgid ""
@@ -1103,7 +1152,7 @@ msgstr "评论"
 
 #: app/templates/main/page-commodity-details.html:608
 msgid "About this brand - "
-msgstr "关于品牌"
+msgstr "关于品牌 - "
 
 #: app/templates/main/page-commodity-details.html:613
 msgid "Learn More"
@@ -1124,6 +1173,10 @@ msgstr "相关推荐"
 #: app/templates/main/page-commodity-details.html:772
 msgid "There are no more products from this category yet."
 msgstr "该分类没有更多商品了(╯﹏╰）"
+
+#: app/templates/main/page_all_commodities.html:3
+msgid "All Commodities"
+msgstr "全部商品"
 
 #: app/templates/main/page_all_commodities.html:44
 msgid "All Products"
@@ -1499,6 +1552,10 @@ msgstr "插电支持"
 msgid "No Extra Requirement"
 msgstr "无额外要求"
 
+#: app/templates/main/premium.html:4
+msgid "Get Premium Membership"
+msgstr "成为会员"
+
 #: app/templates/main/premium.html:42
 msgid "SELECTED INSTRUMENT."
 msgstr "精选乐器"
@@ -1527,6 +1584,10 @@ msgstr "可定制销售"
 msgid "START YOUR PREMIUM JOURNEY."
 msgstr "开始您的会员旅程"
 
+#: app/templates/main/brand_intro/coming-soon.html:3
+msgid "Coming Soon"
+msgstr "推出在即"
+
 #: app/templates/main/brand_intro/coming-soon.html:42
 msgid "It's Around the Corner!"
 msgstr "即将开放"
@@ -1549,6 +1610,17 @@ msgstr "还未在我们的商店更新他们的信息，您可以尝试在主页
 #: app/templates/main/brand_intro/coming-soon.html:51
 msgid "Back to Home Page"
 msgstr "返回主页"
+
+#: app/templates/main/brand_intro/fender.html:3
+#: app/templates/main/brand_intro/gibson.html:3
+#: app/templates/main/brand_intro/hohner.html:3
+#: app/templates/main/brand_intro/lowden.html:3
+#: app/templates/main/brand_intro/martin.html:3
+#: app/templates/main/brand_intro/meinl.html:3
+#: app/templates/main/brand_intro/steinway.html:3
+#: app/templates/main/brand_intro/taylor.html:3
+msgid "Franchise Brand"
+msgstr "特许经营品牌"
 
 #: app/templates/main/brand_intro/fender.html:41
 #: app/templates/main/brand_intro/fender.html:73
@@ -2311,6 +2383,10 @@ msgstr ""
 "我们为现代工艺设定了标准，以创造最佳的演奏体验。我们将创新的制造技术与无可挑剔的手工工艺相结合，为我们的吉他生产带来了无与伦比的质量和一致性，并帮助我们开发了"
 " V-Class 音梁等改变游戏规则的产品。"
 
+#: app/templates/order/order-confirm-premium.html:3
+msgid "Premium order confirmation"
+msgstr "会员订单确认"
+
 #: app/templates/order/order-confirm-premium.html:126
 msgid "Choose Your Premium Plan"
 msgstr "选择您的会员计划"
@@ -2354,9 +2430,13 @@ msgid ""
 "                                continue to have problems."
 msgstr "处理您的用户信息时出错，请重新尝试。如果您仍有问题请联系我们。"
 
+#: app/templates/order/order-confirm.html:3
+msgid "Order Confirmation"
+msgstr "订单确认"
+
 #: app/templates/order/order-confirm.html:129
 msgid "Recipient Info"
-msgstr "收货人姓名"
+msgstr "收货人信息"
 
 #: app/templates/order/order-confirm.html:130
 #: app/templates/order/order-confirm.html:149
@@ -2434,7 +2514,7 @@ msgstr "快递"
 #: app/templates/order/order-confirm.html:207
 #: app/templates/order/order-confirm.html:209
 msgid "self-collecting"
-msgstr "产品"
+msgstr "自提"
 
 #: app/templates/order/order-confirm.html:223
 msgid "Subtotal (without delivery fee)"
@@ -2452,6 +2532,10 @@ msgstr "小计"
 #: app/templates/order/order-confirm.html:242
 msgid "Payment (after discount)"
 msgstr "共需支付（折后）"
+
+#: app/templates/order/order-detail.html:4
+msgid "Order Detail"
+msgstr "订单详情"
 
 #: app/templates/order/order-detail.html:316
 #: app/templates/order/order-listing.html:309
@@ -2542,19 +2626,19 @@ msgstr "修改订单类型"
 #: app/templates/order/order-listing.html:361
 #: app/templates/staff/page-list-orders.html:382
 msgid "Trade"
-msgstr "交易"
+msgstr "交易流水号"
 
 #: app/templates/order/order-detail.html:387
 #: app/templates/order/order-detail.html:495
 #: app/templates/order/order-detail.html:501
 #: app/templates/staff/page-list-orders.html:389
 msgid "Payment"
-msgstr "支付"
+msgstr "订单号"
 
 #: app/templates/order/order-detail.html:397
 #: app/templates/staff/page-list-orders.html:400
 msgid "Order Type"
-msgstr "型号"
+msgstr "订单类型"
 
 #: app/templates/order/order-detail.html:400
 #: app/templates/staff/page-list-orders.html:404
@@ -2660,6 +2744,14 @@ msgstr "查看进度"
 msgid "After Sale Service"
 msgstr "售后服务"
 
+#: app/templates/order/payment-success.html:3
+msgid "Payment Success"
+msgstr "支付成功！"
+
+#: app/templates/staff/backup-staff-modify.html:4
+msgid "Modify"
+msgstr "修改"
+
 #: app/templates/staff/backup-staff-modify.html:29
 msgid "Siren Management"
 msgstr "Siren管理"
@@ -2750,6 +2842,7 @@ msgid "User Details"
 msgstr "用户详情"
 
 #: app/templates/staff/backup-staff-modify.html:240
+#: app/templates/userinfo/user_profile.html:3
 msgid "User Profile"
 msgstr "用户主页"
 
@@ -2960,6 +3053,7 @@ msgid "Create"
 msgstr "创建"
 
 #: app/templates/staff/backup-staff-modify.html:862
+#: app/templates/staff/page-modify-product.html:4
 #: app/templates/staff/page-modify-product.html:33
 msgid "Modify Product"
 msgstr "修改商品"
@@ -2997,9 +3091,19 @@ msgstr "描述/商品详情"
 msgid "Reset"
 msgstr "重置"
 
+#: app/templates/staff/page-add-journal.html:4
+#: app/templates/staff/page-list-journals.html:68
+#: app/templates/staff/page-modify-journal.html:4
+msgid "Upload Journal"
+msgstr "上传日志及通知"
+
 #: app/templates/staff/page-add-journal.html:39
 msgid "Upload New Journal"
-msgstr "上传新日志"
+msgstr "上传新的日志及通知"
+
+#: app/templates/staff/page-add-product.html:4
+msgid "Upload Product"
+msgstr "上传商品"
 
 #: app/templates/staff/page-add-product.html:44
 msgid "Product Name"
@@ -3078,10 +3182,6 @@ msgstr "您可以在这里看到您的商店的全部日志并且可以管理它
 #: app/templates/staff/page-list-journals.html:64
 msgid "Upload new journals and notifications!"
 msgstr "上传新的日志和通知"
-
-#: app/templates/staff/page-list-journals.html:68
-msgid "Upload Journal"
-msgstr "上传日志及通知"
 
 #: app/templates/staff/page-list-journals.html:77
 #: app/templates/staff/page-list-orders.html:57
@@ -3389,6 +3489,10 @@ msgstr "选择3D模型文件（仅支持obj/fbx文件）"
 msgid "Modify Your Journal"
 msgstr "修改您的日志及通知"
 
+#: app/templates/staff/page-modify-modeltype.html:4
+msgid "Modify ModelType"
+msgstr "修改商品型号"
+
 #: app/templates/staff/page-modify-modeltype.html:32
 msgid "Modify Model"
 msgstr "修改订单类型"
@@ -3397,9 +3501,17 @@ msgstr "修改订单类型"
 msgid "Cymbals"
 msgstr "镲"
 
+#: app/templates/staff/page-upload-modeltype.html:4
+msgid "Upload ModelType"
+msgstr "上传商品型号"
+
 #: app/templates/staff/page-upload-modeltype.html:32
 msgid "Upload Model"
 msgstr "上传商品型号"
+
+#: app/templates/staff/staff-index.html:4
+msgid "Management"
+msgstr "管理页面"
 
 #: app/templates/staff/staff-index.html:32
 msgid "Hi"
