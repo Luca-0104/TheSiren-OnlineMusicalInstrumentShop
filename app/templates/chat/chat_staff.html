@@ -111,8 +111,12 @@
                                                                         class="ri-checkbox-blank-circle-fill text-dark"></i></span>
                                                             </div>
                                                             <div class="chat-sidebar-name">
-                                                                <h6 id="customer_username" class="mb-0">{{ room.customer.username }}</h6>
-                                                                <span>{{ _("translation by") }}</span>
+                                                                <h6 id="customer-username-{{ room.customer.id }}" class="mb-0">{{ room.customer.username }}</h6>
+                                                                {% if room.messages.order_by(Message.timestamp.desc()).first() %}
+                                                                    <span style="overflow: hidden">{{ room.messages.order_by(Message.timestamp.desc()).first().content }}</span>
+                                                                {% else %}
+                                                                    <span style="overflow: hidden">{{ _("No messages so far") }}</span>
+                                                                {% endif %}
                                                             </div>
                                                         </div>
                                                     </a>
@@ -232,7 +236,7 @@
                                                 </div>
 
                                                 <!--Chat Window-->
-                                                <div id="chat-window" class="chat-content scroller">
+                                                <div id="chat-window-{{ room.id }}" class="chat-content scroller">
 
                                                     {% for message in messages %}
 
@@ -320,10 +324,11 @@
                                                             <a href="javascript:void();"><i class="fa fa-paperclip pr-3"
                                                                                             aria-hidden="true"></i></a>
                                                         </div>
-                                                        <input id="user_message" type="text" class="form-control mr-3"
+                                                        <input id="user-message-{{ room.id }}" type="text" class="form-control mr-3"
                                                                placeholder="{{ _("Type your message") }}">
-                                                        <button id="send_message" type="submit"
-                                                                class="btn btn-primary d-flex align-items-center p-2">
+                                                        <button id="send-message-{{ room.id }}" type="submit"
+                                                                class="btn btn-primary d-flex align-items-center p-2 btn-send-message"
+                                                                room-id="{{ room.id }}">
                                                             <span class="d-none d-lg-block ml-1">{{ _("Send") }}</span></button>
                                                     </div>
                                                 </div>

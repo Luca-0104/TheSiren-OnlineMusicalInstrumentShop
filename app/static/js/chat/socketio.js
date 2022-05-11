@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // let room = "Chat";
     // let room = "Chat";
+    
+    // Set the id of this chat room as an global variable in this js file
+    let chatRoomId = 0;
 
     // Display incoming message
     socket.on('message', data => {
@@ -68,21 +71,22 @@ document.addEventListener('DOMContentLoaded', () => {
           div_chat_detail.innerHTML = div_chat_message.outerHTML;
 
           div_chat.innerHTML = div_chat_user.outerHTML + div_chat_detail.outerHTML;
-          document.querySelector('#chat-window').append(div_chat);
+          document.querySelector('#chat-window-' + chatRoomId).append(div_chat);
 
-          $('#chat-window').scrollTop = $('#chat-window').scrollHeight;
+          $('#chat-window-' + chatRoomId).scrollTop = $('#chat-window-' + chatRoomId).scrollHeight;
     });
 
     // Send message
-    $('#send_message').on("click", function(){
-        if (document.querySelector('#user_message').value === ''){
+    $('.btn-send-message').on("click", function(){
+        let roomId = $(this).attr("room-id");
+        if (document.querySelector('#user-message-' + roomId).value === ''){
         }
         else {
-        console.log(document.querySelector('#user_message').value);
-        socket.send({'msg': document.querySelector('#user_message').value,
+        console.log(document.querySelector('#user-message-' + roomId).value);
+        socket.send({'msg': document.querySelector('#user-message-' + roomId).value,
         'username': username, 'room': chatroom_id, 'avatar': avatar });
         // Clear input area
-        document.querySelector('#user_message').value = '';
+        document.querySelector('#user-message-' + roomId).value = '';
         console.log(chatroom_id);
         console.log(username);
         }
@@ -118,22 +122,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // Join room
     // joinRoom(room, chat_id)    'room':room+chat_id
     function joinRoom(chatroom_id) {
+        // update that global chat room id of current room
+        chatRoomId = chatroom_id;
         console.log("3333333333");
         console.log(chatroom_id);
         socket.emit('join', {'username': username, 'room': chatroom_id});
         // Clear message area
-        document.querySelector('#chat-window').innerHTML = '';
+        document.querySelector('#chat-window-' + chatRoomId).innerHTML = '';
 
         socket.emit('history', {'room': chatroom_id})
 
         // Autofocus on text box
-        document.querySelector('#user_message').focus();
+        document.querySelector('#user-message-' + chatroom_id).focus();
     }
 
     //Print system message
     function printSysMsg(msg) {
         const p = document.createElement('p');
         p.innerHTML = msg;
-        document.querySelector('#chat-window').append(p);
+        document.querySelector('#chat-window-' + chatRoomId).append(p);
     }
 });
