@@ -95,8 +95,9 @@ def message(data):
     print(data.get("time_stamp") is not None)
     if data.get("time_stamp") is not None:
         print('left?')
-        send({'msg': data['msg'], 'username': data['username'],
-              'time_stamp': data["time_stamp"], 'avatar': data['avatar']}
+        emit('history', {'msg': data['msg'], 'username': data['username'],
+                         'time_stamp': data["time_stamp"], 'avatar': data['avatar'], 'type': data['type'],
+                         'user_need_chat_history': data['user_need_chat_history']}
              , room=data['room'])
     else:
         send({'msg': data['msg'], 'username': data['username'],
@@ -161,8 +162,9 @@ def history(data):
         chat_history.append(dic)
 
     for msg in chat_history:
-        send({'msg': msg['msg'], 'username': msg['username'],
-              'time_stamp': msg['time_stamp'], 'avatar': msg['avatar']}
+        emit('history', {'msg': msg['msg'], 'username': msg['username'],
+                         'time_stamp': msg['time_stamp'], 'avatar': msg['avatar'], 'type': 'history',
+                         'user_need_chat_history': current_user.username}
              , room=chat_room_id)
 
 
