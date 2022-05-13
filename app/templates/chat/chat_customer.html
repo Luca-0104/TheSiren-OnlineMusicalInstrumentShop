@@ -77,9 +77,9 @@
                 <div class="box-footer">
                   <form action="#" method="post">
                     <div class="input-group">
-                      <input id="user_message" type="text" name="message" placeholder="{{ _("Type Message ...")}}" class="form-control user-message-input-blank" room-id="{{ room }}">
+                      <input id="user_message" type="text" name="message" placeholder="{{ _("Type Message ...")}}" class="form-control user-message-input-blank" room-id="{{ rooms.id }}">
                       <span class="input-group-btn">
-                            <button id="send-message-{{ room }}" type="button" class="btn btn-warning btn-flat">{{ _("Send") }}</button>
+                            <button id="send-message-{{ rooms.id }}" type="button" class="btn btn-warning btn-flat">{{ _("Send") }}</button>
                       </span>
                     </div>
                   </form>
