@@ -66,8 +66,7 @@ def chat_room():
 @staff_only()
 def chat_for_staff(chat_room_id):
     # gain the chat data
-    messages = Message.query.filter_by(id=chat_room_id).order_by(Message.timestamp.asc()).all()
-    print(len(messages))
+    messages = Message.query.filter_by(chat_room_id=chat_room_id).order_by(Message.timestamp.asc()).all()
     chat_room = ChatRoom.query.filter_by(id=chat_room_id).first()
     chat_partner_id = chat_room.customer_id
     chat_partner = User.query.filter_by(id=chat_partner_id).first()
@@ -82,9 +81,8 @@ def chat_for_staff(chat_room_id):
 @customer_only()
 def chat_for_customer():
     # gain the chat data
-    print("create")
     messages = Message.query.filter_by(chat_room_id=session['uid']).order_by(Message.timestamp.asc()).all()
-    chat_room = ChatRoom.query.filter_by(id=session['uid']).first()
+    chat_room = ChatRoom.query.filter_by(customer_id=session['uid']).first()
     return render_template("chat/chat_customer.html", username=session['username'], room=session['uid'],
                            messages=messages, role_id=session['role_id'], rooms=chat_room)
 
