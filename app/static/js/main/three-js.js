@@ -25,8 +25,8 @@ $("#close_change_texture_form_btn").on('click', function()
 $("#upload_texture_submit").click(function ()
 {
     let formData = new FormData($('#upload_texture_form')[0]);
-    let model_id = $("#btn-buy-now").attr('model_id')
-    formData.append('model_type_id', model_id)
+    let model_id = $("#btn-buy-now").attr('model_id');
+    formData.append('model_type_id', model_id);
     console.log("formData: " + formData);
     $.ajax({
         type: 'post',
@@ -43,11 +43,11 @@ $("#upload_texture_submit").click(function ()
         if (returnValue === 0)
         {
             let textureAddress = response['textureAddress'];
-            reload_canvas(textureAddress)
+            reload_canvas(textureAddress);
         }
         else if (returnValue === 2)
         {
-            alert(response['msg'])
+            alert(response['msg']);
         }
     });
 });
