@@ -848,6 +848,7 @@ def customize_in_3d():
             db.session.add(cus_history)
         db.session.commit()
 
-        return jsonify({'returnValue': 0})
+        text_address = url_for("static", filename=texture_ref_address)
+        return jsonify({'returnValue': 0, 'textureAddress': text_address})
 
     return jsonify({'returnValue': 1})
