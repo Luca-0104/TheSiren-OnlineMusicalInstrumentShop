@@ -93,7 +93,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Intro pic section -->
+                                <!-- pic section -->
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         {#                                                    <label>Thumbnail *</label>#}
@@ -116,21 +116,21 @@
                                 </div>
 
                                 <!-- Pics section -->
-                                <div class="col-md-12">
-                                    <div class="form-group">
+{#                                <div class="col-md-12">#}
+{#                                    <div class="form-group">#}
                                         {#                                                    <label>Product Pictures *</label>#}
                                         {#                                                    <input type="file" class="form-control image-file" name="pic" accept="image/*" multiple="multiple">#}
-
+{##}
                                         {#    introduction pictures #}
-                                        {{ form.intro_pictures.label() }}
-                                        {{ form.intro_pictures(class='form-control image-file') }}
-
+{#                                        {{ form.intro_pictures.label() }}#}
+{#                                        {{ form.intro_pictures(class='form-control image-file') }}#}
+{##}
                                         {#         adding validation messages#}
-                                        {% for error in form.intro_pictures.errors %}
-                                            <span>[{{ error }}]</span>
-                                        {% endfor %}
-                                    </div>
-                                </div>
+{#                                        {% for error in form.intro_pictures.errors %}#}
+{#                                            <span>[{{ error }}]</span>#}
+{#                                        {% endfor %}#}
+{#                                    </div>#}
+{#                                </div>#}
 
                                 <!-- Description section -->
                                 <div class="col-md-12">
