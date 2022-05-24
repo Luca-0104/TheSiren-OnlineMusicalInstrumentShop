@@ -978,59 +978,432 @@ pm_lst = [
         ]
     ],
 
-# # product 0 ----------------------------------------------------
-#     [
-#         "product-name-test",        # product name
-#         1,                          # brand id
-#         1,                          # cate id - C
-#         7,                          # cate id - T
-#         53,                         # cate id - A
-#         [                           # model type list
-#             # model 1 ----------------------------------------------------------
-#             [
-#                 'model-name-test',          # model name
-#                 'model-description-test',   # m description
-#                 100,                        # m price
-#                 2,                          # kg
-#                 [
-#                     'p1m1-1.png',
-#                     'p1m1-2.png',
-#                     'p1m1-3.png'
-#                 ]
-#             ],
-#             # model 2 ----------------------------------------------------------
-#             # [],
-#             # model 3 ----------------------------------------------------------
-#             # []
-#         ]
-#     ],
-#
-# # product 0 ----------------------------------------------------
-#     [
-#         "product-name-test",        # product name
-#         1,                          # brand id
-#         1,                          # cate id - C
-#         7,                          # cate id - T
-#         53,                         # cate id - A
-#         [                           # model type list
-#             # model 1 ----------------------------------------------------------
-#             [
-#                 'model-name-test',          # model name
-#                 'model-description-test',   # m description
-#                 100,                        # m price
-#                 2,                          # kg
-#                 [
-#                     'p1m1-1.png',
-#                     'p1m1-2.png',
-#                     'p1m1-3.png'
-#                 ]
-#             ],
-#             # model 2 ----------------------------------------------------------
-#             # [],
-#             # model 3 ----------------------------------------------------------
-#             # []
-#         ]
-#     ],
+    # product 30 ----------------------------------------------------
+    [
+        "Bagpipes-2022",        # product name
+        17,                          # brand id
+        3,                          # cate id - C
+        27,                          # cate id - T
+        53,                         # cate id - A
+        [                           # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'Bagpipes-2022',          # model name
+                'We have carefully selected this instrument and it is sure to give you a wonderful musical experience',   # m description
+                20000,                        # m price
+                10,                          # kg
+                [
+                    'l-p30m1-1.png',
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 31 ----------------------------------------------------
+    [
+        "Suona-2022",        # product name
+        17,                          # brand id
+        3,                          # cate id - C
+        28,                          # cate id - T
+        53,                         # cate id - A
+        [                           # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'Suona-2022',          # model name
+                'We have carefully selected this instrument and it is sure to give you a wonderful musical experience',   # m description
+                700,                        # m price
+                1,                          # kg
+                [
+                    'l-p31m1-1.png',
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 32 ----------------------------------------------------
+    [
+        "Sheng-2022",        # product name
+        17,                          # brand id
+        3,                          # cate id - C
+        29,                          # cate id - T
+        53,                         # cate id - A
+        [                           # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'Sheng-2022',          # model name
+                'We have carefully selected this instrument and it is sure to give you a wonderful musical experience',   # m description
+                4500,                        # m price
+                3.5,                          # kg
+                [
+                    'l-p32m1-1.png',
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 33 ----------------------------------------------------
+    [
+        "Besson 1000L",        # product name
+        7,                          # brand id
+        3,                          # cate id - C
+        30,                          # cate id - T
+        53,                         # cate id - A
+        [                           # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'Besson 1000L',          # model name
+                'The Besson 1000L Performance trumpet has all the features that serious students demand. Designed by professional players, this trumpet allows for maximum performance at an unbeatable value. Educators recommend this trumpet with confidence to their students.',   # m description
+                10000,                        # m price
+                4,                          # kg
+                [
+                    'l-p33m1-1.png',
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 34 ----------------------------------------------------
+    [
+        "Xeno YSL-882",        # product name
+        16,                          # brand id
+        3,                          # cate id - C
+        31,                          # cate id - T
+        53,                         # cate id - A
+        [                           # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'Xeno YSL-882',          # model name
+                'model-description-test',   # m description
+                100,                        # m price
+                2,                          # kg
+                [
+                    'p1m1-1.png',
+                    'p1m1-2.png',
+                    'p1m1-3.png'
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 35 ----------------------------------------------------
+    [
+        "YHR-567",        # product name
+        16,                          # brand id
+        3,                          # cate id - C
+        32,                          # cate id - T
+        53,                         # cate id - A
+        [                           # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'YHR-567',          # model name
+                'We have carefully selected this instrument and it is sure to give you a wonderful musical experience',   # m description
+                7000,                        # m price
+                4.5,                          # kg
+                [
+                    'l-p35m1-1.png',
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 36 ----------------------------------------------------
+    [
+        "product-name-test",        # product name
+        16,                          # brand id
+        3,                          # cate id - C
+        33,                          # cate id - T
+        53,                         # cate id - A
+        [                           # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'YBB-321',          # model name
+                'The golden appearance makes the weight less through careful design and reduces the burden on the user',   # m description
+                10000,                        # m price
+                15,                          # kg
+                [
+                    'l-p36m1-1.png',
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 37 ----------------------------------------------------
+    [
+        "YEP-321",        # product name
+        16,                          # brand id
+        3,                          # cate id - C
+        34,                          # cate id - T
+        53,                         # cate id - A
+        [                           # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'YEP-321',          # model name
+                'The golden appearance makes the weight less through careful design and reduces the burden on the user',   # m description
+                10000,                        # m price
+                3,                          # kg
+                [
+                    'l-p37m1-1.png',
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 38 ----------------------------------------------------
+    [
+        "Harmonica-2022",        # product name
+        17,                          # brand id
+        3,                          # cate id - C
+        35,                          # cate id - T
+        53,                         # cate id - A
+        [                           # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'Harmonica-2022',          # model name
+                'The small and delicate body allows you to enjoy music anytime, anywhere',   # m description
+                100,                        # m price
+                0.5,                          # kg
+                [
+                    'l-p38m1-1.png',
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 39 ----------------------------------------------------
+    [
+        "Timpani-2022",        # product name
+        17,                          # brand id
+        4,                          # cate id - C
+        36,                          # cate id - T
+        53,                         # cate id - A
+        [                           # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'Timpani-2022',          # model name
+                'We have carefully selected this instrument and it is sure to give you a wonderful musical experience',   # m description
+                10000,                        # m price
+                15,                          # kg
+                [
+                    'l-p39m1-1.png',
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 40 ----------------------------------------------------
+    [
+        "DHR15",        # product name
+        16,                          # brand id
+        6,                          # cate id - C
+        40,                          # cate id - T
+        54,                         # cate id - A
+        [                           # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'DHR15',          # model name
+                "The DHR15 is a two-way powered speaker with 15” woofer and 1.4” tweeter drivers, ideal for use as a main speaker. The DHR15 combines a 1000W amplifier with a high-efficiency DSP, plus the same plywood construction as Yamaha&#39;s high-end DZR series, for best-in-class sound quality and durability.",   # m description
+                70000,                        # m price
+                5,                          # kg
+                [
+                    'l-p40m1-1.png',
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 41 ----------------------------------------------------
+    [
+        "Jingle-Tap",        # product name
+        10,                          # brand id
+        4,                          # cate id - C
+        42,                          # cate id - T
+        56,                         # cate id - A
+        [                           # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'Jingle-Tap',          # model name
+                'The MEINL Jingle Tap is part of the cajon add-ons that you can mount anywhere with hook and loop fastener to expand the possibilities on your set. The steel jingles will give a nice accent to almost any musical situation.',   # m description
+                100,                        # m price
+                0.2,                          # kg
+                [
+                    'l-p41m1-1.png',
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 42 ----------------------------------------------------
+    [
+        "Tam-Tam-2022",  # product name
+        17,  # brand id
+        4,  # cate id - C
+        41,  # cate id - T
+        53,  # cate id - A
+        [  # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'Tam-Tam-2022',  # model name
+                'We have carefully selected this instrument and it is sure to give you a wonderful musical experience',  # m description
+                1000,  # m price
+                2,  # kg
+                [
+                    'l-p42m1-1.png',
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 43 ----------------------------------------------------
+    [
+        "DRUM CIRCLE HANDPERCUSSION",  # product name
+        10,  # brand id
+        4,  # cate id - C
+        42,  # cate id - T
+        56,  # cate id - A
+        [  # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'DRUM CIRCLE HANDPERCUSSION',  # model name
+                'The Meinl VivaRhythm 8" ABS plastic tambourine features a compact size, extra wide grip, and durable ABS plastic frame. This tambourine is especially usefull outdoors in a drum circle. Equipped with black powder coated stainless steel jingles in a 1 row version that projects a bright, cutting sound. Great for tossing in your gig bag for the next jam session!',  # m description
+                100,  # m price
+                0.5,  # kg
+                [
+                    'l-p43m1-1.png',
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 44 ----------------------------------------------------
+    [
+        "YX-350A",  # product name
+        16,  # brand id
+        4,  # cate id - C
+        43,  # cate id - T
+        53,  # cate id - A
+        [  # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'YX-350A',  # model name
+                'We have carefully selected this instrument and it is sure to give you a wonderful musical experience',  # m description
+                1000,  # m price
+                9,  # kg
+                [
+                    'l-p44m1-1.png',
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 45 ----------------------------------------------------
+    [
+        "YV-2700",  # product name
+        16,  # brand id
+        4,  # cate id - C
+        44,  # cate id - T
+        53,  # cate id - A
+        [  # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'YV-2700',  # model name
+                'We have carefully selected this instrument and it is sure to give you a wonderful musical experience',  # m description
+                10000,  # m price
+                7.5,  # kg
+                [
+                    'l-p45m1-1.png',
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 46 ----------------------------------------------------
+    [
+        "DRUM CIRCLE TIMBAS SERIES",  # product name
+        10,  # brand id
+        4,  # cate id - C
+        45,  # cate id - T
+        53,  # cate id - A
+        [  # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'DRUM CIRCLE TIMBAS SERIES',  # model name
+                'The MEINL VivaRhythm® Boom Series Timba is designed based on the sounds of traditional Samba music. The drum is 100% synthetic for the ultimate drum circle or jam session experience. A pre-tuned synthetic head creates cutting tones with plenty of projection in any setting, indoors our outside. The contoured synthetic shell provides a rich sound and is equipped with a non-slip rubber bottom.',  # m description
+                1000,  # m price
+                3.5,  # kg
+                [
+                    'l-p46m1-1.png',
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
 ]
 
 
