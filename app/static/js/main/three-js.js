@@ -1,7 +1,7 @@
 window.onload = init(undefined);
 
 
-function reload_model(textureAddress){
+function reload_canvas(textureAddress){
     // clear all the already-exist 3D canvas
     $("#webgl-output").empty();
 
