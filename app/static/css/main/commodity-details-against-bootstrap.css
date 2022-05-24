@@ -45,6 +45,10 @@
     color: #fff !important;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 /*
     Other things
 */
