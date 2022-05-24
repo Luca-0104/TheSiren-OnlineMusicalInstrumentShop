@@ -276,12 +276,23 @@
                                     <div class="form-group">
                                         <div class="select-wrapper">
                                             <select id="select-model-type" name="select-type" data-name="field" class="select-field w-select">
-                                                {% for mt in model.product.model_types %}
-                                                    <option value="{{ url_for("main.model_type_details", mt_id=mt.id) }}"
-                                                            {% if mt.id == model.id %}selected="selected"{% endif %}>
-                                                        {{ mt.name }}
-                                                    </option>
-                                                {% endfor %}
+
+                                                <optgroup label="Available Model Types">
+                                                    {% for mt in model.product.model_types %}
+                                                        <option value="{{ url_for("main.model_type_details", mt_id=mt.id) }}"
+                                                                {% if mt.id == model.id %}selected="selected"{% endif %}>
+                                                            {{ mt.name }}
+                                                        </option>
+                                                    {% endfor %}
+                                                </optgroup>
+
+                                                {% if model.three_d_model_address != None and model.three_d_model_address != "" %}
+                                                    <optgroup label="Customize with your own idea">
+                                                        <option value="#modeltype-3d-model">
+                                                            {{ _("Customize the Appearance") }}
+                                                        </option>
+                                                    </optgroup>
+                                                {% endif %}
                                             </select>
                                         </div>
                                     </div>
@@ -828,7 +839,7 @@
                             <td>
                                 <div>
                                     <div class="form-group">
-                                        <label>Texture</label>
+                                        <label>{{ _("Texture (.png only)") }}</label>
                                         <input type="file" name="customized_texture_file" accept="image/png">
                                         <div class="middle submit_btn">
                                             <input class="button bg-primary middle small clickable"
