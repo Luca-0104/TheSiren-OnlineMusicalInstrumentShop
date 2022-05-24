@@ -69,6 +69,7 @@
                             <tr>
                                 <!-- Date -->
                                 <td>
+                                    <span style="display: none">{{ order.out_trade_no }}</span>
                                     {{ order.timestamp }}
                                 </td>
                                 <!-- Customer -->
@@ -383,13 +384,15 @@
                                                                                             {{ order.out_trade_no }}
                                                                                         </td>
                                                                                     </tr>
-                                                                                    <tr>
-                                                                                        <td colspan="2"
-                                                                                            class="order_num">
-                                                                                            {{ _("Payment") }} No.<br>
-                                                                                            {{ order.trade_no }}
-                                                                                        </td>
-                                                                                    </tr>
+                                                                                    {% if order.trade_no %}
+                                                                                        <tr>
+                                                                                            <td colspan="2"
+                                                                                                class="order_num">
+                                                                                                {{ _("Payment") }} No.<br>
+                                                                                                {{ order.trade_no }}
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    {% endif %}
                                                                                     <tr>
                                                                                         <td colspan="2">
                                                                                             {{ order.timestamp }}
