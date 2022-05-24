@@ -30,7 +30,7 @@ $("#upload_texture_submit").click(function ()
     console.log("formData: " + formData);
     $.ajax({
         type: 'post',
-        url: "/api/upload-customization-texture-file", //上传文件的请求路径必须是绝对路劲
+        url: "/api/upload-customization-texture-file",
         data: formData,
         cache: false,
         processData: false,

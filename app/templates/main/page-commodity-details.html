@@ -271,17 +271,29 @@
                                 </div>
 
                                 <!-- Customization Section -->
+                                <a href="#modeltype-3d-model">test</a>
                                 <div>
                                     <h6 class="uppercase-text product-details-heading">{{ _("Customization") }}</h6>
                                     <div class="form-group">
                                         <div class="select-wrapper">
                                             <select id="select-model-type" name="select-type" data-name="field" class="select-field w-select">
-                                                {% for mt in model.product.model_types %}
-                                                    <option value="{{ url_for("main.model_type_details", mt_id=mt.id) }}"
-                                                            {% if mt.id == model.id %}selected="selected"{% endif %}>
-                                                        {{ mt.name }}
-                                                    </option>
-                                                {% endfor %}
+
+                                                <optgroup label="Available Model Types">
+                                                    {% for mt in model.product.model_types %}
+                                                        <option value="{{ url_for("main.model_type_details", mt_id=mt.id) }}"
+                                                                {% if mt.id == model.id %}selected="selected"{% endif %}>
+                                                            {{ mt.name }}
+                                                        </option>
+                                                    {% endfor %}
+                                                </optgroup>
+
+                                                {% if model.three_d_model_address != None and model.three_d_model_address != "" %}
+                                                    <optgroup label="Customize with your own idea">
+                                                        <option value="#modeltype-3d-model">
+                                                            {{ _("Customize the Appearance") }}
+                                                        </option>
+                                                    </optgroup>
+                                                {% endif %}
                                             </select>
                                         </div>
                                     </div>
