@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <form id="uploadForm" method="post" enctype="multipart/form-data">
+            <label>上传电子书</label>
+            <input type="file" name="file">
+            <button id="upload" type="button" name="button">上传</button>
+        </form>
+    </body>
+
+    <script type="text/javascript" src="../../static/js/jquery-3.4.1.js"></script>
+    <script>
+
+        {#let formData = new FormData($('#uploadForm')[0]);#}
+        {#$("#upload").on('click', function (){#}
+        {#    $.post("/api/test-get-file", {#}
+        {#        "formData": formData#}
+        {#    }).done(function (response) {#}
+        {#        // get from server (backend)#}
+        {#        let returnValue = response['returnValue'];#}
+        {##}
+        {#        if (returnValue === 0){#}
+        {##}
+        {#        }#}
+        {##}
+        {#    });#}
+        <!-- ); -->
+
+        $("#upload").click(function () {
+            var formData = new FormData($('#uploadForm')[0]);
+            console.log("formData: " + formData);
+            $.ajax({
+                type: 'post',
+                url: "/api/test-get-file", //上传文件的请求路径必须是绝对路劲
+                data: formData,
+                cache: false,
+                processData: false,
+                contentType: false
+            }).done(function (response) {
+                // get from server (backend)
+                let returnValue = response['returnValue'];
+
+                if (returnValue === 0){
+                    console.log("s!")
+                }
+
+            });
+        });
+
+    </script>
+</html>

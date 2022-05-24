@@ -742,3 +742,25 @@ def switch_epidemic_mode():
         return jsonify({'returnValue': 0})
 
     return jsonify({'returnValue': 1})
+
+
+# customize test
+@main.route("/test-file-upload")
+def render_test_page():
+    return render_template('main/test-upload-file.html')
+
+
+@main.route('/api/test-get-file', methods=['POST'])
+def test_get_file():
+    """
+    (Using Ajax)
+    """
+    if request.method == 'POST':
+        # form_data = request.form.get('formData')
+        form_data = request.files.get('file')
+        print(form_data)
+
+        return jsonify({'returnValue': 0})
+
+    return jsonify({'returnValue': 1})
+
