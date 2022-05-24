@@ -1,3 +1,4 @@
+import os
 import traceback
 
 from flask import render_template, request, redirect, url_for, session, jsonify, flash, json, current_app, abort
@@ -5,11 +6,12 @@ from flask_login import login_required, current_user
 from flask_babel import _
 from sqlalchemy import and_
 
+from config import Config
 from . import main
 from .. import db
 from ..decorators import customer_only, staff_only, login_required_for_ajax
-from ..models import Product, ModelType, Category, Brand, BrowsingHistory, Journal
-from ..public_tools import get_unique_shop_instance
+from ..models import Product, ModelType, Category, Brand, BrowsingHistory, Journal, Customization
+from ..public_tools import get_unique_shop_instance, generate_safe_pic_name
 
 import random
 from datetime import datetime
@@ -745,22 +747,108 @@ def switch_epidemic_mode():
 
 
 # customize test
-@main.route("/test-file-upload")
-def render_test_page():
-    return render_template('main/test-upload-file.html')
+# @main.route("/test-file-upload")
+# def render_test_page():
+#     return render_template('main/test-upload-file.html')
+#
+#
+# @main.route('/api/test-get-file', methods=['POST'])
+# def test_get_file():
+#     """
+#     (Using Ajax)
+#     """
+#     if request.method == 'POST':
+#         # form_data = request.form.get('formData')
+#         form_data = request.files.get('file')
+#         print(form_data)
+#
+#         mt_id = request.form.get('mt_id')
+#         print(mt_id)
+#
+#         return jsonify({'returnValue': 0})
+#
+#     return jsonify({'returnValue': 1})
 
 
-@main.route('/api/test-get-file', methods=['POST'])
-def test_get_file():
+@main.route('/api/upload-customization-texture-file', methods=['POST'])
+@login_required_for_ajax()
+@customer_only(is_ajax=True)
+def customize_in_3d():
     """
     (Using Ajax)
+    Customer can upload their own ideal texture for customizing the model type
     """
     if request.method == 'POST':
-        # form_data = request.form.get('formData')
-        form_data = request.files.get('file')
-        print(form_data)
+        """ 
+            get the model type id 
+        """
+        mt_id = request.form.get('model_type_id')
 
-        return jsonify({'returnValue': 0})
+        if mt_id is None:
+            current_app.logger.error("This model type does not exist!")
+            return jsonify({'returnValue': 1})
+
+        try:
+            mt_id = int(mt_id)
+        except Exception as e:
+            current_app.logger.error(e)
+            return jsonify({'returnValue': 1})
+
+        # get the model type from db
+        mt = ModelType.query.get(mt_id)
+
+        if mt is None:
+            current_app.logger.error("No such model type with this id!")
+            return jsonify({'returnValue': 1})
+
+        """ 
+            get the customized texture file 
+        """
+        customized_tex_file = request.files.get('customized_texture_file')
+
+        if customized_tex_file is None:
+            current_app.logger.error("No texture uploaded!")
+            return jsonify({'returnValue': 1})
+
+        texture_filename = customized_tex_file.filename
+        suffix = texture_filename.rsplit('.')[-1]
+
+        # check the file type
+        if suffix not in Config.ALLOWED_3D_MODEL_TEXTURE_SUFFIXES:
+            current_app.logger.error("3d texture file type error!")
+            # rollback the db
+            db.session.rollback()
+            return jsonify({'returnValue': 2, 'msg': "Failed! You should use '.png' file only."})  # alert suffix error!
+
+        # make sure the name of 3d texture file is safe
+        texture_filename = generate_safe_pic_name(texture_filename)
+
+        # save 3d texture file in local directory
+        texture_file_path = os.path.join(Config.threeD_customize_texture_dir, texture_filename).replace('\\', '/')
+        customized_tex_file.save(texture_file_path)
+
+        # save the reference in database
+        t_path = 'upload/model_type/customization-textures'
+        texture_ref_address = os.path.join(t_path, texture_filename).replace('\\', '/')
+
+        """ 
+            record into database 
+        """
+        # check if the current user has the previous customization history with this model type
+        cus_history = Customization.query.filter_by(customer_id=current_user.id, model_type_id=mt.id).first()
+
+        # does not have history with this model type
+        if cus_history is None:
+            new_customization = Customization(customer_id=current_user.id, model_type_id=mt.id, texture_address=texture_ref_address)
+            db.session.add(new_customization)
+        else:
+            # has history customization
+            # change the texture of this history customization
+            cus_history.texture_address = texture_ref_address
+            db.session.add(cus_history)
+        db.session.commit()
+
+        text_address = url_for("static", filename=texture_ref_address)
+        return jsonify({'returnValue': 0, 'textureAddress': text_address})
 
     return jsonify({'returnValue': 1})
-
