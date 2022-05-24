@@ -44,6 +44,14 @@ $("#upload_texture_submit").click(function ()
         {
             let textureAddress = response['textureAddress'];
             reload_canvas(textureAddress);
+
+            let blocker = $("#detail_blocker");
+            let change_texture_form = $("#change_texture_form");
+            if(blocker.css("display")!='none')
+            {
+                blocker.css('display','none');
+                change_texture_form.css('display','none');
+            }
         }
         else if (returnValue === 2)
         {
