@@ -1,6 +1,16 @@
-window.onload = init;
+window.onload = init(undefined);
 
-function init()
+
+function reload_model(textureAddress){
+    // clear all the already-exist 3D canvas
+    $("#webgl-output").empty();
+
+    // init a new 3D model canvas
+    init(textureAddress);
+}
+
+
+function init(textureAddress)
 {
     // create background
     var scene = new THREE.Scene();
@@ -72,7 +82,11 @@ function init()
     //     scene.add(obj);
     // });
 
-    let textureAddress = $("#modeltype-3d-model").attr("model-texture-address");
+    // get the default texture without customization
+    if (textureAddress === undefined){
+        textureAddress = $("#modeltype-3d-model").attr("model-texture-address");
+    }
+
     let texturePlant = new THREE.TextureLoader().load(textureAddress);//模型贴图
     console.log("texture");
     console.log(texturePlant);
