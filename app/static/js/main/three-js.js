@@ -1,5 +1,56 @@
 window.onload = init(undefined);
 
+$("#customize-texture-btn").on('click', function()
+{
+    let blocker = $("#detail_blocker");
+    let change_texture_form = $("#change_texture_form");
+    if(blocker.css("display")=='none')
+    {
+        blocker.css('display','');
+        change_texture_form.css('display','');
+    }
+});
+
+$("#close_change_texture_form_btn").on('click', function()
+{
+    let blocker = $("#detail_blocker");
+    let change_texture_form = $("#change_texture_form");
+    if(blocker.css("display")!='none')
+    {
+        blocker.css('display','none');
+        change_texture_form.css('display','none');
+    }
+});
+
+$("#upload_texture_submit").click(function ()
+{
+    let formData = new FormData($('#upload_texture_form')[0]);
+    let model_id = $("#btn-buy-now").attr('model_id')
+    formData.append('model_type_id', model_id)
+    console.log("formData: " + formData);
+    $.ajax({
+        type: 'post',
+        url: "/api/upload-customization-texture-file", //上传文件的请求路径必须是绝对路劲
+        data: formData,
+        cache: false,
+        processData: false,
+        contentType: false
+    }).done(function (response)
+    {
+        // get from server (backend)
+        let returnValue = response['returnValue'];
+
+        if (returnValue === 0)
+        {
+            let textureAddress = response['textureAddress'];
+            reload_canvas(textureAddress)
+        }
+        else if (returnValue === 2)
+        {
+            alert(response['msg'])
+        }
+    });
+});
 
 function reload_canvas(textureAddress){
     // clear all the already-exist 3D canvas
@@ -8,7 +59,6 @@ function reload_canvas(textureAddress){
     // init a new 3D model canvas
     init(textureAddress);
 }
-
 
 function init(textureAddress)
 {
