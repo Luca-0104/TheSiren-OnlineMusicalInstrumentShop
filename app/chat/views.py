@@ -75,7 +75,7 @@ def chat_for_staff(chat_room_id):
                            messages=messages, role_id=session['role_id'], chat_partner_name=chat_partner_name)
 
 
-# this route id used by user account
+# this route is used by user account
 @chat.route('/chat', methods=['GET', 'POST'])
 @login_required
 @customer_only()
@@ -83,16 +83,33 @@ def chat_for_customer():
     # gain the chat data
     messages = Message.query.filter_by(chat_room_id=session['uid']).order_by(Message.timestamp.asc()).all()
     chat_room = ChatRoom.query.filter_by(customer_id=session['uid']).first()
-    test({'msg': 'iaweflakwhefl', 'room': chat_room.id})
     return render_template("chat/chat_customer.html", username=session['username'], room=session['uid'],
                            messages=messages, role_id=session['role_id'], rooms=chat_room)
 
 
-@socketio.on('test')
-def test(data):
-    print(data)
-    send({'msg': data['msg']}
-         , room=str(data['room']))
+# this route is used by user account
+@chat.route('/chat', methods=['GET', 'POST'])
+@login_required
+@customer_only()
+def chat_for_customer_consult():
+    # gain the chat data
+    messages = Message.query.filter_by(chat_room_id=session['uid']).order_by(Message.timestamp.asc()).all()
+    chat_room = ChatRoom.query.filter_by(customer_id=session['uid']).first()
+    return render_template("chat/chat_customer.html", username=session['username'], room=session['uid'],
+                           messages=messages, role_id=session['role_id'], rooms=chat_room)
+
+
+# this route is used by user account
+@chat.route('/chat', methods=['GET', 'POST'])
+@login_required
+@customer_only()
+def chat_for_customer_after_sales():
+    # gain the chat data
+    messages = Message.query.filter_by(chat_room_id=session['uid']).order_by(Message.timestamp.asc()).all()
+    chat_room = ChatRoom.query.filter_by(customer_id=session['uid']).first()
+    return render_template("chat/chat_customer.html", username=session['username'], room=session['uid'],
+                           messages=messages, role_id=session['role_id'], rooms=chat_room)
+
 
 
 @socketio.on('message')

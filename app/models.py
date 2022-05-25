@@ -427,7 +427,7 @@ class Message(BaseModel):
     author_type = db.Column(db.String(12), nullable=False)
     # The type of this piece of information
     # possible values: "normal", "refund", "enquiry"...
-    chat_type = db.Column(db.String(12), default='normal')
+    chat_type = db.Column(db.String(12), default='normal')  # 'normal', 'consult', 'after-sale'
     # Which chatting room this message belongs to
     chat_room_id = db.Column(db.Integer, db.ForeignKey('chat_rooms.id'))
 
