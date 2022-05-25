@@ -55,6 +55,7 @@ def chat_room():
             # current user is staff
         elif session["role_id"] == 2:
             rooms = ChatRoom.query.filter_by(staff_id=session['uid']).all()
+            rec_preference_pro = ModelType.query.filter_by(is_deleted=False).order_by(ModelType.views.desc()).first()
             return render_template('chat/chat_staff.html', rooms=rooms)
 
     return render_template('main/index_new.html')
@@ -71,8 +72,9 @@ def chat_for_staff(chat_room_id):
     chat_partner_id = chat_room.customer_id
     chat_partner = User.query.filter_by(id=chat_partner_id).first()
     chat_partner_name = chat_partner.username
+    rec_preference_pro = ModelType.query.filter_by(is_deleted=False).order_by(ModelType.views.desc()).first()
     return render_template("chat/chat_staff.html", username="staff", room=chat_room_id,
-                           messages=messages, role_id=session['role_id'], chat_partner_name=chat_partner_name)
+                           messages=messages, role_id=session['role_id'], chat_partner_name=chat_partner_name, rec_preference_pro=rec_preference_pro)
 
 
 # this route is used by user account
