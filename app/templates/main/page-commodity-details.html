@@ -159,7 +159,7 @@
                                 <div class="w-dyn-list">
                                     <div role="list" class="w-dyn-items">
                                         <div role="listitem" class="w-dyn-item">
-                                            <a href="{{ url_for("main.brand_intro", brand_id=model.product.brand.id) }}">{{ model.product.brand.name }}</a>
+                                            <a href="#model-details-brand-section">{{ model.product.brand.name }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -621,7 +621,7 @@
             {% endif %}
 
             {# about this brand #}
-            <div class="section bg-primary-dark wf-section">
+            <div class="section bg-primary-dark wf-section" id="model-details-brand-section">
                 <div class="main-container">
                     <div class="w-layout-grid grid-halves">
                         <div class="container">
