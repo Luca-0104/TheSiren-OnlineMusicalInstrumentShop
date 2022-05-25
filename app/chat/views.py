@@ -250,12 +250,16 @@ def auto_msg_consult(data):
     model_type = ModelType.query.get(model_type_id)
 
     # change the time from utc to local
+    utc_zone = tz.tzutc()
+    local_zone = tz.tzlocal()
+    utc_dt = new_msg.timestamp.replace(tzinfo=utc_zone)
+    local_time = utc_dt.astimezone(local_zone)
 
     # auto send msg - model_type info
     emit('auto-msg-consult',
          {
              'username': customer_username,
-             'time_stamp': new_msg.timestamp,
+             'time_stamp': local_time.strftime('%H:%M:%S'),
              'avatar': customer_avatar,
              'mt_name': model_type.name,
              'mt_price': model_type.price,
@@ -285,12 +289,16 @@ def auto_msg_after_sale(data):
     order = Order.query.get(order_id)
 
     # change the time from utc to local
+    utc_zone = tz.tzutc()
+    local_zone = tz.tzlocal()
+    utc_dt = new_msg.timestamp.replace(tzinfo=utc_zone)
+    local_time = utc_dt.astimezone(local_zone)
 
     # auto send msg
     emit('auto-msg-after-sale',
          {
              'username': customer_username,
-             'time_stamp': new_msg.timestamp,
+             'time_stamp': local_time.strftime('%H:%M:%S'),
              'avatar': customer_avatar,
              'order_out_trade_no': order.out_trade_no,
              'order_url': url_for("order.after_sale_order", order_id=order_id)
