@@ -308,14 +308,19 @@ body {
     height: 60vh;
 }
 
+.clickable{
+    cursor: pointer;
+}
+
 .commodity-table{
+    width: 100%;
     border-collapse: separate;
     border-spacing: 10px;
     text-align: center;
 }
 
 .commodity-image-cell{
-    width: 50%;
+    width: 30%;
 }
 
 .img_container{
@@ -323,4 +328,80 @@ body {
 }
 
 .commodity-info-cell{
+    max-width: 250px;
+    border-left: 1px solid #00000021;
+}
+
+.empty-cell1{
+    width: 3%;
+}
+
+.empty-cell2{
+    width: 10%;
+}
+
+.empty-cell3{
+    width: 20%;
+}
+
+.box-product-info-card{
+    color: #00000094;
+    font-weight: 1000;
+}
+
+.my-price-container{
+    margin: 10px;
+}
+
+.commodity-price{
+    color: #fff;
+    font-size: 25px;
+}
+
+.my-product-name-container{
+    margin: 10px;
+}
+
+.commodity-name{
+    color: #fff;
+    font-size: 25px;
+}
+
+.title-cell{
+    text-align: left;
+}
+
+.order-table{
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 10px;
+    text-align: center;
+}
+
+.order-title{
+    color: #fff;
+    font-size: 25px;
+}
+
+.order-id{
+    color: #00000094;
+    font-weight: 1000;
+}
+
+.notify-cell{
+    text-align: center;
+}
+
+.click-notify{
+    color: #000;
+    font-weight: 500;
+    transition: 0.25s;
+}
+
+.commodity-table:hover .click-notify{
+	color:#fff;
+}
+
+.order-table:hover .click-notify{
+	color:#fff;
 }
