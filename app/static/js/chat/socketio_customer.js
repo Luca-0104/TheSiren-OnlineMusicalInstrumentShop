@@ -68,10 +68,18 @@ document.addEventListener('DOMContentLoaded', () => {
             printConnMsg(staffName + " is connected to you");
             // determine whether need to send the automatic message
             if(entranceType === 'consult'){
-                socket.emit('auto-msg-consult', {'room' : chatroom_id, 'model_type_id': modelTypeId});
+                /* send 2 auto msg, a plaintext and a model_type info */
+                // send plaintext
+                socket.send({'msg': "Hi, I want to consult about the following instrument:", 'username': username, 'room': chatroom_id, 'avatar': avatar });
+                // send model_type info
+                socket.emit('auto-msg-consult', {'room' : chatroom_id, 'model_type_id': modelTypeId, 'username': username, 'avatar': avatar});
 
             }else if (entranceType === 'after-sale'){
-                socket.emit('auto-msg-after-sale', {'room' : chatroom_id, 'order_id': orderId});
+                /* send 2 auto msg, a plaintext and a order info */
+                // send plaintext
+                socket.send({'msg': "Hi, I want to ask for the after-sale service, my order is shown below:", 'username': username, 'room': chatroom_id, 'avatar': avatar });
+                // send order info
+                socket.emit('auto-msg-after-sale', {'room' : chatroom_id, 'order_id': orderId, 'username': username, 'avatar': avatar});
 
             }
         }

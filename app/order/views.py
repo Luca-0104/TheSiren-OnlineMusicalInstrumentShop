@@ -720,3 +720,30 @@ def update_priority():
         return jsonify({"returnValue": 0})
 
     return jsonify({"returnValue": 1})
+
+
+# -------------------------------------------- after-sale msg order page render --------------------------------------------
+
+@order.route('/after-sale-order/<int:order_id>')
+@login_required
+def after_sale_order(order_id):
+    """
+        This function determine render which template by the role of current user.
+        if customer, render "my order details" page,
+        if staff, render "order management (listing)" page with only a single row of order.
+    """
+    # customer
+    if current_user.role_id == 1:
+
+        return redirect(url_for("order.order_details", order_id=order_id))
+
+    # staff
+    elif current_user.role_id == 2:
+
+        # get whether the epidemic mode is turned on currently
+        epidemic_mode_on = get_epidemic_mode_status()
+
+        # get that single order in the list
+        order_lst = Order.query.filter_by(id=order_id)
+
+        return render_template('staff/page-list-orders.html', order_lst=order_lst, epidemic_mode_on=epidemic_mode_on)
