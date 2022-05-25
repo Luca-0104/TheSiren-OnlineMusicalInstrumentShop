@@ -293,3 +293,17 @@ body {
     background-color: #f0ad4e;
     border-color: #eea236;
 }
+
+.navbar{
+    margin-bottom: 0px;
+}
+
+.middle-box{
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
+
+#chat-window{
+    height: 60vh;
+}
