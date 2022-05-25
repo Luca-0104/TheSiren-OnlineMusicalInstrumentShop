@@ -649,7 +649,7 @@ pm_lst = [
         "Yanaha MONTAGE8 Synthesizer",  # product name
         16,  # brand id
         5,  # cate id - C
-        7,  # cate id - T
+        50,  # cate id - T
         54,  # cate id - A
         [  # model type list
             # model 1 ----------------------------------------------------------
