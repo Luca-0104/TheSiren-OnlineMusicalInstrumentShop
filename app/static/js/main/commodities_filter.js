@@ -417,7 +417,7 @@ function put_data(mt)
         + '<div class="uppercase-text brand brand-row">' + brandName + '</div>'
         + '<h5 class="no-bottom-margin">' + mtName + '</h5>'
         + '<div class="price-container">'
-        + '<div class="old-price"><span>$</span>' + mtPrice + '</div>'
+        + '<div class="old-price"><span>$</span>' + (mtPrice*2) + '</div>'
         + '<div><span>$</span>' + mtPrice + '</div>'
         + '</div>'
         + '</a>'

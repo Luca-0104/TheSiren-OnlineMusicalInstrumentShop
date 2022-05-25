@@ -649,7 +649,7 @@ pm_lst = [
         "Yanaha MONTAGE8 Synthesizer",  # product name
         16,  # brand id
         5,  # cate id - C
-        7,  # cate id - T
+        50,  # cate id - T
         54,  # cate id - A
         [  # model type list
             # model 1 ----------------------------------------------------------
@@ -674,7 +674,7 @@ pm_lst = [
     [
         "Roland SPD-SX Special Edition LaunchPad",  # product name
         17,  # brand id
-        4,  # cate id - C
+        5,  # cate id - C
         48,  # cate id - T
         54,  # cate id - A
         [  # model type list
