@@ -253,40 +253,48 @@
                                     </label>
                                     <label class="checkbox-labels">
                                         <input id="check_type_40" name="t39" type="checkbox" class="checkbox type">
-                                        {{ _("Drum Kit")}}
-                                    </label>
-                                    <label class="checkbox-labels">
-                                        <input id="check_type_41" name="t40" type="checkbox" class="checkbox type">
+{#                                        {{ _("Drum Kit")}}#}
                                         {{ _("Other Percussion")}}
                                     </label>
                                     <label class="checkbox-labels">
-                                        <input id="check_type_42" name="t41" type="checkbox" class="checkbox type">
+                                        <input id="check_type_41" name="t40" type="checkbox" class="checkbox type">
+{#                                        {{ _("Other Percussion")}}#}
                                         {{ _("Piano") }}
                                     </label>
                                     <label class="checkbox-labels">
-                                        <input id="check_type_43" name="t42" type="checkbox" class="checkbox type">
+                                        <input id="check_type_42" name="t41" type="checkbox" class="checkbox type">
+{#                                        {{ _("Piano") }}#}
                                         {{ _("Accordion") }}
                                     </label>
                                     <label class="checkbox-labels">
-                                        <input id="check_type_44" name="t43" type="checkbox" class="checkbox type">
+                                        <input id="check_type_43" name="t42" type="checkbox" class="checkbox type">
+{#                                        {{ _("Accordion") }}#}
                                         {{ _("Launchpad") }}
                                     </label>
                                     <label class="checkbox-labels">
-                                        <input id="check_type_45" name="t44" type="checkbox" class="checkbox type">
+                                        <input id="check_type_44" name="t43" type="checkbox" class="checkbox type">
+{#                                        {{ _("Launchpad") }}#}
                                         {{ _("Effects") }}
                                     </label>
                                     <label class="checkbox-labels">
-                                        <input id="check_type_46" name="t45" type="checkbox" class="checkbox type">
+                                        <input id="check_type_45" name="t44" type="checkbox" class="checkbox type">
+{#                                        {{ _("Effects") }}#}
                                         {{ _("Synthesizer") }}
                                     </label>
                                     <label class="checkbox-labels">
-                                        <input id="check_type_47" name="t46" type="checkbox" class="checkbox type">
+                                        <input id="check_type_46" name="t45" type="checkbox" class="checkbox type">
+{#                                        {{ _("Synthesizer") }}#}
                                         {{ _("Microphone") }}
                                     </label>
                                     <label class="checkbox-labels">
-                                        <input id="check_type_48" name="t47" type="checkbox" class="checkbox type">
+                                        <input id="check_type_47" name="t46" type="checkbox" class="checkbox type">
+{#                                        {{ _("Microphone") }}#}
                                         {{ _("Monitor Headphone")}}
                                     </label>
+{#                                    <label class="checkbox-labels">#}
+{#                                        <input id="check_type_48" name="t47" type="checkbox" class="checkbox type">#}
+{#                                        {{ _("Monitor Headphone")}}#}
+{#                                    </label>#}
 
                                 </div>
 
@@ -441,24 +449,22 @@
                             {% endfor %}
                         </div>
 
-                        {# when there is no model found #}
-                        {% if mt_list | length == 0 %}
-                            <div class="empty-state w-dyn-empty">
-                                <div>There are no published Products yet.</div>
-                            </div>
-                        {% endif %}
-
-                        <div role="navigation" aria-label="List" class="w-pagination-wrapper pagination">
-                            <a href="#" aria-label="Previous Page" class="w-pagination-previous button small"><img
-                                    src="images/icon-caret-right.svg" loading="lazy" alt=""
-                                    class="pagination-arrow left">
-                                <div class="w-inline-block">{{ _("Previous") }}</div>
-                            </a>
-                            <a href="#" aria-label="Next Page" class="w-pagination-next button small">
-                                <div class="w-inline-block">{{ _("Next") }}</div>
-                                <img src="images/icon-caret-right.svg" loading="lazy" alt="" class="pagination-arrow">
-                            </a>
+                        <!-- when there is no model found -->
+                        <div id="empty-notify-box" class="empty-state w-dyn-empty" {% if mt_list | length != 0 %} style="display: none" {% endif %}>
+                            <div id="empty-notify-msg">There are no published commodities yet.</div>
                         </div>
+
+{#                        <div role="navigation" aria-label="List" class="w-pagination-wrapper pagination">#}
+{#                            <a href="#" aria-label="Previous Page" class="w-pagination-previous button small"><img#}
+{#                                    src="images/icon-caret-right.svg" loading="lazy" alt=""#}
+{#                                    class="pagination-arrow left">#}
+{#                                <div class="w-inline-block">{{ _("Previous") }}</div>#}
+{#                            </a>#}
+{#                            <a href="#" aria-label="Next Page" class="w-pagination-next button small">#}
+{#                                <div class="w-inline-block">{{ _("Next") }}</div>#}
+{#                                <img src="images/icon-caret-right.svg" loading="lazy" alt="" class="pagination-arrow">#}
+{#                            </a>#}
+{#                        </div>#}
                     </div>
                 </div>
             </div>

@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // simulate the "send" button clicking event
             $("#send-message-" + roomId).click();
         }
-
     });
 
 });

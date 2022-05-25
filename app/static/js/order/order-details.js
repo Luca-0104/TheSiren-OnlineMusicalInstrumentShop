@@ -68,14 +68,21 @@ $("#update-type-btn").on("click", function()
     if(aimType==='Delivery')
     {
         console.log("change to delivery");
-        let addressId = $("#modify_type_form").attr("addressId");
-        update_to_delivery(orderId, addressId);
+        let addressId = $.trim($("#modify_type_form").attr("addressId"));
+        if(addressId != "" && addressId != undefined && addressId != null)
+        {
+            update_to_delivery(orderId, addressId);
+        }
+        else
+        {
+            alert("Address must not be empty");
+        }
     }
     else if(aimType==='Self-Collection')
     {
         console.log("change to self-Collection");
-        let recipient_field_1_name = $("#recipient-field-1-name").val();
-        let recipient_field_1_phone = $("#recipient-field-1-phone").val();
+        let recipient_field_1_name = $.trim($("#recipient-field-1-name").val());
+        let recipient_field_1_phone = $.trim($("#recipient-field-1-phone").val());
         if(recipient_field_1_name == '' || recipient_field_1_name == undefined || recipient_field_1_name == null)
         {
             alert("The recipient Name can not be empty.")
@@ -190,15 +197,33 @@ $("#update-ar-btn").on("click", function()
     if(current_type==="delivery")
     {
         console.log("type delivery");
-        let addressId = $("#modify_ar_form").attr("addressId");
-        update_order_address(orderId, addressId);
+        let addressId = $.trim($("#modify_ar_form").attr("addressId"));
+        if(addressId != "" && addressId != undefined && addressId != null)
+        {
+            update_order_address(orderId, addressId);
+        }
+        else
+        {
+            alert("Address must not be empty");
+        }
     }
     else if(current_type==="self-collection")
     {
         console.log("type self-Collection");
-        let recipient_field_2_name = $("#recipient-field-2-name").val();
-        let recipient_field_2_phone = $("#recipient-field-2-phone").val();
-        update_order_recipient(orderId, recipient_field_2_name, recipient_field_2_phone);
+        let recipient_field_2_name = $.trim($("#recipient-field-2-name").val());
+        let recipient_field_2_phone = $.trim($("#recipient-field-2-phone").val());
+        if(recipient_field_2_name == '' || recipient_field_2_name == undefined || recipient_field_2_name == null)
+        {
+            alert("The recipient Name can not be empty.")
+        }
+        else if(recipient_field_2_phone == '' || recipient_field_2_phone == undefined || recipient_field_2_phone == null)
+        {
+            alert("The recipient Phone can not be empty.")
+        }
+        else
+        {
+            update_order_recipient(orderId, recipient_field_2_name, recipient_field_2_phone);
+        }
     }
 });
 
