@@ -426,8 +426,8 @@ class Message(BaseModel):
     # only 2 possible values, 'customer' and 'staff'
     author_type = db.Column(db.String(12), nullable=False)
     # The type of this piece of information
-    # possible values: "normal", "refund", "enquiry"...
-    chat_type = db.Column(db.String(12), default='normal')  # 'normal', 'consult', 'after-sale'
+    # possible values: 'normal', 'consult', 'after-sale'
+    chat_type = db.Column(db.String(12), default='normal')
     # Which chatting room this message belongs to
     chat_room_id = db.Column(db.Integer, db.ForeignKey('chat_rooms.id'))
 
@@ -603,24 +603,27 @@ class Order(BaseModel):
         if self.user.is_premium:
             fee = 0
         else:
-            # calculate the total weight in order
-            total_weight = 0
-            for omt in self.order_model_types:
-                total_weight += omt.model_type.weight * omt.count
+            if self.order_type == "delivery":
+                # calculate the total weight in order
+                total_weight = 0
+                for omt in self.order_model_types:
+                    total_weight += omt.model_type.weight * omt.count
 
-            # less than 1 kg, is the base fee of 9 RMB
-            if total_weight < 1:
-                fee = 9
+                # less than 1 kg, is the base fee of 9 RMB
+                if total_weight < 1:
+                    fee = 9
+                else:
+                    # calculate the extra fee
+                    total_weight -= 1
+                    # The weight is up rounded. e.g. 2.x kg -> 3.0 kg (x > 0)
+                    if total_weight > (total_weight // 1):
+                        total_weight = (total_weight // 1) + 1
+                    # fee = base + extra
+                    fee = 9 + (total_weight * 2)
+                    if fee > 200:
+                        fee = 200
             else:
-                # calculate the extra fee
-                total_weight -= 1
-                # The weight is up rounded. e.g. 2.x kg -> 3.0 kg (x > 0)
-                if total_weight > (total_weight // 1):
-                    total_weight = (total_weight // 1) + 1
-                # fee = base + extra
-                fee = 9 + (total_weight * 2)
-                if fee > 200:
-                    fee = 200
+                fee = 0
 
         # write delivery_fee into db
         self.delivery_fee = fee
