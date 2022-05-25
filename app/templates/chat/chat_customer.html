@@ -109,6 +109,17 @@
         let username = '{{ current_user.username }}';
         let avatar = '{{ current_user.avatar }}';
         let staffName = '{{ rooms.staff.username }}';
+        let entranceType = '{{ entrance_type }}';
+
+        {% if entrance_type == 'consult' %}
+
+            let modelTypeId = {{ model_type_id }};
+
+        {% elif entrance_type == 'after-sale' %}
+
+            let orderId = {{ order_id }};
+
+        {% endif %}
     </script>
     <!--Customer Chat socket-->
     <script type="text/javascript" src="../../static/js/chat/socketio_customer.js"></script>

@@ -113,8 +113,29 @@ document.addEventListener('DOMContentLoaded', () => {
             // we put the system notification below this one
             // put notification of which staff is connected to you
             printConnMsg(staffName + " is connected to you");
+
+            // determine whether need to send the automatic message
+            if(entranceType === 'consult'){
+                socket.emit('auto-msg-consult', {'room' : chatroom_id, 'model_type_id': modelTypeId});
+
+            }else if (entranceType === 'after-sale'){
+                socket.emit('auto-msg-after-sale', {'room' : chatroom_id, 'order_id': orderId});
+
+            }
         }
     });
+
+
+    // put up the auto sent msg - consult
+    socket.on('auto-msg-consult', data => {
+
+    });
+
+    // put up the auto sent msg - after-sale
+    socket.on('auto-msg-after-sale', data => {
+
+    });
+
 
     // Send message
    $('#send-message-' + chatroom_id).on("click", function(){
