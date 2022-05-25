@@ -415,6 +415,236 @@ pm_lst = [
             # []
         ]
     ],
+
+    # product 12 ----------------------------------------------------
+    [
+        "Lyon&Healy PREMIUM STYLE 26 GOLD Harp",  # product name
+        17,  # brand id
+        1,  # cate id - C
+        14,  # cate id - T
+        53,  # cate id - A
+        [  # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'Lyon&Healy PREMIUM STYLE 26 GOLD Harp',  # model name
+                'A stately harp designed by Lyon & Healy in the late 1800s, the Style 26 integrates nineteenth century Gothic revival styles with Renaissance detail. The harp is hand-gilded with 23+ karat gold leaf and burnished to feature the dimension of the relief and the hexagonal column. The hand-painted soundboard decoration using 23+ karat gold leaf features intricate brush strokes that climb up the length of the soundboard, interlaced with rose blooms.',  # m description
+                158790,  # m price
+                37,  # kg
+                [
+                    'g-p12m1-1.jpg'
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 13 ----------------------------------------------------
+    [
+        "HuQiu Special selection of old mahogany professional Erhu",  # product name
+        17,  # brand id
+        1,  # cate id - C
+        15,  # cate id - T
+        53,  # cate id - A
+        [  # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'HuQiu Special selection of old mahogany professional Erhu',  # model name
+                'Stage performance special erhu, a full set of accessories as gift',  # m description
+                12800,  # m price
+                1.2,  # kg
+                [
+                    'g-p13m1-1.jpg',
+
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 14 ----------------------------------------------------
+    [
+        "HuQiu 21 string red Phoenix Guzheng",  # product name
+        17,  # brand id
+        1,  # cate id - C
+        16,  # cate id - T
+        53,  # cate id - A
+        [  # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'HuQiu 21 string red Phoenix Guzheng',  # model name
+                'Beginner, performance, entertainment professional Guzheng, buy and get a full set of accessories for free',  # m description
+                12600,  # m price
+                4.5,  # kg
+                [
+                    'g-p14m1-1.jpg'
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 15 ----------------------------------------------------
+    [
+        "Dunhuang Guqin (senior) (Aged broken grain wood)",  # product name
+        17,  # brand id
+        1,  # cate id - C
+        17,  # cate id - T
+        53,  # cate id - A
+        [  # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'Dunhuang Guqin (senior) (Aged broken grain wood)',  # model name
+                'Dunhuang Guqin (senior) (Aged broken grain wood)',  # m description
+                15900,  # m price
+                3.5,  # kg
+                [
+                    'g-p15m1-1.jpg'
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 16 ----------------------------------------------------
+    [
+        "Huqiu White acid branch wax professional lute",  # product name
+        17,  # brand id
+        1,  # cate id - C
+        18,  # cate id - T
+        53,  # cate id - A
+        [  # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'White acid branch wax professional lute',  # model name
+                'Pure sound quality, aesthetic appearance, boutique customization',  # m description
+                44500,  # m price
+                2.5,  # kg
+                [
+                    'g-p16m1-1.jpg'
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 17 ----------------------------------------------------
+    [
+        "Yamaha 900/800 Series Handmade Flutes",  # product name
+        16,  # brand id
+        2,  # cate id - C
+        19,  # cate id - T
+        53,  # cate id - A
+        [  # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'Yamaha 900/800 Series Handmade Flutes',  # model name
+                'Inspired to start afresh, we went back to a clean slate applying all of the knowledge, advancements, and skills we’ve obtained over the last two decades crafting some of the finest handmade flutes available today into the design of an entirely new line of handmade instruments. Focusing on innovation, we’ve created some instruments that change the image of the handmade flute significantly. They offer tone with charm and depth, and a wide dynamic range that allows performers to play with a wide range of expression and the tone and volume flutists have long desired. Top-of-the-line handmade gold flutes offer a rich, deep tone with outstanding presence in orchestral settings. Highly responsive with a wide dynamic range that spans from rich, sensitive pianissimo to highly resonant fortissimo they allow the flautist to discover new limits of musical expression. From the finest details to their overall design, every part, process, and component on these handmade silver flutes is designed to function in harmony with the rest.',  # m description
+                35900,  # m price
+                1.3,  # kg
+                [
+                    'g-p17m1-1.png'
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 18 ----------------------------------------------------
+    [
+        "Yamaha YCL-CSVR-ASP/CSVRA-ASP Clarinet",  # product name
+        16,  # brand id
+        2,  # cate id - C
+        20,  # cate id - T
+        53,  # cate id - A
+        [  # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'Yamaha YCL-CSVR-ASP/CSVRA-ASP Clarinet',  # model name
+                'The Custom CSVR clarinets were specifically designed with the input of professional clarinet educators. This led to a complete revitalization of Yamaha clarinets seen with the SEVR, CSGIII, and now the CSVR-ASP clarinets. The Atelier Special clarinet gives players an exacting level of consistency and quality for the most nuance control and performance, with a darker and more projecting tone than that of the original CSVR.',  # m description
+                15800,  # m price
+                1.2,  # kg
+                [
+                    'g-p18m1-1.png'
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 19 ----------------------------------------------------
+    [
+        "Yamaha YOB-841L Oboe",  # product name
+        16,  # brand id
+        2,  # cate id - C
+        21,  # cate id - T
+        53,  # cate id - A
+        [  # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'Yamaha YOB-841L Oboe',  # model name
+                "Yamaha oboes achieve a clear sound quality and superb intonation by dramatically improving the precision and stability of the bore. Also to cope with various durability issues inherent in wooden wind instruments, Duet+ models employ innovative techniques to form a protective layer next to the air column. The combination of precious wood and state-of -the-art resin is not simply a 'Duet' of tradition and technology - it's a 'Plus' advantage indeed!",  # m description
+                18900,  # m price
+                1.2,  # kg
+                [
+                    'g-p19m1-1.jpg'
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+
+    # product 20 ----------------------------------------------------
+    [
+        "product-name-test",  # product name
+        1,  # brand id
+        1,  # cate id - C
+        7,  # cate id - T
+        53,  # cate id - A
+        [  # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'model-name-test',  # model name
+                'model-description-test',  # m description
+                100,  # m price
+                2,  # kg
+                [
+                    'p1m1-1.png',
+                    'p1m1-2.png',
+                    'p1m1-3.png'
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
     #
     # # product 10 ----------------------------------------------------
     # [
@@ -442,6 +672,7 @@ pm_lst = [
     #         # []
     #     ]
     # ],
+
     #
     # # product 10 ----------------------------------------------------
     # [
@@ -469,6 +700,7 @@ pm_lst = [
     #         # []
     #     ]
     # ],
+
     #
     # # product 10 ----------------------------------------------------
     # [
@@ -496,6 +728,7 @@ pm_lst = [
     #         # []
     #     ]
     # ],
+
     #
     # # product 10 ----------------------------------------------------
     # [
@@ -523,6 +756,7 @@ pm_lst = [
     #         # []
     #     ]
     # ],
+
     #
     # # product 10 ----------------------------------------------------
     # [
@@ -550,33 +784,7 @@ pm_lst = [
     #         # []
     #     ]
     # ],
-    #
-    # # product 10 ----------------------------------------------------
-    # [
-    #     "product-name-test",  # product name
-    #     1,  # brand id
-    #     1,  # cate id - C
-    #     7,  # cate id - T
-    #     53,  # cate id - A
-    #     [  # model type list
-    #         # model 1 ----------------------------------------------------------
-    #         [
-    #             'model-name-test',  # model name
-    #             'model-description-test',  # m description
-    #             100,  # m price
-    #             2,  # kg
-    #             [
-    #                 'p1m1-1.png',
-    #                 'p1m1-2.png',
-    #                 'p1m1-3.png'
-    #             ]
-    #         ],
-    #         # model 2 ----------------------------------------------------------
-    #         # [],
-    #         # model 3 ----------------------------------------------------------
-    #         # []
-    #     ]
-    # ],
+
     #
     # # product 10 ----------------------------------------------------
     # [
