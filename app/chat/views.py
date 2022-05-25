@@ -14,7 +14,7 @@ from app import socketio
 from flask_socketio import emit, send, join_room, leave_room
 
 from ..decorators import staff_only, customer_only
-from ..models import ChatRoom, Message, User, ModelType
+from ..models import ChatRoom, Message, User, ModelType, Order
 from engineio.payload import Payload
 
 Payload.max_decode_packets = 9999
@@ -122,7 +122,7 @@ def message(data):
         print('left?')
         emit('history', {'msg': data['msg'], 'username': data['username'],
                          'time_stamp': data["time_stamp"], 'avatar': data['avatar'], 'type': data['type'],
-                         'user_need_chat_history': data['user_need_chat_history']}
+                         'user_need_chat_history': data['user_need_chat_history'], 'msgType': "normal"}
              , room=data['room'])
     else:
         send({'msg': data['msg'], 'username': data['username'],
@@ -198,12 +198,12 @@ def history(data):
 
         emit('history', {'msg': msg['msg'], 'username': msg['username'],
                          'time_stamp': msg['time_stamp'], 'avatar': msg['avatar'], 'type': 'history',
-                         'user_need_chat_history': current_user.username, 'isLast': is_last}
+                         'user_need_chat_history': current_user.username, 'isLast': is_last, 'msgType': msg['msgType']}
              , room=chat_room_id)
 
     emit('history', {'msg': '', 'username': '',
                      'time_stamp': '', 'avatar': '', 'type': '',
-                     'user_need_chat_history': '', 'isLast': '1'}
+                     'user_need_chat_history': '', 'isLast': '1', 'msgType': ''}
          , room=chat_room_id)
 
 
@@ -221,12 +221,12 @@ def prepare_for_history_json(item, chat_id):
     if item.author_type == 'customer':
         avatar = room.customer.avatar
         message = {'msg': item.content, 'username': username, 'time_stamp': local_time.strftime('%H:%M:%S'),
-                   'author_type': 'customer', 'avatar': avatar, 'message_id': item.id}
+                   'author_type': 'customer', 'avatar': avatar, 'message_id': item.id, 'msgType': item.chat_type}
 
     if item.author_type == 'staff':
         avatar = room.staff.avatar
         message = {'msg': item.content, 'username': staffname, 'time_stamp': local_time.strftime('%H:%M:%S'),
-                   'author_type': 'staff', 'avatar': avatar, 'message_id': item.id}
+                   'author_type': 'staff', 'avatar': avatar, 'message_id': item.id, 'msgType': item.chat_type}
 
     return message
 
@@ -234,38 +234,78 @@ def prepare_for_history_json(item, chat_id):
 @socketio.on('auto-msg-consult')
 def auto_msg_consult(data):
     """
-        Send auto message when
+        Send auto message when customer come into the "consult"
     """
     # get data from javascript
     room_id = data['room']
     model_type_id = data['model_type_id']
+    customer_username = data['username']
+    customer_avatar = data['avatar']
 
     # create and store auto msg in db
     new_msg = Message(content="", author_type='customer', chat_type='consult', chat_room_id=room_id, model_type_id=model_type_id)
+    # db.session.add(new_msg_plain)
     db.session.add(new_msg)
     db.session.commit()
 
-    # auto send msg
+    # get model_type from db
+    model_type = ModelType.query.get(model_type_id)
+
+    # change the time from utc to local
+    utc_zone = tz.tzutc()
+    local_zone = tz.tzlocal()
+    utc_dt = new_msg.timestamp.replace(tzinfo=utc_zone)
+    local_time = utc_dt.astimezone(local_zone)
+
+    # auto send msg - model_type info
     emit('auto-msg-consult',
          {
-             'username': data['username'],
-             'time_stamp': data["time_stamp"],
-             'avatar': data['avatar'],
-             'type': data['type'],
-             'user_need_chat_history': data['user_need_chat_history']
+             'username': customer_username,
+             'time_stamp': local_time.strftime('%H:%M:%S'),
+             'avatar': customer_avatar,
+             'mt_name': model_type.name,
+             'mt_price': model_type.price,
+             'mt_pic': model_type.pictures.all()[0],
+             'mt_url': url_for("main.model_type_details", mt_id=model_type_id)
          }
          , room=data['room'])
 
 
 @socketio.on('auto-msg-after-sale')
 def auto_msg_after_sale(data):
+    """
+        Send auto message when customer come into the "after-sale service"
+    """
     # get data from javascript
     room_id = data['room']
-    model_type_id = data['model_type_id']
+    order_id = data['order_id']
+    customer_username = data['username']
+    customer_avatar = data['avatar']
 
     # create and store auto msg in db
+    new_msg = Message(content="", author_type='customer', chat_type='after-sale', chat_room_id=room_id, order_id=order_id)
+    db.session.add(new_msg)
+    db.session.commit()
+
+    # get order obj from db
+    order = Order.query.get(order_id)
+
+    # change the time from utc to local
+    utc_zone = tz.tzutc()
+    local_zone = tz.tzlocal()
+    utc_dt = new_msg.timestamp.replace(tzinfo=utc_zone)
+    local_time = utc_dt.astimezone(local_zone)
 
     # auto send msg
+    emit('auto-msg-after-sale',
+         {
+             'username': customer_username,
+             'time_stamp': local_time.strftime('%H:%M:%S'),
+             'avatar': customer_avatar,
+             'order_out_trade_no': order.out_trade_no,
+             'order_url': url_for("order.after_sale_order", order_id=order_id)
+         }
+         , room=data['room'])
 
 
 # customize jinja filter

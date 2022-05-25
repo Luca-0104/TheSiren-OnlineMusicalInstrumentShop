@@ -59,71 +59,95 @@ document.addEventListener('DOMContentLoaded', () => {
     socket.on('history', data => {
         console.log(`Message received: ${data}`);
 
-        console.log("A history appended!!!")
-        // check is that the last history
-        if (data.isLast === '1'){
-            // true
+        // check whether all the histories are emitted finished
+        if (data.isLast === '1'){   // true
+
             // we put the system notification below this one
             // put notification of which staff is connected to you
             printConnMsg(staffName + " is connected to you");
+
             // determine whether need to send the automatic message
             if(entranceType === 'consult'){
-                socket.emit('auto-msg-consult', {'room' : chatroom_id, 'model_type_id': modelTypeId});
+                /* send 2 auto msg, a plaintext and a model_type info */
+                // send plaintext
+                socket.send({'msg': "Hi, I want to consult about the following instrument:", 'username': username, 'room': chatroom_id, 'avatar': avatar });
+                // send model_type info
+                socket.emit('auto-msg-consult', {'room' : chatroom_id, 'model_type_id': modelTypeId, 'username': username, 'avatar': avatar});
 
             }else if (entranceType === 'after-sale'){
-                socket.emit('auto-msg-after-sale', {'room' : chatroom_id, 'order_id': orderId});
-
-            }
-        }
-        else
-        {
-            //html elements declaration
-            const p = document.createElement('p');
-
-            const div_chat = document.createElement('div');
-            const div_chat_user = document.createElement('div');
-            const div_chat_message = document.createElement('div');
-
-            const span_timestamp = document.createElement('span');
-            const span_username = document.createElement('span');
-
-            const img = document.createElement('img');
-
-            //html elements attribute set and filling
-            div_chat_user.setAttribute("class","direct-chat-info clearfix");
-            img.setAttribute("class","direct-chat-img");
-            div_chat_message.setAttribute("class","direct-chat-text");
-            //set and filling end
-
-            if (data.user_need_chat_history === username && data.type === "history"){
-                if (data.username === username){
-                console.log("inside if 1");
-                console.log(chatroom_id);
-                div_chat.setAttribute("class","direct-chat-msg right");
-                span_username.setAttribute("class", "direct-chat-name pull-right");
-                span_timestamp.setAttribute("class","direct-chat-timestamp pull-left");
-                img.setAttribute("src", $('#chatroom-avatar-' + chatroom_id).attr('avatar-customer'));
-            } else if (data.username !== username && typeof data.username !== 'undefined') {
-                console.log("inside if 2");
-
-                div_chat.setAttribute("class","direct-chat-msg");
-                span_username.setAttribute("class","direct-chat-name pull-left");
-                span_timestamp.setAttribute("class","direct-chat-timestamp pull-right");
-                img.setAttribute("src", $('#chatroom-avatar-' + chatroom_id).attr('avatar-staff'));
-            } else {
-                console.log("inside if 3");
-                printSysMsg(data.msg);
+                /* send 2 auto msg, a plaintext and a order info */
+                // send plaintext
+                socket.send({'msg': "Hi, I want to ask for the after-sale service, my order is shown below:", 'username': username, 'room': chatroom_id, 'avatar': avatar });
+                // send order info
+                socket.emit('auto-msg-after-sale', {'room' : chatroom_id, 'order_id': orderId, 'username': username, 'avatar': avatar});
             }
 
-            span_timestamp.innerHTML = data.time_stamp;
-            span_username.innerHTML = data.username;
-            div_chat_message.innerHTML = data.msg;
-            div_chat_user.innerHTML = span_username.outerHTML + span_timestamp.outerHTML;
-            //message html generation
-            div_chat.innerHTML = div_chat_user.outerHTML + img.outerHTML + div_chat_message.outerHTML;
-            //generation end
-            document.querySelector('#chat-window').append(div_chat);
+
+        // still emitting the history message
+        } else {
+
+            /*
+                check the message type
+            */
+
+            // plaintext
+            if (data.msgType === "normal"){
+
+                //html elements declaration
+                const p = document.createElement('p');
+
+                const div_chat = document.createElement('div');
+                const div_chat_user = document.createElement('div');
+                const div_chat_message = document.createElement('div');
+
+                const span_timestamp = document.createElement('span');
+                const span_username = document.createElement('span');
+
+                const img = document.createElement('img');
+
+                //html elements attribute set and filling
+                div_chat_user.setAttribute("class","direct-chat-info clearfix");
+                img.setAttribute("class","direct-chat-img");
+                div_chat_message.setAttribute("class","direct-chat-text");
+                //set and filling end
+
+                if (data.user_need_chat_history === username && data.type === "history"){
+                    if (data.username === username){
+                    console.log("inside if 1");
+                    console.log(chatroom_id);
+                    div_chat.setAttribute("class","direct-chat-msg right");
+                    span_username.setAttribute("class", "direct-chat-name pull-right");
+                    span_timestamp.setAttribute("class","direct-chat-timestamp pull-left");
+                    img.setAttribute("src", $('#chatroom-avatar-' + chatroom_id).attr('avatar-customer'));
+                } else if (data.username !== username && typeof data.username !== 'undefined') {
+                    console.log("inside if 2");
+
+                    div_chat.setAttribute("class","direct-chat-msg");
+                    span_username.setAttribute("class","direct-chat-name pull-left");
+                    span_timestamp.setAttribute("class","direct-chat-timestamp pull-right");
+                    img.setAttribute("src", $('#chatroom-avatar-' + chatroom_id).attr('avatar-staff'));
+                } else {
+                    console.log("inside if 3");
+                    printSysMsg(data.msg);
+                }
+
+                span_timestamp.innerHTML = data.time_stamp;
+                span_username.innerHTML = data.username;
+                div_chat_message.innerHTML = data.msg;
+                div_chat_user.innerHTML = span_username.outerHTML + span_timestamp.outerHTML;
+                //message html generation
+                div_chat.innerHTML = div_chat_user.outerHTML + img.outerHTML + div_chat_message.outerHTML;
+                //generation end
+                document.querySelector('#chat-window').append(div_chat);
+                }
+
+
+            // "consult" msg or "after-sale" msg
+            }else{
+
+
             }
+
         }
     });
 
