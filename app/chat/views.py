@@ -14,7 +14,7 @@ from app import socketio
 from flask_socketio import emit, send, join_room, leave_room
 
 from ..decorators import staff_only, customer_only
-from ..models import ChatRoom, Message, User
+from ..models import ChatRoom, Message, User, ModelType
 from engineio.payload import Payload
 
 Payload.max_decode_packets = 9999
@@ -83,8 +83,9 @@ def chat_for_customer():
     # gain the chat data
     messages = Message.query.filter_by(chat_room_id=session['uid']).order_by(Message.timestamp.asc()).all()
     chat_room = ChatRoom.query.filter_by(customer_id=session['uid']).first()
-    return render_template("chat/chat_customer.html", username=session['username'], room=session['uid'],
-                           messages=messages, role_id=session['role_id'], rooms=chat_room, entrance_type='normal')
+    rec_preference_pro = ModelType.query.filter_by(is_deleted=False).order_by(ModelType.views.desc()).first()
+    return render_template("chat/test-combine.html", username=session['username'], room=session['uid'],
+                           messages=messages, role_id=session['role_id'], rooms=chat_room, entrance_type='normal', rec_preference_pro=rec_preference_pro)
 
 
 # this route is used by user account (come into chat from commodity details page)
@@ -190,13 +191,18 @@ def history(data):
 
     is_last = '0'  # false
     for index, msg in enumerate(chat_history):
-        if index + 1 == len(chat_history):
-            is_last = '1'  # true
+        # if index + 1 == len(chat_history):
+        #     is_last = '1'   # true
 
         emit('history', {'msg': msg['msg'], 'username': msg['username'],
                          'time_stamp': msg['time_stamp'], 'avatar': msg['avatar'], 'type': 'history',
                          'user_need_chat_history': current_user.username, 'isLast': is_last}
              , room=chat_room_id)
+
+    emit('history', {'msg': '', 'username': '',
+                     'time_stamp': '', 'avatar': '', 'type': '',
+                     'user_need_chat_history': '', 'isLast': '1'}
+         , room=chat_room_id)
 
 
 def prepare_for_history_json(item, chat_id):
