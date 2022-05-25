@@ -98,8 +98,8 @@ def chat_for_customer_consult(model_type_id):
     # gain the chat data
     messages = Message.query.filter_by(chat_room_id=session['uid']).order_by(Message.timestamp.asc()).all()
     chat_room = ChatRoom.query.filter_by(customer_id=session['uid']).first()
-    return render_template("chat/chat_customer.html", username=session['username'], room=session['uid'],
-                           messages=messages, role_id=session['role_id'], rooms=chat_room, entrance_type='consult', model_type=model_type_id)
+    return render_template("chat/test-combine.html", username=session['username'], room=session['uid'],
+                           messages=messages, role_id=session['role_id'], rooms=chat_room, entrance_type='consult', model_type_id=model_type_id)
 
 
 # this route is used by user account (come into chat from order listing page)
@@ -110,7 +110,7 @@ def chat_for_customer_after_sale(order_id):
     # gain the chat data
     messages = Message.query.filter_by(chat_room_id=session['uid']).order_by(Message.timestamp.asc()).all()
     chat_room = ChatRoom.query.filter_by(customer_id=session['uid']).first()
-    return render_template("chat/chat_customer.html", username=session['username'], room=session['uid'],
+    return render_template("chat/test-combine.html", username=session['username'], room=session['uid'],
                            messages=messages, role_id=session['role_id'], rooms=chat_room, entrance_type='after-sale', order_id=order_id)
 
 
@@ -261,11 +261,11 @@ def auto_msg_consult(data):
     emit('auto-msg-consult',
          {
              'username': customer_username,
-             'time_stamp': local_time.strftime('%H:%M:%S'),
-             'avatar': customer_avatar,
+             'timestamp': local_time.strftime('%H:%M:%S'),
+             'avatar': url_for("static", filename=customer_avatar),
              'mt_name': model_type.name,
              'mt_price': model_type.price,
-             'mt_pic': model_type.pictures.all()[0],
+             'mt_pic':  url_for("static", filename=model_type.pictures.all()[0]),
              'mt_url': url_for("main.model_type_details", mt_id=model_type_id)
          }
          , room=data['room'])
@@ -300,7 +300,7 @@ def auto_msg_after_sale(data):
     emit('auto-msg-after-sale',
          {
              'username': customer_username,
-             'time_stamp': local_time.strftime('%H:%M:%S'),
+             'timestamp': local_time.strftime('%H:%M:%S'),
              'avatar': customer_avatar,
              'order_out_trade_no': order.out_trade_no,
              'order_url': url_for("order.after_sale_order", order_id=order_id)
