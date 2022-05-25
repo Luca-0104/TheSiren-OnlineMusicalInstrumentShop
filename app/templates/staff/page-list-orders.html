@@ -165,7 +165,8 @@
                                         <!-- Action Section -->
                                         <div class="mr-2" data-toggle="modal"
                                              data-target="#detail-modal-{{ order.id }}">
-                                            <a class="badge bg-info" data-toggle="tooltip"
+                                            <a id="view-{{ order.id }}"
+                                               class="badge bg-info" data-toggle="tooltip"
                                                data-original-title="View" title=""
                                                href="#">
                                                 <i class="ri-eye-line mr-0"></i>
@@ -1030,5 +1031,14 @@
 {# for the children templates to define the javascript statements at the end of the 'body' tag #}
 {% block scripts_end_body %}
     {{ super() }}
+    <script type="text/javascript">
+        let open_id = '{{ open_id }}';
+        if(open_id != "" && open_id != null && open_id != undefined)
+        {
+            console.log("open_id: " + open_id);
+            $("#view-"+open_id).click();
+            $("#sidebar-anchor").attr("sidebar-anchor", "Orders");
+        }
+    </script>
     <script src="../../static/js/staff/order-listing.js"></script>
 {% endblock %}

@@ -6,7 +6,7 @@ let classification, type, additional, brand;
 let data;
 //This need to be modified if brand number is changed!!!
 //Every number is plus one compared to original because "see all" option.
-let checking_numbers = [7, 47, 5, 17];
+let checking_numbers = [7, 47, 5, 18];
 
 function initialize_checkbox(param)
 {
@@ -147,13 +147,13 @@ $(document).ready(function ()
 
     $('.brands').on("change", function ()
     {
-        // console.log("==========================================");
-        // console.log(checking_numbers[3]);
-        // console.log($(this).attr('id'));
+        console.log("==========================================");
+        console.log(checking_numbers[3]);
+        console.log($(this).attr('id'));
 
-        // console.log($(this).prop('checked'));
+        console.log($(this).prop('checked'));
         let p = $(this).attr('id').split('_').pop();
-        // console.log(p);
+        console.log(p);
 
         if (!$(this).prop('checked'))
         {
