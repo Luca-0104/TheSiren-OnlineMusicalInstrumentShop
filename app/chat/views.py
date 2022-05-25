@@ -7,7 +7,7 @@ from dateutil import tz
 import pytz
 
 from . import chat
-from .. import db
+from .. import db, moment
 from flask import render_template, redirect, url_for, flash, request, session, jsonify
 from flask_login import current_user, login_required
 from app import socketio
@@ -126,6 +126,7 @@ def message(data):
         send({'msg': data['msg'], 'username': data['username'],
               'time_stamp': time.strftime('%H:%M:%S', time.localtime()), 'avatar': data['avatar']}
              , room=data['room'])
+
         # print("message" + data['msg'])
         # check the identity of the current user
         if session["role_id"] == 1:
@@ -138,10 +139,26 @@ def message(data):
         db.session.commit()
         # 2021-2-21 18:46:23
 
+        # send({'msg': data['msg'], 'username': data['username'],
+        #       'time_stamp': new_message.timestamp.strftime('%H:%M:%S'), 'avatar': data['avatar']}
+        #      , room=data['room'])
+
 
 @socketio.on('join')
 def join(data):
     join_room(data['room'])
+
+    # if this is a customer
+    # if current_user.role_id == 1:
+    #     print("here ...")
+    #     # get chat room from db
+    #     room = ChatRoom.query.get(data['room'])
+    #     staff_name = room.staff.username
+    #
+    #     send({'msg': staff_name, 'username': data['username'],
+    #           'time_stamp': time.strftime('%H:%M:%S', time.localtime())}
+    #          , room=data['room'])
+
 
 
 
@@ -185,31 +202,36 @@ def history(data):
         dic = prepare_for_history_json(past_message, chat_room_id)
         chat_history.append(dic)
 
-    for msg in chat_history:
+    is_last = '0'   # false
+    for index, msg in enumerate(chat_history):
+        if index + 1 == len(chat_history):
+            is_last = '1'   # true
+
         emit('history', {'msg': msg['msg'], 'username': msg['username'],
                          'time_stamp': msg['time_stamp'], 'avatar': msg['avatar'], 'type': 'history',
-                         'user_need_chat_history': current_user.username}
+                         'user_need_chat_history': current_user.username, 'isLast': is_last}
              , room=chat_room_id)
 
 
 def prepare_for_history_json(item, chat_id):
-    print("nice")
     room = ChatRoom.query.filter_by(id=chat_id).first()
     username = room.customer.username
     staffname = room.staff.username
-    # get local timezone
+
+    # change the utc time of item to local timezone
     utc_zone = tz.tzutc()
     local_zone = tz.tzlocal()
-    local_dt = item.timestamp.replace(tzinfo=local_zone)
-    utc_time = local_dt.astimezone(utc_zone)
+    utc_dt = item.timestamp.replace(tzinfo=utc_zone)
+    local_time = utc_dt.astimezone(local_zone)
+
     if item.author_type == 'customer':
         avatar = room.customer.avatar
-        message = {'msg': item.content, 'username': username, 'time_stamp': utc_time.strftime('%H:%M:%S'),
+        message = {'msg': item.content, 'username': username, 'time_stamp': local_time.strftime('%H:%M:%S'),
                    'author_type': 'customer', 'avatar': avatar, 'message_id': item.id}
 
     if item.author_type == 'staff':
         avatar = room.staff.avatar
-        message = {'msg': item.content, 'username': staffname, 'time_stamp': utc_time.strftime('%H:%M:%S'),
+        message = {'msg': item.content, 'username': staffname, 'time_stamp': local_time.strftime('%H:%M:%S'),
                    'author_type': 'staff', 'avatar': avatar, 'message_id': item.id}
 
     return message

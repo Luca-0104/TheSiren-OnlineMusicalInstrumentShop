@@ -25,8 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
         div_chat_message.setAttribute("class","direct-chat-text");
         //set and filling end
 
-
-
          console.log("near if");
         if (data.username === username){
             console.log("inside if 1");
@@ -54,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         //message html generation
         div_chat.innerHTML = div_chat_user.outerHTML + img.outerHTML + div_chat_message.outerHTML;
          //generation end
+        console.log("before append!!")
         document.querySelector('#chat-window').append(div_chat);
     });
 
@@ -77,8 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
         img.setAttribute("class","direct-chat-img");
         div_chat_message.setAttribute("class","direct-chat-text");
         //set and filling end
-
-
 
         if (data.user_need_chat_history === username && data.type === "history"){
             if (data.username === username){
@@ -110,6 +107,13 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('#chat-window').append(div_chat);
         }
 
+        console.log("A history appended!!!")
+        // check is that the last history
+        if (data.isLast === '1'){   // true
+            // we put the system notification below this one
+            // put notification of which staff is connected to you
+            printConnMsg(staffName + " is connected to you");
+        }
     });
 
     // Send message
@@ -139,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Clear message area
         document.querySelector('#chat-window').innerHTML = '';
 
-        socket.emit('history', {'room': chatroom_id})
+        socket.emit('history', {'room': chatroom_id});
 
         // Autofocus on text box
         document.querySelector('#user_message').focus();
@@ -147,6 +151,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //Print system message
     function printSysMsg(msg) {
+        const p = document.createElement('p');
+        p.innerHTML = msg;
+        document.querySelector('#chat-window').append(p);
+    }
+
+    //Print "which staff is connected connected for you."
+    function printConnMsg(msg) {
         const p = document.createElement('p');
         p.innerHTML = msg;
         document.querySelector('#chat-window').append(p);
