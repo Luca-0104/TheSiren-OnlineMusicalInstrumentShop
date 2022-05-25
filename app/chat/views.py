@@ -111,7 +111,6 @@ def chat_for_customer_after_sale(order_id):
                            messages=messages, role_id=session['role_id'], rooms=chat_room, entrance_type='after-sale', order_id=order_id)
 
 
-
 @socketio.on('message')
 def message(data):
     print('right?')
@@ -189,10 +188,10 @@ def history(data):
         dic = prepare_for_history_json(past_message, chat_room_id)
         chat_history.append(dic)
 
-    is_last = '0'   # false
+    is_last = '0'  # false
     for index, msg in enumerate(chat_history):
         if index + 1 == len(chat_history):
-            is_last = '1'   # true
+            is_last = '1'  # true
 
         emit('history', {'msg': msg['msg'], 'username': msg['username'],
                          'time_stamp': msg['time_stamp'], 'avatar': msg['avatar'], 'type': 'history',
@@ -224,15 +223,41 @@ def prepare_for_history_json(item, chat_id):
     return message
 
 
-
 @socketio.on('auto-msg-consult')
-def auto_msg_consult():
-    pass
+def auto_msg_consult(data):
+    """
+        Send auto message when
+    """
+    # get data from javascript
+    room_id = data['room']
+    model_type_id = data['model_type_id']
+
+    # create and store auto msg in db
+    new_msg = Message(content="", author_type='customer', chat_type='consult', chat_room_id=room_id, model_type_id=model_type_id)
+    db.session.add(new_msg)
+    db.session.commit()
+
+    # auto send msg
+    emit('auto-msg-consult',
+         {
+             'username': data['username'],
+             'time_stamp': data["time_stamp"],
+             'avatar': data['avatar'],
+             'type': data['type'],
+             'user_need_chat_history': data['user_need_chat_history']
+         }
+         , room=data['room'])
 
 
 @socketio.on('auto-msg-after-sale')
-def auto_msg_after_sale():
-    pass
+def auto_msg_after_sale(data):
+    # get data from javascript
+    room_id = data['room']
+    model_type_id = data['model_type_id']
+
+    # create and store auto msg in db
+
+    # auto send msg
 
 
 # customize jinja filter
