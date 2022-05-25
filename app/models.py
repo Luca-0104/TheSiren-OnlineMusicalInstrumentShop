@@ -603,24 +603,27 @@ class Order(BaseModel):
         if self.user.is_premium:
             fee = 0
         else:
-            # calculate the total weight in order
-            total_weight = 0
-            for omt in self.order_model_types:
-                total_weight += omt.model_type.weight * omt.count
+            if self.order_type == "delivery":
+                # calculate the total weight in order
+                total_weight = 0
+                for omt in self.order_model_types:
+                    total_weight += omt.model_type.weight * omt.count
 
-            # less than 1 kg, is the base fee of 9 RMB
-            if total_weight < 1:
-                fee = 9
+                # less than 1 kg, is the base fee of 9 RMB
+                if total_weight < 1:
+                    fee = 9
+                else:
+                    # calculate the extra fee
+                    total_weight -= 1
+                    # The weight is up rounded. e.g. 2.x kg -> 3.0 kg (x > 0)
+                    if total_weight > (total_weight // 1):
+                        total_weight = (total_weight // 1) + 1
+                    # fee = base + extra
+                    fee = 9 + (total_weight * 2)
+                    if fee > 200:
+                        fee = 200
             else:
-                # calculate the extra fee
-                total_weight -= 1
-                # The weight is up rounded. e.g. 2.x kg -> 3.0 kg (x > 0)
-                if total_weight > (total_weight // 1):
-                    total_weight = (total_weight // 1) + 1
-                # fee = base + extra
-                fee = 9 + (total_weight * 2)
-                if fee > 200:
-                    fee = 200
+                fee = 0
 
         # write delivery_fee into db
         self.delivery_fee = fee

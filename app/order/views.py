@@ -305,6 +305,10 @@ def update_order_recipient():
             current_app.logger.error("info are not gotten from Ajax")
             return jsonify({"returnValue": 1})
 
+        if recipient_name.strip() == "" or recipient_phone.strip() == "":
+            current_app.logger.error("info are empty strings gotten from Ajax")
+            return jsonify({"returnValue": 1})
+
         # query order obj from db by using its id
         o = Order.query.get(order_id)
 
@@ -363,6 +367,13 @@ def change_order_to_delivery():
         o.address_text = address.get_address()
         o.recipient_id = address.recipient_id
         o.order_type = 'delivery'
+
+        # update delivery fee
+        o.generate_delivery_fee()
+
+        # update gross payment
+        o.generate_payment()
+
         db.session.add(o)
         db.session.commit()
 
@@ -414,6 +425,12 @@ def change_order_to_collection():
         # update the order
         o.order_type = 'self-collection'
         o.recipient = new_recipient
+
+        # update delivery fee
+        o.delivery_fee = 0
+        # update gross payment
+        o.generate_payment()
+
         db.session.add(o)
         db.session.commit()
 
