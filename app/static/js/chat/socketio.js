@@ -143,6 +143,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 
+
+    // put up the auto sent msg - consult
+    socket.on('auto-msg-consult', data => {
+
+    });
+
+    // put up the auto sent msg - after-sale
+    socket.on('auto-msg-after-sale', data => {
+
+    });
+
+
+
     // Send message
     $('.btn-send-message').on("click", function(){
         let roomId = $(this).attr("room-id");

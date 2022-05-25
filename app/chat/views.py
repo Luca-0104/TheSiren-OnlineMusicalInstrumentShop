@@ -84,31 +84,31 @@ def chat_for_customer():
     messages = Message.query.filter_by(chat_room_id=session['uid']).order_by(Message.timestamp.asc()).all()
     chat_room = ChatRoom.query.filter_by(customer_id=session['uid']).first()
     return render_template("chat/chat_customer.html", username=session['username'], room=session['uid'],
-                           messages=messages, role_id=session['role_id'], rooms=chat_room)
+                           messages=messages, role_id=session['role_id'], rooms=chat_room, entrance_type='normal')
 
 
-# this route is used by user account
-@chat.route('/chat', methods=['GET', 'POST'])
+# this route is used by user account (come into chat from commodity details page)
+@chat.route('/chat-consult/<int:model_type_id>', methods=['GET', 'POST'])
 @login_required
 @customer_only()
-def chat_for_customer_consult():
+def chat_for_customer_consult(model_type_id):
     # gain the chat data
     messages = Message.query.filter_by(chat_room_id=session['uid']).order_by(Message.timestamp.asc()).all()
     chat_room = ChatRoom.query.filter_by(customer_id=session['uid']).first()
     return render_template("chat/chat_customer.html", username=session['username'], room=session['uid'],
-                           messages=messages, role_id=session['role_id'], rooms=chat_room)
+                           messages=messages, role_id=session['role_id'], rooms=chat_room, entrance_type='consult', model_type=model_type_id)
 
 
-# this route is used by user account
-@chat.route('/chat', methods=['GET', 'POST'])
+# this route is used by user account (come into chat from order listing page)
+@chat.route('/chat-after-sale/<int:order_id>', methods=['GET', 'POST'])
 @login_required
 @customer_only()
-def chat_for_customer_after_sales():
+def chat_for_customer_after_sale(order_id):
     # gain the chat data
     messages = Message.query.filter_by(chat_room_id=session['uid']).order_by(Message.timestamp.asc()).all()
     chat_room = ChatRoom.query.filter_by(customer_id=session['uid']).first()
     return render_template("chat/chat_customer.html", username=session['username'], room=session['uid'],
-                           messages=messages, role_id=session['role_id'], rooms=chat_room)
+                           messages=messages, role_id=session['role_id'], rooms=chat_room, entrance_type='after-sale', order_id=order_id)
 
 
 
@@ -147,19 +147,6 @@ def message(data):
 @socketio.on('join')
 def join(data):
     join_room(data['room'])
-
-    # if this is a customer
-    # if current_user.role_id == 1:
-    #     print("here ...")
-    #     # get chat room from db
-    #     room = ChatRoom.query.get(data['room'])
-    #     staff_name = room.staff.username
-    #
-    #     send({'msg': staff_name, 'username': data['username'],
-    #           'time_stamp': time.strftime('%H:%M:%S', time.localtime())}
-    #          , room=data['room'])
-
-
 
 
 @socketio.on('leave')
@@ -235,6 +222,17 @@ def prepare_for_history_json(item, chat_id):
                    'author_type': 'staff', 'avatar': avatar, 'message_id': item.id}
 
     return message
+
+
+
+@socketio.on('auto-msg-consult')
+def auto_msg_consult():
+    pass
+
+
+@socketio.on('auto-msg-after-sale')
+def auto_msg_after_sale():
+    pass
 
 
 # customize jinja filter
