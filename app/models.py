@@ -431,6 +431,11 @@ class Message(BaseModel):
     # Which chatting room this message belongs to
     chat_room_id = db.Column(db.Integer, db.ForeignKey('chat_rooms.id'))
 
+    # model_type for msg in type of "consult" (only auto consult msg have this)
+    model_type_id = db.Column(db.Integer, db.ForeignKey('model_types.id'))
+    # order for msg in type of "after-sale" (only auto after-sale msg have this)
+    order_id = db.Column(db.Integer, db.ForeignKey('orders.id'))
+
     def __repr__(self):
         return '<Chat %r>' % self.content[:10]
 
@@ -520,6 +525,8 @@ class Order(BaseModel):
     order_model_types = db.relationship('OrderModelType', backref='order', lazy='dynamic')
     # record the detailed address as an string
     address_text = db.Column(db.String)
+    # 1 order --> n msg (after-sale)
+    msgs = db.relationship('Message', backref='order', lazy='dynamic')
 
     @staticmethod
     def insert_orders(count):
@@ -1077,6 +1084,8 @@ class ModelType(BaseModel):
     browsing_histories = db.relationship('BrowsingHistory', backref='model_type', lazy='dynamic')
     # 1 model -> n customization
     customizations = db.relationship('Customization', backref='model_type', lazy='dynamic')
+    # 1 model_type --> n msg (consult)
+    msgs = db.relationship('Message', backref='model_type', lazy='dynamic')
 
     def to_dict(self):
         """
