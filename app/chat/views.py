@@ -120,7 +120,7 @@ def message(data):
         print('left?')
         emit('history', {'msg': data['msg'], 'username': data['username'],
                          'time_stamp': data["time_stamp"], 'avatar': data['avatar'], 'type': data['type'],
-                         'user_need_chat_history': data['user_need_chat_history']}
+                         'user_need_chat_history': data['user_need_chat_history'], 'msgType': "normal"}
              , room=data['room'])
     else:
         send({'msg': data['msg'], 'username': data['username'],
@@ -196,12 +196,12 @@ def history(data):
 
         emit('history', {'msg': msg['msg'], 'username': msg['username'],
                          'time_stamp': msg['time_stamp'], 'avatar': msg['avatar'], 'type': 'history',
-                         'user_need_chat_history': current_user.username, 'isLast': is_last}
+                         'user_need_chat_history': current_user.username, 'isLast': is_last, 'msgType': msg['msgType']}
              , room=chat_room_id)
 
     emit('history', {'msg': '', 'username': '',
                      'time_stamp': '', 'avatar': '', 'type': '',
-                     'user_need_chat_history': '', 'isLast': '1'}
+                     'user_need_chat_history': '', 'isLast': '1', 'msgType': ''}
          , room=chat_room_id)
 
 
@@ -219,12 +219,12 @@ def prepare_for_history_json(item, chat_id):
     if item.author_type == 'customer':
         avatar = room.customer.avatar
         message = {'msg': item.content, 'username': username, 'time_stamp': local_time.strftime('%H:%M:%S'),
-                   'author_type': 'customer', 'avatar': avatar, 'message_id': item.id}
+                   'author_type': 'customer', 'avatar': avatar, 'message_id': item.id, 'msgType': item.chat_type}
 
     if item.author_type == 'staff':
         avatar = room.staff.avatar
         message = {'msg': item.content, 'username': staffname, 'time_stamp': local_time.strftime('%H:%M:%S'),
-                   'author_type': 'staff', 'avatar': avatar, 'message_id': item.id}
+                   'author_type': 'staff', 'avatar': avatar, 'message_id': item.id, 'msgType': item.chat_type}
 
     return message
 
