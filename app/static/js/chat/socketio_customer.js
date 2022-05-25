@@ -155,6 +155,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // put up the auto sent msg - consult
     socket.on('auto-msg-consult', data => {
 
+        console.log("img url");
+        console.log(data.mt_pic);
+
+        console.log("redirect url");
+        console.log(data.mt_url);
+
         let msgHTML = '<div class="direct-chat-msg right">'
         + '<div class="direct-chat-info clearfix">'
         + '<span class="direct-chat-name pull-right">' + data.username + '</span>'
@@ -202,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
         + '</div>';
 
         // append to the chatting window
-        document.querySelector('#chat-window').append(msgHTML);
+        $('#chat-window').append(msgHTML);
 
     });
 
