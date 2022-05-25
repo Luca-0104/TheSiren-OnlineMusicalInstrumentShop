@@ -187,7 +187,7 @@ $(".type-btn").on("click", function()
     {
         console.log("type delivery");
         let addresses_ul = $("#addresses-1-"+orderId);
-        let addressId = addresses_ul.attr("addressId");
+        let addressId = $.trim(addresses_ul.attr("addressId"));
         if(addressId == '' || addressId == undefined || addressId == null)
         {
             alert("You must choose one address.");
@@ -200,8 +200,8 @@ $(".type-btn").on("click", function()
     else if(current_type==="Self-Collection")
     {
         console.log("type self-Collection");
-        let recipient_name = $("#recipient-name-1-"+orderId).val();
-        let recipient_phone = $("#recipient-phone-1-"+orderId).val();
+        let recipient_name = $.trim($("#recipient-name-1-"+orderId).val());
+        let recipient_phone = $.trim($("#recipient-phone-1-"+orderId).val());
         if(recipient_name == '' || recipient_name == undefined || recipient_name == null)
         {
             alert("The recipient Name can not be empty.")
@@ -293,7 +293,7 @@ $(".address-btn").on("click", function()
 {
     let orderId = $(this).attr("orderId");
     let addresses_ul = $("#addresses-2-"+orderId);
-    let addressId = addresses_ul.attr("addressId");
+    let addressId = $.trim(addresses_ul.attr("addressId"));
     if(addressId == '' || addressId == undefined || addressId == null)
     {
         alert("You must choose one address.");
@@ -334,9 +334,21 @@ function update_order_address(orderId, addressId)
 $(".recipient-btn-2").on("click", function()
 {
     let orderId = $(this).attr("orderId");
-    let recipient_name = $("#recipient-name-2-"+orderId).val();
-    let recipient_phone = $("#recipient-phone-2-"+orderId).val();
-    update_order_recipient(orderId, recipient_name, recipient_phone);
+    let recipient_name = $.trim($("#recipient-name-2-"+orderId).val());
+    let recipient_phone = $.trim($("#recipient-phone-2-"+orderId).val());
+
+    if(recipient_name == '' || recipient_name == undefined || recipient_name == null)
+    {
+        alert("The recipient Name can not be empty.")
+    }
+    else if(recipient_phone == '' || recipient_phone == undefined || recipient_phone == null)
+    {
+        alert("The recipient Phone can not be empty.")
+    }
+    else
+    {
+        update_order_recipient(orderId, recipient_name, recipient_phone);
+    }
 });
 
 function update_order_recipient(orderId, recipientName, recipientPhone)
