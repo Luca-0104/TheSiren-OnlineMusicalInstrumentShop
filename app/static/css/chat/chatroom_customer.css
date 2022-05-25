@@ -304,6 +304,24 @@ body {
     width: 70%;
 }
 
-#chat-window{
+#chat-window1{
     height: 60vh;
+}
+
+.commodity-table{
+    border-collapse: separate;
+    border-spacing: 10px;
+    text-align: center;
+}
+
+.commodity-image-cell{
+    width: 50%;
+}
+
+.img_container{
+    max-width: 250px;
+}
+
+.commodity-info-cell{
+    text-align: left;
 }

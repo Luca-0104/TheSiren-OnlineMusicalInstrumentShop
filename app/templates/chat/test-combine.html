@@ -6,7 +6,8 @@
 {% block style %}
     <link rel="icon" href="../../static/images/half-logo.png">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <link rel="stylesheet" href="../../static/fonts/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="../../static/css/chat/chatroom_customer.css">
 
@@ -48,23 +49,10 @@
                         <div class="box box-warning direct-chat direct-chat-warning">
                             <div class="box-header with-border">
                                 <h3 class="box-title">{{ _("Chat Messages") }}</h3>
-                                <div class="box-tools pull-right">
-{#                                    <span data-toggle="tooltip" title="" class="badge bg-yellow" data-original-title="3 New Messages">20</span>#}
-{#                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">#}
-{#                                        <i class="fa fa-minus"></i>#}
-{#                                    </button>#}
-{#                                    <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="" data-widget="chat-pane-toggle"#}
-{#                                            data-original-title="Contacts">#}
-{#                                        <i class="fa fa-comments"></i>#}
-{#                                    </button>#}
-{#                                    <button type="button" class="btn btn-box-tool" data-widget="remove">#}
-{#                                        <i class="fa fa-times"></i>#}
-{#                                    </button>#}
-                                </div>
                             </div>
                             <div class="box-body">
                                 <!--chat window-->
-                                <div id="chat-window" class="direct-chat-messages">
+                                <div id="chat-window1" class="direct-chat-messages">
 
                                     <!--staff chat-->
                                     <div class="direct-chat-msg">
@@ -91,11 +79,42 @@
                                         <img class="direct-chat-img" src="https://img.icons8.com/office/36/000000/person-female.png" alt="message user image">
 
                                         <div class="direct-chat-text">
-                                            Thank you for your believe in our supports
+{#                                            Thank you for your believe in our supports#}
+                                            <div role="listitem" class="w-dyn-item product-box" style="padding: 10">
+                                                <table class="commodity-table">
+                                                    <tr>
+                                                        <td class="commodity-image-cell">
+                                                            <div class="img_container">
+                                                                <!-- product picture -->
+                                                                {% if rec_preference_pro.pictures.first() == None %}
+                                                                    <img src="../../static/images/example/yamaha_yep621s.jpg"
+                                                                         loading="lazy" alt="">
+                                                                {% else %}
+                                                                    <img src="{{ url_for("static",filename=rec_preference_pro.pictures.first().address) }}"
+                                                                         loading="lazy" alt="">
+                                                                {% endif %}
+                                                            </div>
+                                                        </td>
+                                                        <td class="commodity-info-cell">
+                                                            <div class="box-product-info-card">
+                                                    Product price
+                                                    <div class="my-price-container">
+                                                        <div class="new-price">
+                                                            <span>￥</span><span>{{ rec_preference_pro.price }}</span>
+                                                        </div>
+                                                    </div>
+
+                                                    Product name
+                                                    <div class="no-bottom-margin box-product-name">
+                                                        {{ rec_preference_pro.name }}
+                                                    </div>
+                                                </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
-
-
                                 </div>
                             </div>
 
@@ -131,6 +150,17 @@
                 let username = '{{ current_user.username }}';
                 let avatar = '{{ current_user.avatar }}';
                 let staffName = '{{ rooms.staff.username }}';
+                let entranceType = '{{ entrance_type }}';
+
+                {% if entrance_type == 'consult' %}
+
+                    let modelTypeId = {{ model_type_id }};
+
+                {% elif entrance_type == 'after-sale' %}
+
+                    let orderId = {{ order_id }};
+
+                {% endif %}
             </script>
             <!--Customer Chat socket-->
             <script type="text/javascript" src="../../static/js/chat/socketio_customer.js"></script>
