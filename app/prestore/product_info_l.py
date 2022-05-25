@@ -1089,13 +1089,11 @@ pm_lst = [
             # model 1 ----------------------------------------------------------
             [
                 'Xeno YSL-882',          # model name
-                'model-description-test',   # m description
-                100,                        # m price
-                2,                          # kg
+                'We have carefully selected this instrument and it is sure to give you a wonderful musical experience',   # m description
+                10000,                        # m price
+                2.5,                          # kg
                 [
-                    'p1m1-1.png',
-                    'p1m1-2.png',
-                    'p1m1-3.png'
+                    'l-p34m1-1.png',
                 ]
             ],
             # model 2 ----------------------------------------------------------
