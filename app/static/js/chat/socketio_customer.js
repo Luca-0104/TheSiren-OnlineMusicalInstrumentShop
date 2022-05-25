@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
         div_chat_user.innerHTML = span_username.outerHTML + span_timestamp.outerHTML;
         //message html generation
         div_chat.innerHTML = div_chat_user.outerHTML + img.outerHTML + div_chat_message.outerHTML;
-         //generation end
+        //generation end
         document.querySelector('#chat-window').append(div_chat);
         }
 
