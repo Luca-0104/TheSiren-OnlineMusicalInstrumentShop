@@ -620,22 +620,20 @@ pm_lst = [
 
     # product 20 ----------------------------------------------------
     [
-        "product-name-test",  # product name
-        1,  # brand id
-        1,  # cate id - C
-        7,  # cate id - T
+        "Hohner MÚSICA TÍPICA SERIES Accordion",  # product name
+        8,  # brand id
+        5,  # cate id - C
+        47,  # cate id - T
         53,  # cate id - A
         [  # model type list
             # model 1 ----------------------------------------------------------
             [
-                'model-name-test',  # model name
-                'model-description-test',  # m description
-                100,  # m price
-                2,  # kg
+                'Hohner MÚSICA TÍPICA SERIES Accordion',  # model name
+                'The typical HOHNER sound, as crisp and voluminous as we know it – but at an incredible price. The compadre is your best friend for your first steps into the world of Norteño, Tex-Mex, and folk punk. Explore the acoustic possibilities of Mexican, Irish, and German folk with this sturdy accordion designed for beginners and advanced players.',  # m description
+                6400,  # m price
+                2.2,  # kg
                 [
-                    'p1m1-1.png',
-                    'p1m1-2.png',
-                    'p1m1-3.png'
+                    'g-p20m1-1.jpg'
                 ]
             ],
             # model 2 ----------------------------------------------------------
@@ -645,117 +643,111 @@ pm_lst = [
         ]
     ],
 
-    #
-    # # product 10 ----------------------------------------------------
-    # [
-    #     "product-name-test",  # product name
-    #     1,  # brand id
-    #     1,  # cate id - C
-    #     7,  # cate id - T
-    #     53,  # cate id - A
-    #     [  # model type list
-    #         # model 1 ----------------------------------------------------------
-    #         [
-    #             'model-name-test',  # model name
-    #             'model-description-test',  # m description
-    #             100,  # m price
-    #             2,  # kg
-    #             [
-    #                 'p1m1-1.png',
-    #                 'p1m1-2.png',
-    #                 'p1m1-3.png'
-    #             ]
-    #         ],
-    #         # model 2 ----------------------------------------------------------
-    #         # [],
-    #         # model 3 ----------------------------------------------------------
-    #         # []
-    #     ]
-    # ],
 
-    #
-    # # product 10 ----------------------------------------------------
-    # [
-    #     "product-name-test",  # product name
-    #     1,  # brand id
-    #     1,  # cate id - C
-    #     7,  # cate id - T
-    #     53,  # cate id - A
-    #     [  # model type list
-    #         # model 1 ----------------------------------------------------------
-    #         [
-    #             'model-name-test',  # model name
-    #             'model-description-test',  # m description
-    #             100,  # m price
-    #             2,  # kg
-    #             [
-    #                 'p1m1-1.png',
-    #                 'p1m1-2.png',
-    #                 'p1m1-3.png'
-    #             ]
-    #         ],
-    #         # model 2 ----------------------------------------------------------
-    #         # [],
-    #         # model 3 ----------------------------------------------------------
-    #         # []
-    #     ]
-    # ],
+    # product 21 ----------------------------------------------------
+    [
+        "Yanaha MONTAGE8 Synthesizer",  # product name
+        16,  # brand id
+        5,  # cate id - C
+        7,  # cate id - T
+        54,  # cate id - A
+        [  # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'Yanaha MONTAGE8 Synthesizer',  # model name
+                'MONTAGE 8 is an 88-key balanced hammer action synthesizer combining sophisticated dynamic control, massive sound creation and streamlined workflow',  # m description
+                23000,  # m price
+                4.5,  # kg
+                [
+                    'g-p21m1-1.png'
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
 
-    #
-    # # product 10 ----------------------------------------------------
-    # [
-    #     "product-name-test",  # product name
-    #     1,  # brand id
-    #     1,  # cate id - C
-    #     7,  # cate id - T
-    #     53,  # cate id - A
-    #     [  # model type list
-    #         # model 1 ----------------------------------------------------------
-    #         [
-    #             'model-name-test',  # model name
-    #             'model-description-test',  # m description
-    #             100,  # m price
-    #             2,  # kg
-    #             [
-    #                 'p1m1-1.png',
-    #                 'p1m1-2.png',
-    #                 'p1m1-3.png'
-    #             ]
-    #         ],
-    #         # model 2 ----------------------------------------------------------
-    #         # [],
-    #         # model 3 ----------------------------------------------------------
-    #         # []
-    #     ]
-    # ],
 
-    #
-    # # product 10 ----------------------------------------------------
-    # [
-    #     "product-name-test",  # product name
-    #     1,  # brand id
-    #     1,  # cate id - C
-    #     7,  # cate id - T
-    #     53,  # cate id - A
-    #     [  # model type list
-    #         # model 1 ----------------------------------------------------------
-    #         [
-    #             'model-name-test',  # model name
-    #             'model-description-test',  # m description
-    #             100,  # m price
-    #             2,  # kg
-    #             [
-    #                 'p1m1-1.png',
-    #                 'p1m1-2.png',
-    #                 'p1m1-3.png'
-    #             ]
-    #         ],
-    #         # model 2 ----------------------------------------------------------
-    #         # [],
-    #         # model 3 ----------------------------------------------------------
-    #         # []
-    #     ]
-    # ],
+    # product 22 ----------------------------------------------------
+    [
+        "Roland SPD-SX Special Edition LaunchPad",  # product name
+        17,  # brand id
+        4,  # cate id - C
+        48,  # cate id - T
+        54,  # cate id - A
+        [  # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'Roland SPD-SX Special Edition LaunchPad',  # model name
+                'FOR PRO PLAYERS WHO NEED INSTANT ACCESS TO ALL THEIR ORIGINAL SOUNDS, WITHOUT COMPROMISE Roland s SPD-SX Sampling Pad is the professional touring standard for triggering custom samples, loops, and even complete backing tracks. It also supports real-time sample capture with its exclusive Multi-Pad Sampling function. The SPD-SX Special Edition is identical in functionality to the original SPD-SX, but features greatly expanded onboard storage. With 16 GB of internal memory available, its now possible to load enough studio-quality WAV samples to last an entire gig and beyond.',  # m description
+                4700,  # m price
+                1.4,  # kg
+                [
+                    'g-p22m1-1.jpg',
+                    'g-p22m1-2.jpg',
+                    'g-p22m1-3.jpg'
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+
+    # product 10 ----------------------------------------------------
+    [
+        "Yamaha AG01 Streaming Loopback Audio USB Microphone",  # product name
+        16,  # brand id
+        6,  # cate id - C
+        51,  # cate id - T
+        54,  # cate id - A
+        [  # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'Yamaha AG01 Streaming Loopback Audio USB Microphone',  # model name
+                'Configuring a streaming setup from scratch can be a daunting task, particularly for users with little production experience. The minimalist design of the AG01 takes this into account by combining a high-quality condenser microphone with DSP effects, a LOOPBACK function, flexible input connectivity, and a simple, intuitive mixer for stress-free streaming operation. Simply connect to your computer or iOS/Android device along with the headphones of your choice, then set your levels, and you ve got a fully operational streaming station. If you’re an aspiring live streamer that requires a compact yet comprehensive, high-quality, all-in-one solution, the AG01 is ready when you are.',  # m description
+                2190,  # m price
+                1,  # kg
+                [
+                    'g-p23m1-1.jpg'
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+
+    # product 10 ----------------------------------------------------
+    [
+        "Yamaha HPH-MT7W Studio Monitor Headphones",  # product name
+        16,  # brand id
+        6,  # cate id - C
+        52,  # cate id - T
+        54,  # cate id - A
+        [  # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'Yamaha HPH-MT7W Studio Monitor Headphones',  # model name
+                'High-resolution monitor headphones that reproduce even the most subtle nuances of the source sound. In addition to mixing and recording in the studio, the HPH-MT7W headphones are perfect for mix monitoring in live performance applications thanks to their high sound pressure levels and durability.',  # m description
+                1200,  # m price
+                0.8,  # kg
+                [
+                    'g-p24m1-1.jpg'
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
 
     #
     # # product 10 ----------------------------------------------------
