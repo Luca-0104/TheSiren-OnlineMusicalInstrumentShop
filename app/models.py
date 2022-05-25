@@ -1072,6 +1072,8 @@ class ModelType(BaseModel):
     order_model_types = db.relationship('OrderModelType', backref='model_type', lazy='dynamic')
     # 1 model --> n B_histories
     browsing_histories = db.relationship('BrowsingHistory', backref='model_type', lazy='dynamic')
+    # 1 model -> n customization
+    customizations = db.relationship('Customization', backref='model_type', lazy='dynamic')
 
     def to_dict(self):
         """
@@ -1193,6 +1195,17 @@ class ModelType(BaseModel):
                 new_mt_pic = ModelTypePic(model_type=new_mt)
                 db.session.add(new_mt_pic)
         db.session.commit()
+
+
+class Customization(BaseModel):
+    """
+        This table records which customer has which customization of texture of which model type
+    """
+    __tablename__ = 'customizations'
+    id = db.Column(db.Integer, primary_key=True)
+    customer_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    model_type_id = db.Column(db.Integer, db.ForeignKey('model_types.id'))
+    texture_address = db.Column(db.String, nullable=False)
 
 
 class Audio(BaseModel):
@@ -1566,6 +1579,9 @@ class User(UserMixin, BaseModel):
     browsing_histories = db.relationship('BrowsingHistory', backref='user', lazy='dynamic')
     # 1 staff --> n journals
     journals = db.relationship('Journal', backref='author', lazy='dynamic')
+    # 1 customer -> n customization
+    customizations = db.relationship('Customization', backref='user', lazy='dynamic')
+
 
     def __repr__(self):
         return '<User %r>' % self.username

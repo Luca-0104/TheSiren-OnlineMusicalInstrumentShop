@@ -616,7 +616,8 @@
                                             <tr id="model_row_{{ order_model.model_type.id }}"
                                                 order_id="{{ order.id }}">
                                                 <!-- Model Pic -->
-                                                <td class="model_img_col">
+                                                <td class="model_img_col clickable"
+                                                    onclick="window.open('{{ url_for('main.model_type_details', mt_id=order_model.model_type.id) }}');">
                                                     {% if order_model.model_type.pictures.first() == None %}
                                                         <img src="../../static/images/example/yamaha_yep621s.jpg"
                                                              loading="lazy" alt=""
