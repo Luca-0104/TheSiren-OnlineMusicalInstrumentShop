@@ -56,7 +56,7 @@ def chat_room():
         elif session["role_id"] == 2:
             rooms = ChatRoom.query.filter_by(staff_id=session['uid']).all()
             rec_preference_pro = ModelType.query.filter_by(is_deleted=False).order_by(ModelType.views.desc()).first()
-            return render_template('chat/chat_staff.html', rooms=rooms)
+            return render_template('chat/chat_staff.html', rooms=rooms, rec_preference_pro=rec_preference_pro)
 
     return render_template('main/index_new.html')
 
