@@ -4,7 +4,7 @@ import traceback
 from flask import render_template, request, redirect, url_for, session, jsonify, flash, json, current_app, abort
 from flask_login import login_required, current_user
 from flask_babel import _
-from sqlalchemy import and_
+from sqlalchemy import and_, or_
 
 from config import Config
 from . import main
@@ -184,10 +184,21 @@ def search():
     """
     if request.method == 'POST':
         key_word = request.form.get('key_word')
+
         # search model types by name
         mt_list = search_models_by_keyword(keyword=key_word) \
             .order_by(ModelType.sales.desc(), ModelType.views.desc()) \
             .all()
+
+        # search model type by brand name
+        brand_lst = Brand.query.filter(Brand.name.contains(key_word)).all()
+
+        # merge the search results
+        for brand in brand_lst:
+            for p in brand.products:
+                for mt in p.model_types:
+                    if mt not in set(mt_list):
+                        mt_list.append(mt)
 
         flash("Following are the searching results about '{}'.".format(key_word))
         return render_template('main/page_all_commodities.html', mt_list=mt_list, key_word=key_word)  # see-all page
@@ -201,8 +212,7 @@ def search_models_by_keyword(keyword):
     :param keyword: A string of key word
     :return: A BaseQuery object that contains a list of models found
     """
-    mt_bq_lst = ModelType.query.filter(and_(ModelType.name.contains(keyword),
-                                            ModelType.is_deleted == False))
+    mt_bq_lst = ModelType.query.filter(and_(ModelType.name.contains(keyword), ModelType.is_deleted == False))
     return mt_bq_lst
 
 
@@ -361,8 +371,20 @@ def model_listing(search_content):
     """
     # search the models by search_content
     if search_content != "":
+        # search by name
         mt_bq_lst = search_models_by_keyword(keyword=search_content)
         mt_lst = mt_bq_lst.all()
+
+        # search model type by brand name
+        brand_lst = Brand.query.filter(Brand.name.contains(search_content)).all()
+
+        # merge the search results
+        for brand in brand_lst:
+            for p in brand.products:
+                for mt in p.model_types:
+                    if mt not in set(mt_lst):
+                        mt_lst.append(mt)
+
         flash("Following are the searching results of '{}'.".format(search_content))
     else:
         # if com here by clicking on "go all"
@@ -458,10 +480,20 @@ def filter_model_types():
 
         if search_content != "":
             # if the user has searched something
-            # search a BaseQuery obj that contains a list of model types
+            # search a BaseQuery obj that contains a list of model types (by name)
             mt_bq_lst = search_models_by_keyword(keyword=search_content)
             # (serial_prefix e.g. b1-c1-t1-a1)
             mt_lst = mt_bq_lst.join(Product).filter(Product.serial_prefix.like("{}-{}-{}-{}".format(filter_b, filter_c, filter_t, filter_a))).all()
+
+            # search model type by brand name
+            brand_lst = Brand.query.filter(Brand.name.contains(search_content)).all()
+
+            # merge the search results
+            for brand in brand_lst:
+                for p in brand.products.filter(Product.serial_prefix.like("{}-{}-{}-{}".format(filter_b, filter_c, filter_t, filter_a))):
+                    for mt in p.model_types:
+                        if mt not in set(mt_lst):
+                            mt_lst.append(mt)
 
         else:
             # filter all the models according to the filters(check box)
