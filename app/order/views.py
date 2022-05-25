@@ -746,4 +746,4 @@ def after_sale_order(order_id):
         # get that single order in the list
         order_lst = Order.query.filter_by(id=order_id)
 
-        return render_template('staff/page-list-orders.html', order_lst=order_lst, epidemic_mode_on=epidemic_mode_on)
+        return render_template('staff/page-list-orders.html', order_lst=order_lst, epidemic_mode_on=epidemic_mode_on, open_id=order_id)
