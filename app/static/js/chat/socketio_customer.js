@@ -395,6 +395,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+function atBottom()
+{
+    let chat_window = $("#chat-window");
+    let h = chat_window[0].scrollHeight * 1.5;
+    chat_window.animate({scrollTop: h}, 0);
+}
+
 function toBottom()
 {
     let chat_window = $("#chat-window");
