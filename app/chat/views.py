@@ -301,7 +301,7 @@ def auto_msg_after_sale(data):
          {
              'username': customer_username,
              'timestamp': local_time.strftime('%H:%M:%S'),
-             'avatar': customer_avatar,
+             'avatar': url_for("static", filename=customer_avatar),
              'order_out_trade_no': order.out_trade_no,
              'order_url': url_for("order.after_sale_order", order_id=order_id)
          }
