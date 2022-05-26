@@ -265,7 +265,7 @@ def auto_msg_consult(data):
              'avatar': url_for("static", filename=customer_avatar),
              'mt_name': model_type.name,
              'mt_price': model_type.price,
-             'mt_pic':  url_for("static", filename=model_type.pictures.all()[0]),
+             'mt_pic':  url_for("static", filename=model_type.pictures.all()[0].address),
              'mt_url': url_for("main.model_type_details", mt_id=model_type_id)
          }
          , room=data['room'])
