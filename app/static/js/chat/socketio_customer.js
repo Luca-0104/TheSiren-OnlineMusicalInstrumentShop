@@ -56,8 +56,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('#chat-window').append(div_chat);
     });
 
-    socket.on('history', data => {
-        console.log(`Message received: ${data}`);
+    socket.on('history-customer', data => {
+        console.log(" ------------------------ in customer history ------------------------------");
+
+        // console.log(`Message received: ${data}`);
 
         // check whether all the histories are emitted finished
         if (data.isLast === '1'){   // true
@@ -276,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Clear message area
         document.querySelector('#chat-window').innerHTML = '';
 
-        socket.emit('history', {'room': chatroom_id});
+        socket.emit('history-customer', {'room': chatroom_id});
 
         // Autofocus on text box
         document.querySelector('#user_message').focus();

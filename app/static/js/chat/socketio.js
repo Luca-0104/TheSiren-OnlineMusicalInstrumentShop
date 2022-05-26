@@ -74,7 +74,9 @@ document.addEventListener('DOMContentLoaded', () => {
           $('#chat-window-' + chatRoomId).scrollTop = $('#chat-window-' + chatRoomId).scrollHeight;
     });
 
-    socket.on('history', data => {
+    socket.on('history-staff', data => {
+        console.log(" ------------------------ in staff history ------------------------------");
+
         // console.log(`Message received: ${data}`);
 
         //html elements declaration
@@ -341,7 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Clear message area
         document.querySelector('#chat-window-' + chatRoomId).innerHTML = '';
 
-        socket.emit('history', {'room': chatroom_id})
+        socket.emit('history-staff', {'room': chatroom_id})
 
         // Autofocus on text box
         document.querySelector('#user-message-' + chatroom_id).focus();

@@ -181,8 +181,8 @@ def leave(data):
 #                     "current_user": role})
 
 
-@socketio.on('history')
-def history(data):
+@socketio.on('history-customer')
+def history_customer(data):
     chat_room_id = data['room']
 
     past_messages = Message.query.filter_by(chat_room_id=chat_room_id).order_by(Message.timestamp.asc()).all()
@@ -196,14 +196,40 @@ def history(data):
         # if index + 1 == len(chat_history):
         #     is_last = '1'   # true
 
-        emit('history', {'msg': msg['msg'], 'username': msg['username'],
-                         'time_stamp': msg['time_stamp'], 'avatar': msg['avatar'], 'type': 'history',
-                         'user_need_chat_history': current_user.username, 'isLast': is_last, 'msgType': msg['msgType']}
+        emit('history-customer', {'msg': msg['msg'], 'username': msg['username'],
+                                  'time_stamp': msg['time_stamp'], 'avatar': msg['avatar'], 'type': 'history',
+                                  'user_need_chat_history': current_user.username, 'isLast': is_last, 'msgType': msg['msgType']}
              , room=chat_room_id)
 
-    emit('history', {'msg': '', 'username': '',
-                     'time_stamp': '', 'avatar': '', 'type': '',
-                     'user_need_chat_history': '', 'isLast': '1', 'msgType': ''}
+    emit('history-customer', {'msg': '', 'username': '',
+                              'time_stamp': '', 'avatar': '', 'type': '',
+                              'user_need_chat_history': '', 'isLast': '1', 'msgType': ''}
+         , room=chat_room_id)
+
+
+@socketio.on('history-staff')
+def history_staff(data):
+    chat_room_id = data['room']
+
+    past_messages = Message.query.filter_by(chat_room_id=chat_room_id).order_by(Message.timestamp.asc()).all()
+    chat_history = []
+    for past_message in past_messages:
+        dic = prepare_for_history_json(past_message, chat_room_id)
+        chat_history.append(dic)
+
+    is_last = '0'  # false
+    for index, msg in enumerate(chat_history):
+        # if index + 1 == len(chat_history):
+        #     is_last = '1'   # true
+
+        emit('history-staff', {'msg': msg['msg'], 'username': msg['username'],
+                               'time_stamp': msg['time_stamp'], 'avatar': msg['avatar'], 'type': 'history',
+                               'user_need_chat_history': current_user.username, 'isLast': is_last, 'msgType': msg['msgType']}
+             , room=chat_room_id)
+
+    emit('history-staff', {'msg': '', 'username': '',
+                           'time_stamp': '', 'avatar': '', 'type': '',
+                           'user_need_chat_history': '', 'isLast': '1', 'msgType': ''}
          , room=chat_room_id)
 
 
@@ -265,7 +291,7 @@ def auto_msg_consult(data):
              'avatar': url_for("static", filename=customer_avatar),
              'mt_name': model_type.name,
              'mt_price': model_type.price,
-             'mt_pic':  url_for("static", filename=model_type.pictures.all()[0].address),
+             'mt_pic': url_for("static", filename=model_type.pictures.all()[0].address),
              'mt_url': url_for("main.model_type_details", mt_id=model_type_id)
          }
          , room=data['room'])
