@@ -389,6 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function printConnMsg(msg) {
         const p = document.createElement('p');
         p.innerHTML = msg;
+        p.setAttribute("class", "connection-notifier");
         document.querySelector('#chat-window').append(p);
     }
 });
