@@ -54,6 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
          //generation end
         console.log("before append!!")
         document.querySelector('#chat-window').append(div_chat);
+
+        toBottom();
     });
 
 
@@ -241,6 +243,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
         }
+
+        atBottom();
     });
 
 
@@ -301,6 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // append to the chatting window
         $('#chat-window').append(msgHTML);
 
+        toBottom();
     });
 
     // put up the auto sent msg - after-sale
@@ -343,6 +348,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // append to the chatting window
         $('#chat-window').append(msgHTML);
+
+        toBottom();
     });
 
 
