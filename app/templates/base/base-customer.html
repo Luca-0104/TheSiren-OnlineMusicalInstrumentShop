@@ -51,7 +51,6 @@
                     <div class="announcement-contents">
                         <div class="announcement-text">
                             {{ _("Welcome to Siren – Selects online music instrument shop for you.")}}
-{#                            别看啦，快去赶DDL ~   (by the way 睡前别忘打卡~)#}
                             <a href="{{ url_for('main.go_all') }}" target="_blank">{{ _("View instruments here")}}</a>
                         </div>
                     </div>
@@ -329,7 +328,7 @@
 
                             <!-- Right side -->
                             <a href="{{ url_for("main.about_us") }}" class="nav-link">{{ _('About') }}</a>
-                            <a href="#" onclick="window.open('{{ url_for('chat.chat_room')}}');" class="nav-link">{{ _('Contact') }}</a>
+                            <a id="contact-btn" href="#" onclick="window.open('{{ url_for('chat.chat_room')}}');" class="nav-link">{{ _('Contact') }}</a>
                         </div>
                     </nav>
                 </div>

@@ -6,7 +6,9 @@ $(document).ready(function ()
         let entrance_type = chat_entrance_anchor.attr("entrance-type");
         console.log("entrance_type: " + entrance_type)
         let entrance = $("#sticky-chat-btn");
+        let contact_btn = $("#contact-btn");
         entrance.get(0).onclick="";
+        contact_btn.get(0).onclick="";
         if(entrance_type === "commodity")
         {
             let model_id = chat_entrance_anchor.attr("model-id");
@@ -14,10 +16,10 @@ $(document).ready(function ()
             {
                window.open('/chat-consult/'+model_id);
             });
-        }
-        else if(entrance_type === "order")
-        {
-
+            contact_btn.on('click', function()
+            {
+               window.open('/chat-consult/'+model_id);
+            });
         }
     }
 });
