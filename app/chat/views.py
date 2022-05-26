@@ -197,7 +197,7 @@ def history_customer(data):
         #     is_last = '1'   # true
 
         data_for_emit = {'msg': msg['msg'], 'username': msg['username'],
-                                  'time_stamp': msg['time_stamp'], 'avatar': msg['avatar'], 'type': 'history',
+                                  'time_stamp': msg['time_stamp'], 'avatar': msg['avatar'], 'avatar_full_address': msg['avatar_full_address'], 'type': 'history',
                                   'user_need_chat_history': current_user.username, 'isLast': is_last, 'msgType': msg['msgType']}
 
         # check whether this is a piece of special message (consult and after-sale)
@@ -207,7 +207,7 @@ def history_customer(data):
             data_for_emit['mt_pic'] = msg['mt_pic']
             data_for_emit['mt_url'] = msg['mt_url']
 
-        elif msg['msgType'] == 'consult':
+        elif msg['msgType'] == 'after-sale':
             data_for_emit['order_out_trade_no'] = msg['order_out_trade_no']
             data_for_emit['order_url'] = msg['order_url']
 
@@ -237,7 +237,7 @@ def history_staff(data):
         #     is_last = '1'   # true
 
         data_for_emit = {'msg': msg['msg'], 'username': msg['username'],
-                         'time_stamp': msg['time_stamp'], 'avatar': msg['avatar'], 'type': 'history',
+                         'time_stamp': msg['time_stamp'], 'avatar': msg['avatar'], 'avatar_full_address': msg['avatar_full_address'], 'type': 'history',
                          'user_need_chat_history': current_user.username, 'isLast': is_last, 'msgType': msg['msgType']}
 
         # check whether this is a piece of special message (consult and after-sale)
@@ -247,7 +247,7 @@ def history_staff(data):
             data_for_emit['mt_pic'] = msg['mt_pic']
             data_for_emit['mt_url'] = msg['mt_url']
 
-        elif msg['msgType'] == 'consult':
+        elif msg['msgType'] == 'after-sale':
             data_for_emit['order_out_trade_no'] = msg['order_out_trade_no']
             data_for_emit['order_url'] = msg['order_url']
 
@@ -276,12 +276,14 @@ def prepare_for_history_json(item, chat_id):
     if item.author_type == 'customer':
         avatar = room.customer.avatar
         message = {'msg': item.content, 'username': username, 'time_stamp': local_time.strftime('%H:%M:%S'),
-                   'author_type': 'customer', 'avatar': avatar, 'message_id': item.id, 'msgType': item.chat_type}
+                   'author_type': 'customer', 'avatar': avatar, 'message_id': item.id, 'msgType': item.chat_type,
+                   'avatar_full_address': url_for("static", filename=avatar)}
 
     elif item.author_type == 'staff':
         avatar = room.staff.avatar
         message = {'msg': item.content, 'username': staffname, 'time_stamp': local_time.strftime('%H:%M:%S'),
-                   'author_type': 'staff', 'avatar': avatar, 'message_id': item.id, 'msgType': item.chat_type}
+                   'author_type': 'staff', 'avatar': avatar, 'message_id': item.id, 'msgType': item.chat_type,
+                   'avatar_full_address': url_for("static", filename=avatar)}
 
 
     # check special message (consult and after-sale)
@@ -291,7 +293,7 @@ def prepare_for_history_json(item, chat_id):
         message['mt_pic'] = url_for("static", filename=item.model_type.pictures.all()[0].address)
         message['mt_url'] = url_for("main.model_type_details", mt_id=item.model_type.id)
 
-    elif item.chat_type == 'consult':
+    elif item.chat_type == 'after-sale':
         message['order_out_trade_no'] = item.order.out_trade_no
         message['order_url'] = url_for("order.after_sale_order", order_id=item.order.id)
 
