@@ -353,9 +353,19 @@ body {
     margin: 10px;
 }
 
-.commodity-price{
+.commodity-price {
     color: #fff;
     font-size: 25px;
+}
+
+.order-id-cell {
+    color: #fff;
+    /*font-size: 25px;*/
+    /*white-space: nowrap;*/
+    /*text-overflow: ellipsis;*/
+    /*overflow: hidden;*/
+    /*width: 260px;*/
+    /*display: inline-block;*/
 }
 
 .my-product-name-container{
@@ -416,4 +426,9 @@ body {
     border-top-color: #00000038;
     border-top-width: 1px;
     font-weight: 1000;
+}
+
+.breakword{
+    word-wrap:break-word;
+    max-width: 100%;
 }
