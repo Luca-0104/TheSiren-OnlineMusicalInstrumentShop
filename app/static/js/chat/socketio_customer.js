@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
         + '<img class="direct-chat-img" src="' + data.avatar + '" alt="avatar">'
         + '<div class="direct-chat-text">'
         + '<div role="listitem" class="w-dyn-item product-box" style="padding: 10">'
-        + '<table class="commodity-table clickable" onclick="window.open(' + data.mt_url + ')">'
+        + '<table class="commodity-table clickable" onclick="window.open(\'' + data.mt_url + '\')">'
         + '<tr>'
         + '<td colspan="4" class="title-cell">'
         + '<span class="order-title">Commodity</span>'
