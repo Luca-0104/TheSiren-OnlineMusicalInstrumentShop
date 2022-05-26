@@ -561,13 +561,35 @@ class Order(BaseModel):
         # create a faker instance
         faker = Faker()
         # create some new orders into db
+        # for customer 1
         for i in range(count):
             new_order = Order(timestamp=faker.past_datetime(), user_id=1,
                               order_type=["delivery", "self-collection"][random.randint(0, 1)])
             if new_order.order_type == "delivery":
                 # need address and recipient info
-                address_id = random.randint(1, Address.query.count())
-                address = Address.query.get(address_id)
+                cus1 = User.query.get(1)
+                addresses = cus1.addresses.all()
+                address = addresses[random.randint(0, len(addresses)-1)]
+                new_order.address_text = address.get_address()
+                new_order.recipient_id = address.recipient.id
+                new_order.status_code = [0, 1, 2, 4, 5, 6][random.randint(0, 5)]
+            elif new_order.order_type == "self-collection":
+                # need recipient info
+                new_order.recipient_id = random.randint(1, Recipient.query.count())
+                new_order.status_code = [0, 1, 3, 4, 5, 6][random.randint(0, 5)]
+            db.session.add(new_order)
+            db.session.commit()
+            new_order.generate_unique_out_trade_no()
+
+        # for customer 2
+        for i in range(count):
+            new_order = Order(timestamp=faker.past_datetime(), user_id=2,
+                              order_type=["delivery", "self-collection"][random.randint(0, 1)])
+            if new_order.order_type == "delivery":
+                # need address and recipient info
+                cus2 = User.query.get(2)
+                addresses = cus2.addresses.all()
+                address = addresses[random.randint(0, len(addresses) - 1)]
                 new_order.address_text = address.get_address()
                 new_order.recipient_id = address.recipient.id
                 new_order.status_code = [0, 1, 2, 4, 5, 6][random.randint(0, 5)]
@@ -829,15 +851,27 @@ class Cart(BaseModel):
 
     @staticmethod
     def insert_carts():
-        for i in range(50):
-            # random info
-            user_id = [1, 2][random.randint(0, 1)]
+        # for customer 1
+        already_mt = []
+        for i in range(5):
             model_type = ModelType.query.get(random.randint(1, ModelType.query.count()))
-            count = random.randint(1, 15)
+            while model_type in already_mt:
+                model_type = ModelType.query.get(random.randint(1, ModelType.query.count()))
+            count = random.randint(1, 4)
             # generate a new cart relation
-            new_cart = Cart(user_id=user_id, model_type=model_type, count=count)
+            new_cart = Cart(user_id=1, model_type=model_type, count=count)
             db.session.add(new_cart)
-        db.session.commit()
+
+        # for customer 2
+        already_mt = []
+        for i in range(5):
+            model_type = ModelType.query.get(random.randint(1, ModelType.query.count()))
+            while model_type in already_mt:
+                model_type = ModelType.query.get(random.randint(1, ModelType.query.count()))
+            count = random.randint(1, 4)
+            # generate a new cart relation
+            new_cart = Cart(user_id=2, model_type=model_type, count=count)
+            db.session.add(new_cart)
 
 
 class Comment(BaseModel):
@@ -1452,6 +1486,7 @@ class Address(BaseModel):
     def insert_address():
         fake = Faker()
 
+        # addresses for customer 1
         for i in range(10):
             new_address = Address(customer_id=1, recipient_id=random.randint(1, Recipient.query.count()),
                                   country=fake.country(), province_or_state='Province{}'.format(i + 1),
@@ -1464,6 +1499,21 @@ class Address(BaseModel):
                               country=fake.country(), province_or_state='Province{}'.format(11), city=fake.city(),
                               district='District{}'.format(11), details="pingleyuan 100 BJUT (fake address for test)")
         db.session.add(new_address)
+
+        # addresses for customer 2
+        for i in range(10):
+            new_address = Address(customer_id=2, recipient_id=random.randint(1, Recipient.query.count()),
+                                  country=fake.country(), province_or_state='Province{}'.format(i + 1),
+                                  city=fake.city(), district='District{}'.format(i + 1),
+                                  details="A test detailed address")
+            db.session.add(new_address)
+
+        # add a default address for this customer
+        new_address = Address(is_default=True, customer_id=2, recipient_id=1,
+                              country=fake.country(), province_or_state='Province{}'.format(11), city=fake.city(),
+                              district='District{}'.format(11), details="pingleyuan 100 BJUT (fake address for test)")
+        db.session.add(new_address)
+
         db.session.commit()
 
     def to_dict(self):
