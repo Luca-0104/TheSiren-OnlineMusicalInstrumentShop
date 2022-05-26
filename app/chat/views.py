@@ -254,12 +254,6 @@ def history_staff(data):
         # emit this piece of history
         emit('history-staff', data_for_emit, room=chat_room_id)
 
-    # send this to tell the javascript, all histories are sent finished
-    emit('history-staff', {'msg': '', 'username': '',
-                           'time_stamp': '', 'avatar': '', 'type': '',
-                           'user_need_chat_history': '', 'isLast': '1', 'msgType': ''}
-         , room=chat_room_id)
-
 
 def prepare_for_history_json(item, chat_id):
     room = ChatRoom.query.filter_by(id=chat_id).first()

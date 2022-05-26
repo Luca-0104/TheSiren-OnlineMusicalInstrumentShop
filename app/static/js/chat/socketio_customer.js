@@ -56,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('#chat-window').append(div_chat);
     });
 
+
     socket.on('history-customer', data => {
         console.log(" ------------------------ in customer history ------------------------------");
 
