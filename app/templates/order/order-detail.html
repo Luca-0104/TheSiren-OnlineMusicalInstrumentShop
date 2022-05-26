@@ -427,12 +427,13 @@
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <a href="{{ url_for("static",filename=order_model.model_type.pictures.first().address) }}" download>
-                                                                        <img src="{{ url_for("static",filename=order_model.model_type.pictures.first().address) }}"
-                                                                         onclick="window.open(document.domain{{ url_for("static",filename=order_model.model_type.pictures.first().address) }});"
-                                                                         class="texture-sample clickable" loading="lazy" alt="">
-                                                                    </a>
-                                                                    <span>Customized</span>
+                                                                    {% if order_model.customization %}
+                                                                        <a href="{{ url_for("static",filename=order_model.customization.texture_address) }}" download>
+                                                                            <img src="{{ url_for("static",filename=order_model.customization.texture_address) }}"
+                                                                             class="texture-sample clickable" loading="lazy" alt="">
+                                                                        </a>
+                                                                        <span>Customized</span>
+                                                                    {% endif %}
                                                                 </td>
                                                             </tr>
                                                             <!-- Comment entrance -->

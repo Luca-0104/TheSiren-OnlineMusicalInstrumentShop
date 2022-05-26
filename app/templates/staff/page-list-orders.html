@@ -494,19 +494,20 @@
                                                                                         &times; {{ order_model.count }}
                                                                                     </td>
                                                                                 </tr>
-                                                                                <tr>
-                                                                                    <td colspan="3">
-                                                                                        <div class="texture-box">
-                                                                                            <a href="{{ url_for("static",filename=order_model.model_type.pictures.first().address) }}"
-                                                                                               download>
-                                                                                                <img src="{{ url_for("static",filename=order_model.model_type.pictures.first().address) }}"
-                                                                                                     onclick="window.open(document.domain{{ url_for("static",filename=order_model.model_type.pictures.first().address) }});"
-                                                                                                     class="texture-sample clickable" loading="lazy" alt="">
-                                                                                            </a>
-                                                                                            <span>Customized</span>
-                                                                                        </div>
-                                                                                    </td>
-                                                                                </tr>
+                                                                                {% if order_model.customization %}
+                                                                                    <tr>
+                                                                                        <td colspan="3">
+                                                                                            <div class="texture-box">
+                                                                                                <a href="{{ url_for("static",filename=order_model.customization.texture_address) }}"
+                                                                                                   download>
+                                                                                                    <img src="{{ url_for("static",filename=order_model.customization.texture_address) }}"
+                                                                                                         class="texture-sample clickable" loading="lazy" alt="">
+                                                                                                </a>
+                                                                                                <span>Customized</span>
+                                                                                            </div>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                {% endif %}
                                                                             {% endfor %}
                                                                         </table>
                                                                     </td>
