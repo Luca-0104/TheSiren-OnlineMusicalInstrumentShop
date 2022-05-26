@@ -69,8 +69,8 @@
                                 <tr>
                                     <!-- Date -->
                                     <td>
-                                        <span style="display: none">{{ order.out_trade_no }}</span>
-                                        {{ order.timestamp }}
+{#                                        <span style="display: none">{{ order.out_trade_no }}</span>#}
+                                        {{ order.timestamp.strftime("%Y-%m-%d %H:%M:%S") }}
                                     </td>
                                     <!-- Customer -->
                                     <td>
