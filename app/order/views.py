@@ -3,7 +3,7 @@ from flask import render_template, redirect, url_for, request, json, flash, json
 from flask_babel import _
 
 from app import db
-from app.models import Cart, Order, OrderModelType, ModelType, PremiumOrder, Address, Recipient
+from app.models import Cart, Order, OrderModelType, ModelType, PremiumOrder, Address, Recipient, Customization
 from app.order import order
 
 from datetime import datetime
@@ -81,6 +81,7 @@ def generate_order_from_buy_now():
 
         model_id = request.form.get("model_id")
         count = request.form.get("count")
+        customization_id = request.form.get("customization_id")
 
         if count is None or model_id is None:
             current_app.logger.error("info not gotten from Ajax")
@@ -102,8 +103,14 @@ def generate_order_from_buy_now():
                 db.session.add(new_order)
                 db.session.commit()
 
+                # check is there a customization of this order
+                customization = None
+                if customization_id != "":
+                    # get obj from db
+                    customization = Customization.query.get(customization_id)
+
                 # add this model in to this order
-                new_omt = OrderModelType(order=new_order, model_type=model, count=count, unit_pay=model.price)
+                new_omt = OrderModelType(order=new_order, model_type=model, count=count, unit_pay=model.price, customization=customization)
                 db.session.add(new_omt)
                 db.session.commit()
 

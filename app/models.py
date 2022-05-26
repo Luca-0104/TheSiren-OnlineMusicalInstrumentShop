@@ -734,6 +734,8 @@ class OrderModelType(BaseModel):
     is_commented = db.Column(db.Boolean, default=False)  # is this model in this order is already commented
     # refund record (this can be none)
     refunds = db.relationship('Refund', backref='order_model_type', lazy='dynamic')
+    # 1 order --> 1 customization
+    customization_id = db.Column(db.Integer, db.ForeignKey('customizations.id'))
 
     def __repr__(self):
         return '<OrderModelType order_id: %r --- model_type: %r * %r>' % (self.order_id, self.model_type_id, self.count)
@@ -1052,7 +1054,7 @@ class ModelType(BaseModel):
     name = db.Column(db.String(128))
     description = db.Column(db.Text())
     price = db.Column(db.Float)
-    weight = db.Column(db.Float)  # kg
+    weight = db.Column(db.Float, default=3.5)  # kg
     rate = db.Column(db.Float, default=3)  # the star rating
     rate_count = db.Column(db.Integer, default=0)  # how many time this model is rated
     stock = db.Column(db.Integer, default=0)
@@ -1218,6 +1220,9 @@ class Customization(BaseModel):
     customer_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     model_type_id = db.Column(db.Integer, db.ForeignKey('model_types.id'))
     texture_address = db.Column(db.String, nullable=False)
+    # 1 customization -> n orderModelType
+    order_model_types = db.relationship('OrderModelType', backref='customization', lazy='dynamic')
+
 
 
 class Audio(BaseModel):
