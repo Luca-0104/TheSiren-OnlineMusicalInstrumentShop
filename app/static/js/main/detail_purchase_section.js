@@ -10,8 +10,10 @@ $(document).ready(function(){
         //get count
         let count = $("#quantity-6194caf15498d8612861f033e8278855").val();
         console.log("count: " + count);
+        // check customization
+        let customizationId = $("#btn-buy-now").attr("customization-id");
         //send Ajax request
-        buy_now(modelID, count);
+        buy_now(modelID, count, customizationId);
     });
 
     /* add to cart */
@@ -39,11 +41,12 @@ $(document).ready(function(){
 /*
 * ------------------ functions Using Ajax ---------------------
 */
-function buy_now(modelID, count){
+function buy_now(modelID, count, customizationId){
 
     $.post("/generate-order-from-buy-now", {
         "model_id": modelID,
-        "count": count
+        "count": count,
+        "customization_id": customizationId
 
     }).done(function (response){
         // get from server (backend)
