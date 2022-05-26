@@ -15,9 +15,5 @@ $(document).ready(function ()
                window.open('/chat-consult/'+model_id);
             });
         }
-        else if(entrance_type === "order")
-        {
-
-        }
     }
 });
