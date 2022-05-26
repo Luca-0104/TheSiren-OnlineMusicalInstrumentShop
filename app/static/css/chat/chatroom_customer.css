@@ -408,10 +408,10 @@ body {
 
 .connection-notifier{
     text-align: center;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
     margin-bottom: 0px;
     padding-top: 15px;
-    margin-top: 25px;
+    margin-top: 40px;
     border-top-style: dashed;
     border-top-color: #00000038;
     border-top-width: 1px;
