@@ -15,7 +15,7 @@ from .forms import ModelUploadForm, ModelModifyForm, ProductModifyForm
 from .. import db
 from ..decorators import staff_only, login_required_for_ajax
 
-from ..models import Product, ModelType, Category, Brand, Audio
+from ..models import Product, ModelType, Category, Brand, Audio, Order
 from ..public_tools import upload_picture, get_unique_shop_instance, get_epidemic_mode_status, generate_safe_pic_name
 
 
@@ -30,10 +30,25 @@ def show_page_staff_index():
     # get whether the epidemic mode has been turned on
     epidemic_mode_on = get_epidemic_mode_status()
 
+    # get the unique instance of this shop
+    unique_shop_instance = get_unique_shop_instance()
+
     # get the best selling (top 6) model types
     best_sell_mt_lst = ModelType.query.filter_by(is_deleted=False).order_by(ModelType.sales.desc()).limit(6).all()
-    return render_template('staff/staff-index.html', best_sell_mt_lst=best_sell_mt_lst,
-                           epidemic_mode_on=epidemic_mode_on)
+
+    # get the total number of paid orders
+    paid_order_count = 0
+    paid_order_count += Order.query.filter_by(status_code=1).count()
+    paid_order_count += Order.query.filter_by(status_code=2).count()
+    paid_order_count += Order.query.filter_by(status_code=3).count()
+    paid_order_count += Order.query.filter_by(status_code=4).count()
+
+    return render_template('staff/staff-index.html',
+                           best_sell_mt_lst=best_sell_mt_lst,
+                           epidemic_mode_on=epidemic_mode_on,
+                           paid_order_count=paid_order_count,
+                           total_sales=unique_shop_instance.total_sales,
+                           total_sale_count=unique_shop_instance.total_sale_count)
 
 
 @product.route('/stock-management', methods=['GET', 'POST'])

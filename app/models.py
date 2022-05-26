@@ -63,9 +63,10 @@ class Tools:
         OrderModelType.insert_omts()
         # insert journals
         Journal.insert_journals(50)
-
         # chat message
         Message.insert_messages(30)
+        # init the shop sale info
+        TheSiren.init_shop_sales()
 
     @staticmethod
     def insert_3d_for_mt():
@@ -359,6 +360,8 @@ class TheSiren(BaseModel):
     __tablename__ = 'the_siren'
     id = db.Column(db.Integer, primary_key=True)
     epidemic_mode_on = db.Column(db.Boolean, default=False)  # whether the shop owner turns on the "epidemic mode"
+    total_sales = db.Column(db.Float, default=0)
+    total_sale_count = db.Column(db.Integer, default=0)
 
     @staticmethod
     def create_unique_instance():
@@ -366,6 +369,23 @@ class TheSiren(BaseModel):
             unique_instance = TheSiren()
             db.session.add(unique_instance)
             db.session.commit()
+
+    @staticmethod
+    def init_shop_sales():
+        orders = []
+        orders += Order.query.filter_by(status_code=1).all()
+        orders += Order.query.filter_by(status_code=2).all()
+        orders += Order.query.filter_by(status_code=3).all()
+        orders += Order.query.filter_by(status_code=4).all()
+
+        # get unique shop instance
+        unique_shop_instance = TheSiren.query.get(1)
+        for order in orders:
+            unique_shop_instance.total_sales += order.paid_payment
+            for omt in order.order_model_types:
+                unique_shop_instance.total_sale_count += omt.count
+        db.session.add(unique_shop_instance)
+        db.session.commit()
 
 
 class Refund(BaseModel):
@@ -705,8 +725,15 @@ class Order(BaseModel):
             stock number
         AND sale number
         of each model type in this order.
+        AND shop total sales
+        AND shop total sale number
         The stock of these model types will be decreased by the count of it in this order.
         """
+        # update shop info
+        unique_shop_instance = TheSiren.query.get(1)
+        unique_shop_instance.total_sales += self.paid_payment
+        db.session.add(unique_shop_instance)
+
         for omt in self.order_model_types:
             # get the model type
             mt = omt.model_type
@@ -714,6 +741,10 @@ class Order(BaseModel):
             mt.stock = mt.stock - omt.count
             mt.sales = mt.sales + omt.count
             db.session.add(mt)
+            # update shop info
+            unique_shop_instance.total_sale_count += omt.count
+            db.session.add(unique_shop_instance)
+
         db.session.commit()
 
 
