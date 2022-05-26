@@ -314,7 +314,7 @@
                                                                     {% elif order.status_code == 4 %}
                                                                         <tr>
                                                                             <td class="clickable action_service button"
-                                                                                onclick="">
+                                                                                onclick="window.open('/chat-after-sale/{{ order.id }}');">
                                                                                 {{ _("After Sale Service")}}
                                                                             </td>
                                                                         </tr>
