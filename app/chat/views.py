@@ -196,11 +196,25 @@ def history_customer(data):
         # if index + 1 == len(chat_history):
         #     is_last = '1'   # true
 
-        emit('history-customer', {'msg': msg['msg'], 'username': msg['username'],
+        data_for_emit = {'msg': msg['msg'], 'username': msg['username'],
                                   'time_stamp': msg['time_stamp'], 'avatar': msg['avatar'], 'type': 'history',
                                   'user_need_chat_history': current_user.username, 'isLast': is_last, 'msgType': msg['msgType']}
-             , room=chat_room_id)
 
+        # check whether this is a piece of special message (consult and after-sale)
+        if msg['msgType'] == 'consult':
+            data_for_emit['mt_name'] = msg['mt_name']
+            data_for_emit['mt_price'] = msg['mt_price']
+            data_for_emit['mt_pic'] = msg['mt_pic']
+            data_for_emit['mt_url'] = msg['mt_url']
+
+        elif msg['msgType'] == 'consult':
+            data_for_emit['order_out_trade_no'] = msg['order_out_trade_no']
+            data_for_emit['order_url'] = msg['order_url']
+
+        # emit this piece of history
+        emit('history-customer', data_for_emit, room=chat_room_id)
+
+    # send this to tell the javascript, all histories are sent finished
     emit('history-customer', {'msg': '', 'username': '',
                               'time_stamp': '', 'avatar': '', 'type': '',
                               'user_need_chat_history': '', 'isLast': '1', 'msgType': ''}
@@ -222,11 +236,25 @@ def history_staff(data):
         # if index + 1 == len(chat_history):
         #     is_last = '1'   # true
 
-        emit('history-staff', {'msg': msg['msg'], 'username': msg['username'],
-                               'time_stamp': msg['time_stamp'], 'avatar': msg['avatar'], 'type': 'history',
-                               'user_need_chat_history': current_user.username, 'isLast': is_last, 'msgType': msg['msgType']}
-             , room=chat_room_id)
+        data_for_emit = {'msg': msg['msg'], 'username': msg['username'],
+                         'time_stamp': msg['time_stamp'], 'avatar': msg['avatar'], 'type': 'history',
+                         'user_need_chat_history': current_user.username, 'isLast': is_last, 'msgType': msg['msgType']}
 
+        # check whether this is a piece of special message (consult and after-sale)
+        if msg['msgType'] == 'consult':
+            data_for_emit['mt_name'] = msg['mt_name']
+            data_for_emit['mt_price'] = msg['mt_price']
+            data_for_emit['mt_pic'] = msg['mt_pic']
+            data_for_emit['mt_url'] = msg['mt_url']
+
+        elif msg['msgType'] == 'consult':
+            data_for_emit['order_out_trade_no'] = msg['order_out_trade_no']
+            data_for_emit['order_url'] = msg['order_url']
+
+        # emit this piece of history
+        emit('history-staff', data_for_emit, room=chat_room_id)
+
+    # send this to tell the javascript, all histories are sent finished
     emit('history-staff', {'msg': '', 'username': '',
                            'time_stamp': '', 'avatar': '', 'type': '',
                            'user_need_chat_history': '', 'isLast': '1', 'msgType': ''}
@@ -244,15 +272,28 @@ def prepare_for_history_json(item, chat_id):
     utc_dt = item.timestamp.replace(tzinfo=utc_zone)
     local_time = utc_dt.astimezone(local_zone)
 
+    message = {}
     if item.author_type == 'customer':
         avatar = room.customer.avatar
         message = {'msg': item.content, 'username': username, 'time_stamp': local_time.strftime('%H:%M:%S'),
                    'author_type': 'customer', 'avatar': avatar, 'message_id': item.id, 'msgType': item.chat_type}
 
-    if item.author_type == 'staff':
+    elif item.author_type == 'staff':
         avatar = room.staff.avatar
         message = {'msg': item.content, 'username': staffname, 'time_stamp': local_time.strftime('%H:%M:%S'),
                    'author_type': 'staff', 'avatar': avatar, 'message_id': item.id, 'msgType': item.chat_type}
+
+
+    # check special message (consult and after-sale)
+    if item.chat_type == 'consult':
+        message['mt_name'] = item.model_type.name
+        message['mt_price'] = item.model_type.price
+        message['mt_pic'] = url_for("static", filename=item.model_type.pictures.all()[0].address)
+        message['mt_url'] = url_for("main.model_type_details", mt_id=item.model_type.id)
+
+    elif item.chat_type == 'consult':
+        message['order_out_trade_no'] = item.order.out_trade_no
+        message['order_url'] = url_for("order.after_sale_order", order_id=item.order.id)
 
     return message
 
