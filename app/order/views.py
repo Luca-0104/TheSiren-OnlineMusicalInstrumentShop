@@ -106,6 +106,11 @@ def generate_order_from_buy_now():
                 # check is there a customization of this order
                 customization = None
                 if customization_id != "":
+                    try:
+                        customization_id = int(customization_id)
+                    except Exception as e:
+                        current_app.logger.error(e)
+                        return jsonify({'returnValue': 1})
                     # get obj from db
                     customization = Customization.query.get(customization_id)
 
