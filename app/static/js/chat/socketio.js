@@ -206,14 +206,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         console.log("here in after-sale append!!");
 
-        let msgHTML = '<div class="direct-chat-msg right">'
-        + '<div class="direct-chat-info clearfix">'
-        + '<span class="direct-chat-name pull-right">' + data.username + '</span>'
-        + '<span class="direct-chat-timestamp pull-left">' + data.timestamp + '</span>'
+        let msgHTML = '<div class="chat chat-left">'
+        + '<div class="chat-user">'
+        + '<a class="avatar m-0">'
+        + '<img src="' + data.avatar + '" alt="avatar" class="avatar-35 ">'
+        + '</a>'
+        + '<span class="chat-time mt-1">' + data.timestamp + '</span>'
         + '</div>'
-        + '<img class="direct-chat-img" src="' + data.avatar + '" alt="avatar">'
-        + '<div class="direct-chat-text">'
-        + '<div role="listitem" class="w-dyn-item product-box" style="padding: 10">'
+        + '<div class="chat-detail">'
+        + '<div class="chat-message">'
         + '<table class="order-table clickable" onclick="window.open(\'' + data.order_url + '\')">'
         + '<tr>'
         + '<td colspan="3" class="title-cell">'
