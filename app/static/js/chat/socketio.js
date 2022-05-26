@@ -147,10 +147,103 @@ document.addEventListener('DOMContentLoaded', () => {
     // put up the auto sent msg - consult
     socket.on('auto-msg-consult', data => {
 
+        console.log("here in consult append!!");
+
+        let msgHTML = '<div class="chat chat-left">'
+        + '<div class="chat-user">'
+        + '<a class="avatar m-0">'
+        + '<img src="' + data.avatar + '" alt="avatar" class="avatar-35 ">'
+        + '</a>'
+        + '<span class="chat-time mt-1">' + data.timestamp + '</span>'
+        + '</div>'
+        + '<div class="chat-detail">'
+        + '<div class="chat-message">'
+        + '<table class="commodity-table clickable" onclick="window.open(\'' + data.mt_url + '\')">'
+        + '<tr>'
+        + '<td colspan="4" class="title-cell">'
+        + '<span class="order-title">Commodity</span>'
+        + '</td>'
+        + '</tr>'
+        + '<tr>'
+        + '<td class="empty-cell2" rowspan="2"></td>'
+        + '<td class="commodity-image-cell">'
+        + '<div class="img_container">'
+        + '<img src="' + data.mt_pic + '" loading="lazy" alt="img">'
+        + '</div>'
+        + '</td>'
+        + '<td class="commodity-info-cell">'
+        + '<div class="box-product-info-card">'
+        + 'Product price'
+        + '<div class="my-price-container">'
+        + '<span class="commodity-price">￥ ' + data.mt_price + '</span>'
+        + '</div>'
+        + '<br>'
+        + 'Product name'
+        + '<div class="my-product-name-container">'
+        + '<span class="commodity-name">' + data.mt_name + '</span>'
+        + '</div>'
+        + '</div>'
+        + '</td>'
+        + '<td class="empty-cell2" rowspan="2"></td>'
+        + '</tr>'
+        + '<tr>'
+        + '<td class="notify-cell" colspan="2">'
+        + '<span class="click-notify">Click to View</span>'
+        + '</td>'
+        + '</tr>'
+        + '</table>'
+        + '</div>'
+        + '</div>'
+        + '</div>';
+
+        // append to the chatting window
+        $('#chat-window-' + chatRoomId).append(msgHTML);
+
     });
 
     // put up the auto sent msg - after-sale
     socket.on('auto-msg-after-sale', data => {
+
+        console.log("here in after-sale append!!");
+
+        let msgHTML = '<div class="direct-chat-msg right">'
+        + '<div class="direct-chat-info clearfix">'
+        + '<span class="direct-chat-name pull-right">' + data.username + '</span>'
+        + '<span class="direct-chat-timestamp pull-left">' + data.timestamp + '</span>'
+        + '</div>'
+        + '<img class="direct-chat-img" src="' + data.avatar + '" alt="avatar">'
+        + '<div class="direct-chat-text">'
+        + '<div role="listitem" class="w-dyn-item product-box" style="padding: 10">'
+        + '<table class="order-table clickable" onclick="window.open(\'' + data.order_url + '\')">'
+        + '<tr>'
+        + '<td colspan="3" class="title-cell">'
+        + '<span class="order-title">Order</span>'
+        + '</td>'
+        + '</tr>'
+        + '<tr>'
+        + '<td class="empty-cell2" rowspan="2"></td>'
+        + '<td class="order-info-cell">'
+        + '<div class="box-product-info-card">'
+        + 'Trade ID'
+        + '<div class="my-price-container">'
+        + '<span class="commodity-price">' + data.order_out_trade_no + '</span>'
+        + '</div>'
+        + '</div>'
+        + '</td>'
+        + '<td class="empty-cell2" rowspan="2"></td>'
+        + '</tr>'
+        + '<tr>'
+        + '<td class="order-info-cell">'
+        + '<span class="click-notify">Click to View</span>'
+        + '</td>'
+        + '</tr>'
+        + '</table>'
+        + '</div>'
+        + '</div>'
+        + '</div>';
+
+        // append to the chatting window
+        $('#chat-window-' + chatRoomId).append(msgHTML);
 
     });
 
