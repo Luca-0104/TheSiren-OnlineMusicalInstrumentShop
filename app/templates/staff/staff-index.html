@@ -36,6 +36,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Total Sales & Total Cost & Product Sold -->
             <div class="col-lg-8">
                 <div class="row">
                     <div class="col-lg-4 col-md-4">
@@ -97,7 +98,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
+
+            <!--<div class="col-lg-6">
                 <div class="card card-block card-stretch card-height">
                     <div class="card-header d-flex justify-content-between">
                         <div class="header-title">
@@ -148,26 +150,14 @@
                         <div id="layout1-chart-2" style="min-height: 360px;"></div>
                     </div>
                 </div>
-            </div>
+            </div>-->
+
+            <!-- Top Products -->
             <div class="col-lg-8">
                 <div class="card card-block card-stretch card-height">
                     <div class="card-header d-flex align-items-center justify-content-between">
                         <div class="header-title">
                             <h4 class="card-title">{{ _("Top Products")}}</h4>
-                        </div>
-                        <div class="card-header-toolbar d-flex align-items-center">
-                            <div class="dropdown">
-                                <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton006"
-                                      data-toggle="dropdown">
-                                    {{ _("This Month")}}<i class="ri-arrow-down-s-line ml-1"></i>
-                                </span>
-                                <div class="dropdown-menu dropdown-menu-right shadow-none"
-                                     aria-labelledby="dropdownMenuButton006">
-                                    <a class="dropdown-item" href="#">{{ _("Year") }}</a>
-                                    <a class="dropdown-item" href="#">{{ _("Month") }}</a>
-                                    <a class="dropdown-item" href="#">{{ _("Week") }}</a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="card-body">
@@ -251,6 +241,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Best Item All Time -->
             <div class="col-lg-4">
                 <div class="card-transparent card-block card-stretch mb-4">
                     <div class="card-header d-flex align-items-center justify-content-between p-0">
@@ -258,7 +250,7 @@
                             <h4 class="card-title mb-0">{{ _("Best Item All Time")}}</h4>
                         </div>
                         <div class="card-header-toolbar d-flex align-items-center">
-                            <div><a href="#" class="btn btn-primary view-btn font-size-14">{{ _("View All")}}</a>
+                            <div><a href="{{ url_for('product.show_page_stock_management') }}" class="btn btn-primary view-btn font-size-14">{{ _("View All")}}</a>
                             </div>
                         </div>
                     </div>
@@ -314,7 +306,8 @@
                     </div>
                 </div>-->
             </div>
-            <div class="col-lg-4">
+
+            <!--<div class="col-lg-4">
                 <div class="card card-block card-stretch card-height-helf">
                     <div class="card-body">
                         <div class="d-flex align-items-top justify-content-between">
@@ -428,7 +421,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!-- Page end  -->
     </div>
 {% endblock %}

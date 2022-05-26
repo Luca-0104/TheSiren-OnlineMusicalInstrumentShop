@@ -352,7 +352,7 @@
                                 <!-- Models -->
                                 <tr>
                                     <td id="model_table_col">
-                                        <table width="100%" class="model_listing_table">
+                                        <table border="1" width="100%" class="model_listing_table">
                                             {% for order_model in order.order_model_types %}
                                                 <tr id="model_row_{{ order_model.model_type.id }}"
                                                     order_id="{{ order.id }}">
@@ -374,10 +374,10 @@
                                                         {{ order_model.model_type.name }}
                                                     </td>
                                                     <td class="model_des_col">
-                                                        <table>
+                                                        <table class="middle-table" border="1">
                                                             <!-- Model Description -->
                                                             <tr>
-                                                                <td class="model_des_cell">
+                                                                <td class="model_des_cell" colspan="2">
                                                                     {{ order_model.model_type.description }}
                                                                 </td>
                                                             </tr>
@@ -426,11 +426,19 @@
                                                                         </ul>
                                                                     </div>
                                                                 </td>
+                                                                <td>
+                                                                    <a href="{{ url_for("static",filename=order_model.model_type.pictures.first().address) }}">
+                                                                        <img src="{{ url_for("static",filename=order_model.model_type.pictures.first().address) }}"
+                                                                         onclick="window.open(document.domain{{ url_for("static",filename=order_model.model_type.pictures.first().address) }});"
+                                                                         class="texture-sample clickable" loading="lazy" alt="">
+                                                                    </a>
+                                                                    <span>Customized</span>
+                                                                </td>
                                                             </tr>
                                                             <!-- Comment entrance -->
                                                             {% if order.status_code == 4 %}
                                                                 <tr>
-                                                                    <td class="model_comment_col">
+                                                                    <td class="model_comment_col" colspan="2">
                                                                         {% if order_model.is_commented %}
                                                                             <div class="commented-mark">
                                                                                 {{ _("Commented") }}

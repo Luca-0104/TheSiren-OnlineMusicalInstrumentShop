@@ -253,6 +253,7 @@ width: 15%;}
 .model_rate_col{
     padding-top: 5px;
     background-color: #fff;
+    width: 50%;
 }
 
 .model_comment_col{
@@ -385,4 +386,27 @@ width: 15%;}
 
 .select-wrapper{
     background-color: #fff;
+}
+
+.middle-table{
+    width: 100%;
+}
+
+.textrue-sample-box{
+    width: 10px;
+    height: 10px;
+    background-color: red;
+}
+
+.texture-sample {
+    width: 5vh;
+    height: 5vh;
+    object-fit: cover;
+    margin-right: 10px;
+    transition: 0.5s;
+    border: 1px solid transparent;
+}
+
+.texture-sample:hover {
+    border: 1px solid #898888d9;
 }
