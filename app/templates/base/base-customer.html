@@ -440,7 +440,8 @@
         <script>
             $(function(){
                 $("#launchTopButton").click(function() {
-                    $('body,html').scrollTop(0);
+                    {#$('body,html').scrollTop(0);#}
+                    $('body,html').animate({scrollTop:0}, 1500);
                 });
                 $(".lineItem").hover(
                     function()

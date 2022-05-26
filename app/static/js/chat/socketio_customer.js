@@ -394,3 +394,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('#chat-window').append(p);
     }
 });
+
+function toBottom()
+{
+    let chat_window = $("#chat-window");
+    let h = chat_window[0].scrollHeight * 1.5;
+    chat_window.animate({scrollTop: h}, 2000);
+}
