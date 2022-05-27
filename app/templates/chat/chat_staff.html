@@ -190,36 +190,36 @@
                                                                 <hr>
                                                                 <div class="chatuser-detail text-left mt-4">
                                                                     <div class="row">
-                                                                        <div class="col-6 col-md-6 title">Name:</div>
+                                                                        <div class="col-6 col-md-6 title">{{ _("Name:") }}</div>
                                                                         <div class="col-6 col-md-6 text-right">{{ room.customer.username }}</div>
                                                                     </div>
                                                                     <hr>
                                                                     <div class="row">
-                                                                        <div class="col-6 col-md-6 title">Email:</div>
+                                                                        <div class="col-6 col-md-6 title">{{ _("Email:") }}</div>
                                                                         <div class="col-6 col-md-6 text-right">{{ room.customer.email }}</div>
                                                                     </div>
                                                                     <hr>
                                                                     <div class="row">
-                                                                        <div class="col-6 col-md-6 title">Gender:</div>
+                                                                        <div class="col-6 col-md-6 title">{{ _("Gender:") }}</div>
                                                                         <div class="col-6 col-md-6 text-right">{{ room.customer.gender }}</div>
                                                                     </div>
                                                                     <hr>
                                                                     <div class="row">
-                                                                        <div class="col-6 col-md-6 title">Language:</div>
+                                                                        <div class="col-6 col-md-6 title">{{ _("Language:") }}</div>
                                                                         {% if room.customer.language == "en" %}
-                                                                            <div class="col-6 col-md-6 text-right"> English </div>
+                                                                            <div class="col-6 col-md-6 text-right"> {{ _("English") }} </div>
                                                                         {% elif room.customer.language == "ch" %}
-                                                                            <div class="col-6 col-md-6 text-right"> Chinese </div>
+                                                                            <div class="col-6 col-md-6 text-right"> {{ _("Chinese") }} </div>
                                                                         {% endif %}
                                                                     </div>
                                                                     <hr>
                                                                     <div class="row">
-                                                                        <div class="col-6 col-md-6 title">Premium:</div>
+                                                                        <div class="col-6 col-md-6 title">{{ _("Premium:") }}</div>
                                                                         <div class="col-6 col-md-6 text-right">{{ room.customer.is_premium }}</div>
                                                                     </div>
                                                                     <hr>
                                                                     <div class="row">
-                                                                        <div class="col-6 col-md-6 title">Join Date:</div>
+                                                                        <div class="col-6 col-md-6 title">{{ _("Join Date:") }}</div>
                                                                         <div class="col-6 col-md-6 text-right">{{ room.customer.start_datetime.date() }}</div>
                                                                     </div>
 
@@ -244,15 +244,15 @@
                                                                       aria-labelledby="dropdownMenuButton4">
                                                                    <a class="dropdown-item" href="JavaScript:void(0);">
                                                                        <i class="fa fa-thumb-tack" aria-hidden="true"></i>
-                                                                       Pin to top
+                                                                       {{ _("Pin to top") }}
                                                                    </a>
                                                                    <a class="dropdown-item" href="JavaScript:void(0);">
                                                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                                       Delete chat
+                                                                       {{ _('Delete chat') }}
                                                                    </a>
                                                                    <a class="dropdown-item" href="JavaScript:void(0);">
                                                                        <i class="fa fa-ban" aria-hidden="true"></i>
-                                                                       Block
+                                                                       {{ _("Block") }}
                                                                    </a>
                                                                 </span>
                                                             </span>
@@ -278,7 +278,7 @@
                                                                        onclick="window.open('{{ url_for('main.model_type_details', mt_id=rec_preference_pro.id) }}')">
                                                                     <tr>
                                                                         <td colspan="4" class="title-cell">
-                                                                            <span class="order-title">Commodity</span>
+                                                                            <span class="order-title">{{ _("Commodity") }}</span>
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
@@ -297,12 +297,12 @@
                                                                         </td>
                                                                         <td class="commodity-info-cell">
                                                                             <div class="box-product-info-card">
-                                                                                Product price
+                                                                                {{ _("Product price") }}
                                                                                 <div class="my-price-container">
                                                                                     <span class="commodity-price">￥ {{ rec_preference_pro.price }}</span>
                                                                                 </div>
                                                                                 <br>
-                                                                                Product name
+                                                                                {{ _("Product name") }}
                                                                                 <div class="my-product-name-container">
                                                                                     <span class="commodity-name">{{ rec_preference_pro.name }}</span>
                                                                                 </div>
@@ -312,7 +312,7 @@
                                                                     </tr>
                                                                     <tr>
                                                                         <td class="notify-cell" colspan="2">
-                                                                            <span class="click-notify">Click to View</span>
+                                                                            <span class="click-notify">{{ _("Click to View") }}</span>
                                                                         </td>
                                                                     </tr>
                                                                 </table>
@@ -334,14 +334,14 @@
                                                                        onclick="window.open('/after-sale-order/1');">
                                                                     <tr>
                                                                         <td colspan="3" class="title-cell">
-                                                                            <span class="order-title">Order</span>
+                                                                            <span class="order-title">{{ _("Order") }}</span>
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td class="empty-cell2" rowspan="2"></td>
                                                                         <td class="order-info-cell">
                                                                             <div class="box-product-info-card">
-                                                                                Trade ID
+                                                                                {{ _("Trade ID") }}
                                                                                 <div class="my-price-container">
                                                                                     <span class="commodity-price">123456789</span>
                                                                                 </div>
@@ -351,7 +351,7 @@
                                                                     </tr>
                                                                     <tr>
                                                                         <td class="order-info-cell">
-                                                                            <span class="click-notify">Click to View</span>
+                                                                            <span class="click-notify">{{ _("Click to View") }}</span>
                                                                         </td>
                                                                     </tr>
                                                                 </table>

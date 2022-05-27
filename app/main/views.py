@@ -143,7 +143,7 @@ def brand_intro(brand_id):
     # concatenate the prefix with brand name to get the template name
     template_name = "main/brand_intro/{}.html".format(brand.name.lower())
     try:
-        flash("Welcome to learn more about The " + brand.name)
+        flash(_("Welcome to learn more about The " + brand.name))
         return render_template(template_name)
     except Exception as e:
         # traceback.print_exc()
@@ -158,7 +158,7 @@ def about_us():
     # get all the journals form db
     journal_lst = Journal.query.order_by(Journal.timestamp.desc())
 
-    flash("Here, you can learn more about The Siren~")
+    flash(_("Here, you can learn more about The Siren~"))
     return render_template('main/about_siren.html', journal_lst=journal_lst)
 
 
@@ -200,7 +200,7 @@ def search():
                     if mt not in set(mt_list):
                         mt_list.append(mt)
 
-        flash("Following are the searching results about '{}'.".format(key_word))
+        flash(_("Following are the searching results about '{}'.".format(key_word)))
         return render_template('main/page_all_commodities.html', mt_list=mt_list, key_word=key_word)  # see-all page
 
     return redirect(url_for('main.index'))
@@ -258,7 +258,7 @@ def products_in_brand(brand_name):
     # sort the model list by the sale numbers
     sort_db_models(mt_list, sort_key=take_sales, reverse=True)
 
-    flash("Following are the commodities of the brand - {}".format(brand_name))
+    flash(_("Following are the commodities of the brand - {}".format(brand_name)))
     return render_template('main/page_all_commodities.html', mt_list=mt_list)  # see-all page
 
 
@@ -284,7 +284,7 @@ def products_in_category(cate_name):
     # sort the model list by the sale numbers
     sort_db_models(mt_list, sort_key=take_sales, reverse=True)
 
-    flash("Below are the products in category of '{}'.".format(cate_name))
+    flash(_("Below are the products in category of '{}'.".format(cate_name)))
     return render_template('main/page_all_commodities.html', mt_list=mt_list, cate_name=cate_name)  # see-all page
 
 
@@ -299,7 +299,7 @@ def model_type_details(mt_id):
         mt = ModelType.query.get(mt_id)
     except Exception as e:
         current_app.logger.error(e)
-        flash('No such commodity!')
+        flash(_('No such commodity!'))
         return redirect(url_for('main.index'))
 
     # check if the model type exists
@@ -385,7 +385,7 @@ def model_listing(search_content):
                     if mt not in set(mt_lst):
                         mt_lst.append(mt)
 
-        flash("Following are the searching results of '{}'.".format(search_content))
+        flash(_("Following are the searching results of '{}'.".format(search_content)))
     else:
         # if com here by clicking on "go all"
         mt_lst = ModelType.query.all()
@@ -763,9 +763,9 @@ def switch_epidemic_mode():
         # reverse the current switch of epidemic_mode_on
         if switch_to == '0':
             siren.epidemic_mode_on = False
-            flash("Epidemic Mode turned off.")
+            flash(_("Epidemic Mode turned off."))
         elif switch_to == '1':
-            flash("Epidemic Mode turned on.")
+            flash(_("Epidemic Mode turned on."))
             siren.epidemic_mode_on = True
         else:
             current_app.logger.error("wrong value of 'switch_to' from Ajax")

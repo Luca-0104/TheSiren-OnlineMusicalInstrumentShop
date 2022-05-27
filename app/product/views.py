@@ -462,7 +462,7 @@ def upload_model_type(product_id):
                 new_model_type.categories.append(Category.query.get(cate_id))
 
             db.session.commit()
-            flash("Model Type Uploaded!")
+            flash(_("Model Type Uploaded!"))
 
             """
                 Dealing with the uploaded pictures (The model type pictures)
@@ -662,7 +662,7 @@ def upload_video(mt_id):
             return redirect(url_for('product.show_page_stock_management'))
 
         if mt.is_deleted:
-            flash("Failed! You cannot upload video for a deleted model type.")
+            flash(_("Failed! You cannot upload video for a deleted model type."))
             current_app.logger.error("This model type has been deleted!")
             return redirect(url_for('product.show_page_stock_management'))
 
@@ -678,7 +678,7 @@ def upload_video(mt_id):
 
         # check the file type
         if suffix not in Config.ALLOWED_VIDEO_SUFFIXES:
-            flash("Failed! You should upload .mp4 video only.")
+            flash(_("Failed! You should upload .mp4 video only."))
             current_app.logger.error("video file type error!")
             return redirect(url_for('product.show_page_stock_management'))
 
@@ -696,7 +696,7 @@ def upload_video(mt_id):
         db.session.add(mt)
         db.session.commit()
 
-        flash("Video uploaded successfully!")
+        flash(_("Video uploaded successfully!"))
 
     return redirect(url_for('product.show_page_stock_management'))
 
@@ -718,7 +718,7 @@ def upload_audio(mt_id):
             return redirect(url_for('product.show_page_stock_management'))
 
         if mt.is_deleted:
-            flash("Failed! You cannot upload video for a deleted model type.")
+            flash(_("Failed! You cannot upload video for a deleted model type."))
             current_app.logger.error("This model type has been deleted!")
             return redirect(url_for('product.show_page_stock_management'))
 
@@ -734,7 +734,7 @@ def upload_audio(mt_id):
 
         # check the file type
         if suffix not in Config.ALLOWED_AUDIO_SUFFIXES:
-            flash("Failed! You should upload .mp3 audio only.")
+            flash(_("Failed! You should upload .mp3 audio only."))
             current_app.logger.error("audio file type error!")
             return redirect(url_for('product.show_page_stock_management'))
 
@@ -752,7 +752,7 @@ def upload_audio(mt_id):
         db.session.add(new_audio)
         db.session.commit()
 
-        flash("Audio uploaded successfully!")
+        flash(_("Audio uploaded successfully!"))
 
     return redirect(url_for('product.show_page_stock_management'))
 
@@ -774,7 +774,7 @@ def upload_3d_file(mt_id):
             return redirect(url_for('product.show_page_stock_management'))
 
         if mt.is_deleted:
-            flash("Failed! You cannot upload video for a deleted model type.")
+            flash(_("Failed! You cannot upload video for a deleted model type."))
             current_app.logger.error("This model type has been deleted!")
             return redirect(url_for('product.show_page_stock_management'))
 
@@ -800,7 +800,7 @@ def upload_3d_file(mt_id):
 
         # check the file type
         if suffix not in Config.ALLOWED_3D_MODEL_SUFFIXES:
-            flash("Failed! You should upload .fbx/.obj file only.")
+            flash(_("Failed! You should upload .fbx/.obj file only."))
             current_app.logger.error("3d file type error!")
             return redirect(url_for('product.show_page_stock_management'))
 
@@ -827,7 +827,7 @@ def upload_3d_file(mt_id):
 
             # check the file type
             if suffix not in Config.ALLOWED_3D_MODEL_TEXTURE_SUFFIXES:
-                flash("Failed! You should upload '.png' file only.")
+                flash(_("Failed! You should upload '.png' file only."))
                 current_app.logger.error("3d texture file type error!")
                 # rollback the db
                 db.session.rollback()
@@ -858,10 +858,10 @@ def upload_3d_file(mt_id):
         except Exception as e:
             current_app.logger.error(e)
             db.session.rollback()
-            flash("3D model upload failed!")
+            flash(_("3D model upload failed!"))
             return redirect(url_for('product.show_page_stock_management'))
 
-        flash("3D model uploaded successfully!")
+        flash(_("3D model uploaded successfully!"))
 
     return redirect(url_for('product.show_page_stock_management'))
 

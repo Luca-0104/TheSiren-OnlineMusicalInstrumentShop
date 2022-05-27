@@ -7,6 +7,7 @@ from app import db
 from app.decorators import staff_only, login_required_for_ajax
 from app.journal import journal
 from flask import render_template, redirect, url_for, request, current_app, jsonify, flash
+from flask_babel import _
 
 from app.journal.forms import JournalUploadForm, JournalEditForm
 from app.models import Journal
@@ -43,7 +44,7 @@ def journal_management():
             # query out journals with this key word in title or body, and sort them by date time
             journal_lst = Journal.query.filter(or_(Journal.title.contains(key_word), Journal.text.contains(key_word))).order_by(Journal.timestamp.desc())
 
-        flash("Your search result is shown below!")
+        flash(_("Your search result is shown below!"))
 
     else:
         # mark search
@@ -78,7 +79,7 @@ def upload_journal():
         db.session.add(new_journal)
         db.session.commit()
 
-        flash("Journal upload successfully!")
+        flash(_("Journal upload successfully!"))
         # back to journal listing page
         return redirect(url_for("journal.journal_management"))
 
@@ -108,7 +109,7 @@ def edit_journal(journal_id):
 
     # check if the user is the author of this journal
     if this_journal.author_id != current_user.id:
-        flash("Permission Denied! You can only edit your own journals!")
+        flash(_("Permission Denied! You can only edit your own journals!"))
         current_app.logger.error("Permission Denied! Some one attempts to edit others' journal")
         return redirect(url_for("journal.journal_management"))
 
@@ -123,7 +124,7 @@ def edit_journal(journal_id):
         db.session.add(this_journal)
         db.session.commit()
 
-        flash("Journal updated successfully!")
+        flash(_("Journal updated successfully!"))
         return redirect(url_for("journal.journal_management"))
 
     # pre input the current data into this form
@@ -164,7 +165,7 @@ def delete_journal():
 
         # check if this journal belong to current user
         if this_journal.author_id != current_user.id:
-            flash("Permission Denied! You can only delete your own journals!")
+            flash(_("Permission Denied! You can only delete your own journals!"))
             current_app.logger.error("Permission Denied! Some one attempts to delete others' journal")
             return jsonify({'returnValue': 2, 'msg': "Permission Denied! You can only delete your own journals!"})
 
@@ -172,6 +173,6 @@ def delete_journal():
         db.session.delete(this_journal)
         db.session.commit()
 
-        flash("Journal Deleted!")
+        flash(_("Journal Deleted!"))
         return jsonify({'returnValue': 0})
     return jsonify({'returnValue': 1})

@@ -150,7 +150,7 @@ def order_confirm(order_id):
     if o in current_user.orders:
         # get the instance of the shop and check the epidemic mode
         siren = get_unique_shop_instance()
-        flash("Complete the details of your order here.")
+        flash(_("Complete the details of your order here."))
         return render_template('order/order-confirm.html', order=o, epidemic_mode_on=siren.epidemic_mode_on)
     else:
         flash(_('Permission denied!'))
@@ -164,7 +164,7 @@ def order_confirm_premium():
     """
         This function is for rendering the page of premium membership order confirmation.
     """
-    flash("Choose your premium plan here.")
+    flash(_("Choose your premium plan here."))
     return render_template("order/order-confirm-premium.html")
 
 
@@ -225,13 +225,13 @@ def update_order_address():
 
         # check order type (only 'delivery' is available)
         if o.order_type != 'delivery':
-            flash("You cannot change address of a no-delivery-type order.")
+            flash(_("You cannot change address of a no-delivery-type order."))
             current_app.logger.error("An no-delivery-type order address is going to be changed")
             return jsonify({"returnValue": 1})
 
         # check status of the order (only 0 and 1 are available)
         if o.status_code not in [0, 1]:
-            flash("Delivery address cannot be changed after preparing stage.")
+            flash(_("Delivery address cannot be changed after preparing stage."))
             current_app.logger.error("An order address is going to be changed after preparing phase.")
             return jsonify({"returnValue": 1})
 
@@ -240,7 +240,7 @@ def update_order_address():
         db.session.add(o)
         db.session.commit()
 
-        flash("Delivery address updated!")
+        flash(_("Delivery address updated!"))
         return jsonify({"returnValue": 0})
     return jsonify({"returnValue": 1})
 
@@ -329,7 +329,7 @@ def update_order_recipient():
             return jsonify({"returnValue": 1})
 
         if o.order_type != "self-collection":
-            flash("You cannot change the recipient info of a non-self-collection order.")
+            flash(_("You cannot change the recipient info of a non-self-collection order."))
             current_app.logger.error("Order type error")
             return jsonify({"returnValue": 1})
 
@@ -340,7 +340,7 @@ def update_order_recipient():
         db.session.add(o)
         db.session.commit()
 
-        flash("Recipient info updated!")
+        flash(_("Recipient info updated!"))
         return jsonify({"returnValue": 0})
     return jsonify({"returnValue": 1})
 
@@ -389,7 +389,7 @@ def change_order_to_delivery():
         db.session.add(o)
         db.session.commit()
 
-        flash("Order is changed to 'delivery' type!")
+        flash(_("Order is changed to 'delivery' type!"))
         return jsonify({'returnValue': 0})
     return jsonify({"returnValue": 1})
 
@@ -446,7 +446,7 @@ def change_order_to_collection():
         db.session.add(o)
         db.session.commit()
 
-        flash("Order is changed to 'self-collection' type!")
+        flash(_("Order is changed to 'self-collection' type!"))
         return jsonify({"returnValue": 0})
 
     return jsonify({"returnValue": 1})
@@ -565,13 +565,13 @@ def change_status():
                         o.timestamp_5 = datetime.utcnow()
                     db.session.add(o)
                     db.session.commit()
-                    flash("Order status updated!")
+                    flash(_("Order status updated!"))
                     return jsonify({'returnValue': 0})
                 else:
-                    flash("Permission defined!")
+                    flash(_("Permission defined!"))
                     return jsonify({'returnValue': 2, 'msg': 'Permission denied!'})
             else:
-                flash("Permission defined!")
+                flash(_("Permission defined!"))
                 return jsonify({'returnValue': 2, 'msg': 'Permission denied!'})
 
         # staff
@@ -595,10 +595,10 @@ def change_status():
                     o.timestamp_5 = datetime.utcnow()
                 db.session.add(o)
                 db.session.commit()
-                flash("Order status updated!")
+                flash(_("Order status updated!"))
                 return jsonify({'returnValue': 0})
             else:
-                flash("Permission defined!")
+                flash(_("Permission defined!"))
                 current_app.logger.error("change order status - Permission denied!")
                 return jsonify({'returnValue': 2, 'msg': 'Permission denied!'})
 
@@ -712,7 +712,7 @@ def update_priority():
 
         # validate the range of priority (1-3)
         if new_priority not in {1, 2, 3}:
-            flash("Invalid new priority!")
+            flash(_("Invalid new priority!"))
             current_app.logger.error("Invalid new priority!")
             return jsonify({"returnValue": 1})
 
@@ -728,7 +728,7 @@ def update_priority():
         db.session.add(o)
         db.session.commit()
 
-        flash("Order Priority Updated!")
+        flash(_("Order Priority Updated!"))
         return jsonify({"returnValue": 0})
 
     return jsonify({"returnValue": 1})

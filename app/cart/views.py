@@ -2,6 +2,8 @@ from flask import request, jsonify, render_template, current_app, flash
 from flask_login import current_user, login_required
 import json
 
+from flask_babel import _
+
 from app import db
 from app.cart import cart
 from app.decorators import customer_only, login_required_for_ajax
@@ -66,11 +68,11 @@ def add_to_cart():
                     db.session.commit()
                     response_cart_id = new_cart.id
 
-                flash("Add to cart successful!")
+                flash(_("Add to cart successful!"))
                 return jsonify({"returnValue": 0, "cartID": response_cart_id})
 
             else:
-                flash("This item runs out of stock!")
+                flash(_("This item runs out of stock!"))
     return jsonify({"returnValue": 1})
 
 
@@ -138,7 +140,7 @@ def remove_cart_relation():
         if cart_relation:
             db.session.delete(cart_relation)
             db.session.commit()
-            flash("Remove commodity successful!")
+            flash(_("Remove commodity successful!"))
             return jsonify({'returnValue': 0})
 
     return jsonify({'returnValue': 1})
