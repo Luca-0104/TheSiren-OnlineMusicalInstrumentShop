@@ -276,7 +276,7 @@
                                         <div class="select-wrapper">
                                             <select id="select-model-type" name="select-type" data-name="field" class="select-field w-select">
 
-                                                <optgroup label="Available Model Types">
+                                                <optgroup label="{{ _("Available Model Types") }}">
                                                     {% for mt in model.product.model_types %}
                                                         <option value="{{ url_for("main.model_type_details", mt_id=mt.id) }}"
                                                                 {% if mt.id == model.id %}selected="selected"{% endif %}>
@@ -286,7 +286,7 @@
                                                 </optgroup>
 
                                                 {% if model.three_d_model_address != None and model.three_d_model_address != "" %}
-                                                    <optgroup label="Customize with your own idea">
+                                                    <optgroup label="{{ _("Customize with your own idea") }}">
                                                         <option value="#modeltype-3d-model">
                                                             {{ _("Customize the Appearance") }}
                                                         </option>

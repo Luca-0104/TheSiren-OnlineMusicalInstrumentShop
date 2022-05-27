@@ -401,7 +401,7 @@
                                     </label>
                                     <label class="checkbox-labels">
                                         <input id="check_brand_18" name="b17" type="checkbox" class="checkbox brands">
-                                        others
+                                        {{ _("others") }}
                                     </label>
                                 </div>
                             </form>
@@ -451,7 +451,7 @@
 
                         <!-- when there is no model found -->
                         <div id="empty-notify-box" class="empty-state w-dyn-empty" {% if mt_list | length != 0 %} style="display: none" {% endif %}>
-                            <div id="empty-notify-msg">There are no published commodities yet.</div>
+                            <div id="empty-notify-msg">{{ _("There are no published commodities yet.") }}</div>
                         </div>
 
 {#                        <div role="navigation" aria-label="List" class="w-pagination-wrapper pagination">#}
