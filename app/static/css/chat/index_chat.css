@@ -9,7 +9,7 @@
 }
 
 .lineBox .lineItem {
-    cursor: pointer;
+    /*cursor: pointer;*/
     width: 50px;
     height: 55px;
     background: rgba(76, 76, 76, 0.3);
