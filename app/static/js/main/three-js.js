@@ -58,6 +58,11 @@ $("#upload_texture_submit").click(function ()
         {
             alert(response['msg']);
         }
+        else if (returnValue === 318)
+        {
+            let targetURL = response['redirectURL'];
+            window.location.href = targetURL;
+        }
     });
 });
 
