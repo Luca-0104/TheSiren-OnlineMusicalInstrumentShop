@@ -1,41 +1,137 @@
+/*body {*/
+/*  background-color: #eaeaea;*/
 
-body {
-  background-color: #eaeaea;
+/*  min-height: 100vh;*/
+/*}*/
 
-  min-height: 100vh;
+/*::-webkit-scrollbar {*/
+/*  width: 5px;*/
+/*}*/
+
+/*::-webkit-scrollbar-track {*/
+/*  width: 5px;*/
+/*  background: #f5f5f5;*/
+/*}*/
+
+/*::-webkit-scrollbar-thumb {*/
+/*  width: 1em;*/
+/*  background-color: #ddd;*/
+/*  outline: 1px solid slategrey;*/
+/*  border-radius: 1rem;*/
+/*}*/
+
+/*.text-small {*/
+/*  font-size: 0.9rem;*/
+/*}*/
+
+/*.messages-box,*/
+/*.chat-box {*/
+/*  height: 510px;*/
+/*  overflow-y: scroll;*/
+/*}*/
+
+/*.rounded-lg {*/
+/*  border-radius: 0.5rem;*/
+/*}*/
+
+/*input::placeholder {*/
+/*  font-size: 0.9rem;*/
+/*  color: #999;*/
+/*}*/
+
+/*This is for order and commodity*/
+.clickable {
+    cursor: pointer;
 }
 
-::-webkit-scrollbar {
-  width: 5px;
+.commodity-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 10px;
+    text-align: center;
 }
 
-::-webkit-scrollbar-track {
-  width: 5px;
-  background: #f5f5f5;
+.commodity-image-cell {
+    width: 30%;
 }
 
-::-webkit-scrollbar-thumb {
-  width: 1em;
-  background-color: #ddd;
-  outline: 1px solid slategrey;
-  border-radius: 1rem;
+.img_container {
+    max-width: 250px;
 }
 
-.text-small {
-  font-size: 0.9rem;
+.commodity-info-cell {
+    max-width: 250px;
+    border-left: 1px solid #00000021;
 }
 
-.messages-box,
-.chat-box {
-  height: 510px;
-  overflow-y: scroll;
+.empty-cell1 {
+    width: 3%;
 }
 
-.rounded-lg {
-  border-radius: 0.5rem;
+.empty-cell2 {
+    width: 10%;
 }
 
-input::placeholder {
-  font-size: 0.9rem;
-  color: #999;
+.empty-cell3 {
+    width: 20%;
+}
+
+.box-product-info-card {
+    color: #00000052;
+    font-weight: 1000;
+}
+
+.my-price-container {
+    margin: 10px;
+}
+
+.commodity-price {
+    color: #4c4c4c;
+    font-size: 25px;
+}
+
+.my-product-name-container {
+    margin: 10px;
+}
+
+.commodity-name {
+    color: #4c4c4c;
+    font-size: 25px;
+}
+
+.title-cell {
+    text-align: left;
+}
+
+.order-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 10px;
+    text-align: center;
+}
+
+.order-title {
+    font-size: 25px;
+}
+
+.order-id {
+    color: #00000094;
+    font-weight: 1000;
+}
+
+.notify-cell {
+    text-align: center;
+}
+
+.click-notify {
+    font-weight: 500;
+    transition: 0.25s;
+}
+
+.commodity-table:hover .click-notify {
+    color: #000;
+}
+
+.order-table:hover .click-notify {
+    color: #000;
 }

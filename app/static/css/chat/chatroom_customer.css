@@ -293,3 +293,142 @@ body {
     background-color: #f0ad4e;
     border-color: #eea236;
 }
+
+.navbar{
+    margin-bottom: 0px;
+}
+
+.middle-box{
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
+
+#chat-window{
+    height: 60vh;
+}
+
+.clickable{
+    cursor: pointer;
+}
+
+.commodity-table{
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 10px;
+    text-align: center;
+}
+
+.commodity-image-cell{
+    width: 30%;
+}
+
+.img_container{
+    max-width: 250px;
+}
+
+.commodity-info-cell{
+    max-width: 250px;
+    border-left: 1px solid #00000021;
+}
+
+.empty-cell1{
+    width: 3%;
+}
+
+.empty-cell2{
+    width: 10%;
+}
+
+.empty-cell3{
+    width: 20%;
+}
+
+.box-product-info-card{
+    color: #00000094;
+    font-weight: 1000;
+}
+
+.my-price-container{
+    margin: 10px;
+}
+
+.commodity-price {
+    color: #fff;
+    font-size: 25px;
+}
+
+.order-id-cell {
+    color: #fff;
+    /*font-size: 25px;*/
+    /*white-space: nowrap;*/
+    /*text-overflow: ellipsis;*/
+    /*overflow: hidden;*/
+    /*width: 260px;*/
+    /*display: inline-block;*/
+}
+
+.my-product-name-container{
+    margin: 10px;
+}
+
+.commodity-name{
+    color: #fff;
+    font-size: 25px;
+}
+
+.title-cell{
+    text-align: left;
+}
+
+.order-table{
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 10px;
+    text-align: center;
+}
+
+.order-title{
+    color: #fff;
+    font-size: 25px;
+}
+
+.order-id{
+    color: #00000094;
+    font-weight: 1000;
+}
+
+.notify-cell{
+    text-align: center;
+}
+
+.click-notify{
+    color: #000;
+    font-weight: 500;
+    transition: 0.25s;
+}
+
+.commodity-table:hover .click-notify{
+	color:#fff;
+}
+
+.order-table:hover .click-notify{
+	color:#fff;
+}
+
+.connection-notifier{
+    text-align: center;
+    padding-bottom: 10px;
+    margin-bottom: 0px;
+    padding-top: 15px;
+    margin-top: 40px;
+    border-top-style: dashed;
+    border-top-color: #00000038;
+    border-top-width: 1px;
+    font-weight: 1000;
+}
+
+.breakword{
+    word-wrap:break-word;
+    max-width: 100%;
+}

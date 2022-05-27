@@ -39,3 +39,24 @@
 .model_quantity_col{
     width: 25%;
 }
+
+.texture-sample {
+    width: 3vh;
+    height: 3vh;
+    object-fit: cover;
+    margin-right: 10px;
+    transition: 0.5s;
+    border: 1px solid transparent;
+}
+
+.texture-sample:hover {
+    border: 1px solid #898888d9;
+}
+
+.no-bottom{
+    border-bottom: none;
+}
+
+.texture-box{
+    padding-bottom: 15px;
+}

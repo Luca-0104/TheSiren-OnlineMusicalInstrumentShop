@@ -72,7 +72,7 @@
 {% block content %}
     <html data-wf-page="6221c36b59f19896625ac608" data-wf-site="6221c36b59f1986aa65ac5f0">
         <body>
-
+            <span id="chat-entrance-anchor" style="display: none" entrance-type="commodity" model-id="{{ model.id }}"></span>
             <div class="section wf-section commodity-main-section">
                 <div class="main-container">
                     <div class="w-layout-grid product-grid">
@@ -330,9 +330,9 @@
                                                 <div id="btn-buy-now" model_id="{{ model.id }}" href="#"
                                                    data-node-type="commerce-buy-now-button" data-default-text="Buy It Now"
                                                    data-subscription-text="Subscribe now"
-                                                   class="w-commerce-commercebuynowbutton button no-top-margin bg-primary">
-                                                    {{ _("Buy
-                                                            It Now")}}</div>
+                                                   class="w-commerce-commercebuynowbutton button no-top-margin bg-primary"
+                                                    customization-id="">
+                                                    {{ _("Buy It Now") }}</div>
                                             </form>
 
                                         {% else %}

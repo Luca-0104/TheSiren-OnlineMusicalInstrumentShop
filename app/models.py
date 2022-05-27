@@ -63,9 +63,10 @@ class Tools:
         OrderModelType.insert_omts()
         # insert journals
         Journal.insert_journals(50)
-
         # chat message
         Message.insert_messages(30)
+        # init the shop sale info
+        TheSiren.init_shop_sales()
 
     @staticmethod
     def insert_3d_for_mt():
@@ -359,6 +360,8 @@ class TheSiren(BaseModel):
     __tablename__ = 'the_siren'
     id = db.Column(db.Integer, primary_key=True)
     epidemic_mode_on = db.Column(db.Boolean, default=False)  # whether the shop owner turns on the "epidemic mode"
+    total_sales = db.Column(db.Float, default=0)
+    total_sale_count = db.Column(db.Integer, default=0)
 
     @staticmethod
     def create_unique_instance():
@@ -366,6 +369,23 @@ class TheSiren(BaseModel):
             unique_instance = TheSiren()
             db.session.add(unique_instance)
             db.session.commit()
+
+    @staticmethod
+    def init_shop_sales():
+        orders = []
+        orders += Order.query.filter_by(status_code=1).all()
+        orders += Order.query.filter_by(status_code=2).all()
+        orders += Order.query.filter_by(status_code=3).all()
+        orders += Order.query.filter_by(status_code=4).all()
+
+        # get unique shop instance
+        unique_shop_instance = TheSiren.query.get(1)
+        for order in orders:
+            unique_shop_instance.total_sales += order.paid_payment
+            for omt in order.order_model_types:
+                unique_shop_instance.total_sale_count += omt.count
+        db.session.add(unique_shop_instance)
+        db.session.commit()
 
 
 class Refund(BaseModel):
@@ -430,6 +450,11 @@ class Message(BaseModel):
     chat_type = db.Column(db.String(12), default='normal')
     # Which chatting room this message belongs to
     chat_room_id = db.Column(db.Integer, db.ForeignKey('chat_rooms.id'))
+
+    # model_type for msg in type of "consult" (only auto consult msg have this)
+    model_type_id = db.Column(db.Integer, db.ForeignKey('model_types.id'))
+    # order for msg in type of "after-sale" (only auto after-sale msg have this)
+    order_id = db.Column(db.Integer, db.ForeignKey('orders.id'))
 
     def __repr__(self):
         return '<Chat %r>' % self.content[:10]
@@ -520,6 +545,8 @@ class Order(BaseModel):
     order_model_types = db.relationship('OrderModelType', backref='order', lazy='dynamic')
     # record the detailed address as an string
     address_text = db.Column(db.String)
+    # 1 order --> n msg (after-sale)
+    msgs = db.relationship('Message', backref='order', lazy='dynamic')
 
     @staticmethod
     def insert_orders(count):
@@ -534,13 +561,35 @@ class Order(BaseModel):
         # create a faker instance
         faker = Faker()
         # create some new orders into db
+        # for customer 1
         for i in range(count):
             new_order = Order(timestamp=faker.past_datetime(), user_id=1,
                               order_type=["delivery", "self-collection"][random.randint(0, 1)])
             if new_order.order_type == "delivery":
                 # need address and recipient info
-                address_id = random.randint(1, Address.query.count())
-                address = Address.query.get(address_id)
+                cus1 = User.query.get(1)
+                addresses = cus1.addresses.all()
+                address = addresses[random.randint(0, len(addresses)-1)]
+                new_order.address_text = address.get_address()
+                new_order.recipient_id = address.recipient.id
+                new_order.status_code = [0, 1, 2, 4, 5, 6][random.randint(0, 5)]
+            elif new_order.order_type == "self-collection":
+                # need recipient info
+                new_order.recipient_id = random.randint(1, Recipient.query.count())
+                new_order.status_code = [0, 1, 3, 4, 5, 6][random.randint(0, 5)]
+            db.session.add(new_order)
+            db.session.commit()
+            new_order.generate_unique_out_trade_no()
+
+        # for customer 2
+        for i in range(count):
+            new_order = Order(timestamp=faker.past_datetime(), user_id=2,
+                              order_type=["delivery", "self-collection"][random.randint(0, 1)])
+            if new_order.order_type == "delivery":
+                # need address and recipient info
+                cus2 = User.query.get(2)
+                addresses = cus2.addresses.all()
+                address = addresses[random.randint(0, len(addresses) - 1)]
                 new_order.address_text = address.get_address()
                 new_order.recipient_id = address.recipient.id
                 new_order.status_code = [0, 1, 2, 4, 5, 6][random.randint(0, 5)]
@@ -698,8 +747,15 @@ class Order(BaseModel):
             stock number
         AND sale number
         of each model type in this order.
+        AND shop total sales
+        AND shop total sale number
         The stock of these model types will be decreased by the count of it in this order.
         """
+        # update shop info
+        unique_shop_instance = TheSiren.query.get(1)
+        unique_shop_instance.total_sales += self.paid_payment
+        db.session.add(unique_shop_instance)
+
         for omt in self.order_model_types:
             # get the model type
             mt = omt.model_type
@@ -707,6 +763,10 @@ class Order(BaseModel):
             mt.stock = mt.stock - omt.count
             mt.sales = mt.sales + omt.count
             db.session.add(mt)
+            # update shop info
+            unique_shop_instance.total_sale_count += omt.count
+            db.session.add(unique_shop_instance)
+
         db.session.commit()
 
 
@@ -727,6 +787,8 @@ class OrderModelType(BaseModel):
     is_commented = db.Column(db.Boolean, default=False)  # is this model in this order is already commented
     # refund record (this can be none)
     refunds = db.relationship('Refund', backref='order_model_type', lazy='dynamic')
+    # 1 order --> 1 customization
+    customization_id = db.Column(db.Integer, db.ForeignKey('customizations.id'))
 
     def __repr__(self):
         return '<OrderModelType order_id: %r --- model_type: %r * %r>' % (self.order_id, self.model_type_id, self.count)
@@ -789,15 +851,27 @@ class Cart(BaseModel):
 
     @staticmethod
     def insert_carts():
-        for i in range(50):
-            # random info
-            user_id = [1, 2][random.randint(0, 1)]
+        # for customer 1
+        already_mt = []
+        for i in range(5):
             model_type = ModelType.query.get(random.randint(1, ModelType.query.count()))
-            count = random.randint(1, 15)
+            while model_type in already_mt:
+                model_type = ModelType.query.get(random.randint(1, ModelType.query.count()))
+            count = random.randint(1, 4)
             # generate a new cart relation
-            new_cart = Cart(user_id=user_id, model_type=model_type, count=count)
+            new_cart = Cart(user_id=1, model_type=model_type, count=count)
             db.session.add(new_cart)
-        db.session.commit()
+
+        # for customer 2
+        already_mt = []
+        for i in range(5):
+            model_type = ModelType.query.get(random.randint(1, ModelType.query.count()))
+            while model_type in already_mt:
+                model_type = ModelType.query.get(random.randint(1, ModelType.query.count()))
+            count = random.randint(1, 4)
+            # generate a new cart relation
+            new_cart = Cart(user_id=2, model_type=model_type, count=count)
+            db.session.add(new_cart)
 
 
 class Comment(BaseModel):
@@ -1045,7 +1119,7 @@ class ModelType(BaseModel):
     name = db.Column(db.String(128))
     description = db.Column(db.Text())
     price = db.Column(db.Float)
-    weight = db.Column(db.Float)  # kg
+    weight = db.Column(db.Float, default=3.5)  # kg
     rate = db.Column(db.Float, default=3)  # the star rating
     rate_count = db.Column(db.Integer, default=0)  # how many time this model is rated
     stock = db.Column(db.Integer, default=0)
@@ -1077,6 +1151,8 @@ class ModelType(BaseModel):
     browsing_histories = db.relationship('BrowsingHistory', backref='model_type', lazy='dynamic')
     # 1 model -> n customization
     customizations = db.relationship('Customization', backref='model_type', lazy='dynamic')
+    # 1 model_type --> n msg (consult)
+    msgs = db.relationship('Message', backref='model_type', lazy='dynamic')
 
     def to_dict(self):
         """
@@ -1209,6 +1285,9 @@ class Customization(BaseModel):
     customer_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     model_type_id = db.Column(db.Integer, db.ForeignKey('model_types.id'))
     texture_address = db.Column(db.String, nullable=False)
+    # 1 customization -> n orderModelType
+    order_model_types = db.relationship('OrderModelType', backref='customization', lazy='dynamic')
+
 
 
 class Audio(BaseModel):
@@ -1407,6 +1486,7 @@ class Address(BaseModel):
     def insert_address():
         fake = Faker()
 
+        # addresses for customer 1
         for i in range(10):
             new_address = Address(customer_id=1, recipient_id=random.randint(1, Recipient.query.count()),
                                   country=fake.country(), province_or_state='Province{}'.format(i + 1),
@@ -1419,6 +1499,21 @@ class Address(BaseModel):
                               country=fake.country(), province_or_state='Province{}'.format(11), city=fake.city(),
                               district='District{}'.format(11), details="pingleyuan 100 BJUT (fake address for test)")
         db.session.add(new_address)
+
+        # addresses for customer 2
+        for i in range(10):
+            new_address = Address(customer_id=2, recipient_id=random.randint(1, Recipient.query.count()),
+                                  country=fake.country(), province_or_state='Province{}'.format(i + 1),
+                                  city=fake.city(), district='District{}'.format(i + 1),
+                                  details="A test detailed address")
+            db.session.add(new_address)
+
+        # add a default address for this customer
+        new_address = Address(is_default=True, customer_id=2, recipient_id=1,
+                              country=fake.country(), province_or_state='Province{}'.format(11), city=fake.city(),
+                              district='District{}'.format(11), details="pingleyuan 100 BJUT (fake address for test)")
+        db.session.add(new_address)
+
         db.session.commit()
 
     def to_dict(self):

@@ -15,6 +15,7 @@
 {% block style %}
     {{ super() }}
     <link rel="stylesheet" href="../../static/fonts/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../static/css/chat/chatroom_staff.css">
 {% endblock %}
 
 
@@ -161,15 +162,17 @@
                                                             <div class="avatar chat-user-profile m-0 mr-3">
                                                                 <img src="{{ url_for('static', filename=room.customer.avatar) }}" alt="avatar"
                                                                      class="avatar-50 ">
-                                                                <span class="avatar-status"><i
-                                                                        class="ri-checkbox-blank-circle-fill text-success"></i></span>
+                                                                <span class="avatar-status">
+                                                                    <i class="ri-checkbox-blank-circle-fill text-success"></i>
+                                                                </span>
                                                             </div>
                                                             <h5 class="mb-0">{{ room.customer.username }}</h5>
                                                         </div>
                                                         <div class="chat-user-detail-popup scroller">
                                                             <div class="user-profile text-center">
-                                                                <button type="submit" class="close-popup p-3"><i
-                                                                        class="ri-close-fill"></i></button>
+                                                                <button type="submit" class="close-popup p-3">
+                                                                    <i class="ri-close-fill"></i>
+                                                                </button>
                                                                 <div class="user mb-4">
                                                                     <a class="avatar m-0">
                                                                         <img src="{{ url_for('static', filename=room.customer.avatar) }}" class="avatar-100"
@@ -222,25 +225,127 @@
                                                                 <i class="ri-delete-bin-line"></i>
                                                             </a>
                                                             <span class="dropdown">
-                                                <i class="ri-more-2-line cursor-pointer dropdown-toggle nav-hide-arrow cursor-pointer"
-                                                   id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true"
-                                                   aria-expanded="false" role="menu"></i>
-                                                <span class="dropdown-menu dropdown-menu-right"
-                                                      aria-labelledby="dropdownMenuButton4">
-                                                   <a class="dropdown-item" href="JavaScript:void(0);"><i
-                                                           class="fa fa-thumb-tack" aria-hidden="true"></i> Pin to top</a>
-                                                   <a class="dropdown-item" href="JavaScript:void(0);"><i
-                                                           class="fa fa-trash-o" aria-hidden="true"></i> Delete chat</a>
-                                                   <a class="dropdown-item" href="JavaScript:void(0);"><i class="fa fa-ban"
-                                                                                                          aria-hidden="true"></i> Block</a>
-                                                </span>
-                                             </span>
+                                                                <i class="ri-more-2-line cursor-pointer dropdown-toggle nav-hide-arrow cursor-pointer"
+                                                                   id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true"
+                                                                   aria-expanded="false" role="menu"></i>
+                                                                <span class="dropdown-menu dropdown-menu-right"
+                                                                      aria-labelledby="dropdownMenuButton4">
+                                                                   <a class="dropdown-item" href="JavaScript:void(0);">
+                                                                       <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                                                                       Pin to top
+                                                                   </a>
+                                                                   <a class="dropdown-item" href="JavaScript:void(0);">
+                                                                       <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                                       Delete chat
+                                                                   </a>
+                                                                   <a class="dropdown-item" href="JavaScript:void(0);">
+                                                                       <i class="fa fa-ban" aria-hidden="true"></i>
+                                                                       Block
+                                                                   </a>
+                                                                </span>
+                                                            </span>
                                                         </div>
                                                     </header>
                                                 </div>
 
                                                 <!--Chat Window-->
                                                 <div id="chat-window-{{ room.id }}" class="chat-content scroller">
+{#                                              <div id="chat-window-" class="chat-content scroller">#}
+                                                    <!--Customer Chat box-->
+                                                    <div class="chat chat-left">
+                                                        <div class="chat-user">
+                                                            <a class="avatar m-0">
+                                                                <img src="../assets/images/user/10.jpg" alt="avatar" class="avatar-35 ">
+                                                            </a>
+                                                            <div class="chat-sidebar-name">Customer1</div>
+                                                            <span class="chat-time mt-1">2022-05-26 01:03:00</span>
+                                                        </div>
+                                                        <div class="chat-detail">
+                                                            <div class="chat-message">
+                                                                <table class="commodity-table clickable"
+                                                                       onclick="window.open('{{ url_for('main.model_type_details', mt_id=rec_preference_pro.id) }}')">
+                                                                    <tr>
+                                                                        <td colspan="4" class="title-cell">
+                                                                            <span class="order-title">Commodity</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="empty-cell2" rowspan="2"></td>
+                                                                        <td class="commodity-image-cell">
+                                                                            <div class="img_container">
+                                                                                <!-- product picture -->
+                                                                                {% if rec_preference_pro.pictures.first() == None %}
+                                                                                    <img src="../../static/images/example/yamaha_yep621s.jpg"
+                                                                                         loading="lazy" alt="">
+                                                                                {% else %}
+                                                                                    <img src="{{ url_for("static",filename=rec_preference_pro.pictures.first().address) }}"
+                                                                                         loading="lazy" alt="">
+                                                                                {% endif %}
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="commodity-info-cell">
+                                                                            <div class="box-product-info-card">
+                                                                                Product price
+                                                                                <div class="my-price-container">
+                                                                                    <span class="commodity-price">￥ {{ rec_preference_pro.price }}</span>
+                                                                                </div>
+                                                                                <br>
+                                                                                Product name
+                                                                                <div class="my-product-name-container">
+                                                                                    <span class="commodity-name">{{ rec_preference_pro.name }}</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="empty-cell2" rowspan="2"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="notify-cell" colspan="2">
+                                                                            <span class="click-notify">Click to View</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="chat chat-left">
+                                                        <div class="chat-user">
+                                                            <a class="avatar m-0">
+                                                                <img src="../assets/images/user/10.jpg" alt="avatar" class="avatar-35 ">
+                                                            </a>
+                                                            <div class="chat-sidebar-name">Customer1</div>
+                                                            <span class="chat-time mt-1">2022-05-26 01:03:00</span>
+                                                        </div>
+                                                        <div class="chat-detail">
+                                                            <div class="chat-message">
+                                                                <table class="order-table clickable"
+                                                                       onclick="window.open('/after-sale-order/1');">
+                                                                    <tr>
+                                                                        <td colspan="3" class="title-cell">
+                                                                            <span class="order-title">Order</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="empty-cell2" rowspan="2"></td>
+                                                                        <td class="order-info-cell">
+                                                                            <div class="box-product-info-card">
+                                                                                Trade ID
+                                                                                <div class="my-price-container">
+                                                                                    <span class="commodity-price">123456789</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="empty-cell2" rowspan="2"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="order-info-cell">
+                                                                            <span class="click-notify">Click to View</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
                                                     {% for message in messages %}
 

@@ -3,7 +3,7 @@ from flask import render_template, redirect, url_for, request, json, flash, json
 from flask_babel import _
 
 from app import db
-from app.models import Cart, Order, OrderModelType, ModelType, PremiumOrder, Address, Recipient
+from app.models import Cart, Order, OrderModelType, ModelType, PremiumOrder, Address, Recipient, Customization
 from app.order import order
 
 from datetime import datetime
@@ -81,6 +81,7 @@ def generate_order_from_buy_now():
 
         model_id = request.form.get("model_id")
         count = request.form.get("count")
+        customization_id = request.form.get("customization_id")
 
         if count is None or model_id is None:
             current_app.logger.error("info not gotten from Ajax")
@@ -102,8 +103,19 @@ def generate_order_from_buy_now():
                 db.session.add(new_order)
                 db.session.commit()
 
+                # check is there a customization of this order
+                customization = None
+                if customization_id != "":
+                    try:
+                        customization_id = int(customization_id)
+                    except Exception as e:
+                        current_app.logger.error(e)
+                        return jsonify({'returnValue': 1})
+                    # get obj from db
+                    customization = Customization.query.get(customization_id)
+
                 # add this model in to this order
-                new_omt = OrderModelType(order=new_order, model_type=model, count=count, unit_pay=model.price)
+                new_omt = OrderModelType(order=new_order, model_type=model, count=count, unit_pay=model.price, customization=customization)
                 db.session.add(new_omt)
                 db.session.commit()
 
@@ -720,3 +732,30 @@ def update_priority():
         return jsonify({"returnValue": 0})
 
     return jsonify({"returnValue": 1})
+
+
+# -------------------------------------------- after-sale msg order page render --------------------------------------------
+
+@order.route('/after-sale-order/<int:order_id>')
+@login_required
+def after_sale_order(order_id):
+    """
+        This function determine render which template by the role of current user.
+        if customer, render "my order details" page,
+        if staff, render "order management (listing)" page with only a single row of order.
+    """
+    # customer
+    if current_user.role_id == 1:
+
+        return redirect(url_for("order.order_details", order_id=order_id))
+
+    # staff
+    elif current_user.role_id == 2:
+
+        # get whether the epidemic mode is turned on currently
+        epidemic_mode_on = get_epidemic_mode_status()
+
+        # get that single order in the list
+        order_lst = Order.query.filter_by(id=order_id)
+
+        return render_template('staff/page-list-orders.html', order_lst=order_lst, epidemic_mode_on=epidemic_mode_on, open_id=order_id)

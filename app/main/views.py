@@ -873,14 +873,20 @@ def customize_in_3d():
         if cus_history is None:
             new_customization = Customization(customer_id=current_user.id, model_type_id=mt.id, texture_address=texture_ref_address)
             db.session.add(new_customization)
+            # recorde the id of the current customization
+            customization_id = new_customization.id
+
         else:
             # has history customization
             # change the texture of this history customization
             cus_history.texture_address = texture_ref_address
             db.session.add(cus_history)
+            # recorde the id of the current customization
+            customization_id = cus_history.id
+
         db.session.commit()
 
         text_address = url_for("static", filename=texture_ref_address)
-        return jsonify({'returnValue': 0, 'textureAddress': text_address})
+        return jsonify({'returnValue': 0, 'textureAddress': text_address, 'customizationId': customization_id})
 
     return jsonify({'returnValue': 1})

@@ -14,7 +14,7 @@ from app import socketio
 from flask_socketio import emit, send, join_room, leave_room
 
 from ..decorators import staff_only, customer_only
-from ..models import ChatRoom, Message, User
+from ..models import ChatRoom, Message, User, ModelType, Order
 from engineio.payload import Payload
 
 Payload.max_decode_packets = 9999
@@ -55,7 +55,8 @@ def chat_room():
             # current user is staff
         elif session["role_id"] == 2:
             rooms = ChatRoom.query.filter_by(staff_id=session['uid']).all()
-            return render_template('chat/chat_staff.html', rooms=rooms)
+            rec_preference_pro = ModelType.query.filter_by(is_deleted=False).order_by(ModelType.views.desc()).first()
+            return render_template('chat/chat_staff.html', rooms=rooms, rec_preference_pro=rec_preference_pro)
 
     return render_template('main/index_new.html')
 
@@ -71,8 +72,9 @@ def chat_for_staff(chat_room_id):
     chat_partner_id = chat_room.customer_id
     chat_partner = User.query.filter_by(id=chat_partner_id).first()
     chat_partner_name = chat_partner.username
+    rec_preference_pro = ModelType.query.filter_by(is_deleted=False).order_by(ModelType.views.desc()).first()
     return render_template("chat/chat_staff.html", username="staff", room=chat_room_id,
-                           messages=messages, role_id=session['role_id'], chat_partner_name=chat_partner_name)
+                           messages=messages, role_id=session['role_id'], chat_partner_name=chat_partner_name, rec_preference_pro=rec_preference_pro)
 
 
 # this route is used by user account
@@ -83,33 +85,33 @@ def chat_for_customer():
     # gain the chat data
     messages = Message.query.filter_by(chat_room_id=session['uid']).order_by(Message.timestamp.asc()).all()
     chat_room = ChatRoom.query.filter_by(customer_id=session['uid']).first()
-    return render_template("chat/chat_customer.html", username=session['username'], room=session['uid'],
-                           messages=messages, role_id=session['role_id'], rooms=chat_room)
+    rec_preference_pro = ModelType.query.filter_by(is_deleted=False).order_by(ModelType.views.desc()).first()
+    return render_template("chat/test-combine.html", username=session['username'], room=session['uid'],
+                           messages=messages, role_id=session['role_id'], rooms=chat_room, entrance_type='normal', rec_preference_pro=rec_preference_pro)
 
 
-# this route is used by user account
-@chat.route('/chat', methods=['GET', 'POST'])
+# this route is used by user account (come into chat from commodity details page)
+@chat.route('/chat-consult/<int:model_type_id>', methods=['GET', 'POST'])
 @login_required
 @customer_only()
-def chat_for_customer_consult():
+def chat_for_customer_consult(model_type_id):
     # gain the chat data
     messages = Message.query.filter_by(chat_room_id=session['uid']).order_by(Message.timestamp.asc()).all()
     chat_room = ChatRoom.query.filter_by(customer_id=session['uid']).first()
-    return render_template("chat/chat_customer.html", username=session['username'], room=session['uid'],
-                           messages=messages, role_id=session['role_id'], rooms=chat_room)
+    return render_template("chat/test-combine.html", username=session['username'], room=session['uid'],
+                           messages=messages, role_id=session['role_id'], rooms=chat_room, entrance_type='consult', model_type_id=model_type_id)
 
 
-# this route is used by user account
-@chat.route('/chat', methods=['GET', 'POST'])
+# this route is used by user account (come into chat from order listing page)
+@chat.route('/chat-after-sale/<int:order_id>', methods=['GET', 'POST'])
 @login_required
 @customer_only()
-def chat_for_customer_after_sales():
+def chat_for_customer_after_sale(order_id):
     # gain the chat data
     messages = Message.query.filter_by(chat_room_id=session['uid']).order_by(Message.timestamp.asc()).all()
     chat_room = ChatRoom.query.filter_by(customer_id=session['uid']).first()
-    return render_template("chat/chat_customer.html", username=session['username'], room=session['uid'],
-                           messages=messages, role_id=session['role_id'], rooms=chat_room)
-
+    return render_template("chat/test-combine.html", username=session['username'], room=session['uid'],
+                           messages=messages, role_id=session['role_id'], rooms=chat_room, entrance_type='after-sale', order_id=order_id)
 
 
 @socketio.on('message')
@@ -120,7 +122,7 @@ def message(data):
         print('left?')
         emit('history', {'msg': data['msg'], 'username': data['username'],
                          'time_stamp': data["time_stamp"], 'avatar': data['avatar'], 'type': data['type'],
-                         'user_need_chat_history': data['user_need_chat_history']}
+                         'user_need_chat_history': data['user_need_chat_history'], 'msgType': "normal"}
              , room=data['room'])
     else:
         send({'msg': data['msg'], 'username': data['username'],
@@ -147,19 +149,6 @@ def message(data):
 @socketio.on('join')
 def join(data):
     join_room(data['room'])
-
-    # if this is a customer
-    # if current_user.role_id == 1:
-    #     print("here ...")
-    #     # get chat room from db
-    #     room = ChatRoom.query.get(data['room'])
-    #     staff_name = room.staff.username
-    #
-    #     send({'msg': staff_name, 'username': data['username'],
-    #           'time_stamp': time.strftime('%H:%M:%S', time.localtime())}
-    #          , room=data['room'])
-
-
 
 
 @socketio.on('leave')
@@ -192,8 +181,8 @@ def leave(data):
 #                     "current_user": role})
 
 
-@socketio.on('history')
-def history(data):
+@socketio.on('history-customer')
+def history_customer(data):
     chat_room_id = data['room']
 
     past_messages = Message.query.filter_by(chat_room_id=chat_room_id).order_by(Message.timestamp.asc()).all()
@@ -202,15 +191,68 @@ def history(data):
         dic = prepare_for_history_json(past_message, chat_room_id)
         chat_history.append(dic)
 
-    is_last = '0'   # false
+    is_last = '0'  # false
     for index, msg in enumerate(chat_history):
-        if index + 1 == len(chat_history):
-            is_last = '1'   # true
+        # if index + 1 == len(chat_history):
+        #     is_last = '1'   # true
 
-        emit('history', {'msg': msg['msg'], 'username': msg['username'],
-                         'time_stamp': msg['time_stamp'], 'avatar': msg['avatar'], 'type': 'history',
-                         'user_need_chat_history': current_user.username, 'isLast': is_last}
-             , room=chat_room_id)
+        data_for_emit = {'msg': msg['msg'], 'username': msg['username'],
+                                  'time_stamp': msg['time_stamp'], 'avatar': msg['avatar'], 'avatar_full_address': msg['avatar_full_address'], 'type': 'history',
+                                  'user_need_chat_history': current_user.username, 'isLast': is_last, 'msgType': msg['msgType']}
+
+        # check whether this is a piece of special message (consult and after-sale)
+        if msg['msgType'] == 'consult':
+            data_for_emit['mt_name'] = msg['mt_name']
+            data_for_emit['mt_price'] = msg['mt_price']
+            data_for_emit['mt_pic'] = msg['mt_pic']
+            data_for_emit['mt_url'] = msg['mt_url']
+
+        elif msg['msgType'] == 'after-sale':
+            data_for_emit['order_out_trade_no'] = msg['order_out_trade_no']
+            data_for_emit['order_url'] = msg['order_url']
+
+        # emit this piece of history
+        emit('history-customer', data_for_emit, room=chat_room_id)
+
+    # send this to tell the javascript, all histories are sent finished
+    emit('history-customer', {'msg': '', 'username': '',
+                              'time_stamp': '', 'avatar': '', 'type': '',
+                              'user_need_chat_history': '', 'isLast': '1', 'msgType': ''}
+         , room=chat_room_id)
+
+
+@socketio.on('history-staff')
+def history_staff(data):
+    chat_room_id = data['room']
+
+    past_messages = Message.query.filter_by(chat_room_id=chat_room_id).order_by(Message.timestamp.asc()).all()
+    chat_history = []
+    for past_message in past_messages:
+        dic = prepare_for_history_json(past_message, chat_room_id)
+        chat_history.append(dic)
+
+    is_last = '0'  # false
+    for index, msg in enumerate(chat_history):
+        # if index + 1 == len(chat_history):
+        #     is_last = '1'   # true
+
+        data_for_emit = {'msg': msg['msg'], 'username': msg['username'],
+                         'time_stamp': msg['time_stamp'], 'avatar': msg['avatar'], 'avatar_full_address': msg['avatar_full_address'], 'type': 'history',
+                         'user_need_chat_history': current_user.username, 'isLast': is_last, 'msgType': msg['msgType']}
+
+        # check whether this is a piece of special message (consult and after-sale)
+        if msg['msgType'] == 'consult':
+            data_for_emit['mt_name'] = msg['mt_name']
+            data_for_emit['mt_price'] = msg['mt_price']
+            data_for_emit['mt_pic'] = msg['mt_pic']
+            data_for_emit['mt_url'] = msg['mt_url']
+
+        elif msg['msgType'] == 'after-sale':
+            data_for_emit['order_out_trade_no'] = msg['order_out_trade_no']
+            data_for_emit['order_url'] = msg['order_url']
+
+        # emit this piece of history
+        emit('history-staff', data_for_emit, room=chat_room_id)
 
 
 def prepare_for_history_json(item, chat_id):
@@ -224,17 +266,109 @@ def prepare_for_history_json(item, chat_id):
     utc_dt = item.timestamp.replace(tzinfo=utc_zone)
     local_time = utc_dt.astimezone(local_zone)
 
+    message = {}
     if item.author_type == 'customer':
         avatar = room.customer.avatar
         message = {'msg': item.content, 'username': username, 'time_stamp': local_time.strftime('%H:%M:%S'),
-                   'author_type': 'customer', 'avatar': avatar, 'message_id': item.id}
+                   'author_type': 'customer', 'avatar': avatar, 'message_id': item.id, 'msgType': item.chat_type,
+                   'avatar_full_address': url_for("static", filename=avatar)}
 
-    if item.author_type == 'staff':
+    elif item.author_type == 'staff':
         avatar = room.staff.avatar
         message = {'msg': item.content, 'username': staffname, 'time_stamp': local_time.strftime('%H:%M:%S'),
-                   'author_type': 'staff', 'avatar': avatar, 'message_id': item.id}
+                   'author_type': 'staff', 'avatar': avatar, 'message_id': item.id, 'msgType': item.chat_type,
+                   'avatar_full_address': url_for("static", filename=avatar)}
+
+
+    # check special message (consult and after-sale)
+    if item.chat_type == 'consult':
+        message['mt_name'] = item.model_type.name
+        message['mt_price'] = item.model_type.price
+        message['mt_pic'] = url_for("static", filename=item.model_type.pictures.all()[0].address)
+        message['mt_url'] = url_for("main.model_type_details", mt_id=item.model_type.id)
+
+    elif item.chat_type == 'after-sale':
+        message['order_out_trade_no'] = item.order.out_trade_no
+        message['order_url'] = url_for("order.after_sale_order", order_id=item.order.id)
 
     return message
+
+
+@socketio.on('auto-msg-consult')
+def auto_msg_consult(data):
+    """
+        Send auto message when customer come into the "consult"
+    """
+    # get data from javascript
+    room_id = data['room']
+    model_type_id = data['model_type_id']
+    customer_username = data['username']
+    customer_avatar = data['avatar']
+
+    # create and store auto msg in db
+    new_msg = Message(content="", author_type='customer', chat_type='consult', chat_room_id=room_id, model_type_id=model_type_id)
+    # db.session.add(new_msg_plain)
+    db.session.add(new_msg)
+    db.session.commit()
+
+    # get model_type from db
+    model_type = ModelType.query.get(model_type_id)
+
+    # change the time from utc to local
+    utc_zone = tz.tzutc()
+    local_zone = tz.tzlocal()
+    utc_dt = new_msg.timestamp.replace(tzinfo=utc_zone)
+    local_time = utc_dt.astimezone(local_zone)
+
+    # auto send msg - model_type info
+    emit('auto-msg-consult',
+         {
+             'username': customer_username,
+             'timestamp': local_time.strftime('%H:%M:%S'),
+             'avatar': url_for("static", filename=customer_avatar),
+             'mt_name': model_type.name,
+             'mt_price': model_type.price,
+             'mt_pic': url_for("static", filename=model_type.pictures.all()[0].address),
+             'mt_url': url_for("main.model_type_details", mt_id=model_type_id)
+         }
+         , room=data['room'])
+
+
+@socketio.on('auto-msg-after-sale')
+def auto_msg_after_sale(data):
+    """
+        Send auto message when customer come into the "after-sale service"
+    """
+    # get data from javascript
+    room_id = data['room']
+    order_id = data['order_id']
+    customer_username = data['username']
+    customer_avatar = data['avatar']
+
+    # create and store auto msg in db
+    new_msg = Message(content="", author_type='customer', chat_type='after-sale', chat_room_id=room_id, order_id=order_id)
+    db.session.add(new_msg)
+    db.session.commit()
+
+    # get order obj from db
+    order = Order.query.get(order_id)
+
+    # change the time from utc to local
+    utc_zone = tz.tzutc()
+    local_zone = tz.tzlocal()
+    utc_dt = new_msg.timestamp.replace(tzinfo=utc_zone)
+    local_time = utc_dt.astimezone(local_zone)
+
+    # auto send msg
+    emit('auto-msg-after-sale',
+         {
+             'username': customer_username,
+             'timestamp': local_time.strftime('%H:%M:%S'),
+             'avatar': url_for("static", filename=customer_avatar),
+             'order_out_trade_no': order.out_trade_no,
+             'order_url': url_for("order.after_sale_order", order_id=order_id)
+         }
+         , room=data['room'])
 
 
 # customize jinja filter

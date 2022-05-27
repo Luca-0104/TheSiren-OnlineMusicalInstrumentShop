@@ -328,7 +328,7 @@
 
                             <!-- Right side -->
                             <a href="{{ url_for("main.about_us") }}" class="nav-link">{{ _('About') }}</a>
-                            <a href="#" onclick="window.open('{{ url_for('chat.chat_room')}}');" class="nav-link">{{ _('Contact') }}</a>
+                            <a id="contact-btn" href="#" onclick="window.open('{{ url_for('chat.chat_room')}}');" class="nav-link">{{ _('Contact') }}</a>
                         </div>
                     </nav>
                 </div>
@@ -422,7 +422,7 @@
         <!--Display sticky chat section-->
         <div class="lineBox">
             <div class="lineItem">
-                <a href="#"
+                <a id="sticky-chat-btn" href="#"
                    onclick="window.open('{{ url_for('chat.chat_room')}}');">
                     <i class="layui-icon chat-icon">&#xe626;</i>
                     <div class="lineTip">
@@ -440,7 +440,8 @@
         <script>
             $(function(){
                 $("#launchTopButton").click(function() {
-                    $('body,html').scrollTop(0);
+                    {#$('body,html').scrollTop(0);#}
+                    $('body,html').animate({scrollTop:0}, 1500);
                 });
                 $(".lineItem").hover(
                     function()
@@ -471,7 +472,7 @@
 
     </body>
 
-
+    <script type="text/javascript" src="../../static/js/main/base-chat-entrance.js"></script>
     <script type="text/javascript" src="../../static/js/cart/sidebar_cart.js"></script>
     <script type="text/javascript" src="../../static/js/flash-bar.js"></script>
     <script type="text/javascript" src="../../static/js/enter-chat-room.js"></script>

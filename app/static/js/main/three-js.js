@@ -43,7 +43,8 @@ $("#upload_texture_submit").click(function ()
         if (returnValue === 0)
         {
             let textureAddress = response['textureAddress'];
-            reload_canvas(textureAddress);
+            let customizationId = response['customizationId'];
+            reload_canvas(textureAddress, customizationId);
 
             let blocker = $("#detail_blocker");
             let change_texture_form = $("#change_texture_form");
@@ -60,12 +61,15 @@ $("#upload_texture_submit").click(function ()
     });
 });
 
-function reload_canvas(textureAddress){
+function reload_canvas(textureAddress, customizationId){
     // clear all the already-exist 3D canvas
     $("#webgl-output").empty();
 
     // init a new 3D model canvas
     init(textureAddress);
+
+    // mark the customization id into the html file (which is able to be removed when reload the whole page)
+    $("#btn-buy-now").attr("customization-id", customizationId);
 }
 
 function init(textureAddress)
