@@ -522,6 +522,14 @@
                                                     </div><!-- /.modal-content -->
                                                 </div><!-- /.modal -->
                                             </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% for order in order_lst %}
+
 
                                             <!-- Inform type Modal -->
                                             <div class="modal fade" id="inform-type-modal-{{ order.id }}"
@@ -990,12 +998,7 @@
                                                     </div><!-- /.modal -->
                                                 </div>
                                             {% endif %}
-                                        </div>
-                                    </td>
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
+                    {% endfor %}
                 </div>
             </div>
         </div>

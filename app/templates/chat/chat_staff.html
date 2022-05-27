@@ -182,35 +182,47 @@
                                                                         <h4>{{ room.customer.username }}</h4>
                                                                     </div>
                                                                     <div class="user-desc">
-                                                                        <p>Cape Town, RSA</p>
+                                                                        <p>
+                                                                            LV. {{ room.customer.get_level() }}
+                                                                        </p>
                                                                     </div>
                                                                 </div>
                                                                 <hr>
                                                                 <div class="chatuser-detail text-left mt-4">
                                                                     <div class="row">
-                                                                        <div class="col-6 col-md-6 title">Bni Name:</div>
-                                                                        <div class="col-6 col-md-6 text-right">Pau</div>
+                                                                        <div class="col-6 col-md-6 title">Name:</div>
+                                                                        <div class="col-6 col-md-6 text-right">{{ room.customer.username }}</div>
                                                                     </div>
                                                                     <hr>
                                                                     <div class="row">
-                                                                        <div class="col-6 col-md-6 title">Tel:</div>
-                                                                        <div class="col-6 col-md-6 text-right">072 143 9920</div>
-                                                                    </div>
-                                                                    <hr>
-                                                                    <div class="row">
-                                                                        <div class="col-6 col-md-6 title">Date Of Birth:</div>
-                                                                        <div class="col-6 col-md-6 text-right">July 12, 1989</div>
+                                                                        <div class="col-6 col-md-6 title">Email:</div>
+                                                                        <div class="col-6 col-md-6 text-right">{{ room.customer.email }}</div>
                                                                     </div>
                                                                     <hr>
                                                                     <div class="row">
                                                                         <div class="col-6 col-md-6 title">Gender:</div>
-                                                                        <div class="col-6 col-md-6 text-right">Male</div>
+                                                                        <div class="col-6 col-md-6 text-right">{{ room.customer.gender }}</div>
                                                                     </div>
                                                                     <hr>
                                                                     <div class="row">
                                                                         <div class="col-6 col-md-6 title">Language:</div>
-                                                                        <div class="col-6 col-md-6 text-right">English</div>
+                                                                        {% if room.customer.language == "en" %}
+                                                                            <div class="col-6 col-md-6 text-right"> English </div>
+                                                                        {% elif room.customer.language == "ch" %}
+                                                                            <div class="col-6 col-md-6 text-right"> Chinese </div>
+                                                                        {% endif %}
                                                                     </div>
+                                                                    <hr>
+                                                                    <div class="row">
+                                                                        <div class="col-6 col-md-6 title">Premium:</div>
+                                                                        <div class="col-6 col-md-6 text-right">{{ room.customer.is_premium }}</div>
+                                                                    </div>
+                                                                    <hr>
+                                                                    <div class="row">
+                                                                        <div class="col-6 col-md-6 title">Join Date:</div>
+                                                                        <div class="col-6 col-md-6 text-right">{{ room.customer.start_datetime.date() }}</div>
+                                                                    </div>
+
                                                                 </div>
                                                             </div>
                                                         </div>
