@@ -119,7 +119,7 @@
         <!-- Journal Section -->
         <div class="section wf-section">
             <div class="main-container">
-                <h2 class="section-title above-journal-grid">View Journals and Notifications Here~</h2>
+                <h2 class="section-title above-journal-grid">{{ _("View Journals and Notifications Here~") }}</h2>
                 <div class="w-dyn-list">
                     <div role="list" class="journal-grid w-dyn-items">
                         <div role="listitem" class="w-dyn-item">
@@ -140,7 +140,7 @@
                                 <br>
                                 <p class="large-text">{{ journal.text }}</p>
                                 <br>
-                                <div style="text-align: right">RELEASED BY: {{ journal.author.username }}</div>
+                                <div style="text-align: right">{{ _("RELEASED BY: ") }}{{ journal.author.username }}</div>
                                 <br>
                                 <div style="text-align: right">{{ journal.timestamp.strftime("%Y-%m-%d %H:%M:%S") }}</div>
                             </div>
@@ -150,7 +150,7 @@
                     <!-- If no journals yet -->
                     {% else %}
                         <div class="empty-state w-dyn-empty">
-                            <div>There are no Journal Articles published yet.</div>
+                            <div>{{ _("There are no Journal Articles published yet.") }}</div>
                         </div>
                     {% endif %}
                 </div>
@@ -183,7 +183,7 @@
         <div class="footer wf-section">
             <div class="main-container">
                 <div class="footer-subscribe-section">
-                    <h3 class="no-bottom-margin">Subscribe for stories and new product announcements.</h3>
+                    <h3 class="no-bottom-margin">{{ _("Subscribe for stories and new product announcements.") }}</h3>
                     <div id="w-node-_3ee0633f-a568-72e0-ab7b-589be9d960dd-e9d960d8">
                         <div class="form-block w-form">
                             <form id="wf-form-Newsletter-Form" name="wf-form-Newsletter-Form"
@@ -198,13 +198,13 @@
                                     type="submit" value="Subscribe" data-wait="Please wait..." class="button w-button">
                             </form>
                             <div class="form-success w-form-done">
-                                <div>Thanks for subscribing!</div>
+                                <div>{{ _("Thanks for subscribing!") }}</div>
                             </div>
                             <div class="form-error w-form-fail">
-                                <div>Oops! Something went wrong while submitting the form.</div>
+                                <div>{{ _("Oops! Something went wrong while submitting the form.") }}</div>
                             </div>
                         </div>
-                        <div class="fine-print-text form-hint-text">We will never share your email with third parties.
+                        <div class="fine-print-text form-hint-text">{{ _("We will never share your email with third parties.") }}
                         </div>
                     </div>
                 </div>
