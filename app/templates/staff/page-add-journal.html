@@ -52,7 +52,7 @@
                                     <div class="form-group">
                                         {# the journal title #}
                                         {{ form.title.label() }}
-                                        {{ form.title(class="form-control", placeholder="Title here") }}
+                                        {{ form.title(class="form-control", placeholder=_("Title here")) }}
 
                                         {# errors messages in title #}
                                         {% for error in form.title.errors %}
@@ -66,7 +66,7 @@
                                     <div class="form-group">
                                         {# the journal body #}
                                         {{ form.text.label() }}
-                                        {{ form.text(class="form-control", rows="15", spellcheck="false", placeholder="Journal Body here...") }}
+                                        {{ form.text(class="form-control", rows="15", spellcheck="false", placeholder=_("Journal Body here...")) }}
 
                                         {# errors messages in journal body #}
                                         {% for error in form.text.errors %}

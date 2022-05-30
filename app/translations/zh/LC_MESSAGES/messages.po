@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-30 22:44+0800\n"
+"POT-Creation-Date: 2022-05-30 23:37+0800\n"
 "PO-Revision-Date: 2022-03-23 16:06+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
@@ -1416,7 +1416,7 @@ msgstr "如果您没有看到模型请尝试移动镜头。"
 #: app/templates/main/page-commodity-details.html:434
 #: app/templates/main/page-commodity-details.html:831
 msgid "Customize Yours"
-msgstr "顾客"
+msgstr "定制您的乐器"
 
 #: app/templates/main/page-commodity-details.html:460
 msgid "Video for showing"
@@ -3437,6 +3437,16 @@ msgstr "上传日志及通知"
 msgid "Upload New Journal"
 msgstr "上传新的日志及通知"
 
+#: app/templates/staff/page-add-journal.html:55
+#: app/templates/staff/page-modify-journal.html:55
+msgid "Title here"
+msgstr "请在此输入标题"
+
+#: app/templates/staff/page-add-journal.html:69
+#: app/templates/staff/page-modify-journal.html:69
+msgid "Journal Body here..."
+msgstr "请在此输入您的日志及通知的内容"
+
 #: app/templates/staff/page-add-product.html:4
 msgid "Upload Product"
 msgstr "上传商品"
@@ -3963,7 +3973,7 @@ msgstr "总销售"
 
 #: app/templates/staff/staff-index.html:251
 msgid "Best Item All Time"
-msgstr "有史以来最好的项目"
+msgstr "有史以来最好的商品"
 
 #: app/templates/staff/staff-index.html:272
 msgid "Total Earned"
