@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-27 23:28+0800\n"
+"POT-Creation-Date: 2022-05-30 22:44+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -763,6 +763,7 @@ msgstr ""
 #: app/templates/base/base-staff.html:794
 #: app/templates/base/base-staff.html:799
 #: app/templates/base/base-staff.html:803
+#: app/templates/staff/backup-staff-modify.html:603
 #: app/templates/staff/page-list-journals.html:29
 #: app/templates/staff/page-list-journals.html:34
 #: app/templates/staff/page-list-product.html:25
@@ -1201,6 +1202,10 @@ msgstr ""
 
 #: app/templates/main/about_siren.html:186
 msgid "Subscribe for stories and new product announcements."
+msgstr ""
+
+#: app/templates/main/about_siren.html:195
+msgid "Email Address"
 msgstr ""
 
 #: app/templates/main/about_siren.html:198
@@ -3268,6 +3273,12 @@ msgstr ""
 msgid "Get More Feature by Upgrading"
 msgstr ""
 
+#: app/templates/staff/backup-staff-modify.html:659
+#: app/templates/userinfo/add_address_test.html:17
+#: app/templates/userinfo/edit_address_test.html:16
+msgid "type here to search..."
+msgstr ""
+
 #: app/templates/staff/backup-staff-modify.html:797
 msgid ""
 "View\n"
@@ -3276,6 +3287,10 @@ msgstr ""
 
 #: app/templates/staff/backup-staff-modify.html:837
 msgid "New Order"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:841
+msgid "Enter Name or Email"
 msgstr ""
 
 #: app/templates/staff/backup-staff-modify.html:846
@@ -3288,6 +3303,25 @@ msgstr ""
 msgid "Modify Product"
 msgstr ""
 
+#: app/templates/staff/backup-staff-modify.html:872
+#: app/templates/staff/page-add-product.html:46
+#: app/templates/staff/page-add-product.html:201
+#: app/templates/staff/page-list-orders.html:816
+#: app/templates/staff/page-list-orders.html:962
+#: app/templates/staff/page-modify-modeltype.html:46
+#: app/templates/staff/page-upload-modeltype.html:46
+msgid "Enter Name"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:881
+#: app/templates/staff/page-add-product.html:213
+#: app/templates/staff/page-list-orders.html:833
+#: app/templates/staff/page-list-orders.html:977
+#: app/templates/staff/page-modify-modeltype.html:60
+#: app/templates/staff/page-upload-modeltype.html:60
+msgid "Enter Serial Number"
+msgstr ""
+
 #: app/templates/staff/backup-staff-modify.html:975
 #: app/templates/staff/page-modify-product.html:159
 msgid "Extra Requirement"
@@ -3297,8 +3331,23 @@ msgstr ""
 msgid "Cost"
 msgstr ""
 
+#: app/templates/staff/backup-staff-modify.html:1018
+msgid "Enter Cost"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:1025
+#: app/templates/staff/page-add-product.html:225
+#: app/templates/staff/page-modify-modeltype.html:74
+#: app/templates/staff/page-upload-modeltype.html:74
+msgid "Enter Price"
+msgstr ""
+
 #: app/templates/staff/backup-staff-modify.html:1031
 msgid "Tax Method"
+msgstr ""
+
+#: app/templates/staff/backup-staff-modify.html:1041
+msgid "Enter Quantity"
 msgstr ""
 
 #: app/templates/staff/backup-staff-modify.html:1047
@@ -3339,13 +3388,6 @@ msgstr ""
 msgid "Product Name"
 msgstr ""
 
-#: app/templates/staff/page-add-product.html:46
-#: app/templates/staff/page-add-product.html:201
-#: app/templates/staff/page-modify-modeltype.html:46
-#: app/templates/staff/page-upload-modeltype.html:46
-msgid "Enter Name"
-msgstr ""
-
 #: app/templates/staff/page-add-product.html:47
 #: app/templates/staff/page-add-product.html:202
 msgid "Please Enter Name."
@@ -3373,20 +3415,8 @@ msgstr ""
 msgid "Serial Number *"
 msgstr ""
 
-#: app/templates/staff/page-add-product.html:213
-#: app/templates/staff/page-modify-modeltype.html:60
-#: app/templates/staff/page-upload-modeltype.html:60
-msgid "Enter Serial Number"
-msgstr ""
-
 #: app/templates/staff/page-add-product.html:214
 msgid "Please Enter Serial Number."
-msgstr ""
-
-#: app/templates/staff/page-add-product.html:225
-#: app/templates/staff/page-modify-modeltype.html:74
-#: app/templates/staff/page-upload-modeltype.html:74
-msgid "Enter Price"
 msgstr ""
 
 #: app/templates/staff/page-add-product.html:226
@@ -3574,8 +3604,23 @@ msgstr ""
 msgid "status is not allowed to be modified.  "
 msgstr ""
 
+#: app/templates/staff/page-list-orders.html:767
+#: app/templates/userinfo/user_profile.html:55
+msgid "Address"
+msgstr ""
+
+#: app/templates/staff/page-list-orders.html:817
+#: app/templates/staff/page-list-orders.html:963
+msgid "Please Enter Recipient Name."
+msgstr ""
+
 #: app/templates/staff/page-list-orders.html:828
 msgid "Recipient Phone"
+msgstr ""
+
+#: app/templates/staff/page-list-orders.html:834
+#: app/templates/staff/page-list-orders.html:978
+msgid "Please Enter Recipient Phone."
 msgstr ""
 
 #: app/templates/staff/page-list-orders.html:940
@@ -3887,10 +3932,6 @@ msgstr ""
 msgid "Add New Address"
 msgstr ""
 
-#: app/templates/userinfo/edit_address_test.html:16
-msgid "type here to search..."
-msgstr ""
-
 #: app/templates/userinfo/edit_address_test.html:20
 msgid "close"
 msgstr ""
@@ -3916,10 +3957,6 @@ msgstr ""
 
 #: app/templates/userinfo/user_profile.html:52
 msgid "Information"
-msgstr ""
-
-#: app/templates/userinfo/user_profile.html:55
-msgid "Address"
 msgstr ""
 
 #: app/templates/userinfo/user_profile.html:58

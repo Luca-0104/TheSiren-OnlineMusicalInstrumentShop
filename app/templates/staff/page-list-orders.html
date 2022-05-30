@@ -764,7 +764,7 @@
                                                                             {% if order.order_type == "delivery" %}
                                                                          style="display: none" {% endif %}>
                                                                         <div class="form-group">
-                                                                            <label class="modal-label">Address *</label>
+                                                                            <label class="modal-label">{{ _("Address") }} *</label>
                                                                             <ul id="addresses-1-{{ order.id }}"
                                                                                 class="address-list"
                                                                                 order-id="{{ order.id }}">
@@ -813,8 +813,8 @@
                                                                             <input id="recipient-name-1-{{ order.id }}"
                                                                                    type="text"
                                                                                    class="form-control"
-                                                                                   placeholder="Enter Name"
-                                                                                   data-errors="Please Enter Recipient Name.">
+                                                                                   placeholder="{{ _("Enter Name") }}"
+                                                                                   data-errors="{{ _("Please Enter Recipient Name.")}}">
                                                                             <div class="help-block with-errors"></div>
                                                                         </div>
                                                                     </div>
@@ -830,8 +830,8 @@
                                                                             <input id="recipient-phone-1-{{ order.id }}"
                                                                                    type="text"
                                                                                    class="form-control"
-                                                                                   placeholder="Enter Serial Number"
-                                                                                   data-errors="Please Enter Recipient Phone.">
+                                                                                   placeholder="{{ _("Enter Serial Number")}}"
+                                                                                   data-errors="{{ _("Please Enter Recipient Phone.")}}">
                                                                             <div class="help-block with-errors"></div>
                                                                         </div>
                                                                     </div>
@@ -959,8 +959,8 @@
                                                                                 <input id="recipient-name-2-{{ order.id }}"
                                                                                        type="text"
                                                                                        class="form-control"
-                                                                                       placeholder="Enter Name"
-                                                                                       data-errors="Please Enter Recipient Name."
+                                                                                       placeholder="{{ _("Enter Name")}}"
+                                                                                       data-errors="{{ _("Please Enter Recipient Name.")}}"
                                                                                        required>
                                                                                 <div class="help-block with-errors"></div>
                                                                             </div>
@@ -974,8 +974,8 @@
                                                                                 <input id="recipient-phone-2-{{ order.id }}"
                                                                                        type="text"
                                                                                        class="form-control"
-                                                                                       placeholder="Enter Serial Number"
-                                                                                       data-errors="Please Enter Recipient Phone."
+                                                                                       placeholder="{{ _("Enter Serial Number")}}"
+                                                                                       data-errors="{{ _("Please Enter Recipient Phone.")}}"
                                                                                        required>
                                                                                 <div class="help-block with-errors"></div>
                                                                             </div>

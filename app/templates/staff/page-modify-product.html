@@ -71,12 +71,12 @@
                                         <label>{{ _('Classification') }} *</label>
                                         <select name="categories[]" class="selectpicker form-control"
                                                 data-style="py-0">
-                                            <option>{{ _("Strings") }}</option>
-                                            <option>{{ _("Woodwinds") }}</option>
-                                            <option>{{ _("Brass") }}</option>
-                                            <option>{{ _("Percussion") }}</option>
-                                            <option>{{ _("Keyboard") }}</option>
-                                            <option>{{ _("Accessories") }}</option>
+                                            <option value="Strings">{{ _("Strings") }}</option>
+                                            <option value="Woodwinds">{{ _("Woodwinds") }}</option>
+                                            <option value="Brass">{{ _("Brass") }}</option>
+                                            <option value="Percussion">{{ _("Percussion") }}</option>
+                                            <option value="Keyboard">{{ _("Keyboard") }}</option>
+                                            <option value="Accessories">{{ _("Accessories") }}</option>
                                         </select>
                                         <div class="help-block with-errors"></div>
                                     </div>
@@ -87,68 +87,68 @@
                                         <select name="categories[]" class="selectpicker form-control"
                                                 data-style="py-0">
                                             <optgroup label="String">
-                                                <option>{{ _("Violin") }}</option>
-                                                <option>{{ _("Viola") }}</option>
-                                                <option>{{ _("Cello") }}</option>
-                                                <option>{{ _("Double Bass")}}</option>
-                                                <option>{{ _("Guitar") }}</option>
-                                                <option>{{ _("Bass") }}</option>
-                                                <option>{{ _("Ukulele") }}</option>
-                                                <option>{{ _("Harp") }}</option>
-                                                <option>{{ _("Erhu") }}</option>
-                                                <option>{{ _("Guzheng") }}</option>
-                                                <option>{{ _("Guqin") }}</option>
-                                                <option>{{ _("Pipa") }}</option>
+                                                <option value="Violin">{{ _("Violin") }}</option>
+                                                <option value="Viola">{{ _("Viola") }}</option>
+                                                <option value="Cello">{{ _("Cello") }}</option>
+                                                <option value="Double Bass">{{ _("Double Bass")}}</option>
+                                                <option value="Guitar">{{ _("Guitar") }}</option>
+                                                <option value="Bass">{{ _("Bass") }}</option>
+                                                <option value="Ukulele">{{ _("Ukulele") }}</option>
+                                                <option value="Harp">{{ _("Harp") }}</option>
+                                                <option value="Erhu">{{ _("Erhu") }}</option>
+                                                <option value="Guzheng">{{ _("Guzheng") }}</option>
+                                                <option value="Guqin">{{ _("Guqin") }}</option>
+                                                <option value="Pipa">{{ _("Pipa") }}</option>
                                             </optgroup>
 
                                             <optgroup label="Woodwind">
-                                                <option>{{ _("Flute") }}</option>
-                                                <option>{{ _("Clarinet") }}</option>
-                                                <option>{{ _("Oboe") }}</option>
-                                                <option>{{ _("Piccolo") }}</option>
-                                                <option>{{ _("Saxophone") }}</option>
-                                                <option>{{ _("English Horn")}}</option>
-                                                <option>{{ _("Bassoon") }}</option>
-                                                <option>{{ _("Recorder") }}</option>
-                                                <option>{{ _("Bagpipes") }}</option>
-                                                <option>{{ _("Suona Horn")}}</option>
-                                                <option>{{ _("Sheng") }}</option>
+                                                <option value="Flute">{{ _("Flute") }}</option>
+                                                <option value="Clarinet">{{ _("Clarinet") }}</option>
+                                                <option value="Oboe">{{ _("Oboe") }}</option>
+                                                <option value="Piccolo">{{ _("Piccolo") }}</option>
+                                                <option value="Saxophone">{{ _("Saxophone") }}</option>
+                                                <option value="English Horn">{{ _("English Horn")}}</option>
+                                                <option value="Bassoon">{{ _("Bassoon") }}</option>
+                                                <option value="Recorder">{{ _("Recorder") }}</option>
+                                                <option value="Bagpipes">{{ _("Bagpipes") }}</option>
+                                                <option value="Suona Horn">{{ _("Suona Horn")}}</option>
+                                                <option value="Sheng">{{ _("Sheng") }}</option>
                                             </optgroup>
 
                                             <optgroup label="Brass">
-                                                <option>{{ _("Trumpet") }}</option>
-                                                <option>{{ _("Trombone") }}</option>
-                                                <option>{{ _("French Horn")}}</option>
-                                                <option>{{ _("Tuba") }}</option>
-                                                <option>{{ _("Euphonium") }}</option>
-                                                <option>{{ _("Harmonica") }}</option>
+                                                <option value="Trumpet">{{ _("Trumpet") }}</option>
+                                                <option value="Trombone">{{ _("Trombone") }}</option>
+                                                <option value="French Horn">{{ _("French Horn")}}</option>
+                                                <option value="Tuba">{{ _("Tuba") }}</option>
+                                                <option value="Euphonium">{{ _("Euphonium") }}</option>
+                                                <option value="Harmonica">{{ _("Harmonica") }}</option>
                                             </optgroup>
 
                                             <optgroup label="Percussion">
-                                                <option>{{ _("Timpani") }}</option>
-                                                <option>{{ _("Bass Drum")}}</option>
-                                                <option>{{ _("Snare") }}</option>
-                                                <option>{{ _("Cajon") }}</option>
-                                                <option>{{ _("Cymbals") }}</option>
-                                                <option>{{ _("Tam-tam") }}</option>
-                                                <option>{{ _("Tambourine") }}</option>
-                                                <option>{{ _("Marimba & Xylophone")}}</option>
-                                                <option>{{ _("Vibraphone") }}</option>
-                                                <option>{{ _("Drum Kit")}}</option>
-                                                <option>{{ _("Other Percussion")}}</option>
+                                                <option value="Timpani">{{ _("Timpani") }}</option>
+                                                <option value="Bass Drum">{{ _("Bass Drum")}}</option>
+                                                <option value="Snare">{{ _("Snare") }}</option>
+                                                <option value="Cajon">{{ _("Cajon") }}</option>
+                                                <option value="Cymbals">{{ _("Cymbals") }}</option>
+                                                <option value="Tam-tam">{{ _("Tam-tam") }}</option>
+                                                <option value="Tambourine">{{ _("Tambourine") }}</option>
+                                                <option value="Marimba & Xylophone">{{ _("Marimba & Xylophone")}}</option>
+                                                <option value="Vibraphone">{{ _("Vibraphone") }}</option>
+                                                <option value="Drum Kit">{{ _("Drum Kit")}}</option>
+                                                <option value="Other Percussion">{{ _("Other Percussion")}}</option>
                                             </optgroup>
 
                                             <optgroup label="Keyboard">
-                                                <option>{{ _("Piano") }}</option>
-                                                <option>{{ _("Accordion") }}</option>
-                                                <option>{{ _("Launchpad") }}</option>
+                                                <option value="Piano">{{ _("Piano") }}</option>
+                                                <option value="Accordion">{{ _("Accordion") }}</option>
+                                                <option value="Launchpad">{{ _("Launchpad") }}</option>
                                             </optgroup>
 
                                             <optgroup label="Accessories">
-                                                <option>{{ _("Effects") }}</option>
-                                                <option>{{ _("Synthesizer") }}</option>
-                                                <option>{{ _("Microphone") }}</option>
-                                                <option>{{ _("Monitor Headphone")}}</option>
+                                                <option value="Effects">{{ _("Effects") }}</option>
+                                                <option value="Synthesizer">{{ _("Synthesizer") }}</option>
+                                                <option value="Microphone">{{ _("Microphone") }}</option>
+                                                <option value="Monitor Headphone">{{ _("Monitor Headphone")}}</option>
                                             </optgroup>
                                         </select>
                                         <div class="help-block with-errors"></div>
@@ -159,10 +159,10 @@
                                         <label>{{ _('Extra Requirement') }} *</label>
                                         <select name="categories[]" class="selectpicker form-control"
                                                 data-style="py-0">
-                                            <option>{{ _("Acoustic Only")}}</option>
-                                            <option>{{ _("Electricity Required")}}</option>
-                                            <option>{{ _("Electricity Support")}}</option>
-                                            <option>{{ _("No Extra Requirement")}}</option>
+                                            <option value="Acoustic Only">{{ _("Acoustic Only")}}</option>
+                                            <option value="Electricity Required">{{ _("Electricity Required")}}</option>
+                                            <option value="Electricity Support">{{ _("Electricity Support")}}</option>
+                                            <option value="No Extra Requirement">{{ _("No Extra Requirement")}}</option>
                                         </select>
                                         <div class="help-block with-errors"></div>
                                     </div>
