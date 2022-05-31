@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-30 23:37+0800\n"
+"POT-Creation-Date: 2022-05-31 18:58+0800\n"
 "PO-Revision-Date: 2022-03-23 16:06+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
@@ -345,8 +345,8 @@ msgstr "名称"
 msgid "Brand"
 msgstr "品牌"
 
-#: app/product/forms.py:18 app/templates/order/order-detail.html:569
-#: app/templates/order/order-detail.html:652
+#: app/product/forms.py:18 app/templates/order/order-detail.html:586
+#: app/templates/order/order-detail.html:669
 #: app/templates/staff/page-list-orders.html:845
 #: app/templates/staff/page-list-orders.html:922
 #: app/templates/staff/page-list-orders.html:990
@@ -1013,7 +1013,7 @@ msgid "Siren - Comment"
 msgstr "Siren - 评论"
 
 #: app/templates/comment/comment.html:316
-#: app/templates/order/order-detail.html:454
+#: app/templates/order/order-detail.html:471
 msgid "Comment"
 msgstr "评论"
 
@@ -1131,7 +1131,7 @@ msgid ""
 msgstr "我们正在与16个不同的品牌合作。每个品牌都有自己的特色乐器。与这些知名品牌合作将使我们能够为您提供数十种乐器类型。"
 
 #: app/templates/main/about_siren.html:97
-#: app/templates/order/order-detail.html:500
+#: app/templates/order/order-detail.html:517
 #: app/templates/staff/page-list-orders.html:129
 #: app/templates/staff/page-list-orders.html:689
 #: app/templates/staff/page-list-orders.html:711
@@ -2731,10 +2731,10 @@ msgstr "必填"
 
 #: app/templates/order/order-confirm.html:133
 #: app/templates/order/order-confirm.html:164
-#: app/templates/order/order-detail.html:528
-#: app/templates/order/order-detail.html:555
-#: app/templates/order/order-detail.html:611
-#: app/templates/order/order-detail.html:638
+#: app/templates/order/order-detail.html:545
+#: app/templates/order/order-detail.html:572
+#: app/templates/order/order-detail.html:628
+#: app/templates/order/order-detail.html:655
 #: app/templates/staff/page-list-orders.html:783
 #: app/templates/staff/page-list-orders.html:811
 #: app/templates/staff/page-list-orders.html:894
@@ -2743,8 +2743,8 @@ msgid "Recipient Name"
 msgstr "收货人姓名"
 
 #: app/templates/order/order-confirm.html:137
-#: app/templates/order/order-detail.html:559
-#: app/templates/order/order-detail.html:642
+#: app/templates/order/order-detail.html:576
+#: app/templates/order/order-detail.html:659
 msgid "Phone Number"
 msgstr "电话号码"
 
@@ -2753,16 +2753,16 @@ msgid "Shipping Address"
 msgstr "配送地址"
 
 #: app/templates/order/order-confirm.html:170
-#: app/templates/order/order-detail.html:534
-#: app/templates/order/order-detail.html:617
+#: app/templates/order/order-detail.html:551
+#: app/templates/order/order-detail.html:634
 #: app/templates/staff/page-list-orders.html:789
 #: app/templates/staff/page-list-orders.html:900
 msgid "Full Address"
 msgstr "详细地址"
 
 #: app/templates/order/order-confirm.html:177
-#: app/templates/order/order-detail.html:541
-#: app/templates/order/order-detail.html:624
+#: app/templates/order/order-detail.html:558
+#: app/templates/order/order-detail.html:641
 #: app/templates/staff/page-list-orders.html:796
 #: app/templates/staff/page-list-orders.html:907
 msgid "default"
@@ -2837,8 +2837,8 @@ msgid "Waiting for Payment"
 msgstr "等待支付"
 
 #: app/templates/order/order-detail.html:74
-#: app/templates/order/order-detail.html:254
 #: app/templates/order/order-detail.html:260
+#: app/templates/order/order-detail.html:310
 #: app/templates/order/order-listing.html:117
 #: app/templates/staff/page-list-orders.html:97
 #: app/templates/staff/page-list-orders.html:343
@@ -2849,7 +2849,6 @@ msgid "Preparing"
 msgstr "准备中"
 
 #: app/templates/order/order-detail.html:78
-#: app/templates/order/order-detail.html:270
 #: app/templates/order/order-detail.html:276
 #: app/templates/order/order-listing.html:121
 #: app/templates/staff/page-list-orders.html:347
@@ -2864,9 +2863,7 @@ msgstr "等待发货"
 
 #: app/templates/order/order-detail.html:86
 #: app/templates/order/order-detail.html:286
-#: app/templates/order/order-detail.html:292
-#: app/templates/order/order-detail.html:319
-#: app/templates/order/order-detail.html:325
+#: app/templates/order/order-detail.html:336
 #: app/templates/order/order-listing.html:81
 #: app/templates/order/order-listing.html:129
 #: app/templates/staff/page-list-orders.html:112
@@ -2904,7 +2901,7 @@ msgid "Basic Information"
 msgstr "基本信息"
 
 #: app/templates/order/order-detail.html:112
-#: app/templates/order/order-detail.html:489
+#: app/templates/order/order-detail.html:506
 #: app/templates/staff/page-list-orders.html:655
 msgid "Modify Type"
 msgstr "修改订单类型"
@@ -2916,8 +2913,6 @@ msgid "Trade"
 msgstr "交易流水号"
 
 #: app/templates/order/order-detail.html:128
-#: app/templates/order/order-detail.html:236
-#: app/templates/order/order-detail.html:242
 #: app/templates/staff/page-list-orders.html:392
 msgid "Payment"
 msgstr "订单号"
@@ -2948,31 +2943,62 @@ msgid "Recipient Information"
 msgstr "收货人信息"
 
 #: app/templates/order/order-detail.html:168
-#: app/templates/order/order-detail.html:586
+#: app/templates/order/order-detail.html:603
 #: app/templates/staff/page-list-orders.html:864
 msgid "Modify Address"
 msgstr "修改配送地址"
 
 #: app/templates/order/order-detail.html:173
-#: app/templates/order/order-detail.html:588
+#: app/templates/order/order-detail.html:605
 msgid "Modify Recipient"
 msgstr "修改收货人信息"
 
-#: app/templates/order/order-detail.html:303
-#: app/templates/order/order-detail.html:309
-msgid "Waiting For Collection"
-msgstr "等待收货"
+#: app/templates/order/order-detail.html:236
+#: app/templates/staff/page-list-orders.html:60
+msgid "Paid"
+msgstr "支付"
 
-#: app/templates/order/order-detail.html:435
+#: app/templates/order/order-detail.html:242
+#: app/templates/order/order-listing.html:69
+#: app/templates/staff/page-list-orders.html:92
+#: app/templates/staff/page-list-orders.html:552
+#: app/templates/staff/page-list-orders.html:589
+#: app/templates/staff/page-list-orders.html:626
+msgid "Unpaid"
+msgstr "未支付"
+
+#: app/templates/order/order-detail.html:254
+#: app/templates/order/order-detail.html:304
+msgid "Prepared"
+msgstr "准备完成"
+
+#: app/templates/order/order-detail.html:270
+msgid "Delivered"
+msgstr "已送达"
+
+#: app/templates/order/order-detail.html:292
+#: app/templates/order/order-detail.html:342
+msgid "Unfinished"
+msgstr "未完成"
+
+#: app/templates/order/order-detail.html:320
+msgid "Collected"
+msgstr "已自提"
+
+#: app/templates/order/order-detail.html:326
+msgid "Waiting For Collection"
+msgstr "等待自提"
+
+#: app/templates/order/order-detail.html:452
 #: app/templates/staff/page-list-orders.html:506
 msgid "Customized"
 msgstr "自定义"
 
-#: app/templates/order/order-detail.html:445
+#: app/templates/order/order-detail.html:462
 msgid "Commented"
 msgstr "已评论"
 
-#: app/templates/order/order-detail.html:503
+#: app/templates/order/order-detail.html:520
 #: app/templates/staff/page-list-orders.html:131
 #: app/templates/staff/page-list-orders.html:694
 #: app/templates/staff/page-list-orders.html:713
@@ -2983,14 +3009,6 @@ msgstr "自提"
 #: app/templates/order/order-listing.html:3
 msgid "My Orders"
 msgstr "订单"
-
-#: app/templates/order/order-listing.html:69
-#: app/templates/staff/page-list-orders.html:92
-#: app/templates/staff/page-list-orders.html:552
-#: app/templates/staff/page-list-orders.html:589
-#: app/templates/staff/page-list-orders.html:626
-msgid "Unpaid"
-msgstr "未支付"
 
 #: app/templates/order/order-listing.html:73
 #: app/templates/staff/page-list-orders.html:102
@@ -3609,10 +3627,6 @@ msgstr "去管理和更新这些订单。"
 #: app/templates/staff/page-list-orders.html:58
 msgid "Customer"
 msgstr "顾客"
-
-#: app/templates/staff/page-list-orders.html:60
-msgid "Paid"
-msgstr "支付"
 
 #: app/templates/staff/page-list-orders.html:63
 msgid "Priority"
