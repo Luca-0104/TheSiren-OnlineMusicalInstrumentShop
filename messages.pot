@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-30 23:37+0800\n"
+"POT-Creation-Date: 2022-05-31 18:58+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -344,8 +344,8 @@ msgstr ""
 msgid "Brand"
 msgstr ""
 
-#: app/product/forms.py:18 app/templates/order/order-detail.html:569
-#: app/templates/order/order-detail.html:652
+#: app/product/forms.py:18 app/templates/order/order-detail.html:586
+#: app/templates/order/order-detail.html:669
 #: app/templates/staff/page-list-orders.html:845
 #: app/templates/staff/page-list-orders.html:922
 #: app/templates/staff/page-list-orders.html:990
@@ -1012,7 +1012,7 @@ msgid "Siren - Comment"
 msgstr ""
 
 #: app/templates/comment/comment.html:316
-#: app/templates/order/order-detail.html:454
+#: app/templates/order/order-detail.html:471
 msgid "Comment"
 msgstr ""
 
@@ -1130,7 +1130,7 @@ msgid ""
 msgstr ""
 
 #: app/templates/main/about_siren.html:97
-#: app/templates/order/order-detail.html:500
+#: app/templates/order/order-detail.html:517
 #: app/templates/staff/page-list-orders.html:129
 #: app/templates/staff/page-list-orders.html:689
 #: app/templates/staff/page-list-orders.html:711
@@ -2674,10 +2674,10 @@ msgstr ""
 
 #: app/templates/order/order-confirm.html:133
 #: app/templates/order/order-confirm.html:164
-#: app/templates/order/order-detail.html:528
-#: app/templates/order/order-detail.html:555
-#: app/templates/order/order-detail.html:611
-#: app/templates/order/order-detail.html:638
+#: app/templates/order/order-detail.html:545
+#: app/templates/order/order-detail.html:572
+#: app/templates/order/order-detail.html:628
+#: app/templates/order/order-detail.html:655
 #: app/templates/staff/page-list-orders.html:783
 #: app/templates/staff/page-list-orders.html:811
 #: app/templates/staff/page-list-orders.html:894
@@ -2686,8 +2686,8 @@ msgid "Recipient Name"
 msgstr ""
 
 #: app/templates/order/order-confirm.html:137
-#: app/templates/order/order-detail.html:559
-#: app/templates/order/order-detail.html:642
+#: app/templates/order/order-detail.html:576
+#: app/templates/order/order-detail.html:659
 msgid "Phone Number"
 msgstr ""
 
@@ -2696,16 +2696,16 @@ msgid "Shipping Address"
 msgstr ""
 
 #: app/templates/order/order-confirm.html:170
-#: app/templates/order/order-detail.html:534
-#: app/templates/order/order-detail.html:617
+#: app/templates/order/order-detail.html:551
+#: app/templates/order/order-detail.html:634
 #: app/templates/staff/page-list-orders.html:789
 #: app/templates/staff/page-list-orders.html:900
 msgid "Full Address"
 msgstr ""
 
 #: app/templates/order/order-confirm.html:177
-#: app/templates/order/order-detail.html:541
-#: app/templates/order/order-detail.html:624
+#: app/templates/order/order-detail.html:558
+#: app/templates/order/order-detail.html:641
 #: app/templates/staff/page-list-orders.html:796
 #: app/templates/staff/page-list-orders.html:907
 msgid "default"
@@ -2780,8 +2780,8 @@ msgid "Waiting for Payment"
 msgstr ""
 
 #: app/templates/order/order-detail.html:74
-#: app/templates/order/order-detail.html:254
 #: app/templates/order/order-detail.html:260
+#: app/templates/order/order-detail.html:310
 #: app/templates/order/order-listing.html:117
 #: app/templates/staff/page-list-orders.html:97
 #: app/templates/staff/page-list-orders.html:343
@@ -2792,7 +2792,6 @@ msgid "Preparing"
 msgstr ""
 
 #: app/templates/order/order-detail.html:78
-#: app/templates/order/order-detail.html:270
 #: app/templates/order/order-detail.html:276
 #: app/templates/order/order-listing.html:121
 #: app/templates/staff/page-list-orders.html:347
@@ -2807,9 +2806,7 @@ msgstr ""
 
 #: app/templates/order/order-detail.html:86
 #: app/templates/order/order-detail.html:286
-#: app/templates/order/order-detail.html:292
-#: app/templates/order/order-detail.html:319
-#: app/templates/order/order-detail.html:325
+#: app/templates/order/order-detail.html:336
 #: app/templates/order/order-listing.html:81
 #: app/templates/order/order-listing.html:129
 #: app/templates/staff/page-list-orders.html:112
@@ -2847,7 +2844,7 @@ msgid "Basic Information"
 msgstr ""
 
 #: app/templates/order/order-detail.html:112
-#: app/templates/order/order-detail.html:489
+#: app/templates/order/order-detail.html:506
 #: app/templates/staff/page-list-orders.html:655
 msgid "Modify Type"
 msgstr ""
@@ -2859,8 +2856,6 @@ msgid "Trade"
 msgstr ""
 
 #: app/templates/order/order-detail.html:128
-#: app/templates/order/order-detail.html:236
-#: app/templates/order/order-detail.html:242
 #: app/templates/staff/page-list-orders.html:392
 msgid "Payment"
 msgstr ""
@@ -2891,31 +2886,62 @@ msgid "Recipient Information"
 msgstr ""
 
 #: app/templates/order/order-detail.html:168
-#: app/templates/order/order-detail.html:586
+#: app/templates/order/order-detail.html:603
 #: app/templates/staff/page-list-orders.html:864
 msgid "Modify Address"
 msgstr ""
 
 #: app/templates/order/order-detail.html:173
-#: app/templates/order/order-detail.html:588
+#: app/templates/order/order-detail.html:605
 msgid "Modify Recipient"
 msgstr ""
 
-#: app/templates/order/order-detail.html:303
-#: app/templates/order/order-detail.html:309
+#: app/templates/order/order-detail.html:236
+#: app/templates/staff/page-list-orders.html:60
+msgid "Paid"
+msgstr ""
+
+#: app/templates/order/order-detail.html:242
+#: app/templates/order/order-listing.html:69
+#: app/templates/staff/page-list-orders.html:92
+#: app/templates/staff/page-list-orders.html:552
+#: app/templates/staff/page-list-orders.html:589
+#: app/templates/staff/page-list-orders.html:626
+msgid "Unpaid"
+msgstr ""
+
+#: app/templates/order/order-detail.html:254
+#: app/templates/order/order-detail.html:304
+msgid "Prepared"
+msgstr ""
+
+#: app/templates/order/order-detail.html:270
+msgid "Delivered"
+msgstr ""
+
+#: app/templates/order/order-detail.html:292
+#: app/templates/order/order-detail.html:342
+msgid "Unfinished"
+msgstr ""
+
+#: app/templates/order/order-detail.html:320
+msgid "Collected"
+msgstr ""
+
+#: app/templates/order/order-detail.html:326
 msgid "Waiting For Collection"
 msgstr ""
 
-#: app/templates/order/order-detail.html:435
+#: app/templates/order/order-detail.html:452
 #: app/templates/staff/page-list-orders.html:506
 msgid "Customized"
 msgstr ""
 
-#: app/templates/order/order-detail.html:445
+#: app/templates/order/order-detail.html:462
 msgid "Commented"
 msgstr ""
 
-#: app/templates/order/order-detail.html:503
+#: app/templates/order/order-detail.html:520
 #: app/templates/staff/page-list-orders.html:131
 #: app/templates/staff/page-list-orders.html:694
 #: app/templates/staff/page-list-orders.html:713
@@ -2925,14 +2951,6 @@ msgstr ""
 
 #: app/templates/order/order-listing.html:3
 msgid "My Orders"
-msgstr ""
-
-#: app/templates/order/order-listing.html:69
-#: app/templates/staff/page-list-orders.html:92
-#: app/templates/staff/page-list-orders.html:552
-#: app/templates/staff/page-list-orders.html:589
-#: app/templates/staff/page-list-orders.html:626
-msgid "Unpaid"
 msgstr ""
 
 #: app/templates/order/order-listing.html:73
@@ -3551,10 +3569,6 @@ msgstr ""
 
 #: app/templates/staff/page-list-orders.html:58
 msgid "Customer"
-msgstr ""
-
-#: app/templates/staff/page-list-orders.html:60
-msgid "Paid"
 msgstr ""
 
 #: app/templates/staff/page-list-orders.html:63
