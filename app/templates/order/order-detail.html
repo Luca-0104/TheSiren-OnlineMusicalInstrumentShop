@@ -233,13 +233,13 @@
                                                                 <p>1</p>
                                                                 <i class="uil uil-check" style="color: #e2e1dc;"></i>
                                                             </div>
-                                                            <p class="text">{{ _("Payment") }}</p>
+                                                            <p class="text">{{ _("Paid") }}</p>
                                                         {% else %}
                                                             <div class="progress one">
                                                                 <p>1</p>
                                                                 <i class="uil uil-check" style="color: #e2e1dc;"></i>
                                                             </div>
-                                                            <p class="text">{{ _("Payment") }}</p>
+                                                            <p class="text">{{ _("Unpaid") }}</p>
                                                         {% endif %}
                                                     </li>
                                                     {% if order.order_type == 'delivery' %}
@@ -251,7 +251,7 @@
                                                                     <p>2</p>
                                                                     <i class="uil uil-check" style="color: #e2e1dc;"></i>
                                                                 </div>
-                                                                <p class="text">{{ _("Preparing") }}</p>
+                                                                <p class="text">{{ _("Prepared") }}</p>
                                                             {% else %}
                                                                 <div class="progress two">
                                                                     <p>2</p>
@@ -267,7 +267,7 @@
                                                                     <p>3</p>
                                                                     <i class="uil uil-check" style="color: #e2e1dc;"></i>
                                                                 </div>
-                                                                <p class="text">{{ _("On Delivery") }}</p>
+                                                                <p class="text">{{ _("Delivered") }}</p>
                                                             {% else %}
                                                                 <div class="progress three">
                                                                     <p>3</p>
@@ -289,10 +289,27 @@
                                                                     <p>4</p>
                                                                     <i class="uil uil-check" style="color: #e2e1dc;"></i>
                                                                 </div>
-                                                                <p class="text">{{ _("Finished") }}</p>
+                                                                <p class="text">{{ _("Unfinished") }}</p>
                                                             {% endif %}
                                                         </li>
                                                     {% elif order.order_type == 'self-collection' %}
+                                                        <li>
+                                                            <i class="icon uil uil-truck-loading"
+                                                               style="color: #8e8267;"></i>
+                                                            {% if order.status_code > 1 %}
+                                                                <div class="progress two active">
+                                                                    <p>2</p>
+                                                                    <i class="uil uil-check" style="color: #e2e1dc;"></i>
+                                                                </div>
+                                                                <p class="text">{{ _("Prepared") }}</p>
+                                                            {% else %}
+                                                                <div class="progress two">
+                                                                    <p>2</p>
+                                                                    <i class="uil uil-check" style="color: #e2e1dc;"></i>
+                                                                </div>
+                                                                <p class="text">{{ _("Preparing") }}</p>
+                                                            {% endif %}
+                                                        </li>
                                                         <li>
                                                             <i class="icon uil uil-clock-nine" style="color: #8e8267;"></i>
                                                             {% if order.status_code >= 4 %}
@@ -300,7 +317,7 @@
                                                                     <p>2</p>
                                                                     <i class="uil uil-check" style="color: #e2e1dc;"></i>
                                                                 </div>
-                                                                <p class="text">{{ _("Waiting For Collection") }}</p>
+                                                                <p class="text">{{ _("Collected") }}</p>
                                                             {% else %}
                                                                 <div class="progress two">
                                                                     <p>2</p>
@@ -322,7 +339,7 @@
                                                                     <p>3</p>
                                                                     <i class="uil uil-check" style="color: #e2e1dc;"></i>
                                                                 </div>
-                                                                <p class="text">{{ _("Finished") }}</p>
+                                                                <p class="text">{{ _("Unfinished") }}</p>
                                                             {% endif %}
                                                         </li>
                                                     {% endif %}
