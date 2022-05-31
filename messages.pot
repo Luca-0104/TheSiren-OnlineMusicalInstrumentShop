@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-31 18:58+0800\n"
+"POT-Creation-Date: 2022-05-31 23:21+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -868,7 +868,7 @@ msgid "Type Message ..."
 msgstr ""
 
 #: app/templates/chat/chat_customer.html:82
-#: app/templates/chat/chat_staff.html:453
+#: app/templates/chat/chat_staff.html:463
 #: app/templates/chat/test-combine.html:179
 msgid "Send"
 msgstr ""
@@ -922,84 +922,88 @@ msgstr ""
 msgid "No messages so far"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:146
+#: app/templates/chat/chat_staff.html:151
+msgid "Choose a Chatroom"
+msgstr ""
+
+#: app/templates/chat/chat_staff.html:157
 msgid ""
 "Start\n"
 "                                               Conversation By Choosing "
 "Chatroom!"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:193
+#: app/templates/chat/chat_staff.html:204
 msgid "Name:"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:198
+#: app/templates/chat/chat_staff.html:209
 msgid "Email:"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:203
+#: app/templates/chat/chat_staff.html:214
 msgid "Gender:"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:208
+#: app/templates/chat/chat_staff.html:219
 msgid "Language:"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:210
+#: app/templates/chat/chat_staff.html:221
 msgid "English"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:212
+#: app/templates/chat/chat_staff.html:223
 msgid "Chinese"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:217
+#: app/templates/chat/chat_staff.html:228
 msgid "Premium:"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:222
+#: app/templates/chat/chat_staff.html:233
 msgid "Join Date:"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:247
+#: app/templates/chat/chat_staff.html:257
 msgid "Pin to top"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:251
+#: app/templates/chat/chat_staff.html:261
 msgid "Delete chat"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:255
+#: app/templates/chat/chat_staff.html:265
 msgid "Block"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:281
+#: app/templates/chat/chat_staff.html:291
 msgid "Commodity"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:300
+#: app/templates/chat/chat_staff.html:310
 msgid "Product price"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:305
+#: app/templates/chat/chat_staff.html:315
 msgid "Product name"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:315
-#: app/templates/chat/chat_staff.html:354
+#: app/templates/chat/chat_staff.html:325
+#: app/templates/chat/chat_staff.html:364
 msgid "Click to View"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:337
+#: app/templates/chat/chat_staff.html:347
 #: app/templates/userinfo/user_profile.html:75
 msgid "Order"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:344
+#: app/templates/chat/chat_staff.html:354
 msgid "Trade ID"
 msgstr ""
 
-#: app/templates/chat/chat_staff.html:449
+#: app/templates/chat/chat_staff.html:459
 msgid "Type your message"
 msgstr ""
 
