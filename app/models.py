@@ -1734,6 +1734,14 @@ class User(UserMixin, BaseModel):
             db.session.add(new_user)
         db.session.commit()
 
+        # make customer 1 the premium member
+        cus1 = User.query.get(1)
+        cus1.exp = 130
+        cus1.is_premium = True
+        cus1.premium_left_days = 30
+        db.session.add(cus1)
+        db.session.commit()
+
         # then insert staff users (staffs must be after the customers)
         for i in range(count_staff):
             email = "Staff{}@163.com".format(i + 1)
