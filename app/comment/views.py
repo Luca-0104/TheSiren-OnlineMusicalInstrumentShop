@@ -2,17 +2,19 @@ import os
 
 from flask import render_template, request, jsonify, flash, redirect, url_for, current_app
 from flask_login import login_required, current_user
-
+from flask_babel import _
 from . import comment
 from config import Config
+from ..decorators import customer_only
 from ..public_tools import generate_safe_pic_name, upload_picture
 from ..comment.forms import CommentForm
-from ..models import User, Address, Comment, ModelType, OrderModelType
+from ..models import User, Address, Comment, ModelType, OrderModelType, Order
 from .. import db
 
 
 @comment.route('/upload-comment/<int:omt_id>', methods=['GET', 'POST'])
 @login_required
+@customer_only()
 def upload_comment(omt_id):
     """
     Upload a comment for a bought item
@@ -27,7 +29,7 @@ def upload_comment(omt_id):
         return redirect(url_for("order.my_orders"))
 
     if omt.is_commented:
-        flash("You cannot comment a same model in a order twice!")
+        flash(_("You cannot comment a same model in a order twice!"))
         current_app.logger.error("Double comment!")
         return redirect(url_for("order.my_orders"))
 
@@ -36,7 +38,7 @@ def upload_comment(omt_id):
     # get the model by id
     model_type = ModelType.query.get(mt_id)
     if model_type is None:
-        flash("The model does not exist!")
+        flash(_("The model does not exist!"))
         current_app.logger.error("No model with is order!")
         return redirect(url_for("order.my_orders"))
 
@@ -66,6 +68,7 @@ def upload_comment(omt_id):
         db.session.add(omt)
 
         db.session.commit()
+        flash(_("Comment uploaded successfully!"))
 
         """
            deal with the uploaded pictures
@@ -75,9 +78,10 @@ def upload_comment(omt_id):
         result = upload_picture(picture_list, new_comment.id, Config.PIC_TYPE_COMMENT)
         status = result[0]
         if status != 0:
-            flash("Picture upload failed!")
+            flash(_("Picture upload failed!"))
+        else:
+            current_app.logger.error(status)
 
         return redirect(url_for("order.my_orders"))
 
-    return render_template('', form=form)
-
+    return render_template('comment/comment.html', order_model=omt, form=form)

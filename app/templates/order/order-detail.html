@@ -1,1044 +1,694 @@
-<!DOCTYPE html>
-<html data-wf-page="6221c36b59f1982c475ac5f9" data-wf-site="6221c36b59f1986aa65ac5f0">
-    <head>
-        <title>Siren - Order Detail</title>
-        <link rel="icon" href="../../static/images/half-logo.png">
+{% extends "base/base-customer.html" %}
 
-        <link href="../../static/css/normalize.css" rel="stylesheet" type="text/css">
-        <link href="../../static/css/webflow.css" rel="stylesheet" type="text/css">
-        <link href="../../static/css/jacks-supercool-site-c6dd88.webflow.css" rel="stylesheet" type="text/css">
-        <link href="../../static/css/order/order-detail.css" rel="stylesheet" type="text/css">
-        <link href="../../static/css/order/order-progress-bar.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-        <link href="../../static/css/order/order-confirm.css" rel="stylesheet" type="text/css">
-        <link href="../../static/css/userinfo/action_area.css" rel="stylesheet" type="text/css">
-        <link href="../../static/css/userinfo/address.css" rel="stylesheet" type="text/css">
-        {#        <link href="../../static/css/order/order.css" rel="stylesheet" type="text/css">#}
+{% block title %}The Siren - {{ _("Order Details") }}{% endblock %}
 
-        <!-- [if lt IE 9]>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"
-                type="text/javascript"></script><![endif] -->
-        <script type="text/javascript">
-            !function (o, c) {
-                var n = c.documentElement, t = " w-mod-";
-                n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
-            }
-            (window, document);
-        </script>
+{#  for links to css #}
+{% block style %}
+    <link rel="icon" href="../../static/images/half-logo.png">
 
-        <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
-        <link href="images/webclip.png" rel="apple-touch-icon">
-        {# css for slide pictures #}
-        <link rel="stylesheet" href="../../static/css/main/index_slide.css">
-        <style>
-            body {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-            }
+    <link href="../../static/css/normalize.css" rel="stylesheet" type="text/css">
+    <link href="../../static/css/webflow.css" rel="stylesheet" type="text/css">
+    <link href="../../static/css/jacks-supercool-site-c6dd88.webflow.css" rel="stylesheet" type="text/css">
+    <link href="../../static/css/order/order-detail.css" rel="stylesheet" type="text/css">
+    <link href="../../static/css/order/order-progress-bar.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link href="../../static/css/order/order-confirm.css" rel="stylesheet" type="text/css">
+    <link href="../../static/css/userinfo/action_area.css" rel="stylesheet" type="text/css">
+    <link href="../../static/css/userinfo/address.css" rel="stylesheet" type="text/css">
+    {#        <link href="../../static/css/order/order.css" rel="stylesheet" type="text/css">#}
 
-            select, input, textarea {
-                -webkit-appearance: checkbox;
-            }
-        </style>
-    </head>
-    <body>
-        <!-- Section of Announcement Bar -->
-        <div class="announcement-bar">
-            <div class="main-container">
-                <div class="announcement-contents">
-                    <div class="announcement-text">
-                        Welcome to Siren – Selects online music instrument shop for you.
-                        <a href="{{ url_for('main.go_all') }}" target="_blank">View instruments here</a>
+    <!-- [if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"
+            type="text/javascript"></script><![endif] -->
+    <script type="text/javascript">
+        !function (o, c) {
+            var n = c.documentElement, t = " w-mod-";
+            n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
+        }
+        (window, document);
+    </script>
+
+    <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="images/webclip.png" rel="apple-touch-icon">
+    {# css for slide pictures #}
+    <link rel="stylesheet" href="../../static/css/main/index_slide.css">
+    <style>
+        body {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        select, input, textarea {
+            -webkit-appearance: checkbox;
+        }
+    </style>
+{% endblock %}
+
+
+{# content #}
+{% block content %}
+    <html data-wf-page="6221c36b59f1982c475ac5f9" data-wf-site="6221c36b59f1986aa65ac5f0">
+        <body>
+            <!-- Order Detail Section -->
+            <div class="section wf-section" style="padding-top: 0px">
+                <div class="main-container">
+                    <!-- Order detail Heading -->
+                    <div class="w-commerce-commercecartheader cart-header">
+                        <h4 class="w-commerce-commercecartheading">{{ _('Your Order') }}</h4>
+                        <a href="#" data-node-type="commerce-cart-close-link"
+                           class="w-commerce-commercecartcloselink close-cart-button w-inline-block">
+                            <img src="images/icon-cross-large.svg" loading="lazy" alt="">
+                        </a>
                     </div>
-                </div>
-            </div>
-            <img src="../../static/images/icon-cross.svg" loading="lazy" alt="" class="announcement-cross">
-        </div>
+                    <div class="w-commerce-commercecartformwrapper">
+                        <div class="w-commerce-commercecartlist cart-list main-container">
+                            <table class="main-table">
+                                <!-- Status -->
+                                <tr id="status_{{ order.id }}" style="text-align: center">
+                                    {% if order.status_code == 0 %}
+                                        <td colspan="3" class="status_col status_wp">
+                                            {{ _("Waiting for Payment") }}
+                                        </td>
+                                    {% elif order.status_code == 1 %}
+                                        <td colspan="3" class="status_col status_p">
+                                            {{ _("Preparing") }}
+                                        </td>
+                                    {% elif order.status_code == 2 %}
+                                        <td colspan="3" class="status_col status_od">
+                                            {{ _("On Delivery") }}
+                                        </td>
+                                    {% elif order.status_code == 3 %}
+                                        <td colspan="3" class="status_col status_wc">
+                                            {{ _("Waiting for Collection") }}
+                                        </td>
+                                    {% elif order.status_code == 4 %}
+                                        <td colspan="3" class="status_col status_f">
+                                            {{ _("Finished") }}
+                                        </td>
+                                    {% elif order.status_code == 5 %}
+                                        <td colspan="3" class="status_col status_c">
+                                            {{ _("Canceled") }}
+                                        </td>
+                                    {% elif order.status_code == 6 %}
+                                        <td colspan="3" class="status_col status_e">
+                                            {{ _("Expired") }}
+                                        </td>
+                                    {% endif %}
+                                </tr>
 
-        <!-- Upper Section of Top nav bar -->
-        <div class="div-block-2">
-            <div id="Top" class="top">
-            </div>
-            <div class="main-container">
-                <div class="navbar-top">
-                    <!-- Middel part -->
-                    <a href="{{ url_for('main.index') }}" aria-current="page" class="w-inline-block w--current">
-                        <img src="../../static/images/White-logo-no-background.svg" loading="eager" alt=""
-                             height="45px">
-                    </a>
-
-                    <!-- Right part -->
-                    <div id="w-node-dab1a8fd-38ef-ff9e-e737-a0bdf6abf413-f6abf40a" class="navbar-right-contents">
-                        <!-- Auth -->
-                        {% if session.get('username') %}
-                            <a href="{{ url_for('auth.logout') }}" class="button small nav-button w-inline-block">
-                                <div>{{ _('Logout') }}</div>
-                            </a>
-                        {% else %}
-                            <a href="{{ url_for('auth.login') }}" class="button small nav-button w-inline-block">
-                                <div>{{ _('Login') }}</div>
-                            </a>
-                        {% endif %}
-
-                        <!-- change language-->
-                        <div data-node-type="commerce-cart-wrapper" data-open-product=""
-                             data-wf-cart-type="rightSidebar"
-                             data-wf-cart-query="" data-wf-page-link-href-prefix=""
-                             class="w-commerce-commerceuserwrapper">
-                            <a href="{{ url_for("main.change_language") }}"
-                               class="w-commerce-commercecartopenlink nav-cart-button w-inline-block"><img
-                                    src="../../static/images/icon-language.png" loading="eager" alt="">
-                            </a>
-                        </div>
-
-                        <!-- user profile button-->
-                        {% if current_user.is_authenticated %}
-                            <div data-node-type="commerce-cart-wrapper" data-open-product=""
-                                 data-wf-cart-type="rightSidebar"
-                                 data-wf-cart-query="" data-wf-page-link-href-prefix=""
-                                 class="w-commerce-commerceuserwrapper">
-                                <a href="{% if current_user.role_id == 1 %} /user_profile/{{ current_user.id }} {% else %} {{ url_for("product.show_page_staff_index") }} {% endif %}"
-                                   class="w-commerce-commercecartopenlink nav-cart-button w-inline-block"><img
-                                        src="../../static/images/icon-user.png" loading="eager" alt="">
-                                </a>
-                            </div>
-                        {% endif %}
-
-                        <!-- Cart -->
-                        {% if current_user.is_authenticated %}
-                            <div data-node-type="commerce-cart-wrapper" data-open-product=""
-                                 data-wf-cart-type="rightSidebar"
-                                 data-wf-cart-query="" data-wf-page-link-href-prefix=""
-                                 class="w-commerce-commercecartwrapper">
-
-                                {# cart btn on the nav bar #}
-                                <a id="sidebar_cart"
-                                   href="{% if current_user.is_authenticated %} # {% else %} {{ url_for("auth.login") }} {% endif %}"
-                                   data-node-type="commerce-cart-open-link"
-                                   class="w-commerce-commercecartopenlink nav-cart-button w-inline-block"
-                                   open_="not"><img
-                                        src="../../static/images/icon-shopping-bag.svg" loading="eager" alt="">
-                                    <div class="w-commerce-commercecartopenlinkcount cart-quantity">{{ current_user.carts.count() }}</div>
-                                </a>
-                                <div id="cart_errupter" data-node-type="commerce-cart-container-wrapper"
-                                     style="display:none"
-                                     class="w-commerce-commercecartcontainerwrapper w-commerce-commercecartcontainerwrapper--cartType-rightSidebar">
-                                    <div data-node-type="commerce-cart-container"
-                                         class="w-commerce-commercecartcontainer cart-container">
-                                        <div class="w-commerce-commercecartheader cart-header">
-                                            <h4 class="w-commerce-commercecartheading">{{ _('Your Cart') }}</h4>
-                                            <a id="close_cart" href="#" data-node-type="commerce-cart-close-link"
-                                               class="w-commerce-commercecartcloselink close-cart-button w-inline-block">
-                                                <img src="../../static/images/icon-cross-large.svg" loading="lazy"
-                                                     alt="">
-                                            </a>
-                                        </div>
-                                        <div class="w-commerce-commercecartformwrapper">
-                                            {# The outer container of the cart items #}
-                                            {% if current_user.carts.count() != 0 %}
-                                                <form data-node-type="commerce-cart-form"
-                                                      class="w-commerce-commercecartform">
-                                                    <script type="text/x-wf-template"
-                                                            id="wf-template-dab1a8fd-38ef-ff9e-e737-a0bdf6abf424"></script>
-
-                                                    <div class="w-commerce-commercecartlist cart-list"
-                                                         data-wf-collection="database.commerceOrder.userItems"
-                                                         data-wf-template-id="wf-template-dab1a8fd-38ef-ff9e-e737-a0bdf6abf424">
-
-                                                        {# each cart item in the cart of this user #}
-                                                        {% for cart_item in current_user.carts %}
-                                                            <div id="cart-item-{{ cart_item.id }}"
-                                                                 class="w-commerce-commercecartitem cart-item">
-                                                                {# model image (left part) #}
-                                                                <img
-                                                                        data-wf-bindings="%5B%7B%22src%22%3A%7B%22type%22%3A%22ImageRef%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.sku.f_main_image_4dr%22%7D%7D%5D"
-                                                                        src="{{ url_for('static', filename=cart_item.model_type.pictures[0].address) }}"
-                                                                        alt=""
-                                                                        class="w-commerce-commercecartitemimage cart-item-image">
-
-                                                                {# model info (middle part) #}
-                                                                <div class="w-commerce-commercecartiteminfo cart-item-details">
-                                                                    {# model name #}
-                                                                    <div data-wf-bindings="%5B%7B%22innerHTML%22%3A%7B%22type%22%3A%22PlainText%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.product.f_name_%22%7D%7D%5D"
-                                                                         class="w-commerce-commercecartproductname">
-                                                                        {{ cart_item.model_type.name }}
-                                                                    </div>
-
-                                                                    {# model price #}
-                                                                    <div data-wf-bindings="%5B%7B%22innerHTML%22%3A%7B%22type%22%3A%22CommercePrice%22%2C%22filter%22%3A%7B%22type%22%3A%22price%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.price%22%7D%7D%5D"
-                                                                         class="fine-print-text">
-                                                                        $&nbsp;<span class="cart-item-price"
-                                                                                     item-count="{{ cart_item.count }}">{{ cart_item.model_type.price }}</span>&nbsp;USD
-                                                                    </div>
-
-                                                                    <script type="text/x-wf-template"
-                                                                            id="wf-template-dab1a8fd-38ef-ff9e-e737-a0bdf6abf42a">%3Cli%3E%3Cspan%20data-wf-bindings%3D%22%255B%257B%2522innerHTML%2522%253A%257B%2522type%2522%253A%2522PlainText%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems.0.product.f_sku_properties_3dr%255B%255D.name%2522%257D%257D%255D%22%20class%3D%22w-dyn-bind-empty%22%3E%3C%2Fspan%3E%3Cspan%3E%3A%20%3C%2Fspan%3E%3Cspan%20data-wf-bindings%3D%22%255B%257B%2522innerHTML%2522%253A%257B%2522type%2522%253A%2522CommercePropValues%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems.0.product.f_sku_properties_3dr%255B%255D%2522%257D%257D%255D%22%20class%3D%22w-dyn-bind-empty%22%3E%3C%2Fspan%3E%3C%2Fli%3E</script>
-                                                                    <ul data-wf-bindings="%5B%7B%22optionSets%22%3A%7B%22type%22%3A%22CommercePropTable%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.product.f_sku_properties_3dr[]%22%7D%7D%2C%7B%22optionValues%22%3A%7B%22type%22%3A%22CommercePropValues%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.sku.f_sku_values_3dr%22%7D%7D%5D"
-                                                                        class="w-commerce-commercecartoptionlist"
-                                                                        data-wf-collection="database.commerceOrder.userItems.0.product.f_sku_properties_3dr"
-                                                                        data-wf-template-id="wf-template-dab1a8fd-38ef-ff9e-e737-a0bdf6abf42a"></ul>
-
-                                                                    {# remove btn #}
-                                                                    <a href="#"
-                                                                       data-wf-bindings="%5B%7B%22data-commerce-sku-id%22%3A%7B%22type%22%3A%22ItemRef%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.sku.id%22%7D%7D%5D"
-                                                                       class="w-inline-block cart-item-remove-btn"
-                                                                       data-wf-cart-action="remove-item"
-                                                                       data-commerce-sku-id="61a56467407a5a926e9ea7a7"
-                                                                       cart-id="{{ cart_item.id }}">
-                                                                        <div class="fine-print-text remove-link">
-                                                                            Remove
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-
-                                                                {# count number (right part) #}
-                                                                <input type="text" required="" pattern="^[0-9]+$"
-                                                                       inputmode="numeric"
-                                                                       data-wf-bindings="%5B%7B%22value%22%3A%7B%22type%22%3A%22Number%22%2C%22filter%22%3A%7B%22type%22%3A%22numberPrecision%22%2C%22params%22%3A%5B%220%22%2C%22numberPrecision%22%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.count%22%7D%7D%2C%7B%22data-commerce-sku-id%22%3A%7B%22type%22%3A%22ItemRef%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.sku.id%22%7D%7D%5D"
-                                                                       data-wf-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22product%3Aec-product-type%22%3A%7B%22ne%22%3A%22e348fd487d0102946c9179d2a94bb613%22%2C%22type%22%3A%22Option%22%7D%7D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0%22%7D"
-                                                                       class="w-commerce-commercecartquantity"
-                                                                       name="quantity"
-                                                                       data-wf-cart-action="update-item-quantity"
-                                                                       data-commerce-sku-id="61a56467407a5a926e9ea7a7"
-                                                                       value="{{ cart_item.count }}">
-                                                            </div>
-                                                        {% endfor %}
-
-                                                    </div>
-
-                                                    <div class="w-commerce-commercecartfooter cart-footer">
-                                                        {# The total payemnt #}
-                                                        <div class="w-commerce-commercecartlineitem">
-                                                            <div>{{ _('Subtotal') }}</div>
-                                                            <div class="w-commerce-commercecartordervalue">
-                                                                <span>$ </span><span id="number-subtotal"></span><span> USD</span>
-                                                            </div>
-                                                        </div>
-                                                        {# The go to cart btn #}
-                                                        <div>
-                                                            <a href="{{ url_for("cart.show_my_cart") }}"
-                                                               value="Go to my cart"
-                                                               data-node-type="cart-checkout-button"
-                                                               class="w-commerce-commercecartcheckoutbutton button bg-primary-dark"
-                                                               data-loading-text="Hang Tight...">{{ _('Go to my cart') }}</a>
-                                                        </div>
-                                                    </div>
-                                                </form>
-
-
-                                                {# No item indication #}
-                                            {% else %}
-                                                <div class="w-commerce-commercecartemptystate">
-                                                    <div>{{ _('No items found.') }}</div>
-                                                </div>
-                                            {% endif %}
-
-                                            <div style="display:none" data-node-type="commerce-cart-error"
-                                                 class="w-commerce-commercecarterrorstate">
-                                                <div class="w-cart-error-msg"
-                                                     data-w-cart-quantity-error="Product is not available in this quantity."
-                                                     data-w-cart-general-error="Something went wrong when adding this item to the cart."
-                                                     data-w-cart-checkout-error="Checkout is disabled on this site."
-                                                     data-w-cart-cart_order_min-error="The order minimum was not met. Add more items to your cart to continue."
-                                                     data-w-cart-subscription_error-error="Before you purchase, please use your email invite to verify your address so we can send order updates.">
-                                                    {{ _('Product is not available in this quantity.') }}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endif %}
-
-                    </div>
-
-                    <!-- Left part -->
-                    <!-- Search -->
-                    <form action="/search" method="POST" id="w-node-dab1a8fd-38ef-ff9e-e737-a0bdf6abf40d-f6abf40a"
-                          class="nav-search-form w-form">
-                        <!--<div class="w-inline-block">-->
-                        <input type="image" src="../../static/images/icon-search.svg" value="Search" class="w-button"
-                               alt="submit">
-                        <!--</div>-->
-                        <input type="search" class="search-form-input w-input" maxlength="256" name="key_word"
-                               placeholder="{{ _('Search here') }}" id="search-2" required="">
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!-- Lower Section of Top nav bar -->
-        <div class="div-block">
-            <div class="main-container">
-                <div data-collapse="small" data-animation="default" data-duration="400" data-easing="ease"
-                     data-easing2="ease" role="banner" class="navbar w-nav">
-                    <div class="button bg-primary wide w-nav-button">
-                        <div>{{ _('Menu') }}</div>
-                    </div>
-                    <nav role="navigation" class="w-nav-menu">
-                        <div class="nav-menu-row">
-                            <!-- Left side -->
-                            <!-- All product -->
-                            <a href="{{ url_for("main.go_all") }}" class="nav-link">{{ _('All') }}</a>
-
-                            <!-- Specific -->
-                            <div class="w-dyn-list">
-                                <div role="list" class="navbar-categories w-dyn-items">
-                                    <div role="listitem" class="w-dyn-item nav_topic">
-                                        <a href="#" class="nav-link">{{ _('Catagory') }}</a>
-
-                                    </div>
-                                    <div role="listitem" class="w-dyn-item nav_topic">
-                                        <a href="#" class="nav-link">{{ _('Brand') }}</a>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Divider line -->
-                            <div class="nav-menu-divider"></div>
-
-                            <!-- Right side -->
-                            <a href="{{ url_for("main.about_us") }}" class="nav-link">{{ _('About') }}</a>
-                            <a href="contact.html" class="nav-link">{{ _('Contact') }}</a>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div>
-
-        <!-- Order Detail Section -->
-        <div class="section wf-section" style="padding-top: 0px">
-            <div class="main-container">
-                <!-- Order detail Heading -->
-                <div class="w-commerce-commercecartheader cart-header">
-                    <h4 class="w-commerce-commercecartheading">{{ _('Your Order') }}</h4>
-                    <a href="#" data-node-type="commerce-cart-close-link"
-                       class="w-commerce-commercecartcloselink close-cart-button w-inline-block">
-                        <img src="images/icon-cross-large.svg" loading="lazy" alt="">
-                    </a>
-                </div>
-                <div class="w-commerce-commercecartformwrapper">
-                    <div class="w-commerce-commercecartlist cart-list main-container">
-                        <table class="main-table">
-                            <!-- Status -->
-                            <tr id="status_{{ order.id }}" style="text-align: center">
-                                {% if order.status_code == 0 %}
-                                    <td colspan="3" class="status_col status_wp">
-                                        Waiting for Payment
-                                    </td>
-                                {% elif order.status_code == 1 %}
-                                    <td colspan="3" class="status_col status_p">
-                                        Preparing
-                                    </td>
-                                {% elif order.status_code == 2 %}
-                                    <td colspan="3" class="status_col status_od">
-                                        On Delivery
-                                    </td>
-                                {% elif order.status_code == 3 %}
-                                    <td colspan="3" class="status_col status_wc">
-                                        Waiting for Collection
-                                    </td>
-                                {% elif order.status_code == 4 %}
-                                    <td colspan="3" class="status_col status_f">
-                                        Finished
-                                    </td>
-                                {% elif order.status_code == 5 %}
-                                    <td colspan="3" class="status_col status_c">
-                                        Canceled
-                                    </td>
-                                {% elif order.status_code == 6 %}
-                                    <td colspan="3" class="status_col status_e">
-                                        Expired
-                                    </td>
-                                {% endif %}
-                            </tr>
-
-                            <!-- Information -->
-                            <tr>
-                                <td colspan="2" class="top-td">
-                                    <table width="100%">
-                                        <tr>
-                                            <td class="title_indentation medium-heading border-1">
-                                                Basic Information
-                                            </td>
-                                            <td class="border-2 modify-section">
-                                                <a href="#" id="modify-type-btn"
-                                                   class="button small nav-button w-inline-block">
-                                                    <div>Modify Type</div>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2">
-                                                <table class="info_indentation" width="100%">
-                                                    <tr>
-                                                        <td colspan="2" class="order_num">
-                                                            Trade No.{{ order.out_trade_no }}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2" class="order_num">
-                                                            Payment No.{{ order.trade_no }}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2">
-                                                            {{ order.timestamp }}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="left-cell">
-                                                            Order Type: {{ order.order_type }}
-                                                        </td>
-                                                        <td>
-                                                            Delivery Cost: ${{ order.delivery_fee }}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="left-cell">
-                                                            Total Cost: ${{ order.gross_payment }}
-                                                        </td>
-                                                        <td class="left-cell">
-                                                            Actual Paid: ${{ order.paid_payment }}
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="title_indentation top-indentation medium-heading extra-top-indentation border-1">
-                                                {% if order.order_type == "delivery" %}
-                                                    Address Information
-                                                {% elif order.order_type == "self-collection" %}
-                                                    Recipient Information
-                                                {% endif %}
-                                            </td>
-                                            <td class="border-2 top-indentation modify-section">
-                                                {% if order.order_type == "delivery" %}
-                                                    <a href="#" id="modify-ar-btn"
-                                                       class="button small nav-button w-inline-block">
-                                                        <div>Modify Address</div>
-                                                    </a>
-                                                {% elif order.order_type == "self-collection" %}
-                                                    <a href="#" id="modify-ar-btn"
-                                                       class="button small nav-button w-inline-block">
-                                                        <div>Modify Recipient</div>
-                                                    </a>
-                                                {% endif %}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2">
-                                                <table class="info_indentation" width="100%">
-                                                    {% if order.order_type == "delivery" %}
+                                <!-- Information -->
+                                <tr>
+                                    <td colspan="2" class="top-td">
+                                        <table width="100%">
+                                            <tr>
+                                                <td class="title_indentation medium-heading border-1">
+                                                    {{ _("Basic Information") }}
+                                                </td>
+                                                <td class="border-2 modify-section">
+                                                    {% if current_user.is_premium %}
+                                                        {% if order.status_code == 0 or order.status_code == 1 or order.status_code == 3 %}
+                                                            <a href="#" id="modify-type-btn"
+                                                               class="button small nav-button w-inline-block">
+                                                                <div>{{ _("Modify Type") }}</div>
+                                                            </a>
+                                                        {% endif %}
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <table class="info_indentation" width="100%">
                                                         <tr>
-                                                            <td class="left-cell">
-                                                                {{ order.address.recipient.recipient_name }}
+                                                            <td colspan="2" class="order_num">
+                                                                {{ _("Trade") }} No.{{ order.out_trade_no }}
                                                             </td>
-                                                            <td>
-                                                                {{ order.address.recipient.phone }}
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2" class="order_num">
+                                                                {{ _("Payment") }} No.{{ order.trade_no }}
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td colspan="2">
-                                                                {{ order.address.country }}
-                                                                - {{ order.address.province_or_state }}
-                                                                - {{ order.address.city }}
-                                                                - {{ order.address.district }}<br>
-                                                                {{ order.address.details }}
+                                                                {{ order.timestamp.strftime("%Y-%m-%d %H:%M:%S") }}
                                                             </td>
                                                         </tr>
-                                                    {% elif order.order_type == "self-collection" %}
                                                         <tr>
-                                                            <td class="name-box">
-                                                                {{ order.recipient.recipient_name }}
+                                                            <td class="left-cell">
+                                                                {{ _("Order Type") }}: {{ order.order_type }}
                                                             </td>
                                                             <td>
-                                                                {{ order.recipient.phone }}
+                                                                {{ _("Delivery Cost") }}: ￥{{ order.delivery_fee }}
                                                             </td>
                                                         </tr>
-                                                    {% endif %}
-                                                </table>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-
-                            <!-- Progress bar -->
-                            <tr>
-                                <td>
-                                    {% if order.status_code >=0 and order.status_code <= 4 %}
-                                        <div class="progress-bar-container">
-                                            <!--<div class="head">
-                                                <p class="large-heading">
-                                                    Progress<span> Bar</span>
-                                                </p>
-                                            </div>-->
-                                            <ul class="ul-1">
-                                                <li>
-                                                    <i class="icon uil uil-credit-card" style="color: #8e8267;"></i>
-                                                    {% if order.status_code > 0 %}
-                                                        <div class="progress one active">
-                                                            <p>1</p>
-                                                            <i class="uil uil-check" style="color: #e2e1dc;"></i>
-                                                        </div>
-                                                        <p class="text">Payment</p>
-                                                    {% else %}
-                                                        <div class="progress one">
-                                                            <p>1</p>
-                                                            <i class="uil uil-check" style="color: #e2e1dc;"></i>
-                                                        </div>
-                                                        <p class="text">Payment</p>
-                                                    {% endif %}
-                                                </li>
-                                                {% if order.order_type == 'delivery' %}
-                                                    <li>
-                                                        <i class="icon uil uil-truck-loading"
-                                                           style="color: #8e8267;"></i>
-                                                        {% if order.status_code > 1 %}
-                                                            <div class="progress two active">
-                                                                <p>2</p>
-                                                                <i class="uil uil-check" style="color: #e2e1dc;"></i>
-                                                            </div>
-                                                            <p class="text">Preparing</p>
-                                                        {% else %}
-                                                            <div class="progress two">
-                                                                <p>2</p>
-                                                                <i class="uil uil-check" style="color: #e2e1dc;"></i>
-                                                            </div>
-                                                            <p class="text">Preparing</p>
-                                                        {% endif %}
-                                                    </li>
-                                                    <li>
-                                                        <i class="icon uil uil-truck" style="color: #8e8267;"></i>
-                                                        {% if order.status_code > 2 %}
-                                                            <div class="progress three active">
-                                                                <p>3</p>
-                                                                <i class="uil uil-check" style="color: #e2e1dc;"></i>
-                                                            </div>
-                                                            <p class="text">On Delivery</p>
-                                                        {% else %}
-                                                            <div class="progress three">
-                                                                <p>3</p>
-                                                                <i class="uil uil-check" style="color: #e2e1dc;"></i>
-                                                            </div>
-                                                            <p class="text">On Delivery</p>
-                                                        {% endif %}
-                                                    </li>
-                                                    <li>
-                                                        <i class="icon uil uil-map-marker" style="color: #8e8267;"></i>
-                                                        {% if order.status_code == 4 %}
-                                                            <div class="progress four active">
-                                                                <p>4</p>
-                                                                <i class="uil uil-check" style="color: #e2e1dc;"></i>
-                                                            </div>
-                                                            <p class="text">Finished</p>
-                                                        {% else %}
-                                                            <div class="progress four">
-                                                                <p>4</p>
-                                                                <i class="uil uil-check" style="color: #e2e1dc;"></i>
-                                                            </div>
-                                                            <p class="text">Finished</p>
-                                                        {% endif %}
-                                                    </li>
-                                                {% elif order.order_type == 'self-collection' %}
-                                                    <li>
-                                                        <i class="icon uil uil-clock-nine" style="color: #8e8267;"></i>
-                                                        {% if order.status_code >= 4 %}
-                                                            <div class="progress two active">
-                                                                <p>2</p>
-                                                                <i class="uil uil-check" style="color: #e2e1dc;"></i>
-                                                            </div>
-                                                            <p class="text">Waiting For Collection</p>
-                                                        {% else %}
-                                                            <div class="progress two">
-                                                                <p>2</p>
-                                                                <i class="uil uil-check" style="color: #e2e1dc;"></i>
-                                                            </div>
-                                                            <p class="text">Waiting For Collection</p>
-                                                        {% endif %}
-                                                    </li>
-                                                    <li>
-                                                        <i class="icon uil uil-map-marker" style="color: #8e8267;"></i>
-                                                        {% if order.status_code == 4 %}
-                                                            <div class="progress three active">
-                                                                <p>3</p>
-                                                                <i class="uil uil-check" style="color: #e2e1dc;"></i>
-                                                            </div>
-                                                            <p class="text">Finished</p>
-                                                        {% else %}
-                                                            <div class="progress three">
-                                                                <p>3</p>
-                                                                <i class="uil uil-check" style="color: #e2e1dc;"></i>
-                                                            </div>
-                                                            <p class="text">Finished</p>
-                                                        {% endif %}
-                                                    </li>
-                                                {% endif %}
-
-                                                {#                <li>#}
-                                                {#                    <i class="icon uil uil-map-marker"></i>#}
-                                                {#                    <div class="progress six">#}
-                                                {#                        <p>5</p>#}
-                                                {#                        <i class="uil uil-check"></i>#}
-                                                {#                    </div>#}
-                                                {#                    <p class="text">Canceled</p>#}
-                                                {#                </li>#}
-                                                {#                <li>#}
-                                                {#                    <i class="icon uil uil-map-marker"></i>#}
-                                                {#                    <div class="progress seven">#}
-                                                {#                        <p>5</p>#}
-                                                {#                        <i class="uil uil-check"></i>#}
-                                                {#                    </div>#}
-                                                {#                    <p class="text">Canceled</p>#}
-                                                {#                </li>#}
-                                            </ul>
-                                        </div>
-                                    {% endif %}
-                                </td>
-                            </tr>
-
-                            <!-- Models -->
-                            <tr>
-                                <td id="model_table_col">
-                                    <table width="100%" class="model_listing_table">
-                                        {% for order_model in order.order_model_types %}
-                                            <tr id="model_row_{{ order_model.model_type.id }}"
-                                                order_id="{{ order.id }}">
-                                                <!-- Model Pic -->
-                                                <td class="model_img_col">
-                                                    {% if order_model.model_type.pictures.first() == None %}
-                                                        <img src="../../static/images/example/yamaha_yep621s.jpg"
-                                                             loading="lazy" alt=""
-                                                             class="model_thumbnail">
-                                                    {% else %}
-                                                        <img src="{{ url_for("static",filename=order_model.model_type.pictures.first().address) }}"
-                                                             loading="lazy" alt=""
-                                                             class="model_thumbnail">
-                                                    {% endif %}
-                                                </td>
-                                                <!-- Model Name -->
-                                                <td class="model_name_col">
-                                                    {{ order_model.model_type.name }}
-                                                </td>
-                                                <td class="model_des_col">
-                                                    <table>
-                                                        <!-- Model Description -->
                                                         <tr>
-                                                            <td class="model_des_cell">
-                                                                {{ order_model.model_type.description }}
+                                                            <td class="left-cell">
+                                                                {{ _("Total Cost") }}: ￥{{ order.gross_payment }}
                                                             </td>
-                                                        </tr>
-                                                        <!-- Model Rank -->
-                                                        <tr>
-                                                            <td class="model_rate_col">
-                                                                <div class="no-bottom-margin box-product-rate">
-                                                                    <ul class="box-rate-stars">
-                                                                        {% if (order_model.model_type.rate // 1) == 0 %}
-                                                                            <li class="star-dark">&#9733</li>
-                                                                            <li class="star-dark">&#9733</li>
-                                                                            <li class="star-dark">&#9733</li>
-                                                                            <li class="star-dark">&#9733</li>
-                                                                            <li class="star-dark">&#9733</li>
-                                                                        {% elif (order_model.model_type.rate // 1) == 1 %}
-                                                                            <li class="star-bright">&#9733</li>
-                                                                            <li class="star-dark">&#9733</li>
-                                                                            <li class="star-dark">&#9733</li>
-                                                                            <li class="star-dark">&#9733</li>
-                                                                            <li class="star-dark">&#9733</li>
-                                                                        {% elif (order_model.model_type.rate // 1) == 2 %}
-                                                                            <li class="star-bright">&#9733</li>
-                                                                            <li class="star-bright">&#9733</li>
-                                                                            <li class="star-dark">&#9733</li>
-                                                                            <li class="star-dark">&#9733</li>
-                                                                            <li class="star-dark">&#9733</li>
-                                                                        {% elif (order_model.model_type.rate // 1) == 3 %}
-                                                                            <li class="star-bright">&#9733</li>
-                                                                            <li class="star-bright">&#9733</li>
-                                                                            <li class="star-bright">&#9733</li>
-                                                                            <li class="star-dark">&#9733</li>
-                                                                            <li class="star-dark">&#9733</li>
-                                                                        {% elif (order_model.model_type.rate // 1) == 4 %}
-                                                                            <li class="star-bright">&#9733</li>
-                                                                            <li class="star-bright">&#9733</li>
-                                                                            <li class="star-bright">&#9733</li>
-                                                                            <li class="star-bright">&#9733</li>
-                                                                            <li class="star-dark">&#9733</li>
-                                                                        {% elif (order_model.model_type.rate // 1) == 5 %}
-                                                                            <li class="star-bright">&#9733</li>
-                                                                            <li class="star-bright">&#9733</li>
-                                                                            <li class="star-bright">&#9733</li>
-                                                                            <li class="star-bright">&#9733</li>
-                                                                            <li class="star-bright">&#9733</li>
-                                                                        {% endif %}
-                                                                    </ul>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <!-- Comment entrance -->
-                                                        <tr>
-                                                            <td class="model_comment_col">
-                                                                {% if order_model.is_commented %}
-                                                                    <div class="commented-mark">
-                                                                        Commented
-                                                                    </div>
-                                                                {% else %}
-                                                                    <a href="#"
-                                                                       data-wf-bindings="%5B%7B%22data-commerce-sku-id%22%3A%7B%22type%22%3A%22ItemRef%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.sku.id%22%7D%7D%5D"
-                                                                       class="w-inline-block cart-item-remove-btn"
-                                                                       data-wf-cart-action="remove-item"
-                                                                       data-commerce-sku-id="61a56467407a5a926e9ea7a7">
-                                                                        <div class="fine-print-text remove-link">
-                                                                            Comment
-                                                                        </div>
-                                                                    </a>
-                                                                {% endif %}
+                                                            <td class="left-cell">
+                                                                {{ _("Actual Paid") }}: ￥{{ order.paid_payment }}
                                                             </td>
                                                         </tr>
                                                     </table>
                                                 </td>
-                                                <!-- quantity of this model in this order -->
-                                                <td class="model_quantity_col">
-                                                    &times; {{ order_model.count }}
+                                            </tr>
+                                            <tr>
+                                                <td class="title_indentation top-indentation medium-heading extra-top-indentation border-1">
+                                                    {% if order.order_type == "delivery" %}
+                                                        {{ _("Address Information") }}
+                                                    {% elif order.order_type == "self-collection" %}
+                                                        {{ _("Recipient Information") }}
+                                                    {% endif %}
+                                                </td>
+                                                <td class="border-2 top-indentation modify-section">
+                                                    {% if order.status_code == 0 or order.status_code == 1 or order.status_code == 3 %}
+                                                        {% if order.order_type == "delivery" %}
+                                                            <a href="#" id="modify-ar-btn"
+                                                               class="button small nav-button w-inline-block">
+                                                                <div>{{ _("Modify Address") }}</div>
+                                                            </a>
+                                                        {% elif order.order_type == "self-collection" %}
+                                                            <a href="#" id="modify-ar-btn"
+                                                               class="button small nav-button w-inline-block">
+                                                                <div>{{ _("Modify Recipient") }}</div>
+                                                            </a>
+                                                        {% endif %}
+                                                    {% endif %}
                                                 </td>
                                             </tr>
-                                        {% endfor %}
-                                    </table>
-                                </td>
-                                {#                                <td>#}
-                                {#                                    <table border="1" width="100%" class="progress_table">#}
-                                {#                                        <tr>#}
-                                {#                                            <td rowspan="2" class="progress_mark">#}
-                                {#                                                \/#}
-                                {#                                            </td>#}
-                                {#                                            <td class="progress_stage">#}
-                                {#                                                Orderd#}
-                                {#                                            </td>#}
-                                {#                                        </tr>#}
-                                {#                                        <tr>#}
-                                {#                                            <td class="progress_time">#}
-                                {#                                                2022-04-08#}
-                                {#                                            </td>#}
-                                {#                                        </tr>#}
-                                {#                                        <tr>#}
-                                {#                                            <td rowspan="2" class="progress_mark">#}
-                                {#                                                \/#}
-                                {#                                            </td>#}
-                                {#                                            <td class="progress_stage">#}
-                                {#                                                Preparing#}
-                                {#                                            </td>#}
-                                {#                                        </tr>#}
-                                {#                                        <tr>#}
-                                {#                                            <td class="progress_time">#}
-                                {#                                                2022-04-08#}
-                                {#                                            </td>#}
-                                {#                                        </tr>#}
-                                {#                                        <tr>#}
-                                {#                                            <td rowspan="2" class="progress_mark">#}
-                                {#                                                \/#}
-                                {#                                            </td>#}
-                                {#                                            <td class="progress_stage">#}
-                                {#                                                Delivering#}
-                                {#                                            </td>#}
-                                {#                                        </tr>#}
-                                {#                                        <tr>#}
-                                {#                                            <td class="progress_time">#}
-                                {#                                                2022-04-08#}
-                                {#                                            </td>#}
-                                {#                                        </tr>#}
-                                {#                                        <tr>#}
-                                {#                                            <td rowspan="2" class="progress_mark">#}
-                                {#                                                \/#}
-                                {#                                            </td>#}
-                                {#                                            <td class="progress_stage">#}
-                                {#                                                Finished#}
-                                {#                                            </td>#}
-                                {#                                        </tr>#}
-                                {#                                        <tr>#}
-                                {#                                            <td class="progress_time">#}
-                                {#                                                2022-04-08#}
-                                {#                                            </td>#}
-                                {#                                        </tr>#}
-                                {#                                    </table>#}
-                                {#                                </td>#}
-                            </tr>
-                        </table>
-                    </div>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <table class="info_indentation" width="100%">
+                                                        {% if order.order_type == "delivery" %}
+                                                            <tr>
+                                                                <td class="left-cell">
+                                                                    {{ order.recipient.recipient_name }}
+                                                                </td>
+                                                                <td>
+                                                                    {{ order.recipient.phone }}
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2">
+                                                                    {{ order.address_text }}
+                                                                    {#                                                                {{ order.address.country }}#}
+                                                                    {#                                                                - {{ order.address.province_or_state }}#}
+                                                                    {#                                                                - {{ order.address.city }}#}
+                                                                    {#                                                                - {{ order.address.district }}<br>#}
+                                                                    {#                                                                {{ order.address.details }}#}
+                                                                </td>
+                                                            </tr>
+                                                        {% elif order.order_type == "self-collection" %}
+                                                            <tr>
+                                                                <td class="name-box">
+                                                                    {{ order.recipient.recipient_name }}
+                                                                </td>
+                                                                <td>
+                                                                    {{ order.recipient.phone }}
+                                                                </td>
+                                                            </tr>
+                                                        {% endif %}
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
 
+                                <!-- Progress bar -->
+                                <tr>
+                                    <td>
+                                        {% if order.status_code >=0 and order.status_code <= 4 %}
+                                            <div class="progress-bar-container">
+                                                <!--<div class="head">
+                                                    <p class="large-heading">
+                                                        Progress<span> Bar</span>
+                                                    </p>
+                                                </div>-->
+                                                <ul class="ul-1">
+                                                    <li>
+                                                        <i class="icon uil uil-credit-card" style="color: #8e8267;"></i>
+                                                        {% if order.status_code > 0 %}
+                                                            <div class="progress one active">
+                                                                <p>1</p>
+                                                                <i class="uil uil-check" style="color: #e2e1dc;"></i>
+                                                            </div>
+                                                            <p class="text">{{ _("Paid") }}</p>
+                                                        {% else %}
+                                                            <div class="progress one">
+                                                                <p>1</p>
+                                                                <i class="uil uil-check" style="color: #e2e1dc;"></i>
+                                                            </div>
+                                                            <p class="text">{{ _("Unpaid") }}</p>
+                                                        {% endif %}
+                                                    </li>
+                                                    {% if order.order_type == 'delivery' %}
+                                                        <li>
+                                                            <i class="icon uil uil-truck-loading"
+                                                               style="color: #8e8267;"></i>
+                                                            {% if order.status_code > 1 %}
+                                                                <div class="progress two active">
+                                                                    <p>2</p>
+                                                                    <i class="uil uil-check" style="color: #e2e1dc;"></i>
+                                                                </div>
+                                                                <p class="text">{{ _("Prepared") }}</p>
+                                                            {% else %}
+                                                                <div class="progress two">
+                                                                    <p>2</p>
+                                                                    <i class="uil uil-check" style="color: #e2e1dc;"></i>
+                                                                </div>
+                                                                <p class="text">{{ _("Preparing") }}</p>
+                                                            {% endif %}
+                                                        </li>
+                                                        <li>
+                                                            <i class="icon uil uil-truck" style="color: #8e8267;"></i>
+                                                            {% if order.status_code > 2 %}
+                                                                <div class="progress three active">
+                                                                    <p>3</p>
+                                                                    <i class="uil uil-check" style="color: #e2e1dc;"></i>
+                                                                </div>
+                                                                <p class="text">{{ _("Delivered") }}</p>
+                                                            {% else %}
+                                                                <div class="progress three">
+                                                                    <p>3</p>
+                                                                    <i class="uil uil-check" style="color: #e2e1dc;"></i>
+                                                                </div>
+                                                                <p class="text">{{ _("On Delivery") }}</p>
+                                                            {% endif %}
+                                                        </li>
+                                                        <li>
+                                                            <i class="icon uil uil-map-marker" style="color: #8e8267;"></i>
+                                                            {% if order.status_code == 4 %}
+                                                                <div class="progress four active">
+                                                                    <p>4</p>
+                                                                    <i class="uil uil-check" style="color: #e2e1dc;"></i>
+                                                                </div>
+                                                                <p class="text">{{ _("Finished") }}</p>
+                                                            {% else %}
+                                                                <div class="progress four">
+                                                                    <p>4</p>
+                                                                    <i class="uil uil-check" style="color: #e2e1dc;"></i>
+                                                                </div>
+                                                                <p class="text">{{ _("Unfinished") }}</p>
+                                                            {% endif %}
+                                                        </li>
+                                                    {% elif order.order_type == 'self-collection' %}
+                                                        <li>
+                                                            <i class="icon uil uil-truck-loading"
+                                                               style="color: #8e8267;"></i>
+                                                            {% if order.status_code > 1 %}
+                                                                <div class="progress two active">
+                                                                    <p>2</p>
+                                                                    <i class="uil uil-check" style="color: #e2e1dc;"></i>
+                                                                </div>
+                                                                <p class="text">{{ _("Prepared") }}</p>
+                                                            {% else %}
+                                                                <div class="progress two">
+                                                                    <p>2</p>
+                                                                    <i class="uil uil-check" style="color: #e2e1dc;"></i>
+                                                                </div>
+                                                                <p class="text">{{ _("Preparing") }}</p>
+                                                            {% endif %}
+                                                        </li>
+                                                        <li>
+                                                            <i class="icon uil uil-clock-nine" style="color: #8e8267;"></i>
+                                                            {% if order.status_code >= 4 %}
+                                                                <div class="progress two active">
+                                                                    <p>2</p>
+                                                                    <i class="uil uil-check" style="color: #e2e1dc;"></i>
+                                                                </div>
+                                                                <p class="text">{{ _("Collected") }}</p>
+                                                            {% else %}
+                                                                <div class="progress two">
+                                                                    <p>2</p>
+                                                                    <i class="uil uil-check" style="color: #e2e1dc;"></i>
+                                                                </div>
+                                                                <p class="text">{{ _("Waiting For Collection") }}</p>
+                                                            {% endif %}
+                                                        </li>
+                                                        <li>
+                                                            <i class="icon uil uil-map-marker" style="color: #8e8267;"></i>
+                                                            {% if order.status_code == 4 %}
+                                                                <div class="progress three active">
+                                                                    <p>3</p>
+                                                                    <i class="uil uil-check" style="color: #e2e1dc;"></i>
+                                                                </div>
+                                                                <p class="text">{{ _("Finished") }}</p>
+                                                            {% else %}
+                                                                <div class="progress three">
+                                                                    <p>3</p>
+                                                                    <i class="uil uil-check" style="color: #e2e1dc;"></i>
+                                                                </div>
+                                                                <p class="text">{{ _("Unfinished") }}</p>
+                                                            {% endif %}
+                                                        </li>
+                                                    {% endif %}
+
+                                                    {#                <li>#}
+                                                    {#                    <i class="icon uil uil-map-marker"></i>#}
+                                                    {#                    <div class="progress six">#}
+                                                    {#                        <p>5</p>#}
+                                                    {#                        <i class="uil uil-check"></i>#}
+                                                    {#                    </div>#}
+                                                    {#                    <p class="text">Canceled</p>#}
+                                                    {#                </li>#}
+                                                    {#                <li>#}
+                                                    {#                    <i class="icon uil uil-map-marker"></i>#}
+                                                    {#                    <div class="progress seven">#}
+                                                    {#                        <p>5</p>#}
+                                                    {#                        <i class="uil uil-check"></i>#}
+                                                    {#                    </div>#}
+                                                    {#                    <p class="text">Canceled</p>#}
+                                                    {#                </li>#}
+                                                </ul>
+                                            </div>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+
+                                <!-- Models -->
+                                <tr>
+                                    <td id="model_table_col">
+                                        <table width="100%" class="model_listing_table">
+                                            {% for order_model in order.order_model_types %}
+                                                <tr id="model_row_{{ order_model.model_type.id }}"
+                                                    order_id="{{ order.id }}">
+                                                    <!-- Model Pic -->
+                                                    <td class="model_img_col clickable"
+                                                        onclick="window.open('{{ url_for('main.model_type_details', mt_id=order_model.model_type.id) }}');">
+                                                        {% if order_model.model_type.pictures.first() == None %}
+                                                            <img src="../../static/images/example/yamaha_yep621s.jpg"
+                                                                 loading="lazy" alt=""
+                                                                 class="model_thumbnail">
+                                                        {% else %}
+                                                            <img src="{{ url_for("static",filename=order_model.model_type.pictures.first().address) }}"
+                                                                 loading="lazy" alt=""
+                                                                 class="model_thumbnail">
+                                                        {% endif %}
+                                                    </td>
+                                                    <!-- Model Name -->
+                                                    <td class="model_name_col">
+                                                        {{ order_model.model_type.name }}
+                                                    </td>
+                                                    <td class="model_des_col">
+                                                        <table class="middle-table">
+                                                            <!-- Model Description -->
+                                                            <tr>
+                                                                <td class="model_des_cell" colspan="2">
+                                                                    {{ order_model.model_type.description }}
+                                                                </td>
+                                                            </tr>
+                                                            <!-- Model Rank -->
+                                                            <tr>
+                                                                <td class="model_rate_col">
+                                                                    <div class="no-bottom-margin box-product-rate">
+                                                                        <ul class="box-rate-stars">
+                                                                            {% if (order_model.model_type.rate // 1) == 0 %}
+                                                                                <li class="star-dark">&#9733</li>
+                                                                                <li class="star-dark">&#9733</li>
+                                                                                <li class="star-dark">&#9733</li>
+                                                                                <li class="star-dark">&#9733</li>
+                                                                                <li class="star-dark">&#9733</li>
+                                                                            {% elif (order_model.model_type.rate // 1) == 1 %}
+                                                                                <li class="star-bright">&#9733</li>
+                                                                                <li class="star-dark">&#9733</li>
+                                                                                <li class="star-dark">&#9733</li>
+                                                                                <li class="star-dark">&#9733</li>
+                                                                                <li class="star-dark">&#9733</li>
+                                                                            {% elif (order_model.model_type.rate // 1) == 2 %}
+                                                                                <li class="star-bright">&#9733</li>
+                                                                                <li class="star-bright">&#9733</li>
+                                                                                <li class="star-dark">&#9733</li>
+                                                                                <li class="star-dark">&#9733</li>
+                                                                                <li class="star-dark">&#9733</li>
+                                                                            {% elif (order_model.model_type.rate // 1) == 3 %}
+                                                                                <li class="star-bright">&#9733</li>
+                                                                                <li class="star-bright">&#9733</li>
+                                                                                <li class="star-bright">&#9733</li>
+                                                                                <li class="star-dark">&#9733</li>
+                                                                                <li class="star-dark">&#9733</li>
+                                                                            {% elif (order_model.model_type.rate // 1) == 4 %}
+                                                                                <li class="star-bright">&#9733</li>
+                                                                                <li class="star-bright">&#9733</li>
+                                                                                <li class="star-bright">&#9733</li>
+                                                                                <li class="star-bright">&#9733</li>
+                                                                                <li class="star-dark">&#9733</li>
+                                                                            {% elif (order_model.model_type.rate // 1) == 5 %}
+                                                                                <li class="star-bright">&#9733</li>
+                                                                                <li class="star-bright">&#9733</li>
+                                                                                <li class="star-bright">&#9733</li>
+                                                                                <li class="star-bright">&#9733</li>
+                                                                                <li class="star-bright">&#9733</li>
+                                                                            {% endif %}
+                                                                        </ul>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    {% if order_model.customization %}
+                                                                        <a href="{{ url_for("static",filename=order_model.customization.texture_address) }}" download>
+                                                                            <img src="{{ url_for("static",filename=order_model.customization.texture_address) }}"
+                                                                             class="texture-sample clickable" loading="lazy" alt="">
+                                                                        </a>
+                                                                        <span>{{ _("Customized") }}</span>
+                                                                    {% endif %}
+                                                                </td>
+                                                            </tr>
+                                                            <!-- Comment entrance -->
+                                                            {% if order.status_code == 4 %}
+                                                                <tr>
+                                                                    <td class="model_comment_col" colspan="2">
+                                                                        {% if order_model.is_commented %}
+                                                                            <div class="commented-mark">
+                                                                                {{ _("Commented") }}
+                                                                            </div>
+                                                                        {% else %}
+                                                                            <a href="/upload-comment/{{ order_model.id }}"
+                                                                               data-wf-bindings="%5B%7B%22data-commerce-sku-id%22%3A%7B%22type%22%3A%22ItemRef%22%2C%22filter%22%3A%7B%22type%22%3A%22identity%22%2C%22params%22%3A%5B%5D%7D%2C%22dataPath%22%3A%22database.commerceOrder.userItems.0.sku.id%22%7D%7D%5D"
+                                                                               class="w-inline-block cart-item-remove-btn"
+                                                                               data-wf-cart-action="remove-item"
+                                                                               data-commerce-sku-id="61a56467407a5a926e9ea7a7">
+                                                                                <div class="fine-print-text comment-link">
+                                                                                    {{ _("Comment") }}
+                                                                                </div>
+                                                                            </a>
+                                                                        {% endif %}
+                                                                    </td>
+                                                                </tr>
+                                                            {% endif %}
+                                                        </table>
+                                                    </td>
+                                                    <!-- quantity of this model in this order -->
+                                                    <td class="model_quantity_col">
+                                                        &times; {{ order_model.count }}
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Footer Section -->
-        <div class="footer bg-primary-dark wf-section">
-            <div class="footer-details-section">
-                <div class="main-container">
-                    <div class="w-layout-grid footer-grid">
-                        <div id="w-node-_3ee0633f-a568-72e0-ab7b-589be9d960ed-e9d960d8" class="footer-contact-details">
-                            <a href="{{ url_for('main.index') }}" class="footer-logo-link w-inline-block">
-                                <img src="../../static/images/White-logo-no-background.svg" loading="lazy" alt=""
-                                     class="footer-logo">
-                            </a>
-                            <div>China Beijing Chaoyang Distinct Pingleyuan No.100<br>Beijing University of Technology
-                            </div>
-                            <div class="contact-links in-footer">
-                                <a href="#" class="small-text">group9@ucdconnect.ie</a>
-                                <a href="#" class="small-text">(03) 92337 4627</a>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="uppercase-text links-grid-title">{{ _('shop') }}</div>
-                            <div class="links-grid">
-                                <a href="shop.html" class="list-link">{{ _('All') }}</a>
-                                <div class="w-dyn-list">
-                                    <div role="list" class="links-grid w-dyn-items">
-                                        <div role="listitem" class="w-dyn-item">
-                                            <a href="#" class="list-link">{{ _('Brands') }}</a>
-                                        </div>
+            <!-- blocker & floating section -->
+            <div id="order_detail_blocker" class="middle-floating blocker" style="display: none"></div>
+
+            <!-- Modify Type floating section-->
+            <div id="modify_type_form" class="middle-floating bg-grey action_area" style="display: none"
+                 orderId="{{ order.id }}">
+                <div id="close_modify_type_form_btn" class="close_btn">
+                    &times;
+                </div>
+                <div id="form_top_bar" class="medium-heading">
+                    {{ _("Modify Type") }}
+                </div>
+                <form enctype="multipart/form-data" method="post" novalidate class="action-table-form">
+                    <table class="action_table">
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <div class="select-wrapper">
+                                        <select id="select-type" name="select-type" data-name="field"
+                                                class="select-field w-select">
+                                            <option value="Delivery" {% if order.order_type == "self-collection" %}selected="selected"{% endif %}>
+                                                {{ _("Delivery") }}
+                                            </option>
+                                            <option value="Self-Collection" {% if order.order_type == "delivery" %}selected="selected"{% endif %}>
+                                                {{ _("Self-Collection") }}
+                                            </option>
+                                        </select>
                                     </div>
                                 </div>
-                                <a href="contact.html" class="list-link">Catagory</a>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="uppercase-text links-grid-title">{{ _('Company') }}</div>
-                            <div class="links-grid">
-                                <a href="about.html" class="list-link">About us</a>
-                                <a href="contact.html" class="list-link">Contect us</a>
-                                <a href="refund-policy.html" class="list-link">Premium</a>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="uppercase-text links-grid-title">Franchising Brand</div>
-                            <div class="links-grid">
-                                <a href="about.html" class="list-link">Lowden</a>
-                                <a href="about.html" class="list-link">Gibson</a>
-                                <a href="about.html" class="list-link">YAMAHA</a>
-                                <a href="about.html" class="list-link">Stentor</a>
-                                <a href="about.html" class="list-link">Martin</a>
-                                <a href="about.html" class="list-link">Steinway</a>
-                                <a href="about.html" class="list-link">Fender</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="footer-fine-print">
-                        <div class="fine-print-text">© Copyright Company powered by
-                            <a href="{{ url_for('main.index') }}" target="_blank" class="underline-link">Siren</a>
-                        </div>
-                        <div class="social-links">
-                            <a href="#" target="_blank" class="social-link w-inline-block">
-                                <img src="../../static/images/icon-Instagram.svg" loading="lazy" alt="">
-                            </a>
-                            <a href="#" target="_blank" class="social-link w-inline-block">
-                                <img src="../../static/images/icon-LinkedIn.svg" loading="lazy" alt="">
-                            </a>
-                            <a href="#" target="_blank" class="social-link w-inline-block">
-                                <img src="../../static/images/icon-Google.svg" loading="lazy" alt="">
-                            </a>
-                            <a href="#" target="_blank" class="social-link w-inline-block">
-                                <img src="../../static/images/icon-Pinterest.svg" loading="lazy" alt="">
-                            </a>
-                        </div>
-                    </div>
+                            </td>
+                        </tr>
+                        <tr id="address-field-row-1"
+                            {% if order.order_type == "delivery" %}style="display: none"{% endif %}>
+                            <td>
+                                <fieldset id="address-field-1" class="w-commerce-commercecheckoutblockcontent">
+                                    <div style="overflow-y:scroll; width:inherit; height:inherit;">
+                                        {# the address list #}
+                                        <ul class="address-list" order-id="{{ order.id }}">
+                                            {% for address in order.user.addresses %}
+                                                <li id="address-1-{{ address.id }}"
+                                                    class="address address-1 clickable {% if address.is_default %} chosen-address {% endif %}"
+                                                    address-id="{{ address.id }}">
+                                                    <div class="cart-container">
+                                                        <div class="main-container">
+                                                            <span class="large-text address address-number"></span>
+                                                            <div class=""></div>
+                                                        </div>
+                                                        <br><br>
+                                                        <div class="main-container">
+                                                            <span class="fine-print-text">{{ _("Recipient Name") }}:</span>
+                                                            <br>
+                                                            <span class="address-name w-commerce-commerceboldtextblock">{{ address.recipient.recipient_name }}</span>
+                                                        </div>
+                                                        <br>
+                                                        <div class="main-container">
+                                                            <span class="fine-print-text">{{ _("Full Address") }}:</span>
+                                                            <br>
+                                                            <span class="address-address address-gray"
+                                                                  style="display:flex;">{{ address.get_address() }}</span>
+
+                                                        </div>
+                                                        {% if address.is_default %}
+                                                            <span id="address-default-sign">[{{ _("default") }}]</span>
+                                                        {% endif %}
+                                                    </div>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </fieldset>
+                            </td>
+                        </tr>
+                        <tr id="recipient-field-row-1"
+                            {% if order.order_type == "self-collection" %}style="display: none"{% endif %}>
+                            <td>
+                                <fieldset id="recipient-field-1" class="w-commerce-commercecheckoutblockcontent">
+                                    <label class="w-commerce-commercecheckoutlabel">{{ _("Recipient Name") }} *</label>
+                                    <input id="recipient-field-1-name" type="text" name="recipient_name" required=""
+                                           class="w-commerce-commercecheckoutemailinput">
+
+                                    <label class="w-commerce-commercecheckoutlabel">{{ _("Phone Number") }} *</label>
+                                    <input id="recipient-field-1-phone" type="text" name="phone" required=""
+                                           class="w-commerce-commercecheckoutemailinput">
+                                </fieldset>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="middle submit_btn">
+                                    <a href="#" id="update-type-btn" class="button bg-primary middle small">
+                                        {{ _("Update") }}
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+
+            <!-- Modify Address or Recipiant information section-->
+            <div id="modify_ar_form" class="middle-floating bg-grey action_area" style="display: none"
+                 current-type="{{ order.order_type }}" orderId="{{ order.id }}">
+                <div id="close_modify_ar_form_btn" class="close_btn">
+                    &times;
                 </div>
-            </div>
-        </div>
+                <div id="form_top_bar" class="medium-heading">
+                    {% if order.order_type == "delivery" %}
+                        {{ _("Modify Address") }}
+                    {% elif order.order_type == "self-collection" %}
+                        {{ _("Modify Recipient") }}
+                    {% endif %}
+                </div>
+                <form method="post" class="action-table-form">
+                    <table class="action_table">
+                        <tr id="address-field-row-2"
+                            {% if order.order_type == "self-collection" %}style="display: none"{% endif %}>
+                            <td>
+                                <fieldset id="address-field-2" class="w-commerce-commercecheckoutblockcontent">
+                                    <div style="overflow-y:scroll; width:inherit; height:inherit;">
+                                        {# the address list #}
+                                        <ul class="address-list" order-id="{{ order.id }}">
+                                            {% for address in order.user.addresses %}
+                                                <li id="address-2-{{ address.id }}"
+                                                    class="address address-2 clickable {% if address.is_default %} chosen-address {% endif %}"
+                                                    address-id="{{ address.id }}">
+                                                    <div class="cart-container">
+                                                        <div class="main-container">
+                                                            <span class="large-text address address-number"></span>
+                                                            <div class=""></div>
+                                                        </div>
+                                                        <br><br>
+                                                        <div class="main-container">
+                                                            <span class="fine-print-text">{{ _("Recipient Name") }}:</span>
+                                                            <br>
+                                                            <span class="address-name w-commerce-commerceboldtextblock">{{ address.recipient.recipient_name }}</span>
+                                                        </div>
+                                                        <br>
+                                                        <div class="main-container">
+                                                            <span class="fine-print-text">{{ _("Full Address") }}:</span>
+                                                            <br>
+                                                            <span class="address-address address-gray"
+                                                                  style="display:flex;">{{ address.get_address() }}</span>
 
-        <!-- blocker & floating section -->
-        <div id="order_detail_blocker" class="middle-floating blocker" style="display: none"></div>
+                                                        </div>
+                                                        {% if address.is_default %}
+                                                            <span id="address-default-sign">[{{ _("default") }}]</span>
+                                                        {% endif %}
+                                                    </div>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </fieldset>
+                            </td>
+                        </tr>
+                        <tr id="recipient-field-row-2"
+                            {% if order.order_type == "delivery" %}style="display: none"{% endif %}>
+                            <td>
+                                <fieldset id="recipient-field-2" class="w-commerce-commercecheckoutblockcontent">
+                                    <label class="w-commerce-commercecheckoutlabel">{{ _("Recipient Name") }} *</label>
+                                    <input id="recipient-field-2-name" type="text" name="recipient_name" required=""
+                                           class="w-commerce-commercecheckoutemailinput">
 
-        <!-- Modify Type floating section-->
-        <div id="modify_type_form" class="middle-floating bg-grey action_area" style="display: none">
-            <div id="close_modify_type_form_btn" class="close_btn">
-                &times;
-            </div>
-            <div id="form_top_bar" class="medium-heading">
-                Modify Type
-            </div>
-            <form enctype="multipart/form-data" method="post" novalidate class="action-table-form">
-                <table class="action_table">
-                    <tr>
-                        <td>
-                            <div class="form-group">
-                                <div class="select-wrapper">
-                                    <select id="select-type" name="select-type" data-name="field"
-                                            class="select-field w-select">
-                                        <option {% if order.order_type == "self-collection" %}selected="selected"{% endif %}>
-                                            Delivery
-                                        </option>
-                                        <option {% if order.order_type == "delivery" %}selected="selected"{% endif %}>
-                                            Self-Collection
-                                        </option>
-                                    </select>
+                                    <label class="w-commerce-commercecheckoutlabel">{{ _("Phone Number") }} *</label>
+                                    <input id="recipient-field-2-phone" type="text" name="phone" required=""
+                                           class="w-commerce-commercecheckoutemailinput">
+                                </fieldset>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="middle submit_btn">
+                                    <a href="#" id="update-ar-btn" class="button bg-primary middle small">
+                                        {{ _("Update") }}
+                                    </a>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr id="address-field-row-1"
-                        {% if order.order_type == "delivery" %}style="display: none"{% endif %}>
-                        <td>
-                            <fieldset id="address-field-1" class="w-commerce-commercecheckoutblockcontent">
-                                <div style="overflow-y:scroll; width:inherit; height:inherit;">
-                                    {# the address list #}
-                                    <ul class="address-list" order-id="{{ order.id }}">
-                                        {% for address in order.user.addresses %}
-                                            <li id="address-1-{{ address.id }}"
-                                                class="address address-1 clickable {% if address.is_default %} chosen-address {% endif %}"
-                                                address-id="{{ address.id }}">
-                                                <div class="cart-container">
-                                                    <div class="main-container">
-                                                        <span class="large-text address address-number"></span>
-                                                        <div class=""></div>
-                                                    </div>
-                                                    <br><br>
-                                                    <div class="main-container">
-                                                        <span class="fine-print-text">Recipient Name:</span>
-                                                        <br>
-                                                        <span class="address-name w-commerce-commerceboldtextblock">{{ address.recipient.recipient_name }}</span>
-                                                    </div>
-                                                    <br>
-                                                    <div class="main-container">
-                                                        <span class="fine-print-text">Full Address:</span>
-                                                        <br>
-                                                        <span class="address-address address-gray"
-                                                              style="display:flex;">{{ address.get_address() }}</span>
-
-                                                    </div>
-                                                    {% if address.is_default %}
-                                                        <span id="address-default-sign">[default]</span>
-                                                    {% endif %}
-                                                </div>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                            </fieldset>
-                        </td>
-                    </tr>
-                    <tr id="recipient-field-row-1"
-                        {% if order.order_type == "self-collection" %}style="display: none"{% endif %}>
-                        <td>
-                            <fieldset id="recipient-field-12" class="w-commerce-commercecheckoutblockcontent">
-                                <label class="w-commerce-commercecheckoutlabel">Recipient Name *</label>
-                                <input id="recipient-name" type="text" name="recipient_name" required=""
-                                       class="w-commerce-commercecheckoutemailinput">
-
-                                <label class="w-commerce-commercecheckoutlabel">Phone Number *</label>
-                                <input id="recipient-phone" type="text" name="phone" required=""
-                                       class="w-commerce-commercecheckoutemailinput">
-                            </fieldset>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="middle submit_btn">
-                                <a href="#" id="modify-type-btn" class="button bg-primary middle small">
-                                    Update
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </div>
-
-        <!-- Modify Address or Recipiant information section-->
-        <div id="modify_ar_form" class="middle-floating bg-grey action_area" style="display: none"
-             current-type="{{ order.order_type }}" orderId="{{ order.id }}">
-            <div id="close_modify_ar_form_btn" class="close_btn">
-                &times;
+                            </td>
+                        </tr>
+                    </table>
+                </form>
             </div>
-            <div id="form_top_bar" class="medium-heading">
-                {% if order.order_type == "delivery" %}
-                    Modify Address
-                {% elif order.order_type == "self-collection" %}
-                    Modify Recipient
-                {% endif %}
-            </div>
-            <form method="post" class="action-table-form">
-                <table class="action_table">
-                    <tr id="address-field-row-2"
-                        {% if order.order_type == "self-collection" %}style="display: none"{% endif %}>
-                        <td>
-                            <fieldset id="address-field-2" class="w-commerce-commercecheckoutblockcontent">
-                                <div style="overflow-y:scroll; width:inherit; height:inherit;">
-                                    {# the address list #}
-                                    <ul class="address-list" order-id="{{ order.id }}">
-                                        {% for address in order.user.addresses %}
-                                            <li id="address-2-{{ address.id }}"
-                                                class="address address-2 clickable {% if address.is_default %} chosen-address {% endif %}"
-                                                address-id="{{ address.id }}">
-                                                <div class="cart-container">
-                                                    <div class="main-container">
-                                                        <span class="large-text address address-number"></span>
-                                                        <div class=""></div>
-                                                    </div>
-                                                    <br><br>
-                                                    <div class="main-container">
-                                                        <span class="fine-print-text">Recipient Name:</span>
-                                                        <br>
-                                                        <span class="address-name w-commerce-commerceboldtextblock">{{ address.recipient.recipient_name }}</span>
-                                                    </div>
-                                                    <br>
-                                                    <div class="main-container">
-                                                        <span class="fine-print-text">Full Address:</span>
-                                                        <br>
-                                                        <span class="address-address address-gray"
-                                                              style="display:flex;">{{ address.get_address() }}</span>
 
-                                                    </div>
-                                                    {% if address.is_default %}
-                                                        <span id="address-default-sign">[default]</span>
-                                                    {% endif %}
-                                                </div>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                            </fieldset>
-                        </td>
-                    </tr>
-                    <tr id="recipient-field-row-2"
-                        {% if order.order_type == "delivery" %}style="display: none"{% endif %}>
-                        <td>
-                            <fieldset id="recipient-field-2" class="w-commerce-commercecheckoutblockcontent">
-                                <label class="w-commerce-commercecheckoutlabel">Recipient Name *</label>
-                                <input id="recipient-field-2-name" type="text" name="recipient_name" required=""
-                                       class="w-commerce-commercecheckoutemailinput">
+            <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6221c36b59f1986aa65ac5f0"
+                    type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+                    crossorigin="anonymous"></script>
+            <script src="../../static/js/webflow.js" type="text/javascript"></script>
+            <script type="text/javascript" src="../../static/js/order/order-details.js"></script>
+            <!-- [if lte IE 9]>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script>
+            <![endif] -->
+            <script src="../../static/js/order/order-progress-bar.js"></script>
 
-                                <label class="w-commerce-commercecheckoutlabel">Phone Number *</label>
-                                <input id="recipient-field-2-phone" type="text" name="phone" required=""
-                                       class="w-commerce-commercecheckoutemailinput">
-                            </fieldset>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="middle submit_btn">
-                                <a href="#" id="update-ar-btn" class="button bg-primary middle small">
-                                    Update
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </div>
+        </body>
+        <!-- the js for front end logic -->
+        <script type="text/javascript" src="../../static/js/order/order.js"></script>
+        <script type="text/javascript" src="../../static/js/cart/sidebar_cart.js"></script>
+    </html>
+{% endblock %}
 
-        <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6221c36b59f1986aa65ac5f0"
-                type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-                crossorigin="anonymous"></script>
-        <script src="../../static/js/webflow.js" type="text/javascript"></script>
-        <script type="text/javascript" src="../../static/js/order/order-details.js"></script>
-        <!-- [if lte IE 9]>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script>
-        <![endif] -->
-        <script src="../../static/js/order/order-progress-bar.js"></script>
-
-    </body>
-    <!-- the js for front end logic -->
-    <script type="text/javascript" src="../../static/js/order/order.js"></script>
-    <script type="text/javascript" src="../../static/js/cart/sidebar_cart.js"></script>
-</html>

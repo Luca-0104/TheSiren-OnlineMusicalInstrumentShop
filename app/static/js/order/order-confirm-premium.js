@@ -1,7 +1,7 @@
 $(document).ready(function (){
 
     //the currently selected plan
-    let selectedPlanID = "plan-90";
+    let selectedPlanID = "plan-30";
 
     //set the payment info of default plan (30days)
     $("#pay-total").text("98");
@@ -73,7 +73,11 @@ function create_premium_order(duration, payment){
             //send an Ajax request to pay for the order
             pay_for_premium_order(pOrderID);
         }
-
+        else if (returnValue === 318)
+        {
+            let targetURL = response['redirectURL'];
+            window.location.href = targetURL;
+        }
     });
 }
 
@@ -90,6 +94,10 @@ function pay_for_premium_order(pOrderID){
             let paymentURL = response['paymentURL']
             location.href = paymentURL;
         }
-
+        else if (returnValue === 318)
+        {
+            let targetURL = response['redirectURL'];
+            window.location.href = targetURL;
+        }
     });
 }

@@ -5,6 +5,7 @@ $(document).ready(function (){
 
     //shipping method of this order, default value is "delivery"
     let shippingMethod = "delivery"
+    update_order_shipping(orderId, shippingMethod);
 
     // set the default address as selected
     let defaultSign = $("#address-default-sign")
@@ -64,8 +65,14 @@ $(document).ready(function (){
             }
 
         }else if (shippingMethod === "delivery"){
-            //send Ajax request for paying directly
-            pay_for_order(orderId)
+            //check if there is any address selected
+            if ($(".chosen-address").length === 0){
+                // notify the user
+                window.alert("You should define an address for this delivery order!");
+            }else{
+                //send Ajax request for paying directly
+                pay_for_order(orderId)
+            }
         }
     });
 
@@ -116,6 +123,11 @@ function update_payment_info(orderId){
             $("#pay-delivery").text(deliveryFee)
             $("#pay-should").text(shouldPay)
         }
+        else if (returnValue === 318)
+        {
+            let targetURL = response['redirectURL'];
+            window.location.href = targetURL;
+        }
     });
 }
 
@@ -141,6 +153,11 @@ function update_order_address(orderId, addressId){
             let id = "#address-" + addressId
             $(id).addClass("chosen-address");
         }
+        else if (returnValue === 318)
+        {
+            let targetURL = response['redirectURL'];
+            window.location.href = targetURL;
+        }
     });
 }
 
@@ -158,14 +175,8 @@ function update_order_shipping(orderId, shippingMethod){
         let returnValue = response['returnValue'];
 
         if (returnValue === 0) { //success
-            //get the payment info from response
-            let payTotal = response['payTotal']
-            let deliveryFee = response['deliveryFee']
-            let subTotal = payTotal - deliveryFee
-            //update the display of payment
-            $("#pay-subtotal").text(subTotal)
-            $("#pay-total").text(payTotal)
-            $("#pay-delivery").text(deliveryFee)
+            //update payment info display
+            update_payment_info(orderId);
 
             //only let the selected one have the style of "chosen-shipping-method"
             $(".shipping-method-list li").removeClass("chosen-shipping-method");
@@ -184,6 +195,11 @@ function update_order_shipping(orderId, shippingMethod){
                 //show the recipient section
                 $("#recipient-section").removeClass("hidden-field");
             }
+        }
+        else if (returnValue === 318)
+        {
+            let targetURL = response['redirectURL'];
+            window.location.href = targetURL;
         }
     });
 }
@@ -208,7 +224,11 @@ function update_order_recipient(orderId, recipientName, recipientPhone){
             //if success, we can send another Ajax for paying
             pay_for_order(orderId);
         }
-
+        else if (returnValue === 318)
+        {
+            let targetURL = response['redirectURL'];
+            window.location.href = targetURL;
+        }
     });
 }
 
@@ -228,6 +248,11 @@ function pay_for_order(orderId){
             // get payment URL then redirect to that URL
             let paymentURL = response['paymentURL']
             location.href = paymentURL;
+        }
+        else if (returnValue === 318)
+        {
+            let targetURL = response['redirectURL'];
+            window.location.href = targetURL;
         }
     });
 }
@@ -249,6 +274,11 @@ function delete_address(orderID, addressId){
             // refresh this page
             let url = "/order-confirm/" + orderID;
             location.href = url;
+        }
+        else if (returnValue === 318)
+        {
+            let targetURL = response['redirectURL'];
+            window.location.href = targetURL;
         }
     });
 }

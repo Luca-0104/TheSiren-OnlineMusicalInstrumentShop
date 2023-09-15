@@ -1,18 +1,23 @@
-from flask import render_template, request, redirect, url_for, session, jsonify, flash, json, current_app
+import os
+import traceback
+
+from flask import render_template, request, redirect, url_for, session, jsonify, flash, json, current_app, abort
 from flask_login import login_required, current_user
 from flask_babel import _
-from sqlalchemy import and_
+from sqlalchemy import and_, or_
 
+from config import Config
 from . import main
 from .. import db
-from ..models import Product, ModelType, Category, Brand, BrowsingHistory
-from ..public_tools import get_unique_shop_instance
+from ..decorators import customer_only, staff_only, login_required_for_ajax
+from ..models import Product, ModelType, Category, Brand, BrowsingHistory, Journal, Customization
+from ..public_tools import get_unique_shop_instance, generate_safe_pic_name
 
 import random
 from datetime import datetime
 
 
-@main.route('/index')
+@main.route('/')
 def index():
     """
         The function is for rendering the real index page
@@ -107,10 +112,10 @@ def index():
     """ 'just arrive' (top 4 according to datetime) """
     rec_time = ModelType.query.filter_by(is_deleted=False).order_by(ModelType.release_time.desc()).limit(4).all()
 
-    return render_template('main/index_new.html', rec_time=rec_time, rec_views=rec_views, rec_preference=rec_preference)
+    return render_template('main/index_new.html', rec_time=rec_time, rec_views=rec_views, rec_preference=rec_preference, is_index=True)
 
 
-@main.route('/')
+@main.route('/index-test')
 @main.route('/index_test', methods=['GET', 'POST'])
 def index_test():
     """
@@ -136,8 +141,13 @@ def brand_intro(brand_id):
     # get the brand obj
     brand = Brand.query.get(brand_id)
     # concatenate the prefix with brand name to get the template name
-    template_name = "main/brand_intro/{}.html".format(brand.name)
-    return render_template(template_name)
+    template_name = "main/brand_intro/{}.html".format(brand.name.lower())
+    try:
+        flash(_("Welcome to learn more about The " + brand.name))
+        return render_template(template_name)
+    except Exception as e:
+        # traceback.print_exc()
+        return render_template("main/brand_intro/coming-soon.html", brand_name=brand.name)
 
 
 @main.route('/about-us')
@@ -145,7 +155,11 @@ def about_us():
     """
     This function renders the page of "about us"
     """
-    return render_template('main/about_siren.html')
+    # get all the journals form db
+    journal_lst = Journal.query.order_by(Journal.timestamp.desc())
+
+    flash(_("Here, you can learn more about The Siren~"))
+    return render_template('main/about_siren.html', journal_lst=journal_lst)
 
 
 @main.route('/all-models')
@@ -170,11 +184,23 @@ def search():
     """
     if request.method == 'POST':
         key_word = request.form.get('key_word')
+
         # search model types by name
         mt_list = search_models_by_keyword(keyword=key_word) \
             .order_by(ModelType.sales.desc(), ModelType.views.desc()) \
             .all()
 
+        # search model type by brand name
+        brand_lst = Brand.query.filter(Brand.name.contains(key_word)).all()
+
+        # merge the search results
+        for brand in brand_lst:
+            for p in brand.products:
+                for mt in p.model_types:
+                    if mt not in set(mt_list):
+                        mt_list.append(mt)
+
+        flash(_("Following are the searching results about '{}'.".format(key_word)))
         return render_template('main/page_all_commodities.html', mt_list=mt_list, key_word=key_word)  # see-all page
 
     return redirect(url_for('main.index'))
@@ -186,27 +212,8 @@ def search_models_by_keyword(keyword):
     :param keyword: A string of key word
     :return: A BaseQuery object that contains a list of models found
     """
-    mt_bq_lst = ModelType.query.filter(and_(ModelType.name.contains(keyword),
-                                            ModelType.is_deleted == False))
+    mt_bq_lst = ModelType.query.filter(and_(ModelType.name.contains(keyword), ModelType.is_deleted == False))
     return mt_bq_lst
-
-
-@main.route('/products-in-category/<category_name>')
-def products_in_category(category_name):
-    """
-        Go to the see-all page with the constrain of a specific category
-    """
-    # get the category obj by its name
-    cate = Category.query.filter_by(name=category_name).first()
-    # get products under this cate
-    product_lst = cate.products.filter_by(is_deleted=False).all()
-    # put all the models into a list
-    mt_list = []
-    for product in product_lst:
-        mt_list += product.get_exist_model_types()
-    # sort these models by their sale
-    sort_db_models(mt_list, sort_key=take_sales, reverse=True)
-    return render_template('', mt_list=mt_list)  # see-all page
 
 
 # ----------------- sorting tools > ------------------
@@ -235,7 +242,7 @@ def sort_db_models(model_list: list, sort_key, reverse: bool):
 # ----------------- < sorting tools ------------------
 
 
-@main.route('/products-in-brand/<brand_name>')
+@main.route('/products-in-brand/<string:brand_name>')
 def products_in_brand(brand_name):
     """
         Go to the see-all page with the constrain of a specific brand
@@ -250,7 +257,35 @@ def products_in_brand(brand_name):
         mt_list += product.get_exist_model_types()
     # sort the model list by the sale numbers
     sort_db_models(mt_list, sort_key=take_sales, reverse=True)
-    return render_template('', mt_list=mt_list)  # see-all page
+
+    flash(_("Following are the commodities of the brand - {}".format(brand_name)))
+    return render_template('main/page_all_commodities.html', mt_list=mt_list)  # see-all page
+
+
+@main.route('/products-in-category/<string:cate_name>')
+def products_in_category(cate_name):
+    """
+    Go to the see-all page with the constrain of a specific category
+    :param cate_name: The name of the category
+    """
+    # get the category obj from db
+    cate = Category.query.filter_by(name=cate_name).first()
+
+    if cate is None:
+        current_app.logger.error("No such category with this name")
+        return redirect(url_for("main.go_all"))
+
+    # get all products in this category
+    product_lst = cate.products.filter_by(is_deleted=False).all()
+    # put all the models into a list
+    mt_list = []
+    for product in product_lst:
+        mt_list += product.get_exist_model_types()
+    # sort the model list by the sale numbers
+    sort_db_models(mt_list, sort_key=take_sales, reverse=True)
+
+    flash(_("Below are the products in category of '{}'.".format(cate_name)))
+    return render_template('main/page_all_commodities.html', mt_list=mt_list, cate_name=cate_name)  # see-all page
 
 
 @main.route('/product-details/<int:mt_id>')
@@ -264,49 +299,68 @@ def model_type_details(mt_id):
         mt = ModelType.query.get(mt_id)
     except Exception as e:
         current_app.logger.error(e)
-        flash('No such commodity!')
+        flash(_('No such commodity!'))
         return redirect(url_for('main.index'))
 
     # check if the model type exists
-    if mt is not None:
-        # increase the views number
-        mt.views = mt.views + 1
-        db.session.add(mt)
-        db.session.commit()
-
-        # record the user browsing history
-        if current_user.is_authenticated:
-            # check if the user has viewed this model before
-            bh = BrowsingHistory.query.filter_by(user=current_user, model_type=mt).first()
-            if bh:
-                # update the count and time
-                bh.count = bh.count + 1
-                bh.timestamp = datetime.utcnow()
-                db.session.add(bh)
-            else:
-                # record this new history
-                new_bh = BrowsingHistory(user=current_user, model_type=mt)
-                db.session.add(new_bh)
-            try:
-                db.session.commit()
-            except Exception as e:
-                current_app.logger.error(e)
-                db.session.rollback()
-
-        # get the recommended related models (models in same cate with high popularity)
-        related_mt_lst = []
-        for cate in mt.product.categories:
-            for p in cate.products:
-                related_mt_lst += p.model_types.all()
-        # sort the related list
-        sort_db_models(related_mt_lst, sort_key=take_sales, reverse=True)
-        # limit the number of mt in related list
-        related_mt_lst = related_mt_lst[:10]
-
-        return render_template('main/page-commodity-details.html', model=mt, related_mt_lst=related_mt_lst)
-    else:
+    if mt is None:
         flash(_('No such commodity!'))
+        current_app.logger.error("No such model type with this id")
         return redirect(url_for('main.index'))
+
+    # increase the views number
+    mt.views = mt.views + 1
+    db.session.add(mt)
+    db.session.commit()
+
+    # record the user browsing history
+    if current_user.is_authenticated:
+        # check if the user has viewed this model before
+        bh = BrowsingHistory.query.filter_by(user=current_user, model_type=mt).first()
+        if bh:
+            # update the count and time
+            bh.count = bh.count + 1
+            bh.timestamp = datetime.utcnow()
+            db.session.add(bh)
+        else:
+            # record this new history
+            new_bh = BrowsingHistory(user=current_user, model_type=mt)
+            db.session.add(new_bh)
+        try:
+            db.session.commit()
+        except Exception as e:
+            current_app.logger.error(e)
+            db.session.rollback()
+
+    """ get the recommended related models (models in same cate with high popularity) """
+    related_mt_lst = []
+    for cate in mt.product.categories:
+        # do not use "additional requirements" for recommendation
+        if cate.id not in range(53, 57):
+            for p in cate.products:
+                related_mt_lst += p.get_exist_model_types()
+    # sort the related list
+    sort_db_models(related_mt_lst, sort_key=take_sales, reverse=True)
+    # limit the number of mt in related list
+    related_mt_lst = related_mt_lst[:12]
+
+    """ get the recommendation of 'more from this brand' """
+    more_mt_this_brand = []
+    brand = mt.product.brand
+    if brand is None:
+        current_app.logger.error(e)
+    else:
+        # loop through all the products in this brand
+        for p in brand.products:
+            # put all the model types into the lst
+            more_mt_this_brand += p.get_exist_model_types()
+        # sort the lst
+        sort_db_models(more_mt_this_brand, sort_key=take_sales, reverse=True)
+        # limit the number of mt in lst
+        more_mt_this_brand = more_mt_this_brand[:12]
+
+    return render_template('main/page-commodity-details.html', model=mt, related_mt_lst=related_mt_lst, more_mt_this_brand=more_mt_this_brand)
+
 
 
 @main.route('/model-listing/<string:search_content>')
@@ -317,8 +371,21 @@ def model_listing(search_content):
     """
     # search the models by search_content
     if search_content != "":
+        # search by name
         mt_bq_lst = search_models_by_keyword(keyword=search_content)
         mt_lst = mt_bq_lst.all()
+
+        # search model type by brand name
+        brand_lst = Brand.query.filter(Brand.name.contains(search_content)).all()
+
+        # merge the search results
+        for brand in brand_lst:
+            for p in brand.products:
+                for mt in p.model_types:
+                    if mt not in set(mt_lst):
+                        mt_lst.append(mt)
+
+        flash(_("Following are the searching results of '{}'.".format(search_content)))
     else:
         # if com here by clicking on "go all"
         mt_lst = ModelType.query.all()
@@ -329,11 +396,20 @@ def model_listing(search_content):
 def change_language():
     # if the user already logged in, we change language setting both in db and session
     if current_user.is_authenticated:
+
+        # determine the redirect_target of this user according to their role_id
+        redirect_to = url_for("main.index")
+        if current_user.role_id == 2:   # staff
+            redirect_to = url_for("product.show_page_staff_index")
+
         # change setting in db
         if current_user.language == 'en':
             current_user.language = 'zh'
+            flash("已为您切换语言为 [中文]")
+
         elif current_user.language == 'zh':
             current_user.language = 'en'
+            flash("Language has been changed to [English]")
 
         db.session.add(current_user)
         db.session.commit()
@@ -341,38 +417,31 @@ def change_language():
         # change setting in session
         session["language"] = current_user.language
 
+        # redirect the user
+        return redirect(redirect_to)
+
     else:
         # if the user is anonymous, we only change the language setting in session
 
         # if the first time access the website, we should init the session of language first
         if session.get("language") is None:
             session["language"] = 'en'
+            flash("Language has been changed to [English]")
+            return redirect(url_for("main.index"))
 
         # change setting in the session
         if session["language"] == 'zh':
             session["language"] = 'en'
+            flash("Language has been changed to [English]")
+
         elif session["language"] == 'en':
             session["language"] = 'zh'
+            flash("已为您切换语言为 [中文]")
 
     return redirect(url_for("main.index"))
 
 
 # ------------------------------ BACK-END Server (using Ajax) ----------------------------------
-
-
-@main.route('/api/change-theme', methods=['POST'])
-def change_theme():
-    pass
-
-
-@main.route('/api/cart/purchase_cart', methods=['POST'])
-def purchase_cart():
-    """
-        get a list of id of cart relations that should be purchased.
-        we should remove them from database - Cart table and add the records
-        into the History table.
-    """
-    pass
 
 
 @main.route('/api/filter-model-types', methods=['POST'])
@@ -403,18 +472,28 @@ def filter_model_types():
         if filter_b == "":
             filter_b = "%"
 
-        print("c: ", filter_c)
-        print("t: ", filter_t)
-        print("a: ", filter_a)
-        print("b: ", filter_b)
-        print("search_count: ", search_content)
+        # print("c: ", filter_c)
+        # print("t: ", filter_t)
+        # print("a: ", filter_a)
+        # print("b: ", filter_b)
+        # print("search_count: ", search_content)
 
         if search_content != "":
             # if the user has searched something
-            # search a BaseQuery obj that contains a list of model types
+            # search a BaseQuery obj that contains a list of model types (by name)
             mt_bq_lst = search_models_by_keyword(keyword=search_content)
             # (serial_prefix e.g. b1-c1-t1-a1)
             mt_lst = mt_bq_lst.join(Product).filter(Product.serial_prefix.like("{}-{}-{}-{}".format(filter_b, filter_c, filter_t, filter_a))).all()
+
+            # search model type by brand name
+            brand_lst = Brand.query.filter(Brand.name.contains(search_content)).all()
+
+            # merge the search results
+            for brand in brand_lst:
+                for p in brand.products.filter(Product.serial_prefix.like("{}-{}-{}-{}".format(filter_b, filter_c, filter_t, filter_a))):
+                    for mt in p.model_types:
+                        if mt not in set(mt_lst):
+                            mt_lst.append(mt)
 
         else:
             # filter all the models according to the filters(check box)
@@ -652,7 +731,8 @@ def validate_model_count():
 
 
 @main.route('/api/the-siren/switch-epidemic-mode', methods=['POST'])
-@login_required
+@login_required_for_ajax()
+@staff_only(is_ajax=True)
 def switch_epidemic_mode():
     """
     (Using Ajax)
@@ -683,7 +763,9 @@ def switch_epidemic_mode():
         # reverse the current switch of epidemic_mode_on
         if switch_to == '0':
             siren.epidemic_mode_on = False
+            flash(_("Epidemic Mode turned off."))
         elif switch_to == '1':
+            flash(_("Epidemic Mode turned on."))
             siren.epidemic_mode_on = True
         else:
             current_app.logger.error("wrong value of 'switch_to' from Ajax")
@@ -692,5 +774,119 @@ def switch_epidemic_mode():
         db.session.add(siren)
         db.session.commit()
         return jsonify({'returnValue': 0})
+
+    return jsonify({'returnValue': 1})
+
+
+# customize test
+# @main.route("/test-file-upload")
+# def render_test_page():
+#     return render_template('main/test-upload-file.html')
+#
+#
+# @main.route('/api/test-get-file', methods=['POST'])
+# def test_get_file():
+#     """
+#     (Using Ajax)
+#     """
+#     if request.method == 'POST':
+#         # form_data = request.form.get('formData')
+#         form_data = request.files.get('file')
+#         print(form_data)
+#
+#         mt_id = request.form.get('mt_id')
+#         print(mt_id)
+#
+#         return jsonify({'returnValue': 0})
+#
+#     return jsonify({'returnValue': 1})
+
+
+@main.route('/api/upload-customization-texture-file', methods=['POST'])
+@login_required_for_ajax()
+@customer_only(is_ajax=True)
+def customize_in_3d():
+    """
+    (Using Ajax)
+    Customer can upload their own ideal texture for customizing the model type
+    """
+    if request.method == 'POST':
+        """ 
+            get the model type id 
+        """
+        mt_id = request.form.get('model_type_id')
+
+        if mt_id is None:
+            current_app.logger.error("This model type does not exist!")
+            return jsonify({'returnValue': 1})
+
+        try:
+            mt_id = int(mt_id)
+        except Exception as e:
+            current_app.logger.error(e)
+            return jsonify({'returnValue': 1})
+
+        # get the model type from db
+        mt = ModelType.query.get(mt_id)
+
+        if mt is None:
+            current_app.logger.error("No such model type with this id!")
+            return jsonify({'returnValue': 1})
+
+        """ 
+            get the customized texture file 
+        """
+        customized_tex_file = request.files.get('customized_texture_file')
+
+        if customized_tex_file is None:
+            current_app.logger.error("No texture uploaded!")
+            return jsonify({'returnValue': 1})
+
+        texture_filename = customized_tex_file.filename
+        suffix = texture_filename.rsplit('.')[-1]
+
+        # check the file type
+        if suffix not in Config.ALLOWED_3D_MODEL_TEXTURE_SUFFIXES:
+            current_app.logger.error("3d texture file type error!")
+            # rollback the db
+            db.session.rollback()
+            return jsonify({'returnValue': 2, 'msg': "Failed! You should use '.png' file only."})  # alert suffix error!
+
+        # make sure the name of 3d texture file is safe
+        texture_filename = generate_safe_pic_name(texture_filename)
+
+        # save 3d texture file in local directory
+        texture_file_path = os.path.join(Config.threeD_customize_texture_dir, texture_filename).replace('\\', '/')
+        customized_tex_file.save(texture_file_path)
+
+        # save the reference in database
+        t_path = 'upload/model_type/customization-textures'
+        texture_ref_address = os.path.join(t_path, texture_filename).replace('\\', '/')
+
+        """ 
+            record into database 
+        """
+        # check if the current user has the previous customization history with this model type
+        cus_history = Customization.query.filter_by(customer_id=current_user.id, model_type_id=mt.id).first()
+
+        # does not have history with this model type
+        if cus_history is None:
+            new_customization = Customization(customer_id=current_user.id, model_type_id=mt.id, texture_address=texture_ref_address)
+            db.session.add(new_customization)
+            # recorde the id of the current customization
+            customization_id = new_customization.id
+
+        else:
+            # has history customization
+            # change the texture of this history customization
+            cus_history.texture_address = texture_ref_address
+            db.session.add(cus_history)
+            # recorde the id of the current customization
+            customization_id = cus_history.id
+
+        db.session.commit()
+
+        text_address = url_for("static", filename=texture_ref_address)
+        return jsonify({'returnValue': 0, 'textureAddress': text_address, 'customizationId': customization_id})
 
     return jsonify({'returnValue': 1})

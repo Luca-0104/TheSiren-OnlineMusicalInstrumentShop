@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Siren - Get Premium Membership</title>
+        <title>Siren - {{ _("Get Premium Membership")}}</title>
         <link rel="icon" href="../../static/images/half-logo.png">
 
         <link href="../../static/css/normalize.css" rel="stylesheet" type="text/css">
@@ -39,35 +39,35 @@
             <a href="{{ url_for("main.index") }}"><div class="cleared close-button">&times;</div></a>
             <div class="cleared image" id="img1"></div>
             <div class="cleared heading">
-                <h1 class="cleared heading-text">SELECTED INSTRUMENT.</h1>
+                <h1 class="cleared heading-text">{{ _("SELECTED INSTRUMENT.")}}</h1>
             </div>
             <div class="cleared text">
-                <h1 class="cleared">FOCUS ON PERFORMING.</h1>
+                <h1 class="cleared">{{ _("FOCUS ON PERFORMING.")}}</h1>
             </div>
 
             <div class="cleared image" id="img2"></div>
             <div class="cleared heading">
-                <h1 class="cleared heading-text">WORRY NOT ABOUT ANY OTHER.</h1>
+                <h1 class="cleared heading-text">{{ _("WORRY NOT ABOUT ANY OTHER.")}}</h1>
             </div>
             <div class="cleared text">
-                <h1 class="cleared">LEAVE THE TRIVIAS TO US.</h1>
+                <h1 class="cleared">{{ _("LEAVE THE TRIVIAS TO US.")}}</h1>
             </div>
 
             <div class="cleared image" id="img3"></div>
             <div class="cleared heading">
-                <h1 class="cleared heading-text">STAGE QUALITY GUARENTEED.</h1>
+                <h1 class="cleared heading-text">{{ _("STAGE QUALITY GUARENTEED.")}}</h1>
             </div>
             <div class="cleared text">
-                <h1 class="cleared">CUSTOM SALES ENSURED.</h1>
+                <h1 class="cleared">{{ _("CUSTOM SALES ENSURED.")}}</h1>
             </div>
 
             <div class="cleared image" id="img4"></div>
             <div class="cleared heading">
-                <h1 class="cleared heading-text">START YOUR PREMIUM JOURNEY.</h1>
+                <h1 class="cleared heading-text">{{ _("START YOUR PREMIUM JOURNEY.")}}</h1>
             </div>
             <div class="cleared text2 bg-primary-dark">
                 <a href="{{ url_for("order.order_confirm_premium") }}" class="button w-inline-block">
-                    <div class="premium-button">Go Premium</div>
+                    <div class="premium-button">{{ _("Go Premium")}}</div>
                 </a>
             </div>
         </div>

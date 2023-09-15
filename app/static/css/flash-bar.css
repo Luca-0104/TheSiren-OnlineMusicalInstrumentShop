@@ -1,14 +1,23 @@
 .fade-away {
     opacity: 0;
-    transition: all 0.25s;
+    transition: 0.25s;
 }
 
-.aabar{
-    transition: 2s;
+.flash-bar{
+    transition: 0.5s;
+    transition-delay: 0.3s;
+    height: 49px;
 }
 
-.aabar:hover{
-    height: 0px;
+.flash-contents{
+    font-size: 14px;
+    line-height: 21px;
+}
+
+.flash-text{
+    padding-top: 14px;
+    padding-bottom: 14px;
+    text-align: center;
 }
 
 .closed{

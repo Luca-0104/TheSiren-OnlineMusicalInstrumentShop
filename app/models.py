@@ -35,28 +35,54 @@ class Tools:
         Fill all the tables in an specific order.
         This should be used in the console only a single time.
         """
-        TheSiren.create_unique_instance()   # Create the global unique instance of this musical shop
+        TheSiren.create_unique_instance()  # Create the global unique instance of this musical shop
         Role.insert_roles()  # roles of users
-        User.insert_users()  # the constant user accounts for test
+        User.insert_users(50, 2)  # the constant user accounts for test
         Recipient.insert_recipients(100)  # the recipient info
-        Address.insert_address()    # addresses for delivery
+        Address.insert_address()  # addresses for delivery
         # # users(100)  # 100 fake users
         Category.insert_categories()  # the product categories
         Brand.insert_brands()  # the product brands
-        Product.insert_products()  # the constant products for show
+        # Product.insert_products()  # the constant products for show
         # ProductPic.insert_pictures()  # the pictures of the constant products
         # ------
         # Tools.insert_pm()   # pre-stored product and mt info
-        Tools.insert_pm_glt(pm_lst_index, 'index_slide')  # (!!! This must be the first of all fake models !!! ) That 5 products in the index slide window
+        Tools.insert_pm_glt(pm_lst_index,
+                            'index_slide')  # (!!! This must be the first of all fake models !!! ) That 5 products in the index slide window
         Tools.insert_pm_glt(pm_lst_g, 'g')
         Tools.insert_pm_glt(pm_lst_l, 'l')
         Tools.insert_pm_glt(pm_lst_t, 't')
         # ------
         # # products(100)  # 100 fake products
-        ModelType.insert_model_types()  # the constant model types for testing
+        # ModelType.insert_model_types()  # the constant model types for testing
+        # insert 3D files and texture files
+        Tools.insert_3d_for_mt()
+        Comment.insert_comments(12)
         Cart.insert_carts()
         Order.insert_orders(20)
         OrderModelType.insert_omts()
+        # insert journals
+        Journal.insert_journals(50)
+        # chat message
+        Message.insert_messages(30)
+        # init the shop sale info
+        TheSiren.init_shop_sales()
+
+    @staticmethod
+    def insert_3d_for_mt():
+        """
+        This should be called after calling all of the other insert functions
+        """
+        # insert the 3D model file and texture file for that cello model type (id=13)
+        cello = ModelType.query.get(13)
+        cello.three_d_model_texture_address = "upload/model_type/3d-model-texture-files/pre-store/cello.png"
+        cello.three_d_model_address = "upload/model_type/3d-model-files/pre-store/cello.fbx"
+        # to ensure this can be shown as the first several products
+        cello.views = 4685267
+        cello.sales = 1562
+        db.session.add(cello)
+        db.session.commit()
+
 
     @staticmethod
     def insert_pm_glt(pm_list, member_code):
@@ -111,7 +137,7 @@ class Tools:
                 stock = random.randint(100, 500)
                 sales = random.randint(0, 300)
                 views = random.randint(0, 50000)
-                serial_number = 'M{}'.format(ModelType.query.count()+1)
+                serial_number = 'M{}'.format(ModelType.query.count() + 1)
                 user_id = [3, 4][random.randint(0, 1)]
                 # create this model type object
                 new_mt = ModelType(name=mt_name,
@@ -154,7 +180,6 @@ class Tools:
 
         # commit db session
         db.session.commit()
-
 
     @staticmethod
     def insert_pm():
@@ -252,6 +277,29 @@ class Tools:
             relation_lst.append(r.to_dict())
         dic[key_name] = relation_lst
 
+    @staticmethod
+    def bytes_to_human_readable_str(number):
+        """
+        Transform the number to and human readable str.
+        e.g. 1000 -> 1k, 10000 -> 10k, 10000000 -> 10M
+        :param number: The original number
+        :return: A string after formatting process
+        """
+        if number < 1024:  # bit
+            number = str(round(number, 2))                    # B
+        elif number >= 1024 and number < 1024 * 1024:
+            number = str(round(number / 1024, 2)) + 'K'              # KB
+        elif number >= 1024 * 1024 and number < 1024 * 1024 * 1024:
+            number = str(round(number / 1024 / 1024, 2)) + 'M'
+        elif number >= 1024 * 1024 * 1024 and number < 1024 * 1024 * 1024 * 1024:
+            number = str(round(number / 1024 / 1024 / 1024, 2)) + 'G'
+        elif number >= 1024 * 1024 * 1024 * 1024 and number < 1024 * 1024 * 1024 * 1024 * 1024:
+            number = str(round(number / 1024 / 1024 / 1024 / 1024, 2)) + 'T'
+        elif number >= 1024 * 1024 * 1024 * 1024 * 1024 and number < 1024 * 1024 * 1024 * 1024 * 1024 * 1024:
+            number = str(round(number / 1024 / 1024 / 1024 / 1024 / 1024, 2)) + 'P'
+        elif number >= 1024 * 1024 * 1024 * 1024 * 1024 * 1024 and number < 1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024:
+            number = str(round(number / 1024 / 1024 / 1024 / 1024 / 1024 / 1024, 2)) + 'E'
+        return number
 
 
 class BaseModel(db.Model):
@@ -271,6 +319,39 @@ class BaseModel(db.Model):
         return result
 
 
+class Journal(BaseModel):
+    """
+        The journal that staff can upload
+    """
+    __tablename_ = 'journals'
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(128), default="Untitled")   # about 25 words
+    text = db.Column(db.Text(5120), nullable=False)     # about 1000 words
+    timestamp = db.Column(db.DateTime(), index=True, default=datetime.utcnow)
+    author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    @staticmethod
+    def insert_journals(count: int):
+        journals = [
+            ['Gibson Discount', 'Gibson guitars are on sale, go to check it!  Gibson guitars are on sale, go to check it! Gibson guitars are on sale, go to check it! Gibson guitars are on sale, go to check it! Gibson guitars are on sale, go to check it! Gibson guitars are on sale, go to check it! Gibson guitars are on sale, go to check it!'],
+            ['Welcome to The Siren', 'Welcome to our online musical instrument shop, here you will be provided the best services. Welcome to our online musical instrument shop, here you will be provided the best services. Welcome to our online musical instrument shop, here you will be provided the best services. Welcome to our online musical instrument shop, here you will be provided the best services. Welcome to our online musical instrument shop, here you will be provided the best services. Welcome to our online musical instrument shop, here you will be provided the best services. Welcome to our online musical instrument shop, here you will be provided the best services.'],
+            ['New Function', 'Quality communication with our staffs is available now, just try it! Quality communication with our staffs is available now, just try it! Quality communication with our staffs is available now, just try it! Quality communication with our staffs is available now, just try it! Quality communication with our staffs is available now, just try it! Quality communication with our staffs is available now, just try it! Quality communication with our staffs is available now, just try it!'],
+            ['Payment Security', 'Alipay is cooperating with us, you can pay for your order with Alipay. Alipay is cooperating with us, you can pay for your order with Alipay. Alipay is cooperating with us, you can pay for your order with Alipay. Alipay is cooperating with us, you can pay for your order with Alipay. Alipay is cooperating with us, you can pay for your order with Alipay. Alipay is cooperating with us, you can pay for your order with Alipay. Alipay is cooperating with us, you can pay for your order with Alipay.']
+        ]
+        for i in range(count):
+            # get a random journal
+            journal_index = random.randint(0, len(journals)-1)
+            journal = journals[journal_index]
+
+            # get a random staff as the author
+            staffs = User.query.filter_by(role_id=2, is_deleted=False).all()
+            author_id = staffs[random.randint(0, len(staffs)-1)].id
+
+            new_journal = Journal(title=journal[0], text=journal[1], author_id=author_id)
+            db.session.add(new_journal)
+        db.session.commit()
+
+
 class TheSiren(BaseModel):
     """
         This table stores only a single instance of this musical shop.
@@ -279,6 +360,8 @@ class TheSiren(BaseModel):
     __tablename__ = 'the_siren'
     id = db.Column(db.Integer, primary_key=True)
     epidemic_mode_on = db.Column(db.Boolean, default=False)  # whether the shop owner turns on the "epidemic mode"
+    total_sales = db.Column(db.Float, default=0)
+    total_sale_count = db.Column(db.Integer, default=0)
 
     @staticmethod
     def create_unique_instance():
@@ -286,6 +369,23 @@ class TheSiren(BaseModel):
             unique_instance = TheSiren()
             db.session.add(unique_instance)
             db.session.commit()
+
+    @staticmethod
+    def init_shop_sales():
+        orders = []
+        orders += Order.query.filter_by(status_code=1).all()
+        orders += Order.query.filter_by(status_code=2).all()
+        orders += Order.query.filter_by(status_code=3).all()
+        orders += Order.query.filter_by(status_code=4).all()
+
+        # get unique shop instance
+        unique_shop_instance = TheSiren.query.get(1)
+        for order in orders:
+            unique_shop_instance.total_sales += order.paid_payment
+            for omt in order.order_model_types:
+                unique_shop_instance.total_sale_count += omt.count
+        db.session.add(unique_shop_instance)
+        db.session.commit()
 
 
 class Refund(BaseModel):
@@ -321,6 +421,7 @@ class ChatRoom(BaseModel):
     # messages in this chat room
     messages = db.relationship('Message', backref='chat_room', lazy='dynamic')
 
+
     def __repr__(self):
         return '<ChatRoom cus: %r - staff: %r>' % (self.customer_id, self.staff_id)
 
@@ -334,7 +435,7 @@ class ChatRoom(BaseModel):
 
 class Message(BaseModel):
     """
-        (Chatting version 2 -> ChatRoom + Message)
+        (Chatting version 2 ->  + Message)
         Storing the chatting record of a customer and staff(staff role, not a specific staff)
     """
     __tablename__ = 'Messages'
@@ -345,13 +446,30 @@ class Message(BaseModel):
     # only 2 possible values, 'customer' and 'staff'
     author_type = db.Column(db.String(12), nullable=False)
     # The type of this piece of information
-    # possible values: "normal", "refund", "enquiry"...
+    # possible values: 'normal', 'consult', 'after-sale'
     chat_type = db.Column(db.String(12), default='normal')
     # Which chatting room this message belongs to
     chat_room_id = db.Column(db.Integer, db.ForeignKey('chat_rooms.id'))
 
+    # model_type for msg in type of "consult" (only auto consult msg have this)
+    model_type_id = db.Column(db.Integer, db.ForeignKey('model_types.id'))
+    # order for msg in type of "after-sale" (only auto after-sale msg have this)
+    order_id = db.Column(db.Integer, db.ForeignKey('orders.id'))
+
     def __repr__(self):
         return '<Chat %r>' % self.content[:10]
+
+    @staticmethod
+    def insert_messages(count):
+        fake = Faker()
+        for i in range(count):
+            room_id = random.randint(1, 2)
+            author_type_list = ['customer', 'staff']
+            author_type = random.randint(0, 1)
+            new_message = Message(content=fake.text(), timestamp=fake.past_datetime(),
+                                  author_type=author_type_list[author_type], chat_room_id=room_id)
+            db.session.add(new_message)
+        db.session.commit()
 
     # def to_dict(self):
     #     """ Map the object to dictionary data structure """
@@ -400,14 +518,18 @@ class Order(BaseModel):
     """
     __tablename__ = 'orders'
     id = db.Column(db.Integer, primary_key=True)
-    out_trade_no = db.Column(db.String(64), unique=True)    # trade number, which should be unique inside a same retailer (us), includes numbers, letters and '_' only
-    trade_no = db.Column(db.String(72), unique=True)    # this is generated by Alipay for each order after payment
+    out_trade_no = db.Column(db.String(64),
+                             unique=True)  # trade number, which should be unique inside a same retailer (us), includes numbers, letters and '_' only
+    trade_no = db.Column(db.String(72), unique=True)  # this is generated by Alipay for each order after payment
     timestamp = db.Column(db.DateTime(), index=True, default=datetime.utcnow)
-    order_type = db.Column(db.String(20), default='delivery')   # 'delivery' or 'self-collection'
+    order_type = db.Column(db.String(20), default='delivery')  # 'delivery' or 'self-collection'
     delivery_fee = db.Column(db.Integer, default=9)  # if the order_type is 'self-collection', delivery fee should be 0
-    gross_payment = db.Column(db.Float)     # total amount without discount (delivery_fee + items) # only 2 digits in decimal e.g. 10.xx
-    paid_payment = db.Column(db.Float)      # real amount need to pay (delivery_fee + items*discount) # only 2 digits in decimal e.g. 10.xx
+    gross_payment = db.Column(
+        db.Float)  # total amount without discount (delivery_fee + items) # only 2 digits in decimal e.g. 10.xx
+    paid_payment = db.Column(
+        db.Float)  # real amount need to pay (delivery_fee + items*discount) # only 2 digits in decimal e.g. 10.xx
     status_code = db.Column(db.Integer, default=0)  # the status code of this order
+    priority = db.Column(db.Integer, default=1)     # 1, 2, 3
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))  # the uid of the customer who owns this order
     timestamp_1 = db.Column(db.DateTime(), index=True)  # time record of status changing to 'preparing'
     timestamp_2 = db.Column(db.DateTime(), index=True)  # time record of status changing to 'on delivery'
@@ -416,11 +538,15 @@ class Order(BaseModel):
     timestamp_5 = db.Column(db.DateTime(), index=True)  # time record of status changing to 'canceled'
     timestamp_6 = db.Column(db.DateTime(), index=True)  # time record of status changing to 'expired'
     # 1 order -> 1 Addresses; 1 Address -> n order
-    address_id = db.Column(db.Integer, db.ForeignKey('addresses.id'))
+    # address_id = db.Column(db.Integer, db.ForeignKey('addresses.id'))
     # 1 order (self-collection) -> 1 recipient
     recipient_id = db.Column(db.Integer, db.ForeignKey('recipients.id'))
     # 1 order -> n OrderModelType; 1 OrderModelType -> 1 order
     order_model_types = db.relationship('OrderModelType', backref='order', lazy='dynamic')
+    # record the detailed address as an string
+    address_text = db.Column(db.String)
+    # 1 order --> n msg (after-sale)
+    msgs = db.relationship('Message', backref='order', lazy='dynamic')
 
     @staticmethod
     def insert_orders(count):
@@ -435,11 +561,17 @@ class Order(BaseModel):
         # create a faker instance
         faker = Faker()
         # create some new orders into db
+        # for customer 1
         for i in range(count):
-            new_order = Order(timestamp=faker.past_datetime(), user_id=1, order_type=["delivery", "self-collection"][random.randint(0, 1)])
+            new_order = Order(timestamp=faker.past_datetime(), user_id=1,
+                              order_type=["delivery", "self-collection"][random.randint(0, 1)])
             if new_order.order_type == "delivery":
-                # need address(contains recipient info)
-                new_order.address_id = random.randint(1, Address.query.count())
+                # need address and recipient info
+                cus1 = User.query.get(1)
+                addresses = cus1.addresses.all()
+                address = addresses[random.randint(0, len(addresses)-1)]
+                new_order.address_text = address.get_address()
+                new_order.recipient_id = address.recipient.id
                 new_order.status_code = [0, 1, 2, 4, 5, 6][random.randint(0, 5)]
             elif new_order.order_type == "self-collection":
                 # need recipient info
@@ -449,6 +581,25 @@ class Order(BaseModel):
             db.session.commit()
             new_order.generate_unique_out_trade_no()
 
+        # for customer 2
+        for i in range(count):
+            new_order = Order(timestamp=faker.past_datetime(), user_id=2,
+                              order_type=["delivery", "self-collection"][random.randint(0, 1)])
+            if new_order.order_type == "delivery":
+                # need address and recipient info
+                cus2 = User.query.get(2)
+                addresses = cus2.addresses.all()
+                address = addresses[random.randint(0, len(addresses) - 1)]
+                new_order.address_text = address.get_address()
+                new_order.recipient_id = address.recipient.id
+                new_order.status_code = [0, 1, 2, 4, 5, 6][random.randint(0, 5)]
+            elif new_order.order_type == "self-collection":
+                # need recipient info
+                new_order.recipient_id = random.randint(1, Recipient.query.count())
+                new_order.status_code = [0, 1, 3, 4, 5, 6][random.randint(0, 5)]
+            db.session.add(new_order)
+            db.session.commit()
+            new_order.generate_unique_out_trade_no()
 
     def to_dict(self):
         """ Map the object to dictionary data structure """
@@ -501,24 +652,27 @@ class Order(BaseModel):
         if self.user.is_premium:
             fee = 0
         else:
-            # calculate the total weight in order
-            total_weight = 0
-            for omt in self.order_model_types:
-                total_weight += omt.model_type.weight * omt.count
+            if self.order_type == "delivery":
+                # calculate the total weight in order
+                total_weight = 0
+                for omt in self.order_model_types:
+                    total_weight += omt.model_type.weight * omt.count
 
-            # less than 1 kg, is the base fee of 9 RMB
-            if total_weight < 1:
-                fee = 9
+                # less than 1 kg, is the base fee of 9 RMB
+                if total_weight < 1:
+                    fee = 9
+                else:
+                    # calculate the extra fee
+                    total_weight -= 1
+                    # The weight is up rounded. e.g. 2.x kg -> 3.0 kg (x > 0)
+                    if total_weight > (total_weight // 1):
+                        total_weight = (total_weight // 1) + 1
+                    # fee = base + extra
+                    fee = 9 + (total_weight * 2)
+                    if fee > 200:
+                        fee = 200
             else:
-                # calculate the extra fee
-                total_weight -= 1
-                # The weight is up rounded. e.g. 2.x kg -> 3.0 kg (x > 0)
-                if total_weight > (total_weight // 1):
-                    total_weight = (total_weight // 1) + 1
-                # fee = base + extra
-                fee = 9 + (total_weight * 2)
-                if fee > 200:
-                    fee = 200
+                fee = 0
 
         # write delivery_fee into db
         self.delivery_fee = fee
@@ -548,7 +702,7 @@ class Order(BaseModel):
 
         # record the total payment
         gross_payment = payment + payment_commodity
-        gross_payment = round(gross_payment, 2)     # remain 2 digits in decimal place
+        gross_payment = round(gross_payment, 2)  # remain 2 digits in decimal place
         self.gross_payment = gross_payment
 
         # record the real amount should be paid
@@ -556,7 +710,7 @@ class Order(BaseModel):
         if self.user.is_premium:
             payment_commodity *= 0.95
         paid_payment = payment + payment_commodity
-        paid_payment = round(paid_payment, 2)       # remain 2 digits in decimal place
+        paid_payment = round(paid_payment, 2)  # remain 2 digits in decimal place
         self.paid_payment = paid_payment
 
         # commit to db
@@ -593,8 +747,15 @@ class Order(BaseModel):
             stock number
         AND sale number
         of each model type in this order.
+        AND shop total sales
+        AND shop total sale number
         The stock of these model types will be decreased by the count of it in this order.
         """
+        # update shop info
+        unique_shop_instance = TheSiren.query.get(1)
+        unique_shop_instance.total_sales += self.paid_payment
+        db.session.add(unique_shop_instance)
+
         for omt in self.order_model_types:
             # get the model type
             mt = omt.model_type
@@ -602,6 +763,10 @@ class Order(BaseModel):
             mt.stock = mt.stock - omt.count
             mt.sales = mt.sales + omt.count
             db.session.add(mt)
+            # update shop info
+            unique_shop_instance.total_sale_count += omt.count
+            db.session.add(unique_shop_instance)
+
         db.session.commit()
 
 
@@ -617,10 +782,13 @@ class OrderModelType(BaseModel):
     order_id = db.Column(db.Integer, db.ForeignKey('orders.id'))
     model_type_id = db.Column(db.Integer, db.ForeignKey('model_types.id'))
     count = db.Column(db.Integer, default=1)  # how many this model type the user bought in this order
-    unit_pay = db.Column(db.Float, nullable=False)  # how much the user really paid for each of this model (unit_pay*count=total payment of this model)
+    unit_pay = db.Column(db.Float,
+                         nullable=False)  # how much the user really paid for each of this model (unit_pay*count=total payment of this model)
     is_commented = db.Column(db.Boolean, default=False)  # is this model in this order is already commented
     # refund record (this can be none)
     refunds = db.relationship('Refund', backref='order_model_type', lazy='dynamic')
+    # 1 order --> 1 customization
+    customization_id = db.Column(db.Integer, db.ForeignKey('customizations.id'))
 
     def __repr__(self):
         return '<OrderModelType order_id: %r --- model_type: %r * %r>' % (self.order_id, self.model_type_id, self.count)
@@ -683,15 +851,27 @@ class Cart(BaseModel):
 
     @staticmethod
     def insert_carts():
-        for i in range(50):
-            # random info
-            user_id = [1, 2][random.randint(0, 1)]
+        # for customer 1
+        already_mt = []
+        for i in range(5):
             model_type = ModelType.query.get(random.randint(1, ModelType.query.count()))
-            count = random.randint(1, 15)
+            while model_type in already_mt:
+                model_type = ModelType.query.get(random.randint(1, ModelType.query.count()))
+            count = random.randint(1, 4)
             # generate a new cart relation
-            new_cart = Cart(user_id=user_id, model_type=model_type, count=count)
+            new_cart = Cart(user_id=1, model_type=model_type, count=count)
             db.session.add(new_cart)
-        db.session.commit()
+
+        # for customer 2
+        already_mt = []
+        for i in range(5):
+            model_type = ModelType.query.get(random.randint(1, ModelType.query.count()))
+            while model_type in already_mt:
+                model_type = ModelType.query.get(random.randint(1, ModelType.query.count()))
+            count = random.randint(1, 4)
+            # generate a new cart relation
+            new_cart = Cart(user_id=2, model_type=model_type, count=count)
+            db.session.add(new_cart)
 
 
 class Comment(BaseModel):
@@ -710,16 +890,64 @@ class Comment(BaseModel):
     def __repr__(self):
         return '<Comment %r>' % self.content[:10]
 
-    # def to_dict(self):
-    #     """
-    #         Map the object to dictionary data structure
-    #     """
-    #     result = super(Comment, self).to_dict()
-    #     # add relations to the result dict
-    #     Tools.add_relation_to_dict(result, self.pictures.all(), "pictures")
-    #
-    #     return Tools.delete_instance_state(result)
+    def to_dict(self):
+        """
+            Map the object to dictionary data structure
+        """
+        result = super(Comment, self).to_dict()
+        # add relations to the result dict
+        Tools.add_relation_to_dict(result, self.pictures.all(), "pictures")
 
+        return Tools.delete_instance_state(result)
+
+    @staticmethod
+    def insert_comments(count):
+        content = "This is a testing comment. This is a testing comment. This is a testing comment. This is a testing comment. Pictures are also for testing. Pictures are also for testing. Pictures are also for testing. "
+        pic_address_lst = [
+            'upload/comment/pre-stored/1.jpg',
+            'upload/comment/pre-stored/2.jpg',
+            'upload/comment/pre-stored/3.png',
+            'upload/comment/pre-stored/4.png',
+            'upload/comment/pre-stored/5.jpg',
+            'upload/comment/pre-stored/6.jpg',
+            'upload/comment/pre-stored/7.jpg',
+            'upload/comment/pre-stored/8.png',
+            'upload/comment/pre-stored/9.jpg',
+            'upload/comment/pre-stored/10.png',
+            'upload/comment/pre-stored/12.jpg',
+            'upload/comment/pre-stored/13.png',
+            'upload/comment/pre-stored/14.jpg',
+            'upload/comment/pre-stored/15.jpg',
+            'upload/comment/pre-stored/16.jpg',
+            'upload/comment/pre-stored/17.jpg',
+            'upload/comment/pre-stored/18.jpg',
+            'upload/comment/pre-stored/19.jpg',
+            'upload/comment/pre-stored/20.jpg',
+            'upload/comment/pre-stored/21.png'
+        ]
+        # get all the model types
+        mt_lst = ModelType.query.all()
+        # get all customers
+        customer_lst = User.query.filter_by(role_id=1).all()
+        # for each model type
+        for mt in mt_lst:
+            # create comments for this model type
+            for i in range(count):
+                new_comment = Comment(content=content, model_type_id=mt.id, auth_id=customer_lst[random.randint(0, len(customer_lst)-1)].id, star_num=random.randint(1, 5))
+                db.session.add(new_comment)
+
+                # create pictures for this comment
+                current_pic_address_lst = []
+                for j in range(random.randint(2, 5)):
+                    # get an random and not repeat pic address
+                    address = pic_address_lst[random.randint(0, len(pic_address_lst) - 1)]
+                    while address in current_pic_address_lst:
+                        address = pic_address_lst[random.randint(0, len(pic_address_lst) - 1)]
+                    current_pic_address_lst.append(address)
+                    # create pic obj
+                    new_pic = CommentPic(address=address, comment=new_comment)
+                    db.session.add(new_pic)
+            db.session.commit()
 
 
 class CommentPic(BaseModel):
@@ -777,7 +1005,8 @@ class Product(BaseModel):
             serial_rank = product_info[3]
 
             """ brand and categories are random now for test!!! """
-            new_product = Product(name=name, brand_id=random.randint(1, Brand.query.count()), serial_prefix=serial_prefix,
+            new_product = Product(name=name, brand_id=random.randint(1, Brand.query.count()),
+                                  serial_prefix=serial_prefix,
                                   serial_rank=serial_rank)
             db.session.add(new_product)
 
@@ -850,6 +1079,7 @@ class ModelTypePic(BaseModel):
 
 class ModelTypeIntroPic(BaseModel):
     """
+        (Abandoned)
         Each model type of a product can have a group of intro pictures.
         Intro pictures are the pictures in the detail pages, when you scroll down you can see them.
         Using the same technology as what JD company do.
@@ -874,23 +1104,34 @@ class ModelType(BaseModel):
         Each model of a product may have different name, price, pictures and descriptions
         1 ModelType -> 1 Product
         1 Product -> n ModelType
+
+        0: nothing
+        1: only 3d
+        2: only audio
+        3: only vedio
+        4: audio & vedio
+        5: 3d & vedio
+        6: 3d & audio
+        7: 3d & audio & vedio
     """
     __tablename__ = 'model_types'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128))
     description = db.Column(db.Text())
     price = db.Column(db.Float)
-    weight = db.Column(db.Float)    # kg
-    rate = db.Column(db.Float, default=3)   # the star rating
-    rate_count = db.Column(db.Integer, default=0)   # how many time this model is rated
+    weight = db.Column(db.Float, default=3.5)  # kg
+    rate = db.Column(db.Float, default=3)  # the star rating
+    rate_count = db.Column(db.Integer, default=0)  # how many time this model is rated
     stock = db.Column(db.Integer, default=0)
-    sales = db.Column(db.Integer, default=0)    # how many this models have been sold out
-    views = db.Column(db.Integer, default=0)    # how many times its details page has been viewed
+    sales = db.Column(db.Integer, default=0)  # how many this models have been sold out
+    views = db.Column(db.Integer, default=0)  # how many times its details page has been viewed
     serial_number = db.Column(db.String(128), nullable=False)
     release_time = db.Column(db.DateTime(), index=True, default=datetime.utcnow)
-    video_address = db.Column(db.String)    # video
+    video_address = db.Column(db.String, default=None)  # video
+    three_d_model_address = db.Column(db.String, default=None)    # 3d model file
+    three_d_model_texture_address = db.Column(db.String, default=None)    # 3d model texture file
     # 1 model -> n addresses, 1 address -> 1 model
-    audio_addresses = db.relationship('Audio', backref='model_type', lazy='dynamic')    # audio
+    audio_addresses = db.relationship('Audio', backref='model_type', lazy='dynamic')  # audio
     is_deleted = db.Column(db.Boolean, default=False)
     # 1 user(staff) --> n model type
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
@@ -908,6 +1149,10 @@ class ModelType(BaseModel):
     order_model_types = db.relationship('OrderModelType', backref='model_type', lazy='dynamic')
     # 1 model --> n B_histories
     browsing_histories = db.relationship('BrowsingHistory', backref='model_type', lazy='dynamic')
+    # 1 model -> n customization
+    customizations = db.relationship('Customization', backref='model_type', lazy='dynamic')
+    # 1 model_type --> n msg (consult)
+    msgs = db.relationship('Message', backref='model_type', lazy='dynamic')
 
     def to_dict(self):
         """
@@ -915,7 +1160,7 @@ class ModelType(BaseModel):
         """
         result = super(ModelType, self).to_dict()
         # add relations to the result dict
-        Tools.add_relation_to_dict(result, self.comments.all(), "comments")
+        # Tools.add_relation_to_dict(result, self.comments.all(), "comments")
         Tools.add_relation_to_dict(result, self.pictures.all(), "pictures")
         # Tools.add_relation_to_dict(result, self.intro_pictures.all(), "intro_pictures")
         Tools.add_relation_to_dict(result, self.carts.all(), "carts")
@@ -924,8 +1169,12 @@ class ModelType(BaseModel):
         # add brand name
         result["brand_name"] = self.product.brand.name
 
-        return Tools.delete_instance_state(result)
+        # add type id
+        result["addition_type"] = self.get_addition_type()
+
         # return result
+        return Tools.delete_instance_state(result)
+
 
     def delete(self):
         """
@@ -944,6 +1193,61 @@ class ModelType(BaseModel):
         """
         return '{}-{}'.format(self.product.get_serial_number(), self.serial_number)
 
+    def get_formatted_views(self):
+        """
+        Format the number of views. e.g. 1000 -> 1k, 1000000 -> 1M
+        :return: A string of formatted view number
+        """
+        return Tools.bytes_to_human_readable_str(self.views)
+
+    def get_formatted_sales(self):
+        """
+        Format the number of sales. e.g. 1000 -> 1k, 1000000 -> 1M
+        :return: A string of formatted sales number
+        """
+        return Tools.bytes_to_human_readable_str(self.sales)
+
+    def get_addition_type(self):
+        """
+        Tells the type of additional and return it
+        Types:
+                0: nothing
+                1: only 3d
+                2: only audio
+                3: only video
+                4: audio & video
+                5: 3d & video
+                6: 3d & audio
+                7: 3d & audio & video
+        :return: A integer representing the type of additional
+        """
+        has3d = False
+        has_audio = False
+        has_video = False
+        if self.three_d_model_address is not None and self.three_d_model_address != "":
+            has3d = True
+        if self.audio_addresses.count() != 0:
+            has_audio = True
+        if self.video_address is not None and self.video_address != "":
+            has_video = True
+
+        if has3d and has_audio and has_video:
+            return 7
+        elif has3d and has_audio and not has_video:
+            return 6
+        elif has3d and not has_audio and has_video:
+            return 5
+        elif not has3d and has_audio and has_video:
+            return 4
+        elif not has3d and not has_audio and has_video:
+            return 3
+        elif not has3d and has_audio and not has_video:
+            return 2
+        elif has3d and not has_audio and not has_video:
+            return 1
+        else:
+            return 0
+
     @staticmethod
     def insert_model_types():
         """
@@ -954,9 +1258,9 @@ class ModelType(BaseModel):
             # create some information for showing
             name = 'Model' + str(i)
             description = 'This is the test Model Type NO.' + str(i)
-            description = 'A dramatically more powerful camera system. A display so responsive, every interaction feels new again. The world’s fastest smartphone chip. Exceptional durability. And a huge leap in battery life.'
+            description = '(For TEST) A dramatically more powerful camera system. A display so responsive, every interaction feels new again. The world’s fastest smartphone chip. Exceptional durability. And a huge leap in battery life.'
             price = random.randint(2000, 999999)
-            weight = round(10*random.random(), 2)
+            weight = round(10 * random.random(), 2)
             stock = random.randint(100, 500)
             serial_number = 'M' + str(i)
             user_id = [3, 4][random.randint(0, 1)]
@@ -972,11 +1276,34 @@ class ModelType(BaseModel):
         db.session.commit()
 
 
+class Customization(BaseModel):
+    """
+        This table records which customer has which customization of texture of which model type
+    """
+    __tablename__ = 'customizations'
+    id = db.Column(db.Integer, primary_key=True)
+    customer_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    model_type_id = db.Column(db.Integer, db.ForeignKey('model_types.id'))
+    texture_address = db.Column(db.String, nullable=False)
+    # 1 customization -> n orderModelType
+    order_model_types = db.relationship('OrderModelType', backref='customization', lazy='dynamic')
+
+
+
 class Audio(BaseModel):
     __tablename__ = 'audios'
     id = db.Column(db.Integer, primary_key=True)
     address = db.Column(db.String, nullable=False)
     model_type_id = db.Column(db.Integer, db.ForeignKey('model_types.id'))
+
+
+'''
+    This is a table for containing the 'n to n' following relationship of User model and Category model 
+'''
+UserCategory = db.Table('user_category',
+                        db.Column('user_id', db.Integer, db.ForeignKey('users.id')),
+                        db.Column('category_id', db.Integer, db.ForeignKey('categories.id'))
+                        )
 
 
 class Category(BaseModel):
@@ -1004,15 +1331,25 @@ class Category(BaseModel):
         db.session.commit()
 
 
+'''
+    This is a table for containing the 'n to n' following relationship of User model and Brand model 
+'''
+UserBrand = db.Table('user_brand',
+                     db.Column('user_id', db.Integer, db.ForeignKey('users.id')),
+                     db.Column('brand_id', db.Integer, db.ForeignKey('brands.id'))
+                     )
+
+
 class Brand(BaseModel):
     __tablename__ = 'brands'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(32), unique=True, nullable=False)
+    logo = db.Column(db.String(256))    # the address of logo picture
     products = db.relationship('Product', backref='brand', lazy='dynamic')  # 1 brand --> n product
 
     def __repr__(self):
         return '<Brand %r>' % self.name
-    
+
     # def to_dict(self):
     #     """ Map the object to dictionary data structure """
     #     result = super(Brand, self).to_dict()
@@ -1027,8 +1364,10 @@ class Brand(BaseModel):
             This should be used a single time in the terminal.
             This should be called before calling the Product.insert_products()
         """
-        for brand_name in brand_list:
-            new_brand = Brand(name=brand_name)
+        for brand_info in brand_list:
+            name = brand_info[0]
+            logo = brand_info[1]
+            new_brand = Brand(name=name, logo=logo)
             db.session.add(new_brand)
         db.session.commit()
 
@@ -1043,8 +1382,8 @@ class BrowsingHistory(BaseModel):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     model_type_id = db.Column(db.Integer, db.ForeignKey('model_types.id'), nullable=False)
-    timestamp = db.Column(db.DateTime(), default=datetime.utcnow)   # the last visit time
-    count = db.Column(db.Integer, default=1)    # How many time the user viewed this model type
+    timestamp = db.Column(db.DateTime(), default=datetime.utcnow)  # the last visit time
+    count = db.Column(db.Integer, default=1)  # How many time the user viewed this model type
     is_deleted = db.Column(db.Boolean, default=False)
 
 
@@ -1060,8 +1399,9 @@ class PremiumOrder(BaseModel):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     timestamp = db.Column(db.DateTime(), default=datetime.utcnow)
     duration = db.Column(db.Integer, nullable=False)  # the unit is 'day': e.g. 7, 30, 365
-    payment = db.Column(db.Float, nullable=False)   # only 2 digits in decimal e.g. 10.xx
-    out_trade_no = db.Column(db.String(64), unique=True)  # trade number, which should be unique inside a same retailer (us), includes numbers, letters and '_' only
+    payment = db.Column(db.Float, nullable=False)  # only 2 digits in decimal e.g. 10.xx
+    out_trade_no = db.Column(db.String(64),
+                             unique=True)  # trade number, which should be unique inside a same retailer (us), includes numbers, letters and '_' only
     trade_no = db.Column(db.String(72), unique=True)  # this is generated by Alipay for each order after payment
     is_paid = db.Column(db.Boolean, default=False)  # whether the payment is finished
 
@@ -1108,8 +1448,9 @@ class Recipient(BaseModel):
     @staticmethod
     def insert_recipients(count):
         fake = Faker()
+        faker_for_phone = Faker("zh_CN")
         for i in range(count):
-            new_recipient = Recipient(recipient_name=fake.name(), phone=fake.phone_number())
+            new_recipient = Recipient(recipient_name=fake.name(), phone=faker_for_phone.phone_number())
             db.session.add(new_recipient)
         db.session.commit()
 
@@ -1137,22 +1478,42 @@ class Address(BaseModel):
     recipient_id = db.Column(db.Integer, db.ForeignKey('recipients.id'))
     # 1 address -> 1 user (customer)
     customer_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
     # 1 address -> n orders
-    orders = db.relationship('Order', backref='address', lazy='dynamic')
+    # orders = db.relationship('Order', backref='address', lazy='dynamic')
 
     @staticmethod
     def insert_address():
         fake = Faker()
 
+        # addresses for customer 1
         for i in range(10):
-            new_address = Address(customer_id=1, recipient_id=random.randint(1, Recipient.query.count()), country=fake.country(), province_or_state='Province{}'.format(i+1), city=fake.city(), district='District{}'.format(i+1), details="A test detailed address")
+            new_address = Address(customer_id=1, recipient_id=random.randint(1, Recipient.query.count()),
+                                  country=fake.country(), province_or_state='Province{}'.format(i + 1),
+                                  city=fake.city(), district='District{}'.format(i + 1),
+                                  details="A test detailed address")
             db.session.add(new_address)
 
         # add a default address for this customer
         new_address = Address(is_default=True, customer_id=1, recipient_id=1,
                               country=fake.country(), province_or_state='Province{}'.format(11), city=fake.city(),
-                              district='District{}'.format(11), details="A test detailed address")
+                              district='District{}'.format(11), details="pingleyuan 100 BJUT (fake address for test)")
         db.session.add(new_address)
+
+        # addresses for customer 2
+        for i in range(10):
+            new_address = Address(customer_id=2, recipient_id=random.randint(1, Recipient.query.count()),
+                                  country=fake.country(), province_or_state='Province{}'.format(i + 1),
+                                  city=fake.city(), district='District{}'.format(i + 1),
+                                  details="A test detailed address")
+            db.session.add(new_address)
+
+        # add a default address for this customer
+        new_address = Address(is_default=True, customer_id=2, recipient_id=1,
+                              country=fake.country(), province_or_state='Province{}'.format(11), city=fake.city(),
+                              district='District{}'.format(11), details="pingleyuan 100 BJUT (fake address for test)")
+        db.session.add(new_address)
+
         db.session.commit()
 
     def to_dict(self):
@@ -1163,7 +1524,8 @@ class Address(BaseModel):
         return Tools.delete_instance_state(result)
 
     def get_address(self):
-        address = "{} - {} - {} - {} - {}".format(self.country, self.province_or_state, self.city, self.district, self.details)
+        address = "{} - {} - {} - {} - {}".format(self.country, self.province_or_state, self.city, self.district,
+                                                  self.details)
         return address
 
 
@@ -1200,7 +1562,7 @@ class Role(BaseModel):
 
     def __repr__(self):
         return '<Role %r>' % self.name
-    
+
     # def to_dict(self):
     #     """ Map the object to dictionary data structure """
     #     result = super(Role, self).to_dict()
@@ -1268,7 +1630,8 @@ class User(UserMixin, BaseModel):
     username = db.Column(db.String(64), unique=True, index=True)
     password_hash = db.Column(db.String(128))
     start_datetime = db.Column(db.DateTime(), default=datetime.utcnow)
-    avatar = db.Column(db.String(256), default='upload/avatar/default__0__.jpg')  # The avatar
+    avatar = db.Column(db.String(256), default='upload/avatar/default-avatars/default__9__.jpg')  # The avatar
+    background_pic = db.Column(db.String(256), default='upload/user-background/default__0__.png')  # The avatar
     theme = db.Column(db.String(16), default='light')  # the user preferred theme of our website
     language = db.Column(db.String(16), default='en')
     about_me = db.Column(db.Text(300))
@@ -1278,6 +1641,10 @@ class User(UserMixin, BaseModel):
     premium_left_days = db.Column(db.Integer, default=0)  # the day left of the premium membership
     is_deleted = db.Column(db.Boolean, default=False)
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))  # 1 role --> n users
+
+    # followed brands and categories
+    followed_brands = db.relationship('Brand', secondary=UserBrand, backref=db.backref('user', lazy='dynamic'), lazy='dynamic')
+    followed_categories = db.relationship('Category', secondary=UserCategory, backref=db.backref('user', lazy='dynamic'), lazy='dynamic')
 
     # released_products = db.relationship('Product', backref='seller', lazy='dynamic')  # 1 user --> n products
     # released_comments = db.relationship('Comment', backref='author', lazy='dynamic')  # 1 user --> n comments
@@ -1308,11 +1675,15 @@ class User(UserMixin, BaseModel):
     premium_orders = db.relationship('PremiumOrder', backref='user', lazy='dynamic')
     # 1 user --> n B_histories
     browsing_histories = db.relationship('BrowsingHistory', backref='user', lazy='dynamic')
+    # 1 staff --> n journals
+    journals = db.relationship('Journal', backref='author', lazy='dynamic')
+    # 1 customer -> n customization
+    customizations = db.relationship('Customization', backref='user', lazy='dynamic')
 
 
     def __repr__(self):
         return '<User %r>' % self.username
-    
+
     # def to_dict(self):
     #     """ Map the object to dictionary data structure """
     #     return Tools.delete_instance_state(super(User, self).to_dict())
@@ -1335,21 +1706,64 @@ class User(UserMixin, BaseModel):
         return self.exp // 100
 
     @staticmethod
-    def insert_users():
+    def insert_users(count_customer: int, count_staff: int):
         """
-        This is a method for inserting the testing user information, which means fulling the User table.
+        This is a method for inserting the testing user information
         This should be used in the console only a single time.
         """
-        for user_info in user_list:
-            email = user_info[0]
-            username = user_info[1]
-            password = user_info[2]
-            role_id = user_info[3]
-
-            new_user = User(email=email, username=username, password=password, role_id=role_id)
-
+        # insert customers first (customers must be the first)
+        for i in range(count_customer):
+            email = "Customer{}@163.com".format(i+1)
+            username = "Customer{}".format(i+1)
+            password = "12345678"
+            role_id = 1
+            # random avatar for customers
+            default_avatars = [
+                "upload/avatar/default-avatars/default__1__.jpg",
+                "upload/avatar/default-avatars/default__2__.jpg",
+                "upload/avatar/default-avatars/default__3__.jpg",
+                "upload/avatar/default-avatars/default__4__.jpg",
+                "upload/avatar/default-avatars/default__5__.jpg",
+                "upload/avatar/default-avatars/default__6__.jpg",
+                "upload/avatar/default-avatars/default__7__.jpg",
+                "upload/avatar/default-avatars/default__8__.jpg",
+                "upload/avatar/default-avatars/default__9__.jpg",
+            ]
+            avatar = default_avatars[random.randint(0, len(default_avatars)-1)]
+            new_user = User(email=email, username=username, password=password, role_id=role_id, avatar=avatar)
             db.session.add(new_user)
         db.session.commit()
+
+        # make customer 1 the premium member
+        cus1 = User.query.get(1)
+        cus1.exp = 130
+        cus1.is_premium = True
+        cus1.premium_left_days = 30
+        db.session.add(cus1)
+        db.session.commit()
+
+        # then insert staff users (staffs must be after the customers)
+        for i in range(count_staff):
+            email = "Staff{}@163.com".format(i + 1)
+            username = "Staff{}".format(i + 1)
+            password = "12345678"
+            role_id = 2
+            # same default avatar for all staffs
+            avatar = "upload/avatar/default-avatars/default__0__.jpg"
+            new_user = User(email=email, username=username, password=password, role_id=role_id, avatar=avatar)
+            db.session.add(new_user)
+        db.session.commit()
+
+        # assign all customers users their initial chat room
+        for cus in User.query.filter_by(role_id=1):
+            # assign a random staff to this chat room
+            staffs = User.query.filter_by(role_id=2).all()
+            rand_staff = staffs[random.randint(0, len(staffs)-1)]
+            # create chat room for this customer
+            new_chatroom = ChatRoom(customer_id=cus.id, staff_id=rand_staff.id)
+            db.session.add(new_chatroom)
+        db.session.commit()
+
 
     # ----- use Werkzeug to generate and check the password hash of the user password (learned from the book) -----
     # book: 'Flask Web Development: Developing Web Applications with Python, Second Edition'
@@ -1386,25 +1800,25 @@ class User(UserMixin, BaseModel):
         else:
             return None
 
-    def become_premium_member(self, duration: int):
-        """
-        Call this function to set this user as the premium member.
-        :param duration: the duration of this new premium membership, unit is 'day'
-        """
-
-        # mark the current premium record as expired
-        # (if this is a renewal of membership, we still need to let only a single record be marked as not expired)
-        p = self.get_current_premium()
-        if p:
-            p.expire()
-
-        # create a obj of new premium record
-        new_premium = Premium(user_id=self.id, duration=duration)
-
-        # update the premium Columns in this table
-        self.is_premium = True
-        self.premium_left_days += new_premium.duration
-        db.session.commit()
+    # def become_premium_member(self, duration: int):
+    #     """
+    #     Call this function to set this user as the premium member.
+    #     :param duration: the duration of this new premium membership, unit is 'day'
+    #     """
+    #
+    #     # mark the current premium record as expired
+    #     # (if this is a renewal of membership, we still need to let only a single record be marked as not expired)
+    #     p = self.get_current_premium()
+    #     if p:
+    #         p.expire()
+    #
+    #     # create a obj of new premium record
+    #     new_premium = Premium(user_id=self.id, duration=duration)
+    #
+    #     # update the premium Columns in this table
+    #     self.is_premium = True
+    #     self.premium_left_days += new_premium.duration
+    #     db.session.commit()
 
     def expire_premium_member(self):
         """

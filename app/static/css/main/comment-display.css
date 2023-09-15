@@ -1,0 +1,133 @@
+/* comment section title */
+#comment-section-title{
+    font-size: 280%;
+    font-weight: 700;
+    margin-top: 10%;
+    margin-bottom: 3%;
+    margin-left: 1%;
+}
+
+.commodity-main-section {
+    border-bottom: 2px solid #afafaf57;
+    margin-bottom: 25px;
+}
+
+.comments-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0px 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.comment-row {
+    background-color: #eff1e5;
+}
+
+.tight-wrapper-col {
+    width: 1px;
+    height: 1px;
+    vertical-align: text-top;
+    /* padding-top: 40px; */
+}
+
+.author-table {
+    text-align: center;
+    min-width: 250px;
+    border: 10px solid transparent;
+    border-collapse: separate;
+    border-spacing: 0px 10px;
+}
+
+.avatar-col {
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    margin-top: 10px;
+}
+
+.comment-content-table {
+    width: 100%;
+    border: 30px solid transparent;
+}
+
+/* the star list */
+.box-product-rate .box-rate-stars {
+    float: left;
+    margin-bottom: 3px;
+    /* width: 230px; */
+    padding-left: 0px;
+    margin-left: -5px;
+}
+
+/* all those five stars */
+.box-product-rate .box-rate-stars li {
+    float: left;
+    margin: 3px;
+    font-size: 35px;
+    list-style: none;
+}
+
+/* bright stars */
+.star-bright {
+    /*color: #ffec39;*/
+    color: #fcdb02;
+}
+
+/* dark stars */
+.star-dark {
+    color: #9c9c9c;
+}
+
+.comment-pic-section {
+    width: 100%;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    border-bottom: 1px solid #afafaf57;
+    border-top: 1px solid #afafaf57;
+}
+
+.comment-pic {
+    width: 19vh;
+    height: 19vh;
+    object-fit: cover;
+}
+
+.timestamp-cell {
+    text-align: right;
+}
+
+.level-cell {
+    color: #9c9c9c;
+    /* text-align: right; */
+    padding-bottom: 12px;
+}
+
+.content-cell {
+    font-size: 25px;
+    padding-bottom: 15px;
+    text-align: justify; /* padding-top: 20px; */
+}
+
+.box-product-rate {
+    padding-left: 15px;
+}
+
+.premium-mark {
+    /* width: 29px; */
+    height: 30px; /* font-size: 35px; */
+}
+
+.rate-col {
+    padding-top: 10px;
+}
+
+.timestamp-col {
+    padding-top: 10px;
+}
+
+.name-cell {
+    font-weight: 600;
+    font-size: 22px;
+}

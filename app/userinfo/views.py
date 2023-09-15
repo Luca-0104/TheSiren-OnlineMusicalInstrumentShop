@@ -1,19 +1,27 @@
 import os
 
-from flask import render_template, request, jsonify, flash, redirect, url_for
+from flask import render_template, request, jsonify, flash, redirect, url_for, current_app, abort
 from flask_login import login_required, current_user
 from flask_babel import _
 
 from config import Config
 from . import userinfo
+from ..decorators import customer_only, login_required_for_ajax
 from ..public_tools import generate_safe_pic_name
 from ..userinfo.forms import EditProfileForm, AddAddressForm, EditAddressForm, UpdateAvatarForm
-from ..models import User, Address, Recipient
+from ..models import User, Address, Recipient, Brand, Category
 from .. import db
 
 
 @userinfo.route('/user_profile/<int:uid>', methods=['GET', 'POST'])
+@login_required
+@customer_only()
 def user_profile(uid):
+    # customers can only access their own profiles
+    if current_user.id != uid:
+        flash(_("Permission Denied! You cannot access the profile of other users!"))
+        abort(403)
+
     user = User.query.get(uid)
     edit_profile_form = EditProfileForm(current_user)
     update_avatar_form = UpdateAvatarForm()
@@ -22,7 +30,6 @@ def user_profile(uid):
 
     # user submit the edit profile form
     if edit_profile_form.edit_profile_submit.data and edit_profile_form.validate():
-
         user.username = edit_profile_form.edit_profile_username.data
         user.email = edit_profile_form.edit_profile_email.data
         user.about_me = edit_profile_form.edit_profile_about_me.data
@@ -33,8 +40,6 @@ def user_profile(uid):
         else:
             user.gender = 'Unknown'
 
-        # print('form gender data')
-        # print(form.gender.data)
         db.session.add(user)
         db.session.commit()
 
@@ -108,7 +113,6 @@ def user_profile(uid):
     if edit_address_form.edit_address_submit.data and edit_address_form.validate():
         # address_id = request.form.get("address_id")
         address_id = edit_address_form.edit_address_id.data
-        print(edit_address_form.edit_recipient_name.data)
         address = Address.query.get(address_id)
         address.recipient.recipient_name = edit_address_form.edit_recipient_name.data
         address.recipient.phone = edit_address_form.edit_phone.data
@@ -125,7 +129,11 @@ def user_profile(uid):
 
         return redirect(url_for("userinfo.user_profile", uid=current_user.id))
 
-    return render_template('userinfo/user_profile.html', user=user, update_avatar_form=update_avatar_form,
+    all_brands = Brand.query.all()
+    all_categories = Category.query.all()
+
+    return render_template('userinfo/user_profile.html', user=user, all_brands=all_brands, all_categories=all_categories,
+                           update_avatar_form=update_avatar_form,
                            add_address_form=add_address_form, edit_address_form=edit_address_form,
                            edit_profile_form=edit_profile_form)
 
@@ -298,7 +306,8 @@ def user_profile(uid):
 
 
 @userinfo.route('/api/remove-address', methods=['POST'])
-@login_required
+@login_required_for_ajax()
+@customer_only(is_ajax=True)
 def remove_address():
     """
     (Using Ajax)
@@ -358,7 +367,8 @@ def remove_address():
 
 
 @userinfo.route('/api/change-default-address', methods=['POST'])
-@login_required
+@login_required_for_ajax()
+@customer_only(is_ajax=True)
 def change_default_address():
     if request.method == 'POST':
         # get the address id from ajax
@@ -407,3 +417,154 @@ def address_prepare_for_json(address_obj):
                'city': address_obj.city,
                'district': address_obj.district, 'is_default': address_obj.district}
     return address
+
+
+# ---------------------------------------- Brand section ----------------------------------------
+
+@userinfo.route('/api/userinfo/brand-section/follow-brand', methods=['POST'])
+@login_required_for_ajax()
+@customer_only(is_ajax=True)
+def follow_brand():
+    """
+        (Using Ajax)
+        This is a function for a customer to follow a brand
+    """
+    if request.method == 'POST':
+        # get info from Ajax
+        brand_id = request.form.get("brand_id")
+
+        if brand_id is None:
+            current_app.logger.error("Info not gotten from Ajax")
+            return jsonify({'returnValue': 1})
+
+        # query Brand instance from db
+        brand = Brand.query.get(brand_id)
+
+        if brand is None:
+            current_app.logger.error("No such brand with this id")
+            return jsonify({'returnValue': 1})
+
+        # add this brand to the followed_brands of current user
+        current_user.followed_brands.append(brand)
+
+        db.session.add(current_user)
+        db.session.commit()
+
+        return jsonify({'returnValue': 0})
+
+    return jsonify({'returnValue': 1})
+
+
+@userinfo.route('/api/userinfo/brand-section/unfollow-brand', methods=['POST'])
+@login_required_for_ajax()
+@customer_only(is_ajax=True)
+def unfollow_brand():
+    """
+        (Using Ajax)
+        This is a function for a customer to unfollow a brand
+    """
+    if request.method == 'POST':
+        # get info from Ajax
+        brand_id = request.form.get("brand_id")
+
+        if brand_id is None:
+            current_app.logger.error("Info not gotten from Ajax")
+            return jsonify({'returnValue': 1})
+
+        # query Brand instance from db
+        brand = Brand.query.get(brand_id)
+
+        if brand is None:
+            current_app.logger.error("No such brand with this id")
+            return jsonify({'returnValue': 1})
+
+        # validate whether the user followed this brand (If do not do this, there might be an error)
+        if brand not in current_user.followed_brands:
+            current_app.logger.error("A user wants to unfollow a brand even he/she has not followed it!")
+            return jsonify({'returnValue': 1})
+
+        # add this brand to the followed_brands of current user
+        current_user.followed_brands.remove(brand)
+
+        db.session.add(current_user)
+        db.session.commit()
+
+        return jsonify({'returnValue': 0})
+
+    return jsonify({'returnValue': 1})
+
+
+# ---------------------------------------- Category section ----------------------------------------
+
+
+@userinfo.route('/api/userinfo/category-section/follow-category', methods=['POST'])
+@login_required_for_ajax()
+@customer_only(is_ajax=True)
+def follow_category():
+    """
+        (Using Ajax)
+        This is a function for a customer to follow a category
+    """
+    if request.method == 'POST':
+        # get info from Ajax
+        category_id = request.form.get("category_id")
+
+        if category_id is None:
+            current_app.logger.error("Info not gotten from Ajax")
+            return jsonify({'returnValue': 1})
+
+        # query Category instance from db
+        category = Category.query.get(category_id)
+
+        if category is None:
+            current_app.logger.error("No such category with this id")
+            return jsonify({'returnValue': 1})
+
+        # add this category to the followed_categories of current user
+        current_user.followed_categories.append(category)
+
+        db.session.add(current_user)
+        db.session.commit()
+
+        return jsonify({'returnValue': 0})
+
+    return jsonify({'returnValue': 1})
+
+
+@userinfo.route('/api/userinfo/brand-section/unfollow-category', methods=['POST'])
+@login_required_for_ajax()
+@customer_only(is_ajax=True)
+def unfollow_category():
+    """
+        (Using Ajax)
+        This is a function for a customer to unfollow a category
+    """
+    if request.method == 'POST':
+        # get info from Ajax
+        category_id = request.form.get("category_id")
+
+        if category_id is None:
+            current_app.logger.error("Info not gotten from Ajax")
+            return jsonify({'returnValue': 1})
+
+        # query Category instance from db
+        category = Category.query.get(category_id)
+
+        if category is None:
+            current_app.logger.error("No such category with this id")
+            return jsonify({'returnValue': 1})
+
+        # validate whether the user followed this category (If do not do this, there might be an error)
+        if category not in current_user.followed_categories:
+            current_app.logger.error("A user wants to unfollow a category even he/she has not followed it!")
+            return jsonify({'returnValue': 1})
+
+        # add this brand to the followed_categories of current user
+        current_user.followed_categories.remove(category)
+
+        db.session.add(current_user)
+        db.session.commit()
+
+        return jsonify({'returnValue': 0})
+
+    return jsonify({'returnValue': 1})

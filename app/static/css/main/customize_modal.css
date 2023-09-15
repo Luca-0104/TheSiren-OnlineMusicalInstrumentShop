@@ -1,0 +1,91 @@
+.middle-floating{
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+.middle{
+    align: center;
+    text-align:center
+}
+
+.blocker{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background-color: #c3c3e0;
+    opacity: 0.5;
+    z-index: 100;
+}
+
+.action_area{
+    z-index: 101;
+    width: 45%;
+    height: 60%;
+    line-height: 200%;
+    height: 40%;
+}
+
+.action_area{
+    z-index: 101;
+    width: 45%;
+    height: 40%;
+    background-color: #fff;
+    border: 5px solid #e6e6e6;
+}
+
+.close_btn{
+    float: right;
+    font-size: 68px;
+    text-align: center;
+}
+
+.close_btn:hover{
+    float: right;
+    color: #662b2b;
+    font-size: 68px;
+    text-align: center;
+    cursor:pointer;
+}
+
+#form_top_bar{
+    text-align: center;
+    height: 35px;
+}
+
+.action_table{
+    border-collapse: separate;
+    border-spacing: 0px 5px;
+    width: 100%;
+    /* overflow-y: hidden; */
+}
+
+.action_table td {
+    /* margin-bottom: -27px; */
+    padding-left: 30px;
+    padding-right: 30px;
+    /* padding-top: 0px; */
+    /* padding-bottom: 5px; */
+}
+
+.action-table-form{
+    margin-top: 60px;
+    overflow-y: scroll;
+    height: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0px;
+    bottom: 0;
+    border-top: 1px solid #c3c3c3;
+}
+
+.submit_btn{
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.clickable{
+    cursor: pointer;
+}

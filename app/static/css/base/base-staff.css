@@ -1,0 +1,71 @@
+#staff-profile-btn {
+    color: #7c7f87;
+    border-color: #c7cbd3;
+}
+
+#staff-profile-btn:hover {
+    color: #212529;
+    background-color: #c7cbd3;
+    border-color: #c7cbd3
+}
+
+#staff-sign-out-btn {
+    color: #7c7f87;
+    border-color: #c7cbd3;
+}
+
+#staff-sign-out-btn:hover {
+    color: #212529;
+    background-color: #c7cbd3;
+    border-color: #c7cbd3
+}
+
+/*
+    ------------- Epidemic Switch -------------
+*/
+input[type='checkbox'].switch{
+    margin-bottom: -3px;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    width: 40px;
+    height: 20px;
+    background: #ccc;
+    border-radius: 10px;
+    transition: border-color .3s, background-color .3s;
+}
+
+input[type='checkbox'].switch::after {
+    content: '';
+    display: inline-block;
+    width: 1rem;
+    height:1rem;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 2px #999;
+    transition:.4s;
+    top: 2px;
+    position: absolute;
+    left: 2px;
+}
+
+input[type='checkbox'].switch:checked {
+    background: #32bdea;
+}
+
+input[type='checkbox'].switch:checked::after {
+    content: '';
+    position: absolute;
+    left: 55%;
+    top: 2px;
+}
+
+#epidemic-box{
+    width: 185px;
+}
+
+.clickable {
+    cursor: pointer;
+}

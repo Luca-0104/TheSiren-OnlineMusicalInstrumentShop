@@ -1,15 +1,19 @@
-from flask import request, jsonify, render_template, current_app
+from flask import request, jsonify, render_template, current_app, flash
 from flask_login import current_user, login_required
 import json
 
+from flask_babel import _
+
 from app import db
 from app.cart import cart
+from app.decorators import customer_only, login_required_for_ajax
 from app.main import main
 from app.models import Cart, ModelType
 
 
 @cart.route('/show-my-cart')
 @login_required
+@customer_only()
 def show_my_cart():
     """
         for rendering the page of "my shopping cart"
@@ -23,7 +27,8 @@ def show_my_cart():
 
 
 @cart.route('/api/cart/add-to-cart', methods=['POST'])
-@login_required
+@login_required_for_ajax()
+@customer_only(is_ajax=True)
 def add_to_cart():
     """
     (Using Ajax)
@@ -63,14 +68,18 @@ def add_to_cart():
                     db.session.commit()
                     response_cart_id = new_cart.id
 
+                flash(_("Add to cart successful!"))
                 return jsonify({"returnValue": 0, "cartID": response_cart_id})
 
+            else:
+                flash(_("This item runs out of stock!"))
     return jsonify({"returnValue": 1})
 
 
 
 @cart.route('/api/cart/update-cart-count', methods=['POST'])
-@login_required
+@login_required_for_ajax()
+@customer_only(is_ajax=True)
 def update_cart_count():
     """
         (Using Ajax)
@@ -91,19 +100,25 @@ def update_cart_count():
             if cart_relation:
                 # check if the stock is enough
                 model = ModelType.query.get(model_id)
+
+                # if run out of the stock
+                if model.stock < 1:
+                    return jsonify({'returnValue': 3, 'msg': 'This item is out of stock now!'})
+
                 if new_count <= model.stock:
                     cart_relation.count = new_count
                     db.session.commit()
                     return jsonify({'returnValue': 0})
                 else:
                     # the new count exceeds the maximum of the stock!
-                    return jsonify({'returnValue': 2, 'msg': 'exceed maximum'})
+                    return jsonify({'returnValue': 2, 'msg': 'exceed maximum stock'})
 
     return jsonify({'returnValue': 1})
 
 
 @cart.route('/api/cart/remove-cart-relation', methods=['POST'])
-@login_required
+@login_required_for_ajax()
+@customer_only(is_ajax=True)
 def remove_cart_relation():
     """
         (Using Ajax)
@@ -125,6 +140,7 @@ def remove_cart_relation():
         if cart_relation:
             db.session.delete(cart_relation)
             db.session.commit()
+            flash(_("Remove commodity successful!"))
             return jsonify({'returnValue': 0})
 
     return jsonify({'returnValue': 1})

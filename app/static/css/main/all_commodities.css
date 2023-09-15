@@ -1,5 +1,5 @@
 /* This should be add to checkbox containers using js */
-.invisible-checkbox{
+.invisible-checkbox {
     display: none;
 }
 
@@ -12,3 +12,4 @@
     overflow-y: scroll;
     height: 670px;
 }
+

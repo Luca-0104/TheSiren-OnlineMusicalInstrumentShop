@@ -41,10 +41,8 @@ def register():
     current_app.logger.info("come in /register")
 
     form = RegisterForm()
-    print("test")
     # when the form is submitted legally (POST method)
     if form.validate_on_submit():
-        print("entered");
         # create a new user object
         user = User(email=form.email.data, username=form.username.data, password=form.password1.data,
                     role_id=1)
@@ -82,19 +80,20 @@ def login():
             session["theme"] = user.theme
             session["language"] = user.language
 
-            # check whether current user has the chat room
-            chat_room = ChatRoom.query.filter_by(customer_id=user.id).first()
-            if chat_room is None:
-                # find all staff
-                staffs = User.query.filter_by(role_id=2).all()
-                # pick up a staff randomly
-                staff_situation = random.randint(0, len(staffs) - 1)
-                # get the staff id
-                staff_id = staffs[staff_situation].id
-                # set up chat room
-                chat_room1 = ChatRoom(customer_id=user.id, staff_id=staff_id)
-                db.session.add(chat_room1)
-                db.session.commit()
+            # check whether current customer user has the chat room
+            if user.role_id == 1:   # customer
+                chat_room = ChatRoom.query.filter_by(customer_id=user.id).first()
+                if chat_room is None:
+                    # find all staff
+                    staffs = User.query.filter_by(role_id=2).all()
+                    # pick up a staff randomly
+                    staff_situation = random.randint(0, len(staffs) - 1)
+                    # get the staff id
+                    staff_id = staffs[staff_situation].id
+                    # set up chat room
+                    chat_room1 = ChatRoom(customer_id=user.id, staff_id=staff_id)
+                    db.session.add(chat_room1)
+                    db.session.commit()
 
             # use flask-login to login the user
             login_user(user, form.remember_me.data)
@@ -114,7 +113,6 @@ def login():
             else:
                 # if this is a staff account
                 return redirect(url_for("product.show_page_staff_index"))
-
 
         # logger
         current_app.logger.info("a user logs in failed")

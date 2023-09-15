@@ -22,6 +22,11 @@ function remove_product(product_id)
                     console.log("Product " + product_id + "removed");
                     target.remove();
                 }
+                else if (returnValue === 318)
+                {
+                    let targetURL = response['redirectURL'];
+                    window.location.href = targetURL;
+                }
             });
 }
 
@@ -57,7 +62,27 @@ function remove_model_type(model_type_id, product_id)
                     console.log("ModelType " + model_type_id + "removed");
                     remove_product(product_id);
                 }
+                else if (returnValue === 318)
+                {
+                    let targetURL = response['redirectURL'];
+                    window.location.href = targetURL;
+                }
             });
 }
 
 $(".brands").template()
+
+function search_by(type_id)
+{
+    let invisible_search_type = $("#invisible-search-type");
+    let search_by = $("#search-by");
+    $("#invisible-search-type").val(type_id);
+    if(type_id == 1)
+    {
+        search_by.html("Model Name");
+    }
+    else if(type_id == 2)
+    {
+        search_by.html("Model Serial");
+    }
+}

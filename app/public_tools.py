@@ -2,6 +2,7 @@ import os
 import random
 from datetime import datetime
 
+from flask import current_app
 from werkzeug.utils import secure_filename
 
 from app import db
@@ -137,6 +138,22 @@ def get_unique_shop_instance():
     """
     unique_instance = TheSiren.query.get(1)
     return unique_instance
+
+
+def get_epidemic_mode_status():
+    """
+    Get the boolean about whether the epidemic mode is turned on
+    :return: Boolean
+    """
+    # get the status of epidemic mode
+    siren = get_unique_shop_instance()
+    if siren:
+        epidemic_mode_on = siren.epidemic_mode_on
+    else:
+        current_app.logger.error("Siren instance not found!")
+        epidemic_mode_on = False
+
+    return epidemic_mode_on
 
 
 def get_user_by_name(username):

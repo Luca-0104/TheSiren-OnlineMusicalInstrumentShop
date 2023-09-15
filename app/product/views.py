@@ -1,6 +1,8 @@
 """
     Here are the functions for product management (for staff user to use)
 """
+import os
+
 from flask import jsonify, request, flash, render_template, redirect, url_for, json, current_app
 from flask_login import login_required
 from flask_babel import _
@@ -11,25 +13,47 @@ from config import Config
 from . import product
 from .forms import ModelUploadForm, ModelModifyForm, ProductModifyForm
 from .. import db
+from ..decorators import staff_only, login_required_for_ajax
 
-from ..models import Product, ModelType, Category, Brand
-from ..public_tools import upload_picture, get_unique_shop_instance
+from ..models import Product, ModelType, Category, Brand, Audio, Order
+from ..public_tools import upload_picture, get_unique_shop_instance, get_epidemic_mode_status, generate_safe_pic_name
 
 
 # ------------------------------------------------ render the page  of stock management ------------------------------------------------
 @product.route('/staff-index')
 @login_required
+@staff_only()
 def show_page_staff_index():
     """
         This function renders the page of DashBoard
     """
+    # get whether the epidemic mode has been turned on
+    epidemic_mode_on = get_epidemic_mode_status()
+
+    # get the unique instance of this shop
+    unique_shop_instance = get_unique_shop_instance()
+
     # get the best selling (top 6) model types
     best_sell_mt_lst = ModelType.query.filter_by(is_deleted=False).order_by(ModelType.sales.desc()).limit(6).all()
-    return render_template('staff/staff-index.html', best_sell_mt_lst=best_sell_mt_lst)
+
+    # get the total number of paid orders
+    paid_order_count = 0
+    paid_order_count += Order.query.filter_by(status_code=1).count()
+    paid_order_count += Order.query.filter_by(status_code=2).count()
+    paid_order_count += Order.query.filter_by(status_code=3).count()
+    paid_order_count += Order.query.filter_by(status_code=4).count()
+
+    return render_template('staff/staff-index.html',
+                           best_sell_mt_lst=best_sell_mt_lst,
+                           epidemic_mode_on=epidemic_mode_on,
+                           paid_order_count=paid_order_count,
+                           total_sales=unique_shop_instance.total_sales,
+                           total_sale_count=unique_shop_instance.total_sale_count)
 
 
 @product.route('/stock-management', methods=['GET', 'POST'])
 @login_required
+@staff_only()
 def show_page_stock_management():
     """
     This function has integrated the function of searching and rendering the stock management page
@@ -38,13 +62,7 @@ def show_page_stock_management():
         key_word: the string in the searching blank
         search_type: 1: by name; 2: by serial_number
     """
-    # get the status of epidemic mode
-    siren = get_unique_shop_instance()
-    if siren:
-        epidemic_mode_on = siren.epidemic_mode_on
-    else:
-        current_app.logger.error("Siren instance not found!")
-        epidemic_mode_on = False
+    epidemic_mode_on = get_epidemic_mode_status()
 
     """ if the search form is submitted """
     if request.method == 'POST':
@@ -138,10 +156,14 @@ def search_stock(key_word, search_type):
 
 @product.route('/upload-product', methods=['GET', 'POST'])
 @login_required
+@staff_only()
 def upload_product():
     """
         This method uses the frontend form
     """
+    # get whether the epidemic mode is turned on currently
+    epidemic_mode_on = get_epidemic_mode_status()
+
     # if the form is submitted
     if request.method == 'POST':
         p_name = request.form.get('product_name')
@@ -230,39 +252,40 @@ def upload_product():
                 flash(result[1])
             elif status == 2:
                 # partial success
-                failed_list = result[1]
-                flash_str = 'Picture '
-                for name in failed_list:
-                    flash_str += name
-                    flash_str += ', '
-                flash_str += ' are failed to be uploaded! Check the suffix'
-                flash(flash_str)
+                # failed_list = result[1]
+                # flash_str = 'Picture '
+                # for name in failed_list:
+                #     flash_str += name
+                #     flash_str += ', '
+                # flash_str += ' are failed to be uploaded! Check the suffix'
+                # flash(flash_str)
+                flash(_("Part of the pictures are failed to be uploaded! Check their suffix!"))
 
             """ add introduction pictures """
-            result_intro = upload_picture(m_pics_intro_lst, new_model_type.id, Config.PIC_TYPE_MODEL_INTRO)
-            # get the status code
-            status2 = result_intro[0]
-            if status2 == 0:
-                # success
-                pass
-            elif status2 == 1:
-                # failed
-                flash(result_intro[1])
-            elif status2 == 2:
-                # partial success
-                failed_list = result_intro[1]
-                flash_str = 'Picture '
-                for name in failed_list:
-                    flash_str += name
-                    flash_str += ', '
-                flash_str += ' are failed to be uploaded! Check the suffix'
-                flash(flash_str)
+            # result_intro = upload_picture(m_pics_intro_lst, new_model_type.id, Config.PIC_TYPE_MODEL_INTRO)
+            # # get the status code
+            # status2 = result_intro[0]
+            # if status2 == 0:
+            #     # success
+            #     pass
+            # elif status2 == 1:
+            #     # failed
+            #     flash(result_intro[1])
+            # elif status2 == 2:
+            #     # partial success
+            #     failed_list = result_intro[1]
+            #     flash_str = 'Picture '
+            #     for name in failed_list:
+            #         flash_str += name
+            #         flash_str += ', '
+            #     flash_str += ' are failed to be uploaded! Check the suffix'
+            #     flash(flash_str)
 
-            # go back to the management page after adding the new product (not matter are there any failures about pictures)
-            flash(_('New product and its models are uploaded successfully!'))
-            return redirect(url_for('product.show_page_stock_management'))
+        # go back to the management page after adding the new product (not matter are there any failures about pictures)
+        flash(_('New product and its models are uploaded successfully!'))
+        return redirect(url_for('product.show_page_stock_management'))
 
-    return render_template('staff/page-add-product.html')
+    return render_template('staff/page-add-product.html', epidemic_mode_on=epidemic_mode_on)
 
 
 @product.route('/api/stock-management/upload-product/validate-serial-p', methods=['POST'])
@@ -329,7 +352,8 @@ def validate_model_serial():
 
 
 @product.route('/api/stock-management/remove-product', methods=['POST'])
-@login_required
+@login_required_for_ajax()
+@staff_only(is_ajax=True)
 def remove_product():
     """
     (Using Ajax)
@@ -349,10 +373,14 @@ def remove_product():
 
 @product.route('/modify-product/<int:product_id>', methods=['GET', 'POST'])
 @login_required
+@staff_only()
 def modify_product(product_id):
     """
         (Backend forms needed, 'categories' are not in backend form)
     """
+    # get whether the epidemic mode is turned on currently
+    epidemic_mode_on = get_epidemic_mode_status()
+
     form = ProductModifyForm(product_id)
     form.brand_id.choices = [(b.id, b.name) for b in Brand.query.all()]  # initialize the choices of the SelectField
     # get the product object by id
@@ -390,7 +418,8 @@ def modify_product(product_id):
     # form.serial_number.data = p.serial_number
     form.brand_id.data = p.brand_id
     # the product modify page
-    return render_template('staff/page-modify-product.html', form=form, all_cate_list=all_cate_list)
+    return render_template('staff/page-modify-product.html', form=form, all_cate_list=all_cate_list,
+                           epidemic_mode_on=epidemic_mode_on)
 
 
 # ------------------------------------------------ CUD operations on 'model_type' ------------------------------------------------
@@ -398,11 +427,15 @@ def modify_product(product_id):
 
 @product.route('/upload-model-type/<int:product_id>', methods=['GET', 'POST'])
 @login_required
+@staff_only()
 def upload_model_type(product_id):
     """
         (Backend forms needed)
         :param product_id: Which product this model belongs to
     """
+    # get whether the epidemic mode is turned on currently
+    epidemic_mode_on = get_epidemic_mode_status()
+
     form = ModelUploadForm(product_id)
     if form.validate_on_submit():
         """
@@ -429,6 +462,7 @@ def upload_model_type(product_id):
                 new_model_type.categories.append(Category.query.get(cate_id))
 
             db.session.commit()
+            flash(_("Model Type Uploaded!"))
 
             """
                 Dealing with the uploaded pictures (The model type pictures)
@@ -439,42 +473,43 @@ def upload_model_type(product_id):
             status = result[0]
             if status == 0:
                 # success
-                flash(result[1])
+                pass
             elif status == 1:
                 # failed
                 flash(result[1])
             elif status == 2:
                 # partial success
-                failed_list = result[1]
-                flash_str = 'Picture '
-                for name in failed_list:
-                    flash_str += name
-                    flash_str += ', '
-                flash_str += ' are failed to be uploaded! Check the suffix'
-                flash(flash_str)
+                # failed_list = result[1]
+                # flash_str = 'Picture '
+                # for name in failed_list:
+                #     flash_str += name
+                #     flash_str += ', '
+                # flash_str += ' are failed to be uploaded! Check the suffix'
+                # flash(flash_str)
+                flash(_("Part of the pictures are failed to be uploaded! Check their suffix!"))
 
             """
                 Dealing with the uploaded pictures (Introduction pictures)
             """
-            intro_pic_list = form.intro_pictures.data
-            result = upload_picture(intro_pic_list, new_model_type.id, Config.PIC_TYPE_MODEL_INTRO)
-            # get the status code
-            status = result[0]
-            if status == 0:
-                # success
-                flash(result[1])
-            elif status == 1:
-                # failed
-                flash(result[1])
-            elif status == 2:
-                # partial success
-                failed_list = result[1]
-                flash_str = 'Picture '
-                for name in failed_list:
-                    flash_str += name
-                    flash_str += ', '
-                flash_str += ' are failed to be uploaded! Check the suffix.'
-                flash(flash_str)
+            # intro_pic_list = form.intro_pictures.data
+            # result = upload_picture(intro_pic_list, new_model_type.id, Config.PIC_TYPE_MODEL_INTRO)
+            # # get the status code
+            # status = result[0]
+            # if status == 0:
+            #     # success
+            #     flash(result[1])
+            # elif status == 1:
+            #     # failed
+            #     flash(result[1])
+            # elif status == 2:
+            #     # partial success
+            #     failed_list = result[1]
+            #     flash_str = 'Picture '
+            #     for name in failed_list:
+            #         flash_str += name
+            #         flash_str += ', '
+            #     flash_str += ' are failed to be uploaded! Check the suffix.'
+            #     flash(flash_str)
 
         else:  # The product does not exist
             flash(_('Error! The product does not exist! Try it again!'))
@@ -484,11 +519,12 @@ def upload_model_type(product_id):
         return redirect(url_for('product.show_page_stock_management'))
 
     # render the page of upload form
-    return render_template('staff/page-upload-modeltype.html', form=form)
+    return render_template('staff/page-upload-modeltype.html', form=form, epidemic_mode_on=epidemic_mode_on)
 
 
 @product.route('/api/stock-management/remove-model-type', methods=['POST'])
-@login_required
+@login_required_for_ajax()
+@staff_only(is_ajax=True)
 def remove_model_type():
     """
         (Using Ajax)
@@ -518,12 +554,16 @@ def remove_model_type():
 
 @product.route('/modify-model-type/<int:model_id>', methods=['GET', 'POST'])
 @login_required
+@staff_only()
 def modify_model_type(model_id):
     """
         (Backend forms needed)
         (This modification does not include modifying pictures)
         :param model_id: The id of the model type that should be modified
     """
+    # get whether the epidemic mode is turned on currently
+    epidemic_mode_on = get_epidemic_mode_status()
+
     # get the instance of the model by id
     model = ModelType.query.get(model_id)
     form = ModelModifyForm(model_id)
@@ -547,48 +587,50 @@ def modify_model_type(model_id):
             status = result[0]
             if status == 0:
                 # success
-                flash(result[1])
+                pass
             elif status == 1:
                 # failed
                 flash(result[1])
                 return redirect(url_for('product.modify_model_type'))
             elif status == 2:
                 # partial success
-                failed_list = result[1]
-                flash_str = 'Picture '
-                for name in failed_list:
-                    flash_str += name
-                    flash_str += ', '
-                flash_str += ' are failed to be uploaded! Check the suffix'
-                flash(flash_str)
+                # failed_list = result[1]
+                # flash_str = 'Picture '
+                # for name in failed_list:
+                #     flash_str += name
+                #     flash_str += ', '
+                # flash_str += ' are failed to be uploaded! Check the suffix'
+                # flash(flash_str)
+                flash(_("Part of the pictures are failed to be uploaded! Check their suffix!"))
 
         """
             Dealing with the uploaded pictures (Introduction pictures)
         """
-        intro_pic_list = form.intro_pictures.data
-        if len(intro_pic_list) != 0:
-            result = upload_picture(intro_pic_list, model.id, Config.PIC_TYPE_MODEL_INTRO)
-            # get the status code
-            status = result[0]
-            if status == 0:
-                # success
-                flash(result[1])
-            elif status == 1:
-                # failed
-                flash(result[1])
-                return redirect(url_for('product.modify_model_type'))
-            elif status == 2:
-                # partial success
-                failed_list = result[1]
-                flash_str = 'Picture '
-                for name in failed_list:
-                    flash_str += name
-                    flash_str += ', '
-                flash_str += ' are failed to be uploaded! Check the suffix.'
-                flash(flash_str)
+        # intro_pic_list = form.intro_pictures.data
+        # if len(intro_pic_list) != 0:
+        #     result = upload_picture(intro_pic_list, model.id, Config.PIC_TYPE_MODEL_INTRO)
+        #     # get the status code
+        #     status = result[0]
+        #     if status == 0:
+        #         # success
+        #         flash(result[1])
+        #     elif status == 1:
+        #         # failed
+        #         flash(result[1])
+        #         return redirect(url_for('product.modify_model_type'))
+        #     elif status == 2:
+        #         # partial success
+        #         failed_list = result[1]
+        #         flash_str = 'Picture '
+        #         for name in failed_list:
+        #             flash_str += name
+        #             flash_str += ', '
+        #         flash_str += ' are failed to be uploaded! Check the suffix.'
+        #         flash(flash_str)
+
         # --------------------------------------------------
         db.session.commit()
-        flash(_('Model updated!'))
+        flash(_('Model Type updated!'))
         # back to the stock management page
         return redirect(url_for('product.show_page_stock_management'))
 
@@ -598,14 +640,238 @@ def modify_model_type(model_id):
     form.price.data = model.price
     form.stock.data = model.stock
     form.serial_number.data = model.serial_number
-    return render_template('staff/page-modify-modeltype.html', form=form)
+    return render_template('staff/page-modify-modeltype.html', form=form, epidemic_mode_on=epidemic_mode_on)
 
+
+# ------------------------------------------------ Upload Media Files for Model Types  ------------------------------------------------
+
+@product.route('/stock-management/upload-video/<int:mt_id>', methods=['GET', 'POST'])
+@login_required
+@staff_only()
+def upload_video(mt_id):
+    """
+    This is a function for staffs uploading video file for a specific model type
+    :param mt_id: The id of the corresponding model type
+    """
+    if request.method == 'POST':
+        # check the model type
+        mt = ModelType.query.get(mt_id)
+
+        if mt is None:
+            current_app.logger.error("This model type does not exist!")
+            return redirect(url_for('product.show_page_stock_management'))
+
+        if mt.is_deleted:
+            flash(_("Failed! You cannot upload video for a deleted model type."))
+            current_app.logger.error("This model type has been deleted!")
+            return redirect(url_for('product.show_page_stock_management'))
+
+        # get video file from the form
+        video = request.files.get("video_file")
+
+        if video is None:
+            current_app.logger.error("video not gotten from the request")
+            return redirect(url_for('product.show_page_stock_management'))
+
+        filename = video.filename
+        suffix = filename.rsplit('.')[-1]
+
+        # check the file type
+        if suffix not in Config.ALLOWED_VIDEO_SUFFIXES:
+            flash(_("Failed! You should upload .mp4 video only."))
+            current_app.logger.error("video file type error!")
+            return redirect(url_for('product.show_page_stock_management'))
+
+        # make sure the name of video is safe
+        filename = generate_safe_pic_name(filename)
+
+        # save video in local directory
+        file_path = os.path.join(Config.video_dir, filename).replace('\\', '/')
+        video.save(file_path)
+
+        # save the reference in database
+        path = 'upload/model_type/videos'
+        ref_address = os.path.join(path, filename).replace('\\', '/')
+        mt.video_address = ref_address
+        db.session.add(mt)
+        db.session.commit()
+
+        flash(_("Video uploaded successfully!"))
+
+    return redirect(url_for('product.show_page_stock_management'))
+
+
+@product.route('/stock-management/upload-audio/<int:mt_id>', methods=['GET', 'POST'])
+@login_required
+@staff_only()
+def upload_audio(mt_id):
+    """
+    This is a function for staffs uploading audio file for a specific model type
+    :param mt_id: The id of the corresponding model type
+    """
+    if request.method == 'POST':
+        # check the model type
+        mt = ModelType.query.get(mt_id)
+
+        if mt is None:
+            current_app.logger.error("This model type does not exist!")
+            return redirect(url_for('product.show_page_stock_management'))
+
+        if mt.is_deleted:
+            flash(_("Failed! You cannot upload video for a deleted model type."))
+            current_app.logger.error("This model type has been deleted!")
+            return redirect(url_for('product.show_page_stock_management'))
+
+        # get audio file from the form
+        audio = request.files.get("audio_file")
+
+        if audio is None:
+            current_app.logger.error("audio not gotten from the request")
+            return redirect(url_for('product.show_page_stock_management'))
+
+        filename = audio.filename
+        suffix = filename.rsplit('.')[-1]
+
+        # check the file type
+        if suffix not in Config.ALLOWED_AUDIO_SUFFIXES:
+            flash(_("Failed! You should upload .mp3 audio only."))
+            current_app.logger.error("audio file type error!")
+            return redirect(url_for('product.show_page_stock_management'))
+
+        # make sure the name of audio is safe
+        filename = generate_safe_pic_name(filename)
+
+        # save audio in local directory
+        file_path = os.path.join(Config.audios_dir, filename).replace('\\', '/')
+        audio.save(file_path)
+
+        # save the reference in database
+        path = 'upload/model_type/audios'
+        ref_address = os.path.join(path, filename).replace('\\', '/')
+        new_audio = Audio(address=ref_address, model_type_id=mt_id)
+        db.session.add(new_audio)
+        db.session.commit()
+
+        flash(_("Audio uploaded successfully!"))
+
+    return redirect(url_for('product.show_page_stock_management'))
+
+
+@product.route('/stock-management/upload-3d-file/<int:mt_id>', methods=['GET', 'POST'])
+@login_required
+@staff_only()
+def upload_3d_file(mt_id):
+    """
+    This is a function for staffs uploading 3D model file for a specific model type
+    :param mt_id: The id of the corresponding model type
+    """
+    if request.method == 'POST':
+        # check the model type
+        mt = ModelType.query.get(mt_id)
+
+        if mt is None:
+            current_app.logger.error("This model type does not exist!")
+            return redirect(url_for('product.show_page_stock_management'))
+
+        if mt.is_deleted:
+            flash(_("Failed! You cannot upload video for a deleted model type."))
+            current_app.logger.error("This model type has been deleted!")
+            return redirect(url_for('product.show_page_stock_management'))
+
+        # get 3d file from the form
+        three_d_file = request.files.get("three_d_file")
+        # get texture file from the form
+        three_d_texture_file = request.files.get("three_d_texture_file")
+
+        if three_d_file is None:
+            current_app.logger.error("3d file not gotten from the request")
+            return redirect(url_for('product.show_page_stock_management'))
+
+        # give the default texture if not uploaded one
+        is_default_texture = False
+        if three_d_texture_file.filename == "":
+            is_default_texture = True
+
+        """ 
+            Deal with 3D model file 
+        """
+        filename = three_d_file.filename
+        suffix = filename.rsplit('.')[-1]
+
+        # check the file type
+        if suffix not in Config.ALLOWED_3D_MODEL_SUFFIXES:
+            flash(_("Failed! You should upload .fbx/.obj file only."))
+            current_app.logger.error("3d file type error!")
+            return redirect(url_for('product.show_page_stock_management'))
+
+        # make sure the name of 3d file is safe
+        filename = generate_safe_pic_name(filename)
+
+        # save 3d file in local directory
+        file_path = os.path.join(Config.threeD_dir, filename).replace('\\', '/')
+        three_d_file.save(file_path)
+
+        # save the reference in database
+        path = 'upload/model_type/3d-model-files'
+        ref_address = os.path.join(path, filename).replace('\\', '/')
+        mt.three_d_model_address = ref_address
+        db.session.add(mt)
+
+        """ 
+            Deal with texture file
+        """
+        # if a texture file is uploaded
+        if not is_default_texture:
+            texture_filename = three_d_texture_file.filename
+            suffix = texture_filename.rsplit('.')[-1]
+
+            # check the file type
+            if suffix not in Config.ALLOWED_3D_MODEL_TEXTURE_SUFFIXES:
+                flash(_("Failed! You should upload '.png' file only."))
+                current_app.logger.error("3d texture file type error!")
+                # rollback the db
+                db.session.rollback()
+                return redirect(url_for('product.show_page_stock_management'))
+
+            # make sure the name of 3d texture file is safe
+            texture_filename = generate_safe_pic_name(texture_filename)
+
+            # save 3d texture file in local directory
+            texture_file_path = os.path.join(Config.threeD_texture_dir, texture_filename).replace('\\', '/')
+            three_d_texture_file.save(texture_file_path)
+
+            # save the reference in database
+            t_path = 'upload/model_type/3d-model-texture-files'
+            texture_ref_address = os.path.join(t_path, texture_filename).replace('\\', '/')
+            mt.three_d_model_texture_address = texture_ref_address
+
+
+        # if no texture uploaded, we should give a default one
+        else:
+            mt.three_d_model_texture_address = "upload/model_type/3d-model-texture-files/pre-store/cello.png"
+
+        db.session.add(mt)
+
+        # commit to db
+        try:
+            db.session.commit()
+        except Exception as e:
+            current_app.logger.error(e)
+            db.session.rollback()
+            flash(_("3D model upload failed!"))
+            return redirect(url_for('product.show_page_stock_management'))
+
+        flash(_("3D model uploaded successfully!"))
+
+    return redirect(url_for('product.show_page_stock_management'))
 
 # ------------------------------------------------ operations on 'categories' ------------------------------------------------
 # ------------------------------------------- may NOT be adopted! ------------------------------------------------------------------------------
 
+
 @product.route('/api/stock-management/add-category', methods=['POST'])
-@login_required
+@login_required_for_ajax()
+@staff_only(is_ajax=True)
 def add_category():
     """
     (Using Ajax)
@@ -634,7 +900,8 @@ def add_category():
 
 
 @product.route('/api/stock-management/remove-category', methods=['POST'])
-@login_required
+@login_required_for_ajax()
+@staff_only(is_ajax=True)
 def remove_category():
     """
     (Using Ajax)
@@ -647,7 +914,8 @@ def remove_category():
 # ------------------------------------------------ operations on 'brands' ------------------------------------------------
 
 @product.route('/api/stock-management/add-brand', methods=['POST'])
-@login_required
+@login_required_for_ajax()
+@staff_only(is_ajax=True)
 def add_brand():
     """
     (Using Ajax)
@@ -676,7 +944,8 @@ def add_brand():
 
 
 @product.route('/api/stock-management/remove-brand', methods=['POST'])
-@login_required
+@login_required_for_ajax()
+@staff_only(is_ajax=True)
 def remove_brand():
     """
     (Using Ajax)

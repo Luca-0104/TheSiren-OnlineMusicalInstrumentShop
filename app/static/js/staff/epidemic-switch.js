@@ -6,6 +6,7 @@ $(document).ready(function () {
         // get the "switch_to" status
         let switchTo = $("#switch-epidemic").prop("checked");
         // send Ajax request to switch the mode
+        console.log("Here upon the if");
         if (switchTo === true) {
             if (confirm('Are you sure to turn on the epidemic mode?') === true) {
                 switchEpidemicMode('1');
@@ -40,7 +41,13 @@ function switchEpidemicMode(switchTo) {
 
         if (returnValue === 0) { //success
 
-        } else {
+        }
+        else if (returnValue === 318)
+        {
+            let targetURL = response['redirectURL'];
+            window.location.href = targetURL;
+        }
+        else {
             //failed
             //notify the user
             window.alert("Permission Denied!");

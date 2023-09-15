@@ -160,7 +160,7 @@ pm_lst = [
                 3900,  # m price
                 3.5,  # kg
                 [
-                    'g-p5m1-1.jpg',
+                    'g-p5m1-1.png',
                     'g-p5m1-2.jpg',
                     'g-p5m1-3.jpg',
                     'g-p5m1-4.jpg'
@@ -174,7 +174,7 @@ pm_lst = [
                 4200,  # m price
                 3.5,  # kg
                 [
-                    'g-p5m2-1.jpg',
+                    'g-p5m2-1.png',
                     'g-p5m2-2.jpg',
                     'g-p5m2-3.jpg'
                 ]
@@ -187,7 +187,7 @@ pm_lst = [
                 4600,  # m price
                 3.7,  # kg
                 [
-                    'g-p5m3-1.jpg',
+                    'g-p5m3-1.png',
                     'g-p5m3-2.jpg'
                 ]
             ]
@@ -415,6 +415,340 @@ pm_lst = [
             # []
         ]
     ],
+
+    # product 12 ----------------------------------------------------
+    [
+        "Lyon&Healy PREMIUM STYLE 26 GOLD Harp",  # product name
+        17,  # brand id
+        1,  # cate id - C
+        14,  # cate id - T
+        53,  # cate id - A
+        [  # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'Lyon&Healy PREMIUM STYLE 26 GOLD Harp',  # model name
+                'A stately harp designed by Lyon & Healy in the late 1800s, the Style 26 integrates nineteenth century Gothic revival styles with Renaissance detail. The harp is hand-gilded with 23+ karat gold leaf and burnished to feature the dimension of the relief and the hexagonal column. The hand-painted soundboard decoration using 23+ karat gold leaf features intricate brush strokes that climb up the length of the soundboard, interlaced with rose blooms.',  # m description
+                158790,  # m price
+                37,  # kg
+                [
+                    'g-p12m1-1.jpg'
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 13 ----------------------------------------------------
+    [
+        "HuQiu Special selection of old mahogany professional Erhu",  # product name
+        17,  # brand id
+        1,  # cate id - C
+        15,  # cate id - T
+        53,  # cate id - A
+        [  # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'HuQiu Special selection of old mahogany professional Erhu',  # model name
+                'Stage performance special erhu, a full set of accessories as gift',  # m description
+                12800,  # m price
+                1.2,  # kg
+                [
+                    'g-p13m1-1.jpg',
+
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 14 ----------------------------------------------------
+    [
+        "HuQiu 21 string red Phoenix Guzheng",  # product name
+        17,  # brand id
+        1,  # cate id - C
+        16,  # cate id - T
+        53,  # cate id - A
+        [  # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'HuQiu 21 string red Phoenix Guzheng',  # model name
+                'Beginner, performance, entertainment professional Guzheng, buy and get a full set of accessories for free',  # m description
+                12600,  # m price
+                4.5,  # kg
+                [
+                    'g-p14m1-1.jpg'
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 15 ----------------------------------------------------
+    [
+        "Dunhuang Guqin (senior) (Aged broken grain wood)",  # product name
+        17,  # brand id
+        1,  # cate id - C
+        17,  # cate id - T
+        53,  # cate id - A
+        [  # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'Dunhuang Guqin (senior) (Aged broken grain wood)',  # model name
+                'Dunhuang Guqin (senior) (Aged broken grain wood)',  # m description
+                15900,  # m price
+                3.5,  # kg
+                [
+                    'g-p15m1-1.jpg'
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 16 ----------------------------------------------------
+    [
+        "Huqiu White acid branch wax professional lute",  # product name
+        17,  # brand id
+        1,  # cate id - C
+        18,  # cate id - T
+        53,  # cate id - A
+        [  # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'White acid branch wax professional lute',  # model name
+                'Pure sound quality, aesthetic appearance, boutique customization',  # m description
+                44500,  # m price
+                2.5,  # kg
+                [
+                    'g-p16m1-1.jpg'
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 17 ----------------------------------------------------
+    [
+        "Yamaha 900/800 Series Handmade Flutes",  # product name
+        16,  # brand id
+        2,  # cate id - C
+        19,  # cate id - T
+        53,  # cate id - A
+        [  # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'Yamaha 900/800 Series Handmade Flutes',  # model name
+                'Inspired to start afresh, we went back to a clean slate applying all of the knowledge, advancements, and skills we’ve obtained over the last two decades crafting some of the finest handmade flutes available today into the design of an entirely new line of handmade instruments. Focusing on innovation, we’ve created some instruments that change the image of the handmade flute significantly. They offer tone with charm and depth, and a wide dynamic range that allows performers to play with a wide range of expression and the tone and volume flutists have long desired. Top-of-the-line handmade gold flutes offer a rich, deep tone with outstanding presence in orchestral settings. Highly responsive with a wide dynamic range that spans from rich, sensitive pianissimo to highly resonant fortissimo they allow the flautist to discover new limits of musical expression. From the finest details to their overall design, every part, process, and component on these handmade silver flutes is designed to function in harmony with the rest.',  # m description
+                35900,  # m price
+                1.3,  # kg
+                [
+                    'g-p17m1-1.png'
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 18 ----------------------------------------------------
+    [
+        "Yamaha YCL-CSVR-ASP/CSVRA-ASP Clarinet",  # product name
+        16,  # brand id
+        2,  # cate id - C
+        20,  # cate id - T
+        53,  # cate id - A
+        [  # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'Yamaha YCL-CSVR-ASP/CSVRA-ASP Clarinet',  # model name
+                'The Custom CSVR clarinets were specifically designed with the input of professional clarinet educators. This led to a complete revitalization of Yamaha clarinets seen with the SEVR, CSGIII, and now the CSVR-ASP clarinets. The Atelier Special clarinet gives players an exacting level of consistency and quality for the most nuance control and performance, with a darker and more projecting tone than that of the original CSVR.',  # m description
+                15800,  # m price
+                1.2,  # kg
+                [
+                    'g-p18m1-1.png'
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+    # product 19 ----------------------------------------------------
+    [
+        "Yamaha YOB-841L Oboe",  # product name
+        16,  # brand id
+        2,  # cate id - C
+        21,  # cate id - T
+        53,  # cate id - A
+        [  # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'Yamaha YOB-841L Oboe',  # model name
+                "Yamaha oboes achieve a clear sound quality and superb intonation by dramatically improving the precision and stability of the bore. Also to cope with various durability issues inherent in wooden wind instruments, Duet+ models employ innovative techniques to form a protective layer next to the air column. The combination of precious wood and state-of -the-art resin is not simply a 'Duet' of tradition and technology - it's a 'Plus' advantage indeed!",  # m description
+                18900,  # m price
+                1.2,  # kg
+                [
+                    'g-p19m1-1.jpg'
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+
+    # product 20 ----------------------------------------------------
+    [
+        "Hohner MÚSICA TÍPICA SERIES Accordion",  # product name
+        8,  # brand id
+        5,  # cate id - C
+        47,  # cate id - T
+        53,  # cate id - A
+        [  # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'Hohner MÚSICA TÍPICA SERIES Accordion',  # model name
+                'The typical HOHNER sound, as crisp and voluminous as we know it – but at an incredible price. The compadre is your best friend for your first steps into the world of Norteño, Tex-Mex, and folk punk. Explore the acoustic possibilities of Mexican, Irish, and German folk with this sturdy accordion designed for beginners and advanced players.',  # m description
+                6400,  # m price
+                2.2,  # kg
+                [
+                    'g-p20m1-1.jpg'
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+
+    # product 21 ----------------------------------------------------
+    [
+        "Yanaha MONTAGE8 Synthesizer",  # product name
+        16,  # brand id
+        5,  # cate id - C
+        50,  # cate id - T
+        54,  # cate id - A
+        [  # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'Yanaha MONTAGE8 Synthesizer',  # model name
+                'MONTAGE 8 is an 88-key balanced hammer action synthesizer combining sophisticated dynamic control, massive sound creation and streamlined workflow',  # m description
+                23000,  # m price
+                4.5,  # kg
+                [
+                    'g-p21m1-1.png'
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+
+    # product 22 ----------------------------------------------------
+    [
+        "Roland SPD-SX Special Edition LaunchPad",  # product name
+        17,  # brand id
+        5,  # cate id - C
+        48,  # cate id - T
+        54,  # cate id - A
+        [  # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'Roland SPD-SX Special Edition LaunchPad',  # model name
+                'FOR PRO PLAYERS WHO NEED INSTANT ACCESS TO ALL THEIR ORIGINAL SOUNDS, WITHOUT COMPROMISE Roland s SPD-SX Sampling Pad is the professional touring standard for triggering custom samples, loops, and even complete backing tracks. It also supports real-time sample capture with its exclusive Multi-Pad Sampling function. The SPD-SX Special Edition is identical in functionality to the original SPD-SX, but features greatly expanded onboard storage. With 16 GB of internal memory available, its now possible to load enough studio-quality WAV samples to last an entire gig and beyond.',  # m description
+                4700,  # m price
+                1.4,  # kg
+                [
+                    'g-p22m1-1.jpg',
+                    'g-p22m1-2.jpg',
+                    'g-p22m1-3.jpg'
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+
+    # product 10 ----------------------------------------------------
+    [
+        "Yamaha AG01 Streaming Loopback Audio USB Microphone",  # product name
+        16,  # brand id
+        6,  # cate id - C
+        51,  # cate id - T
+        54,  # cate id - A
+        [  # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'Yamaha AG01 Streaming Loopback Audio USB Microphone',  # model name
+                'Configuring a streaming setup from scratch can be a daunting task, particularly for users with little production experience. The minimalist design of the AG01 takes this into account by combining a high-quality condenser microphone with DSP effects, a LOOPBACK function, flexible input connectivity, and a simple, intuitive mixer for stress-free streaming operation. Simply connect to your computer or iOS/Android device along with the headphones of your choice, then set your levels, and you ve got a fully operational streaming station. If you’re an aspiring live streamer that requires a compact yet comprehensive, high-quality, all-in-one solution, the AG01 is ready when you are.',  # m description
+                2190,  # m price
+                1,  # kg
+                [
+                    'g-p23m1-1.jpg'
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
+
+    # product 10 ----------------------------------------------------
+    [
+        "Yamaha HPH-MT7W Studio Monitor Headphones",  # product name
+        16,  # brand id
+        6,  # cate id - C
+        52,  # cate id - T
+        54,  # cate id - A
+        [  # model type list
+            # model 1 ----------------------------------------------------------
+            [
+                'Yamaha HPH-MT7W Studio Monitor Headphones',  # model name
+                'High-resolution monitor headphones that reproduce even the most subtle nuances of the source sound. In addition to mixing and recording in the studio, the HPH-MT7W headphones are perfect for mix monitoring in live performance applications thanks to their high sound pressure levels and durability.',  # m description
+                1200,  # m price
+                0.8,  # kg
+                [
+                    'g-p24m1-1.jpg'
+                ]
+            ],
+            # model 2 ----------------------------------------------------------
+            # [],
+            # model 3 ----------------------------------------------------------
+            # []
+        ]
+    ],
+
     #
     # # product 10 ----------------------------------------------------
     # [
@@ -442,141 +776,7 @@ pm_lst = [
     #         # []
     #     ]
     # ],
-    #
-    # # product 10 ----------------------------------------------------
-    # [
-    #     "product-name-test",  # product name
-    #     1,  # brand id
-    #     1,  # cate id - C
-    #     7,  # cate id - T
-    #     53,  # cate id - A
-    #     [  # model type list
-    #         # model 1 ----------------------------------------------------------
-    #         [
-    #             'model-name-test',  # model name
-    #             'model-description-test',  # m description
-    #             100,  # m price
-    #             2,  # kg
-    #             [
-    #                 'p1m1-1.png',
-    #                 'p1m1-2.png',
-    #                 'p1m1-3.png'
-    #             ]
-    #         ],
-    #         # model 2 ----------------------------------------------------------
-    #         # [],
-    #         # model 3 ----------------------------------------------------------
-    #         # []
-    #     ]
-    # ],
-    #
-    # # product 10 ----------------------------------------------------
-    # [
-    #     "product-name-test",  # product name
-    #     1,  # brand id
-    #     1,  # cate id - C
-    #     7,  # cate id - T
-    #     53,  # cate id - A
-    #     [  # model type list
-    #         # model 1 ----------------------------------------------------------
-    #         [
-    #             'model-name-test',  # model name
-    #             'model-description-test',  # m description
-    #             100,  # m price
-    #             2,  # kg
-    #             [
-    #                 'p1m1-1.png',
-    #                 'p1m1-2.png',
-    #                 'p1m1-3.png'
-    #             ]
-    #         ],
-    #         # model 2 ----------------------------------------------------------
-    #         # [],
-    #         # model 3 ----------------------------------------------------------
-    #         # []
-    #     ]
-    # ],
-    #
-    # # product 10 ----------------------------------------------------
-    # [
-    #     "product-name-test",  # product name
-    #     1,  # brand id
-    #     1,  # cate id - C
-    #     7,  # cate id - T
-    #     53,  # cate id - A
-    #     [  # model type list
-    #         # model 1 ----------------------------------------------------------
-    #         [
-    #             'model-name-test',  # model name
-    #             'model-description-test',  # m description
-    #             100,  # m price
-    #             2,  # kg
-    #             [
-    #                 'p1m1-1.png',
-    #                 'p1m1-2.png',
-    #                 'p1m1-3.png'
-    #             ]
-    #         ],
-    #         # model 2 ----------------------------------------------------------
-    #         # [],
-    #         # model 3 ----------------------------------------------------------
-    #         # []
-    #     ]
-    # ],
-    #
-    # # product 10 ----------------------------------------------------
-    # [
-    #     "product-name-test",  # product name
-    #     1,  # brand id
-    #     1,  # cate id - C
-    #     7,  # cate id - T
-    #     53,  # cate id - A
-    #     [  # model type list
-    #         # model 1 ----------------------------------------------------------
-    #         [
-    #             'model-name-test',  # model name
-    #             'model-description-test',  # m description
-    #             100,  # m price
-    #             2,  # kg
-    #             [
-    #                 'p1m1-1.png',
-    #                 'p1m1-2.png',
-    #                 'p1m1-3.png'
-    #             ]
-    #         ],
-    #         # model 2 ----------------------------------------------------------
-    #         # [],
-    #         # model 3 ----------------------------------------------------------
-    #         # []
-    #     ]
-    # ],
-    #
-    # # product 10 ----------------------------------------------------
-    # [
-    #     "product-name-test",  # product name
-    #     1,  # brand id
-    #     1,  # cate id - C
-    #     7,  # cate id - T
-    #     53,  # cate id - A
-    #     [  # model type list
-    #         # model 1 ----------------------------------------------------------
-    #         [
-    #             'model-name-test',  # model name
-    #             'model-description-test',  # m description
-    #             100,  # m price
-    #             2,  # kg
-    #             [
-    #                 'p1m1-1.png',
-    #                 'p1m1-2.png',
-    #                 'p1m1-3.png'
-    #             ]
-    #         ],
-    #         # model 2 ----------------------------------------------------------
-    #         # [],
-    #         # model 3 ----------------------------------------------------------
-    #         # []
-    #     ]
-    # ],
+
     #
     # # product 10 ----------------------------------------------------
     # [
